@@ -3,6 +3,13 @@ CodeAcademy TYPE2 grupės repozitorija
 
 ## Programa
 * HTML CSS
+* * HTML tree structure
+* * HTML element structure
+* * HTML common elements
+* * HTML display property
+* * flex
+* * position
+* * grid
 * JavaScript pagrindai
 * JavaScript panaudojimas naršyklėje, DOM funkcijos, HTML medžio manipuliacija
 * Webpack įrankis naudoti aukštesnio lygio technologijas
