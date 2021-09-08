@@ -1,1 +1,2 @@
 git žaidimas - https://learngitbranching.js.org/
+video - https://www.youtube.com/watch?v=8JJ101D3knE&ab_channel=ProgrammingwithMosh
