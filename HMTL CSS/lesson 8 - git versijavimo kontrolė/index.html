@@ -67,8 +67,18 @@
 
       <section id="git-files-update" class="navbar-anchor-fix">
         <div class="pl-3 pt-3">
-          <h2>Failų parsiuntimas/atnaujinimas</h2>
-
+          <h2 class="pb-2">Failų parsiuntimas/atnaujinimas</h2>
+          <p>
+            Keičiant failus savo kompiuteryje, reikia užfiksuoti pakitimus naudojant komandą: <br>
+            <pre class="code"><strong>git add</strong> .</pre>
+            Tuomet užfiksavus, reikia juos patvirtinti su patvirtinimo žinute:
+            <pre class="code"><strong>git commit -m "atliktą darbą apibudinanti žinutė"</strong></pre>
+            Tokiu būdu yra užtvirtinamas pakitimas jūsų darbinėje šakoje privačiai. Tam kad šiuos pakitimus pamatytų kiti žmonės reikia juos paviešinti. Kitaip tariant savo pakitimus nusiųsti į globalią repozitoriją, tai darome rašydami:
+            <pre class="code"><strong>git push</strong></pre>
+            <hr class="my-2">
+            Norint atnaujinti privačios repozitorijos informaciją, turi nebūti jokių pakitimų kuomet bandysite tai daryti. Prieš parsisiunčiant informaciją reikėtų užtvirtinti visus pakitimus (<em>git commit ...</em>). Failų atnaujinimas daromas rašant tokią komandą: <br>
+            <pre class="code"><strong>git pull</strong></pre>
+          </p>
         </div>
       </section>
     </div>
