@@ -1,0 +1,88 @@
+.task-2 {
+  display: grid;
+  grid-template:
+    "header" 60px
+    "menu" minmax(60px, auto)
+    "hero" minmax(200px, auto)
+    "main" minmax(200px, auto)
+    "banner" minmax(100px, auto)
+    "extra" minmax(100px, auto)
+    "image" minmax(100px, auto)/
+    auto;
+}
+
+.task-2> * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.task-2__header{
+  grid-area: header;
+  background: black;
+  color: white;
+}
+
+.task-2__menu{
+  grid-area: menu;
+  background: red;
+  color: white;
+}
+
+.task-2__hero{
+  grid-area: hero;
+  background: lightblue;
+  color: white;
+}
+
+.task-2__main{
+  grid-area: main;
+  background: navy;
+  color: white;
+}
+
+.task-2__banner{
+  grid-area: banner;
+  background: rgb(187, 187, 0);
+  color: white;
+}
+
+.task-2__extra{
+  grid-area: extra;
+  background: rgb(2, 160, 99);
+  color: white;
+}
+
+.task-2__image{
+  grid-area: image;
+  background: rgb(131, 197, 197);
+  color: white;
+}
+
+@media screen and (min-width: 768px){
+.task-2 {
+  grid-template:
+  "header header header" 60px
+  "hero   hero   hero" minmax(200px, auto)
+  "menu   main   main" minmax(200px, auto)
+  "menu   banner banner" minmax(100px, auto)
+  "menu   extra  image" minmax(100px, auto)/
+  1fr 2fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .task-2 {
+    grid-template:
+    "header menu   menu   menu" 60px
+    "hero   hero   hero   hero" minmax(350px, auto)
+    "main   main   .      image" minmax(100px, auto)
+    "main   main   .      extra" minmax(100px, auto)
+    "banner banner banner banner" minmax(100px, auto)/
+    1fr     1fr    1fr    1fr;
+    }
+}

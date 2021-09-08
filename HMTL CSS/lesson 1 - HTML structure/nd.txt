@@ -1,0 +1,9 @@
+Struktrizuotas puslapis, jūsų pasirinkta tema:
+    * 3 sekcijos (main skaitosi)
+    * 8 potėmės (iš viso)
+    * Panaudoti header su nuorodomis į sekcijas
+    * Nors viena išorinė nuoroda naujame skirtuke
+    * 3 nuotraukos
+
+Geras pvz (yra keiksmažodžių):
+    https://motherfuckingwebsite.com/
