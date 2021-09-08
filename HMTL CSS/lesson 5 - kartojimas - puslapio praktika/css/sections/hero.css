@@ -1,0 +1,48 @@
+.hero {
+    position: relative;
+    height: calc(100vh - 75px);
+    margin-bottom: 75px;
+    padding-bottom: 50px;
+}
+
+.hero__cover-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    object-position: bottom;
+}
+
+.hero__content {
+    height: 100%;
+    position: relative;
+}
+
+.hero__arrow-link {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: -35px;
+    /* background: red; */
+}
+
+.hero__arrow-link > a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 70px;
+    background: var(--primary);
+    font-size: 80px;
+    border-radius: 50%;
+    box-shadow: var(--shadow-xl);
+    transition: all 0.3s ease-in-out;
+}
+
+.hero__arrow-link > a:hover{
+    color: var(--primary);
+    background: var(--dark);
+    transform: scale(1.1);
+}

@@ -1,0 +1,10 @@
+.services__service{
+    width: 27%;
+    text-align: center;
+}
+
+.services__service__img {
+    width: 100%;
+    height: 230px;
+    box-shadow: var(--shadow-sm);
+}

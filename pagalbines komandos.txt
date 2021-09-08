@@ -1,0 +1,26 @@
+WINDOWS KOMANDOS ----------------------------------------------------
+    CTRL + C                        - Kopijuoti
+    CTRL + X                        - Iškirpti
+    CTRL + V                        - Įklijuoti
+    CTRL + Z                        - Grąžint atgal
+    CTRL + Y                        - Grąžint į priekį
+    CTRL + A                        - Pažymi viską
+    CTRL + S                        - Išsaugoti
+    ALT  + TAB                      - Pakeičia langą
+    F11                             - Išdidina ekraną
+    SHIFT + (rodyklės)              - Pažymi tai, kur juda žymeklis
+    WINDOWS + TAB                   - Įjungia darbalaukių valdymo langą
+    ctrl + WINDOWS + (← arba →)     - Perslenka į kitą (prieš tai sukurtą) darbalaukį
+NARŠYKLĖS KOMANDOS --------------------------------------------------
+    F5                              - Perkrauti puslapį, naršyklėje
+    F12                             - Programuotojo lango atidarymas
+VISUAL STUDIO CODE KOMANDOS -----------------------------------------------
+    CTRL + SPACE                    - Duoda pasirinkimą
+    CTRL + SHIFT + L                - Pasirenka visus sutapimus su pažymėtu tekstu
+    CTRL + ALT + (rodyklė)          - Daugybinis žymėjimas
+    CTRL + TAB                      - Įjungia praeitą failą
+    ALT + mouse-click               - Keleto žymeklių kūrimas
+    ALT + SHIFT + F                 - automatiškai suformatuoja tekstą
+    ALT + (↑ arba ↓)                - eilutės perstumimas (viršun || žemyn)
+    CTRL + K (atleisti viską) + S   - išsaugo VISUS failus
+    CTRL + K + 0                    - suskleidžia visus kodo blokus

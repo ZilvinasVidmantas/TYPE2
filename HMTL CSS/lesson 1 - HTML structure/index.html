@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 pamoka - HTML struktūra ir pagrindiniai elementai</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="#section-main">Pagrindinis</a>
+      <a href="#section-header">Antraštės</a>
+      <a href="#section-display">Elementų display tipai</a>
+      <a href="#section-images">Nuotraukos</a>
+    </nav>
+    <hr>
+  </header>
+
+  <main id="section-main">
+    <h1>Pagrindiniai HTML elementai</h1>
+    <p>
+      HTML tai puslapio struktūra - turinys. Turiniui kurti naudojama
+      pagrindiniai HMTL elementai.
+    </p>
+    <article>
+      <h2>HTML elemento struktūra</h2>
+      <img src="images/html-element-structure.png" width="100%" />
+    </article>
+  </main>
+
+  <section id="section-header">
+    <h2>Antraštės</h2>
+    <p>
+      Antraštės tai puslapio sekcijų įvardinimas - apibūdinimas. Antraštės
+      turi
+      būti įvardintos mažėjimo tvarka, ir negalima praleisti jų dydžių. h1
+      -> h2
+      -> h3
+    </p>
+  </section>
+
+  <section id="section-display">
+    <h2>Elementų tipai; Display</h2>
+    <p>
+      <strong>CSS savybė display</strong> apibūdina, kaip bus
+      atvaizduojamas -
+      išdėstomas HTML elementas.
+    </p>
+    <ul>
+      <li>
+        <strong>inline</strong> - baigtinis tekstinis elementas
+      </li>
+      <li>
+        <strong>inline-block</strong> - eilutės elementas, kuriam gali
+        būt
+        nustatomi aukščio ir pločio nustatymai, bei paraštės.
+      </li>
+      <li>
+        <strong>block</strong> - elementai per visą tėvinio elemento
+        plotį
+      </li>
+    </ul>
+    <article>
+      <h3>Dažniausiai naudojami inline elementai</h3>
+      <ul>
+        <li><strong>span</strong> - bendrinis teksto elementas</li>
+        <li><strong>strong</strong> - paryškintas tekto elementas</li>
+        <li><strong>em</strong> - pasviręs teksto elementas</li>
+        <li><strong>a</strong> - nuoroda</li>
+        <li><strong>img</strong> - nuotrauka</li>
+      </ul>
+      <article>
+        <h4>Pavyzdžiai</h4>
+        <p>
+          <span>Paprastas tekstas, naudojama struktūrizuojant
+            turinį</span>
+          <strong>Paryškintas tekstas</strong>
+          <em>Pasviręs tekstas</em>
+          <em><strong>Paryškintas ir pasviręs tekstas</strong></em> 
+          <img src="https://unsplash.it/24/20">
+          <img src="https://unsplash.it/60/30">
+          <a href="https://google.lt">Nuoroda tame pačiame skirtuke</a>
+          <a href="https://google.lt" target="blank">
+            Nuoroda naujame skirtuke
+          </a>
+        </p>
+      </article>
+    </article>
+    <article>
+      <h3>Dažniausi inline-block elementai</h3>
+      <ul>
+        <li>
+          <strong>input</strong> - vartotojo įvesties elementas
+          <ul>
+            <li>
+              <strong>type="text"</strong>:
+              <input type="text" value="pavyzdinis tekstas">
+            </li>
+            <li>
+              <strong>type="password"</strong>:
+              <input type="password" value="pavyzdinis tekstas">
+            </li>
+            <li>
+              <strong>type="email"</strong>:
+              <input type="email" value="pavyzdinis tekstas">
+            </li>
+            <li>
+              <strong>type="number"</strong>:
+              <input type="number" value="123">
+            </li>
+            <li>
+              <strong>type="date"</strong>:
+              <input type="date">
+            </li>
+            <li>
+              <strong>type="range"</strong>:
+              <input type="range" min="0" max="10" value="4">
+            </li>
+            <li>
+              <strong>type="color"</strong>:
+              <input type="color" value="#ffffff">
+            </li>
+            <li>
+              <strong>type="checkbox"</strong>:
+              <input type="checkbox">
+            </li>
+            <li>
+              <strong>type="radio"</strong>:
+              <input type="radio">
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>text-area</strong>:
+          <textarea cols="30" rows="10"
+            style="vertical-align: top">Tekstas 3000</textarea>
+        </li>
+        <li>
+          <strong>select</strong>:
+          <select>
+            <option>Vilnius</option>
+            <option>Kaunas</option>
+            <option>Klaipėda</option>
+          </select>
+        </li>
+      </ul>
+    </article>
+
+    <article>
+      <h3>Dažniausi block elementai</h3>
+      <ul>
+        <li><strong>div</strong> - bendrinis blokinis elementas</li>
+        <li><strong>header</strong> - viršutinis komponento elementas</li>
+        <li><strong>footer</strong> - apatinis komponento elementas</li>
+        <li><strong>section</strong> - pagrindinė puslapio sekcija</li>
+        <li><strong>article</strong> - potemės blokinis elementas</li>
+        <li><strong>aside</strong> - šoninis blokinis elementas</li>
+        <li><strong>p</strong> - pastraipos blokinis elementas</li>
+        <li><strong>h1-h6</strong> - antraščių blokiniai elementai</li>
+        <li><strong>form</strong> - vartotojo įvesčių gaubiamasis elementas</li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="section-images">
+    <h2>Nuotraukos</h2>
+    <p>
+      Nuotraukos yra <strong>inline</strong> elementai. Visgi galima nustatyti nuotraukos plotį ir aukšti naudojant atributus. Nustačius vieną dimensiją(plotį arba aukštį) kita prisiderina pagal orginalios nuotrukos proporcijas. Jeigu nustatome 2 dimensijas, tuomet nuotrauka yra ištempiama (arba sutraukiama).
+      Nuotraukos <strong>src</strong> atribute turime nurodyti kelią iki nuotraukos.
+      Nuotraukos <strong>alt</strong> atrbiute, turime nurodyti tekstą, kuris bus rodomas tik tuo atveju, jei <strong>src</strong> atribute nurodytu keliu nuotrauka nėra randama/pasiekiama.
+    </p>
+    <article>
+      <h3>Pavyzdžiai</h3>
+      <article>
+        <h4>Nuotrauka su keliu į išorinę nuorodą</h4>
+        <img src="https://unsplash.it/200/150"/>
+      </article>
+      <article>
+        <h4>Nuotrauka su keliu į failų sistemą</h4>
+        <img src="images/200x200.png"/>
+      </article>
+      <article>
+        <h4>Nuotrauka su blogu keliu ir alt atributas</h4>
+        <img src="images/tokios nera.jpg" alt="alt atributo reikšmė"/>
+      </article>
+      <article>
+        <h4>Nuotraukos su vienos dimensijos nustatymu</h4>
+        <img src="https://unsplash.it/150/300" height="100"/>
+        <img src="https://unsplash.it/200/200" height="100"/>
+        <img src="https://unsplash.it/300/150" height="100"/>
+      </article>
+      <article>
+        <h4>Nuotraukos su dviejų dimensijų nustatymais</h4>
+        <img src="https://unsplash.it/1500/300" height="100" width="100"/>
+        <img src="https://unsplash.it/200/200" height="100" width="100"/>
+        <img src="https://unsplash.it/300/1500" height="100" width="100"/>
+      </article>
+    </article>
+  </section>
+</body>
+
+</html>
