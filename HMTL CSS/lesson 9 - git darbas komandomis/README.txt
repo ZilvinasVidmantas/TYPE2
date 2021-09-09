@@ -45,10 +45,10 @@ Projekto vystymo eiga:
   Vystyti darbą atliekant task'us atskirose šakose ir jas apjungiant į pagrindinę šaką
 
 
-Vieno darbo vystymo eiga, pateika iliustracijoje "./darbo atlikimo GIT schema.png". 
-  TOBULU ATVEJU:
+Vieno darbo vystymo eiga. 
+  TOBULU ATVEJU, KUOMET NIEKS NEPAKEITĖ <master> ŠAKOS:
     0. Prisiskirti sau task'ą užduočių tavrkyklėje tvarkyklėje, pakeisti jo būseną "In progress"
-    1. git pull → tai daryti savo šakoje. Šia komanda parsisiunčiate naujausią versiją
+    1. git pull → tai daryti <master> šakoje. Šia komanda parsisiunčiate naujausią versiją.
     2. git checkout -b <task-branch> → Persijungiate į savo šaką, kurioje atliksite darbus.
     ... atliekate darbą, rašote kodą ...
     3. git add . → užfiksuojate pakitimus
@@ -60,6 +60,27 @@ Vieno darbo vystymo eiga, pateika iliustracijoje "./darbo atlikimo GIT schema.pn
     7. Užduočių tvarkyklėje perkelti task'ą į Pull Request skiltį ir į komentarus įdėti nuorodą į Pull Request
     8. Laukti 2 patvirtinimų, ir sulaukus sujungti šakas
       base:master ← <task-branch>
+
+  PROFESIONALUS-REKOMENDUOJAMAS BŪDAS, pateika iliustracijoje "./darbo atlikimo GIT schema.png"
+    0. Prisiskirti sau task'ą užduočių tavrkyklėje tvarkyklėje, pakeisti jo būseną "In progress"
+    1. git pull → tai daryti <master> šakoje. Šia komanda parsisiunčiate naujausią versiją
+    2. git checkout -b <task-branch> → Persijungiate į savo šaką, kurioje atliksite darbus.
+    ... atliekate darbą, rašote kodą ...
+    3. git add . → užfiksuojate pakitimus
+    4. git commit -m "darbą apibūdinantis paaiškinimas" → užtvirtinate pakitimus
+    5. git checkout master →  grįžtate į pagrindinę šaką, į tą nuo kurios atsiskyrėte.
+    6. git pull → pasisiunčiate potencialiai pakitusią <master> versiją
+    7. git checkout <task-branch> → grįžtate į savo šaką
+    8. git merge master → prie savo šakos <task-branch> prijungiate naują <master> versiją
+    ... išsprendžiate konfliktus, jei jų buvo ir pa'commit'išsprendžiate
+    9. git push --set-upstream origin <task-branch> → jūsų šaka su pakitimais paviešinama globalioje repozitorijoje
+    10. https://github.com susirasti repozitoriją ir joje padaryti pull Request
+      * Pull request pavadinime turi būti task'o Pavadinimas
+      * turi būti jungiama jūsų šaka į pagrindinę
+    11. Užduočių tvarkyklėje perkelti task'ą į Pull Request skiltį ir į komentarus įdėti nuorodą į Pull Request
+    12. Laukti 2 patvirtinimų, ir sulaukus sujungti šakas
+      base:master ← <task-branch>
+
   
 
 Bendri patarimai:
