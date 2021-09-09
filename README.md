@@ -3,12 +3,12 @@ CodeAcademy TYPE2 grupės repozitorija
 
 ## Programa
 * HTML CSS
-* * HTML tree structure
-* * HTML element structure
+* * HTML
+* * * HTML tree structure
+* * * HTML element structure
 * * * Opening and closing tags
 * * * Self closing elements
 * * * Attributes
-* * HTML common elements
 * * * inline elements
 * * * inline-block elements
 * * * block elements
