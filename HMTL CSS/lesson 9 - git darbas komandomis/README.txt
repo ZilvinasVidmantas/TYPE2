@@ -17,6 +17,9 @@ Priemonės:
     https://github.com/ZilvinasVidmantas/TYPE2_HTML-CSS-PROJECT-TEMPLATE
     arba šiame aplanke esantis "group-project-template"
 
+  kodo redaktorius:
+    https://code.visualstudio.com/
+
 
 Projekto vystymo eiga:
   Išsirinkti komandos kuratorių
@@ -82,9 +85,8 @@ Vieno darbo vystymo eiga.
       base:master ← <task-branch>
 
   
-
 Bendri patarimai:
-    * Iškilus sunkumams organizuoti susitikimą ir išsiaiškinti iškilusias problemas, tęsti darbų vystymą
+    * Iškilus sunkumams organizuoti susitikimą ir išsiaiškinti iškilusias problemas, jei reikia kreiptis į dėstytoją.
     * Darbus atlikti tik tuos, kurie yra suorganizuoti darbų planuoklėje.
     * Pagarba ir kantrybė atsiperka ilgalaikėje perspektyvoje, trumpalaikėje - nevisada.
 
