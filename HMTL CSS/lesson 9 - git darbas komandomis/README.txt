@@ -72,7 +72,7 @@ Vieno darbo vystymo eiga.
     6. git pull → pasisiunčiate potencialiai pakitusią <master> versiją
     7. git checkout <task-branch> → grįžtate į savo šaką
     8. git merge master → prie savo šakos <task-branch> prijungiate naują <master> versiją
-    ... išsprendžiate konfliktus, jei jų buvo ir pa'commit'išsprendžiate
+    ... išsprendžiate konfliktus, jei jų buvo ir pa'commit'ate
     9. git push --set-upstream origin <task-branch> → jūsų šaka su pakitimais paviešinama globalioje repozitorijoje
     10. https://github.com susirasti repozitoriją ir joje padaryti pull Request
       * Pull request pavadinime turi būti task'o Pavadinimas
