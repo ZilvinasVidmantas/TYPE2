@@ -7,20 +7,19 @@ Sukurti puslapį apie visą mūsų praeitą medžiagą (1-8 paskaitos) grupelės
 * Repozitorijos paslaugas teikianti organizacija
 * * https://github.com
 
-* Darbų planavimo teikianti įmonė (galite rinktis ir kitą)
+* Užduočių tvarkyklė (galite rinktis ir kitą)
 * * https://kanbanflow.com/
 * * https://support.microsoft.com/en-us/use-planner-in-microsoft-teams-62798a9f-e8f7-4722-a700-27dd28a06ee0
 
-* git terminalas:
+* GIT terminalas:
 * * https://git-scm.com/downloads
 
-* projekto šablono repozitorija:
+* Projekto šablono repozitorija:
 * * https://github.com/ZilvinasVidmantas/TYPE2_HTML-CSS-PROJECT-TEMPLATE
-* * arba šiame aplanke esantis "group-project-template"
+* * arba galite naudotis šiame aplanke esančiame "group-project-template"
 
-* kodo redaktorius:
+* Kodo redaktorius:
 * * https://code.visualstudio.com/
-
 
 ## Projekto vystymo eiga:
 * Išsirinkti komandos kuratorių
@@ -38,13 +37,9 @@ Sukurti puslapį apie visą mūsų praeitą medžiagą (1-8 paskaitos) grupelės
 * * Kuratoriaus privilegijos: 
 * * * statusas
 * * * kantrybės ugdymas
-
-* Sudaryti pradinį task'ų sąrašą
-
+* Sudaryti pradinį task'ų sąrašą naudojant savo pasirinktą užduočių tvarkyklę
 * Sukurti repozitorijoje suvaržymus 'Pull Request'ams.
-
 * Visiems kolegoms parsisiųsti pradinę projekto versiją
-
 * Vystyti darbą atliekant task'us atskirose šakose ir jas apjungiant į pagrindinę šaką
 
 ## Vieno darbo vystymo eiga. 
@@ -82,19 +77,9 @@ Sukurti puslapį apie visą mūsų praeitą medžiagą (1-8 paskaitos) grupelės
 11. Užduočių tvarkyklėje perkelti task'ą į Pull Request skiltį ir į komentarus įdėti nuorodą į Pull Request
 12. Laukti 2 patvirtinimų, ir sulaukus sujungti šakas
             base:master ← "task-brand"
-
   
-Bendri patarimai:
-    * Iškilus sunkumams organizuoti susitikimą ir išsiaiškinti iškilusias problemas, jei reikia kreiptis į dėstytoją.
-    * Darbus atlikti tik tuos, kurie yra suorganizuoti darbų planuoklėje.
-    * Pagarba ir kantrybė atsiperka ilgalaikėje perspektyvoje, trumpalaikėje - nevisada.
-
-
-
-    
-
-
-
-     
-
+## Bendri patarimai:
+* Iškilus sunkumams organizuoti susitikimą ir išsiaiškinti iškilusias problemas, jei reikia kreiptis į dėstytoją.
+* Darbus atlikti tik tuos, kurie yra suorganizuoti darbų planuoklėje.
+* Pagarba ir kantrybė atsiperka ilgalaikėje perspektyvoje.
 
