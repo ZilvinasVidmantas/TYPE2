@@ -15,8 +15,8 @@ Sukurti puslapį apie visą mūsų praeitą medžiagą (1-8 paskaitos) grupelės
   * https://git-scm.com/downloads
 
 * Projekto šablono repozitorija:
- * https://github.com/ZilvinasVidmantas/TYPE2_HTML-CSS-PROJECT-TEMPLATE
- * arba galite naudotis šiame aplanke esančiame "group-project-template"
+  * https://github.com/ZilvinasVidmantas/TYPE2_HTML-CSS-PROJECT-TEMPLATE
+  * arba galite naudotis šiame aplanke esančiame "group-project-template"
 
 * Kodo redaktorius:
   * https://code.visualstudio.com/
