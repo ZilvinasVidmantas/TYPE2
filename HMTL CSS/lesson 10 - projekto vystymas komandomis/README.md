@@ -47,39 +47,42 @@ Sukurti puslapį apie visą mūsų praeitą medžiagą (1-8 paskaitos) grupelės
 
 * Vystyti darbą atliekant task'us atskirose šakose ir jas apjungiant į pagrindinę šaką
 
-
 ## Vieno darbo vystymo eiga. 
 ### TOBULU ATVEJU, KUOMET NIEKS NEPAKEITĖ "master" ŠAKOS:
--  Prisiskirti sau task'ą užduočių tavrkyklėje tvarkyklėje, pakeisti jo būseną "In progress"
--  git pull → tai daryti "master" šakoje. Šia komanda parsisiunčiate naujausią versiją.
--  git checkout -b "task-brand" → Persijungiate į savo šaką, kurioje atliksite darbus.
-- * atliekate darbą, rašote kodą ...
--  git add . → užfiksuojate pakitimus
--  git commit -m "darbą apibūdinantis paaiškinimas" → užtvirtinate pakitimus
--  git push --set-upstream origin "task-brand" → jūsų šaka su pakitimais paviešinama globalioje repozitorijoje
--  https://github.com susirasti repozitoriją ir joje padaryti pull Request
--  Pull request pavadinime turi būti task'o Pavadinimas
--  turi būti jungiama jūsų šaka į pagrindinę
--  Užduočių tvarkyklėje perkelti task'ą į Pull Request skiltį ir į komentarus įdėti nuorodą į Pull Request
--  Laukti 2 patvirtinimų, ir sulaukus sujungti šakas
--          base:master ← "task-brand"
+* * 0. Prisiskirti sau task'ą užduočių tavrkyklėje tvarkyklėje, pakeisti jo būseną "In progress"
+* * 1. git pull → tai daryti "master" šakoje. Šia komanda parsisiunčiate naujausią versiją.
+* * 2. git checkout -b "task-brand" → Persijungiate į savo šaką, kurioje atliksite darbus.
+* * * ... atliekate darbą, rašote kodą ...
+* * 3. git add . → užfiksuojate pakitimus
+* * 4. git commit -m "darbą apibūdinantis paaiškinimas" → užtvirtinate pakitimus
+* * 5. git push --set-upstream origin "task-brand" → jūsų šaka su pakitimais paviešinama globalioje repozitorijoje
+* * 6. https://github.com susirasti repozitoriją ir joje padaryti pull Request
+* * * Pull request pavadinime turi būti task'o Pavadinimas
+* * * turi būti jungiama jūsų šaka į pagrindinę
+* * 7. Užduočių tvarkyklėje perkelti task'ą į Pull Request skiltį ir į komentarus įdėti nuorodą į Pull Request
+* * 8. Laukti 2 patvirtinimų, ir sulaukus sujungti šakas
+* *   base:master ← "task-brand"
 
 ### PROFESIONALUS-REKOMENDUOJAMAS BŪDAS, pateika iliustracijoje "./darbo atlikimo GIT schema.png"
--  Prisiskirti sau task'ą užduočių tavrkyklėje tvarkyklėje, pakeisti jo būseną "In progress"
--  git pull → tai daryti "master" šakoje. Šia komanda parsisiunčiate naujausią versiją
--  git checkout -b "task-brand" → Persijungiate į savo šaką, kurioje atliksite darbus.
-- * . atliekate darbą, rašote kodą ...
--  git add . → užfiksuojate pakitimus
--  git commit -m "darbą apibūdinantis paaiškinimas" → užtvirtinate pakitimus
--  git checkout master →  grįžtate į pagrindinę šaką, į tą nuo kurios atsiskyrėte.
--  git pull → pasisiunčiate potencialiai pakitusią "master" versiją
--  git checkout "task-brand" → grįžtate į savo šaką
--  git merge master → prie savo šakos "task-brand" prijungiate naują "master" versiją
-- * . išsprendžiate konfliktus, jei jų buvo ir pa'commit'ate
--  git push --set-upstream origin "task-brand" → jūsų šaka su pakitimais paviešinama globalioje repozitorijoje
-- . https://github.com susirasti repozitoriją ir joje padaryti pull Request- * Pull request pavadinime turi būti task'o Pavadinimas- * turi būti - -jungiama jūsų šaka į pagrindinę
-- . Užduočių tvarkyklėje perkelti task'ą į Pull Request skiltį ir į komentarus įdėti nuorodą į Pull Request
-- . Laukti 2 patvirtinimų, ir sulaukus sujungti šakas-              base:master ← "task-brand- 
+* 0. Prisiskirti sau task'ą užduočių tavrkyklėje tvarkyklėje, pakeisti jo būseną "In progress"
+* 1. git pull → tai daryti "master" šakoje. Šia komanda parsisiunčiate naujausią versiją
+* 2. git checkout -b "task-brand" → Persijungiate į savo šaką, kurioje atliksite darbus.
+* * ... atliekate darbą, rašote kodą ...
+* 3. git add . → užfiksuojate pakitimus
+* 4. git commit -m "darbą apibūdinantis paaiškinimas" → užtvirtinate pakitimus
+* 5. git checkout master →  grįžtate į pagrindinę šaką, į tą nuo kurios atsiskyrėte.
+* 6. git pull → pasisiunčiate potencialiai pakitusią "master" versiją
+* 7. git checkout "task-brand" → grįžtate į savo šaką
+* 8. git merge master → prie savo šakos "task-brand" prijungiate naują "master" versiją
+* * ... išsprendžiate konfliktus, jei jų buvo ir pa'commit'ate
+* 9. git push --set-upstream origin "task-brand" → jūsų šaka su pakitimais paviešinama globalioje repozitorijoje
+* 10. https://github.com susirasti repozitoriją ir joje padaryti pull Request
+* * Pull request pavadinime turi būti task'o Pavadinimas
+* * turi būti jungiama jūsų šaka į pagrindinę
+* 11. Užduočių tvarkyklėje perkelti task'ą į Pull Request skiltį ir į komentarus įdėti nuorodą į Pull Request
+* 12. Laukti 2 patvirtinimų, ir sulaukus sujungti šakas
+            base:master ← "task-brand"
+
   
 Bendri patarimai:
     * Iškilus sunkumams organizuoti susitikimą ir išsiaiškinti iškilusias problemas, jei reikia kreiptis į dėstytoją.
