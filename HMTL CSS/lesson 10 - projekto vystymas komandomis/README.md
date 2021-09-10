@@ -79,7 +79,7 @@ Sukurti puslapį apie visą mūsų praeitą medžiagą (1-8 paskaitos) grupelės
 11. Užduočių tvarkyklėje perkelti task'ą į Pull Request skiltį ir į komentarus įdėti nuorodą į Pull Request
 12. Laukti 2 patvirtinimų, ir sulaukus sujungti šakas
             base:master ← "task-brand"
-![Profesionali cieno darbo pridėjimo schema](darbo atlikimo GIT schema.png)
+![Profesionali cieno darbo pridėjimo schema]("./darbo atlikimo GIT schema.png")
   
 ## Bendri patarimai:
 * Iškilus sunkumams organizuoti savo grupės susitikimą ir išsiaiškinti iškilusias problemas, jei nepavyksta kreiptis į dėstytoją.
