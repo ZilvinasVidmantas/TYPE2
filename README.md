@@ -32,15 +32,31 @@ CodeAcademy TYPE2 grupės repozitorija
 * * * grid-template
 * * * grid-template reponsive
 * * * grid named lines method
+
+* Projektų valdymas ir vystymas
+* * GIT versijavimo kontrolės pagrindai
+* * GIT nepertraukiamo darbo metodologija ir tvarka viešinant kodą
+* * Užduočių planuoklės pagrindai
+* * Komandinis projekto vystymas
+
 * JavaScript pagrindai
+
 * JavaScript panaudojimas naršyklėje, DOM funkcijos, HTML medžio manipuliacija
+
 * Webpack įrankis naudoti aukštesnio lygio technologijas
+
 * Node.js pagrindai
+
 * Express framework aplikacijos serverio pusei kurti
+
 * SQL standartas ir Node.js sujungimas su serverio aplikacija
+
 * MongoDB standartas ir Node.js sujungimas su serverio aplikacija
+
 * React framework aplikacijos kliento pusei kurti
+
 * TypeScript - OOP pagrindai ir sugriežtinta sintaksė
+
 * TypeScript panaudojimas kuriant MERN aplikacijai
 * * M - MONGO
 * * E - EXPRESS
