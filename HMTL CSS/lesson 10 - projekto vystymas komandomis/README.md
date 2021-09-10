@@ -46,7 +46,7 @@ Sukurti puslapį apie visą mūsų praeitą medžiagą (1-8 paskaitos) grupelės
 
 ## Vieno darbo(task) vystymo eiga. 
 ### TOBULU ATVEJU, KUOMET NIEKS NEPAKEITĖ "master" ŠAKOS:
-0. Prisiskirti sau task'ą užduočių tavrkyklėje tvarkyklėje, pakeisti jo būseną "In progress"
+0. Prisiskirti sau task'ą užduočių planuoklėje, pakeisti jo būseną "In progress"
 1. git pull → tai daryti "master" šakoje. Šia komanda parsisiunčiate naujausią versiją.
 2. git checkout -b "task-branch-name" → Persijungiate į savo šaką, kurioje atliksite darbus.
   * ... atliekate darbą, rašote kodą ...
@@ -61,7 +61,7 @@ Sukurti puslapį apie visą mūsų praeitą medžiagą (1-8 paskaitos) grupelės
   base:master ← "task-branch-name"
 
 ### PROFESIONALUS-REKOMENDUOJAMAS BŪDAS, pateika iliustracijoje "./darbo atlikimo GIT schema.png"
-0. Prisiskirti sau task'ą užduočių tavrkyklėje tvarkyklėje, pakeisti jo būseną "In progress"
+0. Prisiskirti sau task'ą užduočių planuoklėje, pakeisti jo būseną "In progress"
 1. git pull → tai daryti "master" šakoje. Šia komanda parsisiunčiate naujausią versiją
 2. git checkout -b "task-branch-name" → Persijungiate į savo šaką, kurioje atliksite darbus.
   * ... atliekate darbą, rašote kodą ...
