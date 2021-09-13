@@ -39,6 +39,12 @@ CodeAcademy TYPE2 grupės repozitorija
 * * Užduočių planuoklės pagrindai
 * * Komandinis projekto vystymas
 
+* Framework
+* * Bootstrap Grid system
+* * Bootstrap Tables
+* * Individualūs full responsive projektai 
+
+
 * JavaScript pagrindai
 
 * JavaScript panaudojimas naršyklėje, DOM funkcijos, HTML medžio manipuliacija
