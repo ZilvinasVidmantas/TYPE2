@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 11 - Bootstrap Forms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <h1> Login'as vienas po kitu </h1>
+    <form class="m-2">
+        <div class="mb-2">
+            <label for="login-username-form-1">Username</label>
+            <input type="text" class="form-control" id="login-username-form-1">
+        </div>
+        <div class="mb-2">
+            <label for="login-password-form-1">Password</label>
+            <input type="password" class="form-control" id="login-password-form-1">
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <br><br>
+    <h1> Login'as vienas šalia kito </h1>
+    <form class="m-2">
+        <div class="row g-3">
+            <div class="col">
+            <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+            </div>
+            <div class="col">
+            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+            </div>
+        </div>
+    </form>
+    <br><br>
+    <h1> Gutter </h1>
+    <div class="noMarg">
+        <div class="container px-4">
+            <div class="row gx-5">
+            <div class="col">
+            <div class="p-3 border bg-light">Custom column padding gutter</div>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light">Custom column padding gutter</div>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light">Custom column padding gutter</div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <h1> File selector ir color picker </h1>
+    <form class="m-2">
+        <div class="pozicija">
+            <label for="file-selector-1" class="form-label changeNameLabel">Pasirinkite kačiuko nuotrauką</label>
+            <input type="file" class="form-control" id="file-selector-1">
+        </div>
+        <div>
+            <label for="color-picker-1" class="form-label">Pasirinkite kačiuko nuotraukos rėmelių spalvą</label>
+            <input type="color" class="form-control form-control-color" id="color-picker-1" value="#563d7c">
+        </div>
+    </form>
+    <br><br>
+    <h1 class="text-center"> Datalist and Selector </h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form>
+                    <label for="data-list-1" class="form-label"> Datalist </label>
+                    <input id="data-list-1" class="form-control" list="datalistOptions" placeholder="Rašyk ir ieškok">
+                    <datalist id="datalistOptions">
+                        <option value="Didmiestis"></option>
+                        <option value="Miestas"></option>
+                        <option value="Miestelis"></option>
+                        <option value="Kaimas"></option>
+                        <option value="Vienkiemis"></option>
+                    </datalist>
+                </form>
+            </div>
+            <div class="col-6">
+                <form>
+                    <label class="form-label"> Selector </label>
+                    <select class="form-select">
+                        <option selected>Didmiestis</option>
+                        <option value="1">Miestas</option>
+                        <option value="2">Miestelis</option>
+                        <option value="3">Kaimas</option>
+                        <option value="4">Vienkiemis</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <h1> Checkboxes ir radios </h1>
+    <div class="container mx-2">
+        <div class="row">
+            <div class="col-6">
+                <h1> Checkbox </h1>
+                <form>
+                    <div>
+                        <input type="checkbox" class="form-check-input" id="checkbox-eat-1" checked>
+                        <label for="checkbox-eat-1" class="form-check-label">Ar norėsite valgyti?</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="form-check-input" id="checkbox-eat-1" checked>
+                        <label for="checkbox-eat-1" class="form-check-label">Ar norėsite gerti?</label>
+                    </div>
+                </form>
+                <form class="mt-2">
+                    <div class="col-12 d-grid mb-1">
+                        <input type="checkbox" class="btn-check" id="checkbox-btn-1" checked>
+                        <label for="checkbox-btn-1" class="btn btn-outline-primary"> Ar norėsite valgyti?</label>
+                    </div>
+                    <div class="col-12 d-grid">
+                        <input type="checkbox" class="btn-check" id="checkbox-btn-2" checked>
+                        <label for="checkbox-btn-2" class="btn btn-outline-secondary"> Ar norėsite gerti? </label>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <h1> Radio </h1>
+                <form>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="radio-eat-1" id="radio-eat-1" checked>
+                        <label class="form-check-label" for="radio-eat-1"> Žuvis </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="radio-eat-1" id="radio-eat-2">
+                        <label class="form-check-label" for="radio-eat-2"> Vištiena </label>
+                    </div>
+                </form>
+                <form class="mt-2">
+                    <div class="col-12 d-grid mb-1">
+                        <input type="radio" class="btn-check" name="radio-btn-eat-1" id="radio-btn-eat-1" checked>
+                        <label class="btn btn-outline-success" for="radio-btn-eat-1"> Žuvis </label>
+                    </div>
+                    <div class="col-12 d-grid">
+                        <input type="radio" class="btn-check" name="radio-btn-eat-1" id="radio-btn-eat-2">
+                        <label class="btn btn-outline-danger" for="radio-btn-eat-2"> Vištiena </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <h1> Range </h1>
+    <form>
+        <div>
+            <label for="minimal-money-1">Minimali pinigų suma.</label>
+            <input id="minimal-money-1" value="0" min="0" max="10000" type="range" class="form-range" oninput="this.nextElementSibling.value = this.value">
+            <output>0</output>
+        </div>
+        <div>
+            <label for="maximum-money-1">Maksimali pinigų suma.</label>
+            <input id="maximum-money-1" value="0" min="0" max="10000" type="range" class="form-range" oninput="this.nextElementSibling.value = this.value">
+            <output>0</output>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+Sukurti nurodytas formas su visai nurodytais laukais.
+Laukam galite naudoti kokį norite input (apart ten kur nurodytą kokį), tik svarbu kad tas input tenkintų salygą.
+Galima pridėti extra laukų jei norite.
+
+1) Sukurti registracijos formą su šiais laukais:
+    1.1) Email.
+    1.2) Username.
+    1.3) Password.
+    1.4) Accept Terms and Services checkbox.
+    1.5) Register (submit) mygtukas.
+
+2) Prisijungimo formą su šiais laukais:
+    2.1) Username or Email.
+    2.2) Password.
+    2.3) Login (submit) mygtukas.
+
+3) Greito maisto (picos/kebabų/koldūnų/...) užsisakymo formą su šiais laukais:
+    3.1) Pasirinkti maistą iš Datalist.
+    3.2) Pasirinkti padažą iš Selector.
+    3.3) Pasirinkti gėrimą iš Selector (su galimybę) nepasirinkti.
+    3.4) Pristatymo adresas:
+        3.4.1) Gatvė + pastato numeris.
+        3.4.2) Buto numeris (optional).
+    3.5) Užsisakyti (submit) mytukas.
+
+4) Restorano registracijos forma su šiais laukais:
+    4.1) Nurodyti vardą ir pavardę.
+    4.2) Pasirinkti laiką.
+    4.3) Nurodyti asmenų kiekį.
+    4.4) Patvirtinti registraciją (submit) mytukas.
+
+5) Marškinėlių užsisakymo forma su šiais laukais:
+    5.1) Vardas + Pavardė.
+    5.2) Elektroninis paštas.
+    5.3) Marškinėlių tipas (nuotraukos su radio check'u).
+    5.4) Marškinėlių dydis.
+    5.5) Marškinėlių kiekis.
+    5.6) Pristatymo adresas:
+        5.6.1) Šalis.
+        5.6.2) Miestas.
+        5.6.3) Gatvė + pastato numeris.
+        5.6.4) Buto numeris (optional).
+        5.6.5) ZIP kodas.
+    5.7) Telefono numeris.
+    5.8) Patvirtinti pirkimą (submit) mygtukas.
+
+6) Lėktuvo skrydžio forma. (bent su 6 laukais)
+7) Mašinos registracijos forma. (bent su 8 laukais)
+8) Kino bilieto/bilietų rezervavimo/pirkimo forma. (bent su 5 laukais)
+9) Darbo aplikacijos forma. (bent su 8 laukais)
+
+Jei jau sukūrėte visas formas, tai galite sugalvoti daugiau formų pavyzdžių ir pasiūlyti juos kitiems.
