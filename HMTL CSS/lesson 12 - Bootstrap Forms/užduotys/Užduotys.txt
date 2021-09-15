@@ -25,7 +25,7 @@ Galima pridėti extra laukų jei norite.
 
 4) Restorano registracijos forma su šiais laukais:
     4.1) Nurodyti vardą ir pavardę.
-    4.2) Pasirinkti laiką.
+    4.2) Pasirinkti laiką (datą ir valandas (arba kaip jau norite)).
     4.3) Nurodyti asmenų kiekį.
     4.4) Patvirtinti registraciją (submit) mytukas.
 
