@@ -2,7 +2,7 @@ Tikslas:
     Sukurti reprezentacinį "landing page" verslui ar organizacijai.
 
 Įrankiai:
-    FontAwsome ikonų nuoroda arba Bootstrap ikonų nuoroda
+    FontAwesome ikonų nuoroda arba Bootstrap ikonų nuoroda
     Google fonts šriftai su nuoroda
     Bootstrap nuoroda (Bootstrap naudoti nebūtina)
 
@@ -39,4 +39,4 @@ Vertinimas:
     [1] Sukurtas footer'is
     [4] Sukurtos 3 sekcijos su prisitaikančiu turiniu pagal ekrano dydį. Dizainai/išdėstymai bent 3 ekrano dydžiams
     [1] Puslapiui naudojami failai (nuotraukos/css) strukturizuoti atskiruose aplankuose
-    [1] Panaudotas grid-layout arba bootstrap-grid sistema(jei naudosite Bootstrap)
+    [1] Panaudotas grid-layout arba bootstrap-grid sistema (jei naudosite Bootstrap)
