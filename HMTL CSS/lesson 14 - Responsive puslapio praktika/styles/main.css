@@ -1,0 +1,34 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css");
+
+@import "base/variables.css";
+@import "base/reset.css";
+@import "base/typography.css";
+@import "base/poppins.css";
+
+
+@import "utilities/spacing.css";
+@import "utilities/dimensions.css";
+@import "utilities/background.css";
+
+@import "layout/display.css";
+@import "layout/containers.css";
+@import "layout/flex.css";
+@import "layout/grid.css";
+
+@import "components/navbar.css";
+@import "components/sidebar.css";
+@import "components/code.css";
+@import "components/lists.css";
+@import "components/footer.css";
+@import "components/carousel.css";
+
+
+
+section{
+    height: 50vh;
+}
+
+.carousel-item p{
+    margin-top: 100px;
+}

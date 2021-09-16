@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Lesson 14 - Responsive page </title>
+
+    <link rel="icon" href="images/coin.png">
+    <link rel="stylesheet" href="styles/main.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous" defer></script>
+    <script src="scripts/navbar.js" defer></script>
+    <script src="scripts/carousel.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container h-100">
+          <div class="d-flex h-100 justify-content-between">
+            <a href="#" class="navbar__logo-container">
+              <img src="images/codeacademy-white.svg">
+            </a>
+          </div>
+          <div class="d-flex h-100 justify-content-between">
+            <div class="navbar__toggler">
+              <div class="navbar__toggler__line"></div>
+              <div class="navbar__toggler__line"></div>
+              <div class="navbar__toggler__line"></div>
+            </div>
+            <div class="navbar__navigation-container">
+              <ul class="navbar__navigation">
+                <li><a class="navbar__link" href="#">Home</a></li>
+                <li><a class="navbar__link" href="">About</a></li>
+                <li><a class="navbar__link" href="">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <section class="carousel">
+        <div class="carousel-item">
+            <p>Content 1</p>
+        </div>
+        <div class="carousel-item">
+            <p>Content 2</p>
+        </div>
+        <div class="carousel-item">
+            <p>Content 3</p>
+        </div>
+    </section>
+
+
+
+
+    <section></section>
+    <section></section>
+
+    <footer class="d-flex flex-wrap justify-content-between bg-dark align-items-center py-3 border-top">
+        <div class="col-md-4 d-flex align-items-center ms-4">
+          <span class="text-muted">© 2021 Code Academy</span>
+        </div>
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex me-4">
+            <li class="ms-3"><a class="text-muted" href="https://www.twitter.com" target="_blank"><i class="bi bi-twitter"></i></a></li>
+            <li class="ms-3"><a class="text-muted" href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i></a></li>
+            <li class="ms-3"><a class="text-muted" href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook"></i></a></li>
+        </ul>
+    </footer>
+    <!--
+        nav:
+            position: sitcky / fixed;
+            top: 0;
+            left: 0; right: 0; / width: 100%;
+
+            <- logo ; menu -> burger
+    -->
+    <!--
+        main1
+            Pagrindinį puslapio idėja.
+                Paveiksliukas/nuotraukas/logotipas (nebūtinai).
+                Didelis tekstas (tema/pavadinimas) + mažesnis tekstas (paaiškinimas apie puslapį)
+            Užsklandos:
+                Spalva / spalvų gradientas.
+                Nuotrauka. (galima pridėti patamsinimą/permatomumą)
+                Karuselė. (nuotraukų galerija)
+        main2
+        main3
+    -->
+    <!--
+        footer
+            width: 100%;
+
+            copyright;
+            data;
+            puslapio savininkas / kūrėjas;
+            partneriai / remėjai;
+            terms & services;
+    -->
+</body>
+</html>
