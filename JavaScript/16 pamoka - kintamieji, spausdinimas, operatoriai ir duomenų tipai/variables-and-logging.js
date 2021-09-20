@@ -67,8 +67,8 @@ console.table(students);
 console.groupEnd();
 
 console.group('console.group');
-// console.group() + console.groupEnd(); - Patogus būdas atspausdinti grupę susijusių dalykų
 {
+  // console.group() + console.groupEnd(); - Patogus būdas atspausdinti grupę susijusių dalykų
   console.log('grupės turinys');
   console.log('grupės turinys');
   console.log('grupės turinys');
@@ -78,8 +78,8 @@ console.group('console.group');
 console.groupEnd();
 
 console.groupCollapsed('console.groupCollapsed');
-// console.groupCollapsed() + console.groupEnd(); - Patogus būdas atspausdinti grupę susijusių dalykų
 {
+  // console.groupCollapsed() + console.groupEnd(); - Patogus būdas atspausdinti grupę susijusių dalykų
   console.log('grupės turinys');
   console.log('grupės turinys');
   console.log('grupės turinys');
@@ -87,4 +87,3 @@ console.groupCollapsed('console.groupCollapsed');
   console.log('grupės turinys');
 }
 console.groupEnd();
-
