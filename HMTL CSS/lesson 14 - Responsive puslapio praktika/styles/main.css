@@ -5,7 +5,7 @@
 @import "base/reset.css";
 @import "base/typography.css";
 @import "base/poppins.css";
-
+@import "base/lora.css";
 
 @import "utilities/spacing.css";
 @import "utilities/dimensions.css";
@@ -22,13 +22,3 @@
 @import "components/lists.css";
 @import "components/footer.css";
 @import "components/carousel.css";
-
-
-
-section{
-    height: 50vh;
-}
-
-.carousel-item p{
-    margin-top: 100px;
-}

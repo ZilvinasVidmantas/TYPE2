@@ -1,9 +1,10 @@
 .carousel{
     position: relative;
+    height: 60vh;
 }
 
 .carousel-item{
-    height: 50vh;
+    height: 60vh;
     background-color:rgb(51, 129, 62);
     display: none;
 }
@@ -33,4 +34,17 @@
 
 .carousel-button--selected{
     background-color: #ffffffaa;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .8} 
+    to {opacity: 1}
 }
