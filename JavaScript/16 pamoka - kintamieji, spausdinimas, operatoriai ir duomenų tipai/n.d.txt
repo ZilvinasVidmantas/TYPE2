@@ -2,7 +2,7 @@
   https://www.youtube.com/watch?v=9ooYYRLdg_g&ab_channel=Academind
   https://www.youtube.com/watch?v=fD0t_DKREbE&ab_channel=ProgrammingwithMosh
 
-2. Parašyti 50 žodžių santrumpą, kuom skiriasi ir kas yra primityvūs ir nuorod tipo kintamieji
+2. Parašyti 50 žodžių santrumpą, kuom skiriasi ir kas yra primityvūs ir nuorodos tipo kintamieji
   2.1. pateikti kodo pavyzdį
   2.2. pateikti iliustraciją
 
