@@ -23,7 +23,7 @@ numbers[3] += 6; // Prie esamos reikšmės indeksu 3 pridedama dar 6. 78 + 6 = 8
 //  Jeigu masyve yra 6 elementai, o elementai yra numeruojami nuo 0, 
 // tuomet paskutinio elemento indeksas visada bus vienu mažesnis nei masyvo elementų skaičius. Iš to seka, kad:
 numbers[numbers.length - 2]; // Prieš paskutinis masyvo elementas:
-numbers[Math.floor((numbers.length) / 2)] // Vidurinis masyvo elementas elementas
+numbers[Math.floor((numbers.length) / 2)]; // Vidurinis masyvo elementas elementas
 
 // Užduotis: Sudarykite šiuos sakinius ir išsaugokite kitamuosiuose:
 //    sentence1, sentence2, ... , sentenceN;  N - natūralieji skaičiai.

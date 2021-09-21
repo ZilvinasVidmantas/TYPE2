@@ -30,6 +30,11 @@ console.group('Objekto deklaravimas');
     console.log(automobilis);
     automobilis['spalva'] = 17;
     console.log(automobilis);
+    /**/
+    automobilis.technikinas = false;
+    console.log(automobilis);
+
+    /**/
   }
   console.groupEnd();
 }

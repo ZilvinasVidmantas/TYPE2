@@ -1,0 +1,36 @@
+Užduotys
+    1) Parašyti if'ą, kuris tikrintų ar gali legaliai vairuoti mašiną. (galima tobulint tikrinant ar turi teises ir ar turi mašiną ir ar esi blaivas ir t.t.)
+        Naudoti:
+            1) let/const - kurti kintamuosius.
+            2) prompt - gauti tavo amžių (+ extra jei tobulini).
+            3) alert/console.log - grąžinti galimus atsakymus.
+            4) if/elseIf/else - kas be ko...
+
+    2) Padaryti taip, kad puslapis su tavimi pasisveikintu, patikrintu kokiame mieste gyveni ir išvestų su tai susijusią info (pasakytų ką nors gražaus apie tavo miestą(galima tobulinti išskiriant keletą miestų, o ne tą išvedant pačią žinutę apie visus)).
+        Naudoti:
+            1) let/const - kurti kintamuosius (objektus arba masyvus)
+            2) alert/console.log - grąžintų atsakymus.
+            3) if/elseIf/else - kas be ko...
+
+    3) Parašyti if'ą, kuris tikrintų kokia tavo lytis (tikrinimas turi vykti iš object kintamojo (object kintamasis turi turėti bent 4 kintamuosiuos savo viduje)).
+        Naudoti:
+            1) let/const - kurti kintamuosius (objektą/us)
+            optional) prompt - vartotojas priskirtų objektui reikšmes
+            2) alert/console.log - grąžintų atsakymus.
+            3) if/elseIf/else - kas be ko...
+
+    4) Parašyti switch'ą, kuris tikrintų koks dabar mėnuo / metų laikas (padaryti vieną arba abu ARBA juos apjungti).
+        Naudoti:
+            1) let/const - kurti kintamuosius.
+            2) prompt - gauti mėnesį / metų laiką.
+            3) alert/console.log - grąžinti galimus atsakymus.
+            4) switch - kas be ko...
+
+    
+    Extra) Padaryti taip, kad puslapis su tavimi pasisveikintu naudodamas teisingą galunę (ir tiktų ne tik tavo vardui, o visiem).
+        Naudoti: 
+            1) var/let/const - kurti kintamuosius
+            2) prompt - gauti tavo vardą
+            3) endsWith + slice + concat - tikrinti ir koreguoti vardą
+            4) alert/console.log - grąžinti teisingą pasisveikinimą.
+            5) kas be ko - naudoti if/elseIf/else.
