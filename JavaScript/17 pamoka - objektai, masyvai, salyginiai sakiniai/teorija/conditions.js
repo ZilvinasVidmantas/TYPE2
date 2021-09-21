@@ -23,7 +23,7 @@ console.group('if salyginis sakinys')
 }
 console.groupEnd();
 
-console.groupCollapsed('--- Tęstiniai if-else-if sakiniai ---');
+console.group('--- Tęstiniai if-else-if sakiniai ---');
 {
   const salyga1 = true;
   const salyga2 = true;
@@ -42,7 +42,7 @@ console.groupCollapsed('--- Tęstiniai if-else-if sakiniai ---');
 }
 console.groupEnd();
 
-console.groupCollapsed('--- Tęstiniai switch sakiniai ---');
+console.group('--- Tęstiniai switch sakiniai ---');
 {
   const todayDate = new Date();
   const weekDayNumber = todayDate.getDay();
@@ -61,12 +61,15 @@ console.groupCollapsed('--- Tęstiniai switch sakiniai ---');
 }
 console.groupEnd();
 
-console.groupCollapsed('----- Ternary operatorius -----');
+console.group('----- Ternary operatorius -----');
 {
   /*
     Ternary operatorius, arba 'inline if' tai būdas aprašyti salyginį sakinį vienoje eilutėje. Jis naudojamas, kuomet
     priskiriame reikšmę, ją spausdiname, ar viduje if salyginio sakinio norime atlikti nedidelį komandų kiekį.
     Taip pat ternary operatorius leidžia išlaikyti 'const' kintamojo apribojimą, priskiriant reikšmę pagal salygą.
+                                                ---
+                                  salyga ? jeigu true : jeigu false;   
+                                                ---
   */
   const currentAge = 18;
   const requiredAge = 20;
@@ -92,6 +95,8 @@ console.groupCollapsed('----- Ternary operatorius -----');
       : sex === 'male' // If(sex === 'male')
         ? 'Nepyk jaunuoli, bet sūrelių fabrikas kitoje pusėje' // then if true
         : 'Nepyk jaunuole, bet sūrelių fabrikas kitoje pusėje'; // then if false
+
+    console.log(currentAge < 18 ? 'Ha - senis!' : 'Davai užeik');
     console.log(message);
   }
 }
