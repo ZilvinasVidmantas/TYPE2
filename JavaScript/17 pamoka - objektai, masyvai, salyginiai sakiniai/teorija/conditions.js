@@ -9,30 +9,40 @@ true - sekančios nėra tikrinamos.
  
 salyga1 && salyga2 && ... && salygaN. Operatorius '&&' tikrina salygas iš kairės į dešinę, jeigu nors viena salyga yra
 false - sekančios nėra tikrinamos. 
-
 */
 
-console.group('--- Tęstiniai if-else-if sakiniai ---');
+console.group('if salyginis sakinys')
 {
-  const lyja = true;
-  const yraMaistoProduktu = true;
-  const yraPinigu = true;
-
-  console.log({ lyja, yraMaistoProduktu, yraPinigu });
-  if (lyja) {
-    console.log('Žaisti stalo žaidimus');
-  } else if (yraMaistoProduktu) {
-    console.log('Eiti į parduotuvę');
-  } else if (yraPinigu) {
-    console.log('Užsisakyti maisto į namus');
-  } else {
-    console.log('Mesti svorį');
+  const salyga = false;
+  if (salyga) {
+    console.log('salyga buvo teisinga');
+  }
+  else {
+    console.log('salyga buvo neteisinga');
   }
 }
 console.groupEnd();
-console.log('-------------------------\n');
 
-console.group('--- Tęstiniai switch sakiniai ---');
+console.groupCollapsed('--- Tęstiniai if-else-if sakiniai ---');
+{
+  const salyga1 = true;
+  const salyga2 = true;
+  const salyga3 = true;
+
+  console.log({ salyga1, salyga2, salyga3 });
+  if (salyga1) {
+    console.log('Vykdymas 1');
+  } else if (salyga2) {
+    console.log('Vykdymas 2');
+  } else if (salyga3) {
+    console.log('Vykdymas 3');
+  } else {
+    console.log('Vykdymas 4');
+  }
+}
+console.groupEnd();
+
+console.groupCollapsed('--- Tęstiniai switch sakiniai ---');
 {
   const todayDate = new Date();
   const weekDayNumber = todayDate.getDay();
@@ -50,9 +60,8 @@ console.group('--- Tęstiniai switch sakiniai ---');
   console.log({ weekDayNumber, weekDay })
 }
 console.groupEnd();
-console.log('-------------------------\n');
 
-console.group('----- Ternary operatorius -----');
+console.groupCollapsed('----- Ternary operatorius -----');
 {
   /*
     Ternary operatorius, arba 'inline if' tai būdas aprašyti salyginį sakinį vienoje eilutėje. Jis naudojamas, kuomet
@@ -65,7 +74,7 @@ console.group('----- Ternary operatorius -----');
   { // Logika su standartiniu if
     let msg;
     if (currentAge >= requiredAge) {
-      if (sex === 'male')  msg = 'Sveikas jaunuoli, atvykęs į Super duper klubą';
+      if (sex === 'male') msg = 'Sveikas jaunuoli, atvykęs į Super duper klubą';
       else msg = 'Sveika jaunuole, atvykusi į Super duper klubą';
     } else {
       if (sex === 'male') msg = 'Nepyk jaunuoli, bet sūrelių fabrikas kitoje pusėje';
@@ -87,4 +96,3 @@ console.group('----- Ternary operatorius -----');
   }
 }
 console.groupEnd();
-console.log('-------------------------\n');

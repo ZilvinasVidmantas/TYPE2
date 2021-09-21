@@ -3,7 +3,7 @@
 const numbers = [46, 1, 4, 78, 9, 5, 1, 4, 5, 5];
 // indeksai:     0   1  2   3  4  5  6  7  8  9
 const nouns = ['apple', 'sister', 'hammer', 'sun', 'table', 'sky', 'lake'];
-// indeksai:    0          1         2        3       4        5       6    
+// indeksai:    0          1         2        3       4        5      6    
 const helpers = ['in', 'with', 'on', 'my', 'is', 'a', 'the', ' '];
 // indeksai:      0       1     2      3     4    5     6     7  
 
@@ -28,10 +28,19 @@ numbers[Math.floor((numbers.length) / 2)] // Vidurinis masyvo elementas elementa
 // Užduotis: Sudarykite šiuos sakinius ir išsaugokite kitamuosiuose:
 //    sentence1, sentence2, ... , sentenceN;  N - natūralieji skaičiai.
 // 1. my sister is in the lake
-let sentence1 = helpers[3] + helpers[7] + nouns[1] + helpers[7] + helpers[4] + helpers[7] + helpers[0] + helpers[7] + helpers[6] + helpers[7] + nouns[6];                                                                           
-console.log(sentence1);
+const sentence1 = helpers[3] + helpers[7] + nouns[1] + helpers[7] + helpers[4] + helpers[7] + helpers[0] + helpers[7] + helpers[6] + helpers[7] + nouns[6];
+//                'my'         ' '        'sister'      ' '          'is'          ' '         'in'          ' '         'the'         ' '       'lake'                                                                       
 // 2. hammer is on the table
+nouns.push('hammer');
+const sentence2 = nouns[7] + helpers[7] + helpers[4] + helpers[7] + helpers[2] + helpers[7] + helpers[6] + helpers[7] + nouns[4];
 // 3. sun is in the sky
+const sentence3 = nouns[3] + helpers[7] + helpers[4] + helpers[7] + helpers[0] + helpers[7] + helpers[6] + helpers[7] + nouns[5];
 // 4. apple is with my sister
-// 5. Papildyti masyvą žodžiais, ir sukurti dar 3 +-logiškus sakinius.
+const sentence4 = nouns[0] + helpers[7] + helpers[4] + helpers[7] + helpers[0] + helpers[7] + helpers[3] + helpers[7] + nouns[1];
 
+console.log({
+  sentence1,
+  sentence2,
+  sentence3,
+  sentence4
+});
