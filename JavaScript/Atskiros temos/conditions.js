@@ -9,33 +9,6 @@ true - sekančios nėra tikrinamos.
  
 salyga1 && salyga2 && ... && salygaN. Operatorius '&&' tikrina salygas iš kairės į dešinę, jeigu nors viena salyga yra
 false - sekančios nėra tikrinamos. 
-
-SVARBU:
-Rašant sudėtines salygas, pirmiausia reikėtų rašyti tas tikrinimus,
-kurie turi didžiausią tikimybę nutraukti kitų salygų tikrinimą.
- 
--- salygos:
----- a - Turit pinigų ( labiausiai tikėtina )
----- b - Gyvenat užmiesty ( vidutiniškai tikėtina )
----- c - per paskutinius metus buvo krizė (mažiausiai tikėtina)
- 
-Pirksit mašiną, jeigu visos salygos teisingos:
-if( !c && b && a) {
-  ... automobilio pirkimo kodas ...
-}
- 
-Pirksit mašiną, jeigu nors viena salyga yra true:
-if( a || b || !c) {
-  ... automobilio pirkimo kodas ...
-}
- 
-Pirksit mašiną, jeigu nėra krizės ir turit pinigų, arba gyvent užmiestį
-if( b || (!c && a))
- 
-Pirksit mašiną, tik tuo atveju kai nėra krizės ir taip pat tenkinamos nors viena iš šių salygų:
-  * turit pinigų
-  * gyvenat užmiestį
-if( !c && (a || b) )
 */
 
 console.group('--- Tęstiniai if-else-if sakiniai ---');
