@@ -3,10 +3,10 @@ data-types.js
 operators.js
 objects.js
 arrays.js
-cycles.js
 conditions.js
 array-methods.js
 functions.js
+cycles.js
 array-iterative-methods.js
 destructurization.js
 classes.js
