@@ -68,5 +68,3 @@ console.log({
   'ciclreArea(6)': ciclreArea(6),
   'ciclrePerimeter(6)': ciclrePerimeter(6)
 });
-
-// Tęsiame 11:30

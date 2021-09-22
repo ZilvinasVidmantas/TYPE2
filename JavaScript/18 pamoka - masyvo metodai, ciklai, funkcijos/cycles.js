@@ -11,13 +11,13 @@
     TERMINAI
       Iteracija - vienas ciklo vykdymo bloko įvykdymas;
       Iteratorius - kitamasis, kuris įtakoja ciklo salyga ir keičiasi su kiekviena iteracija.
-      Iteruoti - vykdyti ciklo vykdymo bloką su vis kita reikšme. 
+      Iteruoti/cikluoti - tęstinai vykdyti ciklo vykdymo bloką (su vis kita reikšme). 
     
       Labai dažnai ciklas yra naudojamas atlikti veiksmus su masyvo elementais. Dažnas posakis yra:
         'iteruoti per masyva' (iterate through array) - tai reiškia, atlikti veiksmus su kiekvienu masyvo elementu.
 */
 
-console.group('--------------- FOR CIKLAS ------------------');
+console.groupCollapsed('--------------- FOR CIKLAS ------------------');
 {
   //       ↓  - pradinis/darbinis kintamasis - įvyksta tik vieną kartą.
   //       ↓ 
@@ -32,7 +32,7 @@ console.group('--------------- FOR CIKLAS ------------------');
 console.groupEnd();
 console.log('--------------------------------------------------\n')
 
-console.group('--------------- WHILE CIKLAS ------------------');
+console.groupCollapsed('--------------- WHILE CIKLAS ------------------');
 {
   // While ciklas yra naudojamas, kuomet sunku/neįmanoma nustatyti iteracijų skaičiaus
   // Taip pat jis yra lankstensnis už for ciklą, nes žingsnis gali kisti ir prieš kodo bloko vykdymą
@@ -48,7 +48,7 @@ console.group('--------------- WHILE CIKLAS ------------------');
 console.groupEnd();
 console.log('--------------------------------------------------\n');
 
-console.group('--- FOR CIKLAS ITERAVIMUI PER OBJEKTO SAVYBES ---');
+console.groupCollapsed('--- FOR CIKLAS ITERAVIMUI PER OBJEKTO SAVYBES ---');
 {
   const person = {
     name: 'Serbentautas',
@@ -64,7 +64,7 @@ console.group('--- FOR CIKLAS ITERAVIMUI PER OBJEKTO SAVYBES ---');
 console.groupEnd();
 console.log('--------------------------------------------------\n')
 
-console.group('--- ITERAVIMAS PER MASYVĄ SU FOREACH ---');
+console.groupCollapsed('--- ITERAVIMAS PER MASYVĄ SU FOREACH ---');
 {
   const people = [
     {
@@ -88,7 +88,7 @@ console.group('--- ITERAVIMAS PER MASYVĄ SU FOREACH ---');
 console.groupEnd();
 console.log('--------------------------------------------------\n')
 
-console.group('-------------- KAULIUIKŲ RIDENIMAS SU DO-WHILE ----------------');
+console.groupCollapsed('-------------- KAULIUIKŲ RIDENIMAS SU DO-WHILE ----------------');
 {
   //  Do while ciklas, pirmą iteraciją atlika bet kokiu atveju
   //  Ir kartoja vykdomajį bloką tol, kol salyga yra teisinga.
@@ -105,40 +105,43 @@ console.log('--------------------------------------------------\n')
 
 // --------------------------  Pavyzdžiai --------------------------------
 
-function printArray(arr) {
-  let arrayStringRepresentation = '[';
-  for (let i = 0; i < arr.length; i++) {
-    arrayStringRepresentation += arr[i] + ', ';
+console.groupCollapsed('-------------- Praktiniai pavyzdžiai su masyvais ----------------');
+{
+  function printArray(arr) {
+    let arrayStringRepresentation = '[';
+    for (let i = 0; i < arr.length; i++) {
+      arrayStringRepresentation += arr[i] + ', ';
+    }
+    arrayStringRepresentation = arrayStringRepresentation.slice(0, -2);
+    arrayStringRepresentation += ']';
+    console.log(arrayStringRepresentation);
   }
-  arrayStringRepresentation = arrayStringRepresentation.slice(0, -2);
-  arrayStringRepresentation += ']';
-  console.log(arrayStringRepresentation);
-}
 
-function sumArray(arr) {
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
+  function sumArray(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      sum += arr[i];
+    }
+    return sum;
   }
-  return sum;
-}
 
-function mulArray(arr) {
-  let mul = 1;
-  for (let i = 0; i < arr.length; i++) {
-    mul *= arr[i];
+  function mulArray(arr) {
+    let mul = 1;
+    for (let i = 0; i < arr.length; i++) {
+      mul *= arr[i];
+    }
+    return mul;
   }
-  return mul;
-}
 
-function avgArray(arr) {
-  return sumArray(arr) / arr.length;
-}
+  function avgArray(arr) {
+    return sumArray(arr) / arr.length;
+  }
 
-console.log('-------------- Praktiniai pavyzdžiai su masyvais ----------------');
-let numbers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144];
-printArray(numbers);
-console.log('sum: ', sumArray(numbers));
-console.log('mul: ', mulArray(numbers));
-console.log('avg: ', avgArray(numbers));
-console.log('');
+  let numbers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144];
+  printArray(numbers);
+  console.log('sum: ', sumArray(numbers));
+  console.log('mul: ', mulArray(numbers));
+  console.log('avg: ', avgArray(numbers));
+  console.log('');
+}
+console.groupEnd();
