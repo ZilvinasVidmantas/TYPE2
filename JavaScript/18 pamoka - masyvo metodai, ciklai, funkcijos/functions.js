@@ -44,6 +44,14 @@ function trikampioPlotas(krastine1, krastine2, kampasTarpJu) {
   return lygiagretainioPlotas(krastine1, krastine2, kampasTarpJu) / 2;
 }
 
+function ciclreArea(r) {
+  return Math.PI * r ** 2;
+}
+
+function ciclrePerimeter(r) {
+  return 2 * Math.PI * r;
+}
+
 console.log('staciakampioPlotas(7, 10) →', staciakampioPlotas(7, 10));
 console.log('kvadratoPlotas(6) →', kvadratoPlotas(6));
 console.log('lygiagretainioPlotas(3, 3, 60)', lygiagretainioPlotas(3, 3, 60));
@@ -51,6 +59,14 @@ console.log('trikampioPlotas(8, 7, 65) →', trikampioPlotas(8, 7, 65));
 console.log('2 * staciakampioPlotas(5, 8) - kvadratoPlotas(2) →', 2 * staciakampioPlotas(5, 8) - kvadratoPlotas(2));
 console.log('6 * trikampioPlotas(3, 3, 60) →', 6 * trikampioPlotas(3, 3, 60));
 console.log('staciakampioPlotas(6, 12) →', staciakampioPlotas(6, 12));
+console.log({
+  'ciclreArea(3)': ciclreArea(3),
+  'ciclrePerimeter(3)': ciclrePerimeter(3),
+});
 
-// Parašykite funkciją, kuri suskaičiuoja apskritimo plotą ir atvaizduokite rezultatą
-// Parašykite funkciją, kuri suskaičiuoja apskritimo perimetrą ir atvaizduokite rezultatą
+console.log({
+  'ciclreArea(6)': ciclreArea(6),
+  'ciclrePerimeter(6)': ciclrePerimeter(6)
+});
+
+// Tęsiame 11:30
