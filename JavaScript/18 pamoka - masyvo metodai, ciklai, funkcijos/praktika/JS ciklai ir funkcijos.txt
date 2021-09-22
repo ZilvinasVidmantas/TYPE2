@@ -1,0 +1,25 @@
+Funkcijos		ciklai		masyvo metodai(push, pop, shift, slice, splice, sort)
+
+pop() - išima iš galo
+shift() - išima iš pradžios
+push() - prideda prie galo 
+unshift() - prideda prie pradžios
+splice(1,2,3,4,5...) - 1 pozicijoj prideda 3,4,5... elementą/us ir išima 2 kiekį elementų esančių toliau
+slice(1,2) - paima nuo 1 iki 2, bet masyvo nepakeičia
+sort() - išrikiuoja abecelės tvarka, bet su skaičiais atsiranda problema. Ją reikia spręsti skliausteliuose pridedant function(a,b){return a-b}.
+reverse() - apsuka masyvą.
+1.concat(2,3,4...) - sujungia 1 su 2,3,4... masyvų/ais, bet jų nepakeičia.
+
+1) Sukurti funkcijas, kurios atliktų paprastus matematinius veiksmus su duotaisiais parametrais. (4 funkcijos)
+2) Sukurti funkciją, kuri į konsolę išvestų visus jai duotojo masyvo elementus nuo pirmo iki paskutinio.
+3) sukurti funkciją, kuri į konsolę išvestų visus jai duotojo masyvo elementus nuo paskutinio iki pirmojo.
+4) Sukurti funkciją, kuri surikiuotų gautąją informaciją (parametrą(masyvą(tik su string kintamaisiais))) abeceliškai ir ją išvestų į konsolę.
+5) Sukurti funkciją, kuri surikiuotų gautąją informaciją (parametrą(masyvą(tik su number kintamaisiais))) nuo didžiausio iki mažiausio ir ją išvestų į konsolę.
+6) Sukurti funkciją, kuri į konsolę išvestų visus skaičius nuo pirmo duotojo parametro iki antrojo.
+7) Sukurti funkciją, kuri į konsolę išvestų skaičius kas pirmąjį duotajį parametrą nuo antrojo duotojo parametro iki trečiojo duotojo parametro.
+
+
+
+extra1) Sukurti funkciją, kuri pirmojo parametro (masyvo) elementus sudėtų į kito parametro (masyvo irgi) vidų toje vietoje, kokio ilgio yra antrasis parametras tol kol antrasis parametras liks tuščias.
+
+extra2) Sukurti funkciją, kuri atlieka Fizz Buzz testą nuo-iki duotųjų parametrų.
