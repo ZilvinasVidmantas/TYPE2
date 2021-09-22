@@ -9,8 +9,9 @@ Užduotys
     2) Padaryti taip, kad puslapis su tavimi pasisveikintu, patikrintu kokiame mieste gyveni ir išvestų su tai susijusią info (pasakytų ką nors gražaus apie tavo miestą(galima tobulinti išskiriant keletą miestų, o ne tą išvedant pačią žinutę apie visus)).
         Naudoti:
             1) let/const - kurti kintamuosius (objektus arba masyvus)
-            2) alert/console.log - grąžintų atsakymus.
-            3) if/elseIf/else - kas be ko...
+            2) prompt - gauti tavo amžių (+ extra jei tobulini).
+            3) alert/console.log - grąžintų atsakymus.
+            4) if/elseIf/else - kas be ko...
 
     3) Parašyti if'ą, kuris tikrintų kokia tavo lytis (tikrinimas turi vykti iš object kintamojo (object kintamasis turi turėti bent 4 kintamuosiuos savo viduje)).
         Naudoti:
@@ -28,9 +29,9 @@ Užduotys
 
     
     Extra) Padaryti taip, kad puslapis su tavimi pasisveikintu naudodamas teisingą galunę (ir tiktų ne tik tavo vardui, o visiem).
-        Naudoti: 
-            1) var/let/const - kurti kintamuosius
+        Naudoti:
+            1) let/const - kurti kintamuosius
             2) prompt - gauti tavo vardą
             3) endsWith + slice + concat - tikrinti ir koreguoti vardą
             4) alert/console.log - grąžinti teisingą pasisveikinimą.
-            5) kas be ko - naudoti if/elseIf/else.
+            5) if/elseIf/else - kas be ko...
