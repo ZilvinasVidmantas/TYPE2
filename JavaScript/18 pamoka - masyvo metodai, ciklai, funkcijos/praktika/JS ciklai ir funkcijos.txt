@@ -2,11 +2,14 @@ Funkcijos		ciklai		masyvo metodai(push, pop, shift, slice, splice, sort)
 
 pop() - išima iš galo
 shift() - išima iš pradžios
-push() - prideda prie galo 
+
+push() - prideda prie galo
 unshift() - prideda prie pradžios
 splice(1,2,3,4,5...) - 1 pozicijoj prideda 3,4,5... elementą/us ir išima 2 kiekį elementų esančių toliau
 slice(1,2) - paima nuo 1 iki 2, bet masyvo nepakeičia
 sort() - išrikiuoja abecelės tvarka, bet su skaičiais atsiranda problema. Ją reikia spręsti skliausteliuose pridedant function(a,b){return a-b}.
+  sort() - string'ams.
+  sort(function(a,b){return a-b}) - number'iams.
 reverse() - apsuka masyvą.
 1.concat(2,3,4...) - sujungia 1 su 2,3,4... masyvų/ais, bet jų nepakeičia.
 
@@ -20,5 +23,6 @@ reverse() - apsuka masyvą.
 
 
 
-extra1) Sukurti funkciją, kuri pirmojo parametro (masyvo) elementus sudėtų į kito parametro (masyvo irgi) vidų toje vietoje, kokio ilgio yra pirmasis parametras tol kol pirmasis parametras liks tuščias.
+extra1) Sukurti funkciją, kuri pirmojo parametro (masyvo) elementus sudėtų į kito parametro (masyvo irgi) vidų toje vietoje(indekse), kokio ilgio yra pirmasis parametras tol kol pirmasis parametras liks tuščias.
+
 extra2) Sukurti funkciją, kuri atlieka Fizz Buzz testą nuo-iki duotųjų parametrų.
