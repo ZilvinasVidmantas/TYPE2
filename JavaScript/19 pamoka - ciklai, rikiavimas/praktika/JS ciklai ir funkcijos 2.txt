@@ -11,3 +11,5 @@
 extra 1.1) Parašyti ciklą, kuris atrinktų ir į konsolę išspausdintų tik pirminius skaičius intervale nuo 1 iki 100.
 
 extra 1.2) Parašyti funkciją, kuri atrinktų ir į konsolę išspausdintų tik pirminius skaičius jai nurodytame intervale.
+
+extra 1.3) Parašyti funkciją, kuri patikrintų ar jai paduotas skaičius yra pirminis.
