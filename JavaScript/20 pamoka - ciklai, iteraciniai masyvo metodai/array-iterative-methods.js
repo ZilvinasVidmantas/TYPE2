@@ -10,9 +10,6 @@
   reikalavimus, kurių dėka bus pasiekta iteracinio metodo esmė.
 */
 
-// iki 10:30 skaitote failą
-// pertrauka 
-// tęsiam: 10:40
 const people = [
   {
     name: 'Jonas',
@@ -70,22 +67,6 @@ const people = [
   }
 ];
 
-function printPerson(person) {
-  console.log(person);
-}
-
-function printPersonFullName(person) {
-  console.log(person.name + ' ' + person.surname);
-}
-
-const sakykLabas = function (person) {
-  console.log(`${person.name} ${person.surname} sako tau labas!`)
-}
-
-people.forEach(printPerson);
-people.forEach(printPersonFullName);
-people.forEach(sakykLabas);
-
 const numbers = [1, 15, 9, -9, -8, -7, 2, 8, 51, 6, 5];
 
 console.groupCollapsed('Array.prototype.forEach');
@@ -97,12 +78,12 @@ console.groupCollapsed('Array.prototype.forEach');
       1. einamasis masyvo elementas,
       2. einamojo masyvo elemento indeksas
       3. masyvas per kurį yra iteruojama
-    Priklausomai nuo vykdomos logikos, perduodamoji funkcija gali pasiimti atitinkamą siunčiamų parametrų kiekį. (1-3)
-    Parametrų pavadinimus galite rinktis laisvai, geriausia vadinti
-    juos taip, jog jie sufleruotų perduodamų argumentų prasmę. 
+    Priklausomai nuo vykdomos logikos, perduodamoji funkcija gali pasiimti atitinkamą siunčiamų parametrų kiekį. (0-3)
+    Kadangi funkcija kuriate jūs, parametrų pavadinimus galite rinktis laisvai. Geriausia vadinti juos taip,
+    jog jie sufleruotų perduodamų argumentų prasmę. 
     Svarbu pastebėti, jog siunčiamų argumentų eiliškumas niekada nesikeičia, ir jeigu, perduodamos funkcijos logikoje reikia
-    tik indekso (2.) reikšmės, vistiek turime priimti argumentu ir patį iteruojamą elementą (1.), nes indeksas visada bus
-    perduodamas antruoju argumentu.
+    tik indekso (2.) reikšmės, vistiek turime priimti parametru ir patį iteruojamą elementą (1.), nes indeksas visada bus
+    perduodamas/priimamas antruoju parametru.
   */
 
   let femaleCount = 0;
@@ -162,7 +143,7 @@ console.groupCollapsed('Array.prototype.map');
     function washDish(dish) {
       // Kadangi parametru gauta reikšmė bus objektas (nuorodos tipo), turime daryti kopiją, tam kad nepakeisti pradinių duomenų.
       // Šiuo atveju, mums užteks seklios kopijos, tik todėl, jog kiekvieno objekto savybė yra primityvaus tipo
-      // Jeigu nors viena iš savybių, būtų nuoros tipo, tuomet reikėtų atlikti gilų kopijavimą, pvz.: JSON.parse(JSON.stringify(dish));
+      // Jeigu nors viena iš savybių, būtų nuorodos tipo, tuomet reikėtų atlikti gilų kopijavimą, pvz.: JSON.parse(JSON.stringify(dish));
       const result = { ...dish };
       result.state = 'clean';
       return result;
@@ -207,6 +188,16 @@ console.groupCollapsed('Array.prototype.map');
   console.log(fullnames);
   console.table(anonymousPeople);
   console.table(wealthierPeople);
+
+  // Suformuokite žmonių masyvą, pagal esamos žmones kintamajame <people>, jog jie papildomai turėtų savybę fullname
+  //  P.S.: fullname savybėje turi būti <name> ir <surname> savybės atskirtos tarpu
+  function addFullname(person){
+    // ... code
+    return /* ... */;
+  }
+
+  const peopleWithFullNames = people.map(addFullname);
+  console.table(peopleWithFullNames)
 }
 console.groupEnd();
 console.log('---------------------------\n');
