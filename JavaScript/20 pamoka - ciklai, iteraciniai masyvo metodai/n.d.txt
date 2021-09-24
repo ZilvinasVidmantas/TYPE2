@@ -1,0 +1,23 @@
+[Penktadienis]
+1. Peržiūrėt Video
+  https://www.youtube.com/watch?v=xUI5Tsl2JpY&ab_channel=TheNetNinja
+2. Perskaityt, visus failus iš  '../Atskiros temos/':
+  * variables-and-logging.js
+  * data-types.js
+  * operators.js
+  * objects.js
+  * arrays.js
+  * conditions.js
+  * array-methods.js
+  * functions.js
+
+[Šeštadienis]
+1. Peržiūrėt ir PERSIRAŠYT video. Pakeitalioti duomenis, funkcijų veikimą:
+  https://www.youtube.com/watch?v=rRgD1yVwIvE&ab_channel=TraversyMedia
+2. Perskaityt, visus failus iš  '../Atskiros temos/':
+  * cycles.js
+  * sorting.js
+  * array-iterative-methods.js
+
+[Sekmadienis] 
+1. Išspręsti užduotis iki 6. iš failo: '../JS praktika\function-tasks-array-iterative-1.js'

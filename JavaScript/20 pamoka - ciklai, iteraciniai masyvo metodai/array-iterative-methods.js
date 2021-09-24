@@ -191,13 +191,16 @@ console.groupCollapsed('Array.prototype.map');
 
   // Suformuokite žmonių masyvą, pagal esamos žmones kintamajame <people>, jog jie papildomai turėtų savybę fullname
   //  P.S.: fullname savybėje turi būti <name> ir <surname> savybės atskirtos tarpu
-  function addFullname(person){
-    // ... code
-    return /* ... */;
+  function addFullname(person) {
+    return {
+      ...person,
+      fullname: person.name + ' ' + person.surname
+    };
   }
 
   const peopleWithFullNames = people.map(addFullname);
   console.table(peopleWithFullNames)
+  console.log(peopleWithFullNames)
 }
 console.groupEnd();
 console.log('---------------------------\n');
