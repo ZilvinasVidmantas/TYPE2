@@ -1,7 +1,6 @@
 console.groupCollapsed('1. Parašykite funkciją, kuri grąžina pirmą masyvo elementą.');
 {
-  // ...sprendimas ir spausdinimas
-}
+  // ... prendimas ir spausdinimas
 console.groupEnd();
 
 console.groupCollapsed('2. Parašykite funkciją, kuri pašalina pirmą masyvo elementą ir jį grąžina.');

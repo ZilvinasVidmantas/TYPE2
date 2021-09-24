@@ -1,7 +1,7 @@
 console.group('Rikiavimas');
 {
   /*
-    Array.prototype.sort - tai masyvo metodas, kuris i6rikiuoja elementus.
+    Array.prototype.sort - tai masyvo metodas, kuris išrikiuoja elementus.
     Standartiškai šis metodas, rikiuoja reikšmes, nuo mažiausios iki didžiausios, pakeitęs jas <STRING> reikšmėmis
     Kitokio tipo elementams reikia, parduoti palyginimo funkcijos nuorodą.
     Ši palyginimo funkcija turi priimti 2 parametrus, ir grąžinti vieną skaitinę reikšmę, kuri turės tokią prasmę:
