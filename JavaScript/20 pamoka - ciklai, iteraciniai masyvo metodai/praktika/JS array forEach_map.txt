@@ -1,0 +1,56 @@
+ForEach
+  syntax:
+    forEach((element, index, array) => { ... });
+  pvz:
+    items.forEach((item) => { console.log(item)});
+  Ką daro:
+    Pereina per kiekvieną masyvo elementą atlikdamas veiksmus (kurie nurodyti iškviečiamojoje funkcijoje), bet nieko negrąžina.
+  Link:
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+  Videos:
+    https://youtu.be/E2GawbHDFfs
+    https://youtu.be/eHJuUw8cqJQ
+    https://youtu.be/159EAISAxwg
+
+Map
+  syntax:
+    map((element, index, array) => { ... });
+  pvz:
+    items.map( item => ({value : item}));
+  Ką daro:
+    Pereina per kiekvieną masyvo elementą, jį transformuoja (taip kaip nurodyta iškviečiamojoje funkcijoje) ir sugrąžina kitą tokio pat ilgio masyvą su pakeitimais nepakeisdamas pradinio masyvo.
+  Link:
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+  Videos:
+    https://youtu.be/WL8wcaVij2k
+    https://youtu.be/djiHm61y8P4
+    https://youtu.be/W5TtMAYUPGQ
+    https://youtu.be/P4RAFdZDn3M
+
+
+
+Užduotys:
+	/* Kur parašyta "naudojant" - privalu panaudoti tą metodą, bet galima naudoti ir kitus jei to neužtenka */
+1) Susikurti bent 10 ilgio masyvą kaip nurodyta ir tolimesnėse užduotyse naudoti šitą masyvą. ( 1 ilgio pavyzdys: [{id:0, name:"Burgeris", inStock:true, primeCost:0.3, cost:1}]
+2) Naudojant forEach - išvesti masyvą į konsolę.
+3) Naudojant forEach - išvesti tik masyvo objektų vardus ir kainas į konsolę.
+4) Išfiltruoti (for{if{}}) tuos masyvo elementus, kurie yra inStock (inStock yra true) ir išsaugoti prafiltruotą masyvą naujame kintamajame ir jį atvaizduoti konsolėje.
+  4.1) Naudojant map ir 4'tos užduoties masyvą - sukurti naują masyvą, kuriame būtų name ir suskaičiuotas bei išsaugotas profit (cost-primeCost) ir jį atvaizduoti konsolėje.
+
+  4.2) Susikurti masyvą, kuriame būtų išrašyti masyvo (1'ojo) vardai ir jų kiekiai (sukurti užsakymo masyvą([{name:"Vardas", amount: 5}, {name:"KitasVardas", kiekis: 3}])) ir jį atvaizduoti konsolėje. (galima sukurti kelis užsakymus)
+
+  4.3) Suskaičiuoti kiek pelno suteiks 4.2 masyvo užsakymas ir tai atvaizduoti konsolėje. (arba užsakymai, jei 4.2 dalyje sukūrėte keletą užsakymų)
+
+  4.4) Naudojant map - padaryti naują masyvą, kuriame būtų atvaizduotas užsakymas (kiek kokių dalykų buvo užsakyta) ir jo kaina (prie kiekvieno dalyko jo kaina(jei buvo keli, tai jų suma) ir pačiame gale bendra kaina) ir jį atvaizduoti konsolėje.
+
+5) Naujame masyve saugoti išfiltruotus masyvo (1'ojo) elementus, kurių "id" yra didesnis negu 4 ir jo kaina yra didesnė nei 2, bet mažesnė nei 10. (nebūtinai 4, 2 ir 10 (galite pasirinkti skaičius pagal savo masyvą))
+6) Naudojant map - priskirti naujam masyvui nerikiuotą sąrašą(<ul>) su masyvo elementų vardais ir kainomis kaip sąrašo elementais(<li>).
+
+
+
+
+
+
+
+
+
