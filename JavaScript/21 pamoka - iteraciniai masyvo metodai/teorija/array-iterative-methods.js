@@ -348,22 +348,21 @@ console.group('Array.prototype.reduce');
   }
 
   function increaseIfNegative(base, amount) {
+    return amount < 0 ? base + amount : base;
+    // ---------------------------------------------
     return (true && amount < 0) ? base + amount : base;
     //  reiškia tai
     if(true && amount < 0) {
       return base + amount;
     }
     else{
-      return base
+      return base;
     }
-    // ------------------------------------------------------
+    // --------------------------------
     return true && amount < 0 ? base + amount : base;
     //  reiškia tai
-    const result = Boolean(amount < 0 ? base + amount : base)
-    return true && result;
-
-
-
+    const amountIncreased = Boolean(amount < 0 ? base + amount : base)
+    return true && amountIncreased;
   }
 
   const numbersSumPositive = numbers.reduce(increaseIfPositive, 0);
