@@ -254,11 +254,45 @@ console.groupCollapsed('Array.prototype.filter');
   });
 
   // Pagal masyvo <people> duomenis, suformuokite naują masyvą sudarytą žmonių, kurie yra vyrai
+  function isMale(p) {
+    return p.sex === 'male';
+  }
+  const males = people.filter(isMale);
   // Pagal masyvo <people> duomenis, suformuokite naują masyvą sudarytą žmonių, kurie yra vairuotojai
+  function isDriver(p) {
+    return p.hasCar;
+  }
+  const drivers = people.filter(isDriver);
   // Pagal masyvo <people> duomenis, suformuokite naują masyvą sudarytą žmonių, kurie yra vairuotojai ir yra moterys
+  function isFemaleDriver(p) {
+    return p.hasCar && p.sex === 'female';
+  }
+  const womenDrivers = people.filter(isFemaleDriver);
   // Pagal masyvo <people> duomenis, suformuokite naują masyvą sudarytą žmonių, kurių pavardė yra ilgesnė nei 8 simboliai
+  function hasLongSurname(p) {
+    return p.surname.length > 8;
+  }
+  const peopleWithLongSurname = people.filter(hasLongSurname);
   // Pagal masyvo <people> duomenis, suformuokite naują masyvą sudarytą žmonių, kurių yra susituokę IR uždirba daugiau nei 1500.
+  function isMarriedAndHasIncomeHigherThan1500(p) {
+    return p.married && p.income > 1500;
+  }
+  const marriedPeopleWithIncomeHigherThan1500 = people.filter(isMarriedAndHasIncomeHigherThan1500);
   //    Duomenis atspausdinkite
+  Object.entries({
+    males,
+    drivers,
+    womenDrivers,
+    peopleWithLongSurname,
+    marriedPeopleWithIncomeHigherThan1500,
+  }).forEach(([arrName, data]) => {
+    console.log(`%c${arrName}`, 'font-size: 25px');
+    console.table(data);
+  });
+
+  // 09:40-09:55 - sprendžiame užduotis
+  // 09:55-10:05 - pertrauka
+  // 10:05 - tęsiame
 }
 console.groupEnd();
 console.log('---------------------------\n');
