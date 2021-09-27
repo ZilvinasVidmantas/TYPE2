@@ -6,7 +6,8 @@ let mas = [
   {id:2, name:"Burgeris2", inStock:true, primeCost:0.6, cost:1},
   {id:3, name:"Burgeris3", inStock:false, primeCost:0.53, cost:5.4},
   {id:4, name:"Burgeris4", inStock:true, primeCost:0.34, cost:2},
-  {id:5, name:"Burgeris5", inStock:true, primeCost:0.65, cost:3}
+  {id:5, name:"Burgeris5", inStock:true, primeCost:0.65, cost:3},
+  {id:6, name:"Cola", inStock:true, primeCost:0.1, cost:1}
 ];
 
 mas.forEach(item => console.log(item));
@@ -28,13 +29,32 @@ console.groupCollapsed(" --- taks4 ---");
     console.log(mas4_1);
   console.groupEnd();
   console.groupCollapsed(" --- task4.2 ---")
-    
+    let mas4_2_1 = [{name:"Burgeris4", amount:4}, {name:"Cola", amount:2}];
+    let mas4_2_2 = [{name:"Burgeris1", amount:2}, {name:"Cola", amount:2}];
+    console.log(mas4_2_1);
+    console.log(mas4_2_2);
   console.groupEnd();
   console.groupCollapsed(" --- task4.3 ---")
-    
+    let pelnas = 0;
+    mas4_2_1.forEach( uzsakymoItem => {
+      mas4_1.forEach( menuItem => {
+        if(menuItem.name === uzsakymoItem.name){
+          console.log(menuItem.profit * uzsakymoItem.amount);
+          pelnas += menuItem.profit * uzsakymoItem.amount;
+        }
+      });
+    });
+    console.log("4_2_1 užsakymas atnešė: " + pelnas + " pelno.");
   console.groupEnd();
   console.groupCollapsed(" --- task4.4 ---")
-    
+    let bendra = 0;
+    let cekis = mas4_2_1.map( uzsakymoItem => {
+      mas.forEach( menuItem => {
+        if( menuItem.name === uzsakymoItem.name ){
+          
+        }
+      });
+    });
   console.groupEnd();
 console.groupEnd();
 
