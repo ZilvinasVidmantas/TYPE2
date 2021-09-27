@@ -34,7 +34,7 @@ const people = [
     surname: 'Vilktorinas',
     sex: 'male',
     age: 16,
-    income: 0,
+    income: 3000,
     married: false,
     hasCar: false
   },
@@ -235,7 +235,7 @@ console.groupCollapsed('Array.prototype.filter');
   function isOdd(num) {
     return num % 2 === 1;
   }
-  function isWoman(person) {
+  function isFemale(person) {
     return person.sex === 'female';
   }
 
@@ -243,7 +243,7 @@ console.groupCollapsed('Array.prototype.filter');
   const numbersSmallerThen8 = numbers.filter(smallerThen8);
   const numbersEven = numbers.filter(isEven);
   const numbersOdd = numbers.filter(isOdd);
-  const women = people.filter(isWoman);
+  const women = people.filter(isFemale);
 
   console.log({
     numbersLargerThan10,
@@ -289,15 +289,11 @@ console.groupCollapsed('Array.prototype.filter');
     console.log(`%c${arrName}`, 'font-size: 25px');
     console.table(data);
   });
-
-  // 09:40-09:55 - sprendžiame užduotis
-  // 09:55-10:05 - pertrauka
-  // 10:05 - tęsiame
 }
 console.groupEnd();
 console.log('---------------------------\n');
 
-console.groupCollapsed('Array.prototype.reduce');
+console.group('Array.prototype.reduce');
 {
   /*
   Array.prototype.reduce iteracinis metodas yra skirtas masyvo reikšmes sukaupti/sutraukti/perfomuoti į vieną reikšmę.
@@ -307,25 +303,30 @@ console.groupCollapsed('Array.prototype.reduce');
     3. einamojo elemento indeksas
     4. iteruojamas masyvas
   Kaupiamojo kintamojo reikšmė yra tokia, kokią grąžina praeitos iteracijos argumentu perduota funkcija.
-  Antruoju 'Array.prototype.reduce' metodo argumentu, galima perduoti pradinę kaupiamojo kintamojo reikšmę. Jeigu pradinė, kaupiamojo kintamojo reikšmė nėra perduota, tuomet ji bus lygi pirmajam masyvo elementui ir pradedama iteruoti nuo antrojo masyvo elemento.
+  Antruoju 'Array.prototype.reduce' metodo argumentu, galima perduoti pradinę kaupiamojo kintamojo reikšmę.
+  Jeigu pradinė, kaupiamojo kintamojo reikšmė nėra perduota, tuomet ji bus lygi pirmajam masyvo elementui ir pradedama iteruoti nuo antrojo masyvo elemento.
   
   Perduodamosios funkcijos aprašas:
     1. kaupiamasis kintamasis
     2. einamasis elementas
     3. einamojo elemento indeksas
     4. iteruojamas masyvas
-  Perduodamoji funkcija PRI-VA-LO grąžinti kaupiamojo kintamojo reikšmę.
+  Perduodamoji funkcija PRI-VA-LO grąžinti kaupiamojo kintamojo reikšmę (papildytą|pakeistą|performuotą iteracijos metu).
 */
   // SUMA
   {
-    let sum = numbers[0];
-    for (let i = 1; i < numbers.length; i++) {
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
       const el = numbers[i];
       sum = sum + el;
     }
     const numbersSum = sum;
   }
-  const numbersSum = numbers.reduce((sum, el) => sum + el);
+  function increase(base, amount) {
+    return base + amount;
+  }
+  const numbersSum = numbers.reduce(increase, 0);
+
   // VIDURKIS
   {
     let avg = 0;
@@ -335,25 +336,59 @@ console.groupCollapsed('Array.prototype.reduce');
     }
     const numbersAvg = avg;
   }
-  const numbersAvg = numbers.reduce((avg, el) => avg + el / numbers.length, 0);
-  // reduce pavyzdys, kuomet kaupiame reikšmę priklausant nuo aplinkybių (šiuo atveju tikriname ar einamieji elementai teigiami||neigiami)
-  const numbersSumPositive = numbers.reduce((sum, el) => el > 0 ? sum + el : sum, 0);
-  const numbersSumNegative = numbers.reduce((sum, el) => el < 0 ? sum + el : sum, 0);
 
-  const peopleAgeAvg = people.reduce((avg, p) => avg + p.age / people.length, 0);
+  function addAvgComponent(avgAccumulator, number, i, allNumbers) {
+    console.log({ avgAccumulator, number, i, allNumbers });
+    return avgAccumulator + number / allNumbers.length;
+  }
+  const numbersAvg = numbers.reduce(addAvgComponent, 0);
+  // reduce pavyzdys, kuomet kaupiame reikšmę priklausant nuo aplinkybių (šiuo atveju tikriname ar einamieji elementai teigiami||neigiami)
+  function increaseIfPositive(base, amount) {
+    return amount > 0 ? base + amount : base;
+  }
+
+  function increaseIfNegative(base, amount) {
+    return (true && amount < 0) ? base + amount : base;
+    //  reiškia tai
+    if(true && amount < 0) {
+      return base + amount;
+    }
+    else{
+      return base
+    }
+    // ------------------------------------------------------
+    return true && amount < 0 ? base + amount : base;
+    //  reiškia tai
+    const result = Boolean(amount < 0 ? base + amount : base)
+    return true && result;
+
+
+
+  }
+
+  const numbersSumPositive = numbers.reduce(increaseIfPositive, 0);
+  const numbersSumNegative = numbers.reduce(increaseIfNegative, 0);
+
+  function addPersonAgeAvgComponent(ageSum, person, _, people) {
+    return ageSum + person.age / people.length;
+  }
+
+  console.log('------------------------------------');
+  const peopleAgeAvg = people.reduce(addPersonAgeAvgComponent, 0);
+  console.log('------------------------------------');
+
   // Kuomet naudojame metodų grandinėlės metodologija, mums dažnai reikia nuorodos į masyvą, per kurio elementus yra iteruojama.
   // Kadangi metodas vykdomas (šiuo atveju reduce) su tarpinio rezultato duomenimis (atfiltruotas vyrų masyvas), neturime į jį nuorodos.
   // Būtent tokiu atveju, mums yra labai naudinga pasinaudoji paskutniu "callbackFn" funckcijos parametru. 
   //                                                                                          ↙
   //                                                                           (avg, p, _, arr)
-
   const maleAgeAvg = people
-    .filter(p => p.sex === 'male')
-    .reduce((avg, p, _, arr) => avg + p.age / arr.length, 0);
+    .filter(isMale)
+    .reduce(addPersonAgeAvgComponent, 0);
 
   const femaleAgeAvg = people
-    .filter(p => p.sex === 'female')
-    .reduce((avg, p, _, arr) => avg + p.age / arr.length, 0);
+    .filter(isFemale)
+    .reduce(addPersonAgeAvgComponent, 0);
 
   console.log({
     numbersSum,
