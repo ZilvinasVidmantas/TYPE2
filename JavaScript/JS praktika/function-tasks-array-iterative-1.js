@@ -120,13 +120,13 @@ console.groupCollapsed('11. Performuokite žmonių masyvą, jog kiekvieno žmoga
 }
 console.groupEnd();
 
-console.groupCollapsed('12. Suformuokite žmonių masyvą, kuriame nebūtų lyties, vardo ir pavardės');
+console.groupCollapsed('12. Suformuokite žmonių masyvą iš objektų, kuriuose nebūtų lyties, vardo ir pavardės');
 {
   // ...sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('13. Suformuokite žmonių masyvą, kuriame "name" ir "surname" savybės, būtų pakeistos "fullname" savybe');
+console.groupCollapsed('13. Suformuokite žmonių masyvą  iš objektų, kuriuose "name" ir "surname" savybės, būtų pakeistos "fullname" savybe');
 {
   // ...sprendimas ir spausdinimas
 }

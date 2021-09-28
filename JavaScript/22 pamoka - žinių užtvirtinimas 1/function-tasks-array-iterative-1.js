@@ -230,24 +230,153 @@ console.groupCollapsed('10. Sukurkite objektą, kuriame būtų apskaičiuotas va
     const driverCountBySex = people.reduce(accumulateDriverBySex, { male: 0, female: 0 });
     console.log(driverCountBySex)
   }
+  // Dinamiškas sprendimas su Array.prototype.reduce
+  {
+    const people = [
+      {
+        name: 'Stalas',
+        surname: 'Komodauskas',
+        gender: 'male',
+        age: 26,
+        income: 1200,
+        married: false,
+        hasCar: true
+      },
+      {
+        name: 'Severija',
+        surname: 'Piktutytė',
+        gender: 'lesbian',
+        age: 26,
+        income: 1300,
+        married: false,
+        hasCar: true
+      },
+      {
+        name: 'Valdas',
+        surname: 'Vilktorinas',
+        gender: 'male',
+        age: 16,
+        income: 0,
+        married: false,
+        hasCar: false
+      },
+      {
+        name: 'Virginijus',
+        surname: 'Uostauskas',
+        gender: 'male',
+        age: 32,
+        income: 2400,
+        married: true,
+        hasCar: true
+      },
+      {
+        name: 'Samanta',
+        surname: 'Uostauskienė',
+        gender: 'female',
+        age: 28,
+        income: 1200,
+        married: true,
+        hasCar: true
+      },
+      {
+        name: 'Janina',
+        surname: 'Stalautinskienė',
+        gender: 'female',
+        age: 72,
+        income: 364,
+        married: false,
+        hasCar: false
+      }
+    ];
+
+    function accumulateDriverBySex(driverCountBySex, person) {
+      if (person.hasCar) {
+        if (!driverCountBySex[person.gender]) {
+          driverCountBySex[person.gender] = 0;
+        }
+        driverCountBySex[person.gender]++;
+      }
+      return driverCountBySex;
+    }
+
+    const driverCountBySex = people.reduce(accumulateDriverBySex, {});
+    console.log(driverCountBySex)
+  }
 }
 console.groupEnd();
 
 console.groupCollapsed('11. Performuokite žmonių masyvą, jog kiekvieno žmogaus savybė "income", taptų "salary"');
 {
-  // ...sprendimas ir spausdinimas
+  function changeIncomeToSalary({ income, ...other }) {
+    return {
+      ...other,
+      salary: income
+    };
+  }
+
+  const peopleWithSalary = people.map(changeIncomeToSalary);
+  console.table(people);
+  console.table(peopleWithSalary);
 }
 console.groupEnd();
 
-console.groupCollapsed('12. Suformuokite žmonių masyvą, kuriame nebūtų lyties, vardo ir pavardės');
+console.groupCollapsed('12. Suformuokite žmonių masyvą iš objektų, kuriuose nebūtų lyties, vardo ir pavardės');
 {
-  // ...sprendimas ir spausdinimas
+  function removeNameSurnameSex(person) {
+    const result = {};
+    for (const key in person) {
+      if (!['name', 'surname', 'sex'].includes(key)) {
+        result[key] = person[key];
+      }
+    }
+    return result;
+  }
+
+  function removeNameSurnameSex(person) {
+    const p = { ...person };
+    delete p.name;
+    delete p.surname;
+    delete p.sex;
+    return p;
+  }
+
+  function removeNameSurnameSex({ name, surname, sex, ...other }) {
+    return { ...other };
+  }
+
+  const result = people.map(removeNameSurnameSex);
+  console.table(result);
 }
 console.groupEnd();
 
-console.groupCollapsed('13. Suformuokite žmonių masyvą, kuriame "name" ir "surname" savybės, būtų pakeistos "fullname" savybe');
+console.groupCollapsed('13. Suformuokite žmonių masyvą iš objektų, kuriuose "name" ir "surname" savybės, būtų pakeistos "fullname" savybe');
 {
-  // ...sprendimas ir spausdinimas
+  function changePersonNameSurnameToFullname(person) {
+    const result = {};
+    for (const key in person) {
+      if (!['name', 'surname'].includes(key)) {
+        result[key] = person[key];
+      }
+    }
+    result.fullname = person.name + ' ' + person.surname;
+    return result;
+  }
+
+  function changePersonNameSurnameToFullname(person) {
+    const p = { ...person };
+    p.fullname = p.name + ' ' + p.surname
+    delete p.name;
+    delete p.surname;
+    return p;
+  }
+
+  function changePersonNameSurnameToFullname({ name, surname, ...other }) {
+    return {  fullname: name + ' ' + surname, ...other,};
+  }
+
+  const result = people.map(changePersonNameSurnameToFullname);
+  console.table(people);
+  console.table(result);
 }
 console.groupEnd();
 
