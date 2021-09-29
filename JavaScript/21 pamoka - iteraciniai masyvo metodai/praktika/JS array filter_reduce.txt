@@ -47,7 +47,7 @@ Užduotys:
 5) Naudojant 3'ios užduoties masyvą išfiltruoti lyginius skaičius.
 6) Naudojant 3'ios užduoties masyvą išfiltruoti nelyginius skaičius.
 7) Naudojant 3'ios užduoties masyvą išfiltruoti sveikuosius skaičius.
-8) Sukurti funkciją, kuri 3'ios užduoties masyvą išfiltruotų A ir B intervale (nuo skaičiaus A iki skaičiaus B imtinai).
+8) Sukurti funkciją, kuri 3'čios užduoties masyvą išfiltruotų A ir B intervale (nuo skaičiaus A iki skaičiaus B imtinai).
 9) Naudojant 4'tos užduoties masyvą išfiltruoti žodžius, kurie prasideda didžiąja raide.
 10) Naudojant 4'tos užduoties masyvą išfiltruoti žodžius, kurie prasideda mažąja raide.
 11) Sukurti funkciją, kuri iš 4'tos užduoties masyvo išfiltruotų nurodyta raide prasidedančius žodžius.
