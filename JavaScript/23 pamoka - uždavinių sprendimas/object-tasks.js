@@ -154,18 +154,139 @@ console.groupEnd();
 
 console.groupCollapsed('6 - https://edabit.com/challenge/pPNAs5PvB3WvnDwDM');
 {
+  function toArray(obj) {
+    const result = [];
+    for (const key in obj) {
+      const propertyArray = [key, obj[key]];
+      result.push(propertyArray)
+    }
+    return result;
+  }
+  function toArray(obj) {
+    function changePropNameToKeyValueArrayPair(propName) {
+      return [propName, obj[propName]];
+    }
 
+    return Object.keys(obj).map(changePropNameToKeyValueArrayPair);
+    return Object.keys(obj).map(name => [name, obj[name]]);
+  }
+
+  function toArray(obj) {
+    return Object.entries(obj);
+  }
+
+  console.log(toArray({ a: 1, b: 2 }));
+  console.log(toArray({ shrimp: 15, tots: 12 }));
+  console.log(toArray({}));
 }
 console.groupEnd();
 
 console.groupCollapsed('7 - https://edabit.com/challenge/QXWM2oo7rQNiyDsip');
 {
+  function inkLevels(inks) {
+    let min = Number.MAX_VALUE;
+    for (const color in inks) {
+      if (inks[color] < min) {
+        min = inks[color];
+      }
+    }
+    return min;
+  }
+  function inkLevels(inks) {
+    inks = Object.values(inks);
+    let min = inks[0];
+    for (let i = 0; i < inks.length; i++) {
+      if (inks[i] < min) {
+        min = inks[i];
+      }
+    }
+    return min;
+  }
+
+  function inkLevels(inks) {
+    function selectMin(currentMin, value) {
+      return Math.min(currentMin, value);
+    }
+    return Object.values(inks).reduce(selectMin);
+    return Object.values(inks).reduce((min, num) => Math.min(min, num));
+  }
+
+  function inkLevels(inks) {
+    return Math.min(...Object.values(inks));
+  }
+
+  console.log({
+    '10': inkLevels({
+      "cyan": 23,
+      "magenta": 12,
+      "yellow": 10
+    }),
+
+    '432': inkLevels({
+      "cyan": 432,
+      "magenta": 543,
+      "yellow": 777
+    }),
+
+    '0': inkLevels({
+      "cyan": 700,
+      "magenta": 700,
+      "yellow": 0
+    }),
+  });
 
 }
 console.groupEnd();
 
 console.groupCollapsed('8 - https://edabit.com/challenge/pLNavsePxJ87t9Nak');
 {
+  function calculateLosses(obj) {
+    // 1. Suskaičių <obj> savybių reikšmių sumą
+    let sum = 0;
+    for (const key in obj) {
+      sum += obj[key]
+    }
+    // 2. Grąžinimas
+    if (sum === 0) {
+      //    2.1 Jeigu objektas tuščias -> grąžinti string "Lucky you!"
+      return "Lucky you!"
+    } else {
+      //    2.2 Jeigu suma > 0 -> grąžinti tą sumą, pvz.: 120
+      return sum;
+    }
+  }
+  function calculateLosses(stolenItems) {
+    let moneyLoss = 0;
+    for (const itemName in stolenItems) {
+      moneyLoss += stolenItems[itemName];
+    }
+    return moneyLoss === 0 ? "Lucky you!" : moneyLoss;
+  }
 
+  function calculateLosses(obj) {
+    const sum = Object.values(obj).reduce((a, v) => a + v);
+    return sum === 0 ? "Lucky you!" : sum;
+  }
+
+  function calculateLosses(obj) {
+    return Object.keys(obj).length === 0
+      ? "Lucky you!"
+      : Object.values(obj).reduce((a, v) => a + v)
+  }
+
+  function calculateLosses(obj) {
+    return Object.values(obj).reduce((a, v) => a + v) || "Lucky you!";
+  }
+  console.log({
+    '100': calculateLosses({
+      tv: 30,
+      skate: 20,
+      stereo: 50,
+    }),
+    '20000': calculateLosses({
+      painting: 20000,
+    }),
+    'Lucky you!': calculateLosses({})
+  });
 }
 console.groupEnd();
