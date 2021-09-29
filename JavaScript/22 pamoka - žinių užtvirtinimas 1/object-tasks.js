@@ -29,7 +29,7 @@ console.groupEnd();
 
 console.groupCollapsed('3 - https://edabit.com/challenge/48EJWLhF224na8po3');
 {
-
+  
 }
 console.groupEnd();
 
