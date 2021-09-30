@@ -36,3 +36,5 @@ console.dir((a => a * 2)(7));
 // 1. Kuomet reikia parašyti trumpą kintamojo kitimo veiksmą, ar komandą su kintamuoju.
 // 2. Norima pririšti lambda išraiškoje esamus veiksmus prie deklaravimo aplinkos (this.js)
 // 3. 1 + 2.
+
+// 10:30 - tęsiame
