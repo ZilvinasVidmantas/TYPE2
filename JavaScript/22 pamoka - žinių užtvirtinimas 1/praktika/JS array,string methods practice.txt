@@ -1,4 +1,4 @@
-1) Parašykite funkciją, kuri iš jai duotojo masyvo suformuotų ir grąžintų string'ą (atskiriant kableliais). (sunkus/lengvas naudojat toString() arba join() metodus)
+1) Parašykite funkciją, kuri iš jai duotojo masyvo suformuotų ir grąžintų string'ą (atskiriant kableliais). (vidutinis/lengvas naudojat toString() arba join() metodus)
 2) Parašykite funkciją, kuriai padavus kažkokį number kintamąjį (ilgą 10+ skaitmenų), jinai jį išvestų į konsolę su "-" simboliu tarp dviejų lyginių skaičių. (pvz: paduodi 106452344, grąžina 10-6-45234-4) (sunkus)
 3) Parašykite funkciją, kuri atliktų tą patį, ką daro .reverse() metodas. (žinoma nenaudokite reverse) (vidutinis)
 4) Parašykite funkciją, kuri iš jai paduoto masyvo išrinktų nurodytas reikšmes ir grąžintų likusias (išvestų į konsolę). (paduodama masyvas=[1,4,5,6,4,8,4,5], funkcija: func(masyvas, 4,6,8), grąžina: [1,5,5]). (sunkus/vidutinis(naudojant filter))
