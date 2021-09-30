@@ -341,7 +341,7 @@ console.groupCollapsed('12. Suformuokite žmonių masyvą iš objektų, kuriuose
   }
 
   function removeNameSurnameSex({ name, surname, sex, ...other }) {
-    return { ...other };
+    return other;
   }
 
   const result = people.map(removeNameSurnameSex);

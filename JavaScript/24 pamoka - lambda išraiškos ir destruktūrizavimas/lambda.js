@@ -30,6 +30,7 @@ console.dir(anyFunction2(7));
 console.dir(anyFunction3(7));
 console.dir(anyFunction4(7));
 console.dir(anyFunction5(7));
+console.dir((a => a * 2)(7));
 
 // Kuomet naudoti lambda išraišką?
 // 1. Kuomet reikia parašyti trumpą kintamojo kitimo veiksmą, ar komandą su kintamuoju.

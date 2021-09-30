@@ -6,9 +6,9 @@
     getFullname: () => `${this.name} ${this.surname}`
   }
 
-  /* ...userSettings  =>  name: 'Bronius', 
-                      =>  surname: 'Kentauras',
-                      =>  getFullname: () => `${this.name} ${this.surname}` */
+  /* ...userSettings  =>  name: userSettings.name, 
+                      =>  surname: userSettings.surname,
+                      =>  getFullname: userSettings.getFullname */
 
   //  Destrukturizavimas kopijuojant savybes.
   const allSettings = {
@@ -43,6 +43,13 @@
   // Funkcija destruktūrizuojant funkcijos vykdymo bloke
   {
     function printSettingsInfo(info) {
+      console.log(info.name, info.surname, info.country, info.city);
+    }
+    printSettingsInfo(allSettings);
+  }
+  // Funkcija destruktūrizuojant funkcijos vykdymo bloke
+  {
+    function printSettingsInfo(info) {
       let { name, surname, country, city } = info;
       console.log(name, surname, country, city);
     }
@@ -50,8 +57,8 @@
   }
   // Funkcija destruktūrizuojant parametrą, kuris turi būt objektas
   {
-    function printSettingsInfo({ name, surname, country, city }) {
-      console.log(name, surname, country, city);
+    function printSettingsInfo({ name, surname, city, country, getFullname, ...rest }) {
+      console.log(name, surname, rest);
     }
     printSettingsInfo(allSettings);
   }
@@ -74,28 +81,3 @@ const [maziausias, antraPagalMazuma] = visiSvoriai;
   const antraPagalMazuma = visiSvoriai[1];
 }
 console.log(maziausias, antraPagalMazuma);
-
-
-
-
-console.log('-------------------------');
-
-const arr = [5, 6, 7];
-
-const person = {
-  name: 'Serbentautas',
-  surname: 'Bordiūras',
-  age: 17
-};
-
-function printPersonProperties({ name, surname, age }, [s1, s2]) {
-  console.log(name + s1 + surname + s2 + age);
-}
-
-printPersonProperties(person, [' ', ': ']);
-
-printPersonProperties({
-  name: 'Penediktas',
-  surname: 'Tušinis',
-  age: 18
-}, ['*', '|']);
