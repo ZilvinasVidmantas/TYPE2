@@ -10,4 +10,5 @@ cycles.js
 sorting.js
 array-iterative-methods.js
 destructurization.js
+lamdba.js
 classes.js
