@@ -193,10 +193,11 @@ console.log('---');
   function filterEverySecond(arr) {
     //  Jūsų kodas
   }
-  // console.log({
-  //   numbers,
-  //   result: filterEverySecond(numbers)
-  // });
+  console.log({
+    numbers,
+    result: filterEverySecond(numbers),
+    result2: numbers.filter((_, i) => i % 2 === 0)
+  });
 }
 console.log('---');
 console.groupEnd();
