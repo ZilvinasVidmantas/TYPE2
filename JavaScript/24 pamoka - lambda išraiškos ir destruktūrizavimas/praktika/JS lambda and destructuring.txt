@@ -69,12 +69,3 @@ Užduotys:
 29+) Naudodami destructuring priskirkite 3 kintamiesiems 3 reikšmes paimtas iš objekto, bet pakeisti 1'osios reikšmę. 
 30+) Naudodami destructuring sukeiskite 2 kintamųjų reikšmes.
 31++) Naudodami destructuring priskirkite objektui 3 naujas reikšmes. Padaryti vieną pavyzdį, kur objektas tų reikšmių neturi, kitą, kur tas reikšmes objektas jau turi.
-
-
-
-
-
-
-
-
-
