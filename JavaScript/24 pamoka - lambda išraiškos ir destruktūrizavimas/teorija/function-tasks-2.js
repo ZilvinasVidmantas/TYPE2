@@ -4,12 +4,28 @@ const numbers = [1, 2, -2, 6, -5, 9, 1.02, 45, -69, 77, -12, 2, 8, -2, -4, 59, 7
 console.group('1. Padauginti masyvo narius iš 2 ir išsaugoti naujame masyve');
 console.log('---');
 {
-  function mulArrBy2(arr) {
-    // ... code
+  function mulArrBy2(array) {
+    const result = [];
+    const elementCount = array.length;
+    for (let index = 0; index < elementCount; index++) {
+      const currentElement = array[index];
+      const currentElementDoubled = currentElement * 2;
+      result.push(currentElementDoubled);
+    }
+    return result;
   }
+  function mulArrBy2(arr) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      result.push(arr[i] * 2);
+    }
+    return result;
+  }
+
   console.log({
     numbers,
-    result: mulArrBy2(numbers)
+    result: mulArrBy2(numbers),
+    result2: numbers.map(x => x * 2)
   });
 }
 console.log('---');
@@ -20,11 +36,16 @@ console.group('2. Pakelti masyvo narius kvadratu ir išsaugoti naujame masyve');
 console.log('---');
 {
   function powerArrBy2(arr) {
-    // ... code
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      result.push(arr[i] ** 2);
+    }
+    return result;
   }
   console.log({
     numbers,
-    result: powerArrBy2(numbers)
+    result: powerArrBy2(numbers),
+    result2: numbers.map(x => x ** 2)
   });
 }
 console.log('---');
@@ -172,10 +193,11 @@ console.log('---');
   function filterEverySecond(arr) {
     //  Jūsų kodas
   }
-  // console.log({
-  //   numbers,
-  //   result: filterEverySecond(numbers)
-  // });
+  console.log({
+    numbers,
+    result: filterEverySecond(numbers),
+    result2: numbers.filter((_, i) => i % 2 === 0)
+  });
 }
 console.log('---');
 console.groupEnd();
