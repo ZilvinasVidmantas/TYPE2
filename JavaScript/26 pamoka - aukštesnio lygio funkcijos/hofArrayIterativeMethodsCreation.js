@@ -44,8 +44,8 @@ console.group('filter panaudojimo pavyzdys');
 {
   console.log({
     arr,
-    numbersEqual: map(arr, x => x % 2 === 0),
-    numbersOdd: map(arr, x => x % 2 === 1)
+    numbersEqual: filter(arr, x => x % 2 === 0),
+    numbersOdd: filter(arr, x => x % 2 === 1)
   });
 }
 console.groupEnd();
