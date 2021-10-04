@@ -15,6 +15,8 @@ Lambda(arrow functions):
       var add = (a, b, c) => a + b + c;
   Ką daro:
     Sutrumpina funkcijos aprašymą, bet yra limituota ir negali būti panaudojama visais atvejais.
+  Link:
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
   Video:
     https://youtu.be/LaqYB8wVeKA
 
@@ -30,6 +32,8 @@ Destructuring:
       let [a, b] = [10, 20];
   Ką daro:
     Palengvina ir pagreitina kaip galima priskirti reikšmes esančias masyvuose arba objektuose atskiriems kintamiesiems.
+  Link:
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
   Video:
     https://youtu.be/UgEaJBz3bjY
     https://youtu.be/NIq3qLaHCIs
@@ -64,8 +68,8 @@ Užduotys:
 24) Naudodami destructuring priskirkite 10 kintamųjų 10 reikšmių.
 25+) Naudodami destructuring priskirkite 3 kintamiesiems 5 reikšmes.
 26+) Naudodami destructuring priskirkite 1 kintamajam visas reikšmes išskyrus pirmas 3.
-27+) Naudodami destructuring pirskirkite 1 kintamajam 3'čią reikšmę, 2'am kintamajam 7'tą reikšmę, 3'čiam kintamająm visuas likusias.
+27+) Naudodami destructuring pirskirkite 1 kintamajam 3'čią reikšmę, 2'am kintamajam 7'tą reikšmę, 3'čiam kintamająm visas likusias (8'tą, 9'tą ir t.t.).
 28) Naudodami destructuring priskirkite 3 kintamiesiems 3 reikšmes paimtas iš objekto.
-29+) Naudodami destructuring priskirkite 3 kintamiesiems 3 reikšmes paimtas iš objekto, bet pakeisti 1'osios reikšmę. 
+29+) Naudodami destructuring priskirkite 3 kintamiesiems 3 reikšmes paimtas iš objekto, bet pakeisti 1'osios reikšmę.
 30+) Naudodami destructuring sukeiskite 2 kintamųjų reikšmes.
 31++) Naudodami destructuring priskirkite objektui 3 naujas reikšmes. Padaryti vieną pavyzdį, kur objektas tų reikšmių neturi, kitą, kur tas reikšmes objektas jau turi.
