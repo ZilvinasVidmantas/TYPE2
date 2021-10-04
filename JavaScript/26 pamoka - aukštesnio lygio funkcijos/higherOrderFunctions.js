@@ -55,10 +55,13 @@ const people = [
   }
 ];
 /*
-  Tai tokios funkcijos, kurioms per parametrą reikia perduoti funkciją. Dažniausiai ji vadinasi 'callback'. Tai labai dažna praktika JS kalboje
+  Tai tokios funkcijos, kurioms argumentu reikia perduoti funkciją. Dažniausiai ji vadinasi 'callback'. Tai labai dažna praktika JS kalboje
   ir funkciniame programavime. Tokią metodika labai naudinga tuomet kai norėsime formuoti, spausdinti ar filtruoti, bet dar nežinome pagal kokius
   kriterijus tai atliksime. Tokiu atveju mums praverčia specifinę kodo logiką perduoti funkcijos pavidalu, o standartinius veiksmus palikti išorinėje
   funkcijoje.
+*/
+/*
+https://javascript.plainenglish.io/functional-programming-higher-order-function-hof-aaa46bb444bb
 */
 
 /**
