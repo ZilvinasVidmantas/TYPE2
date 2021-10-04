@@ -13,4 +13,6 @@ destructurization.js
 lamdba.js
 array-iterative-methods-2.js
 array-methods-methods-2.js
+annonymousFunctions.js
+higherOrderFunctions.js
 classes.js
