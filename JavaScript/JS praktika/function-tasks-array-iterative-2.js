@@ -219,51 +219,50 @@ console.groupCollapsed('3. Atspausdinti visus Elektros ir elektronikos fakulteto
 }
 console.groupEnd();
 
-console.groupCollapsed('4. Atspausdinti visų Informatikos fakulteto studentų vidurkius');
+
+console.groupCollapsed('4. Atspausdinti visų Elektros ir elektronikos fakulteto studentų vidurkius');
 {
   // ... sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('5. Atspausdinti visų Chemijos fakulteto studentų vidurkius');
+console.groupCollapsed('5. Atspausdinti tik pirmo kurso studentus');
 {
   // ... sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('6. Atspausdinti visų Elektros ir elektronikos fakulteto studentų vidurkius');
+console.groupCollapsed('6. Atspausdinti tik antro kurso studentus');
 {
   // ... sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('7. Atspausdinti tik pirmo kurso studentus');
+console.groupCollapsed('7. Atspausdinti tik trečio kurso studentus');
 {
   // ... sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('8. Atspausdinti tik antro kurso studentus');
+console.groupCollapsed('8. Atspausdinti tik ketvirto kurso studentus');
 {
   // ... sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('9. Atspausdinti tik trečio kurso studentus');
+console.groupCollapsed('9. Atspausdinti visų Informatikos fakulteto studentų vidurkius');
 {
   // ... sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('10. Atspausdinti tik ketvirto kurso studentus');
+console.groupCollapsed('10. Atspausdinti visų Chemijos fakulteto studentų vidurkius');
 {
   // ... sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-// ACARGĖJ
 console.groupCollapsed('11. Iš students masyvo atrinkti ir atspausdinti visų studentų vidurkius');
 {
   // ... sprendimas ir spausdinimas
 }
-
