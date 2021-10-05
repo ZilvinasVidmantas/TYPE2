@@ -199,52 +199,26 @@ const students = [
   },
 ];
 
-function map(arr, changeElement) {
-  const newArray = [];
-  for (let i = 0; i < arr.length; i++) {
-    newArray.push(changeElement(arr[i]));
-  }
-  return newArray;
-}
-
-function calcStudentCredits(student) {
-  let moduleCreditsSum = 0;
-  for (let i = 0; i < student.modules.length; i++) {
-    const module = student.modules[i];
-    const moduleCredits = module.credits;
-    moduleCreditsSum += moduleCredits;
-  }
-  return moduleCreditsSum;
-}
-
-function calcModuleAvg(module){
-  let markSum = 0;
-  for (let i = 0; i < module.marks.length; i++) {
-    const mark = module.marks[i];
-    markSum += mark;
-  }
-  return markSum / module.marks.length;
-}
-
-function calcStudentWeightedSemesterAvg(student) {
-  let weightedModuleAvgSum = 0;
-  for (let i = 0; i < student.modules.length; i++) {
-    const module = student.modules[i];
-    const moduleCredits = module.credits;
-    const weightedModuleAvg = calcModuleAvg(module) * moduleCredits;
-    weightedModuleAvgSum += weightedModuleAvg;
-  }
-  return weightedModuleAvgSum;
-}
-
-
-function formStudentFullnameAndSemesterAvg(student) {
-  const creditCount = calcStudentCredits(student);
-  const weightedSemesterAvg = calcStudentWeightedSemesterAvg(student);
+function formStudentFullnameAndSemesterAvg({ name, surname, modules }) {
+  const creditCount = modules.reduce((sum, { credits }) => sum + credits, 0);
+  const weightedSemesterAvgSum = modules.reduce(
+    (sum, { marks, credits }) => sum + marks.reduce((sum, mark) => sum + mark) / marks.length * credits,
+    0
+  );
   return {
-    fullname: student.name + ' ' + student.surname,
-    avg: Math.round(100 * weightedSemesterAvg / creditCount) / 100
+    fullname: name + ' ' + surname,
+    avg: Math.round(100 * weightedSemesterAvgSum / creditCount) / 100
   }
 }
 
-console.table(map(students, formStudentFullnameAndSemesterAvg));
+const toComplicatedAnalogy = ({ name, surname, modules }) => ({
+  fullname: name + ' ' + surname,
+  avg: Math.round(
+    100 * modules.reduce(
+      (sum, { marks, credits }) => sum + marks.reduce((sum, mark) => sum + mark) / marks.length * credits, 0)
+    / modules.reduce((sum, { credits }) => sum + credits, 0)
+  ) / 100
+})
+
+console.table(students.map(formStudentFullnameAndSemesterAvg));
+console.table(students.map(toComplicatedAnalogy));
