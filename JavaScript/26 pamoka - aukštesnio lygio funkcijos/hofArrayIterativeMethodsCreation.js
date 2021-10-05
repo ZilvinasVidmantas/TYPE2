@@ -27,6 +27,7 @@ const filter = (array, isTruthy) => {
 console.group('forEach panaudojimo pavyzdys');
 {
   forEach(arr, console.log);
+  forEach(arr, (el, i) => { console.log('el:', el, 'i:', i)} );
 }
 console.groupEnd();
 
