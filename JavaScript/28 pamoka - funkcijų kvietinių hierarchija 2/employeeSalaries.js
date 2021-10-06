@@ -48,18 +48,20 @@ const company = {
       ]
     }
   ]
-}
+};
+
+const contractTypeSalaryFunctions = {
+  'Individual activity': ({ hourPay, hoursWorked }) => hourPay * hoursWorked,
+  'Contract': ({ salary }) => salary,
+  'Service contract': ({ servicePrice }) => servicePrice,
+};
 
 // Suskaičiuoti, kokią sumą reikia išmokėti darbuotojams
 
 // Sprendimas A
 //    1. Skaičiuojame kiekvieno departamento darbuotojų atlyginimus, ir sumuojame kiekvieno departamento darbuotojų atlyginimo sumas
-const contractTypeSalaryFunctions = {
-  'Individual activity': ({ hourPay, hoursWorked }) => hourPay * hoursWorked,
-  'Contract': ({ salary }) => salary,
-  'Service contract': ({ servicePrice }) => servicePrice,
-}
 const resultA = company.departaments.reduce((allEmployeesSalarySum, { employees }) => {
+  console.table(employees);
   const departamentSalaries = employees.reduce((sum, employee) => {
     let salary = contractTypeSalaryFunctions[employee.contractType](employee);
     return sum + salary;
