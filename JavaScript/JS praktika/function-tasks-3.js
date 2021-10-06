@@ -458,7 +458,14 @@ console.log();
 console.group("29. Sukurkite funkciją, kuri grąžina <true>, jeigu žodis yra palindromas (taip pat skaitosi iš abiejų pusių)");
 {
   function isPalyndrome(str) {
-    // code ...
+    let i = 0;
+    let k = str.length - 1;
+    while (i < k) {
+      if (str[i] !== str[k]) return false;
+      i++;
+      k--;
+    }
+    return true;
   }
   // console.log('---');
   // console.log({
@@ -480,21 +487,41 @@ console.log();
 console.group("30. Sukurkite funkciją, kuri taiso pastraipos klaidas");
 {
 
-  function capitalizeFirstWord(str) {
+  function capitalizeFirstLetter(str) {
     // code ...
   }
 
   function splitIntoSentences(paragraph) {
-    // code ...
+    /*
+      2.1 Atskirti pagal sakinio baigimo ženklus ir juos įsiminti
+      2.2 Pašalinti tuščius tarpus iš kairės ir dešinės
+      2.3 grąžinti objektą su dviem masyvais:
+      {
+        sentences: [sentence1, sentence2, ... , sentenceN],
+        separator: [ '.', '?', ... , '!'],
+      }
+    */
   }
 
   function reduceEmptySpaces(str) {
-    // code ...
+    // Jūsų sugalvota logika, kaip šalinti tarpus prieš kablelį ir kelis tarpus iš eilės
   }
 
+  // 1.
   function fixParagraph(paragraph) {
-    // code ...
+    /*
+      2. Pirmiausiai suskirstome į sakinius, naudojant splitIntoSentences: 
+            string  ->  {
+                          sentences: [sentence1, sentence2, ... , sentenceN],
+                          separator: [ '.', '?', ... , '!'],
+                        }
+      3. Redaguoti kiekvieną sakinį, naudojant funkciją reduceEmptySpaces
+      4. Redaguoti kiekvieną sakinį, naudojant funkciją capitalizeFirstLetter
+      5. Sujungti sakinius su atitinkamais sakinių skiriamaisiais/baigiamaisiais ženklais
+      6. Grąžinti rezultatą.
+    */
   }
+
   // const paragraph = '    labas , as jonas . Tave      vadina Kęstu? Taip ir žinojau  !    ';
   // const fixedParagraph = fixParagraph(paragraph);
   // console.log(paragraph);

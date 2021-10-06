@@ -57,19 +57,3 @@ console.groupCollapsed('10. - https://edabit.com/challenge/s5Sz2ovKsvtGxNGgn');
   // ... code
 }
 console.groupEnd();
-
-console.groupCollapsed('11. - https://edabit.com/challenge/2FF7RKw9RLwc3EBY9');
-{
-  // ... code
-}
-console.groupEnd();
-
-console.groupCollapsed('12. - https://edabit.com/challenge/ifDM26p25bqS8EsFu');
-{
-  // ... code
-}
-console.groupEnd();
-
-
-
-
