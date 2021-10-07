@@ -1,6 +1,30 @@
-console.groupCollapsed('1. - https://edabit.com/challenge/ZngT4zDckDugt2JGY');
+console.group('1. - https://edabit.com/challenge/ZngT4zDckDugt2JGY');
 {
-  // ... code
+  class Player {
+    constructor(name, age, height, weight) {
+      // complete function
+    }
+
+    getAge() {
+      // complete function
+    }
+
+    getHeight() {
+      // complete function
+    }
+
+    getWeight() {
+      // complete function
+    }
+  }
+
+  console.dir(Player);
+  const p1 = new Player("David Jones", 25, 175, 75);
+  console.log({
+    "David Jones is age 25": p1.getAge(),
+    "David Jones is 175cm": p1.getHeight(),
+    "David Jones weighs 75kg": p1.getWeight(),
+  });
 }
 console.groupEnd();
 
