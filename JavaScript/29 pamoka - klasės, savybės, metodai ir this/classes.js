@@ -1,3 +1,4 @@
+'use strict';
 // Prototipo kūrimas naudojant 'class' raktažodį - ES5 'sintaksinis cukrus',
 // jog prototipų kūrimas būtų panašesnis į programuotojams įprastą sintaksę
 
@@ -6,7 +7,7 @@
 
 // Objektai sukurti pagal klasės šabloną programavimo literatūroje yra vadinami 
 //  * 'instance of a class', arba tiesiog 'instance'
-//  * object (kitose programavimo kalbose, obejktais yra vadinama - išskirta(sukurta) atminties vieta pagal klasės šabloną)
+//  * object (kitose programavimo kalbose, objektais yra vadinama - išskirta(sukurta) atminties vieta pagal klasės šabloną)
 
 // lietuviškai artimiausiai apibūdinantys 'instance of a class' žodžiai galėtų būti:
 //  * pavyzdinis vientas
@@ -16,7 +17,7 @@
 {
   class Car {
     // Metodas skirtas objektui kurti
-    // jis iškviečiamas kaskasrt, kai kuriame naują klasės objektą
+    // jis iškviečiamas kaskart, kai kuriame naują klasės objektą
     constructor(brand, model, year, color) {
       // Savybės ...
       this.brand = brand;
@@ -27,7 +28,8 @@
     }
 
     // Metodai ....
-    accelerate(amount){
+    accelerate(amount) {
+      console.log(this);
       this.speed += amount;
     }
 
@@ -39,19 +41,25 @@
       console.log(this.color);
     }
   }
-  const myCar = new Car('Peugeot', '406 Coupe', 1998, 'silver');
+  const myCar = new Car('Solaris', 'T3000', 2014, 'green');
   const friendCar = new Car('Peogeot', '407', 2006, 'black');
   const uncleCar = new Car('BMW', '320d', 2006, 'black');
   const allCars = [myCar, friendCar, uncleCar];
-  console.table(allCars);
 
-  allCars.forEach(car => car.accelerate(20));
-  myCar.displayColor();
-  myCar.changeColor('red');
-  friendCar.changeColor('blue');
-  friendCar.changeColor('green');
-  myCar.displayColor();
+  // console.table(allCars);
+  // allCars.forEach(car => car.accelerate(20));
+  // console.table(allCars);
 
+  // myCar.displayColor();
+  // myCar.changeColor('red');
+  // myCar.displayColor();
+  
+  // friendCar.displayColor();
+  // friendCar.changeColor('blue');
+  // friendCar.displayColor();
+  // friendCar.changeColor('green');
+  // friendCar.displayColor();
+  
   console.table(allCars);
 }
 
@@ -71,3 +79,9 @@ class AXY {
     savybes naudojantys metodai (dažniausiai spausdinimas)
 }
 */
+
+console.group('1. Sukurti metodą klasei Car kuris, mažintų Car objekto greitį ant nurodytos vertės');
+{
+  // Kodas
+}
+console.groupEnd();
