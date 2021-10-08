@@ -1,8 +1,8 @@
-//  Ši class sintaksė yra pakaitalas funkcijoms kurios gamina prototipus
+//  Statiniai metodai dažniausiai naudojami, pagalbinėms funkcijos, bendroms konstantos ir objektų kopijavimui įgalinti 
 class Bankas {
   static viliboras = 0.48;
   static gautiCentrinioBankoDuomenis() {
-    return 'Duomenys: ' + new Date().getMilliseconds() + ' - ' + Bankas.viliboras;
+    return 'Duomenys: ' + new Date() + ' - ' + Bankas.viliboras;
     // Logika gauti duomenims susisijusios su valiutomis
   }
 
@@ -11,19 +11,23 @@ class Bankas {
     // Logika gauti duomenims susisijusios su valiutomis
   }
 
-  static copy(oldBank) {
-    const newBank = new Bankas(oldBank.name);
-    // kopijavimo logika ...
+  static copy({ name, contracts, money }) {
+    const newBank = new Bankas(name, contracts, money);
     return newBank;
   }
 
-  constructor(pavadinimas) {
-    this.name = pavadinimas;
+  constructor(name, contracts, money) {
+    this.name = name;
+    this.contracts = contracts ? JSON.parse(JSON.stringify(contracts)) : [];
+    this.money = money ?? this.contracts.reduce((money, contract) => money + contract.money, 0);
   }
 
-  detiIndeli(suma, asmKodas) {
-    console.log(this.name, Bankas.viliboras)
-    // Gražina sutartį, su palūkanų norma
+  detiIndeli(person, amount) {
+    this.contracts.push({
+      ...person,
+      money: amount
+    });
+    this.money += amount;
   }
 }
 
@@ -32,50 +36,60 @@ const swed = new Bankas('Swedbank');
 const seb = new Bankas('SEB');
 const luminor = new Bankas('Luminor');
 
-//  Standartiniai metodai, kviečiami naudojant objektus
-swed.detiIndeli(500, 11111111111);
-seb.detiIndeli(1000, 11111111111);
+console.groupCollapsed('Statinio metodo panaudojimas klonavimui');
+{
+  const swedClone = Bankas.copy(swed);
+  console.log('orginalas:', swed);
+  console.log('kopija:', swedClone);
+  // Standartiniai metodai, kviečiami naudojant objektus
+  console.log('------- PADARYTI PAKITIMAI ORGINALUI -----------');
+  swed.detiIndeli({ name: 'Kepleris', surname: 'Šrekas' }, 10000);
+  console.log('orginalas:', swed);
+}
+console.groupEnd();
 
-setInterval(() => {
-  // statiniai metodai kviečiami naudojant klases.
-  const esantysDuomenys = Bankas.gautiCentrinioBankoDuomenis();
-  // console.log(esantysDuomenys);
-}, 1000);
+console.groupCollapsed('Statinio metodo naudojimas');
+{
+  // setInterval(() => {
+  //   console.log(Bankas.gautiCentrinioBankoDuomenis());
+  // }, 1000);
+}
+console.groupEnd();
 
-//  Statiniai metodai dažniausiai naudojami, pagalbinėms funkcijos, bendroms konstantos ir objektų kopijavimui įgalinti 
-const naujasBankas = Bankas.copy(swed);
-naujasBankas.name = 'Naujas';
-console.log(naujasBankas);
-console.log(swed);
+console.groupCollapsed('Abstraktus pavyzdys - pagal schemą: "class vs instance.png"');
+{
+  class Šablonas {
+    static šablonoSavybė = 50;
+    static šablonoSavybė2 = [];
 
-// Apvalinimas
-const value = 6416.654654654;
-console.log(typeof value.toFixed(0));
-console.log(typeof Math.round(value));
+    static šablonoMetodas1(param1, param2) {
+      // ... kodas
+    }
 
-const people = [
-  {
-    weight: 60,
-    height: 1.50
-  },
-  {
-    weight: 80,
-    height: 1.55
-  },
-  {
-    weight: 30,
-    height: 1.80
-  },
-  {
-    weight: 160,
-    height: 1.50
-  },
-]
-const skaiciaiPoKablelio = 0; // TAI GALĖTŲ BŪTI STATINĖ SAVYBĘ SKAIČIAVIMŲ KLASĖJE
-//                                                      Statinis metodas - round
-const KMIindexes = people.map(({ weight, height }) =>
-  Math.round(10 ** skaiciaiPoKablelio * weight / height ** 2) / 10 ** (skaiciaiPoKablelio)
-);
-//                                                 Apvalinimas 2 skaičiai po kablelio 
-//                                                 Padauginam iš 100, suapvalinam, padalinam iš 100
-console.log(KMIindexes);
+    static šablonoMetodas2(...params) {
+      // ... kodas
+    }
+
+    constructor(param1, param2, param3) {
+      this.kuriamoObjektoSavybė1 = param1 + param2;
+      this.kuriamoObjektoSavybė2 = param3;
+      this.kuriamoObjektoSavybė3 = [];
+    }
+
+    kuriamoObjektoMetodas1(param1) {
+      // ... kodas
+    }
+
+    kuriamoObjektoMetodas2() {
+      // ... kodas
+    }
+  }
+
+  const sukurtasObjektasPagalŠabloną = new Šablonas('Kefyras', 'Rūgpienis', 39845781454);
+  console.log('Šablonas:');
+  console.dir(Šablonas);
+  console.log('Objektas pagamintas pagal Šabloną:');
+  console.dir(sukurtasObjektasPagalŠabloną);
+  console.log('Šablonas.prototype === sukurtasObjektasPagalŠabloną.__proto__:', Šablonas.prototype === sukurtasObjektasPagalŠabloną.__proto__);
+}
+console.groupEnd();
