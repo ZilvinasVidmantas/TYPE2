@@ -16,3 +16,5 @@ array-methods-methods-2.js
 annonymousFunctions.js
 higherOrderFunctions.js
 classes.js
+static.js
+encapsulation.js
