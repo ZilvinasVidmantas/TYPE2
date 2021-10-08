@@ -17,11 +17,10 @@ console.group('1. - https://edabit.com/challenge/ZngT4zDckDugt2JGY');
     }
 
     getWeight() {
-      return `${this.name} weighs ${this.weight}kg`
+      return `${this.name} weighs ${this.weight}kg`;
     }
   }
 
-  console.dir(Player);
   const p1 = new Player("David Jones", 25, 175, 75);
   console.log({
     "David Jones is age 25": p1.getAge(),
