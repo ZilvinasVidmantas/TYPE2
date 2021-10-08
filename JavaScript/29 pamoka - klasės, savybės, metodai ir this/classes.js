@@ -44,6 +44,7 @@ class Car {
     console.log(this.color);
   }
 }
+
 const myCar = new Car('Solaris', 'T3000', 2014, 'green');
 const friendCar = new Car('Peogeot', '407', 2006, 'black');
 const uncleCar = new Car('BMW', '320d', 2006, 'black');
