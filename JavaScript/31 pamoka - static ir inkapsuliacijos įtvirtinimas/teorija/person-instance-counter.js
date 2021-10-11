@@ -29,14 +29,30 @@ class Person {
     this.#name = newName[0].toUpperCase() + newName.slice(1);
   }
 
+  get name(){
+    return this.#name;
+  }
+
   set surname(newSurname) {
     newSurname = newSurname.toLowerCase();
     if (!/^[a-ząčęėįšųūž]{2,16}$/.test(newSurname)) throw new TypeError(`Pavardė privalo būti be tarpų, nuo 2 iki 16 simbolių. Gauta:\n\t${newSurname}`);
     this.#surname = newSurname[0].toUpperCase() + newSurname.slice(1);
   }
 
+  get surname(){
+    return this.#surname;
+  }
+
   get fullname() {
     return this.#name + ' ' + this.#surname;
+  }
+
+  get birthDate(){
+    // kodas čia
+  }
+
+  get sex(){
+    // kodas čia
   }
 }
 
@@ -47,7 +63,13 @@ const people = [
   new Person(49001045555, 'Lempa', 'Stalinskaitė')
 ];
 
-people.forEach(p => console.log(p.fullname));
-
-// 9:10 -9:20 peertrauka
-// 9:20 -9:30 pasižaidimas, pakeitinėjimas, papildomų savybių kūrimas, testavimas
+/*
+  https://lt.wikipedia.org/wiki/Asmens_kodas
+  Parašyti get'erį, kuris grąžintų gimimo datą, tokiu formatu:
+    yyyy-mm-dd
+  Parašyti get'erį, kuris grąžintų lytį
+*/
+console.log('gimimo datos');
+people.forEach(p => console.log(p.birthDate));
+console.log('lytys');
+people.forEach(p => console.log(p.sex));
