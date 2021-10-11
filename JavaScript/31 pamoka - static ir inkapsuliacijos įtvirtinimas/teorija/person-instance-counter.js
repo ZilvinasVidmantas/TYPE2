@@ -67,7 +67,7 @@ const people = [
   https://lt.wikipedia.org/wiki/Asmens_kodas
   Parašyti get'erį, kuris grąžintų gimimo datą, tokiu formatu:
     yyyy-mm-dd
-  Parašyti get'erį, kuris grąžintų lytį
+  Parašyti get'erį, kuris grąžintų lytį: 'vyras' | 'moteris'
 */
 console.log('gimimo datos');
 people.forEach(p => console.log(p.birthDate));
