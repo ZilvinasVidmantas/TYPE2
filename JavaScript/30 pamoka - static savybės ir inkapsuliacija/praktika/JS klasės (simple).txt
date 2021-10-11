@@ -1,4 +1,4 @@
-1) Sukurkite klasę vadru "Car" ir duokite jai "name" ir "year" atributus.
+1) Sukurkite klasę vardu "Car" ir duokite jai "name" ir "year" atributus.
 1.1) Sukurkite papildomą atributą "helloCar" ir priskirkite jam tekstą, pristatantį mašiną. (gali būti betkas, tarkim "Labas, čia mano mašina Volvo ir ji buvo pagaminta 1990 metais").
 1.2) Skukurkite metodą "age", kuris apskaičiuotų ir grąžintų tekstą, pasakantį kiek mašinai metų. (dabartinę datą gauti galima su 'date = new Date()' ir paversti tik į metus su 'date.getFullYear()').
 
@@ -15,5 +15,3 @@
 4.1) Sukurkite metodą "volume", kuris grąžina 3D stačiakampio tūrį.
 4.2) Sukurkite metodą "surfaceArea", kuris grąžina 3D stačiakampio paviršiaus plotą.
 4.3) Sukurkite metodą "perimeter", kuris grąžina 3D stačiakampio perimetrą.
- 
-
