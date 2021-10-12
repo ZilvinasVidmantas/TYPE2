@@ -61,7 +61,7 @@ class Person {
     const localeObjectArray = Object.values(Person.#locales);
     /*
       Surandame objektą, kurio savybe active yra true:
-        currentLocaleObject: {active: true, formatDate: ƒ}
+        activeLocaleObject: {active: true, formatDate: ƒ}
     */
     const activeLocaleObject = localeObjectArray.find(locale => locale.active);
     /*
@@ -150,34 +150,38 @@ const people = [
 ];
 console.groupCollapsed('Privačios statinės savybės panaudojimas');
 {
-  console.log('Person objektų kiekis:', Person.count);
-  new Person('39301015555', 'KiBIras', 'Kiauraitis');
-  Person.count = 77;
-  console.log('Person objektų kiekis:', Person.count);
+  // console.log('Person objektų kiekis:', Person.count);
+  // new Person('39301015555', 'KiBIras', 'Kiauraitis');
+  // Person.count = 77;
+  // console.log('Person objektų kiekis:', Person.count);
 }
 console.groupEnd();
 
-console.groupCollapsed('Dinamiškas statinis seteris su validacija ir objekto metodo panaudojimas pagal statinio objekto būseną');
-{
-  console.group('gimimo datos general');
-  {
-    people.forEach(p => console.log(p.fullname, '-', p.birthDate));
-    console.group('gimimo datos usa');
-  }
-  console.groupEnd();
-  {
-    Person.locale = 'usa';
-    people.forEach(p => console.log(p.fullname, '-', p.birthDate));
-  }
-  console.groupEnd();
-  console.group('gimimo datos chinese');
-  {
-    Person.locale = 'chinese';
-    people.forEach(p => console.log(p.fullname, '-', p.birthDate));
-  }
-  console.groupEnd();
-}
-console.groupEnd();
+// console.groupCollapsed('Dinamiškas statinis seteris su validacija ir objekto metodo panaudojimas pagal statinio objekto būseną');
+// {
+//   console.group('gimimo datos general');
+//   {
+//     people.forEach(p => console.log(p.fullname, '-', p.birthDate));
+//     console.group('gimimo datos usa');
+//   }
+//   console.groupEnd();
+//   {
+//     Person.locale = 'usa';
+//     people.forEach(p => console.log(p.fullname, '-', p.birthDate));
+//   }
+//   console.groupEnd();
+//   console.group('gimimo datos chinese');
+//   {
+//     Person.locale = 'chinese';
+//     people.forEach(p => console.log(p.fullname, '-', p.birthDate));
+//   }
+//   console.groupEnd();
+// }
+// console.groupEnd();
+
+const person = new Person('39301015555', 'KiBIras', 'Kiauraitis');
+console.log(person.birthDate);
+
 
 
 
