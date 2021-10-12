@@ -28,19 +28,42 @@ class Person {
   }
 
   static set locale(newLocale) {
-    const localeNames = Object.keys(Person.#locales);
+    const localeNames = Object.keys(Person.#locales); // ['general', 'usa', 'chinese']
     if (!localeNames.includes(newLocale)) throw new TypeError(`Nėra tokios lokalės: '${newLocale}'. Galimos lokalės:\n\t${localeNames.join('\n\t')}`);
+    // Naudojant ciklą nustatime visas lokales NE-aktyviomis
     for (const localeName in Person.#locales) {
+      // iteracija | 1        | 2     | 3 
+      // localName |'general' | 'usa' | 'chinese'
+      // ---------------------------------------------
+      // 1: Person.#locales['general'].active = false
+      // 2: Person.#locales['usa'].active = false
+      // 3: Person.#locales['chinese'].active = false
       Person.#locales[localeName].active = false;
     }
+    // Nustatome aktyvią lokaciją
     Person.#locales[newLocale].active = true;
   }
 
   static get formatDate() {
+    /*
+      Person.#locales objektas paverčiamas reikšmių masyvu
+        localeObjectArray: [
+          0: {active: true, formatDate: ƒ}
+          1: {active: false, formatDate: ƒ}
+          2: {active: false, formatDate: ƒ}
+        ]
+    */
     const localeObjectArray = Object.values(Person.#locales);
-    const currentLocaleObject = localeObjectArray.find(locale => locale.active);
-    const formatDateFunction = currentLocaleObject.formatDate;
-    return formatDateFunction;
+    /*
+      Surandame objektą, kurio savybe active yra true:
+        currentLocaleObject: {active: true, formatDate: ƒ}
+    */
+    const activeLocaleObject = localeObjectArray.find(locale => locale.active);
+    /*
+      Grąžiname datos formatavimo funkciją, to objekto, kuris buvo aktyvus
+        ƒ: (yyyy, mm, dd) => `${yyyy}-${mm}-${dd}
+    */
+    return activeLocaleObject.formatDate;
   }
 
   #id;
@@ -94,6 +117,8 @@ class Person {
     const yyyy = Person.centuriesByIdFirstNumber[this.#id[0]] + this.#id.slice(1, 3);
     const mm = this.#id.slice(3, 5);
     const dd = this.#id.slice(5, 7);
+    //     (-> Person.formatData geterio reikšmė <-) (iškvietimas su argumentais)
+    //     ((yyyy, mm, dd) => `${yyyy}-${mm}-${dd}}) (yyyy, mm, dd)
     return Person.formatDate(yyyy, mm, dd);
   }
 
@@ -149,22 +174,3 @@ console.groupCollapsed('Dinamiškas statinis seteris su validacija ir objekto me
   console.groupEnd();
 }
 console.groupEnd();
-
-
-const obj = {
-  x: 1,
-  y: [1, 2, 3],
-  z: -7,
-}
-
-for (const propertyName in obj) {
-  if (obj[propertyName] instanceof Array) {
-    console.group(propertyName);
-    {
-      obj[propertyName].forEach((x, i) => console.log(`${propertyName}[${i}] => ${x}`));
-    }
-    console.groupEnd()
-  } else {
-    console.log(propertyName, obj[propertyName]);
-  }
-}
