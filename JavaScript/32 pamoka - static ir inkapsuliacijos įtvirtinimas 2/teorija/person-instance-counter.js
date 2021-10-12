@@ -44,6 +44,11 @@ class Person {
     Person.#locales[newLocale].active = true;
   }
 
+  /**
+   * Šis Person klasės get'eris grąžina funkciją, pagal 'Person.#locales' objekto, aktyvią lokalę
+   * 
+   * @return {Function} - funkcija su parametrais(yyyy, mm, dd)
+   */
   static get formatDate() {
     /*
       Person.#locales objektas paverčiamas reikšmių masyvu
@@ -156,7 +161,6 @@ console.groupCollapsed('Dinamiškas statinis seteris su validacija ir objekto me
 {
   console.group('gimimo datos general');
   {
-
     people.forEach(p => console.log(p.fullname, '-', p.birthDate));
     console.group('gimimo datos usa');
   }
@@ -174,3 +178,6 @@ console.groupCollapsed('Dinamiškas statinis seteris su validacija ir objekto me
   console.groupEnd();
 }
 console.groupEnd();
+
+
+
