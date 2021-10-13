@@ -65,15 +65,17 @@ console.group('1:1 - one-to-one');
     }
 
     get header() {
-      return `Kirvis: ${this.medžiaga}, ${this.svoris}kg`;
+      return `${this.medžiaga}, ${this.svoris}kg`;
     }
 
     get info() {
-      let result = this.header + '\n';
+      let result = 'Kirvis: ' + this.header + '\n\tKotas: ';
       if (this.#užmautasKotas) {
-        result += '\t' + this.užmautasKotas.header + '\n';
+        result += this.#užmautasKotas.header;
+      } else {
+        result += '---';
       }
-      return result;
+      return result + '\n';
     }
 
     užmautiKotą = kotas => {
@@ -102,15 +104,17 @@ console.group('1:1 - one-to-one');
     }
 
     get header() {
-      return `Kotas: ${this.medienosTipas}, ⇿${this.ilgis}m, ⌀${this.diametras}m`;
+      return `${this.medienosTipas}, ⇿${this.ilgis}m, ⌀${this.diametras}m`;
     }
 
     get info() {
-      let result = this.header + '\n';
+      let result = 'Kotas: ' + this.header + '\n\tKirvis: ';
       if (this.#užmautasKirvis) {
-        result += '\t' + this.užmautasKirvis.header + '\n';
+        result += this.#užmautasKirvis.header;
+      } else {
+        result += '---';
       }
-      return result;
+      return result + '\n';
     }
 
     užmautiKirvį = (kirvis) => {
@@ -131,6 +135,11 @@ console.group('1:1 - one-to-one');
   const kotas2 = new Kotas(0.6, 0.15, 'Uosis');
 
   kirvis1.užmautiKotą(kotas1);
+  //  Bėda: Užmaunant ant kirvis2 -> kotas1.
+  //    Kirviui-2 yra užmaunas kotas1, nors kotas1 jau yra užmautas ant kirvis1.
+  //    Nors kotas1, savo kirvio ir nepakeičia, kirvis2 užsimauna kotą-1
+  //    Ką daryti?
+  kirvis2.užmautiKotą(kotas1);
 
   console.log(kirvis1.info);
   console.log(kirvis2.info);
