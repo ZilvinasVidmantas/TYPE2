@@ -97,6 +97,14 @@ console.group('1:1 - one-to-one');
       return this.#užmautasKirvis;
     }
 
+    get info() {
+      return `Kotas: ${this.medienosTipas}, ⇿${this.ilgis}m, ⌀${this.diametras}m\n\tKirvis: ` +
+        (this.#užmautasKirvis
+          ? `${this.#užmautasKirvis.medžiaga}, ${this.#užmautasKirvis.svoris}kg`
+          : '---'
+        ) + '\n';
+    }
+
     užmautiKirvį = (kirvis) => {
       if (kirvis instanceof Kirvis && !this.#užmautasKirvis) {
         this.#užmautasKirvis = kirvis;
