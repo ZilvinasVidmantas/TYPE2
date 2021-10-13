@@ -17,4 +17,5 @@ annonymousFunctions.js
 higherOrderFunctions.js
 classes.js
 static.js
-encapsulation.js
+oop-encapsulation.js
+oop-composition.js
