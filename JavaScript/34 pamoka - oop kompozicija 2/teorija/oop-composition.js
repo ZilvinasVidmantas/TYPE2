@@ -79,13 +79,23 @@ console.group('1:1 - one-to-one');
     }
 
     užmautiKotą = kotas => {
-      if (kotas instanceof Kotas && !this.#užmautasKotas) {
-        this.#užmautasKotas = kotas;
-        if (kotas.užmautasKirvis !== this) {
+      if (!(kotas instanceof Kotas)) throw new TypeError(`metodo 'užmautiKotą' 1 argumentas privalo būti 'Kotas' klasės objektas.`)
+      // Jeigu ŠIS KIRVIS neturi koto
+      if (!this.#užmautasKotas) {
+        // Jeigu kotas neturi kirvio
+        if (!kotas.užmautasKirvis) {
+          this.#užmautasKotas = kotas;
           kotas.užmautiKirvį(this);
+          // Jeigu kotui jau yra užmautas ŠIS KIRVIS 
+        } else if (kotas.užmautasKirvis === this) {
+          this.#užmautasKotas = kotas;
+          // else atveju gaunasi, jog koto kirvis NĖRA ŠIS KIRVIS ir NĖRA TUŠČIAS. Reiškia, jis turi kitą kirvį.
+        } else {
+          console.error(`Kotas '${kotas.header}' jau turi kitą kirvį '${kotas.užmautasKirvis.header}'!`);
         }
+        // ŠIS KIRVIS jau turi kotą
       } else {
-        console.log(this, 'jau turi kotą');
+        console.error(`Kirvis '${this.header}' jau turi kotą '${this.#užmautasKotas.header}'!`);
       }
     }
   }
@@ -118,13 +128,26 @@ console.group('1:1 - one-to-one');
     }
 
     užmautiKirvį = (kirvis) => {
-      if (kirvis instanceof Kirvis && !this.#užmautasKirvis) {
-        this.#užmautasKirvis = kirvis;
-        if (kirvis.užmautasKotas !== this) {
-          kirvis.užmautiKotą(this);
+      if (!(kirvis instanceof Kirvis)) throw new TypeError(`metodo 'užmautiKirvį' 1 argumentas privalo būti 'Kirvis' klasės objektas.`)
+      // Jeigu ŠIS KOTAS neturi kirvio
+      if (!this.#užmautasKirvis) {
+        switch (kirvis.užmautasKotas) {
+          // kirvis neturi koto
+          case null:
+            this.#užmautasKirvis = kirvis;
+            kirvis.užmautiKotą(this);
+            break;
+          // kirviui jau yra užmautas ŠIS KOTAS
+          case this:
+            this.#užmautasKirvis = kirvis;
+            break;
+          // default atveju gaunasi, jog kirvio kotas NĖRA ŠIS KOTAS ir NĖRA TUŠČIAS. Reiškia, jis turi kitą kotą.
+          default:
+            console.error(`Kirvis '${kirvis.header}' jau turi kitą kotą '${kirvis.užmautasKotas.header}'!`);
         }
+        // ŠIS KOTAS jau turi kirvį
       } else {
-        console.log(this, 'jau turi kirvį');
+        console.error(`Kotas '${this.header}' jau turi kirvį '${this.#užmautasKirvis.header}'!`);
       }
     }
   }
@@ -135,10 +158,6 @@ console.group('1:1 - one-to-one');
   const kotas2 = new Kotas(0.6, 0.15, 'Uosis');
 
   kirvis1.užmautiKotą(kotas1);
-  //  Bėda: Užmaunant ant kirvis2 -> kotas1.
-  //    Kirviui-2 yra užmaunas kotas1, nors kotas1 jau yra užmautas ant kirvis1.
-  //    Nors kotas1, savo kirvio ir nepakeičia, kirvis2 užsimauna kotą-1
-  //    Ką daryti?
   kirvis2.užmautiKotą(kotas1);
 
   console.log(kirvis1.info);
