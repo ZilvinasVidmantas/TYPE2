@@ -64,6 +64,14 @@ console.group('1:1 - one-to-one');
       return this.#užmautasKotas;
     }
 
+    get info() {
+      return `Kirvis: ${this.medžiaga}, ${this.svoris}kg\n\tKotas: ` +
+        (this.#užmautasKotas
+          ? `${this.#užmautasKotas.medienosTipas}, ⇿${this.#užmautasKotas.ilgis}m, ⌀${this.#užmautasKotas.diametras}m`
+          : '---'
+        ) + '\n';
+    }
+
     užmautiKotą = kotas => {
       if (kotas instanceof Kotas && !this.#užmautasKotas) {
         this.#užmautasKotas = kotas;
@@ -117,7 +125,7 @@ console.groupEnd();
 
 /*
   10:30 - pertrauka:
-  
+
     1. Sukurti get'erį klsėje Kirvis <info>, kuris grąžintų Kirvį tokiu string formatu:
       '<MEŽDIAGA>: <SVORIS>
           kotas: <KOTAS.MEDIENOS_TIPAS>, <KOTAS.ILGIS>, <KOTAS.DIAMETRAS> || 'nėra'
