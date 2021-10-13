@@ -64,12 +64,16 @@ console.group('1:1 - one-to-one');
       return this.#užmautasKotas;
     }
 
+    get header() {
+      return `Kirvis: ${this.medžiaga}, ${this.svoris}kg`;
+    }
+
     get info() {
-      return `Kirvis: ${this.medžiaga}, ${this.svoris}kg\n\tKotas: ` +
-        (this.#užmautasKotas
-          ? `${this.#užmautasKotas.medienosTipas}, ⇿${this.#užmautasKotas.ilgis}m, ⌀${this.#užmautasKotas.diametras}m`
-          : '---'
-        ) + '\n';
+      let result = this.header + '\n';
+      if (this.#užmautasKotas) {
+        result += '\t' + this.užmautasKotas.header + '\n';
+      }
+      return result;
     }
 
     užmautiKotą = kotas => {
@@ -97,12 +101,16 @@ console.group('1:1 - one-to-one');
       return this.#užmautasKirvis;
     }
 
+    get header() {
+      return `Kotas: ${this.medienosTipas}, ⇿${this.ilgis}m, ⌀${this.diametras}m`;
+    }
+
     get info() {
-      return `Kotas: ${this.medienosTipas}, ⇿${this.ilgis}m, ⌀${this.diametras}m\n\tKirvis: ` +
-        (this.#užmautasKirvis
-          ? `${this.#užmautasKirvis.medžiaga}, ${this.#užmautasKirvis.svoris}kg`
-          : '---'
-        ) + '\n';
+      let result = this.header + '\n';
+      if (this.#užmautasKirvis) {
+        result += '\t' + this.užmautasKirvis.header + '\n';
+      }
+      return result;
     }
 
     užmautiKirvį = (kirvis) => {
