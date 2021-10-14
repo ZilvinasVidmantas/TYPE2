@@ -50,7 +50,7 @@
         ----------------------
 */
 
-console.group('1:1 - one-to-one');
+console.groupCollapsed('1:1 - one-to-one');
 {
   class Kirvis {
     #užmautasKotas = null;
@@ -160,5 +160,139 @@ console.group('1:1 - one-to-one');
   console.log(kirvis2.info);
   console.log(kotas1.info);
   console.log(kotas2.info);
+}
+console.groupEnd();
+
+console.group('1:N - one-to-many');
+{
+  class Mobilusis {
+    #simKortelės = [];
+
+    constructor(gamintojas, modelis) {
+      this.gamintojas = gamintojas;
+      this.modelis = modelis;
+    }
+
+    get simKoretelės() {
+      return [...this.#simKortelės];
+    }
+
+    get header() {
+      return `${this.gamintojas} ${this.modelis}`;
+    }
+
+    get info() {
+      let result = this.header + '\n\tKortelės: ';
+      if (this.#simKortelės.length === 0) {
+        result += '---';
+      } else {
+        result += this.#simKortelės.reduce((str, simKoretelė) => str + '\n\t\t' + simKoretelė.header, '');
+      }
+      return result + '\n';
+    }
+
+    arKortelėJauYraĮdėta = simKortelė => {
+      return Boolean(this.#simKortelės.find(mobiliajamEsantiKortelė => mobiliajamEsantiKortelė === simKortelė))
+    }
+
+    įdėtiKoretelę = simKortelė => {
+      if (!(simKortelė instanceof SimKoretelė))
+        throw new TypeError(`metodo 'įdėtiKoretelę' 1 argumentas privalo būti 'SimKoretelė' klasės objektas.`);
+
+      const kortelėJauYraMobiliajam = this.arKortelėJauYraĮdėta(simKortelė);
+      if (kortelėJauYraMobiliajam) {
+        console.error(`kortelė '${simKortelė.header}' jau yra šiame mobiliajam: '${this.header}'`);
+      } else {
+        if (simKortelė.priskirtasMobilusis === null) {
+          this.#simKortelės.push(simKortelė);
+          simKortelė.priskirtiMobiliajam(this);
+        } else if (simKortelė.priskirtasMobilusis === this) {
+          this.#simKortelės.push(simKortelė);
+        } else {
+          console.error(`kortelė '${simKortelė.header}' jau yra priskirta mobiliajam: '${simKortelė.priskirtasMobilusis.header}'`);
+        }
+      }
+    }
+  }
+
+  class SimKoretelė {
+    #priskirtasMobilusis = null;
+
+    constructor(ryšys, numeris) {
+      this.ryšys = ryšys;
+      this.numeris = numeris;
+    }
+
+    get priskirtasMobilusis() {
+      return this.#priskirtasMobilusis;
+    }
+
+    get header() {
+      return `${this.ryšys} ${this.numeris}`;
+    }
+
+    get info() {
+      let result = this.header + '\n\tMobilusis įrenginys: ';
+      if (this.#priskirtasMobilusis === null) {
+        result += '---'
+      } else {
+        result += this.#priskirtasMobilusis.header;
+      }
+      return result + '\n';
+    }
+
+    priskirtiMobiliajam = mobilusis => {
+      if (!(mobilusis instanceof Mobilusis))
+        throw new TypeError(`metodo 'priskirtiMobiliajam' 1 argumentas privalo būti 'Mobilusis' klasės objektas.`);
+
+      if (this.#priskirtasMobilusis === null) {
+        const kortelėJauYraMobiliajam = mobilusis.arKortelėJauYraĮdėta(this);
+        this.#priskirtasMobilusis = mobilusis;
+        if (!kortelėJauYraMobiliajam) {
+          mobilusis.įdėtiKoretelę(this);
+        }
+      } else {
+        console.error(`kortelė '${this.header}' jau yra priskirta mobiliajam: '${this.#priskirtasMobilusis.header}'`);
+      }
+    }
+  }
+  const samsung = new Mobilusis('Samsung', 'Galaxy S10');
+  const iPhone = new Mobilusis('IPhone', '13 Pro');
+
+  const omnitelCard = new SimKoretelė('Omnitel', '+370 687 11111');
+  const tele2Card = new SimKoretelė('Tele2', '+370 658 22222');
+  const biteCard = new SimKoretelė('Bitė', '+370 687 33333');
+  const teledemaCard = new SimKoretelė('Teledema', '+370 687 44444');
+  const labasCard = new SimKoretelė('Labas', '+370 687 55555');
+
+  // ↓↓↓ Susiejimai ↓↓↓
+  {
+    samsung.įdėtiKoretelę(omnitelCard);
+    tele2Card.priskirtiMobiliajam(samsung);
+
+    // ↓↓↓ Klaida, nes omnitel koretelė jau yra Samsung telefone ↓↓↓
+    tele2Card.priskirtiMobiliajam(samsung);
+    
+    // ↓↓↓ Klaida, nes omnitel kortelė jau priskirta Samsung'ui ↓↓↓
+    iPhone.įdėtiKoretelę(omnitelCard);
+    omnitelCard.priskirtiMobiliajam(iPhone);
+  }
+  // ↑↑↑ Susiejimai ↑↑↑
+
+  console.group('Mobilieji');
+  {
+    console.log(samsung.info);
+    console.log(iPhone.info);
+  }
+  console.groupEnd();
+  console.group('Kortelės');
+  {
+    console.log(omnitelCard.info);
+    console.log(tele2Card.info);
+    console.log(biteCard.info);
+    console.log(teledemaCard.info);
+    console.log(labasCard.info);
+  }
+  console.groupEnd();
 }
 console.groupEnd();

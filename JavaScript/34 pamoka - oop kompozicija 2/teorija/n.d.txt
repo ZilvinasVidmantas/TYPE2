@@ -1,0 +1,3 @@
+Numbraižyti one-to-many susiejimo scenarijus:
+  * Sėkmingas priskyrimas naudojant mobilaus metodą 'įdėtiKoretelę'
+  * Sėkmingas priskyrimas naudojant koretelės metodą 'priskirtiMobiliajam'
