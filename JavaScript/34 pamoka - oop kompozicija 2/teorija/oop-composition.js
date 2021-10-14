@@ -162,29 +162,3 @@ console.group('1:1 - one-to-one');
   console.log(kotas2.info);
 }
 console.groupEnd();
-
-
-užmautiKirvį = kirvis => {
-  if (!(kirvis instanceof Kirvis)) 
-    throw new TypeError(`metodo 'užmautiKirvį' 1 argumentas privalo būti 'Kirvis' klasės objektas.`);
-
-  if (this.#užmautasKirvis === null) {
-
-    switch (kirvis.užmautasKotas) {
-      case null:
-        this.#užmautasKirvis = kirvis;
-        kirvis.užmautiKotą(this);
-        break;
-
-      case this:
-        this.#užmautasKirvis = kirvis;
-        break;
-
-      default:
-        console.error(`Kirvis '${kirvis.header}' jau turi kitą kotą '${kirvis.užmautasKotas.header}'!`);
-    }
-
-  } else {
-    console.error(`Kotas '${this.header}' jau turi kirvį '${this.#užmautasKirvis.header}'!`);
-  }
-}
