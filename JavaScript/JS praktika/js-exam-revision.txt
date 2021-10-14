@@ -6,7 +6,7 @@
   - height
   - weight
   - sex
-2. Panaudojant array.foreach:
+2. Panaudojant array.forEach:
   - Atspausdinti kiekvieną elementą
   - Atspausdinti kiekvieno elemento pilną vardą
   - Atspausdinti kiekvieno elemento kūno masės indeksą

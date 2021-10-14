@@ -192,6 +192,9 @@ console.group('1:N - one-to-many');
     }
 
     arKortelėJauYraĮdėta = simKortelė => {
+      if (!(simKortelė instanceof SimKoretelė))
+        throw new TypeError(`metodo 'arKortelėJauYraĮdėta' 1 argumentas privalo būti 'SimKoretelė' klasės objektas.`);
+
       return Boolean(this.#simKortelės.find(mobiliajamEsantiKortelė => mobiliajamEsantiKortelė === simKortelė))
     }
 
@@ -246,8 +249,8 @@ console.group('1:N - one-to-many');
         throw new TypeError(`metodo 'priskirtiMobiliajam' 1 argumentas privalo būti 'Mobilusis' klasės objektas.`);
 
       if (this.#priskirtasMobilusis === null) {
-        const kortelėJauYraMobiliajam = mobilusis.arKortelėJauYraĮdėta(this);
         this.#priskirtasMobilusis = mobilusis;
+        const kortelėJauYraMobiliajam = mobilusis.arKortelėJauYraĮdėta(this);
         if (!kortelėJauYraMobiliajam) {
           mobilusis.įdėtiKoretelę(this);
         }
@@ -269,13 +272,14 @@ console.group('1:N - one-to-many');
   {
     samsung.įdėtiKoretelę(omnitelCard);
     tele2Card.priskirtiMobiliajam(samsung);
+    iPhone.įdėtiKoretelę(biteCard);
 
     // ↓↓↓ Klaida, nes omnitel koretelė jau yra Samsung telefone ↓↓↓
-    tele2Card.priskirtiMobiliajam(samsung);
+    omnitelCard.priskirtiMobiliajam(samsung);
     
     // ↓↓↓ Klaida, nes omnitel kortelė jau priskirta Samsung'ui ↓↓↓
     iPhone.įdėtiKoretelę(omnitelCard);
-    omnitelCard.priskirtiMobiliajam(iPhone);
+    biteCard.priskirtiMobiliajam(samsung);
   }
   // ↑↑↑ Susiejimai ↑↑↑
 
