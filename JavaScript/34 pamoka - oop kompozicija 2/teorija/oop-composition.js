@@ -79,21 +79,17 @@ console.group('1:1 - one-to-one');
     }
 
     užmautiKotą = kotas => {
-      if (!(kotas instanceof Kotas)) throw new TypeError(`metodo 'užmautiKotą' 1 argumentas privalo būti 'Kotas' klasės objektas.`)
-      // Jeigu ŠIS KIRVIS neturi koto
-      if (!this.#užmautasKotas) {
-        // Jeigu kotas neturi kirvio
-        if (!kotas.užmautasKirvis) {
+      if (!(kotas instanceof Kotas))
+        throw new TypeError(`metodo 'užmautiKotą' 1 argumentas privalo būti 'Kotas' klasės objektas.`);
+      if (this.#užmautasKotas === null) {
+        if (kotas.užmautasKirvis === null) {
           this.#užmautasKotas = kotas;
           kotas.užmautiKirvį(this);
-          // Jeigu kotui jau yra užmautas ŠIS KIRVIS 
         } else if (kotas.užmautasKirvis === this) {
           this.#užmautasKotas = kotas;
-          // else atveju gaunasi, jog koto kirvis NĖRA ŠIS KIRVIS ir NĖRA TUŠČIAS. Reiškia, jis turi kitą kirvį.
         } else {
           console.error(`Kotas '${kotas.header}' jau turi kitą kirvį '${kotas.užmautasKirvis.header}'!`);
         }
-        // ŠIS KIRVIS jau turi kotą
       } else {
         console.error(`Kirvis '${this.header}' jau turi kotą '${this.#užmautasKotas.header}'!`);
       }
@@ -128,9 +124,9 @@ console.group('1:1 - one-to-one');
     }
 
     užmautiKirvį = (kirvis) => {
-      if (!(kirvis instanceof Kirvis)) throw new TypeError(`metodo 'užmautiKirvį' 1 argumentas privalo būti 'Kirvis' klasės objektas.`)
+      if (!(kirvis instanceof Kirvis)) throw new TypeError(`metodo 'užmautiKirvį' 1 argumentas privalo būti 'Kirvis' klasės objektas.`);
       // Jeigu ŠIS KOTAS neturi kirvio
-      if (!this.#užmautasKirvis) {
+      if (this.#užmautasKirvis === null) {
         switch (kirvis.užmautasKotas) {
           // kirvis neturi koto
           case null:
@@ -166,3 +162,29 @@ console.group('1:1 - one-to-one');
   console.log(kotas2.info);
 }
 console.groupEnd();
+
+
+užmautiKirvį = kirvis => {
+  if (!(kirvis instanceof Kirvis)) 
+    throw new TypeError(`metodo 'užmautiKirvį' 1 argumentas privalo būti 'Kirvis' klasės objektas.`);
+
+  if (this.#užmautasKirvis === null) {
+
+    switch (kirvis.užmautasKotas) {
+      case null:
+        this.#užmautasKirvis = kirvis;
+        kirvis.užmautiKotą(this);
+        break;
+
+      case this:
+        this.#užmautasKirvis = kirvis;
+        break;
+
+      default:
+        console.error(`Kirvis '${kirvis.header}' jau turi kitą kotą '${kirvis.užmautasKotas.header}'!`);
+    }
+
+  } else {
+    console.error(`Kotas '${this.header}' jau turi kirvį '${this.#užmautasKirvis.header}'!`);
+  }
+}
