@@ -270,15 +270,35 @@ console.group('1:N - one-to-many');
 
   // ↓↓↓ Susiejimai ↓↓↓
   {
+    /*                     Įmanomi scenarijai
+      GERAI:
+      mobilusKurisNeturiŠiosKortelės.įdėtiKoretelę(laisvaKoretelė)
+      laisvaKoretelė.priskirtiMobiliam(mobilusKurisNeturiŠiosKortelės)
+
+      BLOGAI:
+      mobilusKurisJauTuriŠiąKortelė.įdėtiKoretelę(koretelėKuriJauYraŠiamMobiliajam)
+      koretelėKuriJauYraŠiamMobiliajam.priskirtiMobiliam(mobilusKurisJauTuriŠiąKortelė)
+
+      BLOGAI:
+      kitasMobilus.įdėtiKortelę(koretelėKuriPriklausoKitamMobiliajam)
+      koretelėKuriPriklausoKitamMobiliajam.priskirtiMobiliam(kitasMobilus)
+    */
+
+    // GERAI: mobilusKurisNeturiŠiosKortelės.įdėtiKoretelę(laisvaKoretelė)
     samsung.įdėtiKoretelę(omnitelCard);
+    // GERAI: laisvaKoretelė.priskirtiMobiliam(mobilusKurisNeturiŠiosKortelės)
     tele2Card.priskirtiMobiliajam(samsung);
+    // GERAI: mobilusKurisNeturiŠiosKortelės.įdėtiKoretelę(laisvaKoretelė)
     iPhone.įdėtiKoretelę(biteCard);
 
-    // ↓↓↓ Klaida, nes omnitel koretelė jau yra Samsung telefone ↓↓↓
+    // BLOGAI: mobilusKurisJauTuriŠiąKortelė.įdėtiKoretelę(koretelėKuriJauYraŠiamMobiliajam)
     omnitelCard.priskirtiMobiliajam(samsung);
+    // BLOGAI: koretelėKuriJauYraŠiamMobiliajam.priskirtiMobiliam(mobilusKurisJauTuriŠiąKortelė)
+    biteCard.priskirtiMobiliajam(iPhone);
     
-    // ↓↓↓ Klaida, nes omnitel kortelė jau priskirta Samsung'ui ↓↓↓
+    // BLOGAI: kitasMobilus.įdėtiKortelę(koretelėKuriPriklausoKitamMobiliajam)
     iPhone.įdėtiKoretelę(omnitelCard);
+    // BLOGAI: koretelėKuriPriklausoKitamMobiliajam.priskirtiMobiliam(kitasMobilus)
     biteCard.priskirtiMobiliajam(samsung);
   }
   // ↑↑↑ Susiejimai ↑↑↑
