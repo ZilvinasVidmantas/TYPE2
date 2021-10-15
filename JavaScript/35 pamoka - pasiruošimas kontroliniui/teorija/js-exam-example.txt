@@ -1,10 +1,10 @@
 1. Sukurkite klasę Car, kuri turėtų savybes ir priskirtų jas naudojant konstruktorių:
-  brand,
-  model,
-  year,
-  color,
-  fuelTypes: [] 
-  price // eurais
+  brand: String
+  model: String
+  year: Number
+  color: String
+  fuelTypes: Array<String> 
+  price: Number
 
 2. Sukurkite masyvą sudarytą iš 8 Car klasės mašinų
 
