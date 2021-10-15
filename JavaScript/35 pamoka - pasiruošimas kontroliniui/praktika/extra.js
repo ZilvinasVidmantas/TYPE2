@@ -24,7 +24,7 @@ Užduotis:
 
 ----- žemiau pateiktas užduotis atlikti kada/jeigu norite/sugebate. -----
 
-3) Filmas klasėje sukurti metodą, kuris grąžintų filmus...
+3) Sukurkite funkciją, kuri iš 2'o masyvo grąžintų filmus...
 3.1) kuriuose vaidina nurodytas aktorius (gautiFilmusPagalAktoriu(string))
 3.2) kurių išleidimo data yra senesnė negu nurodyta (gautiFilmusIsleistusSeniauNei(number))
 3.3) kurių kainaPirkti yra mažesnė negu nuomos kaina nurodytui dienų skaičiui (gautiFilmusKuriuNevertaNomuotis(number))
