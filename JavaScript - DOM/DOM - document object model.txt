@@ -1,0 +1,72 @@
+------------------------------------ HTMLDocument prototipo metodai ir savybės ------------------------------------
+
+document.createElement(TAG_NAME)
+  sukuria naują HTMLElement prototipo objektą, pagal 'TAG_NAME'.
+    Svarbu pastebėti, jog sukūrus šį elementą jis nėra pridedamas į matomą HTML medį (document)
+
+------------------------------------ HTMLElement prototipo metodai ir savybės ------------------------------------
+HTMLElement.querySelector(selektorius)
+  Suranda pirmą HTML elementą, pradedant 'HTMLElement' pagal 'selektorius'
+
+HTMLElement.querySelectorAll(selektorius)
+  Suranda visus HTML elementus, pradedant 'HTMLElement' pagal 'selektorius'
+
+https://developer.mozilla.org/en-US/docs/Web/Events
+HTMLElement.addEventListener(kokioĮvykioLaukiame, kąDarytiKuometSulaukiame);
+
+HTMLElement.getBoundingRect()
+  grąžina bet kokio 'HTMLElement' išmatavimus ir atstumus nuo <html> elemento kontūrų
+    Atstumai nuo/iki <html> elemento kontūrų yra matuojami pagal 'HTMLElement' kairį-viršutinį kampą
+
+HTMLElement.innerHTML
+  tai bet kokio 'HTMLElement' savybė, kurioje yra išsaugotas HTML turinys. Viskas tarp atidarymo ir uždarymo:
+  --------------------------------------------------------------------
+  HTMLElement                 | HTMLElement.innerHTML
+  --------------------------------------------------------------------
+  --------------------------------------------------------------------
+  <span>Tekstas</span>        | 'Tekstas'
+  --------------------------------------------------------------------
+  <div>Labas vakaras</div>    | 'Labas vakaras'
+  --------------------------------------------------------------------
+  <div>                       | '<span>name</span><span>Jonas</span>'
+    <span>name</span>         |
+    <span>Jonas</span>        |
+  </div>                      |
+  --------------------------------------------------------------------
+  <input type="text" />       | ''
+  --------------------------------------------------------------------
+
+HTMLElement.className
+  tai yra 'HTMLElement' class="" atributo atitikmuo, galite jį tiek naudoti tiek nustatymui, tiek panaudojimui
+    nustatymas: 
+      someElement.className = 'klase1 klase2 klase3' → <someElementTag class="klase1 klase2 klase3">...</someElementTag>
+    panaudojimas:
+      esant elementui: <someElementTag class="klaseX klaseY">...</someElementTag>
+      console.log(someElement.className); → 'klaseX klaseY';
+
+HTMLElement.classList
+  šioje savybėje yra išsaugotos 'HTMLElement' klasės atskirai DOMTokenList struktūroje panašioje į Array.
+  DOMTokenList struktūra turi patogius, darbui su klasėmis, skirtus metodus:
+    contains('klasėsPavadinimas') → grąžina Boolean reikšmę pagal tai ar egzistuoja klasė 'klasėsPavadinimas'
+    add('klasėsPavadinimas') → prideda naują klasę į 'class' atributą → class="... klasėsPavadinimas"
+    remove('klasėsPavadinimas') → pašalina klasę 'klasėsPavadinimas'
+    toggle('klasėsPavadinimas') → pašalina klasę jei yra, arba pridėda jei jos nėra
+
+HTMLElement.appendChild(ChildHTMLElement)
+  prideda į 'HTMLElement' galą kitą 'ChildHTMLElement'.
+
+HTMLElement.setAttribute(ATTRIBUTE_NAME, ATTRIBUTE_VALUE)
+  prideda 'HTMLElement' atributą
+  P.S.: kai kuriuos atributus (type, id) galima nustatyti tiesiogiai, bet dauguma nustatomi šiuo metodu
+
+HTMLElement.removeAttribute(ATTRIBUTE_NAME)
+  pašalina 'HTMLElement' atributą
+
+HTMLElement.style 
+  šia savybe yra pasiekiamas objektas, kuriame yra visos CSS savybės (dauguma jų tuščios)
+  bet kokią CSS savybę galite nustatyti redaguojant šio 'HTMLElement.style' objekto savybę (camelCase) formatu
+  pvz.:
+    HTMLElement.style.backgroundColor = '#ff00ff';
+    HTMLElement.style.zIndex = '19';
+    HTMLElement.style.fontSize = '15px';
+  Pekeitus šį objektą, atsinaujina HTMLElement style="" atributo turinys ir elementas įgauna stilius (jei nėra aukštesnio prioriteto nurodymų)
