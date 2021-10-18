@@ -1,0 +1,12 @@
+Dar kartą Perskaityti visus failus, iš aplanko: 
+  https://github.com/ZilvinasVidmantas/TYPE2/tree/master/JavaScript/Atskiros%20temos
+  'TYPE2/JavaScript/Atskiros temos/'
+
+Perskaityti failą:
+  'TYPE2/JavaScript - DOM/DOM - document object model.txt'
+
+Peržiūrėti video ir persirašyti patiems:
+  https://www.youtube.com/watch?v=0ik6X4DJKCc&ab_channel=TraversyMedia
+  https://www.youtube.com/watch?v=mPd2aJXCZ2g&ab_channel=TraversyMedia
+  https://www.youtube.com/watch?v=wK2cBMcDTss&ab_channel=TraversyMedia
+  https://www.youtube.com/watch?v=i37KVt_IcXw&ab_channel=TraversyMedia
