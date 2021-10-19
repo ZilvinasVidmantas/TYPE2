@@ -1,13 +1,15 @@
 class Paragraph {
-  constructor(text, className) {
+  constructor(props) {
     this.htmlElement = document.createElement('p');
-    this.text = text;
-    this.className = className;
+    this.props = props;
     this.render();
   }
 
   render = () => {
-    this.htmlElement.innerHTML = this.text;
-    this.htmlElement.className = this.className;
+    const { text, className } = this.props;
+    this.htmlElement.innerHTML = text;
+    if (className) {
+      this.htmlElement.className = className;
+    }
   }
 }
