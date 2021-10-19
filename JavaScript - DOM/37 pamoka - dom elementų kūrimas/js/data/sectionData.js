@@ -1,8 +1,21 @@
+/*
+Section {
+  title: String
+  children: Array<Component>
+  subSections?: Array<Section>
+}
+
+const sections: Array<Section>
+*/
+
 const sections = [
   {
     title: "Elementų paieška",
     children: [
-      { component: "Paragraph", props: { text: "Norint su JavaScript keisti HTML turinį <em>(keisti JavaScript objektus, kurie susieti su HTML turiniu)</em> turime surasti elementus. Tai darome ieškant elementų pagal selektorių. Selektoriaus logika yra tokia pati kaip ir CSS selektorių." } }
+      {
+        component: "Paragraph",
+        props: { text: "Norint su JavaScript keisti HTML turinį <em>(keisti JavaScript objektus, kurie susieti su HTML turiniu)</em> turime surasti elementus. Tai darome ieškant elementų pagal selektorių. Selektoriaus logika yra tokia pati kaip ir CSS selektorių." }
+      }
     ],
     subSections: [
       {
