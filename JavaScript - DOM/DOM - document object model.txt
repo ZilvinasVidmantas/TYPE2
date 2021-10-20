@@ -52,8 +52,11 @@ HTMLElement.classList
     remove('klasėsPavadinimas') → pašalina klasę 'klasėsPavadinimas'
     toggle('klasėsPavadinimas') → pašalina klasę jei yra, arba pridėda jei jos nėra
 
-HTMLElement.appendChild(ChildHTMLElement)
-  prideda į 'HTMLElement' galą kitą 'ChildHTMLElement'.
+HTMLElement.appendChild(HTMLElement)
+  prideda į 'HTMLElement' galą kitą 'HTMLElement'.
+
+HTMLElement.append(...(HTMLElement | string))
+  prideda bet kokį kiekį HTMLElement arba string elementų į komponento galą.
 
 HTMLElement.setAttribute(ATTRIBUTE_NAME, ATTRIBUTE_VALUE)
   prideda 'HTMLElement' atributą
