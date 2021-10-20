@@ -1,3 +1,10 @@
+/*
+  type ParagraphProps = {
+    text: string,
+    className?: string
+  }
+*/
+
 class Paragraph {
   constructor(props) {
     this.htmlElement = document.createElement('p');

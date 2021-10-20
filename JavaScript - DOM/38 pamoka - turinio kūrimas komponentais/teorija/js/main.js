@@ -1,6 +1,7 @@
 const root = document.querySelector('#root');
 
-const section1 = new Section({
+debugger;
+const sectionComponent1 = new Section({
   subSections: [],
   title: 'Sekcijos Pavadinimas',
   children: [
@@ -9,28 +10,30 @@ const section1 = new Section({
       props: { text: 'Paragraph 1', className: 'bg-dark text-white p-3' }
     },
     {
-      componentName: 'Paragraph',
-      props: { text: 'Paragraph 2' }
+      componentName: 'CodeExample',
+      props: {
+        lines: [
+          { type: 'comment', text: 'komentaras 1'},
+          { type: 'code', text: 'kodas 1'},
+          { type: 'comment', text: 'komentaras 2'},
+          { type: 'code', text: 'kodas 2'},
+          { type: 'comment', text: 'komentaras 3'},
+          { type: 'code', text: 'kodas 3'},
+        ]
+      }
     },
     {
-      componentName: 'Paragraph',
-      props: { text: 'Paragraph 3' }
+      componentName: 'CodeExample',
+      props: {
+        lines: [
+          { type: 'comment', text: 'komentaras 1'},
+          { type: 'comment', text: 'komentaras 2'},
+          { type: 'code', text: 'kodas 1'},
+          { type: 'code', text: 'kodas 2'},
+        ]
+      }
     },
   ],
 });
-const section2 = new Section({
-  title: 'Sekcijos Pavadinimas 2'
-});
 
-const p1 = new Paragraph({
-  text: 'Pargafo tekstas 1',
-  className: 'bg-dark text-white p-5'
-});
-const p2 = new Paragraph({
-  text: 'Pargafo tekstas 2222',
-  className: 'bg-light text-danger p-3'
-});
-
-root.appendChild(section1.htmlElement);
-root.appendChild(section2.htmlElement);
-root.append(p1.htmlElement, p2.htmlElement);
+root.appendChild(sectionComponent1.htmlElement);

@@ -1,3 +1,23 @@
+/*
+  type ParagraphChild = {
+    componentName: 'Paragraph',
+    props: ParagraphProps
+  }
+
+  type CodeExampleChild = {
+    componentName: 'CodeExample',
+    props: CodeExampleProps
+  }
+
+  type Child = ParagraphChild | CodeExampleChild;
+
+  type SectionProps = {
+    title: string,
+    children?: Array<Child>,
+    subSections?: Array<SectionProps>
+  }
+*/
+
 class Section {
   constructor(props) {
     // htmlElement - tai objekto savybė, kuria išsaugome komponento HTMLElement
@@ -7,18 +27,24 @@ class Section {
     this.render();
   }
 
-  createChildrenComponents = () => {
-    return this.props.children.map(({ componentName, props }) => {
+  renderChildren = (container) => {
+    const components = this.props.children.map(({ componentName, props }) => {
       let component;
       switch (componentName) {
         case 'Paragraph':
           component = new Paragraph(props);
           break;
+        case 'CodeExample':
+          component = new CodeExample(props);
+          break;
         default:
           throw TypeError(`Nėra sukurtas toks komponentas ${componentName}`);
       }
-      return component.htmlElement;
+      return component;
     });
+    // components.forEach(component => container.appendChild(component.htmlElement));
+    const htmlElements = components.map(component => component.htmlElement)
+    container.append(...htmlElements);
   }
 
   // render metodas, naudojamas sugeneruoti komponento turinį
@@ -32,8 +58,6 @@ class Section {
     header.innerHTML = this.props.title;
     container.appendChild(header);
 
-    if (this.props.children) {
-      container.append(...this.createChildrenComponents());
-    }
+    if (this.props.children) this.renderChildren(container);
   }
 }
