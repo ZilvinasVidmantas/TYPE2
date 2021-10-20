@@ -14,20 +14,43 @@
   type SectionProps = {
     title: string,
     children?: Array<Child>,
-    subSections?: Array<SectionProps>
+    subSections?: Array<SectionProps>,
+    level?: number
   }
 */
 
 class Section {
   constructor(props) {
-    // htmlElement - tai objekto savybė, kuria išsaugome komponento HTMLElement
-    this.htmlElement = document.createElement('section'); // <section></section>
-    this.props = props;
-    // Po Sekcijos komponento sukūrimo, iškarto iškviečiame sudarymo metodą 'render';
+    this.props = props;     // false                            ↓
+    const htmlElementType = this.isSubSection ? 'article' : 'section';
+    this.htmlElement = document.createElement(htmlElementType);
     this.render();
   }
 
+  get isSubSection() {
+    return Boolean(this.props.level);
+  }
+
+  get level() {
+    return this.isSubSection ? this.props.level : 1;
+  }
+
+  renderHeader = (container) => {
+    const headerNumber = this.level + 1;
+    const htmlHeaderType = 'h' + headerNumber;
+
+    const headerClassNumber = headerNumber + 1;
+    const headerClassName = 'h' + headerClassNumber;
+
+    const header = document.createElement(htmlHeaderType);
+    header.className = headerClassName;
+    header.innerHTML = this.props.title;
+    container.appendChild(header);
+  }
+
   renderChildren = (container) => {
+    if (!this.props.children) return;
+
     const components = this.props.children.map(({ componentName, props }) => {
       let component;
       switch (componentName) {
@@ -42,22 +65,50 @@ class Section {
       }
       return component;
     });
-    // components.forEach(component => container.appendChild(component.htmlElement));
     const htmlElements = components.map(component => component.htmlElement)
     container.append(...htmlElements);
   }
 
+  renderSubSections = (container) => {
+    if (!this.props.subSections) return;
+
+    const subSectionComponents = this.props.subSections.map(({ title, children, subSections }) => {
+      const subSectionComponent = new Section({
+        title,
+        children,
+        subSections,
+        level: this.level + 1
+      })
+      return subSectionComponent;
+    });
+    const subSectionHtmlElements = subSectionComponents.map(x => x.htmlElement);
+    container.append(...subSectionHtmlElements);
+  }
+
+  formatContainer = () => {
+    let container;
+    if (this.isSubSection) {
+      // <article></article>
+      container = this.htmlElement;
+      container.className = 'ps-4';
+      // ↓↓↓↓↓↓↓↓↓↓ container ↓↓↓↓↓↓↓↓↓↓↓
+      // <article class="ps-4"></article>
+    } else {
+      // <div></div>
+      container = document.createElement('div');
+      container.className = 'container';
+      this.htmlElement.appendChild(container);
+      //           ↓↓↓↓↓↓↓↓ container ↓↓↓↓↓↓↓↓↓↓
+      // <section> <div class="container"></div> </section>
+    }
+    return container;
+  }
+
   // render metodas, naudojamas sugeneruoti komponento turinį
   render = () => {
-    const container = document.createElement('div');
-    container.className = 'container';
-    this.htmlElement.appendChild(container);
-
-    const header = document.createElement('h2');
-    header.className = 'h3';
-    header.innerHTML = this.props.title;
-    container.appendChild(header);
-
-    if (this.props.children) this.renderChildren(container);
+    const container = this.formatContainer();
+    this.renderHeader();
+    this.renderChildren(container);
+    this.renderSubSections(container);
   }
 }

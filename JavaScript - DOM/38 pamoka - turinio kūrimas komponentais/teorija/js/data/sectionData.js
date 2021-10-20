@@ -8,7 +8,7 @@ Section {
 const sections: Array<Section>
 */
 
-const sections = [
+const sectionData = [
   {
     title: "Elementų paieška",
     children: [

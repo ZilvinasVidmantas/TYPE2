@@ -1,0 +1,2 @@
+1. Išanalizuoti <sectionLVL1> ir <sectionLVL2> veikimą su debugger;
+2. Daryti savaitės namų darbus.
