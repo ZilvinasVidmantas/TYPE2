@@ -1,0 +1,5 @@
+# ignoruoja node_modules visoje failų sistemoje
+node_modules
+
+# ignoruoja visus VSCode editoriaus nustatymus visoje failų sistemoje
+.vscode
