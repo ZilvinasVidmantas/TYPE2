@@ -2,48 +2,47 @@
 CodeAcademy TYPE2 grupės repozitorija
 
 ## Programa
-* HTML CSS
-* * HTML
+* HTML CSS [80]
+  * HTML
     * HTML tree structure
-* * * HTML element structure
-* * * Opening and closing tags
-* * * Self closing elements
-* * * Attributes
-* * * inline elements
-* * * inline-block elements
-* * * block elements
-* * flex
-* * * justify-content
-* * * align-items
-* * * flex-direction
-* * * flex-wrap
-* * * flex-grow
-* * position
-* * * static
-* * * relative
-* * * absolute
-* * * fixed
-* * * sticky
-* * grid
-* * * grid-template-columns
-* * * grid line concept
-* * * grid-template-rows
-* * * grid-template-areas
-* * * grid-template
-* * * grid-template reponsive
-* * * grid named lines method
+    * HTML element structure
+    * Opening and closing tags
+    * Self closing elements
+    * Attributes
+    * inline elements
+    * inline-block elements
+    * block elements
+    flex
+    * justify-content
+    * align-items
+    * flex-direction
+    * flex-wrap
+    * flex-grow
+    position
+    * static
+    * relative
+    * absolute
+    * fixed
+    * sticky
+    grid
+    * grid-template-columns
+    * grid line concept
+    * grid-template-rows
+    * grid-template-areas
+    * grid-template
+    * grid-template reponsive
+    * grid named lines method
 
 * Projektų valdymas ir vystymas
-* * GIT versijavimo kontrolės pagrindai
-* * GIT nepertraukiamo darbo metodologija ir tvarka viešinant kodą
-* * Užduočių planuoklės pagrindai
-* * Komandinis projekto vystymas
+  * GIT versijavimo kontrolės pagrindai
+  * GIT nepertraukiamo darbo metodologija ir tvarka viešinant kodą
+  * Užduočių planuoklės pagrindai
+  * Komandinis projekto vystymas
 
 * Framework
-* * Bootstrap Grid system
-* * Bootstrap Tables
-* * Individualūs full responsive projektai 
-
+  * Bootstrap Grid system
+  * Bootstrap Tables
+  * Individualūs full responsive projektai 
 
 * JavaScript pagrindai
 
