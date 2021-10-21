@@ -21,7 +21,7 @@
 
 class Section {
   constructor(props) {
-    this.props = props;     // false                            ↓
+    this.props = props;
     const htmlElementType = this.isSubSection ? 'article' : 'section';
     this.htmlElement = document.createElement(htmlElementType);
     this.render();
@@ -35,7 +35,7 @@ class Section {
     return this.isSubSection ? this.props.level : 1;
   }
 
-  renderHeader = (container) => {
+  renderHeader = container => {
     const headerNumber = this.level + 1;
     const htmlHeaderType = 'h' + headerNumber;
 
@@ -48,7 +48,7 @@ class Section {
     container.appendChild(header);
   }
 
-  renderChildren = (container) => {
+  renderChildren = container => {
     if (!this.props.children) return;
 
     const components = this.props.children.map(({ componentName, props }) => {
@@ -69,7 +69,7 @@ class Section {
     container.append(...htmlElements);
   }
 
-  renderSubSections = (container) => {
+  renderSubSections = container => {
     if (!this.props.subSections) return;
 
     const subSectionComponents = this.props.subSections.map(({ title, children, subSections }) => {
@@ -88,18 +88,12 @@ class Section {
   formatContainer = () => {
     let container;
     if (this.isSubSection) {
-      // <article></article>
       container = this.htmlElement;
       container.className = 'ps-4';
-      // ↓↓↓↓↓↓↓↓↓↓ container ↓↓↓↓↓↓↓↓↓↓↓
-      // <article class="ps-4"></article>
     } else {
-      // <div></div>
       container = document.createElement('div');
       container.className = 'container';
       this.htmlElement.appendChild(container);
-      //           ↓↓↓↓↓↓↓↓ container ↓↓↓↓↓↓↓↓↓↓
-      // <section> <div class="container"></div> </section>
     }
     return container;
   }
