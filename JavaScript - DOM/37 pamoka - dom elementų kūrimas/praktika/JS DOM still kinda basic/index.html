@@ -6,43 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS DOM</title>
   <link rel="stylesheet" href="">
-  <script src=""></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
   <section id="section1">
     <form>
       <label>Username:</label>
-      <input type="text" name="username" value="Rokas"><br>
+      <input type="text" name="username1" id="username1" value="Rokas"><br>
       <label>Password:</label>
-      <input type="password" name="password" value="superDuperSecret123">
+      <input type="password" name="password1" id="password1" value="superDuperSecret123">
     </form>
   </section>
   <hr>
   <section id="section2">
-    <form>
+    <form onsubmit="return funcName(event)">
       <label>Username:</label>
-      <input type="text" name="username" value=""><br>
+      <input type="text" name="username2" id="username2" value=""><br>
       <label>Password:</label>
-      <input type="password" name="password" value=""><br>
-      <button>click me</button>
+      <input type="password" name="password2" id="password2" value=""><br>
+      <input type="submit" value="click me">
+      <br><button type="button" onclick="funcName(event)">click me</button>
     </form>
   </section>
   <hr>
   <section id="section3">
-    <h1>change me</h1>
-    <button>by clicking me</button>
+    <h1 id="textToChange">change me</h1>
+    <button type="button" onclick="changeText()">by clicking me</button>
   </section>
   <hr>
   <section id="section4">
     <form>
       <label>Columns:</label>
-      <input type="text" name="columns" placeholder="0">
+      <input type="text" name="columns" id="columns" placeholder="0">
       <label>Rows:</label>
-      <input type="text" name="rows" placeholder="0">
-      <button>Create table</button>
+      <input type="text" name="rows" id="rows" placeholder="0">
+      <button type="button" onclick="makeTable()">Create table</button>
     </form>
-    <div>
-
+    <div id="table">
     </div>
   </section>
   <hr>
@@ -54,22 +54,22 @@
         <option>White</option>
         <option>Black</option>
       </select>
-      <button>Remove</button>
+      <button type="button" onclick="remove()">Remove</button>
     </form>
   </section>
   <hr>
   <section id="section6">
     <form>
       <label>x:</label>
-      <input type="text" name="x" placeholder="0">
+      <input type="text" name="rectX" id="rectX" placeholder="0">
       <label>y:</label>
-      <input type="text" name="y" placeholder="0">
+      <input type="text" name="rectY" id="rectY" placeholder="0">
       <label>z:</label>
-      <input type="text" name="z" placeholder="0"><br>
-      <button>Area</button>
-      <button>Perimeter</button>
-      <button>Surface Area</button>
-      <button>Volume</button>
+      <input type="text" name="rectZ" id="rectZ" placeholder="0"><br>
+      <button type="button" onclick="area()">Area</button>
+      <button type="button" onclick="perimeter()">Perimeter</button>
+      <button type="button" onclick="surfaceArea()">Surface Area</button>
+      <button type="button" onclick="volume()">Volume</button>
     </form>
   </section>
 </body>
