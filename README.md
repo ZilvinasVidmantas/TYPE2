@@ -4,7 +4,7 @@ CodeAcademy TYPE2 grupės repozitorija
 ## Programa
 * HTML CSS
 * * HTML
-* * * HTML tree structure
+    * HTML tree structure
 * * * HTML element structure
 * * * Opening and closing tags
 * * * Self closing elements
