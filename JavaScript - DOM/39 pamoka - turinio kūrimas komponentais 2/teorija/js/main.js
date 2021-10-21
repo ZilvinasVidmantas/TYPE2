@@ -7,13 +7,16 @@ const changePropComponent2ComponentName = ({ component, ...props }) => ({
   componentName: component,
 })
 
-const sectionComponent1 = new Section({
+//  Nubraižyti diagramą, kaip yra suformatuojamas objektas <sectionProps>;
+const sectionProps = {
   title: singleSectionData.title,
   children: singleSectionData.children.map(changePropComponent2ComponentName),
   subSections: singleSectionData.subSections.map(({ children, ...subSection }) => ({
     ...subSection,
     children: children.map(changePropComponent2ComponentName)
   })),
-});
+};
+
+const sectionComponent1 = new Section(sectionProps);
 
 root.appendChild(sectionComponent1.htmlElement);
