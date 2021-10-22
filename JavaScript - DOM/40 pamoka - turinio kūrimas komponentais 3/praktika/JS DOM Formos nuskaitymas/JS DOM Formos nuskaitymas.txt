@@ -1,0 +1,23 @@
+JS DOM Formos nuskaitymas aplankale esančiais duomenimis atlikite šiuos veiksmus:
+
+0) Jei reikia - koreguokite ir keiskite HTML failą kaip jums patogu (pridėkite klases, ID, naujus tag'us ir kita)
+0.1) Stilizavimą palike pabaigai. Kai atliksite visas užduotis, grįžkite prie kiekvienos stilizavimo dalies.
+
+
+1) Naudodamiesi data[0] duomenimis atlikite šiuos veiksmus:
+	1.1) JS'u 1 sekcijoje sukurkite antraštę.
+	1.2) JS'u 1 sekcijoje sukurkite input ir button.
+	1.3) JS'u padarykite, kad paspaudus ant mygtuko, pagal įvestį būtų surastas paveikslas ir įkelta jo nuotrauka ir aprašymas. Jeigu paveikslas nerastas - išvesti ant ekrano error žinutę.
+	1.4) JS'u 1 sekciją stilizuokite priskirdami klases.
+2) Naudodamiesi data[1] duomenimis atlikite šiuos veiksmus:
+	2.1) JS'u 2 sekcijoje sukurkite antraštę.
+	2.2) JS'u 2 sekcijoje sukurkite formą, kurioje būtų: input1, selector su visais variantais ir input2. (galima data faile keisti input1 ir input2 placeholder'ių tekstą priklausomai nuo pasirinkto selektoriaus)
+	2.3) JS'u 2 sekcijoje sukurkite mygtuką ir error'o / atsakymo vietą.
+	2.4) JS padarykite, kad paspaudus ant mygtuko būtų patikrinama ar visi formos laukeliai užpildyti (jei ne, tai išvesti error žinutę) ir tuomet suskaičiuoti ir išvesti atsakymą pagal tai, kokį veiksmą norėta atlikti.
+	2.5) JS'u 2 sekciją stilizuokite priskirdami klases.
+3) (jeigu kas nebuvo atlikę) JS'u 3 sekcijoje esančiose formose užpildykite x/y/z laukelius ir paspaudus atitinkamą mygtuką apskaičiuokite 2D arba 3D (priklausomai ar z paliktas tušias/0 ar duotas dydis) keturkampio Plotą, Perimetrą, Bendras paviršiaus plotą ir Turį. Gale viską stilizuokite.
+4) Naudodamiesi data[2] duomenimis atlikite šiuos veiksmus:
+	4.1) JS'u 4 sekcijoje sukurkite antraštę.
+	4.2) JS'u 4 sekcijoje sukurkite formą su selector (kuris turi visus variantus), input ir button.
+	4.3) Padarykite, kad paspaudus mygtuką į 4 sekciją būtų išvesti tik tie filmai, kurie atitinka nurodytą informaciją search'e (pagal select'ą ir input'ą)(filmų gali būti daug - išvesti visus. Gali nerasti nei vieno - išvesti error žinutę)
+	4.4) JS'u 4 sekciją stilizuokite priskirdami klases.	
