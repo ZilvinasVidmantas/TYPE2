@@ -4,3 +4,5 @@
 @import "base/reset.css";
 
 @import "components/code.css";
+@import "components/service-component.css";
+@import "components/service-container-component.css";

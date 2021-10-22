@@ -62,3 +62,15 @@ const sectionHtmlElements = sectionComponents.map(component => component.htmlEle
     Pabandykite savarankiškai išspręsti kelis uždavinius:
       https://www.w3resource.com/javascript-exercises/javascript-recursion-functions-exercises.php
 */
+
+// pavyzdys 1 dalis:
+const serviceData = serviceDataArr[0];
+const serviceComponent = new ServiceComponent(serviceData);
+root.append(serviceComponent.htmlElement);
+
+
+// pavyzdys 2 dalis:
+const serviceContainerComponent = new ServiceContainerComponent({
+  data: serviceDataArr
+});
+root.append(serviceContainerComponent.htmlElement);
