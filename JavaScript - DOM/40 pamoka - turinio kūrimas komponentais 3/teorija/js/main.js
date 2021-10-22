@@ -25,14 +25,11 @@ const changePropComponent2ComponentName = ({ component, ...props }) => ({
 });
 
 const formatSectionsData = sectionArr => {
-  // Grąžiname naujai suformuotą sekcijų duomenų masyvą, pakeisdami kiekvieną sekcijos duomenų objektą pagal funkciją 30-44
+  // Grąžiname naujai suformuotą sekcijų duomenų masyvą, pakeisdami kiekvieną sekcijos duomenų objektą pagal funkciją 30-41
   return sectionArr.map(
     ({ subSections, children, ...rest }) => {
       // į rezultato objektą įrašome, visas objekto savybes, kurių nereikia keisti arba tikrinti
-      const result = {
-        ...rest
-        // o kas čia?
-      };
+      const result = { ...rest };
       if (children) {
         // o kaip gi čia?
       }
