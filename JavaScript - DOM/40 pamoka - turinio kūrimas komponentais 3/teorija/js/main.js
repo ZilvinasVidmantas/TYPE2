@@ -19,7 +19,7 @@ const root = document.querySelector('#root');
       
   */
 
-const changePropComponent2ComponentName = ({ component, ...props }) => ({
+const changeChildComponentProps = ({ component, ...props }) => ({
   ...props,
   componentName: component,
 });
@@ -31,10 +31,10 @@ const formatSectionsData = sectionArr => {
       // į rezultato objektą įrašome, visas objekto savybes, kurių nereikia keisti arba tikrinti
       const result = { ...rest };
       if (children) {
-        // o kaip gi čia?
+        result.children = children.map(changeChildComponentProps);
       }
       if (subSections) {
-        // O čia kas?
+        result.subSections = formatSectionsData(subSections);
       }
 
       return result;
@@ -42,7 +42,7 @@ const formatSectionsData = sectionArr => {
   );
 }
 
-
+debugger;
 const sectionDataFormatted = formatSectionsData(sectionData);
 const sectionComponents = sectionDataFormatted.map(data => new Section(data));
 const sectionHtmlElements = sectionDataFormatted.map(component => component.htmlElement);

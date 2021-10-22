@@ -75,5 +75,8 @@ const sectionData = [
         },
       }
     ],
+  },
+  {
+    title: 'Elemento pilnas HTML'
   }
 ]
