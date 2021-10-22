@@ -80,6 +80,7 @@ CodeAcademy TYPE2 grupės repozitorija
 * test
 
 ## Darbinės aplikos kūrimas naudojant Node.js [40]
+* node js moduliai - failai
 * npm, package.json and library management
 * webpack configutation
 * eslint configuration

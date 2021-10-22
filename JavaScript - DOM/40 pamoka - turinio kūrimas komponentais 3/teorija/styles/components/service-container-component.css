@@ -1,0 +1,10 @@
+.service-container-component {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.service-container-component>*{
+  width: initial;
+}

@@ -36,6 +36,9 @@ HTMLElement.innerHTML
   <input type="text" />       | ''
   --------------------------------------------------------------------
 
+HTMLElement.outterHTML
+  Visas elementas (įskaitant atidarymo ir uždarymo tag'us) paverstas string;u
+
 HTMLElement.className
   tai yra 'HTMLElement' class="" atributo atitikmuo, galite jį tiek naudoti tiek nustatymui, tiek panaudojimui
     nustatymas: 
