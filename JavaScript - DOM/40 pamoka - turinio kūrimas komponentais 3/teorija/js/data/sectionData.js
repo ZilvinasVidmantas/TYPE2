@@ -13,7 +13,7 @@ const sectionData = [
     title: "Elementų paieška",
     children: [
       {
-        component: "Paragraph",
+        component: "Paragraph", 
         props: { text: "Norint su JavaScript keisti HTML turinį <em>(keisti JavaScript objektus, kurie susieti su HTML turiniu)</em> turime surasti elementus. Tai darome ieškant elementų pagal selektorių. Selektoriaus logika yra tokia pati kaip ir CSS selektorių." }
       }
     ],
@@ -51,5 +51,29 @@ const sectionData = [
         ]
       }
     ]
+  },
+  {
+    title: "Elementų turinio manipuliacija",
+    children: [
+      {
+        component: "Paragraph", 
+        props: { text: "Bet kokio elemento turinys keičiamas naudojant savybę HTMLElement.innerHTML" }
+      },
+      {
+        component: "CodeExample",
+        props: {
+          lines: [
+            { type: "comment", text: "Vidinio turinio nustatymas" },
+            { type: "code", text: "target.innerHTML = 'Naujas turinys';" },
+            { type: "comment", text: "Vidinio turinio papildymas" },
+            { type: "code", text: "target.innerHTML += 'Papildomasis turinys';" },
+            { type: "comment", text: "Vidinio turinio ištrinimas" },
+            { type: "code", text: "target.innerHTML = '';" },
+            { type: "comment", text: "Vidinio turinio nuskaitymas" },
+            { type: "code", text: "const content = target.innerHTML;" },
+          ]
+        },
+      }
+    ],
   }
 ]

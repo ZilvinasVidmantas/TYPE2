@@ -4,10 +4,8 @@
     text: string
   };
 
-  type Lines = Array<CodeExampleLine>;
-
   type CodeExampleProps = {
-    lines: Lines
+    lines: Array<CodeExampleLine>
   }
 */
 
