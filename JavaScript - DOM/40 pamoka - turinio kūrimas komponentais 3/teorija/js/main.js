@@ -1,6 +1,4 @@
 const root = document.querySelector('#root');
-
-
 /*
   Perrašyti šį kodą, jog:
     1. Veiksmai būtų atliekami su kiekvienu <sectionData> masyvo elementu ( o ne į'hard-code'inta kaip 24-25 eil.)
@@ -21,30 +19,34 @@ const root = document.querySelector('#root');
       
   */
 
-const section1Data = sectionData[0];
-const section2Data = sectionData[1];
-
 const changePropComponent2ComponentName = ({ component, ...props }) => ({
   ...props,
   componentName: component,
 });
 
-const section1Props = {
-  title: section1Data.title,
-  children: section1Data.children.map(changePropComponent2ComponentName),
-  subSections: section1Data.subSections.map(({ children, ...subSection }) => ({
-    ...subSection,
-    children: children.map(changePropComponent2ComponentName)
-  })),
-};
-const section2Props = {
-  title: section2Data.title,
-  children: section2Data.children.map(changePropComponent2ComponentName),
-};
+const formatSectionsData = sectionArr => {
+  // Grąžiname naujai suformuotą sekcijų duomenų masyvą, pakeisdami kiekvieną sekcijos duomenų objektą pagal funkciją 29-40
+  return sectionArr.map(
+    ({ subSections, children, ...rest }) => {
+      // į rezultato objektą įrašome, visas objekto savybes, kurių nereikia keisti arba tikrinti
+      const result = {
+        ...rest
+        // o kas čia?
+      };
+      if (children) {
+        // o kaip gi čia?
+      }
+      if (subSections) {
+        // O čia kas?
+      }
+
+      return result;
+    })
+}
 
 
-const sectionComponent1 = new Section(section1Props);
-const sectionComponent2 = new Section(section2Props);
+const sectionDataFormatted = formatSectionsData(sectionData);
+const sectionComponents = sectionDataFormatted.map(data => new Section(data));
+const sectionHtmlElements = sectionDataFormatted.map(component => component.htmlElement);
 
-root.appendChild(sectionComponent1.htmlElement);
-root.appendChild(sectionComponent2.htmlElement);
+root.append(...sectionHtmlElements);
