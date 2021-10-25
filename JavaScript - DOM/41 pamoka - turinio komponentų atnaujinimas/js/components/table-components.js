@@ -6,24 +6,21 @@ class TableComponent {
   }
 
   /**
-   * Sukuria vienos eilutės html elementą
-   * 
-   * @param {Object} rowData vienos eilutės duomenys
-    * 
-   * @returns {HTMLElement} vienos eilutės html elementas
-   */
-
+  * Sukuria vienos eilutės html elementą
+  * 
+  * @param {Object} rowData vienos eilutės duomenys
+  * 
+  * @return {HTMLElement} vienos eilutės html elementas
+  */
   createRowElement = rowData => {
     const rowCols = rowData.map(text => `<td>${text}</td>`).join('');
     const row = document.createElement('tr');
     row.innerHTML = `
-    <tr>
       ${rowCols}
-      <td><button class="btn btn-sm btn-danger">✕</button></td>
-    </tr>`;
+      <td><button class="btn btn-sm btn-danger">✕</button></td>`;
 
     const btnDelete = row.querySelector('.btn-danger');
-    btnDelete.addEventListener('click', () => 'Aš tave išktrinsu, eiliau.');
+    btnDelete.addEventListener('click', () => console.log('Aš tave išktrinsu, eiliau.'));
 
     return row;
   }
@@ -40,7 +37,6 @@ class TableComponent {
 
     const tableHeaders = colNames.map(colName => `<th>${colName}</th>`).join('');
     const rows = this.createRows();
-    console.log(rows);
 
     this.htmlElement.className = 'table table-striped';
     this.htmlElement.innerHTML = `
@@ -53,3 +49,4 @@ class TableComponent {
     tbody.append(...rows);
   }
 }
+
