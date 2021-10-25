@@ -26,5 +26,3 @@ class TableComponent {
     <tbody>${tableRows}</tbody>`;
   }
 }
-
-// 10:25
