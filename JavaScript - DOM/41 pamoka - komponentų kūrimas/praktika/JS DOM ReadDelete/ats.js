@@ -53,6 +53,7 @@ button.appendChild(text);
 sek2.appendChild(button);
 
 const moviesDiv = document.createElement("div");
+moviesDiv.setAttribute("id", "moviesDiv");
 
 document.querySelector("#generateMovies").addEventListener("click", () =>{
   moviesDiv.innerHTML = "";
@@ -68,7 +69,7 @@ document.querySelector("#generateMovies").addEventListener("click", () =>{
           <b>IMDB score:</b> ${movie.IMDB} <br>
           <b>Director:</b> ${movie.director} <br>
           <b>Actors:</b> ${movie.actors.filter(actor => {return actor}).join(", ")} <br>
-          <b>Genres:</b> ${movie.genres.filter(genre => {return genre}).join(", ")} <br>
+          <b>Genres:</b> ${movie.genres.map(genre => {return genre}).join(", ")} <br>
           <b>Description:</b> ${movie.description}
         </p>
       </div>
