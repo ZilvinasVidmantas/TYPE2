@@ -9,7 +9,7 @@ class TableComponent {
   }
 
   deleteItem = (id) => {
-    this.state.data = this.state.data.filter((item) => item.id !== id);
+    this.state.data = this.state.data.filter(item.id !== id);
     this.render();
   }
 

@@ -14,7 +14,7 @@ const userTableComponent = new TableComponent({
 });
 
 const dogTableComponent = new TableComponent({
-  colNames: ['Nuotrauka', 'Vardas', 'Veislė',],
+  colNames: ['Nuotrauka', 'Vardas', 'Veislė'],
   data: dogDataArr.reduce((rowData, { name, breed, imgSrc, id }) => [...rowData, {
     id,
     rowData: [
