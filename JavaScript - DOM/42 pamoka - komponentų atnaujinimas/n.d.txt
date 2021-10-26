@@ -1,0 +1,3 @@
+Sukurti Šunų duomenis,
+
+Panaudoti lentelės komponentą, kad atvaizduoti šunis.

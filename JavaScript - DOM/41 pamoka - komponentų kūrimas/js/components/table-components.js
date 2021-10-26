@@ -49,4 +49,3 @@ class TableComponent {
     tbody.append(...rows);
   }
 }
-
