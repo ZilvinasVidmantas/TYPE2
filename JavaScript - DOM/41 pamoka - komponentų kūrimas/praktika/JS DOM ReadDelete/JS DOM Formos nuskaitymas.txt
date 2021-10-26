@@ -2,7 +2,7 @@ JS DOM ReadDelete aplankale esančiais duomenimis atlikite šiuos veiksmus:
 
 0) Jei reikia - koreguokite ir keiskite HTML failą kaip jums patogu (pridėkite klases, ID, naujus tag'us ir kita)
 0.1) Stilizavimą palike pabaigai. Kai atliksite visas užduotis, grįžkite prie kiekvienos stilizavimo dalies.
-0.2) Panaikinimo mygtukas - paslepia elementą (display: none)
+0.2) Panaikinimo mygtukas - paslepia elementą (display: none) arba tiesiog išrašo kąnors į konsolę.
 
 1) Naudodamiesi moviesData[0] duomenimis atlikite šiuos veiksmus:
 	1.1) JS'u 1 sekcijoje sukurkite antraštę ir paragrafą.
