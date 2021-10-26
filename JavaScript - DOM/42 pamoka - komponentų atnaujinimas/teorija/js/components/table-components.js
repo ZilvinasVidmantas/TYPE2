@@ -1,7 +1,15 @@
 class TableComponent {
   constructor(props) {
-    this.props = props;
+    this.props = JSON.parse(JSON.stringify(props));
+    this.state = {
+      data: JSON.parse(JSON.stringify(props.data))
+    };
     this.htmlElement = document.createElement('table');
+    this.render();
+  }
+
+  deleteItem = (id) => {
+    this.state.data = this.state.data.filter((item) => item.id !== id);
     this.render();
   }
 
@@ -12,17 +20,15 @@ class TableComponent {
   * 
   * @return {HTMLElement} vienos eilutės html elementas
   */
-  createRowElement = rowData => {
-    const rowCols = rowData.map(text => `<td>${text}</td>`).join('');
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      ${rowCols}
-      <td><button class="btn btn-sm btn-danger">✕</button></td>`;
+  createRowElement = ({ id, rowData }) => {
+    const rowDataStr = rowData.map(text => `<td>${text}</td>`).join('');
+    const rowElement = document.createElement('tr');
+    rowElement.innerHTML = `${rowDataStr}<td><button class="btn btn-sm btn-danger">✕</button></td>`;
 
-    const btnDelete = row.querySelector('.btn-danger');
-    btnDelete.addEventListener('click', () => console.log('Aš tave išktrinsu, eiliau.'));
+    const btnDelete = rowElement.querySelector('.btn-danger');
+    btnDelete.addEventListener('click', () => this.deleteItem(id));
 
-    return row;
+    return rowElement;
   }
 
   /**
@@ -30,13 +36,15 @@ class TableComponent {
    * 
    * @return {Array} eilučių html eilučių masyvas
    */
-  createRows = () => this.props.data.map(this.createRowElement);
+  createRows = () => this.state.data.map(this.createRowElement);
 
   render = () => {
     const colNames = this.props.colNames;
 
-    const tableHeaders = colNames.map(colName => `<th>${colName}</th>`).join('');
-    const rows = this.createRows();
+    const tableHeaders = [...colNames, 'Veiksmai']
+      .map(colName => `<th>${colName}</th>`)
+      .join('');
+
 
     this.htmlElement.className = 'table table-striped';
     this.htmlElement.innerHTML = `
@@ -45,6 +53,7 @@ class TableComponent {
     </thead>
     <tbody></tbody>`;
 
+    const rows = this.createRows();
     const tbody = this.htmlElement.querySelector('tbody');
     tbody.append(...rows);
   }
