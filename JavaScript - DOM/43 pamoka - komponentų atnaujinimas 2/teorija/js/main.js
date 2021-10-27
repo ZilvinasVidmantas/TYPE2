@@ -25,8 +25,10 @@ const dogTableComponent = new TableComponent({
   }], [])
 });
 
-// Papildykite kiekvienos duomenų eilutės stulpelį update mygtuku,
+// Papildykite kiekvienos duomenų eilutės stulpelį edit mygtuku,
 // kurį paspaudus būtų iškviečiamas editItem metodas (kurį reikia sukurti):
+//  - edit mygtuko tekstas: '⟳'
+//  - edit mygtuko klasės: 'btn btn-warning'
 //  - perduokite editItem metodui, paspausto item'o id
 //  - editItem metodas turi konsolėje parašyti: 'Atnaujinta: ${id}';
 
