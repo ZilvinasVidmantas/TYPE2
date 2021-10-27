@@ -35,15 +35,15 @@ class TableComponent {
     const rowDataStr = rowData.map(text => `<td>${text}</td>`).join('');
     const rowElement = document.createElement('tr');
     rowElement.innerHTML = `${rowDataStr}<td>
-    <button class="btn btn-sm btn-danger">✕</button>
-    ......................................
+      <button class="btn btn-sm btn-warning">⟳</button>
+      <button class="btn btn-sm btn-danger">✕</button>
     </td>`;
 
     const btnDelete = rowElement.querySelector('.btn-danger');
     btnDelete.addEventListener('click', () => this.deleteItem(id));
 
-    ???
-    ???
+    const btnEdit = rowElement.querySelector('.btn-warning');
+    btnEdit.addEventListener('click', () => this.editItem(id));
 
     return rowElement;
   }
