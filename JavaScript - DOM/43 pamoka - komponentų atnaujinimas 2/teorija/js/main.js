@@ -50,3 +50,9 @@ rootElement.append(
   dogTableComponent.htmlElement
 );
 
+const user =
+{
+  name: 'Kepurius',
+  surname: 'Vandalas'
+}
+
