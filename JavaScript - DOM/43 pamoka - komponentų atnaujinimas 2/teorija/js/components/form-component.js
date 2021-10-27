@@ -20,33 +20,26 @@ class FormComponent {
     console.log(formData);
   }
 
+  createFieldString = ({ name, type, title }) => `
+    <div class="mb-3">
+      <label for="${name}" class="form-label">${title}</label>
+      <input type="${type}" class="form-control" id="${name}" name="${name}">
+    </div>`;
+
   /**
    * atliekami pradiniai komponento formavimo veiksmai
    */
   initialize = () => {
+    const { title, fields } = this.props;
+    const inputsString = fields.map(this.createFieldString).join('');
+
     this.htmlElement = document.createElement('form');
     this.htmlElement.className = 'my-3 p-3 shadow rounded';
     this.htmlElement.innerHTML = `
-    <h2>Formos pavadinimas</h2>
-    <div class="mb-3">
-      <label for="role" class="form-label">Rolė</label>
-      <select class="form-control" id="role" name="role">
-        <option selected disabled>-- Pasirinkite rolę...</option>
-        <option value="admin">Admin</option>
-        <option value="moderator">Moderator</option>
-        <option value="user">User</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">El. paštas</label>
-      <input type="text" class="form-control" id="email" name="email">
-    </div>
-    <div class="mb-3">
-      <label for="imgSrc" class="form-label">Nuotrauka</label>
-      <input type="text" class="form-control" id="imgSrc" name="imgSrc">
-    </div>
+    <h2>${title}</h2>
+    ${inputsString}
     <div class="text-center">
-      <button class="btn btn-primary">Išsaugoti</button>
+      <button class="btn btn-success">Išsaugoti</button>
     </div>`;
     this.fields = Array.from(this.htmlElement.querySelectorAll('[name]'));
     this.htmlElement.addEventListener('submit', this.handleSubmit);

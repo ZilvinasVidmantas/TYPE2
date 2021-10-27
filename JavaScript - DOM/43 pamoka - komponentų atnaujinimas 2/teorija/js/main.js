@@ -1,6 +1,13 @@
 const rootElement = document.querySelector('#root');
 
-const userForm = new FormComponent({});
+const userForm = new FormComponent({
+  title: 'Pridėti vartotoją',
+  fields: [
+    { name: 'role', type: 'text', title: 'Rolė'},
+    { name: 'email', type: 'email', title: 'El. Paštas'},
+    { name: 'imgSrc', type: 'text', title: 'Nuotraukos nuoroda'},
+  ]
+});
 const formatedUserDataForTableComponent = userDataArr.reduce((result, { id, imgSrc, email, role }) => {
   result.push({
     id,
@@ -15,6 +22,15 @@ const userTableComponent = new TableComponent({
   data: formatedUserDataForTableComponent
 });
 
+
+const dogForm = new FormComponent({
+  title: 'Pridėti šunį',
+  fields: [
+    { name: 'name', type: 'text', title: 'Vardas'},
+    { name: 'breed', type: 'text', title: 'Veislė'},
+    { name: 'imgSrc', type: 'text', title: 'Nuotraukos nuoroda'},
+  ]
+});
 const dogTableComponent = new TableComponent({
   colNames: ['Nuotrauka', 'Vardas', 'Veislė'],
   data: dogDataArr.reduce((rowData, { name, breed, imgSrc, id }) => [...rowData, {
@@ -30,6 +46,7 @@ const dogTableComponent = new TableComponent({
 rootElement.append(
   userForm.htmlElement,
   userTableComponent.htmlElement,
+  dogForm.htmlElement,
   dogTableComponent.htmlElement
 );
 
