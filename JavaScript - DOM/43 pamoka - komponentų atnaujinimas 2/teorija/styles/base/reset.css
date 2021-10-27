@@ -1,0 +1,12 @@
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    object-fit: cover;
+    object-position: center;
+}
+
+a {
+    text-decoration: none;
+}
