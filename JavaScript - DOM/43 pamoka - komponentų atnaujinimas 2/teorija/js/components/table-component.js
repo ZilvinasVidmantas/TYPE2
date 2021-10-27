@@ -20,6 +20,10 @@ class TableComponent {
     this.render();
   }
 
+  editItem = (id) => {
+    console.log(`Atnaujinta: ${id}`);
+  }
+
   /**
   * Sukuria vienos eilutės html elementą
   * 
@@ -30,10 +34,16 @@ class TableComponent {
   createRowElement = ({ id, rowData }) => {
     const rowDataStr = rowData.map(text => `<td>${text}</td>`).join('');
     const rowElement = document.createElement('tr');
-    rowElement.innerHTML = `${rowDataStr}<td><button class="btn btn-sm btn-danger">✕</button></td>`;
+    rowElement.innerHTML = `${rowDataStr}<td>
+    <button class="btn btn-sm btn-danger">✕</button>
+    ......................................
+    </td>`;
 
     const btnDelete = rowElement.querySelector('.btn-danger');
     btnDelete.addEventListener('click', () => this.deleteItem(id));
+
+    ???
+    ???
 
     return rowElement;
   }
