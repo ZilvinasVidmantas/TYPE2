@@ -80,7 +80,6 @@ const itemsArr = [
   btn.addEventListener('click', createListItem);
 }
 
-
 // Data driven rendering aproach - duomenimis grįstas funkcionalumo kūrimas
 {
   const header = document.createElement('h2');
@@ -115,7 +114,7 @@ const itemsArr = [
     renderItems();
   }
 
-  const deleteItem = (e, id) => {
+  const deleteItem = (id) => {
     // Duomenų pakeitimas
     const ii = items.findIndex(x => id === x.id);
     items.splice(ii, 1);

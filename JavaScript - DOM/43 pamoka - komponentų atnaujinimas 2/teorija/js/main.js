@@ -1,5 +1,6 @@
 const rootElement = document.querySelector('#root');
 
+const userForm = new FormComponent({});
 const formatedUserDataForTableComponent = userDataArr.reduce((result, { id, imgSrc, email, role }) => {
   result.push({
     id,
@@ -7,6 +8,7 @@ const formatedUserDataForTableComponent = userDataArr.reduce((result, { id, imgS
   });
   return result;
 }, []);
+// 1. Kuriant formos komponentą, perduoti props.title reikšmę, kuri bus panaudota tarp <h2></h2>
 
 const userTableComponent = new TableComponent({
   colNames: ['Nuotrauka', 'El. paštas', 'Rolė'],
@@ -25,12 +27,9 @@ const dogTableComponent = new TableComponent({
   }], [])
 });
 
-// Papildykite kiekvienos duomenų eilutės paskutinį stulpelį edit mygtuku,
-// kurį paspaudus būtų iškviečiamas editItem metodas (kurį reikia sukurti):
-//  - edit mygtuko tekstas: '⟳'
-//  - edit mygtuko klasės: 'btn btn-warning'
-//  - perduokite editItem metodui, paspausto item'o id
-//  - editItem metodas turi konsolėje parašyti: 'Atnaujinta: ${id}';
+rootElement.append(
+  userForm.htmlElement,
+  userTableComponent.htmlElement,
+  dogTableComponent.htmlElement
+);
 
-rootElement.appendChild(userTableComponent.htmlElement);
-rootElement.appendChild(dogTableComponent.htmlElement);
