@@ -7,7 +7,7 @@ class FormComponent {
    * @param {Object} props - perduoti kintamieji komponentui
    */
   constructor(props) {
-    this.props = JSON.parse(JSON.stringify(props));
+    this.props = clone(props);
     this.initialize();
   }
 
@@ -52,3 +52,42 @@ class FormComponent {
 
   }
 }
+
+let people = [
+  { name: 'Alice', age: 21 },
+  { name: 'Max', age: 20 },
+  { name: 'Jane', age: 20 }
+];
+
+//                               'age'
+function groupBy(objectArray, property) {
+  return objectArray.reduce((acc, obj) => {
+    //        obj['age']     21
+    //        obj['age']     20
+    //        obj['age']     20
+    let key = obj[property]
+    if (!acc[key]) {
+      acc[key] = []
+    }
+    acc[key].push(obj)
+    return acc; 
+    /* 
+      1: {
+        21: [{ name: 'Alice', age: 21 }]
+      }
+
+      2: { 
+        21: [{ name: 'Alice', age: 21 }],
+        20: [{ name: 'Max', age: 20 }]
+      }
+
+      3: { 
+        21: [{ name: 'Alice', age: 21 }],
+        20: [{ name: 'Max', age: 20 }, { name: 'Jane', age: 20 }]
+      }
+
+    */
+  }, {})
+}
+
+let groupedPeople = groupBy(people, 'age')

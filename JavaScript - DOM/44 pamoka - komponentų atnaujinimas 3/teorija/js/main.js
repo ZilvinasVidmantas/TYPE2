@@ -32,7 +32,8 @@ const dogForm = new FormComponent({
     { name: 'name', type: 'text', title: 'Vardas' },
     { name: 'breed', type: 'text', title: 'Veislė' },
     { name: 'imgSrc', type: 'text', title: 'Nuotraukos nuoroda' },
-  ]
+  ],
+  onSubmit: data => console.log('as esu isoreje', data)
 });
 const dogTableComponent = new TableComponent({
   colNames: ['Nuotrauka', 'Vardas', 'Veislė'],
