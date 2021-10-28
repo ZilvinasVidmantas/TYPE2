@@ -14,25 +14,10 @@ class FormComponent {
   handleSubmit = (e) => {
     e.preventDefault();
     const formData = this.fields.reduce((res, field) => {
-      console.log(field)
-      /*
-      iteracija | field.name | field.value         | res[field.name] = field.value    | res                 | return value
-      --------------------------------------------------------------------------------------------------------------------
-      1         | 'role'     | 'Kepalas'           | res['role'] = 'Kepalas'          | {}                  | { role: 'Kepalas' }
-      2         | 'email'    | 'banys@gmail.com'   | res['email'] = 'banys@gamil.com' | { role: 'Kepalas' } | { role: 'Kepalas', email: 'banys@gamil.com' }
-      ...
-      final result:
-      {
-        email: "banys@gmail.com"
-        imgSrc: "htttps://netacoreikalas/obuolys"
-        role: "Kepalas"
-      }
-      */
-      
       res[field.name] = field.value;
       return res;
     }, {});
-    console.log(formData);
+    this.props.onSubmit(formData);
   }
 
   createFieldString = ({ name, type, title }) => `
