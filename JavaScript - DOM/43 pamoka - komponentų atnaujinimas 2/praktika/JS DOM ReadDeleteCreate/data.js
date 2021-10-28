@@ -2,7 +2,7 @@ const moviesData = [
 	{
 		title: "Movies",
 		paragraph: "We'll be learning how to Read data from a file and show it in the webpage. Next step will be removing one or more parts of the data from the page by clicking on it in the broswer.",
-		buttons: ["Delete this element", "Generate movies from the list"],
+		buttons: ["Delete this element", "Generate movies from the list", "Create something cool", "Let me OUT!"],
 		movies: [
 			{
 				id : "MUIM2008",
