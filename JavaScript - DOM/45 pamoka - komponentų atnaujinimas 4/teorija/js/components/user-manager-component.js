@@ -10,12 +10,13 @@ class UserManagerComponent {
     this.initialize();
   }
 
-  // Pritaiko vartotojų lentelei
+  // Pritaiko vartotojų duomenis lentelei
   formatTableData = () => this.state.data.map(({ id, imgSrc, email, role }) => ({
     id,
     rowData: [`<img class="table__img "src="${imgSrc}" />`, email, role]
   }))
 
+  // Sukuria naują vartotoją
   createUser = (formData) => {
     const user = {
       ...formData,
@@ -23,6 +24,17 @@ class UserManagerComponent {
     };
     this.state.data.push(user);
     this.render();
+  }
+
+  // Ištrina vartotoją
+  deleteUser = (id) => {
+    this.state.data = this.state.data.filter(user => user.id !== id);
+    this.render();
+  }
+
+  // TODO: įgalina vartotjo redagavimą
+  editUser = (id) =>{
+    console.log('atnaujinamas vartotojas:', id);
   }
 
   initializeForm = () => {
@@ -41,16 +53,6 @@ class UserManagerComponent {
     formContainer.appendChild(this.form.htmlElement);
     this.htmlElement.appendChild(formContainer);
   }
-
-  deleteUser = (id) => {
-    this.state.data = this.state.data.filter(user => user.id !== id);
-    this.render();
-  }
-
-  editUser = (id) =>{
-    console.log('atnaujinamas vartotojas:', id);
-  }
-
   initializeTable = () => {
     this.table = new TableComponent({
       colNames: ['Nuotrauka', 'El. paštas', 'Rolė'],
@@ -79,5 +81,3 @@ class UserManagerComponent {
     });
   }
 }
-
-// 11:55
