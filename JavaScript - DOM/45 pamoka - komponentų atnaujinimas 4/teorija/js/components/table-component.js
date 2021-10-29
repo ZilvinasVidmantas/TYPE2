@@ -1,19 +1,10 @@
 class TableComponent {
   constructor(props) {
-    this.props = JSON.parse(JSON.stringify(props));
+    this.props = clone(props);
     this.state = {
-      data: JSON.parse(JSON.stringify(props.data))
+      data: clone(props.data)
     };
     this.initialize();
-  }
-  
-  deleteItem = (id) => {
-    this.state.data = this.state.data.filter(item => item.id !== id);
-    this.render();
-  }
-
-  editItem = (id) => {
-    console.log(`Atnaujinta: ${id}`);
   }
 
   createRowElement = ({ id, rowData }) => {
@@ -25,10 +16,10 @@ class TableComponent {
     </td>`;
 
     const btnDelete = rowElement.querySelector('.btn-danger');
-    btnDelete.addEventListener('click', () => this.deleteItem(id));
+    btnDelete.addEventListener('click', () => this.props.onDelete(id));
 
     const btnEdit = rowElement.querySelector('.btn-warning');
-    btnEdit.addEventListener('click', () => this.editItem(id));
+    btnEdit.addEventListener('click', () => this.props.onEdit(id));
 
     return rowElement;
   }

@@ -5,7 +5,7 @@ const generateId = () => String(idBasis++);
 class UserManagerComponent {
   constructor() {
     this.state = {
-      data: userDataArr
+      data: clone(userDataArr)
     }
     this.initialize();
   }
@@ -16,9 +16,9 @@ class UserManagerComponent {
     rowData: [`<img class="table__img "src="${imgSrc}" />`, email, role]
   }))
 
-  createUser = (fromData) => {
+  createUser = (formData) => {
     const user = {
-      ...fromData,
+      ...formData,
       id: generateId()
     };
     this.state.data.push(user);
@@ -42,10 +42,21 @@ class UserManagerComponent {
     this.htmlElement.appendChild(formContainer);
   }
 
+  deleteUser = (id) => {
+    this.state.data = this.state.data.filter(user => user.id !== id);
+    this.render();
+  }
+
+  editUser = (id) =>{
+    console.log('atnaujinamas vartotojas:', id);
+  }
+
   initializeTable = () => {
     this.table = new TableComponent({
       colNames: ['Nuotrauka', 'El. paštas', 'Rolė'],
-      data: this.formatTableData()
+      data: this.formatTableData(),
+      onDelete:  this.deleteUser,
+      onEdit: this.editUser
     });
 
     const tableContainer = document.createElement('div');
@@ -68,3 +79,5 @@ class UserManagerComponent {
     });
   }
 }
+
+// 11:55
