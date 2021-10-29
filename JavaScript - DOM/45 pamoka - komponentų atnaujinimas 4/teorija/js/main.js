@@ -25,21 +25,24 @@ const userTableComponent = new TableComponent({
 
 /*
   1. Sukurti UserManagerComponent, kuris atvaizduotų letelę ir formą viens šalia kito
-    1.1 Sukurti failą ir įtraukti
 
+    [9:20]
     1.2 persirašyti stndartinius komponeneto metodus: 
       constructor - priskirti props, iškviesti intialize
       initialize - atlikti pradinius veiksmus
       render - kol kas nieko (tuščias metodas)
 
+    [9:30]
     1.3 Sukurti funkciją createUser, kuri atspausdintų 1 parametru gautus duomenis
 
+    [9:55]
     1.4 initialize metode sukurti 2 komponento savybes:
       this.table = lentelės komponeneto objektas: 
         su duomenimis, tokiais pat, kaip main.js faile:
       this.form = formos komponeneto objektas 
-        su duomenimis, tokiais pat, kaip main.js faile, BET ON SUBMIT FUNKCIJA TURI RODYTI [1.3] funkciją
+        su duomenimis, tokiais pat, kaip main.js faile, BET onSubmit FUNKCIJA TURI RODYTI [1.3] funkciją
 
+    [10:20]
     1.5 render metode, panaudoti this.table ir this.form komponenetus, kad sukurti atvaizdavimą viens šalia kito
 */
 
