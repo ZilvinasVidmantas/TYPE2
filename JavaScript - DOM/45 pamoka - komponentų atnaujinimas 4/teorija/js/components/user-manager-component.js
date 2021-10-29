@@ -1,11 +1,40 @@
+let idBasis = 88;
+
+const generateId = () => String(idBasis++);
+
 class UserManagerComponent {
-  constructor(props) {
-    this.props = clone(props);
+  constructor() {
+    this.state = {
+      data: clone(userDataArr)
+    }
     this.initialize();
   }
 
-  createUser = (user) => {
-    console.log('createUser:', user);
+  // Pritaiko vartotojų duomenis lentelei
+  formatTableData = () => this.state.data.map(({ id, imgSrc, email, role }) => ({
+    id,
+    rowData: [`<img class="table__img "src="${imgSrc}" />`, email, role]
+  }))
+
+  // Sukuria naują vartotoją
+  createUser = (formData) => {
+    const user = {
+      ...formData,
+      id: generateId()
+    };
+    this.state.data.push(user);
+    this.render();
+  }
+
+  // Ištrina vartotoją
+  deleteUser = (id) => {
+    this.state.data = this.state.data.filter(user => user.id !== id);
+    this.render();
+  }
+
+  // TODO: įgalina vartotjo redagavimą
+  editUser = (id) =>{
+    console.log('atnaujinamas vartotojas:', id);
   }
 
   initializeForm = () => {
@@ -24,19 +53,12 @@ class UserManagerComponent {
     formContainer.appendChild(this.form.htmlElement);
     this.htmlElement.appendChild(formContainer);
   }
-
   initializeTable = () => {
-    const formatedUserDataForTableComponent = userDataArr.reduce((result, { id, imgSrc, email, role }) => {
-      result.push({
-        id,
-        rowData: [`<img class="table__img "src="${imgSrc}" />`, email, role]
-      });
-      return result;
-    }, []);
-
     this.table = new TableComponent({
       colNames: ['Nuotrauka', 'El. paštas', 'Rolė'],
-      data: formatedUserDataForTableComponent
+      data: this.formatTableData(),
+      onDelete:  this.deleteUser,
+      onEdit: this.editUser
     });
 
     const tableContainer = document.createElement('div');
@@ -44,7 +66,6 @@ class UserManagerComponent {
     tableContainer.appendChild(this.table.htmlElement);
     this.htmlElement.appendChild(tableContainer);
   }
-
 
   initialize = () => {
     this.htmlElement = document.createElement('div');
@@ -55,6 +76,8 @@ class UserManagerComponent {
   }
 
   render = () => {
-
+    this.table.updateProps({
+      data: this.formatTableData()
+    });
   }
 }
