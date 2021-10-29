@@ -34,7 +34,7 @@ class FormComponent {
     const fieldsString = fields.map(this.createFieldString).join('');
 
     this.htmlElement = document.createElement('form');
-    this.htmlElement.className = 'my-3 p-3 shadow rounded';
+    this.htmlElement.className = 'p-3 shadow rounded';
     this.htmlElement.innerHTML = `
     <h2>${title}</h2>
     ${fieldsString}

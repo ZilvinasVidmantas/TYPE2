@@ -8,19 +8,50 @@ class UserManagerComponent {
     console.log('createUser:', user);
   }
 
+  initializeForm = () => {
+    this.form = new FormComponent({
+      title: 'Pridėti vartotoją',
+      fields: [
+        { name: 'role', type: 'text', title: 'Rolė' },
+        { name: 'email', type: 'email', title: 'El. Paštas' },
+        { name: 'imgSrc', type: 'text', title: 'Nuotraukos nuoroda' },
+      ],
+      onSubmit: this.createUser
+    });
+
+    const formContainer = document.createElement('div');
+    formContainer.className = 'col-12 col-lg-3';
+    formContainer.appendChild(this.form.htmlElement);
+    this.htmlElement.appendChild(formContainer);
+  }
+
+  initializeTable = () => {
+    const formatedUserDataForTableComponent = userDataArr.reduce((result, { id, imgSrc, email, role }) => {
+      result.push({
+        id,
+        rowData: [`<img class="table__img "src="${imgSrc}" />`, email, role]
+      });
+      return result;
+    }, []);
+
+    this.table = new TableComponent({
+      colNames: ['Nuotrauka', 'El. paštas', 'Rolė'],
+      data: formatedUserDataForTableComponent
+    });
+
+    const tableContainer = document.createElement('div');
+    tableContainer.className = 'col-12 col-lg-9';
+    tableContainer.appendChild(this.table.htmlElement);
+    this.htmlElement.appendChild(tableContainer);
+  }
+
+
   initialize = () => {
     this.htmlElement = document.createElement('div');
-    this.htmlElement.className = 'row flex-lg-row-reverse';
+    this.htmlElement.className = 'row flex-lg-row-reverse g-3';
 
-    this.formContainer = document.createElement('div');
-    this.formContainer.className = 'col-12 col-lg-3';
-    this.formContainer.innerHTML = 'forma';
-    this.htmlElement.appendChild(this.formContainer);
-
-    this.tableContainer = document.createElement('div');
-    this.tableContainer.className = 'col-12 col-lg-9';
-    this.tableContainer.innerHTML = 'lentelė';
-    this.htmlElement.appendChild(this.tableContainer);
+    this.initializeForm();
+    this.initializeTable();
   }
 
   render = () => {
