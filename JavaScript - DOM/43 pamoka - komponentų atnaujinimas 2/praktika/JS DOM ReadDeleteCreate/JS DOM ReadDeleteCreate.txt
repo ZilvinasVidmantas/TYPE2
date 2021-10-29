@@ -17,10 +17,11 @@ JS DOM ReadDeleteCreate aplankale esančiais duomenimis atlikite šiuos veiksmus
 	2.2) JS'u paspaudus ant mygtuko(generate) apačioje sukuriamas filmų sąrašas div'e(generated), kuriame būtų: 
 		2.2.1) Mygtukas(delete), kurį paspaudus - panaikintų filmo div'ą.
 		2.2.2) Filmo pavadinimas, paveiksliukas, aprašymas...
-	2.3) JS'u paspaudus ant mygtuko(create) atsirastų modalBox'as su forma, kurioje:
+	2.3) JS'u paspaudus ant mygtuko(create) atsirastų modalBox'as, kuriame:
 		2.3.1) Būtų forma su visais filmo elementų input'ais.
 		2.3.2) Būtų mygtukas(create) ir mygtukas(exit).
-		2.3.3) Paspaudus ant mygtuko(create) būtų sukuriamas naujas filmo div'as (su delete mygtuku), div'o(created) viduje.
+		2.3.3) Paspaudus ant mygtuko(create) būtų sukuriamas naujas filmo div'as (su delete mygtuku), div'o(created) viduje ir visa info apie filmą, kuri buvo surašyta formoje.
+		2.4.4) Paspaudus ant mygtuko(exit) būtų išeinama iš formos ir niekas nesukuriama.
 	2.4) JS'u stilizuokite.
 
 3) Sukurkite naują duomenų kintamąjį "catsData/dogsData/carsData..." apie ką norite, jį užpildykite duomenimis. Naudodamiesi savo sukurtais duomenimis atlikite šiuos veiksmus:
