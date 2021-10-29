@@ -34,7 +34,7 @@ const userTableComponent = new TableComponent({
         su duomenimis, tokiais pat, kaip main.js faile, BET onSubmit FUNKCIJA TURI RODYTI [1.3] funkciją
 
     [10:20]
-    1.5 render metode, panaudoti this.table ir this.form komponenetus, kad sukurti atvaizdavimą viens šalia kito
+    1.5 initialize metode, panaudoti this.table ir this.form komponenetus, kad sukurti atvaizdavimą viens šalia kito
 */
 
 const userManagerComponent = new UserManagerComponent({});
