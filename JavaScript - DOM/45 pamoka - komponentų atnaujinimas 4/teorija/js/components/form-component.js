@@ -35,14 +35,15 @@ class FormComponent {
 
     this.htmlElement = document.createElement('form');
     this.htmlElement.className = 'p-3 shadow rounded';
+    this.htmlElement.addEventListener('submit', this.handleSubmit);
     this.htmlElement.innerHTML = `
     <h2>${title}</h2>
     ${fieldsString}
     <div class="text-center">
       <button class="btn btn-success">Išsaugoti</button>
     </div>`;
+    
     this.fields = Array.from(this.htmlElement.querySelectorAll('[name]'));
-    this.htmlElement.addEventListener('submit', this.handleSubmit);
   }
 
   /**

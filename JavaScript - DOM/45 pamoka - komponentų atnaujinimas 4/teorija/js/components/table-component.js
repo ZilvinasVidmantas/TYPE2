@@ -1,11 +1,4 @@
 class TableComponent {
-  /**
-   * Atliekamas komponento sukūrimas, sukuriami props ir state kintamieji
-   * props - iš išorės perduoti kintamieji
-   * state - kintamieji kuriuos keis komponentas
-   * 
-   * @param {Object} props - perduoti kintamieji komponentui
-   */
   constructor(props) {
     this.props = JSON.parse(JSON.stringify(props));
     this.state = {
@@ -13,8 +6,7 @@ class TableComponent {
     };
     this.initialize();
   }
-
-  //  ------------------------ SPECIFINIAI KOMPONENTO METODAI -----------------------------
+  
   deleteItem = (id) => {
     this.state.data = this.state.data.filter(item => item.id !== id);
     this.render();
@@ -24,13 +16,6 @@ class TableComponent {
     console.log(`Atnaujinta: ${id}`);
   }
 
-  /**
-  * Sukuria vienos eilutės html elementą
-  * 
-  * @param {Object} rowData vienos eilutės duomenys
-  * 
-  * @return {HTMLElement} vienos eilutės html elementas
-  */
   createRowElement = ({ id, rowData }) => {
     const rowDataStr = rowData.map(text => `<td>${text}</td>`).join('');
     const rowElement = document.createElement('tr');
@@ -48,17 +33,17 @@ class TableComponent {
     return rowElement;
   }
 
-  /**
-   * Sukuria eilučių masyvą, pagal šio objekto props.data duomenis
-   * 
-   * @return {Array} eilučių html eilučių masyvas
-   */
   createRows = () => this.state.data.map(this.createRowElement);
 
-  //  ------------------------ BENDRINIAI KOMPONENTO METODAI -----------------------------
-  /**
-   * atliekami pradiniai komponento formavimo veiksmai
-   */
+  updateProps = (newProps) => {
+    this.props = clone({
+      ...this.props,
+      ...newProps
+    });
+    this.state.data = clone(this.props.data);
+    this.render();
+  }
+
   initialize = () => {
     this.htmlElement = document.createElement('table');
     const colNames = this.props.colNames;
@@ -77,12 +62,9 @@ class TableComponent {
     this.render();
   }
 
-  /**
-   * Atliekami veiksmai pasikeitus komponento duomenims
-   */
   render = () => {
-    this.tbody.innerHTML = '';
     const rows = this.createRows();
+    this.tbody.innerHTML = '';
     this.tbody.append(...rows);
   }
 }

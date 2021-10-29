@@ -1,11 +1,28 @@
+let idBasis = 88;
+
+const generateId = () => String(idBasis++);
+
 class UserManagerComponent {
-  constructor(props) {
-    this.props = clone(props);
+  constructor() {
+    this.state = {
+      data: userDataArr
+    }
     this.initialize();
   }
 
-  createUser = (user) => {
-    console.log('createUser:', user);
+  // Pritaiko vartotojų lentelei
+  formatTableData = () => this.state.data.map(({ id, imgSrc, email, role }) => ({
+    id,
+    rowData: [`<img class="table__img "src="${imgSrc}" />`, email, role]
+  }))
+
+  createUser = (fromData) => {
+    const user = {
+      ...fromData,
+      id: generateId()
+    };
+    this.state.data.push(user);
+    this.render();
   }
 
   initializeForm = () => {
@@ -26,17 +43,9 @@ class UserManagerComponent {
   }
 
   initializeTable = () => {
-    const formatedUserDataForTableComponent = userDataArr.reduce((result, { id, imgSrc, email, role }) => {
-      result.push({
-        id,
-        rowData: [`<img class="table__img "src="${imgSrc}" />`, email, role]
-      });
-      return result;
-    }, []);
-
     this.table = new TableComponent({
       colNames: ['Nuotrauka', 'El. paštas', 'Rolė'],
-      data: formatedUserDataForTableComponent
+      data: this.formatTableData()
     });
 
     const tableContainer = document.createElement('div');
@@ -44,7 +53,6 @@ class UserManagerComponent {
     tableContainer.appendChild(this.table.htmlElement);
     this.htmlElement.appendChild(tableContainer);
   }
-
 
   initialize = () => {
     this.htmlElement = document.createElement('div');
@@ -55,6 +63,8 @@ class UserManagerComponent {
   }
 
   render = () => {
-
+    this.table.updateProps({
+      data: this.formatTableData()
+    });
   }
 }
