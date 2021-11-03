@@ -1,0 +1,48 @@
+1. Sukurkite repozitoriją, kurioje atliksite darbus. [1]
+  - papildykite .gitignore failą, jog nebūtų reaguojama į /node_modules aplanko pasikeitimus. Šį commit'ą pavadinkite 'init'
+  - po kiekvienos sekančios užduoties atlikite commit'ą įvardindami ką darėte.
+
+2. Sukurkite pardavimui skirtų baldų masyvą naudodami JSON server. [1]
+  Baldą aprašančios savybės:
+  type Furniture = {
+    id: string;
+    title: string;
+    type: string;
+    price: number;
+    location: {
+      country: string;
+      city: string;
+      street: string;
+    }
+    owner: {
+      fullname: string;
+      mobile: string;
+      address: string;
+      email: string
+    }
+  }
+
+3. Paleiskite JSON server, jog būtų galimą juo naudotis. [1]  
+
+
+4. Papildykite failą API.js, aprašyti HTTP requestams. Patikrinkite rezultatus konsolėje. [1]
+  HTTP metodas | url              | tikslas
+  ------------------------------------------------------
+  GET          | /furniture       | gauti visus baldus
+  DELETE       | /furniture/{id}  | ištrinti vieną baldą
+
+5. Faile FurnitureGridComponent.js panaudokite API.js faile sukurtą funkciją gauti visiems baldams: [1]
+  - Papildyti metodą intialize, jog būtų parsiunčiami pradiniai duomenys ir įrašomi į this.state.furniture
+
+6. Įgalinti laukimo animaciją, kol yra parsiunčiami duomenys [1]
+  - dirbtinai užvilkinti parsiuntimą 1s, jog matytūsi animaciją
+  - papildykite render metodą, jog su kiekvienu objektu būtų kuriami kortelės komponenetai
+
+7. Faile FurnitureCardComponent.js render metodą, jog pagal objekto this.props duomenis, būtų atvaizduojama koretelė [1]
+
+8. Faile FurnitureGridComponent.js komponente sukurkite metodą deleteFurniture ir įgalinkite jį, jog būtų trinami this.state.furniture duomenys pagal id
+
+9. Faile FurnitureCardComponent.js - FurnitureCardComponent įgalinkite, 
+  jog būtų kviečiama funkcija this.props.onDelete, kuomet paspaudžiamas mygtukas ant koretelės 'X' mygtuko [1]
+
+10. Po duomenų ištrinimo atnaujinkite koretelių atvaizdavimą [1]
