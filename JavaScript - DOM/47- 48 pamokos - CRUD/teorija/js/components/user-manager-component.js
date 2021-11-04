@@ -37,13 +37,21 @@ class UserManagerComponent {
   }
 
   // TODO: įgalina vartotjo redagavimą
-  editUser = (id) =>{
-    console.log('atnaujinamas vartotojas:', id);
+  editUser = (_id) => {
+    const { id, ...user } = this.state.data.find(x => x.id === _id);
+    this.form.updateProps({
+      title: 'Atnaujinti vartotoją',
+      btnText: 'Atnaujinti',
+      color: 'warning',
+      fields: Object.entries(user).map(([name, value]) => ({ name, value })),
+    })
   }
 
   initializeForm = () => {
     this.form = new FormComponent({
-      title: 'Pridėti vartotoją',
+      title: 'Sukurti vartotoją',
+      btnText: 'Sukurti',
+      color: 'success',
       fields: [
         { name: 'role', type: 'text', title: 'Rolė' },
         { name: 'email', type: 'email', title: 'El. Paštas' },
@@ -61,7 +69,7 @@ class UserManagerComponent {
     this.table = new TableComponent({
       colNames: ['Nuotrauka', 'El. paštas', 'Rolė'],
       data: this.formatTableData(),
-      onDelete:  this.deleteUser,
+      onDelete: this.deleteUser,
       onEdit: this.editUser
     });
 

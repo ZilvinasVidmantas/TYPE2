@@ -26,69 +26,84 @@ class FormComponent {
       <input type="${type}" class="form-control" id="${name}" name="${name}">
     </div>`;
 
+  createClassNames = () => {
+    const color = this.props.color ?? 'primary';
+    return {
+      btnClassName: `btn btn-${color}`,
+      formClassName: `p-3 shadow rounded border border-${color}`
+    };
+  }
+
   /**
    * atliekami pradiniai komponento formavimo veiksmai
    */
   initialize = () => {
-    const { title, fields } = this.props;
+    const { fields } = this.props;
     const fieldsString = fields.map(this.createFieldString).join('');
 
     this.htmlElement = document.createElement('form');
-    this.htmlElement.className = 'p-3 shadow rounded';
+    this.htmlElement.className = 'p-3 shadow rounded border';
     this.htmlElement.addEventListener('submit', this.handleSubmit);
     this.htmlElement.innerHTML = `
-    <h2>${title}</h2>
+    <h2 class="h4 text-dark"></h2>
     ${fieldsString}
     <div class="text-center">
-      <button class="btn btn-success">Išsaugoti</button>
+      <button class="btn"></button>
     </div>`;
-    
+
+    this.header = this.htmlElement.querySelector('h2');
+    this.btn = this.htmlElement.querySelector('button');
     this.fields = Array.from(this.htmlElement.querySelectorAll('[name]'));
+
+    this.render();
+  }
+
+  updateProps = (newProps) => {
+    const { fields: newFields, ...newPrimitiveProps } = newProps;
+    const { fields: oldFields, ...primitiveProps } = this.props;
+
+    const fields = oldFields.map(oldField => {
+      const sameField = newFields.find(x => x.name === oldField.name);
+      if(sameField){
+        return {
+          ...oldField,
+          ...sameField
+        }
+      }
+      return oldField;
+    });
+    // const fields = oldFields.map(oldField => ({
+    //   ...oldField,
+    //   ...(newFields.find(x => x.name === oldField.name) ?? {})
+    // }));
+
+    this.props = {
+      ...primitiveProps,
+      ...newPrimitiveProps,
+      fields
+    };
+
+    this.render();
   }
 
   /**
    * Atliekami veiksmai pasikeitus komponento duomenims
    */
   render = () => {
+    const { title, fields, btnText } = this.props;
+    const { btnClassName, formClassName } = this.createClassNames();
+
+    this.htmlElement.className = formClassName;
+
+    this.header.innerHTML = title;
+
+    this.btn.className = btnClassName;
+    this.btn.innerHTML = btnText;
+
+    fields.forEach(({ name, value }) => value
+      ? this.fields.find(x => x.name === name).value = value
+      : undefined
+    );
 
   }
 }
-
-let people = [
-  { name: 'Alice', age: 21 },
-  { name: 'Max', age: 20 },
-  { name: 'Jane', age: 20 }
-];
-
-//                               'age'
-function groupBy(objectArray, property) {
-  return objectArray.reduce((acc, obj) => {
-    //        obj['age']     21
-    //        obj['age']     20
-    //        obj['age']     20
-    let key = obj[property]
-    if (!acc[key]) {
-      acc[key] = []
-    }
-    acc[key].push(obj)
-    return acc; 
-    /* 
-      1: {
-        21: [{ name: 'Alice', age: 21 }]
-      }
-
-      2: { 
-        21: [{ name: 'Alice', age: 21 }],
-        20: [{ name: 'Max', age: 20 }]
-      }
-
-      3: { 
-        21: [{ name: 'Alice', age: 21 }],
-        20: [{ name: 'Max', age: 20 }, { name: 'Jane', age: 20 }]
-      }
-
-    */
-  }, {})
-}
-
-let groupedPeople = groupBy(people, 'age')
