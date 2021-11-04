@@ -18,6 +18,7 @@ class FormComponent {
       return res;
     }, {});
     this.props.onSubmit(formData);
+    this.clearFields();
   }
 
   createFieldString = ({ name, type, title }) => `
@@ -60,11 +61,11 @@ class FormComponent {
 
   updateProps = (newProps) => {
     const { fields: newFields, ...newPrimitiveProps } = newProps;
-    const { fields: oldFields, ...primitiveProps } = this.props;
+    const { fields: oldFields, ...oldPrimitiveProps } = this.props;
 
     const fields = oldFields.map(oldField => {
-      const sameField = newFields.find(x => x.name === oldField.name);
-      if(sameField){
+      const sameField = newFields?.find(x => x.name === oldField.name);
+      if (sameField) {
         return {
           ...oldField,
           ...sameField
@@ -78,10 +79,19 @@ class FormComponent {
     // }));
 
     this.props = {
-      ...primitiveProps,
+      ...oldPrimitiveProps,
       ...newPrimitiveProps,
       fields
     };
+
+    this.render();
+  }
+
+  clearFields = () => {
+    console.log('clearFields');
+    console.log(this.props.fields);
+    this.props.fields = this.props.fields.map(x => ({...x, value: ''}));
+    console.log(this.props.fields);
 
     this.render();
   }
@@ -100,10 +110,13 @@ class FormComponent {
     this.btn.className = btnClassName;
     this.btn.innerHTML = btnText;
 
-    fields.forEach(({ name, value }) => value
+    fields.forEach(({ name, value }) => value !== undefined
       ? this.fields.find(x => x.name === name).value = value
       : undefined
     );
 
   }
 }
+
+
+

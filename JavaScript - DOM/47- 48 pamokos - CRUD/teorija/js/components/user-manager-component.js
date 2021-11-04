@@ -44,7 +44,22 @@ class UserManagerComponent {
       btnText: 'Atnaujinti',
       color: 'warning',
       fields: Object.entries(user).map(([name, value]) => ({ name, value })),
+      onSubmit: (formData) => this.updateUser({id, ...formData})
     })
+  }
+
+  updateUser = ({id, ...formData}) => {
+    const ii = this.state.data.findIndex(x => x.id === id);
+    this.state.data[ii] = {...this.state.data[ii], ...formData};
+
+    this.form.updateProps({
+      title: 'Sukurti vartotoją',
+      btnText: 'Sukurti',
+      color: 'success',
+      onSubmit: this.createUser
+    })
+
+    this.render();
   }
 
   initializeForm = () => {
