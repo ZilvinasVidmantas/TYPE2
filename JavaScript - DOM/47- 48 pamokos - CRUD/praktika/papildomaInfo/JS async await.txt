@@ -18,7 +18,7 @@ promise(pvz fetch)
 
 new promise:
 function delay(time){
-  return new Promise((resolve, reject) =>{
+  return new Promise((resolve, reject) => {
     if(isNaN(time)){
       reject(new Error("delay gotta be a number"));
     } else {
