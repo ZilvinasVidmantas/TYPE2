@@ -12,55 +12,67 @@ Promise (pažadas) - tai yra prototipas, kuris vykdo parametru perduotą funkcij
     * fulfilled - promise'o funkcija davė teigiamą atsakymą, arba buvo suvaldytas neigiamas atsakymas catch bloke
     * rejected - promiso'o funkcija davė neigiamą atsakymą, ir jis nebuvo suvaldytas catch bloke
   
-  then bloke įsivykdo kodas, kuomet promise'o bloke buvo įvykdyta 'resolve' funkcija
-  catch bloke įsivykdo kodas, kuomet promise'o bloke buvo įvykdyta 'reject' funkcija
+  then bloke įsivykdo kodas, kuomet promise'o bloke buvo iškviesta 'resolve' funkcija
+  catch bloke įsivykdo kodas, kuomet promise'o bloke buvo iškviesta 'reject' funkcija
   
 */
+//                                           resolve ↘            ↙ reject
+// const tėtisGrįšIšParduotuvės = new Promise(function (resolve, reject) {
+//   console.log('Tėvėlis išėjo į parduotuvę...');
+//   setTimeout(() => {
+//     // 1. tėvelis gįžta su mandarinais
+//     resolve(['Svietas', 'Mandarinai']);
+//     // 2. tėvelius pasiklydo
+//     reject('Tėvelis atsiprašo');
+//   }, 5000)
+// })
+//   .then((data) => {
+//     console.log('Tėvelis grįžo, ir atnešė:', data);
+//   })
+//   .catch(function (err) {
+//     console.error('Tėvelis negrįžo, klaida:', err);
+//   })
+//   .finally(() => {
+//     console.log('Pažado būsena:', tėtisGrįšIšParduotuvės);
+//   });
 
-//                                           resolve ↘                   ↙ reject
-const mamaGrįžtaIšDarbo = new Promise(function (kąVykdytJeiGerai, kąVykdytJeiBlogai) {
-  console.log('Daromi namų darbai...');
-  setTimeout(() => {
-    console.log('GRĮŽO MAMA')
-    const result = Math.floor(Math.random() * 10);
-    if (result <= 5)
-      kąVykdytJeiGerai({
-        msg: 'Įsivykdė gerai',
-        data: 'Eime pasivaikščiot'
-      });
-    else
-      kąVykdytJeiBlogai({
-        msg: 'Įsivykdė blogai',
-        data: 'Bėgi greit ir padarai namų darbus'
-      });
-  }, 2000);
-})
-  .then(function (data) {
-    // console.log('Promise\'as yra fulfilled');
-    return new Promise(res => {
-      console.log(data.msg + '...')
-      setTimeout(() => {
-        res('O dabar einame, paskaitysiu tau knygą');
-      }, 5000)
-    })
-  })
-  .then(data => new Promise(res => {
-    console.log(data);
-    setTimeout(() => {
-      res('O dabar einame miegoti');
-    }, 3000)
-  }))
-  .then(data => console.log(data))
-  .catch(function (data) {
-    console.log('Promise\'as yra rejected');
-    console.error(data);
-  });
+// console.log('Kodas vykdomas po Promise');
+// console.log('Pažado būsena:', tėtisGrįšIšParduotuvės);
 
-console.log(mamaGrįžtaIšDarbo);
+// ------------------------------------------ Async ---------------------------------------------------------
+// Asinchroninė funkcija, tai funkcija kurios viduje galite sulaukti kitų Promise'7 naudodami raktažodį await
+// Asichroninė funkcija VISADA grąžina Promise.
+// const sumAsync = async (a, b) => {
+//     return a + b;
+// }
 
-// 1. Peržiūrėt CRUD aplikacija
-// 2. Perskaityt šį failą
-// 3. suformuot klausimus apie [1.]
-// 4. 11:25 Teorinė dalis apie Promise
-// 5. 5 min pertrauka ir klausimai apie [2. + 4.]
-// 6. 11:50 Viktorina
+// console.log({
+//   sumAsync,
+//   'sumAsync(3, 5)': sumAsync(3, 5)
+// })
+
+// --------------------------------------------------------------------------------------------------------
+
+const dataUrl = 'https://jsonplaceholder.typicode.com/todos/1';
+
+const printError = (err) => console.error(err);
+
+const createHeader = ({title}) => {
+  console.log('Sukursiu HTML elementą, su title:', title);
+};
+
+fetch(dataUrl)
+  .then(response => response.json())
+  .then(createHeader)
+  .catch(printError);
+
+// Imediatly invoked Function expression - IIFE
+// (async () => {
+//   try {
+//     const response = await fetch(dataUrl);
+//     const data = await response.json();
+//     console.log(data);
+//   } catch (err) {
+//     printError(err);
+//   }
+// })()
