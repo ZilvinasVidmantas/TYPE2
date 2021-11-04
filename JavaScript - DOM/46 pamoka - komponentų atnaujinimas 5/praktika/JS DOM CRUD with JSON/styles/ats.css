@@ -1,0 +1,25 @@
+.card-grid{
+  position: relative;
+}
+
+#createModalBox{
+  position: fixed;
+  z-index: 15;
+  height: 300px;
+  width: 800px;
+  background-color: antiquewhite;
+  border: 3px dashed red;
+  top: 100px;
+  left: 100px;
+}
+
+#editModalBox{
+  position: fixed;
+  z-index: 15;
+  height: 300px;
+  width: 800px;
+  background-color: antiquewhite;
+  border: 3px dashed red;
+  top: 100px;
+  left: 100px;
+}
