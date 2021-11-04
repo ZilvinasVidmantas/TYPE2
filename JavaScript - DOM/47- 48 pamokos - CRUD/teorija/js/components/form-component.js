@@ -88,10 +88,7 @@ class FormComponent {
   }
 
   clearFields = () => {
-    console.log('clearFields');
-    console.log(this.props.fields);
     this.props.fields = this.props.fields.map(x => ({...x, value: ''}));
-    console.log(this.props.fields);
 
     this.render();
   }
@@ -114,7 +111,6 @@ class FormComponent {
       ? this.fields.find(x => x.name === name).value = value
       : undefined
     );
-
   }
 }
 

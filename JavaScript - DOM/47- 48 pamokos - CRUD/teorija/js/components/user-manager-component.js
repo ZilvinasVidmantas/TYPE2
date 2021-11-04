@@ -9,13 +9,14 @@ const generateId = () => String(idBasis++);
 class UserManagerComponent {
   constructor() {
     this.state = {
-      data: clone(userDataArr) // Ateityje, aš šiuos duomenis parisiųsiu iš serverio
+      users: clone(userDataArr), // Ateityje, aš šiuos duomenis parisiųsiu iš serverio
+      editedUserId: null
     };
     this.initialize();
   }
 
   // Pritaiko vartotojų duomenis lentelei
-  formatTableData = () => this.state.data.map(({ id, imgSrc, email, role }) => ({
+  formatTableData = () => this.state.users.map(({ id, imgSrc, email, role }) => ({
     id,
     rowData: [`<img class="table__img "src="${imgSrc}" />`, email, role]
   }))
@@ -26,31 +27,50 @@ class UserManagerComponent {
       ...formData,
       id: generateId()
     };
-    this.state.data.push(user);
+    this.state.users.push(user);
     this.render();
+  }
+
+  setCreateMode = () => {
+    this.state.editedUserId = null;
+    this.form.updateProps({
+      title: 'Sukurti vartotoją',
+      btnText: 'Sukurti',
+      color: 'success',
+      onSubmit: this.createUser
+    });
+    this.form.clearFields();
   }
 
   // Ištrina vartotoją
   deleteUser = (id) => {
-    this.state.data = this.state.data.filter(user => user.id !== id);
+    this.state.users = this.state.users.filter(user => user.id !== id);
+
+    if (this.state.editedUserId === id) this.setCreateMode();
     this.render();
   }
 
   // TODO: įgalina vartotjo redagavimą
-  editUser = (_id) => {
-    const { id, ...user } = this.state.data.find(x => x.id === _id);
-    this.form.updateProps({
-      title: 'Atnaujinti vartotoją',
-      btnText: 'Atnaujinti',
-      color: 'warning',
-      fields: Object.entries(user).map(([name, value]) => ({ name, value })),
-      onSubmit: (formData) => this.updateUser({id, ...formData})
-    })
+  editUser = (userId) => {
+    if (this.state.editedUserId === userId) {
+      this.setCreateMode();
+      this.render();
+    } else {
+      this.state.editedUserId = userId;
+      const { id, ...user } = this.state.users.find(x => x.id === userId);
+      this.form.updateProps({
+        title: 'Atnaujinti vartotoją',
+        btnText: 'Atnaujinti',
+        color: 'warning',
+        fields: Object.entries(user).map(([name, value]) => ({ name, value })),
+        onSubmit: (formData) => this.updateUser({ id, ...formData })
+      })
+    }
   }
 
-  updateUser = ({id, ...formData}) => {
-    const ii = this.state.data.findIndex(x => x.id === id);
-    this.state.data[ii] = {...this.state.data[ii], ...formData};
+  updateUser = ({ id, ...formData }) => {
+    const ii = this.state.users.findIndex(x => x.id === id);
+    this.state.users[ii] = { ...this.state.users[ii], ...formData };
 
     this.form.updateProps({
       title: 'Sukurti vartotoją',
