@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": "skr007",
+      "email": "skerys@vabzdys.lt",
+      "role": "moderator",
+      "imgSrc": "https://upload.wikimedia.org/wikipedia/commons/3/31/Wanderheuschrecke-03.jpg"
+    },
+    {
+      "id": "gggrrf",
+      "email": "saulute@dangus.lt",
+      "role": "admin",
+      "imgSrc": "https://solarsystem.nasa.gov/system/basic_html_elements/11561_Sun.png"
+    },
+    {
+      "id": "gggrrf999",
+      "email": "banys@kultura.lt",
+      "role": "user",
+      "imgSrc": "https://upload.wikimedia.org/wikipedia/commons/b/b2/J%C5%ABras_Banys_2.jpg"
+    }
+  ],
+  "items": [
+    {
+      "id": "654df6g54df651",
+      "title": "Batonas",
+      "price": 20.12
+    },
+    {
+      "id": "654df6g54df652",
+      "title": "Ledai",
+      "price": 22.12
+    },
+    {
+      "id": "654df6g54df653",
+      "title": "Kempinė",
+      "price": 18.12
+    }
+  ]
+} 
