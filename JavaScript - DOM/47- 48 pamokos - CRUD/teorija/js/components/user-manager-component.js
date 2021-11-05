@@ -9,10 +9,23 @@ const generateId = () => String(idBasis++);
 class UserManagerComponent {
   constructor() {
     this.state = {
-      users: clone(userDataArr), // Ateityje, aš šiuos duomenis parisiųsiu iš serverio
-      editedUserId: null
+      users: [], // Ateityje, aš šiuos duomenis parisiųsiu iš serverio
+      editedUserId: null,
+      loading: false
     };
     this.initialize();
+  }
+
+  fetchUsers = () => {
+    this.state.loading = true;
+    fetch('http://localhost:3000/users')
+      .then(response => response.json())
+      .then(users => {
+        this.state.users = users;
+        this.state.loading = false;
+        this.render();
+      })
+      .catch(err => console.error(err))
   }
 
   // Pritaiko vartotojų duomenis lentelei
@@ -100,6 +113,7 @@ class UserManagerComponent {
     formContainer.appendChild(this.form.htmlElement);
     this.htmlElement.appendChild(formContainer);
   }
+
   initializeTable = () => {
     this.table = new TableComponent({
       colNames: ['Nuotrauka', 'El. paštas', 'Rolė'],
@@ -108,23 +122,29 @@ class UserManagerComponent {
       onEdit: this.editUser
     });
 
-    const tableContainer = document.createElement('div');
-    tableContainer.className = 'col-12 col-lg-9';
-    tableContainer.appendChild(this.table.htmlElement);
-    this.htmlElement.appendChild(tableContainer);
+    this.tableContainer = document.createElement('div');
+    this.tableContainer.className = 'col-12 col-lg-9';
+    this.htmlElement.appendChild(this.tableContainer);
   }
 
   initialize = () => {
+    this.fetchUsers();
     this.htmlElement = document.createElement('div');
     this.htmlElement.className = 'row flex-lg-row-reverse g-3';
 
     this.initializeForm();
     this.initializeTable();
+    this.render();
   }
 
   render = () => {
-    this.table.updateProps({
-      data: this.formatTableData()
-    });
+    const { loading } = this.state;
+    if (loading) {
+      this.tableContainer.innerHTML = '<div class="text-center"><img src="assets/loading.gif"></div>';
+    } else {
+      this.tableContainer.innerHTML = '';
+      this.table.updateProps({data: this.formatTableData()});
+      this.tableContainer.appendChild(this.table.htmlElement);
+    }
   }
 }
