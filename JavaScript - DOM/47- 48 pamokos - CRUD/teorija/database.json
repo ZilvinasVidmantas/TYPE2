@@ -17,12 +17,6 @@
       "email": "banys@kultura.lt",
       "role": "user",
       "imgSrc": "https://upload.wikimedia.org/wikipedia/commons/b/b2/J%C5%ABras_Banys_2.jpg"
-    },
-    {
-      "email": "japalas@kengura.afr",
-      "role": "Moderator",
-      "imgSrc": "https://solarsystem.nasa.gov/system/basic_html_elements/11561_Sun.png",
-      "id": "lAX2vL3"
     }
   ],
   "items": [
@@ -43,4 +37,3 @@
     }
   ]
 }
-

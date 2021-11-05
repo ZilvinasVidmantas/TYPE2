@@ -18,14 +18,14 @@ class UserManagerComponent {
 
   fetchUsers = () => {
     this.state.loading = true;
-    fetch('http://localhost:3000/users')
-      .then(response => response.json())
-      .then(users => {
+    API.getUsers(
+      (users) => {
         this.state.users = users;
         this.state.loading = false;
         this.render();
-      })
-      .catch(err => console.error(err))
+      },
+      (err) => console.error(err)
+    );
   }
 
   // Pritaiko vartotojų duomenis lentelei
@@ -57,10 +57,18 @@ class UserManagerComponent {
 
   // Ištrina vartotoją
   deleteUser = (id) => {
-    this.state.users = this.state.users.filter(user => user.id !== id);
-
-    if (this.state.editedUserId === id) this.setCreateMode();
-    this.render();
+    API.deleteUser(
+      () => API.getUsers(
+        (users) => {
+          this.state.users = users;
+          if (this.state.editedUserId === id) this.setCreateMode();
+          this.render();
+        },
+        (err) => console.error(err)
+      ),
+      (err) => console.error(err),
+      id
+    )
   }
 
   // TODO: įgalina vartotjo redagavimą
@@ -143,8 +151,10 @@ class UserManagerComponent {
       this.tableContainer.innerHTML = '<div class="text-center"><img src="assets/loading.gif"></div>';
     } else {
       this.tableContainer.innerHTML = '';
-      this.table.updateProps({data: this.formatTableData()});
+      this.table.updateProps({ data: this.formatTableData() });
       this.tableContainer.appendChild(this.table.htmlElement);
     }
   }
 }
+
+// 11:40 - atsakymai
