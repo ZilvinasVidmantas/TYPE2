@@ -4,45 +4,50 @@
 
 2. Sukurkite pardavimui skirtų žaislų masyvą naudodami JSON server. [1]
     Daiktus sukurkite taip, jog būtų panaudotos visos savybių variacijos.
-  žaislą aprašančios savybės:
-  type Toy = {
-    id: string,
-    title: string,
-    price: {
-      currency: '$' | '€',
-      amount: number
-    },
-    ageRestrictions: {
-      from: number;
-    } | null,
-    discount: {
-      type: 'percentage' | 'toFixed' | 'amount',
-      amount: number
-    },
-    imgSrc: 'string'
-  }
+    Taip pat rekomenduojama susikurti json duomenų kopiją, jog aplikacijai pakeitus duomenis būtų galima persikopijuoti orginalius/pradinius duomenis.
+    žaislą aprašančios savybės:
+      type Toy = {
+        id: string,
+        title: string,
+        price: {
+          currency: '$' | '€',
+          amount: number
+        },
+        ageRestrictions: {
+          from: number;
+        } | null,
+        discount: {
+          type: 'percentage' | 'toFixed' | 'amount',
+          amount: number
+        },
+        imgSrc: 'string'
+      }
 
-3. Paleiskite JSON server, jog būtų galimą juo naudotis. [1]  
-
+3. Paleiskite JSON server, jog būtų galimą juo naudotis: [1]  
+  - sukurkite failą readme.md, ir jame aprašykite:
+    - kokių reikia programų
+    - kaip ir ką reikią suinstaliuoti
+    - kaip paleisti projektą
 
 4. Papildykite failą API.js, aprašyti HTTP requestams. Patikrinkite rezultatus konsolėje. [1]
-  HTTP metodas | url              | tikslas
+  HTTP metodas | url         | tikslas
   ------------------------------------------------------
   GET          | /toys       | gauti visus žaislus
   DELETE       | /toys/{id}  | ištrinti vieną žaislą
 
 5. Faile ToysGridComponent.js panaudokite API.js faile sukurtą funkciją gauti visiems žaislams: [1]
-  - Papildyti metodą intialize, jog būtų parsiunčiami pradiniai duomenys ir įrašomi į this.state.toys
+  - Papildyti metodą init, jog būtų parsiunčiami pradiniai duomenys ir įrašomi į this.state.toys
 
 6. Įgalinti laukimo animaciją, kol yra parsiunčiami duomenys [1]
   - dirbtinai užvilkinti parsiuntimą 1s, jog matytūsi animaciją
-  - papildykite render metodą, jog su kiekvienu objektu būtų kuriami kortelės komponenetai
+  - papildykite render, jog su kiekvienu objektu būtų kuriami kortelės komponenetai
 
-7. Faile ToyCardComponent.js render metodą, jog pagal objekto this.props duomenis, būtų atvaizduojama koretelė [1]
+7. Faile ToyCardComponent.js init metodą, jog pagal objekto this.props duomenis, būtų atvaizduojama koretelė [1]
 
-8. Faile ToysGridComponent.js komponente sukurkite metodą deleteToy ir įgalinkite jį, jog būtų trinami this.state.toys duomenys pagal id
+8. Faile ToysGridComponent.js komponente sukurkite metodą deleteToy ir įgalinkite jį, jog būtų trinami duomenys serveryje pagal id
 
-9. Faile ToyCardComponent.js - ToyCardComponent įgalinkite, 
-  jog būtų kviečiama funkcija this.props.onDelete, kuomet paspaudžiamas mygtukas ant koretelės 'X' mygtuko [1]
+9. Įgalinkite funkcionalumą, jog trinimas veiktų paspaudus kortelės ištrynimo mygtuką:
+  - Kiekvienai kortelei perduokite funkciją į props.onDelete, kuri vykdytų ToysGridComponent.prototype.deleteToy metodą su atitinkamu id
+  - Uždėkite įvykio klausiklį and ToyCardComponent komponento mygtuko, jog jį paspaudus būtų vykdoma funkcija gauta iš this.props.onDelete.
 
-10. Po duomenų ištrinimo atnaujinkite koretelių atvaizdavimą [1]
+10. Po duomenų ištrinimo atnaujinkite koretelių parsiuntimą ir atvaizdavimą [1]
