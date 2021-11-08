@@ -1,23 +1,6 @@
 {
   "furniture": [
     {
-      "id": "1",
-      "title": "Balta kėdė",
-      "type": "chair",
-      "price": 10.21,
-      "location": {
-        "country": "Lietuva",
-        "city": "Kaunas",
-        "street": "Kepurių g. 12"
-      },
-      "owner": {
-        "fullname": "Serbentautas",
-        "mobile": "Funtamojus",
-        "address": "Kepurių g. 12, Kaunas, Lietuva",
-        "email": "funtas@krumas.lt"
-      }
-    },
-    {
       "id": "2",
       "title": "Juodas stalas",
       "type": "table",
@@ -29,7 +12,7 @@
       },
       "owner": {
         "fullname": "Marytė",
-        "mobile": "Smilkytė",
+        "mobile": "+370 658 47569",
         "address": "Vankuverio pr. 1a, Kernavė, Lietuva",
         "email": "marija@smilga.lt"
       }
@@ -46,7 +29,7 @@
       },
       "owner": {
         "fullname": "Serbentautas",
-        "mobile": "Funtamojus",
+        "mobile": "+370 658 47569",
         "address": "Kepurių g. 12, Kaunas, Lietuva",
         "email": "Funtas@krumas.lt"
       }
@@ -63,7 +46,7 @@
       },
       "owner": {
         "fullname": "Serbentautas",
-        "mobile": "Funtamojus",
+        "mobile": "+370 658 47569",
         "address": "Kepurių g. 12, Kaunas, Lietuva",
         "email": "funtas@krumas.lt"
       }
@@ -80,7 +63,7 @@
       },
       "owner": {
         "fullname": "Marytė",
-        "mobile": "Smilkytė",
+        "mobile": "+370 658 47569",
         "address": "Vankuverio pr. 1a, Kernavė, Lietuva",
         "email": "marija@smilga.lt"
       }
@@ -97,7 +80,7 @@
       },
       "owner": {
         "fullname": "Serbentautas",
-        "mobile": "Funtamojus",
+        "mobile": "+370 658 47569",
         "address": "Kepurių g. 12, Kaunas, Lietuva",
         "email": "Funtas@krumas.lt"
       }

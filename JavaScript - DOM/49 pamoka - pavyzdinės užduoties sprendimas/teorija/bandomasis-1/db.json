@@ -1,0 +1,89 @@
+{
+  "furniture": [
+    {
+      "id": "2",
+      "title": "Juodas stalas",
+      "type": "table",
+      "price": 89.99,
+      "location": {
+        "country": "Lietuva",
+        "city": "Vilnius",
+        "street": "Sviesto g. 12"
+      },
+      "owner": {
+        "fullname": "Marytė",
+        "mobile": "+370 658 47569",
+        "address": "Vankuverio pr. 1a, Kernavė, Lietuva",
+        "email": "marija@smilga.lt"
+      }
+    },
+    {
+      "id": "3",
+      "title": "Ruda lova",
+      "type": "bed",
+      "price": 129.99,
+      "location": {
+        "country": "Lietuva",
+        "city": "Kaunas",
+        "street": "Kepurių g. 12"
+      },
+      "owner": {
+        "fullname": "Serbentautas",
+        "mobile": "+370 658 47569",
+        "address": "Kepurių g. 12, Kaunas, Lietuva",
+        "email": "Funtas@krumas.lt"
+      }
+    },
+    {
+      "id": "4",
+      "title": "Balta kėdė",
+      "type": "chair",
+      "price": 10.21,
+      "location": {
+        "country": "Lietuva",
+        "city": "Kaunas",
+        "street": "Kepurių g. 12"
+      },
+      "owner": {
+        "fullname": "Serbentautas",
+        "mobile": "+370 658 47569",
+        "address": "Kepurių g. 12, Kaunas, Lietuva",
+        "email": "funtas@krumas.lt"
+      }
+    },
+    {
+      "id": "5",
+      "title": "Juodas stalas",
+      "type": "table",
+      "price": 89.99,
+      "location": {
+        "country": "Lietuva",
+        "city": "Vilnius",
+        "street": "Sviesto g. 12"
+      },
+      "owner": {
+        "fullname": "Marytė",
+        "mobile": "+370 658 47569",
+        "address": "Vankuverio pr. 1a, Kernavė, Lietuva",
+        "email": "marija@smilga.lt"
+      }
+    },
+    {
+      "id": "6",
+      "title": "Ruda lova",
+      "type": "bed",
+      "price": 129.99,
+      "location": {
+        "country": "Lietuva",
+        "city": "Kaunas",
+        "street": "Kepurių g. 12"
+      },
+      "owner": {
+        "fullname": "Serbentautas",
+        "mobile": "+370 658 47569",
+        "address": "Kepurių g. 12, Kaunas, Lietuva",
+        "email": "Funtas@krumas.lt"
+      }
+    }
+  ]
+}

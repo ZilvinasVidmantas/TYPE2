@@ -25,7 +25,7 @@
 3. Paleiskite JSON server, jog būtų galimą juo naudotis. [1]  
 
 
-4. Papildykite failą API.js, aprašyti HTTP requestams. Patikrinkite rezultatus konsolėje. [1]
+4. Sukurkite failą API.js, aprašyti HTTP requestams. Patikrinkite rezultatus konsolėje. [1]
   HTTP metodas | url              | tikslas
   ------------------------------------------------------
   GET          | /furniture       | gauti visus baldus
@@ -36,11 +36,12 @@
 
 6. Įgalinti laukimo animaciją, kol yra parsiunčiami duomenys [1]
   - dirbtinai užvilkinti parsiuntimą 1s, jog matytūsi animaciją
-  - papildykite render metodą, jog su kiekvienu objektu būtų kuriami kortelės komponenetai
+  - papildykite render metodą, jog su kiekvienu objektu būtų kuriami ir prijungiami kortelės komponenetai
 
-7. Faile FurnitureCardComponent.js render metodą, jog pagal objekto this.props duomenis, būtų atvaizduojama koretelė [1]
+7. Faile FurnitureCardComponent.js papildykite init metodą, jog pagal objekto this.props duomenis, būtų atvaizduojama koretelė [1]
 
-8. Faile FurnitureGridComponent.js komponente sukurkite metodą deleteFurniture ir įgalinkite jį, jog būtų trinami this.state.furniture duomenys pagal id
+8. Faile FurnitureGridComponent.js komponente sukurkite metodą deleteFurniture ir įgalinkite jį, 
+  jog būtų trinami duomenys serveryje ir per naujo atnaujinamas grid'as
 
 9. Faile FurnitureCardComponent.js - FurnitureCardComponent įgalinkite, 
   jog būtų kviečiama funkcija this.props.onDelete, kuomet paspaudžiamas mygtukas ant koretelės 'X' mygtuko [1]
