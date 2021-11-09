@@ -1,0 +1,20 @@
+{
+  "toys": [
+    {
+      "id": "5",
+      "title": "Lėktuvėlis",
+      "price": {
+        "currency": "$",
+        "amount": 11.99
+      },
+      "ageRestrictions": {
+        "from": 5
+      },
+      "discount": {
+        "type": "toFixed",
+        "amount": 8.99
+      },
+      "imgSrc": "https://m.media-amazon.com/images/I/61q1Cq1IYCL._AC_SX425_.jpg"
+    }
+  ]
+}

@@ -24,7 +24,7 @@ class FurnitureGridComponent {
   }
 
   showError = error => console.error(error);
-  
+
   wrapChild = (htmlElement) => {
     const wrapper = document.createElement('div');
     wrapper.className = 'col-12 col-sm-6 col-lg-4';
@@ -44,12 +44,15 @@ class FurnitureGridComponent {
       this.htmlElement.innerHTML = '<img src="assets/loading.gif" style="width: 256px" />';
     } else {
       this.htmlElement.innerHTML = '';
-      const cardComponents = this.state.furniture.map(({ id, ...cardProps }) => new FurnitureCardComponent({
-        ...cardProps,
-        onDelete: () => this.deleteFurniture(id)
-      }));
-      const cardElements = cardComponents.map(componenent => componenent.htmlElement);
-      const wrappedElements = cardElements.map(this.wrapChild);
+
+      const wrappedElements = this.state.furniture
+        .map(({ id, ...cardProps }) => new FurnitureCardComponent({
+          ...cardProps,
+          onDelete: () => this.deleteFurniture(id)
+        }))
+        .map(componenent => componenent.htmlElement)
+        .map(this.wrapChild);
+
       this.htmlElement.append(...wrappedElements);
     }
   }

@@ -1,0 +1,23 @@
+{
+  "name": "bandomasis-2",
+  "version": "1.0.0",
+  "description": "* node.js",
+  "main": "index.js",
+  "scripts": {
+    "start-win": "node_modules\\.bin\\json-server --watch db.json",
+    "start-unix": "node_modules/.bin/json-server --watch db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZilvinasVidmantas/bandomasis-2.git"
+  },
+  "author": "Zilvinas Vidmantas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZilvinasVidmantas/bandomasis-2/issues"
+  },
+  "homepage": "https://github.com/ZilvinasVidmantas/bandomasis-2#readme",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}
