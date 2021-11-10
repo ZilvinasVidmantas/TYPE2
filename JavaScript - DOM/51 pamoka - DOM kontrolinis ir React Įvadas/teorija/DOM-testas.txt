@@ -1,0 +1,119 @@
+Tikslas:
+  Įgalinti duomenų atvaizdavimą ir trynimą, pagal serveryje esančius duomenis.
+
+Priemonės:
+  VSCode
+  Interneto platybės
+  Pamokų medžiaga
+
+Pradžia:
+  8:15
+
+Pateikimas:
+  Atsiųsti VIEŠOS Github repozitorijos nuorodą privačia žinute, per Microsoft Teams programą
+  Bus vertinamas tik tas kodas, kuris bus pa'commit'intas IKI 12:15
+
+Atlikimo būdas:
+  Dirbate savarankiškai, kontrolinio metu būti pokalbyje nėra būtina.
+
+Eiga:
+  1. Sukurkite repozitoriją, kurioje atliksite darbus. [1]
+    - sukurti .gitignore failą, jog nebūtų reaguojama į:
+      * /node_modules aplanko pasikeitimus.
+      * package-lock.json failo pakeitimus.
+    - Šį commit'ą pavadinti '1: init'
+    - Po kiekvienos sekančios užduoties atlikti commit'ą įvardinant ką darėte.
+      'x: trumpas aprašymas ką darėte'; 
+      x - tai užduoties numeris
+
+  2. Sukurkite pardavimui skirtų būstų masyvą naudodami JSON server. [1]
+      - būstą apibūdinanti struktūra:
+          type Apartment = {
+            id: string,
+            type: 'house' | 'flat' | 'cottage',
+            owner: {
+              fullname: string,
+              email: string,
+              phone: string
+            },
+            roomCount: number,
+            squares: number,
+            address: {
+              city: string,
+              country: string,
+              street: string,
+              number: string
+            },
+            price: {
+              amount: number,
+              currency: '$' | '€'
+            },
+            imgSrc: 'string'
+          }
+      - Būstų objektus sukurkite taip, jog būtų panaudotos visos būsto savybių variacijos.
+      - Taip pat rekomenduojama susikurti json duomenų kopiją, jog aplikacijai pakeitus duomenis būtų galima persikopijuoti orginalius/pradinius duomenis.
+
+  3. Sukurkite projekto aprašymą: [1]  
+    - sugeneruokite package.json failą
+    - parsisiųskite json-server biblioteką
+    - sukurkite failą README.MD, ir jame aprašykite:
+      - kokių reikia programų
+      - kaip ir ką reikia suinstaliuoti
+      - kaip paleisti projektą
+    - pasileiskite serverį ir patikrinkite ar pavyksta gauti duomenis
+
+  4. Sukurkite failą API.js, aprašyti HTTP requestams į serverį. Patikrinkite jų veikimą. [1]
+    HTTP metodas | url               | tikslas              | metodo pavadinimas
+    ----------------------------------------------------------------------
+    GET          | /apartments       | gauti visus būstus   | API.fetchApartments
+    DELETE       | /apartments/{id}  | ištrinti vieną būstą | API.deleteApartment
+
+  5. Pasiruoškite komponentais grįstos aplikacijos kūrimui: 
+    5.1. Susikurkite/parsisiųskite  ir struktūrizuokite failus: [0.5]
+      - js/
+        - components/
+          - ApartmentCardComponent.js
+          - ApartmentGridComponent.js
+        - API.js
+        - main.js
+      - index.html
+      - assets/ 
+        - loading.gif
+
+    5.2. Įgalinkite pirmojo komponento prijungimą: [0.5]
+    * index.html
+      * įsitraukite bootstrap
+      * įsitraukite javaScript failus
+      * sukurkite šakninį elementą, kuriame generuosite turinį su javaScript
+      
+    * js/components/ApartmentGridComponent.js
+          * Sukurkite minimalų komponentą ir htmlElement turinį testavimui
+
+    * js/main.js
+          * Prijunkite ApartmentGridComponent klasės objekto htmlElementą į jau egzistuojantį šakninį HTML elementą
+
+  6. Faile ApartmentGridComponent.js panaudokite API.js faile sukurtą funkciją gauti visiems būstams: [1]
+    Komponento html elemento turinį nustatykite, jog:
+      - Tol kol siunčiami duomenys būtų parašyta -> 'siunčiama...'
+      - Parsiuntus parašyta -> 'parsiųsta!'
+    
+  7. Įgalinti laukimo animaciją, kol yra parsiunčiami duomenys ir įgalinti kortelių išdėstymą [1]
+    - dirbtinai užvilkinti parsiuntimą 1s, jog matytųsi animacija
+    - Kol siunčiami duomenys, atvaizduokite animaciją
+
+    - Parsiuntus duomenis atvaizduokite  ApartmentCardComponent htmlElement'us, išdeliotus pagal bootstrap grid system:
+      - xs... - vienas elementas eilutėje
+      - sm... - 2 eilementai eilutėje
+      - lg... - 3 elementai eilutėje
+      - xl... - 4 elementai eilutėje
+
+  8. ApartmentCardComponent klasėje įgalinkite komponento atvaizdavimą pagal this.props gautas reikšmes: [1]
+    - Adresą pateikite kortelėje tokiu formatu: 'street-number, city, country.'
+    - imgSrc savybę panaudokite atvaizduoti nuotraukai.
+    - Visos kainos turi būti atvaizduotos eurais. 
+      Jeigu duomenyse kaina parašyta doleriais(turėtų būti nors vienas objektas doleriais), reikia kainą konvertuoti į eurus.
+    - Kitų duomenų atvaizdavimą parinkite laisvai. Dizainas nebus vertinamas.
+    - Turi būti atvaizduoti visi duomenys.
+
+  9. Kiekvienoje ApartmentCardComponent kortelėje sukurkite ištrinimo mygtuką, kuris trintų kortelę ir kortelę atitinkančius duomenis serveryje [2]
+    - Po ištrynimo turi dingti kortelė iš puslapyje matomų komponentų sąrašo ir serverio duomenų.
