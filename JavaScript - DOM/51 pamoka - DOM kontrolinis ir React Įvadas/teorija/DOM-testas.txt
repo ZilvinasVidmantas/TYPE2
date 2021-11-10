@@ -7,11 +7,11 @@ Priemonės:
   Pamokų medžiaga
 
 Pradžia:
-  8:15
+  8:20
 
 Pateikimas:
   Atsiųsti VIEŠOS Github repozitorijos nuorodą privačia žinute, per Microsoft Teams programą
-  Bus vertinamas tik tas kodas, kuris bus pa'commit'intas IKI 12:15
+  Bus vertinamas tik tas kodas, kuris bus pa'commit'intas IKI 12:20
 
 Atlikimo būdas:
   Dirbate savarankiškai, kontrolinio metu būti pokalbyje nėra būtina.
