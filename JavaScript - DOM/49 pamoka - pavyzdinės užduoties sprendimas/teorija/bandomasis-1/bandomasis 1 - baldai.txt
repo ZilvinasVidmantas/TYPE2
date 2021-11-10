@@ -38,7 +38,7 @@
   - dirbtinai užvilkinti parsiuntimą 1s, jog matytūsi animaciją
   - papildykite render metodą, jog su kiekvienu objektu būtų kuriami ir prijungiami kortelės komponenetai
 
-7. Faile FurnitureCardComponent.js papildykite init metodą, jog pagal objekto this.props duomenis, būtų atvaizduojama koretelė [1]
+7. Faile FurnitureCardComponent.js papildykite init metodą, jog pagal objekto this.props duomenis, būtų atvaizduojama kortelė [1]
 
 8. Faile FurnitureGridComponent.js komponente sukurkite metodą deleteFurniture ir įgalinkite jį, 
   jog būtų trinami duomenys serveryje ir per naujo atnaujinamas grid'as
@@ -46,4 +46,4 @@
 9. Faile FurnitureCardComponent.js - FurnitureCardComponent įgalinkite, 
   jog būtų kviečiama funkcija this.props.onDelete, kuomet paspaudžiamas mygtukas ant koretelės 'X' mygtuko [1]
 
-10. Po duomenų ištrinimo atnaujinkite koretelių atvaizdavimą [1]
+10. Po duomenų ištrinimo atnaujinkite kortelių atvaizdavimą [1]
