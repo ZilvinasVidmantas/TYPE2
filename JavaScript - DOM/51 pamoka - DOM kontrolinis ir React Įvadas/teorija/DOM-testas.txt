@@ -103,7 +103,7 @@ Eiga:
 
     - Parsiuntus duomenis atvaizduokite  ApartmentCardComponent htmlElement'us, išdeliotus pagal bootstrap grid system:
       - xs... - vienas elementas eilutėje
-      - sm... - 2 eilementai eilutėje
+      - sm... - 2 elementai eilutėje
       - lg... - 3 elementai eilutėje
       - xl... - 4 elementai eilutėje
 
