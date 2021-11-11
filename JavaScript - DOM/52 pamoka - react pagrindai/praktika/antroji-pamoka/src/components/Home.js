@@ -24,6 +24,10 @@ const Home = () => {
     setName("Petrolium");
     setYear(2);
   }
+  const handleClickChangeMeAgain = (name, year, e) => {
+    setName(name);
+    setYear(year);
+  }
 
   return (
     <section className="home">
@@ -33,7 +37,8 @@ const Home = () => {
         <button onClick={(e) => handleClickTryMeAgain("CircleK", e)}>Try me again</button>
         <br />
         <p>My favourite petrol station is {name}. I've been using it for {year} years.</p>
-        <button onClick={handleClickChangeMe}>Change me</button>
+        <button onClick={handleClickChangeMe}>Petrolium</button>
+        <button onClick={(e) => handleClickChangeMeAgain("Skull", 5, e)}>Skull</button>
       </div>
       <div className="posts">
         <PostList posts={posts} title="All posts!"/>
