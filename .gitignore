@@ -4,3 +4,6 @@ package-lock.json
 
 # ignoruoja visus VSCode editoriaus nustatymus visoje failų sistemoje
 .vscode
+
+# ignoruoja obuolinius failus
+.DS_Store
