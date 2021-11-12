@@ -1,6 +1,64 @@
 {
   "toys": [
     {
+      "id": "1",
+      "title": "Medinis žaislas",
+      "price": {
+        "currency": "€",
+        "amount": 9.99
+      },
+      "ageRestrictions": null,
+      "discount": {
+        "type": "amount",
+        "amount": 1
+      },
+      "imgSrc": "https://www.medinisarkliukas.lt/images/uploader/li/linguojamas-arkliukas-1.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Lėktuvėlis",
+      "price": {
+        "currency": "$",
+        "amount": 11.99
+      },
+      "ageRestrictions": {
+        "from": 5
+      },
+      "discount": {
+        "type": "toFixed",
+        "amount": 8.99
+      },
+      "imgSrc": "https://m.media-amazon.com/images/I/61q1Cq1IYCL._AC_SX425_.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Kamuolys",
+      "price": {
+        "currency": "€",
+        "amount": 5.99
+      },
+      "ageRestrictions": null,
+      "discount": {
+        "type": "percentage",
+        "amount": 30
+      },
+      "imgSrc": "https://ae01.alicdn.com/kf/HTB12CETIVXXXXb2XpXXq6xXFXXXt/6-PCS-Lot-Colorful-Inflatable-Ball-Kids-Toy-Ball-Children-Game-Play-Beach-Ball-Swimming-Pool.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Medinis žaislas",
+      "price": {
+        "currency": "€",
+        "amount": 9.99
+      },
+      "ageRestrictions": null,
+      "discount": {
+        "type": "amount",
+        "amount": 1
+      },
+      "imgSrc": "https://www.medinisarkliukas.lt/images/uploader/li/linguojamas-arkliukas-1.jpg"
+    },
+    {
       "id": "5",
       "title": "Lėktuvėlis",
       "price": {
@@ -15,6 +73,20 @@
         "amount": 8.99
       },
       "imgSrc": "https://m.media-amazon.com/images/I/61q1Cq1IYCL._AC_SX425_.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Kamuolys",
+      "price": {
+        "currency": "€",
+        "amount": 5.99
+      },
+      "ageRestrictions": null,
+      "discount": {
+        "type": "percentage",
+        "amount": 30
+      },
+      "imgSrc": "https://ae01.alicdn.com/kf/HTB12CETIVXXXXb2XpXXq6xXFXXXt/6-PCS-Lot-Colorful-Inflatable-Ball-Kids-Toy-Ball-Children-Game-Play-Beach-Ball-Swimming-Pool.jpg"
     }
   ]
 }
