@@ -4,8 +4,7 @@ import styles from './InputField.module.css';
 class InputField extends React.Component {
 
   render() {
-    const { name, value, type, id, onChange } = this.props;
-    
+    const { name, value, type, id, handleChange } = this.props;
     return (
       <div className={styles.container}>
         <label htmlFor={id} className={styles.label}>{name}:</label>
@@ -15,7 +14,7 @@ class InputField extends React.Component {
           name={name}
           value={value}
           className={styles.input}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={(event) => handleChange(event.target.value)}
         />
       </div>
     );
