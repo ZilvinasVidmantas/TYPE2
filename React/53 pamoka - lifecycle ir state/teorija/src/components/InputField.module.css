@@ -1,19 +1,57 @@
 .container {
+  font-size: 1.2rem;
   margin-bottom: 0.5em;
 }
 
 .label {
+  font-size: 0.9em;
   display: block;
-  margin-bottom: 0.25em;
+  margin-bottom: 0.15em;
+}
+
+.label.labelError {
+  color: red;
 }
 
 .input {
+  font-size: 1.15em;
   border: none;
-  border-bottom: 1px solid #000;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #000;
   padding-bottom: 0.25em;
 }
 
-.input:focus{
+.input:focus {
   outline: none;
   box-shadow: 0 1px 0 #000;
+}
+
+.input.inputError{
+  color: red;
+  border-bottom-color: red;
+}
+
+.input.inputError:focus {
+  box-shadow: 0 1px 0 red;
+}
+
+.errorCircle{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.5em;
+  width: 2.5em;
+  height: 2.5em;
+  color: white;
+  font-weight: bold;
+  background: red;
+  border-radius: 50%;
+}
+
+.error {
+  margin-top: 0.15em;
+  display: block;
+  color: red;
+  font-size: 0.8em;
 }
