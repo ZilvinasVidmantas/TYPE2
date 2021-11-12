@@ -1,5 +1,7 @@
 import React from "react";
 
+/*const ErrorComponent = () => <div>{props.nonExistingStuff}</div>*/
+
 class Counter extends React.Component {
   constructor(props) {
     console.log("Constructor");
@@ -52,8 +54,23 @@ class Counter extends React.Component {
     return null
   }
 
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    console.log("DO NOT Get Snapshot Before Update");
+    return null
+  }
+
+  /*componentDidCatch(error, info){
+    console.log("Component Did Catch");
+
+    this.setState({error, info})
+  }*/
+
   render() { 
     console.log("Render");
+
+    /*if(this.state.error){
+      return <div>We have encountered an Error! {this.state.error.message}</div>
+    }*/
 
     return (
       <div>
@@ -62,6 +79,7 @@ class Counter extends React.Component {
         <div className="counter">
           Counter: {this.state.counter}
         </div>
+        {/*<ErrorComponent />*/}
       </div>
     );
   }
