@@ -1,5 +1,6 @@
 import React from 'react';
 import InputField from './components/InputField';
+import validator from 'validator';
 
 class App extends React.Component {
   state = {
@@ -7,12 +8,14 @@ class App extends React.Component {
       value: '',
       error: null,
       // grąžinti true, jeigu viskas gerai, grąžinti string'ą, su klaida jeigu blogai
-      validate: (val) => val.length < 10 ? null : 'Įvesties laukas negali būti ilgesnis nei 10 simbolių'
+      validate: (val) => validator.isEmail(val) ? null : 'Netinkamas pašto formatas'
     },
     password: {
       value: '',
       error: null,
-      validate: (val) => val.length < 10 ? null : 'kitoks klaidos aprašymas'
+      validate: (val) => validator.isStrongPassword(val, { minSymbols: 0 })
+        ? null
+        : 'Slaptažodis turi būti mažiausiai 8 simbolių. Jame turi būti nors 1 dižioji, nors 1 mažoji raidės ir nors vienas skaičius'
     }
   };
 
@@ -73,3 +76,9 @@ class App extends React.Component {
 }
 
 export default App;
+
+/*
+... 11:35 analizė
+pertrauka
+... 11:45 klausimų viktorina
+*/
