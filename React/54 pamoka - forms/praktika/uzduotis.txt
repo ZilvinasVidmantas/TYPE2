@@ -1,0 +1,8 @@
+1) Per naują visą tai ką darėme kartu pasirašyti pačiam savo sugalvota tema.
+1 extra) Galima persižiūrėti šitą video: https://youtu.be/qH4pJISKeoI
+Ten more or less viskas tas pats, tik yra daroma su class, tai galbūt kitiems kiek arčiau širdies bus negu mano pavyzdys su funkcijomis.
+1 extra) Galime pridėti validation (ar ten formos užpildytos ir pns)
+2) Prilyginkite gautą info data.js esančiam kintamajam.
+3) Posts.js dalyje išveskite visus post'us. (kaip Posts.js perduoti info mokėmės ketvirtadienį. Ten dar galite pamatyti kaip filtruotis norimą info ir pns) arba paprastai tiesiog imporuokite Posts.js dalyje data.js'ą.
+
+4 extra) Tik peržiūrėkite (nebūtinai iškart, galbūt Žilvinas užduos šitą savaitgaliui): https://youtu.be/w7ejDZ8SWv8 (čia naujesnė ir ilgesnė versija to paties autoriaus apie React JS Crash Course kur Žilvinas buvo davęs žiūrėti ir darytis savaitgalį)
