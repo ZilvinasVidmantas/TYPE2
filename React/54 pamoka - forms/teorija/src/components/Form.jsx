@@ -60,6 +60,8 @@ class Form extends React.Component {
     const { email, password } = this.state;
     const buttonClassName = this.isValid() ? styles.btn : `${styles.btn}  ${styles.btnMuted}`;
 
+    const defaultSubmitBtnText = submitBtnText ?? 'Submit';
+
     return (
       <form onSubmit={this.handleSubmit}>
         <h2>{title}</h2>
@@ -79,7 +81,7 @@ class Form extends React.Component {
           handleChange={this.changePassword}
           error={password.error}
         />
-        <button type="submit" className={buttonClassName}>{submitBtnText}</button>
+        <button type="submit" className={buttonClassName}>{defaultSubmitBtnText}</button>
       </form>
     );
   }

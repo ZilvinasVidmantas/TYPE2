@@ -8,7 +8,7 @@ class App extends React.Component {
       <main>
         <h1>Aplikacijos pavadinimas</h1>
         <Form title="Registracija" submitBtnText="Registruotis"/>
-        <Form title="Prisijungimas" submitBtnText="Prisijungti"/>
+        <Form title="Prisijungimas"/>
       </main>
     );
   }
