@@ -1,13 +1,13 @@
 import React from 'react';
 import InputField from './components/InputField';
 import validator from 'validator';
+import './App.css';
 
 class App extends React.Component {
   state = {
     email: {
       value: '',
       error: null,
-      // grąžinti true, jeigu viskas gerai, grąžinti string'ą, su klaida jeigu blogai
       validate: (val) => validator.isEmail(val) ? null : 'Netinkamas pašto formatas'
     },
     password: {
@@ -18,6 +18,15 @@ class App extends React.Component {
         : 'Slaptažodis turi būti mažiausiai 8 simbolių. Jame turi būti nors 1 dižioji, nors 1 mažoji raidės ir nors vienas skaičius'
     }
   };
+
+  isValid = () => {
+    for (const field in this.state) {
+      if(this.state[field].error !== null) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   changeEmail = (value) => {
     this.setState({
@@ -41,12 +50,14 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    if(this.isValid()){
+      // tai kas daroma, jeigu forma sėkimnga
+    }
   }
 
   render() {
     const { email, password } = this.state;
-
+    const buttonClassName = this.isValid() ? 'btn' : 'btn btn--muted';
 
     return (
       <div>
@@ -55,7 +66,7 @@ class App extends React.Component {
           <InputField
             name="email"
             value={email.value}
-            type="email"
+            type="text"
             id="input-email"
             handleChange={this.changeEmail}
             error={email.error}
@@ -68,7 +79,7 @@ class App extends React.Component {
             handleChange={this.changePassword}
             error={password.error}
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className={buttonClassName}>Submit</button>
         </form>
       </div>
     );
