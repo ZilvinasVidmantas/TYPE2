@@ -56,7 +56,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const { title } = this.props;
+    const { title, submitBtnText } = this.props;
     const { email, password } = this.state;
     const buttonClassName = this.isValid() ? styles.btn : `${styles.btn}  ${styles.btnMuted}`;
 
@@ -79,7 +79,7 @@ class Form extends React.Component {
           handleChange={this.changePassword}
           error={password.error}
         />
-        <button type="submit" className={buttonClassName}>Submit</button>
+        <button type="submit" className={buttonClassName}>{submitBtnText}</button>
       </form>
     );
   }
