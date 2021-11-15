@@ -7,10 +7,16 @@ class App extends React.Component {
     return (
       <main>
         <h1>Aplikacijos pavadinimas</h1>
-        <Form />
+        <Form title="Registracija" />
+        <Form title="Prisijungimas" />
       </main>
     );
   }
 }
 
 export default App;
+
+/*
+  Įgalinkite formos komponenetui, dinamišką mygtuko tekstą, naudojant this.props.submitBtnText
+  11:55
+*/

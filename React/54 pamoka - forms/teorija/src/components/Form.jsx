@@ -56,11 +56,13 @@ class Form extends React.Component {
   }
 
   render() {
+    const { title } = this.props;
     const { email, password } = this.state;
     const buttonClassName = this.isValid() ? styles.btn : `${styles.btn}  ${styles.btnMuted}`;
 
     return (
       <form onSubmit={this.handleSubmit}>
+        <h2>{title}</h2>
         <InputField
           name="email"
           value={email.value}
