@@ -1,4 +1,4 @@
-.btn{
+.btn {
   background: blue;
   color: white;
   border: none;
@@ -6,7 +6,7 @@
   padding: 0.25em 0.5em;
 }
 
-.btn.btn--muted{
+.btn.btnMuted {
   background: #565680;
   user-select: none;
 }
