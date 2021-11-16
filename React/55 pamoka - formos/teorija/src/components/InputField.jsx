@@ -17,7 +17,7 @@ class InputField extends React.Component {
           name={name}
           value={value}
           className={inputClassName}
-          onChange={(event) => handleChange(event.target.value)}
+          onChange={(e) => handleChange(e.target.value)}
         />
         {error ?
           (

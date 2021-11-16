@@ -28,21 +28,11 @@ class Form extends React.Component {
     return true;
   }
 
-  changeEmail = (value) => {
+  handleFieldChange = (name, value) => {
     this.setState({
-      email: {
-        ...this.state.email,
-        error: this.state.email.validate(value),
-        value
-      }
-    });
-  }
-
-  changePassword = (value) => {
-    this.setState({
-      password: {
-        ...this.state.password,
-        error: this.state.password.validate(value),
+      [name]: {
+        ...this.state[name],
+        error: this.state[name].validate(value),
         value
       }
     });
@@ -70,7 +60,7 @@ class Form extends React.Component {
           value={email.value}
           type="text"
           id="input-email"
-          handleChange={this.changeEmail}
+          handleChange={(value) => this.handleFieldChange("email", value)}
           error={email.error}
         />
         <InputField
@@ -78,7 +68,7 @@ class Form extends React.Component {
           value={password.value}
           type="password"
           id="input-password"
-          handleChange={this.changePassword}
+          handleChange={(value) => this.handleFieldChange("password", value)}
           error={password.error}
         />
         <button type="submit" className={buttonClassName}>{defaultSubmitBtnText}</button>
@@ -86,5 +76,5 @@ class Form extends React.Component {
     );
   }
 }
-
+// 9:20
 export default Form;
