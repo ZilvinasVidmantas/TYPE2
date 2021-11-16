@@ -1,6 +1,6 @@
 import React from 'react';
 import InputField from './InputField';
-import validator from 'validator';
+
 import styles from './Form.module.css';
 
 class Form extends React.Component {
@@ -13,20 +13,14 @@ class Form extends React.Component {
 
     this.state = {
       formNum: Form.#formCount,
-      fields: {
-        email: {
-          value: '',
+      fields: this.props.fields.reduce((result, { name, ...fieldProps }) => {
+        result[name] = {
+          ...fieldProps,
           error: null,
-          validate: (val) => validator.isEmail(val) ? null : 'Netinkamas pašto formatas'
-        },
-        password: {
-          value: '',
-          error: null,
-          validate: (val) => validator.isStrongPassword(val, { minSymbols: 0 })
-            ? null
-            : 'Slaptažodis turi būti mažiausiai 8 simbolių. Jame turi būti nors 1 dižioji, nors 1 mažoji raidės ir nors vienas skaičius'
+          value: ''
         }
-      }
+        return result;
+      }, {})
     };
 
   }
@@ -39,16 +33,12 @@ class Form extends React.Component {
         return false;
       }
     }
+
     return true;
   }
 
   handleFieldChange = (name, value) => {
     const { fields } = this.state;
-    console.log({
-      fields,
-      name,
-      value
-    })
 
     this.setState({
       fields: {
@@ -72,30 +62,31 @@ class Form extends React.Component {
   createFields = () => {
     const { fields, formNum } = this.state;
 
-    return Object.entries(fields).map(([name, { value, error }]) => (
-      <InputField
-        key={name}
-        name={name}
-        value={value}
-        type="text"
-        id={`form${formNum}_${name}`}
-        handleChange={(value) => this.handleFieldChange(name, value)}
-        error={error}
-      />
-    ));
+    return Object.entries(fields)
+      .map(([name, { value, type, error }]) => (
+        <InputField
+          key={name}
+          name={name}
+          value={value}
+          type={type}
+          id={`form${formNum}_${name}`}
+          handleChange={(value) => this.handleFieldChange(name, value)}
+          error={error}
+        />
+      ));
   }
 
   render() {
     const { title, submitBtnText } = this.props;
-    const buttonClassName = this.isValid() ? styles.btn : `${styles.btn}  ${styles.btnMuted}`;
 
-    const defaultSubmitBtnText = submitBtnText ?? 'Submit';
+    const buttonClassName = this.isValid() ? styles.btn : `${styles.btn}  ${styles.btnMuted}`;
+    const finalSubmitBtnText = submitBtnText ?? 'Submit';
 
     return (
       <form onSubmit={this.handleSubmit}>
         <h2>{title}</h2>
         {this.createFields()}
-        <button type="submit" className={buttonClassName}>{defaultSubmitBtnText}</button>
+        <button type="submit" className={buttonClassName}>{finalSubmitBtnText}</button>
       </form>
     );
   }
