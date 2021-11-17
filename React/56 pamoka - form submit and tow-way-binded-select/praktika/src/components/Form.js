@@ -6,23 +6,40 @@ class Form extends React.Component {
 	rentACar = (e) => {
 		e.preventDefault();
 
-		console.dir(e.target.querySelector("#car").selectedOptions[0].innerHTML);
-
 		const rentData = this.constructData(e.target);
 		const isValid = this.isDataValid(rentData);
 
-		console.log(rentData);
+		if(!isValid.bool){
+			document.querySelector("#errorMessage").innerHTML = isValid.message;
+		} else {
+			document.querySelector("#errorMessage").innerHTML = "";
+			console.log(rentData);
+		}
 	}
 
 	isDataValid = (data) => {
-		let dataIsValid = true;
+		//let dataIsValid = {bool: true, message: ""};
+		let dataIsValid = this.isFullNameValid(data.fullName);
+		if(!dataIsValid.bool){
+			return dataIsValid;
+		}
+		
+		return dataIsValid;
+	}
 
+	isFullNameValid = (fullName) => {
+		if(fullName == ""){
+			return  {bool: false, message: "Name and Surname is empty!"}
+		} else if(fullName.split(" ").length < 2){
+			return  {bool: false, message: "Add both Name and Surname!"}
+		}
+		return {bool: true, message: ""}
 	}
 
 	constructData = (info) => {
 		const data = {
-			fullname : info.querySelector("#fullName").value,
-			email : info.querySelector("#email").value,
+			fullName : info.querySelector("#fullName").value.trim(),
+			email : info.querySelector("#email").value.trim(),
 			phone : info.querySelector("#phone").value,
 			birthDate : info.querySelector("#birth").value,
 			pickLocation : info.querySelector("#pickLocation").selectedOptions[0].innerHTML,
@@ -30,7 +47,7 @@ class Form extends React.Component {
 			dropLocation : info.querySelector("#dropLocation").selectedOptions[0].innerHTML,
 			dropDate : info.querySelector("#dropDate").value,
 			car : info.querySelector("#car").selectedOptions[0].innerHTML,
-			extraRequests : info.querySelector("#extraInfo").innerHTML
+			extraRequests : info.querySelector("#extraInfo").value
 		}
 		return data;
 	}
@@ -42,24 +59,24 @@ class Form extends React.Component {
 					<h3> Renter Information </h3>
 
 					<label htmlFor="fullName">Name and Surname</label>
-					<input required type="text" name="fullName" id="fullName" />
+					<input  type="text" name="fullName" id="fullName" />
 
 					<label htmlFor="email">Email</label>
-					<input required type="email" name="email" id="email" />
+					<input  type="email" name="email" id="email" />
 
 					<label htmlFor="phone">Phone</label>
-					<input required type="tel" name="phone" id="phone" 
-						pattern="86-[0-9]{3}-[0-9]{4}" placeholder="86-666-6666"
+					<input  type="tel" name="phone" id="phone" 
+						pattern="86[0-9]{7}" placeholder="866666666"
 					/>
 
 					<label htmlFor="birth">Birth date</label>
-					<input required type="date" name="birth" id="birth"/>
+					<input  type="date" name="birth" id="birth"/>
 
 
 					<h3> Rent Information </h3>
 					
 					<label htmlFor="pickLocation">Pick-up Location</label>
-					<select required name="pickLocation" id="pickLocation">
+					<select  name="pickLocation" id="pickLocation">
 						<option value="">---</option>
 						<option value="1">Kaunas</option>
 						<option value="2">Vilnius</option>
@@ -68,10 +85,10 @@ class Form extends React.Component {
 					</select>
 					
 					<label htmlFor="pickDate">Pick-up Date</label>
-					<input required type="datetime-local" name="pickDate" id="pickDate" />
+					<input  type="datetime-local" name="pickDate" id="pickDate" />
 
 					<label htmlFor="dropLocation">Drop-off Location</label>
-					<select required name="dropLocation" id="dropLocation">
+					<select  name="dropLocation" id="dropLocation">
 						<option value="">---</option>
 						<option value="1">Kaunas</option>
 						<option value="2">Vilnius</option>
@@ -80,13 +97,13 @@ class Form extends React.Component {
 					</select>
 
 					<label htmlFor="dropDate">Drop-off Date</label>
-					<input required type="datetime-local" name="dropDate" id="dropDate" />
+					<input  type="datetime-local" name="dropDate" id="dropDate" />
 
 
 					<h3> Rental Car Information </h3>
 
 					<label htmlFor="car">Car</label>
-					<select required name="car" id="car">
+					<select  name="car" id="car">
 						<option value="">---</option>
 						<option value="1">Audi TT</option>
 						<option value="2">VW Golf</option>
@@ -100,6 +117,7 @@ class Form extends React.Component {
 
 					<button className={styles.formBtn}> Nuomotis mašiną </button>
 				</form>
+				<div id="errorMessage" className={styles.errorMessage}></div>
 			</div>
 		);
 	}
