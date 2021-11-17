@@ -86,9 +86,11 @@ class Form extends React.Component {
           handleChange: (value) => this.handleFieldChange(name, value),
           ...commonProps,
         }
-        return type === 'select'
-          ? <SelectField options={options} {...fieldProps} />
-          : <InputField type={type} {...fieldProps} />
+        switch (type) {
+          case 'select': return <SelectField options={options} {...fieldProps} />; 
+          /* kiti variantai: radioGroup, inputGroup, ir t.t. ) ..*/
+          default: return <InputField type={type} {...fieldProps} />
+        }
       });
   }
 
