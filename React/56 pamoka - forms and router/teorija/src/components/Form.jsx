@@ -27,19 +27,21 @@ class Form extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.isValid()) {
-      /*
-        Naudodami this state, suformuokite duomenis tokiu formatu
-          {
-            email: 'nuskaityta reiksme is state',
-            password: 'nuskaityta reiksme is state',
-            ...
-            laukasX: 'nuskaityta lauko x reikšmė iš state'
-          }
 
-        Sufotmuotus duomenis perduokite kviečiamai funkcijai 'onSubmit'
-      */
-      console.log(this.state);
-      this.props.onSubmit('formos duomenys');
+      // iteracija | kaupiamoji - res | elementas           | name       | value                | res[name] = value;               | perduota reiksme sekanciai iteracijai
+      // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      // 1         | {}               | ['email', {...}]    | 'email'    | 'balvonas@gmail.com' | res.email = 'balvonas@gmail.com' | {email: 'balvonas@gmail.com'}
+      // 2         | {email: '...'}   | ['password', {...}] | 'password' | 'Labas123'           | res.password = 'Labas123'        | {email: 'balvonas@gmail.com', password: 'Labas123'}
+
+      // const formData = Object.entries(this.state.fields)
+      //   .reduce((res, [name, { value }]) => ({ ...res, [name]: value }), {});
+
+      const formData = Object.entries(this.state.fields).reduce((res, [name, { value }]) => {
+        res[name] = value;
+        return res;
+      }, {});
+
+      this.props.onSubmit(formData);
     }
   }
 
