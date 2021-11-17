@@ -19,11 +19,13 @@ class App extends React.Component {
             {
               name: 'email',
               type: 'email',
+              /* pridėti savybę label */
               validate: (val) => validator.isEmail(val) ? null : 'Netinkamas pašto formatas'
             },
             {
               name: 'password',
               type: 'password',
+              /* pridėti savybę label */
               validate: (val) => validator.isStrongPassword(val, { minSymbols: 0 })
                 ? null
                 : 'Slaptažodis turi būti mažiausiai 8 simbolių. Jame turi būti nors 1 dižioji, nors 1 mažoji raidės ir nors vienas skaičius',
@@ -37,3 +39,8 @@ class App extends React.Component {
 }
 
 export default App;
+
+/*
+  Implementuokite label. Vietoj komentarų įrašykite savo kodą
+
+*/

@@ -76,12 +76,13 @@ class Form extends React.Component {
     const { fields, formNum } = this.state;
 
     return Object.entries(fields)
-      .map(([name, { value, type, error }]) => (
+      .map(([name, { value, type, error, /* destrukturizuoja label savybę */ }]) => (
         <InputField
           key={name}
           name={name}
           value={value}
           type={type}
+          // Perduodame label savybę InputField komponenetui
           id={`form${formNum}_${name}`}
           handleChange={(value) => this.handleFieldChange(name, value)}
           error={error}
