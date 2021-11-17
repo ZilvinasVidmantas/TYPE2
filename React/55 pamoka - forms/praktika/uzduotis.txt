@@ -22,5 +22,5 @@ Formoje turi būti:
 Formą pasirinktu būdu submit'inti.
 Patikrinti ar visos įvestys valid (jei ne - išvesti apie tai žinutę vartotojui)
 Išsaugoti formoje supildytą informaciją kaip objekto kintamąjį ir jį išvesti į konsolę. (galima saugoti tik vieną arba visas tos sesijos supildytas formas object / array->objects kintamajame)
-------- EXTRA išvesti į formą, ne į konsolę. -------
+------- EXTRA išvesti į puslapį, ne į konsolę. -------
 Išvalyti formą.
