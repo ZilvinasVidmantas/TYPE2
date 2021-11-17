@@ -76,5 +76,4 @@ export default App;
   10 min pertrauka
   analizė
   11:30 - klausimai
-
 */
