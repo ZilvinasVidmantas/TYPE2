@@ -1,5 +1,6 @@
 import React from 'react';
 import InputField from './InputField';
+import SelectField from './SelectField';
 
 import styles from './Form.module.css';
 
@@ -76,18 +77,19 @@ class Form extends React.Component {
     const { fields, formNum } = this.state;
 
     return Object.entries(fields)
-      .map(([name, { value, type, error, label }]) => (
-        <InputField
-          key={name}
-          name={name}
-          value={value}
-          type={type}
-          label={label}
-          id={`form${formNum}_${name}`}
-          handleChange={(value) => this.handleFieldChange(name, value)}
-          error={error}
-        />
-      ));
+      .map(([name, { value, type, options, ...commonProps }]) => {
+        const fieldProps = {
+          key: name,
+          name,
+          value,
+          id: `form${formNum}_${name}`,
+          handleChange: (value) => this.handleFieldChange(name, value),
+          ...commonProps,
+        }
+        return type === 'select'
+          ? <SelectField options={options} {...fieldProps} />
+          : <InputField type={type} {...fieldProps} />
+      });
   }
 
   render() {
