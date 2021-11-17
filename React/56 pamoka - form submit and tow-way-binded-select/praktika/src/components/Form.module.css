@@ -1,0 +1,9 @@
+.form form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formBtn{
+  margin-top: 20px;
+}
