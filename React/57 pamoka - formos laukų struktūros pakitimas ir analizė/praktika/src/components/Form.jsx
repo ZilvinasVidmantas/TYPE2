@@ -47,8 +47,11 @@ class Form extends React.Component {
         id: `${name}`,
         handleChange: (value) => this.handleFieldChange(name, value),
         ...rest,
-      } 
-      return <InputField type={type} {...commonProps} />
+      }
+      switch (type) {
+        case "select": return <SelectField options={options} {...commonProps} />;
+        default: return <InputField type={type} {...commonProps} />
+      }
     });
   }
 

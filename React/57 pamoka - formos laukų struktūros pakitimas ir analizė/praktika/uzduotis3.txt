@@ -33,3 +33,4 @@ Projekto darymo eiga:
 	2) Prisidėkite email ir password. (App.js turi perduoti daugiau info)
 	3) Prisidėkite selectRegion. (App.js turi perduoti dar daugiau info; Form.js turi atsirinkti kokį input'o tipą reikia kviesti; SelectField.js, kuris pagal jam duotus props grąžina sukurtą lauką)
 	4) Validation kaip ir minėjau galima nusikelti PAČIAM galui.
+	5) Viską stilizuoti.

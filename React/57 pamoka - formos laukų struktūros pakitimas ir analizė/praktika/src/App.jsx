@@ -23,6 +23,17 @@ class App extends React.Component {
               name: "password",
               type: "password",
               label: "Prisijungimo Slaptažodis"
+            },
+            {
+              name: "region",
+              label: "Regionas",
+              type: "select",
+              options: [
+                { value: "", text: "" },
+                { value: "13", text: "13'ta apygarda" },
+                { value: "12", text: "12'ta apygarda" },
+                { value: "9", text: "9'ta apygarda" }
+              ]
             }
           ]}
         />
