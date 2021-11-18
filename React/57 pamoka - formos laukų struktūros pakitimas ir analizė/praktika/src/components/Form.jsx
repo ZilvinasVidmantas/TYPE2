@@ -49,7 +49,6 @@ class Form extends React.Component {
         ...rest,
       } 
       return <InputField type={type} {...commonProps} />
-      
     });
   }
 

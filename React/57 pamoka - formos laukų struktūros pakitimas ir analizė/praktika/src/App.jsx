@@ -13,6 +13,16 @@ class App extends React.Component {
               name: "username",
               type: "text",
               label: "Prisijungimo Vardas"
+            },
+            {
+              name: "email",
+              type: "email",
+              label: "Elektroninis Paštas"
+            },
+            {
+              name: "password",
+              type: "password",
+              label: "Prisijungimo Slaptažodis"
             }
           ]}
         />
