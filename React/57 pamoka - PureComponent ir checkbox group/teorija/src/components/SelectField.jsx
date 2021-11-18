@@ -5,6 +5,7 @@ class SelectField extends React.Component {
 
   render() {
     const { name, value, label, id, error, options, handleChange } = this.props;
+    console.log(`SELECT FIELD ['${label}'] render()`);
 
     const labelClassName = `${styles.label}${error ? ' ' + styles.labelError : ''}`;
     const selectClassName = `${styles.select}${error ? ' ' + styles.selectError : ''}`;
@@ -16,8 +17,8 @@ class SelectField extends React.Component {
           name={name}
           id={id}
           className={selectClassName}
-          value={value}
-          onChange={(e) => handleChange(e.target.value)}
+          value={value}  // keistūsi tai
+          onChange={(e) => handleChange(e.target.value)} // keičiant tai
         >
           {options.map(({ value, text }) => <option key={value} value={value}>{text}</option>)}
         </select>

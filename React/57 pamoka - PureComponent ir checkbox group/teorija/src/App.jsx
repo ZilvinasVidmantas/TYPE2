@@ -3,13 +3,11 @@ import validator from 'validator';
 import Form from './components/Form';
 
 class App extends React.Component {
-
   doStuff = (data) => {
     console.log(data);
   }
 
   render() {
-
     return (
       <main>
         <h1>Aplikacijos pavadinimas</h1>

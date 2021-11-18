@@ -57,7 +57,7 @@ class Form extends React.Component {
 
     return true;
   }
-
+  
   handleFieldChange = (name, value) => {
     const { fields } = this.state;
 
@@ -87,7 +87,7 @@ class Form extends React.Component {
           ...commonProps,
         }
         switch (type) {
-          case 'select': return <SelectField options={options} {...fieldProps} />; 
+          case 'select': return <SelectField options={options} {...fieldProps} />;
           /* kiti variantai: radioGroup, inputGroup, ir t.t. ) ..*/
           default: return <InputField type={type} {...fieldProps} />
         }
@@ -95,17 +95,21 @@ class Form extends React.Component {
   }
 
   render() {
+    console.log('FORM - render()')
     const { title, submitBtnText } = this.props;
 
     const buttonClassName = this.isValid() ? styles.btn : `${styles.btn}  ${styles.btnMuted}`;
     const finalSubmitBtnText = submitBtnText ?? 'Submit';
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>{title}</h2>
-        {this.createFields()}
-        <button type="submit" className={buttonClassName}>{finalSubmitBtnText}</button>
-      </form>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <form onSubmit={this.handleSubmit}>
+          <h2>{title}</h2>
+          {this.createFields()}
+          <button type="submit" className={buttonClassName}>{finalSubmitBtnText}</button>
+        </form>
+        <pre>{JSON.stringify(this.state, undefined, 2)}</pre>
+      </div>
     );
   }
 }

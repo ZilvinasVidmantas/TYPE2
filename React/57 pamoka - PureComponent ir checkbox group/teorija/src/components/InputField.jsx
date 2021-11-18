@@ -4,6 +4,7 @@ class InputField extends React.Component {
 
   render() {
     const { name, value, type, id, handleChange, error, label } = this.props;
+    console.log(`INPUT FIELD ['${label}'] render()`);
 
     const labelClassName = `${styles.label}${error ? ' ' + styles.labelError : ''}`;
     const inputClassName = `${styles.input}${error ? ' ' + styles.inputError : ''}`;
@@ -15,8 +16,8 @@ class InputField extends React.Component {
           id={id}
           type={type}
           name={name}
-          value={value}
           className={inputClassName}
+          value={value}
           onChange={(e) => handleChange(e.target.value)}
         />
         {error ?
