@@ -1,0 +1,22 @@
+.container {
+  font-size: 1.2rem;
+  margin-bottom: 0.5em;
+}
+
+.label {
+  font-size: 0.9em;
+  display: block;
+  margin-bottom: 0.15em;
+  text-align: center;
+}
+
+.input {
+  font-size: 1.15em;
+  border: 5px outset rgb(181, 235, 57);
+  padding-bottom: 0.25em;
+}
+
+.input:focus {
+  border: 5px inset rgb(196, 224, 129);
+  outline: none;
+}

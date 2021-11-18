@@ -6,13 +6,17 @@ class SelectField extends React.Component {
   render() {
     const { name, value, label, id, handleChange, options } = this.props;
 
+    const labelClassName = `${styles.label}`;
+    const selectClassName = `${styles.select}`;
+
     return (
-      <div>
-        <label htmlFor={id}>{label}</label>
+      <div className={styles.container}>
+        <label htmlFor={id} className={labelClassName}>{label}</label>
         <select
           name={name}
           id={id}
-          value={value} 
+          className={selectClassName}
+          value={value}
           onChange={(e) => handleChange(e.target.value)}
         >
           {options.map(({ value, text }) => <option key={value} value={value}>{text}</option>)}

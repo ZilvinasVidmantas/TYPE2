@@ -43,7 +43,7 @@ class Form extends React.Component {
     return fields.map(({ name, type, options, ...rest }) => {
       const commonProps = {
         key: name,
-        name,
+        name: name,
         id: `${name}`,
         handleChange: (value) => this.handleFieldChange(name, value),
         ...rest,
@@ -58,14 +58,16 @@ class Form extends React.Component {
   render() {
     const { title, submitBtnText } = this.props;
 
+    const buttonClassName = styles.btn;
+    const titleClassName = styles.title;
     const finalSubmitBtnText = submitBtnText ?? "Submit";
 
     return (
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <form onSubmit={this.handleSubmit}>
-          <h2>{title}</h2>
+          <h1 className={styles.title}>{title}</h1>
           {this.createFields()}
-          <button type="submit">{finalSubmitBtnText}</button>
+          <button type="submit" className={buttonClassName}>{finalSubmitBtnText}</button>
         </form>
       </div>
     );
