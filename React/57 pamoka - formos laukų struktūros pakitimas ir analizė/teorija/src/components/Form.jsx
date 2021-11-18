@@ -14,7 +14,7 @@ class Form extends React.Component {
 
     this.state = {
       formNum: Form.#formCount,
-      // fields: this.props.fields.reduce((result, { name, ...fieldProps }) => {
+      // fields: props.fields.reduce((result, { name, ...fieldProps }) => {
       //   result[name] = {
       //     ...fieldProps,
       //     error: null,
@@ -33,8 +33,29 @@ class Form extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.isValid()) {
+      /*
+      Object based:
+        this.state.fields = {
+          fieldName1: {...otherProps},
+          fieldName2: {...otherProps},
+          fieldName3: {...otherProps},
+        }
+        
+        Object.entries(this.state.fields)
+          [
+            [fieldName1, {...otherProps}],
+            [fieldName2, {...otherProps}],
+            [fieldName2, {...otherProps}],
+          ]
 
-      const formData = this.state.fields.reduce((res, { name, value }) => {
+      Array based:
+        this.state.fields = [
+          {name: fieldName1, ...otherProps},
+          {name: fieldName2, ...otherProps},
+          {name: fieldName3, ...otherProps},
+        ]
+      */
+      const formData = this.state.fields.reduce((res, {name, value}) => {
         res[name] = value;
         return res;
       }, {});
@@ -48,31 +69,29 @@ class Form extends React.Component {
   handleFieldChange = (name, value) => {
     this.setState({
       fields: this.state.fields.map(field => {
-        return {
-          ...field,
-          value: field.name === name ? value : field.value,
-          error: field.name === name ? field.validate(value) : field.error
+        if (field.name === name) {
+          field.value = value;
+          field.error = field.validate(value);
         }
+        return field;
       })
     });
   }
 
   createFields = () => {
     const { fields, formNum } = this.state;
-
-    return fields.map(({ name, value, type, options, ...commonProps }) => {
-      const fieldProps = {
+    return fields.map(({ name, type, options, ...rest }) => {
+      const commonProps = {
         key: name,
         name,
-        value,
         id: `form${formNum}_${name}`,
         handleChange: (value) => this.handleFieldChange(name, value),
-        ...commonProps,
+        ...rest,
       }
       switch (type) {
-        case 'select': return <SelectField options={options} {...fieldProps} />;
+        case 'select': return <SelectField options={options} {...commonProps} />;
         /* kiti variantai: radioGroup, inputGroup, ir t.t. ) ..*/
-        default: return <InputField type={type} {...fieldProps} />
+        default: return <InputField type={type} {...commonProps} />
       }
     });
   }
@@ -85,9 +104,9 @@ class Form extends React.Component {
 
     return (
       <div style={{ display: 'flex' }}>
-        <pre style={{ width: '300px', flexGrow: 0, overflowX: 'scroll', border: '1px solid black', marginRight: '2rem'}}>
+        <pre style={{ width: '300px', flexGrow: 0, overflowX: 'scroll', border: '1px solid black', marginRight: '2rem' }}>
           {JSON.stringify(this.state, undefined, 2)}
-          </pre>
+        </pre>
         <form onSubmit={this.handleSubmit}>
           <h2>{title}</h2>
           {this.createFields()}
@@ -99,14 +118,3 @@ class Form extends React.Component {
 }
 
 export default Form;
-
-/*
-  Išanalizuokite metodų pritaikymą pakitusiai this.fields.props struktūrai, {} -> []
-    * išanalizuokite kiekvieną metodą
-    * suformuokite klausimus
-    
-  10 min pertrauka
-  20 min analizavimas
-  klausimų atsakymai: 11:30
-    
-*/

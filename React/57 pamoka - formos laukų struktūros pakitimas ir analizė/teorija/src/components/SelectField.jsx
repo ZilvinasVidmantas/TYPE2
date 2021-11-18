@@ -4,7 +4,7 @@ import styles from './SelectField.module.css';
 class SelectField extends React.Component {
 
   render() {
-    const { name, value, label, id, error, options, handleChange } = this.props;
+    const { name, value, label, id, error, handleChange, options } = this.props;
 
     const labelClassName = `${styles.label}${error ? ' ' + styles.labelError : ''}`;
     const selectClassName = `${styles.select}${error ? ' ' + styles.selectError : ''}`;
