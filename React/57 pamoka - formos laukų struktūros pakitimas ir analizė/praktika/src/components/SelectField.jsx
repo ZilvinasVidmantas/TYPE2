@@ -4,10 +4,10 @@ import styles from "./SelectField.module.css";
 class SelectField extends React.Component {
 
   render() {
-    const { name, value, label, id, handleChange, options } = this.props;
+    const { name, value, label, id, error, handleChange, options } = this.props;
 
-    const labelClassName = `${styles.label}`;
-    const selectClassName = `${styles.select}`;
+    const labelClassName = `${styles.label}${error ? ' ' + styles.labelError : ''}`;
+    const selectClassName = `${styles.select}${error ? ' ' + styles.selectError : ''}`;
 
     return (
       <div className={styles.container}>
@@ -21,6 +21,7 @@ class SelectField extends React.Component {
         >
           {options.map(({ value, text }) => <option key={value} value={value}>{text}</option>)}
         </select>
+        {error ? <div className={styles.error}>{error}</div> : null}
       </div>
     );
   }
