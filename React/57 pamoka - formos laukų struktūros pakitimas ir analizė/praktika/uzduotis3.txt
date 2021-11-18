@@ -1,0 +1,34 @@
+Sukurti registracijos formą.
+	browser vaizdas:
+		form
+			username
+			email
+			password
+			selectRegion
+				regionNr1
+				regionNr2
+				regionNr3
+			submitButton
+
+	react'o medžio vaizdas:
+		App
+			Form
+				InputField key="username"
+				InputField key="email"
+				InputField key="password"
+				SelectField key="region"
+
+Kurkite formą tokiu principu, kokį naudojate teorinių paskaitų metu.
+
+React projekto veikimas:
+	1) index.js kviečia App komponentą.
+	2) App.js kviečia Form komponentą ir per props perduoda jam visą reikalingą informaciją.
+	3.1) Form.js priima props konstruktoriaus viduje nurodydamas jų reikšmes this.state'ui, kuris jas destruktūrizuoja.
+	3.2) Form.js susitvarko su: laukų informacijos pasikeitimu; laukų informacijos tinkamumu; formos pateikimu.
+	3.3) Form.js kviečia InputField arba/ir SelectField komponentą/us priklausomai nuo to, kokius ir kiek props priima ir perduoda jiems reikalingą informaciją.
+	4) InputField ir SelectField komponentai priima props, juos destruktūrizuoja ir su jais sukuria bei return'ina norimą formos lauką.
+
+Projekto darymo eiga:
+	1) Susikurkite veikiančią formą TIK su username lauku. (reikės: index.js; App.js su vieno lauko informacija perduodama Formos komponentui; Form.js, kuris susitvarko su savo užduotimis ir kviečia InputField'ą jam perduodamas informaciją apie username lauką; InputField.js, kuris pagal jam duotus props grąžina sukurtą lauką)
+	2) Prisidėkite email ir password. (App.js turi perduoti daugiau info)
+	3) Prisidėkite selectRegion. (App.js turi perduoti dar daugiau info; Form.js turi atsirinkti kokį input'o tipą reikia kviesti; SelectField.js, kuris pagal jam duotus props grąžina sukurtą lauką)
