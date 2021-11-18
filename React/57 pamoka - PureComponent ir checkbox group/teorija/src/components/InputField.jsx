@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './InputField.module.css';
+
 class InputField extends React.Component {
 
   render() {
     const { name, value, type, id, handleChange, error, label } = this.props;
-    console.log(`INPUT FIELD ['${label}'] render()`);
 
     const labelClassName = `${styles.label}${error ? ' ' + styles.labelError : ''}`;
     const inputClassName = `${styles.input}${error ? ' ' + styles.inputError : ''}`;
