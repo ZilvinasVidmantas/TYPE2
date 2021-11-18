@@ -99,3 +99,14 @@ class Form extends React.Component {
 }
 
 export default Form;
+
+/*
+  Išanalizuokite metodų pritaikymą pakitusiai this.fields.props struktūrai, {} -> []
+    * išanalizuokite kiekvieną metodą
+    * suformuokite klausimus
+    
+  10 min pertrauka
+  20 min analizavimas
+  klausimų atsakymai: 11:30
+    
+*/
