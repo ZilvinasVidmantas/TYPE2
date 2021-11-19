@@ -1,28 +1,7 @@
 import React from 'react';
 import InputField from './InputField';
 import SelectField from './SelectField';
-
 import styles from './Form.module.css';
-
-/*
-  state = {
-    values: {
-      email: '',
-      password: '',
-      city: '',
-    },
-    errors: {
-      email: null,
-      password: null,
-      city: null,
-    },
-    fieldsProps: {
-      email:    { label: '...', type: '', id='...generuoti...', onValidate: (...) => {...}},
-      password: { label: '...', type: '', id='...generuoti...', onValidate: (...) => {...}},
-      city:     { label: '...', type: '', id='...generuoti...', onValidate: (...) => {...}},
-    },
-  } 
-*/
 
 class Form extends React.Component {
   static #formCount = 0;
@@ -50,6 +29,13 @@ class Form extends React.Component {
     this.state = state;
   }
 
+  /*
+    1. Pagal pakitusią struktūrą, kvieskite funkciją this.props.onSubmit su formos duomenimis
+
+    10 min pertrauka
+    5 min atilikimui
+    tęsiame: 11:30
+  */
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.isValid()) {
@@ -64,27 +50,19 @@ class Form extends React.Component {
 
   isValid = () => Object.values(this.state.errors).every(x => x === null);
 
-  /*
-    1. Išanalizuoti esamą Form instance (this) ir this.state struktūras.
-      * Galite naudoti ReactDeveloperTool
-      * Galite atspausdinti this arba this.state vykdomuose metoduose (render | createFields | handleFieldChange)
-      * Suformuoti klausimus
-    10:55
-    
-    2. Pagal pakeistą this.state ir state pritaikykite handleFieldChange metodą
-      * atnaujinkite this.state.values
-      * atnaujinkite this.state.erros panaudodami this.fieldsProps['lauko pavadinimas'].validate
-  
-  */
   handleFieldChange = (name, value) => {
+    const { fieldsProps, state: { values, errors } } = this;
+    console.log(this);
+
     this.setState({
-      fields: this.state.fields.map(field => {
-        if (field.name === name) {
-          field.value = value;
-          field.error = field.validate(value);
-        }
-        return field;
-      })
+      values: {
+        ...values,
+        [name]: value
+      },
+      errors: {
+        ...errors,
+        [name]: fieldsProps[name].validate(value)
+      }
     });
   }
 
