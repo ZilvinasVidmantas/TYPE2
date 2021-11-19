@@ -10,7 +10,7 @@ class Form extends React.Component {
     super(props);
     Form.#formCount++;
 
-    const { fieldsProps, ...state } = props.fields.reduce((res, { name, ...rest }) => {
+    const { fieldsProps, fieldHandlers, ...state } = props.fields.reduce((res, { name, ...rest }) => {
       res.values[name] = '';
       res.errors[name] = null;
       res.fieldsProps[name] = {
@@ -22,37 +22,25 @@ class Form extends React.Component {
     }, {
       values: {},
       errors: {},
-      fieldsProps: {}
+      fieldsProps: {},
     });
 
     this.fieldsProps = fieldsProps;
     this.state = state;
   }
 
-  /*
-    1. Pagal pakitusią struktūrą, kvieskite funkciją this.props.onSubmit su formos duomenimis
-
-    10 min pertrauka
-    5 min atilikimui
-    tęsiame: 11:30
-  */
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.isValid()) {
-      const formData = this.state.fields.reduce((res, { name, value }) => {
-        res[name] = value;
-        return res;
-      }, {});
-
-      this.props.onSubmit(formData);
+      this.props.onSubmit(this.state.values);
     }
   }
 
   isValid = () => Object.values(this.state.errors).every(x => x === null);
 
-  handleFieldChange = (name, value) => {
+  handleFieldChange = (event) => {
+    const { name, value } = event.target;
     const { fieldsProps, state: { values, errors } } = this;
-    console.log(this);
 
     this.setState({
       values: {
@@ -76,7 +64,7 @@ class Form extends React.Component {
         name,
         ...commonProps,
         error: errors[name],
-        handleChange: (value) => this.handleFieldChange(name, value),
+        handleChange: this.handleFieldChange,
       }
       switch (type) {
         case 'select': return <SelectField options={options} {...fieldProps} />;
