@@ -65,7 +65,7 @@ class App extends React.Component {
               name: "checkIn",
               type: "datetime-local",
               label: "Įsiregistravimo Data ir Laikas",
-              validate: (val) => validator.isISO8601(val)
+              validate: (val) => val.slice(0,16) > (new Date().toISOString().slice(0,12)+((parseFloat(new Date().toISOString().split("")[12])+2).toString())+ new Date().toISOString().slice(13,16))
                 ? null
                 : 'Nurodykite įsiregistravimo laiką'
             },
