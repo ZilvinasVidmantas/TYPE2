@@ -52,6 +52,30 @@ class App extends React.Component {
               validate: (val) => !validator.isEmpty(val)
                 ? null
                 : 'Privaloma pasirinkti kambario tipą'
+            },
+            { 
+              name: "peopleAmount",
+              type: "number",
+              label: "Žmonių kiekis",
+              validate: (val) => !validator.isEmpty(val) && val > 0
+                ? null
+                : 'Nurodykite žmonių kiekį'
+            },
+            { 
+              name: "checkIn",
+              type: "datetime-local",
+              label: "Įsiregistravimo Data ir Laikas",
+              validate: (val) => validator.isISO8601(val)
+                ? null
+                : 'Nurodykite įsiregistravimo laiką'
+            },
+            { 
+              name: "checkOut",
+              type: "datetime-local",
+              label: "Išsiregistravimo laikas",
+              validate: (val) => validator.isISO8601(val)
+                ? null
+                : 'Nurodykite išsiregistravimo laiką'
             }
           ]}
         />
