@@ -33,64 +33,25 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     Form.#formCount++;
+    // pertrauka 10:30
 
-    /*
-      Suformavus <values>, <errors> ir <fieldsProps> objektus, pasiekėme norimą rezultatą.
-      Tačiau iš mes 3 kart iteruojame per tą patį masyvą <props.fields>.
-
-      Perrašykite šį kodą, suformuodami tokius pat objektus, naudodami tik vieną Array.prototype.reduce metodą
-
-      Rezultato formatas.
-        * Rezulatas turi būti {
-        *   values: {...}
-        *   errors: {...}
-        *   fieldsProps: {...}
-        * }
-        
-      Rezultatą vavadinkite kintamuoju <result> ir atspausdinkite. 
-      Pasitikrinimui palyginkite jį su 79-83 eil. spausdinamu objektu.
-
-      Sėkmės!
-
-      10:05
-    */
-
-    const values = props.fields.reduce((res, { name }) => {
-      res[name] = '';
-      
-      return res;
-    }, {});
-
-    const errors = props.fields.reduce((res, { name }) => {
-      res[name] = null;
-      
-      return res;
-    }, {});
-
-    const fieldsProps = props.fields.reduce((res, { name, ...rest }) => {
-      res[name] = {
+    const { fieldsProps, ...state } = props.fields.reduce((res, { name, ...rest }) => {
+      res.values[name] = '';
+      res.errors[name] = null;
+      res.fieldsProps[name] = {
         ...rest,
         id: `form${Form.#formCount}_${name}`
       };
-      
+
       return res;
-    }, {});
-
-    console.log({
-      values,
-      errors,
-      fieldsProps
+    }, {
+      values: {},
+      errors: {},
+      fieldsProps: {}
     });
-    console.log('---------------------------------');
 
-    this.state = {
-      formNum: Form.#formCount,
-      fields: props.fields.map(fieldProps => ({
-        ...fieldProps,
-        value: '',
-        error: null
-      }))
-    };
+    this.fieldsProps = fieldsProps;
+    this.state = state;
   }
 
   handleSubmit = (event) => {
