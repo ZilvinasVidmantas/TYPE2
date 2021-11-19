@@ -22,3 +22,11 @@
 .select:focus {
   outline: none;
 }
+
+.error {
+  margin-top: 0.15em;
+  display: block;
+  color: red;
+  font-size: 0.8em;
+  text-align: center;
+}

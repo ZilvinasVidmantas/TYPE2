@@ -6,7 +6,7 @@
 .label {
   font-size: 0.9em;
   display: block;
-  margin-bottom: 0.15em;
+  margin-bottom: 0.15em; 
   text-align: center;
 }
 
@@ -21,4 +21,12 @@
 .input:focus {
   border: 5px inset rgb(196, 224, 129);
   outline: none;
+}
+
+.error {
+  margin-top: 0.15em;
+  display: block;
+  color: red;
+  font-size: 0.8em;
+  text-align: center;
 }

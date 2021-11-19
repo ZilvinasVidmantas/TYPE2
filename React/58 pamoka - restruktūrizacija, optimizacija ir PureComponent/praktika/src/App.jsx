@@ -17,7 +17,8 @@ class App extends React.Component {
               validate: (val) => (
                   validator.isAlpha(val.replace(/\s/g, '')) &&  
                   validator.isLength(val, {min:5, max: 50}) && // val.length >= 5 && val.length <=50 &&
-                  val.split(/ [A-Z]/).length > 1
+                  val.split(/ [A-Z]/).length > 1 &&
+                  validator.isUppercase(val[0])
                 )
                 ? null
                 : `Prašome įvesti "Vardas Pavardė formatu"`
@@ -27,11 +28,11 @@ class App extends React.Component {
               type: "tel",
               label: "Telefonas",
               validate: (val) => 
-                validator.isMobilePhone(val, ["lt-LT", validator.isMobilePhoneLocales])
+                validator.isMobilePhone(val, ["lt-LT"])
                 ? null
                 : 'Privaloma įvesti lietuvišką telefono numerį'
             },
-            {
+            { 
               name: "email",
               type: "email",
               label: "Elektroninis Paštas",

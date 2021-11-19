@@ -20,7 +20,7 @@ class InputField extends React.Component {
           onChange={(e) => handleChange(e.target.value)}
         />
         {error ? <div className={styles.error}>{error}</div> : null}
-      </div>
+      </div> 
     );
   }
 }
