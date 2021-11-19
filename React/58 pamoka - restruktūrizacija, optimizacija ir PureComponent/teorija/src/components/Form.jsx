@@ -35,15 +35,17 @@ class Form extends React.Component {
     Form.#formCount++;
 
     /*
-      Naudodami <props>, sugeneruokite objektą errors: 
-        errors: {
-          email: null,
-          password: null,
-          city: null,
-        }
+      Naudodami <props>, sugeneruokite fieldsProps objektą: 
+        * KIEKVIENAM LAUKUI REIKIA PERRAŠYTI VISAS SAVYBES APART <name>
+        * PAPILDOMAI SUGENERUOTI <id> (taip kaip this.createFields)
+        fieldsProps: {
+          email:    { label: '...', type: '', id='...generuoti...', ...ir t.t.},
+          password: { label: '...', type: '', id='...generuoti...', ...ir t.t.},
+          city:     { label: '...', type: '', id='...generuoti...', ...ir t.t.},
+        },
       
-      Suformuota objektą išsaugokite kintamajame <errors>, atspausdinkite rezultatus
-      9:55
+      Suformuota objektą išsaugokite kintamajame <fieldsProps>, atspausdinkite rezultatus
+      9:25
     */
 
     const values = props.fields.reduce((res, { name }) => {
@@ -52,7 +54,16 @@ class Form extends React.Component {
       return res;
     }, {});
 
-    console.log(values);
+    const errors = props.fields.reduce((res, { name }) => {
+      res[name] = null;
+      
+      return res;
+    }, {});
+
+    console.log({
+      values,
+      errors
+    });
     console.log('---------------------------------');
 
     this.state = {
