@@ -5,6 +5,7 @@ class InputField extends React.Component {
 
   render() {
     const { name, value, label, id, error, handleChange, type } = this.props;
+    console.log(`InputField[${label}]`)
 
     const labelClassName = `${styles.label}${error ? ' ' + styles.labelError : ''}`;
     const inputClassName = `${styles.input}${error ? ' ' + styles.inputError : ''}`;

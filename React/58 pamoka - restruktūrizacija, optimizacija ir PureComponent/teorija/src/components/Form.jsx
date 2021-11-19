@@ -4,24 +4,50 @@ import SelectField from './SelectField';
 
 import styles from './Form.module.css';
 
+/*
+  state = {
+    values: {
+      email: '',
+      password: '',
+      city: '',
+    },
+    errors: {
+      email: '',
+      password: '',
+      city: '',
+    },
+    fieldsProps: {
+      email:    { label: '...', type: '', id='...generuoti...', onValidate: (...) => {...}},
+      password: { label: '...', type: '', id='...generuoti...', onValidate: (...) => {...}},
+      city:     { label: '...', type: '', id='...generuoti...', onValidate: (...) => {...}},
+    },
+  } 
+
+*/
+
+
+
 class Form extends React.Component {
   static #formCount = 0;
 
   constructor(props) {
     super(props);
-
     Form.#formCount++;
+    /*
+      Naudodami <props>, sugeneruokite objektą values: 
+        values: {
+          email: '',
+          password: '',
+          city: '',
+        },
 
+      
+      Suformuota objektą išsaugokite kintamajame <errors>, atspausdinkite rezultatus
+      9:45
+    
+    */
     this.state = {
       formNum: Form.#formCount,
-      // fields: props.fields.reduce((result, { name, ...fieldProps }) => {
-      //   result[name] = {
-      //     ...fieldProps,
-      //     error: null,
-      //     value: ''
-      //   }
-      //   return result;
-      // }, {})
       fields: props.fields.map(fieldProps => ({
         ...fieldProps,
         value: '',
@@ -33,28 +59,6 @@ class Form extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.isValid()) {
-      /*
-      Object based:
-        this.state.fields = {
-          fieldName1: {...otherProps},
-          fieldName2: {...otherProps},
-          fieldName3: {...otherProps},
-        }
-        
-        Object.entries(this.state.fields)
-          [
-            [fieldName1, {...otherProps}],
-            [fieldName2, {...otherProps}],
-            [fieldName2, {...otherProps}],
-          ]
-
-      Array based:
-        this.state.fields = [
-          {name: fieldName1, ...otherProps},
-          {name: fieldName2, ...otherProps},
-          {name: fieldName3, ...otherProps},
-        ]
-      */
       const formData = this.state.fields.reduce((res, {name, value}) => {
         res[name] = value;
         return res;
@@ -90,7 +94,6 @@ class Form extends React.Component {
       }
       switch (type) {
         case 'select': return <SelectField options={options} {...commonProps} />;
-        /* kiti variantai: radioGroup, inputGroup, ir t.t. ) ..*/
         default: return <InputField type={type} {...commonProps} />
       }
     });
@@ -98,6 +101,7 @@ class Form extends React.Component {
 
   render() {
     const { title, submitBtnText } = this.props;
+    console.log(`Form[${this.state.formNum}]`)
 
     const buttonClassName = this.isValid() ? styles.btn : `${styles.btn}  ${styles.btnMuted}`;
     const finalSubmitBtnText = submitBtnText ?? 'Submit';

@@ -5,6 +5,7 @@ class SelectField extends React.Component {
 
   render() {
     const { name, value, label, id, error, handleChange, options } = this.props;
+    console.log(`SelectField[${label}]`);
 
     const labelClassName = `${styles.label}${error ? ' ' + styles.labelError : ''}`;
     const selectClassName = `${styles.select}${error ? ' ' + styles.selectError : ''}`;
