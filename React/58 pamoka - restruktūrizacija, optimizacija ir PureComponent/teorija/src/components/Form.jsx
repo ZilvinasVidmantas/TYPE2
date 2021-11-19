@@ -12,9 +12,9 @@ import styles from './Form.module.css';
       city: '',
     },
     errors: {
-      email: '',
-      password: '',
-      city: '',
+      email: null,
+      password: null,
+      city: null,
     },
     fieldsProps: {
       email:    { label: '...', type: '', id='...generuoti...', onValidate: (...) => {...}},
@@ -22,10 +22,7 @@ import styles from './Form.module.css';
       city:     { label: '...', type: '', id='...generuoti...', onValidate: (...) => {...}},
     },
   } 
-
 */
-
-
 
 class Form extends React.Component {
   static #formCount = 0;
@@ -33,7 +30,6 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     Form.#formCount++;
-    // pertrauka 10:30
 
     const { fieldsProps, ...state } = props.fields.reduce((res, { name, ...rest }) => {
       res.values[name] = '';
@@ -66,8 +62,20 @@ class Form extends React.Component {
     }
   }
 
-  isValid = () => this.state.fields.every(({ error }) => error === null);
+  isValid = () => Object.values(this.state.errors).every(x => x === null);
 
+  /*
+    1. Išanalizuoti esamą Form instance (this) ir this.state struktūras.
+      * Galite naudoti ReactDeveloperTool
+      * Galite atspausdinti this arba this.state vykdomuose metoduose (render | createFields | handleFieldChange)
+      * Suformuoti klausimus
+    10:55
+    
+    2. Pagal pakeistą this.state ir state pritaikykite handleFieldChange metodą
+      * atnaujinkite this.state.values
+      * atnaujinkite this.state.erros panaudodami this.fieldsProps['lauko pavadinimas'].validate
+  
+  */
   handleFieldChange = (name, value) => {
     this.setState({
       fields: this.state.fields.map(field => {
@@ -81,25 +89,27 @@ class Form extends React.Component {
   }
 
   createFields = () => {
-    const { fields, formNum } = this.state;
-    return fields.map(({ name, type, options, ...rest }) => {
-      const commonProps = {
+    const { fieldsProps, state: { values, errors } } = this;
+
+    return Object.keys(values).map(name => {
+      const { type, options, ...commonProps } = fieldsProps[name]
+      const fieldProps = {
         key: name,
         name,
-        id: `form${formNum}_${name}`,
+        ...commonProps,
+        error: errors[name],
         handleChange: (value) => this.handleFieldChange(name, value),
-        ...rest,
       }
       switch (type) {
-        case 'select': return <SelectField options={options} {...commonProps} />;
-        default: return <InputField type={type} {...commonProps} />
+        case 'select': return <SelectField options={options} {...fieldProps} />;
+        default: return <InputField type={type} {...fieldProps} />
       }
     });
   }
 
   render() {
     const { title, submitBtnText } = this.props;
-    console.log(`Form[${this.state.formNum}]`)
+    console.log(`Form`)
 
     const buttonClassName = this.isValid() ? styles.btn : `${styles.btn}  ${styles.btnMuted}`;
     const finalSubmitBtnText = submitBtnText ?? 'Submit';
