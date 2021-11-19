@@ -33,19 +33,28 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     Form.#formCount++;
-    /*
-      Naudodami <props>, sugeneruokite objektą values: 
-        values: {
-          email: '',
-          password: '',
-          city: '',
-        },
 
+    /*
+      Naudodami <props>, sugeneruokite objektą errors: 
+        errors: {
+          email: null,
+          password: null,
+          city: null,
+        }
       
       Suformuota objektą išsaugokite kintamajame <errors>, atspausdinkite rezultatus
-      9:45
-    
+      9:55
     */
+
+    const values = props.fields.reduce((res, { name }) => {
+      res[name] = '';
+      
+      return res;
+    }, {});
+
+    console.log(values);
+    console.log('---------------------------------');
+
     this.state = {
       formNum: Form.#formCount,
       fields: props.fields.map(fieldProps => ({
@@ -59,7 +68,7 @@ class Form extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.isValid()) {
-      const formData = this.state.fields.reduce((res, {name, value}) => {
+      const formData = this.state.fields.reduce((res, { name, value }) => {
         res[name] = value;
         return res;
       }, {});
