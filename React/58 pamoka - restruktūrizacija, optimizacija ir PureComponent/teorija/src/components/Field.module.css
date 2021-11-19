@@ -10,12 +10,12 @@
 }
 
 .label.labelError {
-  color: green;
+  color: red;
 }
 
 .error {
   margin-top: 0.15em;
   display: block;
-  color: green;
+  color: red;
   font-size: 0.8em;
 }
