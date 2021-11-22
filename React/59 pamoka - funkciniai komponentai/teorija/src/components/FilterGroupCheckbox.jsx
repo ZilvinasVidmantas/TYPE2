@@ -4,11 +4,14 @@ import {
   Checkbox
 } from '@mui/material';
 
-const FilterGroupCheckbox = () => {
-  
+const FilterGroupCheckbox = ({ label, checked, onChange }) => {
+
   return (
-    <FormGroup>
-      <FormControlLabel control={<Checkbox defaultChecked />} label="Opel" />
+    <FormGroup >
+      <FormControlLabel
+        control={<Checkbox checked={checked} onChange={onChange}/>}
+        label={label}
+      />
     </FormGroup>
   );
 };

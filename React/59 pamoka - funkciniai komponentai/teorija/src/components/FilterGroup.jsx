@@ -5,10 +5,10 @@ const FilterGroup = () => {
   return (
     <>
       <Typography component="h3" variant="h5">Gamintojas</Typography>
-      <FilterGroupCheckbox />
-      <FilterGroupCheckbox />
-      <FilterGroupCheckbox />
-      <FilterGroupCheckbox />
+      <FilterGroupCheckbox checked={true} label="Opel" />
+      <FilterGroupCheckbox onChange={(e) => console.log(e.target)} label="BMW" />
+      <FilterGroupCheckbox label="Subaru" />
+      <FilterGroupCheckbox onChange={(e) => console.log(e.target)} checked={false} label="Be baro" />
     </>
   );
 };

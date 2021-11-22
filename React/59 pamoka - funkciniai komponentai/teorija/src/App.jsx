@@ -27,7 +27,6 @@ const App = () => {
           <DataTable />
         </Grid>
       </Grid>
-
     </Container>
   )
 }
@@ -44,11 +43,12 @@ export default App;
 
   1. Pasikartojančias vaizdo dalis išskaidyti komponentais
 
+    15:40
   2. Komponentuose kintančias vietas, aprašyti kintamaisiais (aprašytais virš komponento)
 
   3. Įsivertinti minimalius reikalingus props'us ir state kiekvienam komponentui
 
   4. Nuspręsti, kur turi būti aprašyti duomenys, jog būtų įgalinamas norimas funkcionalumas (lifting state up)
-  
+
   5. Persiųsti ir panaudoti duomenis (per Props)
 */
