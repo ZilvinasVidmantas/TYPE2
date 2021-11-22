@@ -8,6 +8,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Divider from '@mui/material/Divider';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 const App = () => {
   const [cars] = useState([
@@ -21,31 +26,55 @@ const App = () => {
   return (
     <Container>
       <Typography component="h1" variant="h3" gutterBottom align="center">Cars</Typography>
-      <TableContainer component={Paper} elevation={4} square={true}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Id</TableCell>
-              <TableCell>Brand</TableCell>
-              <TableCell>Model</TableCell>
-              <TableCell align="right">Year</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {cars.map((car) => (
-              <TableRow
-                key={car.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell>{car.id}</TableCell>
-                <TableCell>{car.brand}</TableCell>
-                <TableCell>{car.model}</TableCell>
-                <TableCell align="right">{car.year}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <Grid container spacing={2}>
+        <Grid item xs={3}>
+          <Paper elevation={4} sx={{ p: 2 }}>
+            <Typography component="h2" variant="h4">Filtrai</Typography>
+            <Divider sx={{ my: 3 }} />
+            <Typography component="h3" variant="h5">Gamintojas</Typography>
+            <FormGroup>
+              <FormControlLabel control={<Checkbox defaultChecked />} label="Opel" />
+            </FormGroup>
+            <FormGroup>
+              <FormControlLabel control={<Checkbox defaultChecked />} label="BMW" />
+            </FormGroup>
+            <FormGroup>
+              <FormControlLabel control={<Checkbox defaultChecked />} label="Subaru" />
+            </FormGroup>
+            <FormGroup>
+              <FormControlLabel control={<Checkbox defaultChecked />} label="Volkswagen" />
+            </FormGroup>
+          </Paper>
+        </Grid>
+        <Grid item xs={9}>
+          <TableContainer component={Paper} elevation={4} square={true}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Id</TableCell>
+                  <TableCell>Brand</TableCell>
+                  <TableCell>Model</TableCell>
+                  <TableCell align="right">Year</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {cars.map((car) => (
+                  <TableRow
+                    key={car.id}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell>{car.id}</TableCell>
+                    <TableCell>{car.brand}</TableCell>
+                    <TableCell>{car.model}</TableCell>
+                    <TableCell align="right">{car.year}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
+      </Grid>
+
     </Container>
   )
 }
