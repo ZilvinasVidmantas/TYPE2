@@ -51,3 +51,26 @@ const App = () => {
 }
 
 export default App;
+
+
+/*
+  Perskaityti:
+    https://reactjs.org/docs/thinking-in-react.html
+
+  [14:00]
+  0. Sudaryti atvaizdavimą
+    Naudojant Material-ui padaryti formos stulpelį dešinėje su checkbox'ais (pagal automobilių markes)
+
+  [14:25]
+  1. Pasikartojančias vaizdo dalis išskaidyti komponentais
+
+  [14:50]
+  2. Komponentuose kintančias vietas, aprašyti kintamaisiais (aprašytais virš komponento)
+
+  [15:15]
+  3. Įsivertinti minimalius reikalingus props'us ir state kiekvienam komponentui
+
+  [15:40]
+  4. Nuspręsti, kur turi būti aprašyti duomenys, jog būtų įgalinamas norimas funkcionalumas (lifting state up)
+  5. Persiųsti ir panaudoti duomenis (per Props)
+*/
