@@ -21,7 +21,7 @@ const App = () => {
   return (
     <Container>
       <Typography component="h1" variant="h3" gutterBottom align="center">Cars</Typography>
-      <TableContainer component={({children}) => <Paper elevation={4}>{children}</Paper>}>
+      <TableContainer component={Paper} elevation={4} square={true}>
         <Table>
           <TableHead>
             <TableRow>
