@@ -41,10 +41,9 @@ export default App;
   0. Sudaryti atvaizdavimą
     Naudojant Material-ui padaryti formos stulpelį dešinėje su checkbox'ais (pagal automobilių markes)
 
-  1. Pasikartojančias vaizdo dalis išskaidyti komponentais
+  1. Pasikartojančias arba gaubiančias kitus elementus vaizdo dalis išskaidyti komponentais
 
-    15:40
-  2. Komponentuose kintančias vietas, aprašyti kintamaisiais (aprašytais virš komponento)
+  2. Aprašyti komponentų prop'sus
 
   3. Įsivertinti minimalius reikalingus props'us ir state kiekvienam komponentui
 

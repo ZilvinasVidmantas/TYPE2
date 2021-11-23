@@ -5,12 +5,12 @@ import {
 } from '@mui/material';
 
 const FilterGroupCheckbox = ({ label, checked, onChange }) => {
-
+  
   return (
-    <FormGroup >
+    <FormGroup>
       <FormControlLabel
         control={<Checkbox checked={checked} onChange={onChange}/>}
-        label={label}
+        label={label || '--[UNDEFINED]--'}
       />
     </FormGroup>
   );
