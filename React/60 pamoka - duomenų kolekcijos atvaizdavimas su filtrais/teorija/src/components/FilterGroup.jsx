@@ -1,15 +1,23 @@
 import FilterGroupCheckbox from './FilterGroupCheckbox';
 import { Typography } from '@mui/material';
 
-const FilterGroup = () => {
+const FilterGroup = ({ title, name, options, onChange }) => {
+
+  let checkboxGroups = 'options --[UNDEFINED]--';
+  if (options) {
+    checkboxGroups = options.map(checkboxProps =>
+      <FilterGroupCheckbox
+        {...checkboxProps}
+        key={checkboxProps.value}
+        name={name}
+        onChange={onChange}
+      />)
+  }
+
   return (
     <>
-      <Typography component="h3" variant="h5">Gamintojas</Typography>
-      <FilterGroupCheckbox checked={true} label="Opel" />
-      <FilterGroupCheckbox onChange={(e) => console.log(e.target)} label="BMW" />
-      <FilterGroupCheckbox label="Subaru" />
-      <FilterGroupCheckbox onChange={(e) => console.log(e.target)} checked={false} label="Be baro" />
-      <FilterGroupCheckbox />
+      <Typography component="h3" variant="h5">{title ?? 'title --[UNDEFINED]--'}</Typography>
+      {checkboxGroups}
     </>
   );
 };
@@ -17,9 +25,5 @@ const FilterGroup = () => {
 export default FilterGroup;
 
 /*
-  1. Sugalvoti kokia struktūrą turi būti perduodami FilterGroup checkbox'ų duomenys?
-  2. Tėviniame komponente perduoti duomenis, savo sugalvota struktūra
-  3. Panaudoti tuos ir sugeneruoti atitinkamą kiekį FilterGroupCheckbox komponenetų
   4. Padaryti taip, jog komponentas nenutrauktų programos, jeigu yra kurimas be jokių <props>
-
 */
