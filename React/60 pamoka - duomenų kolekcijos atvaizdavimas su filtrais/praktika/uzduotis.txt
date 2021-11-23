@@ -5,7 +5,7 @@ Starters:
   4. Prasivalyti nereikalingus failus išsitrinti nereikalingą informaciją iš App.js
 Project:
   1. Išsirinkti temą ką daryti lentelių pavidalu.
-  2. Pasirašyti paprastą HTML'ą ir minimalų CSS'ą savo norimos lentelės ir papildomos informacijos šalia/virš/po lentele.
+  2. Pasirašyti paprastą HTML'ą ir (jei norite) minimalų (inline) CSS'ą savo norimos lentelės ir papildomos informacijos šalia/virš/po lentele.
   3. Persirašyti savo lentelę naudojant MUI ir savo sukurtus komponentus.
   4. Susikurti duomenis App.js'e, kuriais bus užpildytos lentelės.
   5. Per props perduoti duomenis atitinkamiems komponentams ir ten juos išrašyti naudojant metodus.
