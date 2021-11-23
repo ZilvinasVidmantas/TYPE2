@@ -1,3 +1,4 @@
+import React from 'react';
 import FilterGroup from './FilterGroup';
 import {
   Typography,
@@ -7,11 +8,11 @@ import {
 
 const DataFilters = ({options}) => {
 
-  const filterGroups = options.map((filterGroupProps, i) => 
-    <>
+  const filterGroups = options.map((option) => 
+    <React.Fragment key={option.name}>
       <Divider sx={{ my: 1 }} />
-      <FilterGroup {...filterGroupProps} />
-    </>
+      <FilterGroup {...option} />
+    </React.Fragment>
   )
 
   return (

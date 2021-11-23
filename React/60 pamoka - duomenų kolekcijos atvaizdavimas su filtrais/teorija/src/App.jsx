@@ -28,16 +28,22 @@ const App = () => {
     checked: target.checked
   });
 
-  const dataFiltersOptions = filters.map(({ title, property }) => ({
-    title,
-    name: property,
-    options: [...new Set(cars.map(car => car[property]))].map(uniqProp => ({
+  const dataFiltersOptions = filters.map(({ title, property }) => {
+    const properties = cars.map(car => car[property]);
+    const uniqProperties = [...new Set(properties)];
+    const options = uniqProperties.map(uniqProp => ({
       label: uniqProp,
       value: uniqProp,
       checked: true
-    })),
-    onChange: handleFilterGroupChange
-  }))
+    }));
+
+    return {
+      title,
+      name: property,
+      options,
+      onChange: handleFilterGroupChange
+    }
+  })
 
   return (
     <Container>
@@ -61,16 +67,21 @@ export default App;
   Perskaityti:
     https://reactjs.org/docs/thinking-in-react.html
 
-  0. Sudaryti atvaizdavimą
-    Naudojant Material-ui padaryti formos stulpelį dešinėje su checkbox'ais (pagal automobilių markes)
+  0. Sudaryti atvaizdavimą - HTML + CSS | Komponenetai apjungti hierarchija viename faile
 
   1. Pasikartojančias arba gaubiančias kitus elementus vaizdo dalis išskaidyti komponentais
 
   2. Aprašyti komponentų prop'sus
 
-  3. Įsivertinti minimalius reikalingus props'us ir state kiekvienam komponentui
+  3. Įsivertinti minimalius state kiekvienam komponentui pagal kuriuos bus atvaizduojamas/keičiamas atvaizdavimas
 
-  4. Nuspręsti, kur turi būti aprašyti duomenys, jog būtų įgalinamas norimas funkcionalumas (lifting state up)
+  4. Nuspręsti, kur turi būti aprašyti duomenys, jog būtų įgalintas norimas funkcionalumas tarp komponentų (lifting state up)
 
-  5. Persiųsti ir panaudoti duomenis (per Props)
+  5. Aprašyti Event'listenerius, kurie keičia state ir įgalina norimą funkcionalumą
+*/
+
+/*
+  pertrauka + code review
+  10:50
+
 */
