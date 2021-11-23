@@ -7,21 +7,44 @@ import {
 import DataTable from './components/DataTable';
 import DataFilters from './components/DataFilters';
 
+const filters = [
+  { title: 'Gamintojas', property: 'brand' },
+  { title: 'Modelis', property: 'model' },
+];
+
+const cars = [
+  { id: 1, brand: 'Opel', model: 'Astra', year: 2000 },
+  { id: 2, brand: 'BMW', model: 'X5', year: 2000 },
+  { id: 3, brand: 'Subaru', model: 'Impreza', year: 2004 },
+  { id: 4, brand: 'Volkswagen', model: 'Passat', year: 2006 },
+  { id: 5, brand: 'Opel', model: 'Astra', year: 2008 }
+]
+
 const App = () => {
-  // const [cars] = useState([
-  //   { id: 1, brand: 'Opel', model: 'Astra', year: 2000 },
-  //   { id: 2, brand: 'BMW', model: 'X5', year: 2000 },
-  //   { id: 3, brand: 'Subaru', model: 'Impreza', year: 2004 },
-  //   { id: 4, brand: 'Volkswagen', model: 'Passat', year: 2006 },
-  //   { id: 5, brand: 'Opel', model: 'Astra', year: 2008 }
-  // ]);
+
+  const handleFilterGroupChange = ({ target }) => console.log({
+    value: target.value,
+    name: target.name,
+    checked: target.checked
+  });
+
+  const dataFiltersOptions = filters.map(({ title, property }) => ({
+    title,
+    name: property,
+    options: [...new Set(cars.map(car => car[property]))].map(uniqProp => ({
+      label: uniqProp,
+      value: uniqProp,
+      checked: true
+    })),
+    onChange: handleFilterGroupChange
+  }))
 
   return (
     <Container>
       <Typography component="h1" variant="h3" gutterBottom align="center">Mašinos</Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <DataFilters />
+          <DataFilters options={dataFiltersOptions} />
         </Grid>
         <Grid item xs={9}>
           <DataTable />
