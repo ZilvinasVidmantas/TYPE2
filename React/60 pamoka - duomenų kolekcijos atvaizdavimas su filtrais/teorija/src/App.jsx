@@ -8,7 +8,7 @@ import DataTable from './components/DataTable';
 import DataFilters from './components/DataFilters';
 
 const filters = [
-  { title: 'Gamintojas', property: 'brand' },
+  { title: 'Markė', property: 'brand' },
   { title: 'Modelis', property: 'model' },
 ];
 
@@ -53,7 +53,15 @@ const App = () => {
           <DataFilters options={dataFiltersOptions} />
         </Grid>
         <Grid item xs={9}>
-          <DataTable />
+          <DataTable 
+            headers={[
+              { name: 'ID' },
+              { name: 'Markė' },
+              { name: 'Modelis' },
+              { name: 'Gam. Metai', align: "right" }
+            ]}
+            data={cars}
+          />
         </Grid>
       </Grid>
     </Container>
