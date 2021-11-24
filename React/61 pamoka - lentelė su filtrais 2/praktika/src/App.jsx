@@ -15,7 +15,7 @@ function App() {
   const [yearValue, setYearValue] = useState([1950,2021]);
   /*const [scoreValue, setScoreValue] = useState([0,10]);*/
 
-  console.log(movieName, " movieName reikšmė");
+  console.log(movieName, "app'e");
 
   const buttons = ["Redaguoti", "Trinti"];
   const movies = [
@@ -29,7 +29,7 @@ function App() {
     setMovieName(e.target.value);
   }
   
-  /*const handleChangeYear = (event, newValue, activeThumb) => {
+  const handleChangeYear = (event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
       return;
     }
@@ -39,7 +39,7 @@ function App() {
       setYearValue([yearValue[0], Math.max(newValue[1], yearValue[0])]);
     }
   };
-  const handleChangeScore = (event, newValue, activeThumb) => {
+  /*const handleChangeScore = (event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
       return;
     }
@@ -56,9 +56,11 @@ function App() {
       <Button variant="contained" color="success" size="small">
         Pridėti filmą
       </Button>
-      <DataFilter
+      <DataFilter 
         movieName={movieName}
-        setMovieName={(e)=>handleFilteredMovieName(e)}
+        setMovieName={handleFilteredMovieName}
+        yearValue={yearValue}
+        setYearValue={handleChangeYear}
       />
       <MyTable
         theads={[
