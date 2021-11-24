@@ -87,9 +87,3 @@ export default App;
 
   5. Aprašyti Event'listenerius, kurie keičia state ir įgalina norimą funkcionalumą
 */
-
-/*
-  pertrauka + code review
-  10:50
-
-*/
