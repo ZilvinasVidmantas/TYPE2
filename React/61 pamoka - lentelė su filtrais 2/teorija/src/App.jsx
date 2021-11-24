@@ -3,6 +3,7 @@ import {
   Container,
   Typography,
   Grid,
+  Button,
 } from '@mui/material';
 import DataTable from './components/DataTable';
 import DataFilters from './components/DataFilters';
@@ -18,53 +19,35 @@ const initialCars = [
   { id: 3, brand: 'Subaru', model: 'Impreza', year: 2004 },
   { id: 4, brand: 'Volkswagen', model: 'Passat', year: 2006 },
   { id: 5, brand: 'Opel', model: 'Astra', year: 2008 }
-]
+];
 
 const App = () => {
-  const [cars /* funkcija nustatyti naujai <cars> kintamojo reikšmei */] = useState(initialCars);
+  const [cars, setCars] = useState((() => {
+    console.log('nustama nauja cars reikšmė')
+    return initialCars
+  })());
 
-  // pertrauka: 15
-  // analizė: 15
-  // tęsiam 10:00
-  /**
-   * Ši funkcija vykdosi, kuomet yra paspaudžiamas checkbox
-   * @param {Event} event 
-   */
   const handleFilterGroupChange = (event) => {
-    // Iš checkbox gauta informacija, pagal kurią nuspręsima ką reikia keisti filtruose <filterPropsArray>
+    console.table(filterPropsArray.reduce((options, filterProps) => [...options, ...filterProps.options], []));
+    
     const { value, name, checked } = event.target;
-
-    // Tiesiogiai, keisti state reikšmių negalime, nes tuomet neiškvies komponento pervaizdavimas
-    // Keičiant 'React state' reikšmes, būtina nurodyti pilną reikšmę:
-    //  keičiant duomenis - nepakeisti kitų duomenų
-    // Tam, perkuriame visus filtų nustatymus masyve <filterPropsArray>
-    //                                 Perkuriame kiekvieną filtrą <filterProps>
     const newFilters = filterPropsArray.map(filterProps => ({
-      // Išrašome filtro buvusias reikšmes, jog jos neprasirastų
       ...filterProps,
-      // Tikriname, ar turime keisti šio filtro <filterProps> nustatymus <options>, PAGAL VARDĄ <name>
       options: filterProps.name !== name
-        // VARDAS NESUTAPO - tai nėra filtras, kurį turime keisti, todėl paliekame seną reikšmę
-        ? filterProps.options
-        // VARDAS SUTAPO - tai yra filtras, kurį turi keisti, todėl perkuriame jo nustatymus <options>
-        : filterProps.options.map(option => ({
-          // Išrašome visas buvusias nustatymo <option> reikšmes, jog neprasirastų duomenys
+      ? filterProps.options
+      : filterProps.options.map(option => ({
           ...option,
-          // Tikriname ar nustatymo reikšmė <option.value> yra tokia, kaip įvykusio evento reikšmė <value>
-          //  taip - keičiame reikšmę į tokią, kokią gavome iš evento 
-          //  ne - paliekame tokią reikšmę kokia buvo anksčiau <option.checked>
           checked: option.value === value ? checked : option.checked
         }))
-    }));
-
-    // Išsaugoje filtrų <filterPropsArray> pakeitimus, pakeičiame state reikšmę, naudodami set'erį <setDataFilterPropsArray>
-    // Vidinė React logika atpažins skirtumus tarp senos <filterPropsArray> reikšmės ir naujai perduotos <newFilters> reikšmės
-    //  ir pervaizduos šį komponentą
-    // Tai išprovokuos ir vaikinių elementų persivaizdavimą, todėl pamatysime vaizdo pasikeitimą.
+      }));
+    console.table(newFilters.reduce((options, filterProps) => [...options, ...filterProps.options], []));
+      
     setDataFilterPropsArray(newFilters);
   }
-
+  // 11:10
+  // 5 min. Kur naudojamas state kintamis aprašant pradinę <filterPropsArray> reikšmę ?
   const [filterPropsArray, setDataFilterPropsArray] = useState(filters.map(({ title, property }) => {
+    console.log('formuojami FormGroup options');
     const properties = cars.map(car => car[property]);
     const uniqProperties = [...new Set(properties)];
     const options = uniqProperties.map(uniqProp => ({
@@ -81,11 +64,13 @@ const App = () => {
     }
   }));
 
-
-
   return (
     <Container>
       <Typography component="h1" variant="h3" gutterBottom align="center">Mašinos</Typography>
+      <Button onClick={() => setCars([]) }>change state</Button>
+      <Typography component="pre">
+        {JSON.stringify(cars, undefined, 2)}
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <DataFilters filterPropsArray={filterPropsArray} />
@@ -107,21 +92,3 @@ const App = () => {
 }
 
 export default App;
-
-
-/*
-  Perskaityti:
-    https://reactjs.org/docs/thinking-in-react.html
-
-  0. Sudaryti atvaizdavimą - HTML + CSS | Komponenetai apjungti hierarchija viename faile
-
-  1. Pasikartojančias arba gaubiančias kitus elementus vaizdo dalis išskaidyti komponentais
-
-  2. Aprašyti komponentų prop'sus
-
-  3. Įsivertinti minimalius state kiekvienam komponentui pagal kuriuos bus atvaizduojamas/keičiamas atvaizdavimas
-
-  4. Nuspręsti, kur turi būti aprašyti duomenys, jog būtų įgalintas norimas funkcionalumas tarp komponentų (lifting state up)
-
-  5. Aprašyti Event'listenerius, kurie keičia state ir įgalina norimą funkcionalumą
-*/
