@@ -6,12 +6,12 @@ import {
   Divider,
 } from '@mui/material';
 
-const DataFilters = ({options}) => {
+const DataFilters = ({ filterPropsArray }) => {
 
-  const filterGroups = options.map((option) => 
-    <React.Fragment key={option.name}>
+  const filterGroups = filterPropsArray.map((filterProps) =>
+    <React.Fragment key={filterProps.name}>
       <Divider sx={{ my: 1 }} />
-      <FilterGroup {...option} />
+      <FilterGroup {...filterProps} />
     </React.Fragment>
   )
 

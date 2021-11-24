@@ -11,7 +11,7 @@ import {
 const DataTable = ({ headers, data }) => {
 
   const rows = data.map(({ id, brand, model, year }) =>
-    <TableRow>
+    <TableRow key={id}>
       <TableCell>{id}</TableCell>
       <TableCell>{brand}</TableCell>
       <TableCell>{model}</TableCell>
@@ -23,7 +23,7 @@ const DataTable = ({ headers, data }) => {
       <Table>
         <TableHead>
           <TableRow>
-            {headers.map(({ name, ...props }) => <TableCell {...props}>{name}</TableCell>)}
+            {headers.map(({ name, ...props }) => <TableCell key={name} {...props}>{name}</TableCell>)}
           </TableRow>
         </TableHead>
         <TableBody>

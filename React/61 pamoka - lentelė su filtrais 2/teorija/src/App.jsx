@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Typography,
@@ -12,7 +12,7 @@ const filters = [
   { title: 'Modelis', property: 'model' },
 ];
 
-const cars = [
+const initialCars = [
   { id: 1, brand: 'Opel', model: 'Astra', year: 2000 },
   { id: 2, brand: 'BMW', model: 'X5', year: 2000 },
   { id: 3, brand: 'Subaru', model: 'Impreza', year: 2004 },
@@ -21,14 +21,50 @@ const cars = [
 ]
 
 const App = () => {
+  const [cars /* funkcija nustatyti naujai <cars> kintamojo reikšmei */] = useState(initialCars);
 
-  const handleFilterGroupChange = ({ target }) => console.log({
-    value: target.value,
-    name: target.name,
-    checked: target.checked
-  });
+  // pertrauka: 15
+  // analizė: 15
+  // tęsiam 10:00
+  /**
+   * Ši funkcija vykdosi, kuomet yra paspaudžiamas checkbox
+   * @param {Event} event 
+   */
+  const handleFilterGroupChange = (event) => {
+    // Iš checkbox gauta informacija, pagal kurią nuspręsima ką reikia keisti filtruose <filterPropsArray>
+    const { value, name, checked } = event.target;
 
-  const dataFiltersOptions = filters.map(({ title, property }) => {
+    // Tiesiogiai, keisti state reikšmių negalime, nes tuomet neiškvies komponento pervaizdavimas
+    // Keičiant 'React state' reikšmes, būtina nurodyti pilną reikšmę:
+    //  keičiant duomenis - nepakeisti kitų duomenų
+    // Tam, perkuriame visus filtų nustatymus masyve <filterPropsArray>
+    //                                 Perkuriame kiekvieną filtrą <filterProps>
+    const newFilters = filterPropsArray.map(filterProps => ({
+      // Išrašome filtro buvusias reikšmes, jog jos neprasirastų
+      ...filterProps,
+      // Tikriname, ar turime keisti šio filtro <filterProps> nustatymus <options>, PAGAL VARDĄ <name>
+      options: filterProps.name !== name
+        // VARDAS NESUTAPO - tai nėra filtras, kurį turime keisti, todėl paliekame seną reikšmę
+        ? filterProps.options
+        // VARDAS SUTAPO - tai yra filtras, kurį turi keisti, todėl perkuriame jo nustatymus <options>
+        : filterProps.options.map(option => ({
+          // Išrašome visas buvusias nustatymo <option> reikšmes, jog neprasirastų duomenys
+          ...option,
+          // Tikriname ar nustatymo reikšmė <option.value> yra tokia, kaip įvykusio evento reikšmė <value>
+          //  taip - keičiame reikšmę į tokią, kokią gavome iš evento 
+          //  ne - paliekame tokią reikšmę kokia buvo anksčiau <option.checked>
+          checked: option.value === value ? checked : option.checked
+        }))
+    }));
+
+    // Išsaugoje filtrų <filterPropsArray> pakeitimus, pakeičiame state reikšmę, naudodami set'erį <setDataFilterPropsArray>
+    // Vidinė React logika atpažins skirtumus tarp senos <filterPropsArray> reikšmės ir naujai perduotos <newFilters> reikšmės
+    //  ir pervaizduos šį komponentą
+    // Tai išprovokuos ir vaikinių elementų persivaizdavimą, todėl pamatysime vaizdo pasikeitimą.
+    setDataFilterPropsArray(newFilters);
+  }
+
+  const [filterPropsArray, setDataFilterPropsArray] = useState(filters.map(({ title, property }) => {
     const properties = cars.map(car => car[property]);
     const uniqProperties = [...new Set(properties)];
     const options = uniqProperties.map(uniqProp => ({
@@ -43,17 +79,19 @@ const App = () => {
       options,
       onChange: handleFilterGroupChange
     }
-  })
+  }));
+
+
 
   return (
     <Container>
       <Typography component="h1" variant="h3" gutterBottom align="center">Mašinos</Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <DataFilters options={dataFiltersOptions} />
+          <DataFilters filterPropsArray={filterPropsArray} />
         </Grid>
         <Grid item xs={9}>
-          <DataTable 
+          <DataTable
             headers={[
               { name: 'ID' },
               { name: 'Markė' },
