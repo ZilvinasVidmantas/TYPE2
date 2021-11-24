@@ -5,7 +5,7 @@ import {
   Container
 } from "@mui/material"
 
-const DataFilter = ({movieName, setMovieName, yearValue, setYearValue}) => {
+const DataFilter = ({movieName, setMovieName, yearValue, setYearValue, scoreValue, setScoreValue, submitFilter}) => {
   return (
   <Container>
     <TextField 
@@ -23,16 +23,16 @@ const DataFilter = ({movieName, setMovieName, yearValue, setYearValue}) => {
       min={1950}
       max={2021}
     />
-    {/*<Slider
+    <Slider
       value={scoreValue}
-      onChange={handleChangeScore}
+      onChange={setScoreValue}
       valueLabelDisplay="auto"
       disableSwap
       min={0}
       max={10}
       step={0.1}
-    />*/}
-    <Button>Search</Button>
+    />
+    <Button onClick={submitFilter}>Search</Button>
   </Container>
   );
 }
