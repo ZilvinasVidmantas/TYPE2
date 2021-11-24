@@ -1,0 +1,19 @@
+Starters:
+  1. Susikurti naują projektą naudojant terminal.
+  2. Naudojant teminal su npm susi'install'iuoti MUI modulius.
+  3. Pasileisti projektą.
+  4. Prasivalyti nereikalingus failus išsitrinti nereikalingą informaciją iš App.js
+OLD part of Project:
+  1. Išsirinkti temą ką daryti lentelių pavidalu.
+  2. Pasirašyti paprastą HTML'ą ir minimalų CSS'ą savo norimos lentelės ir papildomos informacijos šalia/virš/po lentele.
+  3. Persirašyti savo lentelę naudojant MUI ir savo sukurtus komponentus.
+  4. Susikurti duomenis App.js'e, kuriais bus užpildytos lentelės.
+  5. Per props perduoti duomenis atitinkamiems komponentams ir ten juos išrašyti naudojant metodus.
+NEW part of Project:
+  6. Susigalvoti pagal kokius kriterijus ir kaip bus atliekamas filtravimas.
+  7. Pasirašyti filtravimo lauką/laukus HTML'u.
+  8. Pasikeisti filtravimo lauką/laukus komponentais.
+  9. Susikuriam filtro duomenis.
+  10. Gauti duomenis, kurie pateikti filtro/ų viduje.
+  11. Pagal gautus filtro duomenis (jeigu tokių yra) į ekraną išvesti tik tuos bazinius duomenis, kurie atitinką filtrą/us.
+  12 (optional). Pasidaryti filtrų pasirinkimo galimybę (pridėti normus filtrų laukus / išimti nenorimus, o ne turėti visus filtrus iškarto išvestus ekrane).
