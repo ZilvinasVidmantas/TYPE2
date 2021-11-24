@@ -4,7 +4,7 @@ import {
   Container
 } from "@mui/material"
 
-import Table from "./components/Table"
+import MyTable from "./components/Table"
 
 function App() {
   const buttons = ["Redaguoti", "Trinti"];
@@ -16,17 +16,17 @@ function App() {
   ]
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Typography variant="h2"> Filmai </Typography>
       <Button variant="contained" color="success" size="small">
         Pridėti filmą
       </Button>
-      <Table 
+      <MyTable 
         theads={[
-          {name : "Pavadinimas"},
-          {name : "Metai"},
-          {name : "IMDB"},
-          {name : "Veiksmai"}
+          {name : "Pavadinimas", align: "center"},
+          {name : "Metai", align: "center"},
+          {name : "IMDB", align: "center"},
+          {name : "Veiksmai", align: "center"}
         ]}
         data = {movies}
       />

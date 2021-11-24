@@ -9,61 +9,34 @@ import {
   Button
 } from "@mui/material"
 
-const myTable = ({theads, data}) => {
+const MyTable = ({ theads, data }) => {
 
 
   return (
-    <TableContainer component={Paper} sx={{ minWidth: 650 }}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer component={Paper} elevation={1} sx={{ minWidth: 650 }}>
+      <Table sx={{ minWidth: 650 }}>
         <TableHead>
           <TableRow>
-            <TableCell align="center">Pavadinimas</TableCell>
-            <TableCell align="center">Metai</TableCell>
-            <TableCell align="center">IMDB</TableCell>
-            <TableCell align="center">Veiksmai</TableCell>
+            {theads.map(({ name, ...props }) => <TableCell {...props}>{name}</TableCell>)}
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell align="left">Harry Potter</TableCell>
-            <TableCell align="right">2001</TableCell>
-            <TableCell align="right">7.6</TableCell>
-            <TableCell align="center">
-              <Button>Redaguoti</Button>
-              <Button>Trinti</Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell align="left">Lord of the Rings</TableCell>
-            <TableCell align="right">2001</TableCell>
-            <TableCell align="right">8.8</TableCell>
-            <TableCell align="center">
-              <Button>Redaguoti</Button>
-              <Button>Trinti</Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell align="left">Simpsons</TableCell>
-            <TableCell align="right">2007</TableCell>
-            <TableCell align="right">7.3</TableCell>
-            <TableCell align="center">
-              <Button>Redaguoti</Button>
-              <Button>Trinti</Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell align="left">Mortal Engines</TableCell>
-            <TableCell align="right">2018</TableCell>
-            <TableCell align="right">6.1</TableCell>
-            <TableCell align="center">
-              <Button>Redaguoti</Button>
-              <Button>Trinti</Button>
-            </TableCell>
-          </TableRow>
+          {data.map(({id, Pavadinimas, Metai, IMDB, Veiksmai }) =>
+            <TableRow key={id}>
+              <TableCell align="center">{Pavadinimas}</TableCell>
+              <TableCell align="center">{Metai}</TableCell>
+              <TableCell align="center">{IMDB}</TableCell>
+              <TableCell align="center">
+                {Veiksmai.map((button) => 
+                  <Button>{button}</Button> 
+                )}
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
 
-export default myTable;
+export default MyTable;
