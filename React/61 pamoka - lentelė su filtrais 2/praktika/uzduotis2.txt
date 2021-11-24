@@ -13,7 +13,7 @@ NEW part of Project:
   6. Susigalvoti pagal kokius kriterijus ir kaip bus atliekamas filtravimas.
   7. Pasirašyti filtravimo lauką/laukus HTML'u.
   8. Pasikeisti filtravimo lauką/laukus komponentais.
-  9. Susikuriam filtro duomenis.
+  9. Susikurti filtro duomenis.
   10. Gauti duomenis, kurie pateikti filtro/ų viduje.
   11. Pagal gautus filtro duomenis (jeigu tokių yra) į ekraną išvesti tik tuos bazinius duomenis, kurie atitinką filtrą/us.
   12 (optional). Pasidaryti filtrų pasirinkimo galimybę (pridėti normus filtrų laukus / išimti nenorimus, o ne turėti visus filtrus iškarto išvestus ekrane).
