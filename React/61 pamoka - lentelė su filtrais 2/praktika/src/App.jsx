@@ -10,10 +10,9 @@ import MyTable from "./components/Table"
 import DataFilter from "./components/DataFilter"
 
 function App() {
-
   const [movieName, setMovieName] = useState("");
-  const [yearValue, setYearValue] = useState([1950,2021]);
-  const [scoreValue, setScoreValue] = useState([0,10]);
+  const [yearValue, setYearValue] = useState([1950, 2021]);
+  const [scoreValue, setScoreValue] = useState([0, 10]);
 
   const buttons = ["Redaguoti", "Trinti"];
   const movies = [
@@ -22,12 +21,12 @@ function App() {
     { id: 2, Pavadinimas: "Simpsons", Metai: "2007", IMDB: "7.3", Veiksmai: buttons },
     { id: 3, Pavadinimas: "Mortal Engines", Metai: "2018", IMDB: "6.1", Veiksmai: buttons }
   ];
-  let filteredMovies = [];
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [filtered, setFiltered] = useState(false);
 
   const handleFilteredMovieNameChange = (e) => {
     setMovieName(e.target.value);
   }
-  
   const handleFilteredMovieYearChange = (event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
       return;
@@ -51,7 +50,20 @@ function App() {
 
   const filterMovies = (e) => {
     e.preventDefault();
-    // filtruoti movies ir patalpinti juos į filteredMovies kintamąjį
+    setFilteredMovies(movies
+      .filter(movie => movie.Pavadinimas.toLowerCase().includes(movieName.toLowerCase()))
+      .filter(movie => movie.Metai >= yearValue[0] && movie.Metai <= yearValue[1])
+      .filter(movie => movie.IMDB >= scoreValue[0] && movie.IMDB <= scoreValue[1])
+    )
+    setFiltered(true);
+  }
+  const resetFilter = (e) => {
+    e.preventDefault();
+    setFilteredMovies([]);
+    setFiltered(false);
+    setMovieName("");
+    setYearValue([1950, 2021]);
+    setScoreValue([0, 10]);
   }
 
   return (
@@ -68,6 +80,7 @@ function App() {
         scoreValue={scoreValue}
         setScoreValue={handleFilteredMovieScoreChange}
         submitFilter={filterMovies}
+        resetFilter={resetFilter}
       />
       <MyTable
         theads={[
@@ -76,7 +89,7 @@ function App() {
           { name: "IMDB", align: "center" },
           { name: "Veiksmai", align: "center" }
         ]}
-        data={movies} // padarius filtravimą pakeisti į filteredMovies
+        data = {!filtered ? movies : filteredMovies}
       />
     </Container>
   );
