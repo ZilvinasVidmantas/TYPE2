@@ -14,6 +14,10 @@ function App() {
   const [yearValue, setYearValue] = useState([1950, 2021]);
   const [scoreValue, setScoreValue] = useState([0, 10]);
 
+  const [filterNameCheck, setFilterNameCheck] = useState(false);
+  const [filterYearCheck, setFilterYearCheck] = useState(false);
+  const [filterScoreCheck, setFilterScoreCheck] = useState(false);
+
   const buttons = ["Redaguoti", "Trinti"];
   const movies = [
     { id: 0, Pavadinimas: "Harry Potter", Metai: "2001", IMDB: "7.6", Veiksmai: buttons },
@@ -27,35 +31,56 @@ function App() {
   const handleFilteredMovieNameChange = (e) => {
     setMovieName(e.target.value);
   }
-  const handleFilteredMovieYearChange = (event, newValue, activeThumb) => {
-    if (!Array.isArray(newValue)) {
-      return;
-    }
-    if (activeThumb === 0) {
-      setYearValue([Math.min(newValue[0], yearValue[1]), yearValue[1]]);
-    } else {
-      setYearValue([yearValue[0], Math.max(newValue[1], yearValue[0])]);
-    }
+  const handleFilteredMovieYearChange = (e, newValue) => {
+    setYearValue(newValue);
   };
-  const handleFilteredMovieScoreChange = (event, newValue, activeThumb) => {
-    if (!Array.isArray(newValue)) {
-      return;
-    }
-    if (activeThumb === 0) {
-      setScoreValue([Math.min(newValue[0], scoreValue[1]), scoreValue[1]]);
-    } else {
-      setScoreValue([scoreValue[0], Math.max(newValue[1], scoreValue[0])]);
-    }
+  const handleFilteredMovieScoreChange = (e, newValue) => {
+    setScoreValue(newValue);
   };
+  const handleFilterNameCheck = () => {
+    console.log("spaudžiam name check");
+    if(filterNameCheck){
+      setFilterNameCheck(false);
+      setMovieName("");
+      filterMovies();
+    } else {
+      setFilterNameCheck(true);
+    }
+  }
+  const handleFilterYearCheck = () => {
+    console.log("spaudžiam year check");
+    if(filterYearCheck){
+      setFilterYearCheck(false);
+      setYearValue([1950, 2021]);
+      filterMovies();
+    } else {
+      setFilterYearCheck(true);
+    }   
+  }
+  const handleFilterScoreCheck = () => {
+    console.log("spaudžiam score check");
+    if(filterScoreCheck){
+      setFilterScoreCheck(false);
+      setScoreValue([0, 10]);
+      filterMovies();
+    } else {
+      setFilterScoreCheck(true);
+    }   
+  }
 
-  const filterMovies = (e) => {
-    e.preventDefault();
+  const filterMovies = () => {
+    console.log("filtruojam filmus");
     setFilteredMovies(movies
       .filter(movie => movie.Pavadinimas.toLowerCase().includes(movieName.toLowerCase()))
       .filter(movie => movie.Metai >= yearValue[0] && movie.Metai <= yearValue[1])
       .filter(movie => movie.IMDB >= scoreValue[0] && movie.IMDB <= scoreValue[1])
     )
     setFiltered(true);
+  }
+
+  const submitFilter = (e) => {
+    e.preventDefault();
+    filterMovies();
   }
   const resetFilter = (e) => {
     e.preventDefault();
@@ -79,8 +104,14 @@ function App() {
         setYearValue={handleFilteredMovieYearChange}
         scoreValue={scoreValue}
         setScoreValue={handleFilteredMovieScoreChange}
-        submitFilter={filterMovies}
+        submitFilter={submitFilter}
         resetFilter={resetFilter}
+        filterNameCheck={filterNameCheck}
+        handleFilterNameCheck={handleFilterNameCheck}
+        filterYearCheck={filterYearCheck}
+        handleFilterYearCheck={handleFilterYearCheck}
+        filterScoreCheck={filterScoreCheck}
+        handleFilterScoreCheck={handleFilterScoreCheck}
       />
       <MyTable
         theads={[

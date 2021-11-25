@@ -19,7 +19,7 @@ NEW part of Project:
   12. Padaryti, kad vartotojas galėtų pasirinkti kokių filtrų nori (HTML'u).
   13. Perrašyti pasirinkimų variantus komponentais.
   14. Sukurti funkcionalumą, kad pasirinkus kažkurį filtrą jis būtų rodomas/nerodomas.
-  15. Išjungus filtro rodymą neturi būti pagal jį filtruojama.
+    praleisti   15. Išjungus filtro rodymą neturi būti pagal jį filtruojama.
   16. Sugalvoti kaip galima patobulinti / sutvarkyti / pagražinti ligi šiolei parašytą kodą ir stilius.
   17. Tobulinimas.
   18 (optional). Pradėti dirbti ties CRUD.
