@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { styled } from '@mui/styles';
-import Navbar from '../partials/navbar';
+import Navbar from '../partials/navbar/navbar';
 
 const MainContainer = styled(Box)(({ theme }) => ({
-  height: `calc(100vh - ${theme.mixins.toolbar.minHeight}px)`,
+  height: `calc(100vh - ${theme.mixins.toolbar.height}px)`,
   display: 'flex',
   alignItems: 'stretch'
 }));

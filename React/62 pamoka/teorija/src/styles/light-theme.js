@@ -1,6 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 
 export default createTheme({
+  spacing: 4,
   palette: {
     primary: {
       main: '#ff385c'
@@ -11,7 +12,7 @@ export default createTheme({
   },
   mixins: {
     toolbar: {
-      minHeight: 148
+      height: 148,
     }
   }
 });
