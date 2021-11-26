@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import { styled } from '@mui/styles';
+import { styled } from '@mui/material/styles';
 import Navbar from '../partials/navbar/navbar';
 
 const MainContainer = styled(Box)(({ theme }) => ({

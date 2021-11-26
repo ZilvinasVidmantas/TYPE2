@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@mui/styles';
+import { styled } from '@mui/material/styles';
 import { AppBar, Box, Toolbar } from '@mui/material';
 import Header from './header';
 import Filters from './filters';
@@ -26,3 +26,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

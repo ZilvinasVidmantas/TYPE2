@@ -1,10 +1,10 @@
-import { useTheme } from '@mui/styles';
+import { useTheme } from '@mui/material/styles';
 
 const AirbnbIcon = (props) => {
   const theme = useTheme();
 
   const width = props.width ?? 102;
-  const height = props.height ?? 102;
+  const height = props.height ?? 32;
   const style = {
     display: 'block',
     ...props.style

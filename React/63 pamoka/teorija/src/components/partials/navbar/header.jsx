@@ -5,9 +5,9 @@ import { Box } from '@mui/material';
 const Header = () => {
   return (
     <Box sx={{ height: '100%' }}>
-      <AirbnbIcon width={102} height={32} />
+      <AirbnbIcon color="black"/>
     </Box>
   )
-}
+};
 
-export default Header
+export default Header;
