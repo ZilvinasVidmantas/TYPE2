@@ -5,7 +5,9 @@ import { Box } from '@mui/material';
 const Header = () => {
   return (
     <Box sx={{ height: '100%' }}>
-      <AirbnbIcon color="black"/>
+      
+
+      <AirbnbIcon/>
     </Box>
   )
 };
