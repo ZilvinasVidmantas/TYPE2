@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { AppBar, Box, Toolbar } from '@mui/material';
-import Header from './header';
+import Header from './header/header';
 import Filters from './filters';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({

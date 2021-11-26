@@ -7,7 +7,8 @@ export default createTheme({
       main: '#ff385c'
     },
     grey: {
-      A150: '#ebebeb'
+      A150: '#ebebeb',
+      A350: '#dddddd',
     }
   },
   mixins: {
