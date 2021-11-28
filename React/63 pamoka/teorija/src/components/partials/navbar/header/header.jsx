@@ -5,7 +5,7 @@ import UserSection from './user-section';
 
 const Header = () => {
   return (
-    <Grid container sx={{ height: '100%', alignItems: 'center', px: 3 }}>
+    <Grid container sx={{ height: '100%', alignItems: 'center'}}>
       <Grid item xs={4} sx={{ alignSelf: 'stretch' }}>
         <LogoSection />
       </Grid>

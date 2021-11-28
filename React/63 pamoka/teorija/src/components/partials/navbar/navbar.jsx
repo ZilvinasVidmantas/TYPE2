@@ -10,7 +10,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
 
 const Navbar = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, px: 3}}>
       <StyledAppBar position="static" color="transparent" elevation={0}>
         <Toolbar sx={{ flexDirection: 'column', alignItems: 'stretch' }}>
           <Box sx={{ height: 80, flexShrink: 0 }}>
