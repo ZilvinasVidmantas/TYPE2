@@ -1,0 +1,8 @@
+Praktikos metu atliekaman darbui:
+  1) Teoriškai pagalvoti:
+    1.1) Kurias vietas galima supaprastinti / pagražinti.
+    1.2) Kuriuos props'us pakeisti ar/ir apjungti.
+    1.3) Kokių dar galima pridėti komponentų.
+  2) Stilizuoti ką jau lig šiolei pasidarėme. (tuo pačiu bus praktika ir jūsų teorinių paskaitų darbui)
+  3) Pridėti formos komponentą ir jį supildyti input field'ų komponentais (be jokios JS logikos), kuris atsiras paspaudus "Pridėti filmą" ar "Redaguoti" mygtukus.
+  4) Stilizuoti pridėtą formą.
