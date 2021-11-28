@@ -1,7 +1,7 @@
 import { Box, Paper, Button, Input, Divider } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/material/styles';
-import CircleButton from '../../../circle-button';
+import CircleButton from '../../../buttons/circle-button';
 
 const SearchSectionContainer = styled(Paper)(({ theme }) => ({
   display: 'inline-flex',
@@ -13,7 +13,6 @@ const SearchSectionContainer = styled(Paper)(({ theme }) => ({
 
 const SearchSectionButton = styled(Button)(({ theme }) => ({
   color: theme.palette.text.primary,
-  textTransform: 'none',
   '&:hover': {
     background: 'none',
     color: theme.palette.primary.main,
@@ -24,12 +23,12 @@ const SearchSection = () => {
   return (
     <SearchSectionContainer>
       <SearchSectionButton>Pridėti datas</SearchSectionButton>
-      <Divider orientation="vertical" sx={{ height: 5 / 8, mx: 2 }} />
+      <Divider orientation="vertical" sx={{ height: 5 / 8, mx: 2, mb: 1.5 }} />
       <Box sx={{ pb: 0.5 }}>
         <Input placeholder="Kur Vyksite?" variant="standard" size="small" />
       </Box>
-      <CircleButton variant="contained" sx={{ alignSelf: 'center', ml: 2}}>
-        <SearchIcon sx={{fontSize: 16, fontWeight: 'bold' }} />
+      <CircleButton variant="contained" sx={{ alignSelf: 'center', ml: 2 }}>
+        <SearchIcon sx={{ fontSize: 16, fontWeight: 'bold' }} />
       </CircleButton>
     </SearchSectionContainer>
   )

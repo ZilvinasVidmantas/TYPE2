@@ -6,9 +6,6 @@ const LogoLink = styled(Link)(({ theme }) => ({
   height: '100%',
   display: 'inline-flex',
   alignItems: 'center',
-  '&:hover': {
-    background: theme.palette.action.hover
-  }
 }));
 
 const LogoSection = () => 

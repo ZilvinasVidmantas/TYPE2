@@ -7,7 +7,7 @@ const StyledButton = styled(Button)({
   minWidth: 'auto',
   borderRadius: '50%',
   padding: 0
-})
+});
 
 const CircleButton = ({ children, ...props }) => <StyledButton {...props} >{children}</StyledButton>;
 

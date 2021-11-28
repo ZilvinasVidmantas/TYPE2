@@ -15,5 +15,10 @@ export default createTheme({
     toolbar: {
       height: 148,
     }
+  },
+  typography: {
+    button: {
+      textTransform: 'none'
+    }
   }
 });
