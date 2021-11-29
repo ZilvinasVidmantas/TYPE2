@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { ThemeProvider, lightTheme, darkTheme } from './contexts/themeContext';
-import Button from './components/Button';
+import { ThemeProvider, themes } from './contexts/themeContext';
+
+const themeArr = Object.values(themes);
 
 const App = () => {
-  const [theme, setTheme] = useState(lightTheme);
+  const [theme, setTheme] = useState(themeArr[0].mode);
 
-  const changeTheme = () => {
-    if (theme.mode === 'light') {
-      setTheme(darkTheme);
-    } else {
-      setTheme(lightTheme);
-    }
+  const changeTheme = (e) => {
+    const themeName = e.target.value;
+    setTheme(themes[themeName]);
   }
 
   return (
@@ -20,10 +18,20 @@ const App = () => {
         background: theme.background
       }}>
         <h1>Čia yra apsas</h1>
-        <Button onClick={changeTheme}>Change Theme</Button>
+        <select onChange={changeTheme}>
+          {themeArr.map(x => <option key={x.mode} value={x.mode}>{x.mode}</option>)}
+        </select>
       </div>
     </ThemeProvider>
   );
 }
 
 export default App;
+
+/*
+  Sukurkite Raudoną temą, ir App komponenet įgalinkite temos pasirinkimą
+    * light
+    * dark
+    * red
+
+*/
