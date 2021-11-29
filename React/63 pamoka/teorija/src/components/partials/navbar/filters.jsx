@@ -1,5 +1,6 @@
 import React from 'react';
 import SelectableButton from '../../buttons/selectable-button';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
@@ -14,7 +15,10 @@ const FilterContainer = styled(Box)(({theme}) => ({
 const Filters = () => {
   return (
     <FilterContainer>
-      <SelectableButton selected={true}>Kaina</SelectableButton>
+      <SelectableButton selected={true}>
+        <Box component="span">Kaina</Box>
+        <ArrowDropDownIcon />
+      </SelectableButton>
       <SelectableButton>Būsto tipas</SelectableButton>
     </FilterContainer>
   )
