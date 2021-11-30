@@ -5,7 +5,8 @@ const cars = [
   { id: 2, brand: 'BMW', model: 'X5', year: 2000 },
   { id: 3, brand: 'Subaru', model: 'Impreza', year: 2000 },
   { id: 4, brand: 'Volkswagen', model: 'Passat', year: 2006 },
-  { id: 5, brand: 'Opel', model: 'Astra', year: 2008 }
+  { id: 5, brand: 'Opel', model: 'Astra', year: 2008 },
+  { id: 6, brand: 'Opel', model: 'UdyrAstra', year: 2016 },
 ];
 
 const brands = cars.map(car => car.brand);
@@ -28,7 +29,26 @@ const minYear = yearsSorted.shift();
 const maxYear = yearsSorted.pop();
 
 const carState = {
-  cars,
+  getCars: () => {
+    const carsResult = [];
+    const testFunctions = createCarTestFunctions();
+
+    cars.forEach(car => {
+      let carAcceptable = true;
+
+      for (let i = 0; i < testFunctions.length; i++) {
+        const testCar = testFunctions[i];
+        if (!testCar(car)) {
+          carAcceptable = false;
+          break;
+        }
+      }
+
+      if (carAcceptable) carsResult.push(car);
+
+    });
+    return carsResult;
+  },
 
   filters: {
     brand: {
@@ -72,70 +92,28 @@ const carState = {
   }
 }
 
-const getFilteredCars = () => {
-  const carsResult = [];
-  const filters = Object.entries(carState.filters).map(([name, { type, options, selectedMin, selectedMax }]) => {
-    const result = { name, type };
+const createCarTestFunctions = () => Object.entries(carState.filters)
+  .map(([name, { type, options, selectedMin, selectedMax }]) => {
     switch (type) {
       case "checkboxGroup":
-        result.values = options.filter(x => x.selected).map(x => x.name);
-        break;
+        const values = options.filter(x => x.selected).map(x => x.name);
+        return (car) => values.includes(car[name]);
+
       case "numberRange":
-        result.min = selectedMin;
-        result.max = selectedMax;
-        break;
-
+        const min = selectedMin;
+        const max = selectedMax;
+        return (car) => {
+          const numValue = car[name];
+          return numValue <= max && numValue >= min
+        }
       default:
-        console.error('Tokio filtro tipo nėra');
+        throw TypeError('Tokio filtro tipo nėra');
     }
-
-    return result;
   });
 
+export const CarContext = createContext(carState);
 
-  cars.forEach(car => {
-    let carAcceptable = true;
+export const CarProvider = ({ children }) =>
+  <CarContext.Provider value={carState}>{children}</CarContext.Provider>
 
-    for (let i = 0; i < filters.length; i++) {
-      const filter = filters[i];
-      let breakCycle = false;
 
-      switch (filter.type) {
-        case "checkboxGroup":
-          if (!filter.values.includes(car[filter.name])) {
-            carAcceptable = false;
-            breakCycle = true;
-          }
-          break;
-
-        case "numberRange":
-          const numValue = car[filter.name];
-          if (!(numValue <= filter.max && numValue >= filter.min)) {
-            carAcceptable = false;
-            breakCycle = true;
-          }
-          break;
-        default:
-          console.error('Tokio filtro tipo nėra')
-      }
-
-      if (breakCycle) break;
-    }
-
-    if (carAcceptable) {
-      carsResult.push(car);
-    }
-    console.groupEnd();
-  });
-  return carsResult;
-}
-
-const filteredCars = getFilteredCars();
-
-console.log({
-  filteredCars
-});
-
-// 10:50
-// 11:05
-// Klausimai atsakymai i6 esamo kodo

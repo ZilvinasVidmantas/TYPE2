@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   Table,
   TableBody,
@@ -7,10 +8,13 @@ import {
   TableRow,
   Paper,
 } from '@mui/material';
+import { CarContext } from '../contexts/CarContext';
 
-const DataTable = ({ headers, data }) => {
+const CarTable = () => {
+  const { getCars } = useContext(CarContext);
+  const cars = getCars();
 
-  const rows = data.map(({ id, brand, model, year }) =>
+  const rows = cars.map(({ id, brand, model, year }) =>
     <TableRow key={id}>
       <TableCell>{id}</TableCell>
       <TableCell>{brand}</TableCell>
@@ -23,7 +27,10 @@ const DataTable = ({ headers, data }) => {
       <Table>
         <TableHead>
           <TableRow>
-            {headers.map(({ name, ...props }) => <TableCell key={name} {...props}>{name}</TableCell>)}
+            <TableCell>ID</TableCell>
+            <TableCell>Markė</TableCell>
+            <TableCell>Modelis</TableCell>
+            <TableCell align="right">Gam. Metai</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -34,4 +41,4 @@ const DataTable = ({ headers, data }) => {
   );
 };
 
-export default DataTable;
+export default CarTable;

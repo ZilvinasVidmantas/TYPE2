@@ -4,7 +4,7 @@ import {
   Typography,
   Grid,
 } from '@mui/material';
-import DataTable from './components/DataTable';
+import CarTable from './components/CarTable';
 import DataFilters from './components/DataFilters';
 import "./contexts/CarContext";
 
@@ -81,15 +81,7 @@ const App = () => {
           <DataFilters filterPropsArray={filterPropsArray} />
         </Grid>
         <Grid item xs={9}>
-          <DataTable
-            headers={[
-              { name: 'ID' },
-              { name: 'Markė' },
-              { name: 'Modelis' },
-              { name: 'Gam. Metai', align: "right" }
-            ]}
-            data={cars}
-          />
+          <CarTable/>
         </Grid>
       </Grid>
     </Container>
