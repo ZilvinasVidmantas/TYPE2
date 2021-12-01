@@ -14,14 +14,14 @@ const uniqBrands = [...new Set(brands)];
 const brandOptions = uniqBrands.map(brand => ({
   name: brand,
   selected: true
-}))
+}));
 
 const models = cars.map(car => car.model);
 const uniqModels = [...new Set(models)];
 const modelOptions = uniqModels.map(model => ({
   name: model,
   selected: true
-}))
+}));
 
 const years = cars.map(car => car.year);
 const yearsSorted = years.sort((a, b) => a - b);
@@ -45,7 +45,6 @@ const carState = {
       }
 
       if (carAcceptable) carsResult.push(car);
-
     });
     return carsResult;
   },
@@ -75,7 +74,7 @@ const carState = {
       case "checkboxGroup":
         const { name, selected } = props;
         filter.options = filter.options.map(x => ({
-          name: x.name,
+          ...x,
           selected: x.name === name ? selected : x.selected
         }));
         break;
@@ -100,11 +99,9 @@ const createCarTestFunctions = () => Object.entries(carState.filters)
         return (car) => values.includes(car[name]);
 
       case "numberRange":
-        const min = selectedMin;
-        const max = selectedMax;
         return (car) => {
           const numValue = car[name];
-          return numValue <= max && numValue >= min
+          return numValue <= selectedMax && numValue >= selectedMin
         }
       default:
         throw TypeError('Tokio filtro tipo nėra');
