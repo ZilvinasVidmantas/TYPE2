@@ -1,4 +1,3 @@
-import React from 'react';
 import FilterContainer from './FilterContainer';
 import CheckboxGroup from './CheckboxGroup';
 
