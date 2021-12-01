@@ -8,13 +8,12 @@ const CarFilters = () => {
   const { filters } = useContext(CarContext);
   const filterArray = Object.entries(filters);
 
-  const filterGroups = filterArray.map(([filterName, { type, title, ...filterProps }]) => {
+  const filterGroups = filterArray.map(([filterName, { type, ...filterProps }]) => {
     switch (type) {
       case "checkboxGroup":
         return <CheckboxGroupFilter
           key={filterName}
           filterName={filterName}
-          title={title}
           {...filterProps}
         />;
 
@@ -22,7 +21,6 @@ const CarFilters = () => {
         return <RangeFilter
           key={filterName}
           filterName={filterName}
-          title={title}
           {...filterProps}
         />;
       default:
