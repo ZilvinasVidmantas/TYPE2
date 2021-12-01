@@ -52,14 +52,17 @@ const carState = {
   filters: {
     brand: {
       type: 'checkboxGroup',
+      title: 'Markė',
       options: brandOptions
     },
     model: {
       type: 'checkboxGroup',
+      title: 'Modelis',
       options: modelOptions
     },
     year: {
       type: 'numberRange',
+      title: 'Metai',
       min: minYear,
       max: maxYear,
       selectedMin: minYear,
@@ -116,3 +119,4 @@ export const CarProvider = ({ children }) =>
 
   // Sukurti filtram <title> savybę, su lietuvišku pavadinimu
   // ir Panaudoti filtro pavadinimą
+  // 11:05

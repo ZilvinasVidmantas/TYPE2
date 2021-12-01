@@ -1,6 +1,6 @@
 import { Typography, Box, Divider } from '@mui/material';
 
-const FilterGroupContainer = ({ children, title }) => {
+const FilterContainer = ({ children, title }) => {
   return (
     <Box>
       <Divider sx={{ my: 1 }} />
@@ -10,4 +10,4 @@ const FilterGroupContainer = ({ children, title }) => {
   );
 };
 
-export default FilterGroupContainer;
+export default FilterContainer;
