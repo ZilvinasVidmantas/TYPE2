@@ -114,3 +114,5 @@ export const CarProvider = ({ children }) =>
   <CarContext.Provider value={carState}>{children}</CarContext.Provider>
 
 
+  // Sukurti filtram <title> savybę, su lietuvišku pavadinimu
+  // ir Panaudoti filtro pavadinimą
