@@ -71,6 +71,10 @@ const carState = {
   },
 
   changeFilters: ({ filterName, ...props }) => {
+    console.log({
+      filterName,
+      ...props
+    })
     const filter = carState.filters[filterName];
 
     switch (filter.type) {
@@ -113,10 +117,3 @@ const createCarTestFunctions = () => Object.entries(carState.filters)
 
 export const CarContext = createContext(carState);
 
-export const CarProvider = ({ children }) =>
-  <CarContext.Provider value={carState}>{children}</CarContext.Provider>
-
-
-  // Sukurti filtram <title> savybę, su lietuvišku pavadinimu
-  // ir Panaudoti filtro pavadinimą
-  // 11:05

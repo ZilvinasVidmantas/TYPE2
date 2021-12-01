@@ -21,6 +21,7 @@ const CarFilters = () => {
       case "numberRange":
         return <RangeFilter
           key={filterName}
+          filterName={filterName}
           title={title}
           {...filterProps}
         />;
