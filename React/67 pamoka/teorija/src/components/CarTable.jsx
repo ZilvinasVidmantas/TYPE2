@@ -11,8 +11,7 @@ import {
 import { CarContext } from '../contexts/CarContext';
 
 const CarTable = () => {
-  const { getCars } = useContext(CarContext);
-  const cars = getCars();
+  const { cars } = useContext(CarContext);
 
   const rows = cars.map(({ id, brand, model, year }) =>
     <TableRow key={id}>
