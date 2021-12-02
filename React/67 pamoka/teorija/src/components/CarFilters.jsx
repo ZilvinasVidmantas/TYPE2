@@ -6,21 +6,20 @@ import RangeFilter from './RangeFilter';
 
 const CarFilters = () => {
   const { filters } = useContext(CarContext);
-  const filterArray = Object.entries(filters);
 
-  const filterGroups = filterArray.map(([filterName, { type, ...filterProps }]) => {
+  const filterGroups = filters.map(({ name, type, ...filterProps }) => {
     switch (type) {
       case "checkboxGroup":
         return <CheckboxGroupFilter
-          key={filterName}
-          filterName={filterName}
+          key={name}
+          filterName={name}
           {...filterProps}
         />;
 
       case "numberRange":
         return <RangeFilter
-          key={filterName}
-          filterName={filterName}
+          key={name}
+          filterName={name}
           {...filterProps}
         />;
       default:

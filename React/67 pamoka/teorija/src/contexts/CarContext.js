@@ -62,9 +62,10 @@ export const CarProvider = ({ children }) => {
   const [filters, setFilters] = useState(initFilters);
 
   const changeFilters = ({ filterName, ...props }) => {
+
     let newFilters;
 
-    const filterType = filters.find(filter => filter.name = filterName).type;
+    const filterType = filters.find(filter => filter.name === filterName).type;
 
     switch (filterType) {
       case "checkboxGroup":
@@ -84,11 +85,8 @@ export const CarProvider = ({ children }) => {
         const { min, max } = props;
         newFilters = filters.map(filter => ({
           ...filter,
-          // Ką tikrinti ir kaip perkurti filtrą, jeigu filtras yra "numberRange"?
-          // Pabandykit atlikti
-          // 10
-          // 10
-          // 11:20 tęsiame
+          selectedMin: filter.name === filterName ? min : filter.selectedMin,
+          selectedMax: filter.name === filterName ? max : filter.selectedMax,
         }))
         break;
 
@@ -97,13 +95,14 @@ export const CarProvider = ({ children }) => {
     }
 
     console.log(newFilters);
+    filterCars(newFilters);
+    setFilters(newFilters);
   }
 
-  const filterCars = () => {
-    console.log('Vykdosi <filterCars>');
+  const filterCars = (newFilters) => {
 
     const filteredCars = [];
-    const testFunctions = createCarTestFunctions();
+    const testFunctions = createCarTestFunctions(newFilters);
 
     initCars.forEach(car => {
       let carAcceptable = true;
@@ -119,10 +118,11 @@ export const CarProvider = ({ children }) => {
       if (carAcceptable) filteredCars.push(car);
     });
 
+    setCars(filteredCars);
   }
 
-  const createCarTestFunctions = () => Object.entries(filters)
-    .map(([name, { type, options, selectedMin, selectedMax }]) => {
+  const createCarTestFunctions = (newFilters) => newFilters
+    .map(({ name, type, options, selectedMin, selectedMax }) => {
       switch (type) {
         case "checkboxGroup":
           const values = options.filter(x => x.selected).map(x => x.name);
