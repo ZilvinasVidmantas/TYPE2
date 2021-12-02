@@ -28,26 +28,25 @@ const yearsSorted = years.sort((a, b) => a - b);
 const minYear = yearsSorted.shift();
 const maxYear = yearsSorted.pop();
 
-const initFilters = {
-  brand: {
-    type: 'checkboxGroup',
-    title: 'Markė',
-    options: brandOptions
-  },
-  model: {
-    type: 'checkboxGroup',
-    title: 'Modelis',
-    options: modelOptions
-  },
-  year: {
-    type: 'numberRange',
-    title: 'Metai',
-    min: minYear,
-    max: maxYear,
-    selectedMin: minYear,
-    selectedMax: maxYear,
-  }
-}
+const initFilters = [{
+  name: 'brand',
+  type: 'checkboxGroup',
+  title: 'Markė',
+  options: brandOptions
+}, {
+  name: 'model',
+  type: 'checkboxGroup',
+  title: 'Modelis',
+  options: modelOptions
+}, {
+  name: 'year',
+  type: 'numberRange',
+  title: 'Metai',
+  min: minYear,
+  max: maxYear,
+  selectedMin: minYear,
+  selectedMax: maxYear,
+}];
 
 const carState = {
   cars: [],
@@ -57,36 +56,53 @@ const carState = {
 
 export const CarContext = createContext(carState);
 
+
 export const CarProvider = ({ children }) => {
   const [cars, setCars] = useState(initCars);
   const [filters, setFilters] = useState(initFilters);
 
   const changeFilters = ({ filterName, ...props }) => {
-    const filter = filters[filterName];
+    let newFilters;
 
-    switch (filter.type) {
+    const filterType = filters.find(filter => filter.name = filterName).type;
+
+    switch (filterType) {
       case "checkboxGroup":
         const { name, selected } = props;
-        filter.options = filter.options.map(x => ({
-          ...x,
-          selected: x.name === name ? selected : x.selected
-        }));
+        newFilters = filters.map(filter => ({
+          ...filter,
+          options: filter.name === filterName
+            ? filter.options.map(option => ({
+              ...option,
+              selected: option.name === name ? selected : option.selected
+            }))
+            : filter.options
+        }))
         break;
 
       case "numberRange":
         const { min, max } = props;
-        filter.selectedMin = min;
-        filter.selectedMax = max;
+        newFilters = filters.map(filter => ({
+          ...filter,
+          // Ką tikrinti ir kaip perkurti filtrą, jeigu filtras yra "numberRange"?
+          // Pabandykit atlikti
+          // 10
+          // 10
+          // 11:20 tęsiame
+        }))
         break;
 
       default:
         console.error('Tokio filtro tipo nėra')
     }
-    setFilters({ ...filters });
+
+    console.log(newFilters);
   }
 
   const filterCars = () => {
-    const carsResult = [];
+    console.log('Vykdosi <filterCars>');
+
+    const filteredCars = [];
     const testFunctions = createCarTestFunctions();
 
     initCars.forEach(car => {
@@ -100,12 +116,12 @@ export const CarProvider = ({ children }) => {
         }
       }
 
-      if (carAcceptable) carsResult.push(car);
+      if (carAcceptable) filteredCars.push(car);
     });
-    return carsResult;
+
   }
 
-  const createCarTestFunctions = () => Object.entries(carState.filters)
+  const createCarTestFunctions = () => Object.entries(filters)
     .map(([name, { type, options, selectedMin, selectedMax }]) => {
       switch (type) {
         case "checkboxGroup":
@@ -134,7 +150,3 @@ export const CarProvider = ({ children }) => {
 }
 
 export default CarContext;
-
-
-
-
