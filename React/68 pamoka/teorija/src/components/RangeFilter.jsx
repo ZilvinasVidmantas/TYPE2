@@ -8,9 +8,15 @@ const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) 
   const [range, setRange] = useState([selectedMin, selectedMax])
   const [currMin, currMax] = range;
 
+  const handleSliderOnChange = (_, newRange) => {
+    const [min, max] = newRange;
+    if(min !== currMin || max !== currMax){
+      setRange(newRange);
+    }
+  };
+
   useEffect(() => setRange([selectedMin, selectedMax]), [selectedMin, selectedMax]);
 
-  console.log('Atsinaujina RangeFilter')
   return (
     <FilterContainer title={title}>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, my: 1, px: 3 }}>
@@ -42,7 +48,7 @@ const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) 
           min={min}
           max={max}
           value={range}
-          onChange={(_, newRange) => setRange(newRange)}
+          onChange={handleSliderOnChange}
           onChangeCommitted={(_, [min, max]) => changeFilters({ filterName, min, max })}
           valueLabelDisplay="auto"
         />

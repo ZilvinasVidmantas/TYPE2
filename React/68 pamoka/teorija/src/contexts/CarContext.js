@@ -69,11 +69,11 @@ const carState = {
 
 export const CarContext = createContext(carState);
 
-export const CarProvider = ({ children }) => {
-  const [state, setState] = useState({ cars: initCars, filters: initFilters });
+export class CarProvider extends React.Component {
+  state = { cars: initCars, filters: initFilters };
 
-  const changeFilters = ({ filterName, ...props }) => {
-    const filters = state.filters;
+  changeFilters = ({ filterName, ...props }) => {
+    const filters = this.state.filters;
     let newFilters;
 
     const filterType = filters.find(filter => filter.name === filterName).type;
@@ -109,13 +109,13 @@ export const CarProvider = ({ children }) => {
         console.error('Tokio filtro tipo nėra');
     }
 
-    filterCars(newFilters);
+    this.filterCars(newFilters);
   }
 
-  const filterCars = (newFilters) => {
+  filterCars = (newFilters) => {
 
     const filteredCars = [];
-    const testFunctions = createCarTestFunctions(newFilters);
+    const testFunctions = this.createCarTestFunctions(newFilters);
 
     initCars.forEach(car => {
       let carAcceptable = true;
@@ -131,13 +131,13 @@ export const CarProvider = ({ children }) => {
       if (carAcceptable) filteredCars.push(car);
     });
 
-    setState({
+    this.setState({
       cars: filteredCars,
       filters: newFilters
     });
   }
 
-  const createCarTestFunctions = (newFilters) => newFilters
+  createCarTestFunctions = (newFilters) => newFilters
     .map(({ name, type, options, selectedMin, selectedMax }) => {
       switch (type) {
         case "checkboxGroup":
@@ -154,24 +154,18 @@ export const CarProvider = ({ children }) => {
       }
     });
 
-  console.log('Atnaujinamas CarProvider')
+  render() {
+    console.log('Atnaujinamas CarProvider');
 
-  return (
-    <CarContext.Provider value={{
-      ...state,
-      changeFilters
-    }}>
-      {children}
-    </CarContext.Provider>
-  )
+    return (
+      <CarContext.Provider value={{
+        ...this.state,
+        changeFilters: this.changeFilters
+      }}>
+        {this.props.children}
+      </CarContext.Provider>
+    )
+  }
 }
 
 export default CarContext;
-
-
-/*
-  Sukurkite kiekvienai mašinai kainą,
-  ir kainai nustatykite kainos filtrą
-
-
-*/
