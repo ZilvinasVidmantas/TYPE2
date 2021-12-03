@@ -95,10 +95,9 @@ export const CarProvider = ({ children }) => {
         break;
 
       default:
-        console.error('Tokio filtro tipo nėra')
+        console.error('Tokio filtro tipo nėra');
     }
 
-    console.log(newFilters);
     filterCars(newFilters);
     setFilters(newFilters);
   }
@@ -142,6 +141,7 @@ export const CarProvider = ({ children }) => {
       }
     });
 
+  console.log('Atsinaujina Context');
   return (
     <CarContext.Provider value={{
       cars,
@@ -154,3 +154,11 @@ export const CarProvider = ({ children }) => {
 }
 
 export default CarContext;
+
+
+/*
+  Sukurkite kiekvienai mašinai kainą,
+  ir kainai nustatykite kainos filtrą
+
+
+*/
