@@ -1,21 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Slider, Box, Input } from '@mui/material';
 import FilterContainer from './FilterContainer';
 import { CarContext } from '../contexts/CarContext';
 
-const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) => {
+const RangeFilter = ({ filterName, title, min, max }) => {
   const { changeFilters } = useContext(CarContext);
-  /*
-    Yra problema:
-    Konteksto <CarContext> funkcija <changeFilters> kviečiasi labai daug kartų, kuomet judiname Slider'į
-    Reikėtų padaryti, jog funkcija kviestūsi tik atleidus slider'io 'burbuliuką'
-    Tam yra speciali MUI-Slider funkcija <onChangeCommitted>, tačiau, ši funkcija panaikina slankiojimo animaciją.
+  const [range, setRange] = useState([min, max])
+  const [selectedMin, selectedMax] = range;
 
-    Padaryti, jog <CarContext.changeFilters> funkcija kviestūsi tiktais atleidus, bet matytūsi slider'io judinimo animacija
-
-    Vienas iš sprendimų galėtų būti:
-      Sukurti šiame komponente <state> kintamajį animacijai palaikyti, o kviesti <CarContext.changeFilters> tiktais atleidus.
-  */
+  const handleInputChange = (newRange) => {
+    const [min, max] = newRange;
+    setRange(newRange);
+    changeFilters({ filterName, min, max });
+  }
 
   return (
     <FilterContainer title={title}>
@@ -23,21 +20,22 @@ const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) 
         <Input
           value={selectedMin}
           inputProps={{ sx: { textAlign: 'center' } }}
-          onChange={(e) => changeFilters({ filterName, min: Number(e.target.value), max: selectedMax })}
+          onChange={(event) => handleInputChange([Number(event.target.value), selectedMax])}
         />
-         <Input
+        <Input
           value={selectedMax}
           inputProps={{ sx: { textAlign: 'center' } }}
-          onChange={(e) => changeFilters({ filterName, min: selectedMin, max: Number(e.target.value) })}
+          onChange={(event) => handleInputChange([selectedMin, Number(event.target.value)])}
         />
       </Box>
       <Box sx={{ px: 1 }}>
         <Slider
           getAriaLabel={() => 'Temperature range'}
-          value={[selectedMin, selectedMax]}
           min={min}
           max={max}
-          onChange={(_, [min, max]) => changeFilters({ filterName, min, max })}
+          value={range}
+          onChange={(_, newRange) => setRange(newRange)}
+          onChangeCommitted={(_, [min, max]) => changeFilters({ filterName, min, max })}
           valueLabelDisplay="auto"
         />
       </Box>

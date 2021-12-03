@@ -83,11 +83,15 @@ export const CarProvider = ({ children }) => {
 
       case "numberRange":
         const { min, max } = props;
-        newFilters = filters.map(filter => ({
-          ...filter,
-          selectedMin: filter.name === filterName ? min : filter.selectedMin,
-          selectedMax: filter.name === filterName ? max : filter.selectedMax,
-        }))
+        newFilters = filters.map(filter => {
+          const updatedFilter = { ...filter };
+
+          if (filter.name === filterName) {
+            updatedFilter.selectedMin = min;
+            updatedFilter.selectedMax = max;
+          }
+          return updatedFilter;
+        });
         break;
 
       default:
