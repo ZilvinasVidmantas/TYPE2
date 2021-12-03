@@ -1,12 +1,12 @@
 import React, { useState, createContext } from 'react';
 
 const initCars = [
-  { id: 1, brand: 'Opel', model: 'Astra', year: 2000 },
-  { id: 2, brand: 'BMW', model: 'X5', year: 2000 },
-  { id: 3, brand: 'Subaru', model: 'Impreza', year: 2000 },
-  { id: 4, brand: 'Volkswagen', model: 'Passat', year: 2006 },
-  { id: 5, brand: 'Opel', model: 'Astra', year: 2008 },
-  { id: 6, brand: 'Opel', model: 'UdyrAstra', year: 2016 },
+  { id: 1, brand: 'Opel', model: 'Astra', price: 1500, year: 2000 },
+  { id: 2, brand: 'BMW', model: 'X5', price: 2000, year: 2000 },
+  { id: 3, brand: 'Subaru', model: 'Impreza', price: 3000, year: 2000 },
+  { id: 4, brand: 'Volkswagen', model: 'Passat', price: 4000, year: 2006 },
+  { id: 5, brand: 'Opel', model: 'Astra', price: 5000, year: 2008 },
+  { id: 6, brand: 'Opel', model: 'UdyrAstra', price: 6000, year: 2016 },
 ];
 
 const brands = initCars.map(car => car.brand);
@@ -28,6 +28,11 @@ const yearsSorted = years.sort((a, b) => a - b);
 const minYear = yearsSorted.shift();
 const maxYear = yearsSorted.pop();
 
+const prices = initCars.map(car => car.price);
+const pricesSorted = prices.sort((a, b) => a - b);
+const minPrice = pricesSorted.shift();
+const maxPrice = pricesSorted.pop();
+
 const initFilters = [{
   name: 'brand',
   type: 'checkboxGroup',
@@ -46,6 +51,14 @@ const initFilters = [{
   max: maxYear,
   selectedMin: minYear,
   selectedMax: maxYear,
+}, {
+  name: 'price',
+  type: 'numberRange',
+  title: 'Kaina',
+  min: minPrice,
+  max: maxPrice,
+  selectedMin: minPrice,
+  selectedMax: maxPrice,
 }];
 
 const carState = {
@@ -56,13 +69,11 @@ const carState = {
 
 export const CarContext = createContext(carState);
 
-
 export const CarProvider = ({ children }) => {
-  const [cars, setCars] = useState(initCars);
-  const [filters, setFilters] = useState(initFilters);
+  const [state, setState] = useState({ cars: initCars, filters: initFilters });
 
   const changeFilters = ({ filterName, ...props }) => {
-
+    const filters = state.filters;
     let newFilters;
 
     const filterType = filters.find(filter => filter.name === filterName).type;
@@ -99,7 +110,6 @@ export const CarProvider = ({ children }) => {
     }
 
     filterCars(newFilters);
-    setFilters(newFilters);
   }
 
   const filterCars = (newFilters) => {
@@ -121,7 +131,10 @@ export const CarProvider = ({ children }) => {
       if (carAcceptable) filteredCars.push(car);
     });
 
-    setCars(filteredCars);
+    setState({
+      cars: filteredCars,
+      filters: newFilters
+    });
   }
 
   const createCarTestFunctions = (newFilters) => newFilters
@@ -141,11 +154,11 @@ export const CarProvider = ({ children }) => {
       }
     });
 
-  console.log('Atsinaujina Context');
+  console.log('Atnaujinamas CarProvider')
+
   return (
     <CarContext.Provider value={{
-      cars,
-      filters,
+      ...state,
       changeFilters
     }}>
       {children}

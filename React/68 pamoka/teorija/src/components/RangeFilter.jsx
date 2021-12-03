@@ -10,6 +10,7 @@ const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) 
 
   useEffect(() => setRange([selectedMin, selectedMax]), [selectedMin, selectedMax]);
 
+  console.log('Atsinaujina RangeFilter')
   return (
     <FilterContainer title={title}>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, my: 1, px: 3 }}>
