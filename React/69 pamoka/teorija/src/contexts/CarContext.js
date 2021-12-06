@@ -1,4 +1,5 @@
-import React, { useState, createContext } from 'react';
+import React, { createContext } from 'react';
+import FilterBuilder from '../libraries/FilterBuilder';
 
 const initCars = [
   { id: 1, brand: 'Opel', model: 'Astra', price: 1500, year: 2000 },
@@ -9,41 +10,13 @@ const initCars = [
   { id: 6, brand: 'Opel', model: 'UdyrAstra', price: 6000, year: 2016 },
 ];
 
-const buildCheckboxGroupFilter = (collection, property, filterTitle) => {
-  const entities = collection.map(entity => entity[property]);
-  const uniqEntities = [...new Set(entities)];
-  const options = uniqEntities.map(name => ({ name, selected: true }));
-
-  return {
-    name: property,
-    type: 'checkboxGroup',
-    title: filterTitle,
-    options
-  }
-};
-
-const buildRangeFilter = (collection, property, filterTitle) => {
-  const values = collection.map(entity => entity[property]);
-  const uniqValues = values.sort((a, b) => a - b);
-  const min = uniqValues.shift();
-  const max = uniqValues.pop();
-
-  return {
-    name: property,
-    type: 'numberRange',
-    title: filterTitle,
-    min,
-    max,
-    selectedMin: min,
-    selectedMax: max,
-  }
-}
+const carFilterBuilder = new FilterBuilder(initCars);
 
 const initFilters = [
-  buildCheckboxGroupFilter(initCars, 'brand', 'Markė'),
-  buildCheckboxGroupFilter(initCars, 'model', 'Modelis'),
-  buildRangeFilter(initCars, 'price', 'Kaina'),
-  buildRangeFilter(initCars, 'year', 'Metai'),
+  carFilterBuilder.createFilter('checkboxGroup', { prop: 'brand', title: 'Markė' }),
+  carFilterBuilder.createFilter('checkboxGroup', { prop: 'model', title: 'Modelis' }),
+  carFilterBuilder.createFilter('range', { prop: 'price', title: 'Kaina' }),
+  carFilterBuilder.createFilter('range', { prop: 'year', title: 'Metai' }),
 ];
 
 const carState = {
