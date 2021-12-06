@@ -2,6 +2,8 @@
  * Created filters by given collection for contructor
  */
 class FilterBuilder {
+  filters = [];
+
   /**
    * Crates a intance, which will be used to create filters
    * 
@@ -19,19 +21,21 @@ class FilterBuilder {
    * @param {string} options.prop property on which filter will be created based on this.collection
    * @param {string} options.title filter title for view representation.
    * 
-   * @returns {Object} checkboxGroup filter object
+   * @returns {FilterBuilder} same FilterBuilder instance
    */
   checkboxGroup = ({ prop, title }) => {
     const entities = this.collection.map(entity => entity[prop]);
     const uniqEntities = [...new Set(entities)];
     const options = uniqEntities.map(name => ({ name, selected: true }));
 
-    return {
+    this.filters.push({
       name: prop,
       type: 'checkboxGroup',
       title: title,
       options
-    }
+    });
+
+    return this;
   };
 
   /**
@@ -41,7 +45,7 @@ class FilterBuilder {
    * @param {string} options.prop property on which filter will be created based on this.collection
    * @param {string} options.title filter title for view representation.
    * 
-   * @returns {Object} range filter object
+   * @returns {FilterBuilder} same FilterBuilder instance
    */
   range = ({ prop, title }) => {
     const values = this.collection.map(entity => entity[prop]);
@@ -49,7 +53,7 @@ class FilterBuilder {
     const min = uniqValues.shift();
     const max = uniqValues.pop();
 
-    return {
+    this.filters.push({
       name: prop,
       type: 'numberRange',
       title: title,
@@ -57,7 +61,9 @@ class FilterBuilder {
       max,
       selectedMin: min,
       selectedMax: max,
-    }
+    });
+
+    return this;
   }
 
   /**

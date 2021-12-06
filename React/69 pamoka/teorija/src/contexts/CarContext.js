@@ -10,14 +10,12 @@ const initCars = [
   { id: 6, brand: 'Opel', model: 'UdyrAstra', price: 6000, year: 2016 },
 ];
 
-const carFilterBuilder = new FilterBuilder(initCars);
-
-const initFilters = [
-  carFilterBuilder.createFilter('checkboxGroup', { prop: 'brand', title: 'Markė' }),
-  carFilterBuilder.createFilter('checkboxGroup', { prop: 'model', title: 'Modelis' }),
-  carFilterBuilder.createFilter('range', { prop: 'price', title: 'Kaina' }),
-  carFilterBuilder.createFilter('range', { prop: 'year', title: 'Metai' }),
-];
+const initFilters = new FilterBuilder(initCars)
+  .checkboxGroup({ prop: 'brand', title: 'Markė' })
+  .checkboxGroup({ prop: 'model', title: 'Modelis' })
+  .range({ prop: 'price', title: 'Kaina' })
+  .range({ prop: 'year', title: 'Metai' })
+  .filters;
 
 const carState = {
   cars: [],
@@ -113,8 +111,6 @@ export class CarProvider extends React.Component {
     });
 
   render() {
-    console.log('Atnaujinamas CarProvider');
-
     return (
       <CarContext.Provider value={{
         ...this.state,
