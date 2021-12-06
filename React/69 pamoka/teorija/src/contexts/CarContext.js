@@ -9,57 +9,42 @@ const initCars = [
   { id: 6, brand: 'Opel', model: 'UdyrAstra', price: 6000, year: 2016 },
 ];
 
-const brands = initCars.map(car => car.brand);
-const uniqBrands = [...new Set(brands)];
-const brandOptions = uniqBrands.map(brand => ({
-  name: brand,
-  selected: true
-}));
+const buildCheckboxGroupFilter = (collection, property, filterTitle) => {
+  const entities = collection.map(entity => entity[property]);
+  const uniqEntities = [...new Set(entities)];
+  const options = uniqEntities.map(name => ({ name, selected: true }));
 
-const models = initCars.map(car => car.model);
-const uniqModels = [...new Set(models)];
-const modelOptions = uniqModels.map(model => ({
-  name: model,
-  selected: true
-}));
+  return {
+    name: property,
+    type: 'checkboxGroup',
+    title: filterTitle,
+    options
+  }
+};
 
-const years = initCars.map(car => car.year);
-const yearsSorted = years.sort((a, b) => a - b);
-const minYear = yearsSorted.shift();
-const maxYear = yearsSorted.pop();
+const buildRangeFilter = (collection, property, filterTitle) => {
+  const values = collection.map(entity => entity[property]);
+  const uniqValues = values.sort((a, b) => a - b);
+  const min = uniqValues.shift();
+  const max = uniqValues.pop();
 
-const prices = initCars.map(car => car.price);
-const pricesSorted = prices.sort((a, b) => a - b);
-const minPrice = pricesSorted.shift();
-const maxPrice = pricesSorted.pop();
+  return {
+    name: property,
+    type: 'numberRange',
+    title: filterTitle,
+    min,
+    max,
+    selectedMin: min,
+    selectedMax: max,
+  }
+}
 
-const initFilters = [{
-  name: 'brand',
-  type: 'checkboxGroup',
-  title: 'Markė',
-  options: brandOptions
-}, {
-  name: 'model',
-  type: 'checkboxGroup',
-  title: 'Modelis',
-  options: modelOptions
-}, {
-  name: 'year',
-  type: 'numberRange',
-  title: 'Metai',
-  min: minYear,
-  max: maxYear,
-  selectedMin: minYear,
-  selectedMax: maxYear,
-}, {
-  name: 'price',
-  type: 'numberRange',
-  title: 'Kaina',
-  min: minPrice,
-  max: maxPrice,
-  selectedMin: minPrice,
-  selectedMax: maxPrice,
-}];
+const initFilters = [
+  buildCheckboxGroupFilter(initCars, 'brand', 'Markė'),
+  buildCheckboxGroupFilter(initCars, 'model', 'Modelis'),
+  buildRangeFilter(initCars, 'price', 'Kaina'),
+  buildRangeFilter(initCars, 'year', 'Metai'),
+];
 
 const carState = {
   cars: [],

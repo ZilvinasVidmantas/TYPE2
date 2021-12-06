@@ -12,7 +12,7 @@ Perskaityti:
 Pasidaryti:
   CarContext.js sukurkite funkcijas kurios grąžina filtrus:
     * buildRangeFilter(collection, property, filterTitle)
-    * buildRangeCheckboxGroupFilter(collection, property, filterTitle)
+    * buildCheckboxGroupFilter(collection, property, filterTitle)
 
   Jeigu per greit gavosi, sukurkite klasę <FilterBuilder>
     * constructor(collection)
