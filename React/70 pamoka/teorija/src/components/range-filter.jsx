@@ -1,10 +1,8 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Slider, Box, Input } from '@mui/material';
 import FilterContainer from './filter-container';
-import { CarContext } from '../contexts/car-context';
 
-const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) => {
-  const { changeFilters } = useContext(CarContext);
+const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max, onChange }) => {
   const [range, setRange] = useState([selectedMin, selectedMax])
   const [currMin, currMax] = range;
 
@@ -24,7 +22,7 @@ const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) 
           value={currMin}
           type="number"
           inputProps={{ sx: { textAlign: 'center' } }}
-          onChange={(event) => changeFilters({
+          onChange={(event) => onChange({
             filterName,
             min: Number(event.target.value),
             max: currMax
@@ -34,7 +32,7 @@ const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) 
           value={currMax}
           type="number"
           inputProps={{ sx: { textAlign: 'center' } }}
-          onChange={(event) => changeFilters({
+          onChange={(event) => onChange({
             filterName,
             min: currMin,
             max: Number(event.target.value)
@@ -48,7 +46,7 @@ const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) 
           max={max}
           value={range}
           onChange={handleSliderOnChange}
-          onChangeCommitted={(_, [min, max]) => changeFilters({ filterName, min, max })}
+          onChangeCommitted={(_, [min, max]) => onChange({ filterName, min, max })}
           valueLabelDisplay="auto"
         />
       </Box>

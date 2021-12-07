@@ -20,7 +20,7 @@ const initFilters = new FilterBuilder(initCars)
 const carState = {
   cars: [],
   filters: [],
-  changeFilters: () => new Error('You must use a Provider and implement logic')
+  changeFilter: () => new Error('You must use a Provider and implement logic')
 };
 
 export const CarContext = createContext(carState);
@@ -28,7 +28,7 @@ export const CarContext = createContext(carState);
 export class CarProvider extends React.Component {
   state = { cars: initCars, filters: initFilters };
 
-  changeFilters = ({ filterName, ...props }) => {
+  changeFilter = ({ filterName, ...props }) => {
     const filters = this.state.filters;
     let newFilters;
 
@@ -114,7 +114,7 @@ export class CarProvider extends React.Component {
     return (
       <CarContext.Provider value={{
         ...this.state,
-        changeFilters: this.changeFilters
+        changeFilter: this.changeFilter
       }}>
         {this.props.children}
       </CarContext.Provider>

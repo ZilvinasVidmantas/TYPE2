@@ -1,10 +1,7 @@
-import { useContext } from "react";
 import FilterContainer from './filter-container';
 import CheckboxGroup from './checkbox-group';
-import { CarContext } from '../contexts/car-context';
 
-const CheckboxGroupFilter = ({ filterName, title, options }) => {
-  const { changeFilters } = useContext(CarContext);
+const CheckboxGroupFilter = ({ filterName, title, options, onChange }) => {
 
   return (
     <FilterContainer title={title}>
@@ -14,7 +11,7 @@ const CheckboxGroupFilter = ({ filterName, title, options }) => {
         checked={selected}
         name={filterName}
         value={name}
-        onChange={(e) => changeFilters({ filterName, name, selected: e.target.checked })}
+        onChange={(e) => onChange({ filterName, name, selected: e.target.checked })}
       />)}
     </FilterContainer>
   );
