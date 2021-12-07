@@ -7,7 +7,7 @@ import {
 import CarTable from './car-table';
 import CarFilters from './car-filters';
 
-const CarPage = () => {
+const CarSearch = () => {
   return (
     <Container>
       <Typography component="h1" variant="h3" gutterBottom align="center">Mašinos</Typography>
@@ -23,4 +23,4 @@ const CarPage = () => {
   );
 };
 
-export default CarPage;
+export default CarSearch;
