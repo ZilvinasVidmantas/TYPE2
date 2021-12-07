@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import FilterBuilder from '../libraries/FilterBuilder';
+import FilterBuilder from '../libraries/filter-builder';
 
 const initCars = [
   { id: 1, brand: 'Opel', model: 'Astra', price: 1500, year: 2000 },

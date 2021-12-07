@@ -8,7 +8,7 @@ import {
   TableRow,
   Paper,
 } from '@mui/material';
-import { CarContext } from '../contexts/CarContext';
+import { CarContext } from '../../contexts/car-context';
 
 const CarTable = () => {
   const { cars } = useContext(CarContext);

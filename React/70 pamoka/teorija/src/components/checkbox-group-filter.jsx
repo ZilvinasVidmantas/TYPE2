@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import FilterContainer from './FilterContainer';
-import CheckboxGroup from './CheckboxGroup';
-import { CarContext } from '../contexts/CarContext';
+import FilterContainer from './filter-container';
+import CheckboxGroup from './checkbox-group';
+import { CarContext } from '../contexts/car-context';
 
 const CheckboxGroupFilter = ({ filterName, title, options }) => {
   const { changeFilters } = useContext(CarContext);

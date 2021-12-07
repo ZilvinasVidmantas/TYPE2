@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { Slider, Box, Input } from '@mui/material';
-import FilterContainer from './FilterContainer';
-import { CarContext } from '../contexts/CarContext';
+import FilterContainer from './filter-container';
+import { CarContext } from '../contexts/car-context';
 
 const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) => {
   const { changeFilters } = useContext(CarContext);
