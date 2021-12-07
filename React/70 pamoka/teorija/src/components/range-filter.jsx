@@ -42,7 +42,6 @@ const RangeFilter = ({ filterName, title, selectedMin, selectedMax, min, max }) 
         />
       </Box>
       <Box sx={{ px: 1 }}>
-        {/* TODO: kodėl Keičiant Slider reikšmę kontekstas kviečiasi 2 kartus */}
         <Slider
           getAriaLabel={() => 'Temperature range'}
           min={min}

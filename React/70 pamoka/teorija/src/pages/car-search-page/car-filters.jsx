@@ -36,3 +36,11 @@ const CarFilters = () => {
 }
 
 export default CarFilters;
+
+/*
+  * Iškelt konteksto funkciją iš range-filter į šį komponentą, ir peduot ją per props'są (onChange)
+    * beabejo užnaudoti
+  * Iškelt konteksto funkciją iš checkbox-group-filter į šį komponentą, ir peduot ją per props'us (onChange)
+    * beabejo užnaudoti
+
+*/
