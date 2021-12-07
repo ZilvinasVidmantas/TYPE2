@@ -41,6 +41,7 @@ const Navbar = () => {
 		<AppBar position="static">
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
+					{/* logo.jsx start*/}
 					<Typography
 						variant="h6"
 						noWrap
@@ -49,7 +50,9 @@ const Navbar = () => {
 					>
 						LOGO
 					</Typography>
+					{/* logo.jsx end*/}
 
+					{/* mobile.jsx start*/}
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
 							size="large"
@@ -99,6 +102,9 @@ const Navbar = () => {
 					>
 						LOGO
 					</Typography>
+					{/* mobile.jsx end*/}
+
+					{/* desktop.jsx start*/}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						<Button
 							onClick={handleCloseNavMenu}
@@ -113,7 +119,9 @@ const Navbar = () => {
 							<Link to="/search">Search Cars</Link>
 						</Button>
 					</Box>
+					{/* desktop.jsx end*/}
 
+					{/* user-menu start*/}
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -143,9 +151,15 @@ const Navbar = () => {
 							))}
 						</Menu>
 					</Box>
+					{/* user-menu end*/}
 				</Toolbar>
 			</Container>
 		</AppBar>
 	);
 };
 export default Navbar;
+
+/*
+	Išskaidyti navbar komponentais
+
+*/
