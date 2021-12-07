@@ -10,9 +10,9 @@ const App = () => {
 		<CarProvider>
 			<BrowserRouter>
 				<Routes>
-					<Route path='/' element={<HomePage />} />
-					<Route path='/search' element={<CarSearch />} />
-					<Route path='/car' element={<CarPage />} />
+					<Route path="/" element={<HomePage />} />
+					<Route path="/search" element={<CarSearch />} />
+					<Route path="/car" element={<CarPage />} />
 				</Routes>
 			</BrowserRouter>
 		</CarProvider>

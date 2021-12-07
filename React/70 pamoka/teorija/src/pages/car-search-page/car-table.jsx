@@ -18,8 +18,8 @@ const CarTable = () => {
 			<TableCell>{id}</TableCell>
 			<TableCell>{brand}</TableCell>
 			<TableCell>{model}</TableCell>
-			<TableCell align='right'>{price}</TableCell>
-			<TableCell align='right'>{year}</TableCell>
+			<TableCell align="right">{price}</TableCell>
+			<TableCell align="right">{year}</TableCell>
 		</TableRow>
 	));
 
@@ -31,8 +31,8 @@ const CarTable = () => {
 						<TableCell>ID</TableCell>
 						<TableCell>Markė</TableCell>
 						<TableCell>Modelis</TableCell>
-						<TableCell align='right'>Kaina €</TableCell>
-						<TableCell align='right'>Gam. Metai</TableCell>
+						<TableCell align="right">Kaina €</TableCell>
+						<TableCell align="right">Gam. Metai</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>{rows}</TableBody>

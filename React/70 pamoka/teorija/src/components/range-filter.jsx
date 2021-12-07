@@ -38,7 +38,7 @@ const RangeFilter = ({
 				}}>
 				<Input
 					value={currMin}
-					type='number'
+					type="number"
 					inputProps={{ sx: { textAlign: 'center' } }}
 					onChange={(event) =>
 						onChange({
@@ -50,7 +50,7 @@ const RangeFilter = ({
 				/>
 				<Input
 					value={currMax}
-					type='number'
+					type="number"
 					inputProps={{ sx: { textAlign: 'center' } }}
 					onChange={(event) =>
 						onChange({
@@ -71,7 +71,7 @@ const RangeFilter = ({
 					onChangeCommitted={(_, [min, max]) =>
 						onChange({ filterName, min, max })
 					}
-					valueLabelDisplay='auto'
+					valueLabelDisplay="auto"
 				/>
 			</Box>
 		</FilterContainer>

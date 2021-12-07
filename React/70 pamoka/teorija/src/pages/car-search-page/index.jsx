@@ -6,7 +6,7 @@ import CarFilters from './car-filters';
 const CarSearch = () => {
 	return (
 		<Container>
-			<Typography component='h1' variant='h3' gutterBottom align='center'>
+			<Typography component="h1" variant="h3" gutterBottom align="center">
 				Mašinos
 			</Typography>
 			<Grid container spacing={2}>
