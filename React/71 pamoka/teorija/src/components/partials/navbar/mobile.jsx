@@ -1,10 +1,15 @@
 import React from 'react';
-import { Box, IconButton, Typography, Menu, MenuItem } from '@mui/material';
+import { Box, IconButton, Menu, MenuItem } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
 import Logo from './logo';
+import StyledNavLink from './styled-nav-link';
 
 const mobileStyles = { flexGrow: 1, display: { xs: 'flex', md: 'none' } };
+const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+
+}));
+
 
 const Mobile = ({ handleOpenNavMenu, handleCloseNavMenu, anchorElNav }) => {
 	return (
@@ -38,16 +43,16 @@ const Mobile = ({ handleOpenNavMenu, handleCloseNavMenu, anchorElNav }) => {
 						display: { xs: 'block', md: 'none' },
 					}}
 				>
-					<MenuItem onClick={handleCloseNavMenu}>
-						<Typography textAlign="center">
-							<Link to="/">Home</Link>
-						</Typography>
-					</MenuItem>
-					<MenuItem onClick={handleCloseNavMenu}>
-						<Typography textAlign="center">
-							<Link to="/search">Search Cars</Link>
-						</Typography>
-					</MenuItem>
+					<StyledMenuItem>
+						<StyledNavLink to="/" onClick={handleCloseNavMenu}>
+							Home
+						</StyledNavLink>
+					</StyledMenuItem>
+					<StyledMenuItem>
+						<StyledNavLink to="/search" onClick={handleCloseNavMenu}>
+							Search Cars
+						</StyledNavLink>
+					</StyledMenuItem>
 				</Menu>
 			</Box>
 			<Logo sx={mobileStyles} />
