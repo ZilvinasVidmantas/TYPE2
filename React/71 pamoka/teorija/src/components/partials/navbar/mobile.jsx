@@ -1,17 +1,20 @@
 import React from 'react';
 import { Box, IconButton, Menu, MenuItem } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from './logo';
 import StyledNavLink from './styled-nav-link';
 
-const mobileStyles = { flexGrow: 1, display: { xs: 'flex', md: 'none' } };
-const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+const Mobile = ({
+	handleOpenNavMenu,
+	handleCloseNavMenu,
+	anchorElNav,
+	breakPoint,
+}) => {
+	const mobileStyles = {
+		flexGrow: 1,
+		display: { xs: 'flex', [breakPoint]: 'none' },
+	};
 
-}));
-
-
-const Mobile = ({ handleOpenNavMenu, handleCloseNavMenu, anchorElNav }) => {
 	return (
 		<>
 			<Box sx={mobileStyles}>
@@ -43,16 +46,24 @@ const Mobile = ({ handleOpenNavMenu, handleCloseNavMenu, anchorElNav }) => {
 						display: { xs: 'block', md: 'none' },
 					}}
 				>
-					<StyledMenuItem>
-						<StyledNavLink to="/" onClick={handleCloseNavMenu}>
+					<MenuItem>
+						<StyledNavLink
+							to="/"
+							onClick={handleCloseNavMenu}
+							breakPoint={breakPoint}
+						>
 							Home
 						</StyledNavLink>
-					</StyledMenuItem>
-					<StyledMenuItem>
-						<StyledNavLink to="/search" onClick={handleCloseNavMenu}>
+					</MenuItem>
+					<MenuItem>
+						<StyledNavLink
+							to="/search"
+							onClick={handleCloseNavMenu}
+							breakPoint={breakPoint}
+						>
 							Search Cars
 						</StyledNavLink>
-					</StyledMenuItem>
+					</MenuItem>
 				</Menu>
 			</Box>
 			<Logo sx={mobileStyles} />

@@ -1,24 +1,40 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import StyledNavLink from './styled-nav-link';
+import Logo from './logo';
 
-const Desktop = ({ handleCloseNavMenu }) => {
+const Desktop = ({ handleCloseNavMenu, breakPoint }) => {
+	const desktopStyles = {
+		display: { xs: 'none', [breakPoint]: 'flex' },
+	};
+
 	return (
-		<Box
-			sx={{
-				flexGrow: 1,
-				display: { xs: 'none', md: 'flex' },
-				height: '100%',
-				alignItems: 'stretch',
-			}}
-		>
-			<StyledNavLink to="/" onClick={handleCloseNavMenu}>
-				Home
-			</StyledNavLink>
-			<StyledNavLink to="/search" onClick={handleCloseNavMenu}>
-				Search Cars
-			</StyledNavLink>
-		</Box>
+		<>
+			<Logo sx={{ mr: 2, ...desktopStyles }} />
+			<Box
+				sx={{
+					flexGrow: 1,
+					height: '100%',
+					alignItems: 'stretch',
+					...desktopStyles,
+				}}
+			>
+				<StyledNavLink
+					to="/"
+					onClick={handleCloseNavMenu}
+					breakPoint={breakPoint}
+				>
+					Home
+				</StyledNavLink>
+				<StyledNavLink
+					to="/search"
+					onClick={handleCloseNavMenu}
+					breakPoint={breakPoint}
+				>
+					Search Cars
+				</StyledNavLink>
+			</Box>
+		</>
 	);
 };
 

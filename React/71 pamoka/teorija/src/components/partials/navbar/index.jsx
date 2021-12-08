@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { AppBar, Toolbar, Container } from '@mui/material';
-import Logo from './logo';
 import Mobile from './mobile';
 import Desktop from './desktop';
 import UserMenu from './user-menu';
+
+const breakPoint = 'sm';
 
 const Navbar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -20,13 +21,16 @@ const Navbar = () => {
 		<AppBar position="static">
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					<Logo sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} />
 					<Mobile
 						handleOpenNavMenu={handleOpenNavMenu}
 						handleCloseNavMenu={handleCloseNavMenu}
 						anchorElNav={anchorElNav}
+						breakPoint={breakPoint}
 					/>
-					<Desktop handleCloseNavMenu={handleCloseNavMenu} />
+					<Desktop
+						handleCloseNavMenu={handleCloseNavMenu}
+						breakPoint={breakPoint}
+					/>
 					<UserMenu handleCloseNavMenu={handleCloseNavMenu} />
 				</Toolbar>
 			</Container>
