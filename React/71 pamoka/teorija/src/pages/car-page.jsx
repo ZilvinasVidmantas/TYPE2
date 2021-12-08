@@ -1,9 +1,11 @@
 import React from 'react';
-
+import { useParams } from 'react-router-dom';
 const CarPage = () => {
+	const { id } = useParams();
+
 	return (
 		<div>
-			<h1>Car page</h1>
+			<h1>Car width ID: {id}</h1>
 		</div>
 	);
 };

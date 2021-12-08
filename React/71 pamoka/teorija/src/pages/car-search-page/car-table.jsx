@@ -7,8 +7,10 @@ import {
 	TableHead,
 	TableRow,
 	Paper,
+	Button,
 } from '@mui/material';
 import { CarContext } from '../../contexts/car-context';
+import { Link } from 'react-router-dom';
 
 const CarTable = () => {
 	const { cars } = useContext(CarContext);
@@ -20,6 +22,9 @@ const CarTable = () => {
 			<TableCell>{model}</TableCell>
 			<TableCell align="right">{price}</TableCell>
 			<TableCell align="right">{year}</TableCell>
+			<TableCell align="right" sx={{ width: 1 / 100, whiteSpace: 'nowrap' }}>
+				<Link to={`/car/${id}`}>Peržiūrėti</Link>
+			</TableCell>
 		</TableRow>
 	));
 
@@ -33,6 +38,7 @@ const CarTable = () => {
 						<TableCell>Modelis</TableCell>
 						<TableCell align="right">Kaina €</TableCell>
 						<TableCell align="right">Gam. Metai</TableCell>
+						<TableCell />
 					</TableRow>
 				</TableHead>
 				<TableBody>{rows}</TableBody>

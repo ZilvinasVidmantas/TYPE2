@@ -5,15 +5,15 @@ import CarFilters from './car-filters';
 
 const CarSearch = () => {
 	return (
-		<Container>
+		<Container maxWidth="xl">
 			<Typography component="h1" variant="h3" gutterBottom align="center">
 				Mašinos
 			</Typography>
 			<Grid container spacing={2}>
-				<Grid item xs={3}>
+				<Grid item xs={2}>
 					<CarFilters />
 				</Grid>
-				<Grid item xs={9}>
+				<Grid item xs={10}>
 					<CarTable />
 				</Grid>
 			</Grid>
