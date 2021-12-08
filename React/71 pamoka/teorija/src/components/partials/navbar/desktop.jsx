@@ -7,7 +7,8 @@ const Desktop = ({ handleCloseNavMenu }) => {
 		<Box
 			sx={{
 				flexGrow: 1,
-				display: { xs: 'none', md: 'flex', height: '100%' },
+				display: { xs: 'none', md: 'flex' },
+				height: '100%',
 				alignItems: 'stretch',
 			}}
 		>
