@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Typography, Paper } from '@mui/material';
 import { CarContext } from '../../contexts/car-context';
-import CheckboxGroupFilter from '../../components/checkbox-group-filter';
-import RangeFilter from '../../components/range-filter';
+import CheckboxGroupFilter from '../../components/controls/checkbox-group-filter';
+import RangeFilter from '../../components/controls/range-filter';
 
 const CarFilters = () => {
 	const { filters, changeFilter } = useContext(CarContext);

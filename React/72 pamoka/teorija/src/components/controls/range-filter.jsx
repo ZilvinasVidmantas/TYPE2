@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Slider, Box, Input } from '@mui/material';
-import FilterContainer from './filter-container';
+import FilterContainer from '../containers/filter-container';
 
 const RangeFilter = ({
 	filterName,

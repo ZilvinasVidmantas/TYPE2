@@ -1,4 +1,4 @@
-import FilterContainer from './filter-container';
+import FilterContainer from '../containers/filter-container';
 import CheckboxGroup from './checkbox-group';
 
 const CheckboxGroupFilter = ({ filterName, title, options, onChange }) => {
