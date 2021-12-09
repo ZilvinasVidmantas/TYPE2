@@ -166,6 +166,8 @@ export class CarProvider extends React.Component {
 			}
 		});
 
+	componentDidMount() {}
+
 	render() {
 		return (
 			<CarContext.Provider
