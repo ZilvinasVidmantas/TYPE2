@@ -7,7 +7,6 @@ import {
 	TableHead,
 	TableRow,
 	Paper,
-	Button,
 } from '@mui/material';
 import { CarContext } from '../../contexts/car-context';
 import { Link } from 'react-router-dom';
