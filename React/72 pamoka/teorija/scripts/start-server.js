@@ -1,9 +1,11 @@
 const jsonServer = require('json-server');
-const server = jsonServer.create();
-const router = jsonServer.router('db.json');
-const middlewares = jsonServer.defaults();
 
 const PORT = 5000;
+const DATABSE_FILE = 'api.json';
+
+const server = jsonServer.create();
+const router = jsonServer.router(DATABSE_FILE);
+const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 server.use(router);
