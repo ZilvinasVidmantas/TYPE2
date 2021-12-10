@@ -3,7 +3,7 @@ import FilterBuilder from '../libraries/filter-builder/filter-builder';
 
 const useFilters = (filterSettings) => {
 	const [filterBuilder] = useState(new FilterBuilder());
-	const [fullCollection, setFullCollection] = useState();
+	const [fullCollection, setFullCollection] = useState([]);
 	const [collection, setCollection] = useState(filterBuilder.collection);
 
 	const setInitialCollection = (newCollection) => {
@@ -15,14 +15,14 @@ const useFilters = (filterSettings) => {
 		setCollection(filterBuilder.collection);
 	};
 
-	const changeFilter = ({ filterName, ...props }) => {
-		filterBuilder.updateFilter({ filterName, ...props });
-		filterCars();
+	const changeFilter = (params) => {
+		filterBuilder.updateFilter(params);
+		filterCollection();
 	};
 
-	const filterCars = () => {
+	const filterCollection = () => {
 		const filteredEntities = [];
-		const testFunctions = filterBuilder.createCarTestFunctions();
+		const testFunctions = filterBuilder.createTestFunctions();
 		fullCollection.forEach((entity) => {
 			let entityAcceptable = true;
 			for (let i = 0; i < testFunctions.length; i++) {
@@ -46,6 +46,3 @@ const useFilters = (filterSettings) => {
 };
 
 export default useFilters;
-
-// 15
-// tęsim

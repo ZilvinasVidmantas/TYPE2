@@ -11,24 +11,17 @@ const carState = {
 export const CarContext = createContext(carState);
 
 export const CarProvider = ({ children }) => {
-	const [cars, filters, setCars, changeFilter] = useFilters([
+	const [cars, filters, setInitCars, changeFilter] = useFilters([
 		{ type: 'checkboxGroup', prop: 'brand', title: 'Markė' },
 		{ type: 'checkboxGroup', prop: 'model', title: 'Modelis' },
 		{ type: 'range', prop: 'price', title: 'Kaina' },
 		{ type: 'range', prop: 'year', title: 'Metai' },
 	]);
 
-	console.log({
-		cars,
-		filters,
-		setCars,
-		changeFilter,
-	});
-
 	useEffect(() => {
 		const fecthInitialData = async () => {
 			const initCars = await API.fetchCars();
-			setCars(initCars);
+			setInitCars(initCars);
 		};
 
 		fecthInitialData();

@@ -61,17 +61,17 @@ class FilterBuilder {
 		return this;
 	};
 
-	createCarTestFunctions = () => {
+	createTestFunctions = () => {
 		return this.filters.map(
 			({ name, type, options, selectedMin, selectedMax }) => {
 				switch (type) {
 					case 'checkboxGroup':
 						const values = options.filter((x) => x.selected).map((x) => x.name);
-						return (car) => values.includes(car[name]);
+						return (entity) => values.includes(entity[name]);
 
 					case 'numberRange':
-						return (car) => {
-							const numValue = car[name];
+						return (entity) => {
+							const numValue = entity[name];
 							return numValue <= selectedMax && numValue >= selectedMin;
 						};
 					default:
