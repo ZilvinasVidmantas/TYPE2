@@ -1,7 +1,7 @@
 const jsonServer = require('json-server');
 
 const PORT = 5000;
-const DATABSE_FILE = 'api.json';
+const DATABSE_FILE = 'database.json';
 
 const server = jsonServer.create();
 const router = jsonServer.router(DATABSE_FILE);
