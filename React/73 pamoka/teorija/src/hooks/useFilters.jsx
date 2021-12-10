@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import FilterBuilder from '../libraries/filter-builder/filter-builder';
 
 const useFilters = (filterSettings) => {
@@ -6,14 +6,17 @@ const useFilters = (filterSettings) => {
 	const [fullCollection, setFullCollection] = useState([]);
 	const [collection, setCollection] = useState(filterBuilder.collection);
 
-	const setInitialCollection = (newCollection) => {
-		filterBuilder.setCollection(newCollection);
-		filterSettings.forEach(({ type, prop, title }) => {
-			filterBuilder[type]({ prop, title });
-		});
-		setFullCollection(filterBuilder.collection);
-		setCollection(filterBuilder.collection);
-	};
+	const setInitialCollection = useCallback(
+		(newCollection) => {
+			filterBuilder.setCollection(newCollection);
+			filterSettings.forEach(({ type, prop, title }) => {
+				filterBuilder[type]({ prop, title });
+			});
+			setFullCollection(filterBuilder.collection);
+			setCollection(filterBuilder.collection);
+		},
+		[filterSettings, filterBuilder],
+	);
 
 	const changeFilter = (params) => {
 		filterBuilder.updateFilter(params);
