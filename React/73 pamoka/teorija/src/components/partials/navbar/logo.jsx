@@ -1,11 +1,20 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
+
+const LogoContainer = styled(Link)(({ theme }) => ({
+	height: '100%',
+	padding: theme.spacing(2, 0),
+	'&>img': {
+		height: '100%',
+	},
+}));
 
 const Logo = (props) => {
 	return (
-		<Typography variant="h6" noWrap component="div" {...props}>
-			LOGO
-		</Typography>
+		<LogoContainer to="/" {...props}>
+			<img src="/logo.png" alt="page logo" />
+		</LogoContainer>
 	);
 };
 

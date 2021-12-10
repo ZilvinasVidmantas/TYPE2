@@ -1,6 +1,13 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+	palette: {
+		primary: {
+			main: '#252525',
+			light: '#454545',
+			dark: '#000000',
+		},
+	},
 	typography: {
 		fontFamily: [
 			'-apple-system',
