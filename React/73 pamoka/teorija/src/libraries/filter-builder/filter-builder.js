@@ -3,15 +3,83 @@
  */
 class FilterBuilder {
 	filters = [];
+	collection = [];
 
 	/**
 	 * Crates a intance, which will be used to create filters
 	 *
 	 * @param {Array} collection collection on which filter will be created
 	 */
-	constructor(collection) {
+	constructor(collection = []) {
 		this.collection = collection;
 	}
+
+	setCollection = (newCollection) => {
+		this.collection = newCollection;
+		return this;
+	};
+
+	updateFilter = ({ filterName, ...props }) => {
+		const filters = this.filters;
+
+		let newFilters;
+		const filterType = filters.find((filter) => filter.name === filterName)
+			.type;
+
+		switch (filterType) {
+			case 'checkboxGroup':
+				const { name, selected } = props;
+				newFilters = filters.map((filter) => ({
+					...filter,
+					options:
+						filter.name === filterName
+							? filter.options.map((option) => ({
+									...option,
+									selected: option.name === name ? selected : option.selected,
+								}))
+							: filter.options,
+				}));
+				break;
+
+			case 'numberRange':
+				const { min, max } = props;
+				newFilters = filters.map((filter) => {
+					const updatedFilter = { ...filter };
+
+					if (filter.name === filterName) {
+						updatedFilter.selectedMin = min;
+						updatedFilter.selectedMax = max;
+					}
+					return updatedFilter;
+				});
+				break;
+
+			default:
+				console.error('Tokio filtro tipo nėra');
+		}
+		this.filters = newFilters;
+		return this;
+	};
+
+	createCarTestFunctions = () => {
+		return this.filters.map(
+			({ name, type, options, selectedMin, selectedMax }) => {
+				switch (type) {
+					case 'checkboxGroup':
+						const values = options.filter((x) => x.selected).map((x) => x.name);
+						return (car) => values.includes(car[name]);
+
+					case 'numberRange':
+						return (car) => {
+							const numValue = car[name];
+							return numValue <= selectedMax && numValue >= selectedMin;
+						};
+					default:
+						throw TypeError('Tokio filtro tipo nėra');
+				}
+			},
+		);
+	};
 
 	/**
 	 * Creates filter based on collection given in constructor and options
