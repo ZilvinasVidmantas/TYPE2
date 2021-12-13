@@ -116,3 +116,8 @@ const CarPage = () => {
 };
 
 export default CarPage;
+
+/*
+	Išskaidyti car-page komponentais, pagal nuotrauką '/car-page-components.jpg'
+	
+*/
