@@ -3,7 +3,7 @@
  */
 class FilterBuilder {
 	filters = [];
-	collection = [];
+	collection;
 
 	/**
 	 * Crates a intance, which will be used to create filters
