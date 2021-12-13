@@ -1,4 +1,4 @@
-# JSON server
+# FE React Car application
 
 ## instal dependencies
 
