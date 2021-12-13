@@ -18,10 +18,12 @@ const CarPage = () => {
 	return (
 		<Box component="main">
 			<>
-				<button onClick={() => setVisible(!visible)} />
 				{car !== undefined ? (
 					<>
 						<ImageFluid src={car.images[0]} />
+						<button onClick={() => setVisible(!visible)}>
+							{visible ? 'Slepti' : 'Rodyti'}
+						</button>
 						<CarPageTitle brand={car.brand} model={car.model} year={car.year} />
 						<Container>
 							{visible ? (
@@ -64,3 +66,13 @@ const CarPage = () => {
 };
 
 export default CarPage;
+
+/*
+	1. Įgalinti vienoje vietoje, animacijų uždelsimo laikus.
+		 * Pakeitus car-page-prop animacijų laikus, car-page-action-container animacijos, prasidėtų pasibaigus car-page-prop animacijoms
+
+	2. Perkelti gaubiantį komponentą car-page-action-container komponentą į car-page-action
+	
+	3. Patobulinti car-search-page mobilaus dydžio dizainą
+
+*/

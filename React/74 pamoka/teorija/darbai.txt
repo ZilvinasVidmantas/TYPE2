@@ -1,7 +1,4 @@
-Mašinos duomenis, krauti iš konteksto, o ne iš serverio
-  * Papildomai sukurti metodą, kuris surastų vieną mašiną
-car-search-page pakeisti lentelę, gridu, su mašinų nuotraukomis
-car-search-page pataisyti mobilaus dydžio dizainą
+car-search-page pakeisti lentelę, gridu, su mašinų nuotraukomi
 car-page tablet dizainas
 car-page desktop dizainas
 json-server: papildyti duomenis nuotraukomis ir mašinos charakteristikomis
