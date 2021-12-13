@@ -4,7 +4,7 @@ const fetchCars = async () => {
 		const data = await response.json();
 		return data;
 	} catch (error) {
-		throw new Error('Aprašyta klaida: Kažkas nepasisekė');
+		throw new Error('Aprašyta klaida: Serverio klaida');
 	}
 };
 
@@ -14,7 +14,7 @@ const fetchCar = async (id) => {
 		const data = await response.json();
 		return data;
 	} catch (error) {
-		throw new Error('Aprašyta klaida: Kažkas nepasisekė');
+		throw new Error('Aprašyta klaida: Serverio klaida');
 	}
 };
 

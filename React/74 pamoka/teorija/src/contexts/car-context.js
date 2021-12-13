@@ -32,12 +32,17 @@ export const CarProvider = ({ children }) => {
 		[setInitCars],
 	);
 
+	const getCar = (id) => {
+		return cars.find((car) => car.id === id);
+	};
+
 	return (
 		<CarContext.Provider
 			value={{
 				cars,
 				filters,
 				changeFilter,
+				getCar,
 			}}
 		>
 			{children}

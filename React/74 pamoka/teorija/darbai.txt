@@ -1,4 +1,3 @@
-Iškelt filtravimo logiką į Filter builder
 Mašinos duomenis, krauti iš konteksto, o ne iš serverio
   * Papildomai sukurti metodą, kuris surastų vieną mašiną
 car-search-page pakeisti lentelę, gridu, su mašinų nuotraukomis

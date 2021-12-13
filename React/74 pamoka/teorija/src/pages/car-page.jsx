@@ -1,35 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Container, Box, Typography, Button, Link } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import API from '../services/api-service';
 import ImageFluid from '../components/images/image-fluid';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CarContext from '../contexts/car-context';
 
 const copyToClip = (content) => {
 	navigator.clipboard.writeText(content);
 };
 
 const CarPage = () => {
+	const carContext = useContext(CarContext);
 	const { id } = useParams();
-	const [car, setCar] = useState(null);
-	console.log(car);
-
-	useEffect(
-		() => {
-			const fecthInitialData = async () => {
-				const car = await API.fetchCar(id);
-				setCar(car);
-			};
-
-			fecthInitialData();
-		},
-		[id],
-	);
+	const car = carContext.getCar(id);
 
 	return (
 		<Box component="main">
 			<>
-				{car !== null ? (
+				{car !== undefined ? (
 					<>
 						<ImageFluid src={car.images[0]} />
 						<Container>

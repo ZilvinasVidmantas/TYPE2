@@ -1,7 +1,7 @@
 {
   "cars": [
     {
-      "id": 6,
+      "id": "6",
       "brand": "Opel",
       "model": "Zefyra",
       "price": 6000,
@@ -15,7 +15,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "brand": "Volkswagen",
       "model": "Passat",
       "price": 4000,
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": "1",
       "brand": "Opel",
       "model": "Astra",
       "price": 1500,
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "brand": "Subaru",
       "model": "Impreza",
       "price": 3000,
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "brand": "BMW",
       "model": "X5",
       "price": 3000,
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "brand": "Opel",
       "model": "Astra",
       "price": 5000,
