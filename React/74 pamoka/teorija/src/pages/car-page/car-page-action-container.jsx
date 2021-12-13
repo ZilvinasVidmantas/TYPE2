@@ -1,24 +1,27 @@
 import { useState, useEffect } from 'react';
-import { Box, Slide } from '@mui/material';
+import { Box } from '@mui/material';
+import SlideOnMount from '../../components/animations/slide-on-mount';
 
-let count = 0;
-const delayTime = 150;
+let componentCount = 0;
+const baseDellay = 1200;
+const additionalDellaySize = 150;
 
 const CarPageActionContainer = ({ children }) => {
-	const [visible, setVisible] = useState(false);
+	const [delay, setDellay] = useState(0);
 
 	useEffect(() => {
-		setTimeout(() => {
-			setVisible(true);
-		}, 1000 + delayTime * count);
-		count++;
+		componentCount++;
+		setDellay(baseDellay + componentCount * additionalDellaySize);
+		return () => {
+			componentCount--;
+		};
 	}, []);
 
-	return (
-		<Slide direction="up" in={visible}>
+	return delay !== 0 ? (
+		<SlideOnMount direction="up" delay={delay}>
 			<Box sx={{ my: 4 }}>{children}</Box>
-		</Slide>
-	);
+		</SlideOnMount>
+	) : null;
 };
 
 export default CarPageActionContainer;

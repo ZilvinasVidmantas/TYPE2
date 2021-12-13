@@ -1,27 +1,30 @@
-import { useState, useEffect } from 'react';
-import { Box, Typography, Slide } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { Box, Typography } from '@mui/material';
+import SlideOnMount from '../../components/animations/slide-on-mount';
 
-let count = 0;
-const delayTime = 150;
+let componentCount = 0;
+const baseDellay = 750;
+const additionalDellaySize = 150;
 
 const CarPageCarProp = ({ name, value }) => {
-	const [visible, setVisible] = useState(false);
+	const [delay, setDellay] = useState(0);
 
 	useEffect(() => {
-		setTimeout(() => {
-			setVisible(true);
-		}, 1000 + delayTime * count);
-		count++;
+		componentCount++;
+		setDellay(baseDellay + componentCount * additionalDellaySize);
+		return () => {
+			componentCount--;
+		};
 	}, []);
 
-	return (
-		<Slide direction="left" in={visible}>
+	return delay !== 0 ? (
+		<SlideOnMount direction="left" delay={delay}>
 			<Box sx={{ textAlign: 'center' }}>
 				<Typography variant="h5">{name}</Typography>
 				<Typography>{value}</Typography>
 			</Box>
-		</Slide>
-	);
+		</SlideOnMount>
+	) : null;
 };
 
 export default CarPageCarProp;

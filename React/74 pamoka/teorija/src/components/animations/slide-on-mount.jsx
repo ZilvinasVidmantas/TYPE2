@@ -1,17 +1,28 @@
-import React from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Slide from '@mui/material/Slide';
 
-const SlideOnMount = () => {
-	return <div />;
+const SlideOnMount = ({ direction, delay, children }) => {
+	const [visible, setVisible] = useState(false);
+	const exists = useRef(true);
+	useEffect(
+		() => {
+			setTimeout(() => {
+				if (exists.current) {
+					setVisible(true);
+				}
+			}, delay);
+			return () => {
+				exists.current = false;
+			};
+		},
+		[delay],
+	);
+
+	return (
+		<Slide direction={direction} in={visible}>
+			{children}
+		</Slide>
+	);
 };
 
 export default SlideOnMount;
-
-/*
-  Iškelkite logiką, susijusią su slide'inimu, po užkrovimo į šį komponentą iš failų:
-    * car-page-action-container.jsx
-    * car-page-car-prop.jsx
-  Iškėlus logiką, perduokite reikiamus prop'sus, jo vaizdas būtų identiškas
-
-  Pastaba:
-    * laiko uždėlsimus, perduoti, per prop'sus
-*/

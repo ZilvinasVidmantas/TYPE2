@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Box } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import ImageFluid from '../../components/images/image-fluid';
@@ -10,6 +10,7 @@ import CarPageActionContainer from './car-page-action-container';
 import CarPageAction from './car-page-action';
 
 const CarPage = () => {
+	const [visible, setVisible] = useState(true);
 	const carContext = useContext(CarContext);
 	const { id } = useParams();
 	const car = carContext.getCar(id);
@@ -17,16 +18,19 @@ const CarPage = () => {
 	return (
 		<Box component="main">
 			<>
+				<button onClick={() => setVisible(!visible)} />
 				{car !== undefined ? (
 					<>
 						<ImageFluid src={car.images[0]} />
 						<CarPageTitle brand={car.brand} model={car.model} year={car.year} />
 						<Container>
-							<CarPageCarPropsContainer>
-								<CarPageCarProp name="kaina" value={`${car.price}$`} />
-								<CarPageCarProp name="kaina" value={`${car.price}$`} />
-								<CarPageCarProp name="kaina" value={`${car.price}$`} />
-							</CarPageCarPropsContainer>
+							{visible ? (
+								<CarPageCarPropsContainer>
+									<CarPageCarProp name="kaina" value={`${car.price}$`} />
+									<CarPageCarProp name="kaina" value={`${car.price}$`} />
+									<CarPageCarProp name="kaina" value={`${car.price}$`} />
+								</CarPageCarPropsContainer>
+							) : null}
 							<Box
 								sx={{
 									justifyContent: 'center',
