@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import React, { useRef } from 'react';
 import { Box, Typography } from '@mui/material';
 import SlideOnMount from '../../components/animations/slide-on-mount';
-import AnimProgressiveContext from '../../contexts/anim-progressive-context';
+import { calcDelay } from '../../helpers/anim-helpers';
 
 const CarPageCarProp = ({ name, value }) => {
-	const nextDelay = useContext(AnimProgressiveContext);
-	const delay = nextDelay();
+	const delayRef = useRef(calcDelay());
+	const delay = delayRef.current;
 
 	return delay !== 0 ? (
 		<SlideOnMount direction="left" delay={delay}>
