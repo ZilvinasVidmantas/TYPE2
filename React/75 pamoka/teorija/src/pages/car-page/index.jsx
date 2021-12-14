@@ -1,73 +1,49 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import { Container, Box } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import ImageFluid from '../../components/images/image-fluid';
 import CarContext from '../../contexts/car-context';
 import CarPageTitle from './car-page-title';
-import CarPageCarPropsContainer from './car-page-car-props-container';
+import CarPageAnimatedCarPropsContainer from './car-page-animated-car-props-container';
 import CarPageAnimatedCarProp from './car-page-animated-car-prop';
-import CarPageActionContainer from './car-page-action-container';
-import CarPageAction from './car-page-action';
+import CarPageAnimatedActionsContainer from './car-page-animated-actions-container';
+import CarPageAnimatedAction from './car-page-animated-action';
 
 const CarPage = () => {
 	const carContext = useContext(CarContext);
 	const { id } = useParams();
 	const car = carContext.getCar(id);
-	const carPropsContainerRef = useRef(null);
+	const mainImageSrc = car?.images[0];
 
 	return (
 		<Box component="main">
-			<>
-				{car !== undefined ? (
-					<>
-						<ImageFluid src={car.images[0]} />
-						<CarPageTitle brand={car.brand} model={car.model} year={car.year} />
-						<Container>
-							{/* <CarPageCarPropsContainer ref={carPropsContainerRef}>
-								<CarPageAnimatedCarProp
-									name="kaina"
-									value={`${car.price}$`}
-									ref={carPropsContainerRef}
-								/>
-								<CarPageAnimatedCarProp
-									name="kaina"
-									value={`${car.price}$`}
-									ref={carPropsContainerRef}
-								/>
-								<CarPageAnimatedCarProp
-									name="kaina"
-									value={`${car.price}$`}
-									ref={carPropsContainerRef}
-								/>
-							</CarPageCarPropsContainer> */}
-							<Box
-								sx={{
-									justifyContent: 'center',
-									gap: 2,
-									textAlign: 'center',
-									overflow: 'hidden',
-								}}
-							>
-								<CarPageActionContainer>
-									<CarPageAction
-										href="+37065623666"
-										type="tel"
-										btnText="Skambinti"
-									/>
-								</CarPageActionContainer>
+			{car !== undefined ? (
+				<>
+					<ImageFluid src={mainImageSrc} />
+					<CarPageTitle brand={car.brand} model={car.model} year={car.year} />
+					<Container>
+						<CarPageAnimatedCarPropsContainer>
+							<CarPageAnimatedCarProp name="kaina" value={`${car.price}$`} />
+							<CarPageAnimatedCarProp name="kaina" value={`${car.price}$`} />
+							<CarPageAnimatedCarProp name="kaina" value={`${car.price}$`} />
+						</CarPageAnimatedCarPropsContainer>
 
-								<CarPageActionContainer>
-									<CarPageAction
-										href="zilvinas.vidmantas@gmail.com"
-										type="mailto"
-										btnText="Siųsti el. laišką"
-									/>
-								</CarPageActionContainer>
-							</Box>
-						</Container>
-					</>
-				) : null}
-			</>
+						<CarPageAnimatedActionsContainer>
+							<CarPageAnimatedAction
+								href="+37065623666"
+								type="tel"
+								btnText="Skambinti"
+							/>
+
+							<CarPageAnimatedAction
+								href="zilvinas.vidmantas@gmail.com"
+								type="mailto"
+								btnText="Siųsti el. laišką"
+							/>
+						</CarPageAnimatedActionsContainer>
+					</Container>
+				</>
+			) : null}
 		</Box>
 	);
 };

@@ -5,7 +5,7 @@ const baseDelay = 500;
 const additionalDelaySize = 250;
 
 const useAnimProgressiveDelay = () => {
-	const [delay, setDelay] = useState(0);
+	const [show, setShow] = useState(false);
 	const shouldAnimateRef = useRef(true);
 
 	useEffect(() => {
@@ -13,7 +13,7 @@ const useAnimProgressiveDelay = () => {
 		const delay = baseDelay + mountedComponentCount * additionalDelaySize;
 		setTimeout(() => {
 			if (shouldAnimateRef.current) {
-				setDelay(delay);
+				setShow(true);
 			}
 		}, delay);
 
@@ -23,7 +23,7 @@ const useAnimProgressiveDelay = () => {
 		};
 	}, []);
 
-	return Boolean(delay);
+	return show;
 };
 
 export default useAnimProgressiveDelay;
