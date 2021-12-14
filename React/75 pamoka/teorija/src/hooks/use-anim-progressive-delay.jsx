@@ -5,11 +5,11 @@ const baseDellay = 500;
 const additionalDellaySize = 500;
 
 const useAnimProgressiveDelay = () => {
-	const [delay, setDellay] = useState(0);
+	const [delay, setDelay] = useState(0);
 
 	useEffect(() => {
 		mountedComponentCount++;
-		setDellay(baseDellay + mountedComponentCount * additionalDellaySize);
+		setDelay(baseDellay + mountedComponentCount * additionalDellaySize);
 		return () => {
 			mountedComponentCount--;
 		};

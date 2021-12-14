@@ -8,6 +8,7 @@ import CarPageCarPropsContainer from './car-page-car-props-container';
 import CarPageCarProp from './car-page-car-prop';
 import CarPageActionContainer from './car-page-action-container';
 import CarPageAction from './car-page-action';
+import { AnimProgressiveProvider } from '../../contexts/anim-progressive-context';
 
 const CarPage = () => {
 	const [visible, setVisible] = useState(true);
@@ -16,52 +17,58 @@ const CarPage = () => {
 	const car = carContext.getCar(id);
 
 	return (
-		<Box component="main">
-			<>
-				{car !== undefined ? (
-					<>
-						<ImageFluid src={car.images[0]} />
-						<button onClick={() => setVisible(!visible)}>
-							{visible ? 'Slepti' : 'Rodyti'}
-						</button>
-						<CarPageTitle brand={car.brand} model={car.model} year={car.year} />
-						<Container>
-							{visible ? (
-								<CarPageCarPropsContainer>
-									<CarPageCarProp name="kaina" value={`${car.price}$`} />
-									<CarPageCarProp name="kaina" value={`${car.price}$`} />
-									<CarPageCarProp name="kaina" value={`${car.price}$`} />
-								</CarPageCarPropsContainer>
-							) : null}
-							<Box
-								sx={{
-									justifyContent: 'center',
-									gap: 2,
-									textAlign: 'center',
-									overflow: 'hidden',
-								}}
-							>
-								<CarPageActionContainer>
-									<CarPageAction
-										href="+37065623666"
-										type="tel"
-										btnText="Skambinti"
-									/>
-								</CarPageActionContainer>
+		<AnimProgressiveProvider>
+			<Box component="main">
+				<>
+					{car !== undefined ? (
+						<>
+							<ImageFluid src={car.images[0]} />
+							<button onClick={() => setVisible(!visible)}>
+								{visible ? 'Slepti' : 'Rodyti'}
+							</button>
+							<CarPageTitle
+								brand={car.brand}
+								model={car.model}
+								year={car.year}
+							/>
+							<Container>
+								{visible ? (
+									<CarPageCarPropsContainer>
+										<CarPageCarProp name="kaina" value={`${car.price}$`} />
+										<CarPageCarProp name="kaina" value={`${car.price}$`} />
+										<CarPageCarProp name="kaina" value={`${car.price}$`} />
+									</CarPageCarPropsContainer>
+								) : null}
+								<Box
+									sx={{
+										justifyContent: 'center',
+										gap: 2,
+										textAlign: 'center',
+										overflow: 'hidden',
+									}}
+								>
+									<CarPageActionContainer>
+										<CarPageAction
+											href="+37065623666"
+											type="tel"
+											btnText="Skambinti"
+										/>
+									</CarPageActionContainer>
 
-								<CarPageActionContainer>
-									<CarPageAction
-										href="zilvinas.vidmantas@gmail.com"
-										type="mailto"
-										btnText="Siųsti el. laišką"
-									/>
-								</CarPageActionContainer>
-							</Box>
-						</Container>
-					</>
-				) : null}
-			</>
-		</Box>
+									<CarPageActionContainer>
+										<CarPageAction
+											href="zilvinas.vidmantas@gmail.com"
+											type="mailto"
+											btnText="Siųsti el. laišką"
+										/>
+									</CarPageActionContainer>
+								</Box>
+							</Container>
+						</>
+					) : null}
+				</>
+			</Box>
+		</AnimProgressiveProvider>
 	);
 };
 
