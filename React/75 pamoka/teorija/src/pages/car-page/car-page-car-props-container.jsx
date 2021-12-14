@@ -1,6 +1,7 @@
+import React from 'react';
 import Box from '@mui/material/Box';
 
-const CarPageCarPropsContainer = ({ children }) => {
+const CarPageCarPropsContainer = React.forwardRef(({ children }, ref) => {
 	return (
 		<Box
 			sx={{
@@ -9,10 +10,11 @@ const CarPageCarPropsContainer = ({ children }) => {
 				my: 3,
 				overflow: 'hidden',
 			}}
+			ref={ref}
 		>
 			{children}
 		</Box>
 	);
-};
+});
 
 export default CarPageCarPropsContainer;

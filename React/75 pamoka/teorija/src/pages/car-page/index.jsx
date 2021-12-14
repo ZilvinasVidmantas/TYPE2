@@ -1,53 +1,19 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Container, Box } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import ImageFluid from '../../components/images/image-fluid';
 import CarContext from '../../contexts/car-context';
 import CarPageTitle from './car-page-title';
 import CarPageCarPropsContainer from './car-page-car-props-container';
-import CarPageCarProp from './car-page-car-prop';
+import CarPageAnimatedCarProp from './car-page-animated-car-prop';
 import CarPageActionContainer from './car-page-action-container';
 import CarPageAction from './car-page-action';
 
-let counter = 0;
-const baseDelay = 500;
-const delayDelta = 500;
-
-const calcDelay = () => baseDelay + delayDelta * counter++;
-
 const CarPage = () => {
-	const [visible, setVisible] = useState(true);
 	const carContext = useContext(CarContext);
 	const { id } = useParams();
 	const car = carContext.getCar(id);
-	const [carProps, setCarProps] = useState([]);
-	const [actions, setActions] = useState([]);
-	const [animDelays, setAnimDelays] = useState([]);
-
-	useEffect(() => {
-		// Ateityje čia būtų atliekamas duomenų formavimas
-		const carProps = [
-			{ name: 'Greitis', value: '5000LT' },
-			{ name: 'Bakas', value: '5000LT' },
-			{ name: 'Linoliaumas', value: '5000LT' },
-		];
-		const actions = [
-			{
-				href: 'zilvinas.vidmantas@gmail.com',
-				type: 'tel',
-				btnText: 'Skambinti',
-			},
-			{ href: '+37065623666', type: 'mailto', btnText: 'Siųsti el. laišką' },
-		];
-		setCarProps(carProps);
-		setActions(actions);
-		const animDelays = [...carProps, ...actions].map((_) => calcDelay());
-		setAnimDelays(animDelays);
-		return () => {
-			counter--;
-		};
-	}, []);
-	let animDelayCounter = 0;
+	const carPropsContainerRef = useRef(null);
 
 	return (
 		<Box component="main">
@@ -55,23 +21,25 @@ const CarPage = () => {
 				{car !== undefined ? (
 					<>
 						<ImageFluid src={car.images[0]} />
-						<button onClick={() => setVisible(!visible)}>
-							{visible ? 'Slepti' : 'Rodyti'}
-						</button>
 						<CarPageTitle brand={car.brand} model={car.model} year={car.year} />
 						<Container>
-							{visible ? (
-								<CarPageCarPropsContainer>
-									{carProps.map(({ name, value }) => (
-										<CarPageCarProp
-											key={name}
-											name={name}
-											value={value}
-											delay={animDelays[animDelayCounter++]}
-										/>
-									))}
-								</CarPageCarPropsContainer>
-							) : null}
+							{/* <CarPageCarPropsContainer ref={carPropsContainerRef}>
+								<CarPageAnimatedCarProp
+									name="kaina"
+									value={`${car.price}$`}
+									ref={carPropsContainerRef}
+								/>
+								<CarPageAnimatedCarProp
+									name="kaina"
+									value={`${car.price}$`}
+									ref={carPropsContainerRef}
+								/>
+								<CarPageAnimatedCarProp
+									name="kaina"
+									value={`${car.price}$`}
+									ref={carPropsContainerRef}
+								/>
+							</CarPageCarPropsContainer> */}
 							<Box
 								sx={{
 									justifyContent: 'center',
@@ -80,14 +48,21 @@ const CarPage = () => {
 									overflow: 'hidden',
 								}}
 							>
-								{actions.map(({ href, type, btnText }) => (
-									<CarPageActionContainer
-										key={href}
-										delay={animDelays[animDelayCounter++]}
-									>
-										<CarPageAction href={href} type={type} btnText={btnText} />
-									</CarPageActionContainer>
-								))}
+								<CarPageActionContainer>
+									<CarPageAction
+										href="+37065623666"
+										type="tel"
+										btnText="Skambinti"
+									/>
+								</CarPageActionContainer>
+
+								<CarPageActionContainer>
+									<CarPageAction
+										href="zilvinas.vidmantas@gmail.com"
+										type="mailto"
+										btnText="Siųsti el. laišką"
+									/>
+								</CarPageActionContainer>
 							</Box>
 						</Container>
 					</>
