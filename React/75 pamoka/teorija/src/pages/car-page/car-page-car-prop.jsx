@@ -1,11 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Box, Typography } from '@mui/material';
 import SlideOnMount from '../../components/animations/slide-on-mount';
-import { calcDelay } from '../../helpers/anim-helpers';
 
-const CarPageCarProp = ({ name, value }) => {
-	const delayRef = useRef(calcDelay());
-	const delay = delayRef.current;
+const CarPageCarProp = ({ name, value, delay}) => {
 
 	return delay !== 0 ? (
 		<SlideOnMount direction="left" delay={delay}>
