@@ -4,7 +4,8 @@ import SlideOnMount from '../../components/animations/slide-on-mount';
 import AnimProgressiveContext from '../../contexts/anim-progressive-context';
 
 const CarPageActionContainer = ({ children }) => {
-	const { delay } = useContext(AnimProgressiveContext);
+	const nextDelay = useContext(AnimProgressiveContext);
+	const delay = nextDelay();
 
 	return delay !== 0 ? (
 		<SlideOnMount direction="up" delay={delay}>

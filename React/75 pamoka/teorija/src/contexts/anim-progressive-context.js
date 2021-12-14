@@ -6,17 +6,12 @@ let mountedComponentCount = 0;
 const baseDelay = 500;
 const additionalDelaySize = 500;
 
-class ProviderValue {
-	get delay() {
-		return baseDelay + additionalDelaySize * mountedComponentCount++;
-	}
-}
-
-const value = new ProviderValue();
+const nextDelay = () =>
+	baseDelay + additionalDelaySize * mountedComponentCount++;
 
 export const AnimProgressiveProvider = ({ children }) => {
 	return (
-		<AnimProgressiveContext.Provider value={value}>
+		<AnimProgressiveContext.Provider value={nextDelay}>
 			{children}
 		</AnimProgressiveContext.Provider>
 	);
