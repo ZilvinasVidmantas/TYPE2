@@ -1,21 +1,9 @@
-import { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import SlideOnMount from '../../components/animations/slide-on-mount';
-
-let componentCount = 0;
-const baseDellay = 750;
-const additionalDellaySize = 150;
+import useAnimProgressiveDelay from '../../hooks/use-anim-progressive-delay';
 
 const CarPageCarProp = ({ name, value }) => {
-	const [delay, setDellay] = useState(0);
-
-	useEffect(() => {
-		componentCount++;
-		setDellay(baseDellay + componentCount * additionalDellaySize);
-		return () => {
-			componentCount--;
-		};
-	}, []);
+	const delay = useAnimProgressiveDelay();
 
 	return delay !== 0 ? (
 		<SlideOnMount direction="left" delay={delay}>
