@@ -14,7 +14,12 @@ const CarPage = () => {
 	const { id } = useParams();
 	const car = carContext.getCar(id);
 	const mainImageSrc = car?.images[0];
-	console.log(car);
+	const carProps = [
+		{ value: `${car.price}$`, name: 'Kaina' },
+		{ value: car.fuelType, name: 'Kuro tipas' },
+		{ value: car.transition, name: 'Pavarų dėžė' },
+		{ value: `${car.engineVolume} l`, name: 'Variklio tūris' },
+	];
 
 	return (
 		<Box component="main">
@@ -24,10 +29,9 @@ const CarPage = () => {
 					<CarPageTitle brand={car.brand} model={car.model} year={car.year} />
 					<Container>
 						<CarPageAnimatedCarPropsContainer>
-							{/* Panaudokite savybes: price, fuelType, transition, engineVolume  */}
-							<CarPageAnimatedCarProp name="kaina" value={`${car.price}$`} />
-							<CarPageAnimatedCarProp name="kaina" value={`${car.price}$`} />
-							<CarPageAnimatedCarProp name="kaina" value={`${car.price}$`} />
+							{carProps.map(({ name, value }) => (
+								<CarPageAnimatedCarProp key="name" name={name} value={value} />
+							))}
 						</CarPageAnimatedCarPropsContainer>
 
 						<CarPageAnimatedActionsContainer>
