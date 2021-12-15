@@ -69,3 +69,8 @@ const CarPage = () => {
 };
 
 export default CarPage;
+
+/*
+	Padaryti jog animacijos veiktų ne kiekvienam car-page-animated-action atskirai, o visam 
+	car-page-contact-conteiner'iui vienu metu
+*/
