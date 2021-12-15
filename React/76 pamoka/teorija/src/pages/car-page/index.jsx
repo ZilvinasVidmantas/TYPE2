@@ -1,20 +1,12 @@
 import React, { useContext } from 'react';
-import {
-	Container,
-	Box,
-	Divider,
-	Grid,
-	Avatar,
-	Typography,
-} from '@mui/material';
+import { Container, Box, Divider, Grid } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import ImageFluid from '../../components/images/image-fluid';
 import CarContext from '../../contexts/car-context';
 import CarPageTitle from './car-page-title';
 import CarPageAnimatedCarPropsContainer from './car-page-animated-car-props-container';
-import CarPageAnimatedCarProp from './car-page-animated-car-prop';
-import CarPageAnimatedActionsContainer from './car-page-animated-actions-container';
-import CarPageAnimatedAction from './car-page-animated-action';
+import CarPageCarProp from './car-page-car-prop';
+import CarPageContactContainer from './car-page-contact-container';
 
 const CarPage = () => {
 	const carContext = useContext(CarContext);
@@ -28,52 +20,45 @@ const CarPage = () => {
 		{ value: `${car?.engineVolume} l`, name: 'Variklio tūris' },
 	];
 
+	const fullname = `${car?.user.name} ${car?.user.surname[0]}.`;
+	const userInitials = car?.user.name[0] + car?.user.surname[0];
+
 	const actions = [
 		{ href: car?.user.mobile, type: 'tel', btnText: 'Skambinti' },
 		{ href: car?.user.email, type: 'mailto', btnText: 'Siųsti el. laišką' },
 	];
 
-	const fullname = `${car.user.name} ${car.user.surname[0]}.`;
-	const userInitials = car.user.name[0] + car.user.surname[0];
-
 	return (
-		<Box component="main" sx={{ bgcolor: { sm: '#dddddd' } }}>
+		<Box
+			component="main"
+			sx={{
+				bgcolor: { xs: '#eeffee', sm: '#ffeeee', md: '#eeffff', lg: '#ffffee' },
+			}}
+		>
 			{car !== undefined ? (
 				<>
 					<ImageFluid src={mainImageSrc} />
 					<CarPageTitle brand={car.brand} model={car.model} year={car.year} />
 					<Container>
-						<CarPageAnimatedCarPropsContainer>
-							{carProps.map(({ name, value }) => (
-								<CarPageAnimatedCarProp key="name" name={name} value={value} />
-							))}
-						</CarPageAnimatedCarPropsContainer>
-						<Divider sx={{ my: 2 }} />
-						<Grid container>
-							<Grid
-								item
-								xs={6}
-								sx={{
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center',
-									flexDirection: 'column',
-								}}
-							>
-								<Avatar sx={{ bgcolor: 'primary.main' }}>{userInitials}</Avatar>
-								<Typography variant="h6">{fullname}</Typography>
-							</Grid>
-							<Grid item xs={6}>
-								<CarPageAnimatedActionsContainer>
-									{actions.map(({ href, type, btnText }) => (
-										<CarPageAnimatedAction
-											key={href}
-											href={href}
-											type={type}
-											btnText={btnText}
-										/>
+						<Grid container sx={{ mt: { sm: 2 } }}>
+							<Grid item xs={12} sm={true}>
+								<CarPageAnimatedCarPropsContainer>
+									{carProps.map(({ name, value }) => (
+										<CarPageCarProp key="name" name={name} value={value} />
 									))}
-								</CarPageAnimatedActionsContainer>
+								</CarPageAnimatedCarPropsContainer>
+							</Grid>
+
+							<Grid item xs={12} sx={{ display: { sm: 'none' } }}>
+								<Divider sx={{ my: 2 }} />
+							</Grid>
+
+							<Grid item xs={12} sm={true}>
+								<CarPageContactContainer
+									fullname={fullname}
+									userInitials={userInitials}
+									actions={actions}
+								/>
 							</Grid>
 						</Grid>
 					</Container>
@@ -84,12 +69,3 @@ const CarPage = () => {
 };
 
 export default CarPage;
-
-/*
-	10min pertrauka
-
-	1. Iškelti kontaktų sekciją į car-page-contact-container.jsx
-
-	2. Nuo sm dydžio sustatyti elementu vienoje eilutėje
-
-*/
