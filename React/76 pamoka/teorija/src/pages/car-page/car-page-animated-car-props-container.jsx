@@ -1,18 +1,11 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+import { Grid } from '@mui/material';
 
 const CarPageAnimatedCarPropsContainer = ({ children }) => {
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				justifyContent: 'space-around',
-				my: 3,
-				overflow: 'hidden',
-			}}
-		>
+		<Grid container rowSpacing={1}>
 			{children}
-		</Box>
+		</Grid>
 	);
 };
 

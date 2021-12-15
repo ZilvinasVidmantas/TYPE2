@@ -1,5 +1,12 @@
 import React, { useContext } from 'react';
-import { Container, Box } from '@mui/material';
+import {
+	Container,
+	Box,
+	Divider,
+	Grid,
+	Avatar,
+	Typography,
+} from '@mui/material';
 import { useParams } from 'react-router-dom';
 import ImageFluid from '../../components/images/image-fluid';
 import CarContext from '../../contexts/car-context';
@@ -15,14 +22,22 @@ const CarPage = () => {
 	const car = carContext.getCar(id);
 	const mainImageSrc = car?.images[0];
 	const carProps = [
-		{ value: `${car.price}$`, name: 'Kaina' },
-		{ value: car.fuelType, name: 'Kuro tipas' },
-		{ value: car.transition, name: 'Pavarų dėžė' },
-		{ value: `${car.engineVolume} l`, name: 'Variklio tūris' },
+		{ value: `${car?.price}$`, name: 'Kaina' },
+		{ value: car?.fuelType, name: 'Kuro tipas' },
+		{ value: car?.transition, name: 'Pavarų dėžė' },
+		{ value: `${car?.engineVolume} l`, name: 'Variklio tūris' },
 	];
 
+	const actions = [
+		{ href: car?.user.mobile, type: 'tel', btnText: 'Skambinti' },
+		{ href: car?.user.email, type: 'mailto', btnText: 'Siųsti el. laišką' },
+	];
+
+	const fullname = `${car.user.name} ${car.user.surname[0]}.`;
+	const userInitials = car.user.name[0] + car.user.surname[0];
+
 	return (
-		<Box component="main">
+		<Box component="main" sx={{ bgcolor: { sm: '#dddddd' } }}>
 			{car !== undefined ? (
 				<>
 					<ImageFluid src={mainImageSrc} />
@@ -33,21 +48,34 @@ const CarPage = () => {
 								<CarPageAnimatedCarProp key="name" name={name} value={value} />
 							))}
 						</CarPageAnimatedCarPropsContainer>
-
-						<CarPageAnimatedActionsContainer>
-							{/* Panaudokite savybes: user.email, user.mobile */}
-							<CarPageAnimatedAction
-								href="+37065623666"
-								type="tel"
-								btnText="Skambinti"
-							/>
-
-							<CarPageAnimatedAction
-								href="zilvinas.vidmantas@gmail.com"
-								type="mailto"
-								btnText="Siųsti el. laišką"
-							/>
-						</CarPageAnimatedActionsContainer>
+						<Divider sx={{ my: 2 }} />
+						<Grid container>
+							<Grid
+								item
+								xs={6}
+								sx={{
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+									flexDirection: 'column',
+								}}
+							>
+								<Avatar sx={{ bgcolor: 'primary.main' }}>{userInitials}</Avatar>
+								<Typography variant="h6">{fullname}</Typography>
+							</Grid>
+							<Grid item xs={6}>
+								<CarPageAnimatedActionsContainer>
+									{actions.map(({ href, type, btnText }) => (
+										<CarPageAnimatedAction
+											key={href}
+											href={href}
+											type={type}
+											btnText={btnText}
+										/>
+									))}
+								</CarPageAnimatedActionsContainer>
+							</Grid>
+						</Grid>
 					</Container>
 				</>
 			) : null}
@@ -58,10 +86,10 @@ const CarPage = () => {
 export default CarPage;
 
 /*
-	1. Įgalinti vienoje vietoje, animacijų uždelsimo laikus.
-		 * Pakeitus car-page-prop animacijų laikus, car-page-action-container animacijos, prasidėtų pasibaigus car-page-prop animacijoms
+	10min pertrauka
 
-	2. Perkelti gaubiantį komponentą car-page-action-container komponentą į car-page-action
-	
-	3. Patobulinti car-search-page mobilaus dydžio dizainą
+	1. Iškelti kontaktų sekciją į car-page-contact-container.jsx
+
+	2. Nuo sm dydžio sustatyti elementu vienoje eilutėje
+
 */

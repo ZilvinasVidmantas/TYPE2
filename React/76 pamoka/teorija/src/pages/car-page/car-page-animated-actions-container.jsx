@@ -6,7 +6,7 @@ const CarPageAnimatedActionsContainer = ({ children }) => {
 		<Box
 			sx={{
 				justifyContent: 'center',
-				gap: 2,
+				gap: 1,
 				textAlign: 'center',
 				overflow: 'hidden',
 			}}

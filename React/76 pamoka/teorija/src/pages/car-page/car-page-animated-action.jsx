@@ -12,11 +12,13 @@ const CarPageAnimatedAction = ({ href, btnText, type }) => {
 	const hrefWithAction = `${type}:${href}`;
 
 	return (
-		<Box sx={{ my: 4 }} ref={containerRef}>
+		<Box sx={{ mb: 2 }} ref={containerRef}>
 			<SlideOnMountWithProgressiveDelay direction="up" ref={containerRef}>
 				<Box>
 					<Link href={hrefWithAction} sx={{ textDecoration: 'none' }}>
-						<Button variant="outlined">{btnText}</Button>
+						<Button variant="outlined" size="small">
+							{btnText}
+						</Button>
 					</Link>
 					<Box
 						sx={{
@@ -27,7 +29,7 @@ const CarPageAnimatedAction = ({ href, btnText, type }) => {
 							mt: 0.5,
 						}}
 					>
-						<Typography sx={{ fontWeight: 700 }}>{href}</Typography>
+						<Typography variant="body1">{href}</Typography>
 						<ContentCopyIcon
 							color="primary"
 							sx={{ cursor: 'pointer' }}
