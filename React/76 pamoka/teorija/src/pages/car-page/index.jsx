@@ -14,6 +14,7 @@ const CarPage = () => {
 	const { id } = useParams();
 	const car = carContext.getCar(id);
 	const mainImageSrc = car?.images[0];
+	console.log(car);
 
 	return (
 		<Box component="main">
@@ -23,12 +24,14 @@ const CarPage = () => {
 					<CarPageTitle brand={car.brand} model={car.model} year={car.year} />
 					<Container>
 						<CarPageAnimatedCarPropsContainer>
+							{/* Panaudokite savybes: price, fuelType, transition, engineVolume  */}
 							<CarPageAnimatedCarProp name="kaina" value={`${car.price}$`} />
 							<CarPageAnimatedCarProp name="kaina" value={`${car.price}$`} />
 							<CarPageAnimatedCarProp name="kaina" value={`${car.price}$`} />
 						</CarPageAnimatedCarPropsContainer>
 
 						<CarPageAnimatedActionsContainer>
+							{/* Panaudokite savybes: user.email, user.mobile */}
 							<CarPageAnimatedAction
 								href="+37065623666"
 								type="tel"
