@@ -4,7 +4,7 @@
       "id": "6",
       "brand": "Opel",
       "model": "Zefyra",
-      "price": 6000,
+      "price": 9000,
       "year": 2016,
       "images": [
         "https://upload.wikimedia.org/wikipedia/commons/4/46/Opel_Zafira_Tourer_2.0_CDTI_Innovation_%28C%29_%E2%80%93_Frontansicht%2C_23._Mai_2013%2C_Heiligenhaus.jpg",
@@ -12,7 +12,11 @@
         "https://www.autobild.lt/wp-content/uploads/2014/08/1407226016987.jpg",
         "https://i.ytimg.com/vi/s5V3MTeeR7s/maxresdefault.jpg",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEUXy2VA3cIoITdoRSTogKg7m30rg5MZPb-rUOCQEannOiUwTJ74mPaj_eSe7uvwhqQzE&usqp=CAU"
-      ]
+      ],
+      "engineVolume": "1.8",
+      "fuelType": "petrol/electric",
+      "transition": "automatic",
+      "userId": "2"
     },
     {
       "id": "4",
@@ -22,7 +26,11 @@
       "year": 2006,
       "images": [
         "https://upload.wikimedia.org/wikipedia/commons/a/a2/2010_Volkswagen_Passat_Highline_TDi_140_2.0_Front.jpg"
-      ]
+      ],
+      "engineVolume": "2.0",
+      "fuelType": "dysel",
+      "transition": "mechanic",
+      "userId": "2"
     },
     {
       "id": "1",
@@ -32,7 +40,11 @@
       "year": 2000,
       "images": [
         "https://www.automobilis.lt/upload/skelbimai/big/2016-12/11303-opel-astra-2000-m-hecbekas-181346.jpg"
-      ]
+      ],
+      "engineVolume": "1.8",
+      "fuelType": "dysel",
+      "transition": "mechanic",
+      "userId": "2"
     },
     {
       "id": "3",
@@ -42,17 +54,25 @@
       "year": 2000,
       "images": [
         "https://st.mascus.com/imagetilewm/product/59b5ddce/subaru-impreza-p1-1739,576c2195.jpg"
-      ]
+      ],
+      "engineVolume": "2.0",
+      "fuelType": "petrol",
+      "transition": "mechanic",
+      "userId": "3"
     },
     {
       "id": "2",
       "brand": "BMW",
       "model": "X5",
-      "price": 3000,
-      "year": 2000,
+      "price": 7500,
+      "year": 2010,
       "images": [
         "https://img.autogidas.lt/10_1_7340563/bmw-x5-2000-2003.jpg"
-      ]
+      ],
+      "engineVolume": "3.0",
+      "fuelType": "petrol",
+      "transition": "mechanic",
+      "userId": "1"
     },
     {
       "id": "5",
@@ -62,7 +82,41 @@
       "year": 2008,
       "images": [
         "https://upload.wikimedia.org/wikipedia/commons/1/17/Opel_Astra_front_20080306.jpg"
-      ]
+      ],
+      "engineVolume": "2.0",
+      "fuelType": "petrol",
+      "transition": "automatic",
+      "userId": "1"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Kentas",
+      "surname": "Stoteletausktas",
+      "email": "parkavimas@stotele.lt",
+      "mobile": "+370 68974856"
+    },
+    {
+      "id": "2",
+      "name": "Pinigas",
+      "surname": "Kupinaitis",
+      "email": "perekup@blaga.ua",
+      "mobile": "+379 68974856"
+    },
+    {
+      "id": "3",
+      "name": "Simonas",
+      "surname": "Saulius",
+      "email": "kamta@pavarde.lt",
+      "mobile": "+370 55555555"
+    },
+    {
+      "id": "4",
+      "name": "Violeta",
+      "surname": "Purpuraitė",
+      "email": "violet@google.com",
+      "mobile": "+370 58784512"
     }
   ]
 }
