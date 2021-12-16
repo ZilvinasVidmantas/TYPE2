@@ -10,7 +10,15 @@ const CarPageAnimatedContactContainer = ({
 }) => {
 	const containerRef = useRef(null);
 	return (
-		<Box ref={containerRef} sx={{ overflow: 'hidden' }}>
+		<Box
+			ref={containerRef}
+			sx={{
+				overflow: 'hidden',
+				justifyContent: 'center',
+				gap: 1,
+				textAlign: 'center',
+			}}
+		>
 			<SlideOnMountWithProgressiveDelay direction="up" ref={containerRef}>
 				<Grid container>
 					<Grid
@@ -19,8 +27,8 @@ const CarPageAnimatedContactContainer = ({
 						sm={true}
 						sx={{
 							display: 'flex',
-							alignItems: 'center',
 							justifyContent: 'center',
+							alignItems: 'center',
 							flexDirection: 'column',
 						}}
 					>
@@ -28,23 +36,14 @@ const CarPageAnimatedContactContainer = ({
 						<Typography variant="h6">{fullname}</Typography>
 					</Grid>
 					<Grid item xs={6} sm={true}>
-						<Box
-							sx={{
-								justifyContent: 'center',
-								gap: 1,
-								textAlign: 'center',
-								overflow: 'hidden',
-							}}
-						>
-							{actions.map(({ href, type, btnText }) => (
-								<CarPageAction
-									key={href}
-									href={href}
-									type={type}
-									btnText={btnText}
-								/>
-							))}
-						</Box>
+						{actions.map(({ href, type, btnText }) => (
+							<CarPageAction
+								key={href}
+								href={href}
+								type={type}
+								btnText={btnText}
+							/>
+						))}
 					</Grid>
 				</Grid>
 			</SlideOnMountWithProgressiveDelay>
