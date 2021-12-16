@@ -6,7 +6,7 @@ import CarContext from '../../contexts/car-context';
 import CarPageTitle from './car-page-title';
 import CarPageAnimatedCarPropsContainer from './car-page-animated-car-props-container';
 import CarPageCarProp from './car-page-car-prop';
-import CarPageContactContainer from './car-page-contact-container';
+import CarPageAnimatedContactContainer from './car-page-animated-contact-container';
 
 const CarPage = () => {
 	const carContext = useContext(CarContext);
@@ -44,7 +44,7 @@ const CarPage = () => {
 							<Grid item xs={12} sm={true}>
 								<CarPageAnimatedCarPropsContainer>
 									{carProps.map(({ name, value }) => (
-										<CarPageCarProp key="name" name={name} value={value} />
+										<CarPageCarProp key={name} name={name} value={value} />
 									))}
 								</CarPageAnimatedCarPropsContainer>
 							</Grid>
@@ -54,7 +54,7 @@ const CarPage = () => {
 							</Grid>
 
 							<Grid item xs={12} sm={true}>
-								<CarPageContactContainer
+								<CarPageAnimatedContactContainer
 									fullname={fullname}
 									userInitials={userInitials}
 									actions={actions}

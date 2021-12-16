@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 
-const CarPageAnimatedActionsContainer = ({ children }) => {
+const CarPageActionsContainer = ({ children }) => {
 	return (
 		<Box
 			sx={{
@@ -16,4 +16,4 @@ const CarPageAnimatedActionsContainer = ({ children }) => {
 	);
 };
 
-export default CarPageAnimatedActionsContainer;
+export default CarPageActionsContainer;
