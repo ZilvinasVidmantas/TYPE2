@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
 import { Grid, Avatar, Typography, Box } from '@mui/material';
 import CarPageAction from './car-page-action';
-import SlideOnMountWithProgressiveDelay from '../../components/animations/slide-on-mount-with-progressive-delay';
+import SlideOnMount from '../../components/animations/slide-on-mount';
 
 const CarPageAnimatedContactContainer = ({
 	fullname,
 	userInitials,
 	actions,
+	delayProgress,
 }) => {
 	const containerRef = useRef(null);
 	return (
@@ -19,7 +20,11 @@ const CarPageAnimatedContactContainer = ({
 				textAlign: 'center',
 			}}
 		>
-			<SlideOnMountWithProgressiveDelay direction="up" ref={containerRef}>
+			<SlideOnMount
+				direction="up"
+				ref={containerRef}
+				progressive={delayProgress}
+			>
 				<Grid container>
 					<Grid
 						item
@@ -46,7 +51,7 @@ const CarPageAnimatedContactContainer = ({
 						))}
 					</Grid>
 				</Grid>
-			</SlideOnMountWithProgressiveDelay>
+			</SlideOnMount>
 		</Box>
 	);
 };

@@ -8,6 +8,11 @@ import CarPageAnimatedCarPropsContainer from './car-page-animated-car-props-cont
 import CarPageCarProp from './car-page-car-prop';
 import CarPageAnimatedContactContainer from './car-page-animated-contact-container';
 
+const animationDelayProgress = {
+	xs: true,
+	sm: false,
+};
+
 const CarPage = () => {
 	const carContext = useContext(CarContext);
 	const { id } = useParams();
@@ -42,7 +47,9 @@ const CarPage = () => {
 					<Container>
 						<Grid container sx={{ mt: { sm: 2 } }}>
 							<Grid item xs={12} sm={true}>
-								<CarPageAnimatedCarPropsContainer>
+								<CarPageAnimatedCarPropsContainer
+									delayProgress={animationDelayProgress}
+								>
 									{carProps.map(({ name, value }) => (
 										<CarPageCarProp key={name} name={name} value={value} />
 									))}
@@ -58,6 +65,7 @@ const CarPage = () => {
 									fullname={fullname}
 									userInitials={userInitials}
 									actions={actions}
+									delayProgress={animationDelayProgress}
 								/>
 							</Grid>
 						</Grid>

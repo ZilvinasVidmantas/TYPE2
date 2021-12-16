@@ -1,17 +1,21 @@
 import React, { useRef } from 'react';
 import { Grid, Box } from '@mui/material';
-import SlideOnMountWithProgressiveDelay from '../../components/animations/slide-on-mount-with-progressive-delay';
+import SlideOnMount from '../../components/animations/slide-on-mount';
 
-const CarPageAnimatedCarPropsContainer = ({ children }) => {
+const CarPageAnimatedCarPropsContainer = ({ children, delayProgress }) => {
 	const containerRef = useRef(null);
 
 	return (
 		<Box ref={containerRef} sx={{ overflow: 'hidden' }}>
-			<SlideOnMountWithProgressiveDelay direction="up" ref={containerRef}>
+			<SlideOnMount
+				direction="up"
+				ref={containerRef}
+				progressive={delayProgress}
+			>
 				<Grid container rowSpacing={1}>
 					{children}
 				</Grid>
-			</SlideOnMountWithProgressiveDelay>
+			</SlideOnMount>
 		</Box>
 	);
 };
