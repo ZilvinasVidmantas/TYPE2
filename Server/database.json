@@ -631,6 +631,96 @@
       "userId": "2"
     },
     {
+      "id": "82",
+      "brand": "Fiat",
+      "model": "Multipla",
+      "price": 900,
+      "year": 1999,
+      "images": [
+        "https://autoplius-img.dgn.lt/ann_25_200661967/fiat-multipla-1-9-l-mpv-minivan-1999-diesel-0.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_200661971/fiat-multipla-1-9-l-mpv-minivan-1999-diesel-2.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_200661973/fiat-multipla-1-9-l-mpv-minivan-1999-diesel-3.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_200661977/fiat-multipla-1-9-l-mpv-minivan-1999-diesel-5.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_200661979/fiat-multipla-1-9-l-mpv-minivan-1999-diesel-6.jpg"
+      ],
+      "engineVolume": "1.9",
+      "fuelType": "dysel",
+      "transition": "amanual",
+      "userId": "20"
+    },
+    {
+      "id": "83",
+      "brand": "Volkswagen",
+      "model": "Beetle",
+      "price": 1950,
+      "year": 2004,
+      "images": [
+        "https://autoplius-img.dgn.lt/ann_2_200917222/volkswagen-beetle-1-6-l-hecbekas-2004-benzinas-0.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_200917228/volkswagen-beetle-1-6-l-hecbekas-2004-benzinas-1.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_200917240/volkswagen-beetle-1-6-l-hecbekas-2004-benzinas-2.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_200917270/volkswagen-beetle-1-6-l-hecbekas-2004-benzinas-7.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_200917278/volkswagen-beetle-1-6-l-hecbekas-2004-benzinas-11.jpg"
+      ],
+      "engineVolume": "1.6",
+      "fuelType": "petrol",
+      "transition": "mechanic",
+      "userId": "20"
+    },
+    {
+      "id": "84",
+      "brand": "Audi",
+      "model": "100",
+      "price": 1700,
+      "year": 1986,
+      "images": [
+        "https://autoplius-img.dgn.lt/ann_2_197781943/audi-100-2-2-l-sedanas-1986-benzinas-0.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_197781875/audi-100-2-2-l-sedanas-1986-benzinas-1.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_197781949/audi-100-2-2-l-sedanas-1986-benzinas-4.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_197781963/audi-100-2-2-l-sedanas-1986-benzinas-6.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_197781999/audi-100-2-2-l-sedanas-1986-benzinas-7.jpg"
+      ],
+      "engineVolume": "2.2",
+      "fuelType": "petrol",
+      "transition": "mechanic",
+      "userId": "20"
+    },
+    {
+      "id": "85",
+      "brand": "Opel",
+      "model": "Ascona",
+      "price": 800,
+      "year": 1984,
+      "images": [
+        "https://autoplius-img.dgn.lt/ann_25_199131849/opel-ascona-1-6-l-sedanas-1984-benzinas-0.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_199131851/opel-ascona-1-6-l-sedanas-1984-benzinas-2.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_199131853/opel-ascona-1-6-l-sedanas-1984-benzinas-3.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_199131861/opel-ascona-1-6-l-sedanas-1984-benzinas-8.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_199131863/opel-ascona-1-6-l-sedanas-1984-benzinas-12.jpg"
+      ],
+      "engineVolume": "1.6",
+      "fuelType": "petrol",
+      "transition": "mechanic",
+      "userId": "20"
+    },
+    {
+      "id": "86",
+      "brand": "Mercedes-Benz",
+      "model": "230",
+      "price": 1750,
+      "year": 1983,
+      "images": [
+        "https://autoplius-img.dgn.lt/ann_25_198275871/mercedes-benz-230-2-3-l-sedanas-1983-benzinas-0.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_198275855/mercedes-benz-230-2-3-l-sedanas-1983-benzinas-1.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_198275857/mercedes-benz-230-2-3-l-sedanas-1983-benzinas-2.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_198275865/mercedes-benz-230-2-3-l-sedanas-1983-benzinas-3.jpg",
+        "https://autoplius-img.dgn.lt/ann_2_198275851/mercedes-benz-230-2-3-l-sedanas-1983-benzinas-4.jpg"
+      ],
+      "engineVolume": "2.3",
+      "fuelType": "dysel",
+      "transition": "mechanic",
+      "userId": "20"
+    },
+    {
       "id": "54",
       "brand": "BMW",
       "model": "535",
@@ -1271,6 +1361,13 @@
       "surname": "Jonaitis",
       "email": "jonasjonaitis@gmail.com",
       "mobile": "+370 61312225"
+    },
+    {
+      "id": "20",
+      "name": "Stepas",
+      "surname": "Bestepis",
+      "email": "stepiux@one.lt",
+      "mobile": "+370 66666666"
     },
     {
       "id": "6",
