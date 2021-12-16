@@ -433,24 +433,6 @@
       "userId": "1"
     },
     {
-      "id": "59",
-      "brand": "Volkswagen",
-      "model": "Golf",
-      "price": 650,
-      "year": 1987,
-      "images": [
-        "https://autoplius-img.dgn.lt/ann_2_201761780/volkswagen-golf-1-6-l-hecbekas-1987-benzinas-0.jpg",
-        "https://autoplius-img.dgn.lt/ann_2_201761786/volkswagen-golf-1-6-l-hecbekas-1987-benzinas-1.jpg",
-        "https://autoplius-img.dgn.lt/ann_2_201761762/volkswagen-golf-1-6-l-hecbekas-1987-benzinas-3.jpg",
-        "https://autoplius-img.dgn.lt/ann_2_201761756/volkswagen-golf-1-6-l-hecbekas-1987-benzinas-4.jpg",
-        "https://autoplius-img.dgn.lt/ann_2_201761750/volkswagen-golf-1-6-l-hecbekas-1987-benzinas-6.jpg"
-      ],
-      "engineVolume": "1.6",
-      "fuelType": "petrol",
-      "transition": "mechanic",
-      "userId": "3"
-    },
-    {
       "id": "60",
       "brand": "Lada",
       "model": "21011",
