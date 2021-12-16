@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
 import { Grid, Avatar, Typography, Box } from '@mui/material';
-import CarPageActionsContainer from './car-page-actions-container';
 import CarPageAction from './car-page-action';
 import SlideOnMountWithProgressiveDelay from '../../components/animations/slide-on-mount-with-progressive-delay';
 
-const CarPageAnimatedContactContainer = ({ fullname, userInitials, actions }) => {
+const CarPageAnimatedContactContainer = ({
+	fullname,
+	userInitials,
+	actions,
+}) => {
 	const containerRef = useRef(null);
 	return (
 		<Box ref={containerRef} sx={{ overflow: 'hidden' }}>
@@ -25,7 +28,14 @@ const CarPageAnimatedContactContainer = ({ fullname, userInitials, actions }) =>
 						<Typography variant="h6">{fullname}</Typography>
 					</Grid>
 					<Grid item xs={6} sm={true}>
-						<CarPageActionsContainer>
+						<Box
+							sx={{
+								justifyContent: 'center',
+								gap: 1,
+								textAlign: 'center',
+								overflow: 'hidden',
+							}}
+						>
 							{actions.map(({ href, type, btnText }) => (
 								<CarPageAction
 									key={href}
@@ -34,7 +44,7 @@ const CarPageAnimatedContactContainer = ({ fullname, userInitials, actions }) =>
 									btnText={btnText}
 								/>
 							))}
-						</CarPageActionsContainer>
+						</Box>
 					</Grid>
 				</Grid>
 			</SlideOnMountWithProgressiveDelay>
