@@ -66,3 +66,7 @@ car-page
     * car-page padaryti sliderį'į iš visų mašinos nuotraukų:
       https://swiperjs.com/
     * charakteristikos, turi atsirasti dešniame side-menu
+
+-------------------------------------------------
+home-page.jsx
+  Sukurti pradinį reprezentacinį puslapį
