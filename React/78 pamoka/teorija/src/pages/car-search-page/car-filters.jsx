@@ -5,7 +5,7 @@ import CheckboxGroupFilter from '../../components/controls/checkbox-group-filter
 import RangeFilter from '../../components/controls/range-filter';
 import { useSearchParams } from 'react-router-dom';
 
-const createUrlParamObj = (searchParams, additionParam) => {
+const createUrlParamObj = (searchParams, additionParams) => {
 	const paramObj = {};
 	const addParam = (value, key) => {
 		if (!paramObj.hasOwnProperty(key)) {
@@ -15,9 +15,10 @@ const createUrlParamObj = (searchParams, additionParam) => {
 		}
 	};
 	searchParams.forEach(addParam);
-	if (additionParam) {
-		const { value, key } = additionParam;
-		addParam(value, key);
+	if (additionParams) {
+		additionParams.forEach(({ value, key }) => {
+			addParam(value, key);
+		});
 	}
 
 	return paramObj;
@@ -28,10 +29,18 @@ const CarFilters = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	console.log(createUrlParamObj(searchParams));
 
-	const changeFilter = (props) => {
-		const key = props.filterName;
-		const value = props.name;
-		const newParams = createUrlParamObj(searchParams, { key, value });
+	const changeFilter = ({ filterName, name, min, max }) => {
+		let newParams;
+		if (name) {
+			const key = filterName;
+			const value = name;
+			newParams = createUrlParamObj(searchParams, [{ key, value }]);
+		} else if (min && max) {
+			newParams = createUrlParamObj(searchParams, [
+				{ key: `${filterName}_min`, value: min },
+				{ key: `${filterName}_max`, value: max },
+			]);
+		}
 
 		setSearchParams(newParams);
 	};
