@@ -5,36 +5,35 @@ import CheckboxGroupFilter from '../../components/controls/checkbox-group-filter
 import RangeFilter from '../../components/controls/range-filter';
 import { useSearchParams } from 'react-router-dom';
 
-const getUrlParams = (searchParams) => {
+const createUrlParamObj = (searchParams, additionParam) => {
 	const paramObj = {};
-	searchParams.forEach((value, key) => {
-		if (paramObj.hasOwnProperty(key)) {
-			const existingValue = paramObj[key];
-			if (existingValue instanceof Array) {
-				paramObj[key].push(value);
-			} else {
-				paramObj[key] = [existingValue, value];
-			}
-		} else {
-			paramObj[key] = value;
+	const addParam = (value, key) => {
+		if (!paramObj.hasOwnProperty(key)) {
+			paramObj[key] = [value];
+		} else if (!paramObj[key].includes(value)) {
+			paramObj[key].push(value);
 		}
-	});
+	};
+	searchParams.forEach(addParam);
+	if (additionParam) {
+		const { value, key } = additionParam;
+		addParam(value, key);
+	}
+
 	return paramObj;
 };
 
 const CarFilters = () => {
 	const { filters } = useContext(CarContext);
-	const [searchParams, setSearchParams] = useSearchParams({});
+	const [searchParams, setSearchParams] = useSearchParams();
+	console.log(createUrlParamObj(searchParams));
 
 	const changeFilter = (props) => {
 		const key = props.filterName;
 		const value = props.name;
-		const prevParamsObj = getUrlParams(searchParams);
+		const newParams = createUrlParamObj(searchParams, { key, value });
 
-		setSearchParams({
-			...prevParamsObj,
-			[key]: value,
-		});
+		setSearchParams(newParams);
 	};
 
 	const filterGroups = filters.map(({ name, type, ...filterProps }) => {
