@@ -58,7 +58,7 @@ json-server
         * carId
 
   * pakeisti visus variklio tūrius skaičiais
-s
+
 -------------------------------------------------
 
 car-page

@@ -3,9 +3,39 @@ import { Typography, Paper } from '@mui/material';
 import { CarContext } from '../../contexts/car-context';
 import CheckboxGroupFilter from '../../components/controls/checkbox-group-filter';
 import RangeFilter from '../../components/controls/range-filter';
+import { useSearchParams } from 'react-router-dom';
+
+const getUrlParams = (searchParams) => {
+	const paramObj = {};
+	searchParams.forEach((value, key) => {
+		if (paramObj.hasOwnProperty(key)) {
+			const existingValue = paramObj[key];
+			if (existingValue instanceof Array) {
+				paramObj[key].push(value);
+			} else {
+				paramObj[key] = [existingValue, value];
+			}
+		} else {
+			paramObj[key] = value;
+		}
+	});
+	return paramObj;
+};
 
 const CarFilters = () => {
-	const { filters, changeFilter } = useContext(CarContext);
+	const { filters } = useContext(CarContext);
+	const [searchParams, setSearchParams] = useSearchParams({});
+
+	const changeFilter = (props) => {
+		const key = props.filterName;
+		const value = props.name;
+		const prevParamsObj = getUrlParams(searchParams);
+
+		setSearchParams({
+			...prevParamsObj,
+			[key]: value,
+		});
+	};
 
 	const filterGroups = filters.map(({ name, type, ...filterProps }) => {
 		switch (type) {
