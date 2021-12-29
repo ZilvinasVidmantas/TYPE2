@@ -43,3 +43,7 @@ const store = createStore(
 );
 
 export default store;
+
+/*
+  Įgalinti todo-item trinimą, paspaudus ant ištinimo mygtuko
+*/
