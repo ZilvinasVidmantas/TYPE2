@@ -8,7 +8,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import ListItemText from './todo-app-page-list-item-text';
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
-  ':nth-child(2n)': {
+  ':nth-of-type(2n)': {
     backgroundColor: theme.palette.grey[100],
   },
 }));
