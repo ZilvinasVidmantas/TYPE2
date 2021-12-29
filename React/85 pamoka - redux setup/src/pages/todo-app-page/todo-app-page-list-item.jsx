@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   styled, ListItem, IconButton,
 } from '@mui/material';
@@ -13,21 +14,32 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
   },
 }));
 
-const TodoAppPageListItem = ({ title, done }) => (
-  <StyledListItem
-    secondaryAction={(
-      <>
-        <IconButton edge="end" aria-label="delete" color={done ? 'warning' : 'success'}>
-          { done ? <ClearIcon /> : <CheckIcon />}
-        </IconButton>
-        <IconButton edge="end" aria-label="delete" color="error">
-          <DeleteIcon />
-        </IconButton>
-      </>
+const TodoAppPageListItem = ({ id, title, done }) => {
+  const dispatch = useDispatch();
+
+  const handleDeleteIconClick = () => {
+    dispatch({
+      type: 'DELETE_TODO',
+      payload: { id },
+    });
+  };
+
+  return (
+    <StyledListItem
+      secondaryAction={(
+        <>
+          <IconButton edge="end" aria-label="delete" color={done ? 'warning' : 'success'}>
+            { done ? <ClearIcon /> : <CheckIcon />}
+          </IconButton>
+          <IconButton edge="end" aria-label="delete" color="error" onClick={handleDeleteIconClick}>
+            <DeleteIcon />
+          </IconButton>
+        </>
 )}
-  >
-    <ListItemText title={title} done={done} />
-  </StyledListItem>
-);
+    >
+      <ListItemText title={title} done={done} />
+    </StyledListItem>
+  );
+};
 
 export default TodoAppPageListItem;

@@ -9,7 +9,7 @@ const TodoAppPageList = () => {
   return (
     <List>
       { items.map(({ id, title, done }) => (
-        <ListItem key={id} title={title} done={done} />
+        <ListItem key={id} id={id} title={title} done={done} />
       ))}
     </List>
   );
