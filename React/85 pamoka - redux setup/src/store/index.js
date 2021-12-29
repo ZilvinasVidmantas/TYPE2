@@ -2,7 +2,13 @@ import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initState = {
-  todos: [],
+  todos: [
+    { id: '1', title: 'Feel happy', done: false },
+    { id: '2', title: 'Lick elbow', done: false },
+    { id: '3', title: 'Kick cloud', done: true },
+    { id: '4', title: 'Gain immortality', done: true },
+    { id: '5', title: 'Make pople talk rational', done: true },
+  ],
 };
 
 // eslint-disable-next-line default-param-last
