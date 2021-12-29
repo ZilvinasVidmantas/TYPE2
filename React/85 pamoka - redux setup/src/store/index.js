@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { v4 as newId } from 'uuid';
 
 const initState = {
   todos: [
@@ -14,9 +15,17 @@ const initState = {
 // eslint-disable-next-line default-param-last
 const mainReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'ADD_TODO':
-      // Aprašysim vėliau, kaip yra keičiamas state
-      return state;
+    case 'ADD_TODO': {
+      const newTodo = {
+        id: newId(),
+        title: action.payload.title,
+        done: false,
+      };
+      return {
+        ...state,
+        todos: [...state.todos, newTodo],
+      };
+    }
     case 'DELETE_TODO':
       // Aprašysim vėliau, kaip yra keičiamas state
       return state;
