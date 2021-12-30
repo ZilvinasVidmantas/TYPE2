@@ -32,8 +32,13 @@ const mainReducer = (state = initState, action) => {
         todos: state.todos.filter((todo) => todo.id !== action.payload.id),
       };
     case 'UPDATE_TODO':
-      // Aprašysim vėliau, kaip yra keičiamas state
-      return state;
+      return {
+        ...state,
+        todos: state.todos.map((todo) => ({
+          ...todo,
+          done: todo.id === action.payload.id ? !todo.done : todo.done,
+        })),
+      };
     default:
       return state;
   }
