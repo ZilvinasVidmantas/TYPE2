@@ -6,7 +6,8 @@ const TodoAppPageAddTodoGroup = () => {
   const [todoTitle, setTodoTitle] = useState('');
   const dispatch = useDispatch();
 
-  const handleAddButtonClick = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch({
       type: 'ADD_TODO',
       payload: {
@@ -17,9 +18,12 @@ const TodoAppPageAddTodoGroup = () => {
   };
 
   return (
-    <Box sx={{
-      display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1,
-    }}
+    <Box
+      sx={{
+        display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1,
+      }}
+      component="form"
+      onSubmit={handleSubmit}
     >
       <TextField
         label="What to do?"
@@ -29,7 +33,7 @@ const TodoAppPageAddTodoGroup = () => {
         value={todoTitle}
         onChange={(e) => setTodoTitle(e.target.value)}
       />
-      <Button variant="outlined" size="large" onClick={handleAddButtonClick}>Add</Button>
+      <Button variant="outlined" size="large" type="submit">Add</Button>
     </Box>
   );
 };
