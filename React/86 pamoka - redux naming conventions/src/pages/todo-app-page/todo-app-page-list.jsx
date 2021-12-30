@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { List } from '@mui/material';
 import ListItem from './todo-app-page-list-item';
+import { todosSelector } from '../../store/selectors';
 
 const TodoAppPageList = () => {
-  const items = useSelector((state) => state.todos);
+  const items = useSelector(todosSelector);
 
   return (
     <List>
