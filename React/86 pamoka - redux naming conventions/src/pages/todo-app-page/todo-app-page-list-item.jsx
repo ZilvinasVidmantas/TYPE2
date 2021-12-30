@@ -24,11 +24,23 @@ const TodoAppPageListItem = ({ id, title, done }) => {
     });
   };
 
+  const handleUpdateIconClick = () => {
+    dispatch({
+      type: 'UPDATE_TODO',
+      payload: { id },
+    });
+  };
+
   return (
     <StyledListItem
       secondaryAction={(
         <>
-          <IconButton edge="end" aria-label="delete" color={done ? 'warning' : 'success'}>
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            color={done ? 'warning' : 'success'}
+            onClick={handleUpdateIconClick}
+          >
             { done ? <ClearIcon /> : <CheckIcon />}
           </IconButton>
           <IconButton edge="end" aria-label="delete" color="error" onClick={handleDeleteIconClick}>
