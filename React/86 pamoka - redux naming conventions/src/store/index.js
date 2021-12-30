@@ -21,7 +21,7 @@ const initState = {
 // eslint-disable-next-line default-param-last
 const mainReducer = (state = initState, action) => {
   switch (action.type) {
-    case ADD_TODO: {
+    case ADD_TODO:
       return produce(state, ({ todos }) => {
         const newTodo = {
           id: newId(),
@@ -30,14 +30,12 @@ const mainReducer = (state = initState, action) => {
         };
         todos.push(newTodo);
       });
-    }
     case DELETE_TODO:
       return produce(state, ({ todos }) => {
         const itemToDeleteIndex = todos.findIndex(({ id }) => id === action.payload.id);
         todos.splice(itemToDeleteIndex, 1);
       });
     case UPDATE_TODO:
-
       return produce(state, ({ todos }) => {
         const itemToUpdate = todos.find(({ id }) => id === action.payload.id);
         itemToUpdate.done = !itemToUpdate.done;
