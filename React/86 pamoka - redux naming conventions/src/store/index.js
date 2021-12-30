@@ -1,6 +1,7 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { v4 as newId } from 'uuid';
+import produce from 'immer';
 import {
   ADD_TODO,
   DELETE_TODO,
@@ -21,29 +22,26 @@ const initState = {
 const mainReducer = (state = initState, action) => {
   switch (action.type) {
     case ADD_TODO: {
-      const newTodo = {
-        id: newId(),
-        title: action.payload.title,
-        done: false,
-      };
-      return {
-        ...state,
-        todos: [...state.todos, newTodo],
-      };
+      return produce(state, ({ todos }) => {
+        const newTodo = {
+          id: newId(),
+          title: action.payload.title,
+          done: false,
+        };
+        todos.push(newTodo);
+      });
     }
     case DELETE_TODO:
-      return {
-        ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.payload.id),
-      };
+      return produce(state, ({ todos }) => {
+        const itemToDeleteIndex = todos.findIndex(({ id }) => id === action.payload.id);
+        todos.splice(itemToDeleteIndex, 1);
+      });
     case UPDATE_TODO:
-      return {
-        ...state,
-        todos: state.todos.map((todo) => ({
-          ...todo,
-          done: todo.id === action.payload.id ? !todo.done : todo.done,
-        })),
-      };
+
+      return produce(state, ({ todos }) => {
+        const itemToUpdate = todos.find(({ id }) => id === action.payload.id);
+        itemToUpdate.done = !itemToUpdate.done;
+      });
     default:
       return state;
   }
