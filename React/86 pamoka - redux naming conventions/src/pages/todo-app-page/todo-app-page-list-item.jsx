@@ -43,7 +43,12 @@ const TodoAppPageListItem = ({ id, title, done }) => {
           >
             { done ? <ClearIcon /> : <CheckIcon />}
           </IconButton>
-          <IconButton edge="end" aria-label="delete" color="error" onClick={handleDeleteIconClick}>
+          <IconButton
+            edge="end"
+            aria-label={done ? 'undo task' : 'complete task'}
+            color="error"
+            onClick={handleDeleteIconClick}
+          >
             <DeleteIcon />
           </IconButton>
         </>
