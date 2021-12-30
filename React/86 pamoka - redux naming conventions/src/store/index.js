@@ -1,6 +1,11 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { v4 as newId } from 'uuid';
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  UPDATE_TODO,
+} from './actions-types';
 
 const initState = {
   todos: [
@@ -15,7 +20,7 @@ const initState = {
 // eslint-disable-next-line default-param-last
 const mainReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'ADD_TODO': {
+    case ADD_TODO: {
       const newTodo = {
         id: newId(),
         title: action.payload.title,
@@ -26,12 +31,12 @@ const mainReducer = (state = initState, action) => {
         todos: [...state.todos, newTodo],
       };
     }
-    case 'DELETE_TODO':
+    case DELETE_TODO:
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload.id),
       };
-    case 'UPDATE_TODO':
+    case UPDATE_TODO:
       return {
         ...state,
         todos: state.todos.map((todo) => ({
