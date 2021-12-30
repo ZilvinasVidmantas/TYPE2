@@ -13,6 +13,7 @@ const TodoAppPageAddTodoGroup = () => {
         title: todoTitle,
       },
     });
+    setTodoTitle('');
   };
 
   return (
