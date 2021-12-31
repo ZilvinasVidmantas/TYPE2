@@ -19,10 +19,10 @@ const Navbar = () => (
     <Container maxWidth="xl">
       <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex' }}>
-          {leftRoutes.map((props) => <ButtonLink {...props} />)}
+          {leftRoutes.map((props) => <ButtonLink key={props.link} {...props} />)}
         </Box>
         <Box sx={{ display: 'flex' }}>
-          {rightRoutes.map((props) => <ButtonLink {...props} />)}
+          {rightRoutes.map((props) => <ButtonLink key={props.link} {...props} />)}
         </Box>
       </Box>
     </Container>
