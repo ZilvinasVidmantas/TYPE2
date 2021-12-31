@@ -13,7 +13,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
 const NavbarLinkButton = ({ title, link }) => (
   <Button
     key={title}
-    sx={{ my: 2, color: 'white', display: 'block' }}
+    sx={{ color: 'white', display: 'block' }}
   >
     <StyledNavLink to={link}>{title}</StyledNavLink>
   </Button>

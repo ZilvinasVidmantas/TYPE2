@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  AppBar, Container, Box,
+  AppBar, Container, Box, styled,
 } from '@mui/material';
 import ButtonLink from './navbar-link-button';
 
@@ -14,10 +14,17 @@ const rightRoutes = [
   { title: 'Register', link: '/register' },
 ];
 
+const StyledContainer = styled(Container)(({ theme }) => ({
+  height: theme.mixins.navbar.height,
+}));
+
 const Navbar = () => (
   <AppBar position="static">
-    <Container maxWidth="xl">
-      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+    <StyledContainer maxWidth="xl">
+      <Box sx={{
+        display: 'flex', flexDirection: 'row', justifyContent: 'space-between', height: '100%',
+      }}
+      >
         <Box sx={{ display: 'flex' }}>
           {leftRoutes.map((props) => <ButtonLink key={props.link} {...props} />)}
         </Box>
@@ -25,7 +32,7 @@ const Navbar = () => (
           {rightRoutes.map((props) => <ButtonLink key={props.link} {...props} />)}
         </Box>
       </Box>
-    </Container>
+    </StyledContainer>
   </AppBar>
 );
 
