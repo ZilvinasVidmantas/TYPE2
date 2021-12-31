@@ -7,7 +7,7 @@ import {
 } from './actions-types';
 
 const initState = {
-  todos: [
+  items: [
     { id: '1', title: 'Feel happy', done: false },
     { id: '2', title: 'Lick elbow', done: false },
     { id: '3', title: 'Kick cloud', done: true },
@@ -18,25 +18,24 @@ const initState = {
 
 // eslint-disable-next-line default-param-last
 const reducer = (state = initState, action) => {
-  console.log(state);
   switch (action.type) {
     case ADD_TODO:
-      return produce(state, ({ todos }) => {
+      return produce(state, ({ items }) => {
         const newTodo = {
           id: newId(),
           title: action.payload.title,
           done: false,
         };
-        todos.push(newTodo);
+        items.push(newTodo);
       });
     case DELETE_TODO:
-      return produce(state, ({ todos }) => {
-        const itemToDeleteIndex = todos.findIndex(({ id }) => id === action.payload.id);
-        todos.splice(itemToDeleteIndex, 1);
+      return produce(state, ({ items }) => {
+        const itemToDeleteIndex = items.findIndex(({ id }) => id === action.payload.id);
+        items.splice(itemToDeleteIndex, 1);
       });
     case UPDATE_TODO:
-      return produce(state, ({ todos }) => {
-        const itemToUpdate = todos.find(({ id }) => id === action.payload.id);
+      return produce(state, ({ items }) => {
+        const itemToUpdate = items.find(({ id }) => id === action.payload.id);
         itemToUpdate.done = !itemToUpdate.done;
       });
     default:
