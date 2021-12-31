@@ -4,14 +4,12 @@ import {
   Grid,
   Box,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
-import FormContainer from '../components/containers/form-container';
-import FormButton from '../components/buttons/form-button';
+import AuthFormContainer from '../components/containers/auth-form-container';
 
 const title = ['Prisijungti'];
 
-const SignIn = () => (
-  <FormContainer title={title}>
+const LoginPage = () => (
+  <AuthFormContainer title={title} linkTo="/login" linkTitle="Neturite paskyros? Registruokitės">
     <Box component="form" noValidate>
       <Grid container spacing={2}>
         <Grid item xs={12}>
@@ -39,11 +37,7 @@ const SignIn = () => (
           />
         </Grid>
       </Grid>
-      <FormButton>{title}</FormButton>
-      <Link to="/sign-up">
-        Neturite paskyros? Registruokitės
-      </Link>
     </Box>
-  </FormContainer>
+  </AuthFormContainer>
 );
-export default SignIn;
+export default LoginPage;

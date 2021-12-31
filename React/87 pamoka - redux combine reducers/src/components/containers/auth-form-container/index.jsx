@@ -6,8 +6,12 @@ import {
   Typography,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Link } from 'react-router-dom';
+import Button from './auth-form-container-button';
 
-const formContainer = ({ children, title }) => (
+const AuthFormContainer = ({
+  children, title, linkTo, linkTitle,
+}) => (
   <Container
     maxWidth="xs"
     component="main"
@@ -29,8 +33,12 @@ const formContainer = ({ children, title }) => (
         </Typography>
       </Box>
       {children}
+      <Button>{title}</Button>
+      <Link to={linkTo}>
+        {linkTitle}
+      </Link>
     </Box>
   </Container>
 );
 
-export default formContainer;
+export default AuthFormContainer;
