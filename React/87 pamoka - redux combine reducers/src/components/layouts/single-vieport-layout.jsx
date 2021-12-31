@@ -9,7 +9,7 @@ const PageContainer = styled(Box)(({ theme }) => ({
 }));
 
 const SingleVieportLayout = () => (
-  <PageContainer sx={{ bgcolor: 'red' }}>
+  <PageContainer>
     <Outlet />
   </PageContainer>
 );

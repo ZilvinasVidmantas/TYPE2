@@ -5,8 +5,8 @@ import {
   Box,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import FormContainer from '../components/containers/form-container';
-import FormButton from '../components/buttons/form-button';
+import FormContainer from '../../components/containers/form-container';
+import FormButton from '../../components/buttons/form-button';
 
 const title = ['Prisijungti'];
 
