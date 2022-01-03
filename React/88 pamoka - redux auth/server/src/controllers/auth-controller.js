@@ -2,7 +2,7 @@ import fs from 'fs';
 const { users } = JSON.parse(fs.readFileSync('db.json', 'utf-8'));
 
 const findUserByEmailAndPassword = (email, password) => {
-  const user = user.find(x => x.email === email);
+  const user = users.find(x => x.email === email);
   if(user){
     if(user.password === password){
       return user;
@@ -15,7 +15,7 @@ export const login = (req, res) => {
   const { email, password } = req.body;
   const user = findUserByEmailAndPassword(email, password);
   /*
-    Patikrinkti kintamajį user, jei user'is rastas, siųsti user'io duomenis, priešųingu atveju, siųsti nesėkmingo prisijungimo duomenis
+    Patikrinkti kintamajį user, jei user'is rastas, siųsti user'io duomenis, priešingu atveju, siųsti nesėkmingo prisijungimo duomenis
   */
   if (true) {
     // sėkimgas prisijungimas
