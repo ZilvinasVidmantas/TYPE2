@@ -8,7 +8,8 @@ const findUserByEmailAndPassword = (email, password) => {
   const user = database.users.find(x => x.email === email);
   if (user) {
     if (user.password === password) {
-      return user;
+      const { password, ...userWithoutPassword } = user;
+      return userWithoutPassword;
     }
   }
   return null;
@@ -46,9 +47,7 @@ export const login = (req, res) => {
       status: 200,
       message: 'Pavyko prisijungti',
       token,
-      subscribed: user.subscribed,
-      email: user.email,
-      role: user.role
+      user: user
     });
   } else {
     res.status(400).json({
