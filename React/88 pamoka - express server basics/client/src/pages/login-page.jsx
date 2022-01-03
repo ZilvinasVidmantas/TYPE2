@@ -5,6 +5,8 @@ import {
   Box,
 } from '@mui/material';
 import AuthFormContainer from '../components/containers/auth-form-container';
+// eslint-disable-next-line no-unused-vars
+import APIService from '../services/api-service';
 
 const title = ['Prisijungti'];
 

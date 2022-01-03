@@ -1,3 +1,38 @@
+import axios from 'axios';
+
+const anonymRequester = axios.create({
+  baseURL: 'http://localhost:5000',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+export const login = async () => {
+  try {
+    const { data } = await anonymRequester.post('/auth/login', {
+      email: 'user@gmail.com',
+      password: 'Vilnis123',
+    });
+    console.log(data);
+  } catch (error) {
+    console.log(error.response.data.message);
+  }
+};
+
+// Testai - start
+login();
+
+// Testai - end
+
+export const register = async () => {
+
+};
+
+export default {
+  login,
+  register,
+};
+
 /*
 Naudojant 'axios' biblioteką, sukurti asinchronines funkcijas:
   * įsirašyti axios biblioteką, ir sukurti 'instance'ą užklausoms daryti
