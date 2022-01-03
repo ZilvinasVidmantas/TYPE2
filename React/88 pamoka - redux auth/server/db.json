@@ -5,14 +5,16 @@
       "name": "Adminas",
       "surname": "Gediminas",
       "email": "admin@gmail.com",
-      "password": "Vilnius123"
+      "password": "Vilnius123",
+      "role": "admin"
     },
     {
       "id": "2",
       "name": "Jūzeris",
       "surname": "Lavonas",
       "email": "user@gmail.com",
-      "password": "Vilnius123"
+      "password": "Vilnius123",
+      "role": "user"
     }
   ]
 }
