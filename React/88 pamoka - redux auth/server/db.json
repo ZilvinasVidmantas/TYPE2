@@ -3,6 +3,7 @@
     {
       "id": "1",
       "name": "Adminas",
+      "subscribed": false,
       "surname": "Gediminas",
       "email": "admin@gmail.com",
       "password": "Vilnius123",
@@ -11,6 +12,7 @@
     {
       "id": "2",
       "name": "Jūzeris",
+      "subscribed": true,
       "surname": "Lavonas",
       "email": "user@gmail.com",
       "password": "Vilnius123",

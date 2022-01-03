@@ -22,6 +22,7 @@ export const login = (req, res) => {
       status: 200,
       message: 'Pavyko prisijungti',
       token,
+      subscribed: user.subscribed,
       email: user.email,
       role: user.role
     });
