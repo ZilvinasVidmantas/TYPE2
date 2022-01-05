@@ -1,0 +1,31 @@
+1 - exportuoti 1 iš daugelio
+  OLD - 1
+    const savybė1 = 7;
+    const savybė2 = 7;
+    const savybė3 = 7;
+    exports.savybė1 = savybė1; 
+    exports.savybė2 = savybė2; 
+    exports.savybė3 = savybė3; 
+
+  OLD - 2
+    const savybė1 = 7;
+    const savybė2 = 7;
+    const savybė3 = 7;
+
+    module.exports = {
+      savybė1,
+      savybė2,
+      savybė3,
+    }
+  NEW - 1
+    export const savybė1 = 7;
+    export const savybė2 = 7;
+    export const savybė3 = 7;
+
+3 Pagindiniai exportuojami duomenys
+
+  OLD - 1
+    exports.default = 21;
+
+  NEW - 1
+    export default 21;
