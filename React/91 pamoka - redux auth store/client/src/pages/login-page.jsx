@@ -4,12 +4,15 @@ import {
   Grid,
   Alert,
 } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { createLoginSuccessAction } from '../store/auth/action-creators';
 import AuthForm from '../components/auth-form';
 import { login } from '../services/api-service';
 
 const title = ['Prisijungti'];
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -21,11 +24,12 @@ const LoginPage = () => {
     setError(null);
     (async () => {
       try {
-        const userData = await login({
+        const { user, token } = await login({
           email,
           password,
         });
-        console.log(userData);
+        const loginSuccessAction = createLoginSuccessAction({ user, token });
+        dispatch(loginSuccessAction);
       } catch (err) {
         setError(err.message);
       } finally {
