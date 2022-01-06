@@ -5,28 +5,25 @@ import {
 import { useSelector } from 'react-redux';
 import { authSelector } from '../../../store/auth/selectors';
 import ButtonLink from './navbar-link-button';
+import RoutingService from '../../../routing';
+import {
+  HomeRoute,
+  TodoAppRoute,
+  LoginRoute,
+  RegisterRoute,
+  LogoutRoute,
+} from '../../../routing/routing-routes';
 
 const leftRoutes = [
-  { title: 'Home', link: '/', auth: 'public' },
-  { title: 'Todo App', link: '/todo-app', auth: 'public' },
+  HomeRoute,
+  TodoAppRoute,
 ];
 
 const rightRoutes = [
-  { title: 'Login', link: '/login', auth: 'visitor' },
-  { title: 'Register', link: '/register', auth: 'visitor' },
-  { title: 'Logout', link: '/logout', auth: 'authenticated' },
+  LoginRoute,
+  RegisterRoute,
+  LogoutRoute,
 ];
-
-const handleRouteAuth = (route, authState) => {
-  switch (route.auth) {
-    case 'none': return true;
-    case 'visitor': return !authState.loggedIn;
-    case 'authenticated': return authState.loggedIn;
-    case 'user': return authState.loggedIn && authState.role === 'user';
-    case 'admin': return authState.loggedIn && authState.role === 'admin';
-    default: return false;
-  }
-};
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   height: theme.mixins.navbar.height,
@@ -35,8 +32,10 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 const Navbar = () => {
   const auth = useSelector(authSelector);
 
-  const authLeftRoutes = leftRoutes.filter((route) => handleRouteAuth(route, auth));
-  const authRightRoutes = rightRoutes.filter((route) => handleRouteAuth(route, auth));
+  const authLeftRoutes = leftRoutes
+    .filter((route) => RoutingService.authenticateRoute(route, auth));
+  const authRightRoutes = rightRoutes
+    .filter((route) => RoutingService.authenticateRoute(route, auth));
 
   return (
     <AppBar position="static">

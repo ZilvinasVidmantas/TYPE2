@@ -2,13 +2,13 @@ import {
   PUBLIC,
   VISITOR,
   AUTHENTICATED,
-} from './routing-service-types';
+} from './routing-types';
 
 export const HomeRoute = { title: 'Home', link: '/', auth: PUBLIC };
 export const TodoAppRoute = { title: 'Todo App', link: '/todo-app', auth: PUBLIC };
 export const LoginRoute = { title: 'Login', link: '/login', auth: VISITOR };
 export const RegisterRoute = { title: 'Register', link: '/register', auth: VISITOR };
-export const LogoutRoute = { title: 'Register', link: '/logout', auth: AUTHENTICATED };
+export const LogoutRoute = { title: 'Logout', link: '/logout', auth: AUTHENTICATED };
 
 export const publicRoutes = {
   Home: HomeRoute,

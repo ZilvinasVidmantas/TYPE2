@@ -4,7 +4,7 @@ import {
   AUTHENTICATED,
   USER,
   ADMIN,
-} from './routing-service-types';
+} from './routing-types';
 
 const authenticateRoute = (route, authState) => {
   switch (route.auth) {
