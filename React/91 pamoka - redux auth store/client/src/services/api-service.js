@@ -7,22 +7,14 @@ const anonymRequester = axios.create({
   },
 });
 
-export const login = async () => {
+export const login = async ({ email, password }) => {
   try {
-    const { data } = await anonymRequester.post('/auth/login', {
-      email: 'user@gmail.com',
-      password: 'Vilnis123',
-    });
-    console.log(data);
+    const { data } = await anonymRequester.post('/auth/login', { email, password });
+    return data;
   } catch (error) {
-    console.log(error.response.data.message);
+    throw new Error(error.response.data.message);
   }
 };
-
-// Testai - start
-login();
-
-// Testai - end
 
 export const register = async () => {
 

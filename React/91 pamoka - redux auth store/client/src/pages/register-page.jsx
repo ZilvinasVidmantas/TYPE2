@@ -6,12 +6,12 @@ import {
   Grid,
   Box,
 } from '@mui/material';
-import AuthFormContainer from '../components/containers/auth-form-container';
+import AuthForm from '../components/auth-form';
 
 const title = ['Registruotis'];
 
 const RegisterPage = () => (
-  <AuthFormContainer title={title} linkTo="/register" linkTitle="Jau turite paskyrą? Prisijunkite">
+  <AuthForm title={title} linkTo="/register" linkTitle="Jau turite paskyrą? Prisijunkite">
     <Box component="form" noValidate>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
@@ -68,6 +68,6 @@ const RegisterPage = () => (
         </Grid>
       </Grid>
     </Box>
-  </AuthFormContainer>
+  </AuthForm>
 );
 export default RegisterPage;
