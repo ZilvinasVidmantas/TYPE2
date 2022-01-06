@@ -7,8 +7,8 @@ import { authSelector } from '../../../store/auth/selectors';
 import ButtonLink from './navbar-link-button';
 
 const leftRoutes = [
-  { title: 'Home', link: '/', auth: 'none' },
-  { title: 'Todo App', link: '/todo-app', auth: 'none' },
+  { title: 'Home', link: '/', auth: 'public' },
+  { title: 'Todo App', link: '/todo-app', auth: 'public' },
 ];
 
 const rightRoutes = [
