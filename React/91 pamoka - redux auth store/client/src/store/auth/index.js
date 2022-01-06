@@ -2,6 +2,7 @@ import { LOGIN } from './action-types';
 
 const initState = {
   loggedIn: false,
+  user: null,
 };
 
 // eslint-disable-next-line default-param-last

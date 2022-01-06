@@ -1,12 +1,12 @@
 import { combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import todos from './todos';
-import user from './user';
+import auth from './auth';
 
 // eslint-disable-next-line default-param-last
 const mainReducer = combineReducers({
   todos,
-  user,
+  auth,
 });
 
 const store = createStore(
