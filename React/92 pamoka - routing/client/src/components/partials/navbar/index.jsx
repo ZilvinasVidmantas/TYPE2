@@ -12,7 +12,7 @@ import {
   LoginRoute,
   RegisterRoute,
   LogoutRoute,
-} from '../../../routing/routing-routes';
+} from '../../../routing/routes';
 
 const leftRoutes = [
   HomeRoute,
