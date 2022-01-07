@@ -2,7 +2,7 @@ import {
   PUBLIC,
   VISITOR,
   AUTHENTICATED,
-} from './routing-types';
+} from './types';
 
 export const HomeRoute = { title: 'Home', link: '/', auth: PUBLIC };
 export const TodoAppRoute = { title: 'Todo App', link: '/todo-app', auth: PUBLIC };
