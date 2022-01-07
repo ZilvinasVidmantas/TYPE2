@@ -6,17 +6,19 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
   color: theme.palette.common.white,
   textDecoration: 'none',
   '&.active': {
-    borderBottom: `1px solid ${theme.palette.common.white}`,
+    boxShadow: `inset 0 -2px 0 0 ${theme.palette.common.white}`,
   },
 }));
 
 const NavbarLinkButton = ({ title, link }) => (
-  <Button
-    key={title}
-    sx={{ color: 'white', display: 'block' }}
-  >
-    <StyledNavLink to={link}>{title}</StyledNavLink>
-  </Button>
+  <StyledNavLink to={link}>
+    <Button
+      key={title}
+      sx={{ color: 'white', display: 'block', height: '100%' }}
+    >
+      {title}
+    </Button>
+  </StyledNavLink>
 );
 
 export default NavbarLinkButton;
