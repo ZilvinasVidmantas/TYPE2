@@ -2,8 +2,9 @@ import React from 'react';
 import {
   AppBar, Container, Box, styled,
 } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { authSelector } from '../../../store/auth/selectors';
+import { logoutAction } from '../../../store/auth/action-creators';
 import ButtonLink from './navbar-link-button';
 import RoutingService from '../../../routing';
 import {
@@ -11,7 +12,6 @@ import {
   TodoAppRoute,
   LoginRoute,
   RegisterRoute,
-  LogoutRoute,
 } from '../../../routing/routes';
 
 const leftRoutes = [
@@ -22,7 +22,6 @@ const leftRoutes = [
 const rightRoutes = [
   LoginRoute,
   RegisterRoute,
-  LogoutRoute,
 ];
 
 const StyledContainer = styled(Container)(({ theme }) => ({
@@ -31,6 +30,11 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 
 const Navbar = () => {
   const auth = useSelector(authSelector);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logoutAction);
+  };
 
   const authLeftRoutes = leftRoutes
     .filter((route) => RoutingService.authenticateRoute(route, auth));
@@ -50,6 +54,11 @@ const Navbar = () => {
           <Box sx={{ display: 'flex' }}>
             {authRightRoutes.map((props) => <ButtonLink key={props.link} {...props} />)}
           </Box>
+          {
+            auth.loggedIn
+              ? <ButtonLink onClick={handleLogout} title="Logout" />
+              : null
+          }
         </Box>
       </StyledContainer>
     </AppBar>

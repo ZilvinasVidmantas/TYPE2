@@ -1,7 +1,10 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
-import { LOGIN_SUCCESS } from './action-types';
 import SessionService from '../../services/session-service';
+import {
+  LOGIN_SUCCESS,
+  LOGOUT,
+} from './action-types';
 
 const initState = SessionService.get('auth') ?? {
   loggedIn: false,
@@ -15,12 +18,21 @@ const reducer = (oldState = initState, action) => {
     case LOGIN_SUCCESS: {
       const newState = produce(oldState, (state) => {
         state.loggedIn = true;
-        state.user = action.payload.user;
         state.token = action.payload.token;
+        state.user = action.payload.user;
       });
       SessionService.set('auth', newState);
       return newState;
     }
+    case LOGOUT: {
+      SessionService.clear('auth');
+      return produce(oldState, (state) => {
+        state.loggedIn = false;
+        state.token = null;
+        state.user = null;
+      });
+    }
+
     default:
       return oldState;
   }

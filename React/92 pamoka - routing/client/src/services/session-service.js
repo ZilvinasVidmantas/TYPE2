@@ -4,6 +4,12 @@ const set = (name, value) => {
 
 const get = (name) => JSON.parse(window.sessionStorage.getItem(name));
 
-const SessionService = { set, get };
+const clear = (name) => window.sessionStorage.removeItem(name);
+
+const SessionService = {
+  set,
+  get,
+  clear,
+};
 
 export default SessionService;

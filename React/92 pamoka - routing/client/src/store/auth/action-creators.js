@@ -1,4 +1,7 @@
-import { LOGIN_SUCCESS } from './action-types';
+import {
+  LOGIN_SUCCESS,
+  LOGOUT,
+} from './action-types';
 
 export const createLoginSuccessAction = ({ user, token }) => ({
   type: LOGIN_SUCCESS,
@@ -8,6 +11,11 @@ export const createLoginSuccessAction = ({ user, token }) => ({
   },
 });
 
+export const logoutAction = {
+  type: LOGOUT,
+};
+
 export default {
   createLoginSuccessAction,
+  logoutAction,
 };

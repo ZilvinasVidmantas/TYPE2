@@ -10,15 +10,29 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
   },
 }));
 
-const NavbarLinkButton = ({ title, link }) => (
-  <StyledNavLink to={link}>
+const NavbarLinkButton = ({ title, link, onClick }) => {
+  if (link) {
+    return (
+      <StyledNavLink to={link}>
+        <Button
+          key={title}
+          sx={{ color: 'white', display: 'block', height: '100%' }}
+        >
+          {title}
+        </Button>
+      </StyledNavLink>
+    );
+  }
+
+  return (
     <Button
       key={title}
       sx={{ color: 'white', display: 'block', height: '100%' }}
+      onClick={onClick}
     >
       {title}
     </Button>
-  </StyledNavLink>
-);
+  );
+};
 
 export default NavbarLinkButton;

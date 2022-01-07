@@ -10,10 +10,12 @@ import store from './store';
 import theme from './styles/theme';
 import Navbar from './components/partials/navbar';
 import SingleVieportLayout from './components/layouts/single-vieport-layout';
+
 import TodoAppPage from './pages/todo-app-page';
 import Home from './pages/home-page';
 import LoginPage from './pages/login-page';
 import RegisterPage from './pages/register-page';
+import ErrorPage from './pages/error-page';
 
 const App = () => (
   <ReduxProvider store={store}>
@@ -41,6 +43,7 @@ const App = () => (
                 </RequirePublic>
               )}
             />
+            <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
