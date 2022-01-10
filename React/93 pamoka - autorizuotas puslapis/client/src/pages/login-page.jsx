@@ -32,11 +32,9 @@ const LoginPage = () => {
         dispatch(loginSuccessAction);
       } catch (err) {
         setError(err.message);
-      } finally {
         setLoading(false);
       }
     })();
-    console.log('prisijungiama...');
   };
 
   return (
