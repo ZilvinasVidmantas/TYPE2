@@ -12,6 +12,14 @@ import theme from './styles/theme';
 import Navbar from './components/partials/navbar';
 import SingleVieportLayout from './components/layouts/single-vieport-layout';
 
+import {
+  HomeRoute,
+  TodoAppRoute,
+  LoginRoute,
+  RegisterRoute,
+  ProfileRoute,
+} from './routing/routes';
+
 import TodoAppPage from './pages/todo-app-page';
 import Home from './pages/home-page';
 import LoginPage from './pages/login-page';
@@ -26,11 +34,11 @@ const App = () => (
         <CssBaseline />
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/todo-app" element={<TodoAppPage />} />
+          <Route path={HomeRoute.link} element={<Home />} />
+          <Route path={TodoAppRoute.link} element={<TodoAppPage />} />
           <Route path="/" element={<SingleVieportLayout />}>
             <Route
-              path="/profile"
+              path={ProfileRoute.link}
               element={(
                 <RequireAuth>
                   <ProfilePage />
@@ -38,7 +46,7 @@ const App = () => (
               )}
             />
             <Route
-              path="/login"
+              path={LoginRoute.link}
               element={(
                 <RequirePublic>
                   <LoginPage />
@@ -46,7 +54,7 @@ const App = () => (
               )}
             />
             <Route
-              path="/register"
+              path={RegisterRoute.link}
               element={(
                 <RequirePublic>
                   <RegisterPage />
