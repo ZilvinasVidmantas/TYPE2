@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material';
 
 import RequirePublic from './routing/require-public';
+import RequireAuth from './routing/require-auth';
 
 import store from './store';
 import theme from './styles/theme';
@@ -28,7 +29,14 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/todo-app" element={<TodoAppPage />} />
           <Route path="/" element={<SingleVieportLayout />}>
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route
+              path="/profile"
+              element={(
+                <RequireAuth>
+                  <ProfilePage />
+                </RequireAuth>
+              )}
+            />
             <Route
               path="/login"
               element={(
