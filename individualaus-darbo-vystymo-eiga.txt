@@ -1,0 +1,19 @@
+* Puslapio idėja - sprendžia realią problemą / uždirba pinigus
+  * apimtis, 1-2 puslapiai, su 2-4 sekcijomis
+
+* Puslapių skaičius, struktūra, sekcijos:
+  * Kaip atrodys?
+  * Ką galima paspaust?
+  * Ar bus galima prisijungti?
+    * Ką matys/galės paspausti/naudoti prisijungęs vartotojas?
+    * ką matys/galės paspausti/naudoti administratorius?
+    * ką matys/galės paspausti/naudoti neprisijungęs?
+  * Mobili versija?
+    * Kaip ji atrodys?
+    * Kuom ji skirsis nuo darbalaukio versijos?
+  
+  * Nusibraižyti ant popieriaus/ar su programa apytikslį puslapio vaizdą
+
+* Duomenų bazės schema ir ryšiai tarp esybių
+  * Išsivardinti visas esybes, su strukrūtomos, kurios bus naudojamos puslapyje
+  
