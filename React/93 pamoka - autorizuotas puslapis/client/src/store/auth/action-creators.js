@@ -3,11 +3,12 @@ import {
   LOGOUT,
 } from './action-types';
 
-export const createLoginSuccessAction = ({ user, token }) => ({
+export const createLoginSuccessAction = ({ user, token, redirectTo }) => ({
   type: LOGIN_SUCCESS,
   payload: {
     token,
     user,
+    redirectTo,
   },
 });
 

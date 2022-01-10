@@ -8,7 +8,7 @@ const RequirePublic = ({ children }) => {
   const auth = useSelector(authSelector);
 
   if (auth.loggedIn) {
-    return <Navigate to={HomeRoute.link} />;
+    return <Navigate to={auth.redirectTo ?? HomeRoute.link} />;
   }
 
   return children;

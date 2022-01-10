@@ -4,6 +4,7 @@ import {
   Grid,
   Alert,
 } from '@mui/material';
+import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createLoginSuccessAction } from '../store/auth/action-creators';
 import AuthForm from '../components/auth-form';
@@ -12,6 +13,7 @@ import { login } from '../services/api-service';
 const title = ['Prisijungti'];
 
 const LoginPage = () => {
+  const [urlSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,7 +30,12 @@ const LoginPage = () => {
           email,
           password,
         });
-        const loginSuccessAction = createLoginSuccessAction({ user, token });
+        const redirectTo = urlSearchParams.get('redirectTo');
+        const loginSuccessAction = createLoginSuccessAction({
+          user,
+          token,
+          redirectTo,
+        });
         dispatch(loginSuccessAction);
       } catch (err) {
         setError(err.message);
