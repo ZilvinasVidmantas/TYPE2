@@ -1,12 +1,14 @@
 import {
   PUBLIC,
   VISITOR,
+  AUTHENTICATED,
 } from './types';
 
 export const HomeRoute = { title: 'Home', link: '/', auth: PUBLIC };
 export const TodoAppRoute = { title: 'Todo App', link: '/todo-app', auth: PUBLIC };
 export const LoginRoute = { title: 'Login', link: '/login', auth: VISITOR };
 export const RegisterRoute = { title: 'Register', link: '/register', auth: VISITOR };
+export const ProfileRoute = { title: 'Profile', link: '/profile', auth: AUTHENTICATED };
 
 export const publicRoutes = {
   Home: HomeRoute,
@@ -18,7 +20,9 @@ export const visitorRoutes = {
   Register: RegisterRoute,
 };
 
-export const authenticatedRoutes = {};
+export const authenticatedRoutes = {
+  Profile: ProfileRoute,
+};
 
 export default {
   ...publicRoutes,

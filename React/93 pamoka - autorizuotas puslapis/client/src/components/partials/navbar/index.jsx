@@ -23,7 +23,9 @@ import {
   TodoAppRoute,
   LoginRoute,
   RegisterRoute,
+  ProfileRoute,
 } from '../../../routing/routes';
+import AuthMenuLink from './navbar-auth-menu-link';
 
 const leftRoutes = [
   HomeRoute,
@@ -97,8 +99,10 @@ const Navbar = () => {
                     }}
                   >
                     <MenuItem onClick={handleCloseMenu}>
-                      <PersonIcon sx={{ mr: 2 }} />
-                      <Typography textAlign="center">Profile</Typography>
+                      <AuthMenuLink to={ProfileRoute.link}>
+                        <PersonIcon sx={{ mr: 2 }} />
+                        <Typography textAlign="center">Profile</Typography>
+                      </AuthMenuLink>
                     </MenuItem>
                     <Divider sx={{ my: 0.5 }} />
                     <MenuItem onClick={handleLogout}>

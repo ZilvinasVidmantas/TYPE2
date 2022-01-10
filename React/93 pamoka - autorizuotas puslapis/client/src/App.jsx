@@ -16,6 +16,7 @@ import Home from './pages/home-page';
 import LoginPage from './pages/login-page';
 import RegisterPage from './pages/register-page';
 import ErrorPage from './pages/error-page';
+import ProfilePage from './pages/profile-page';
 
 const App = () => (
   <ReduxProvider store={store}>
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/todo-app" element={<TodoAppPage />} />
           <Route path="/" element={<SingleVieportLayout />}>
+            <Route path="/profile" element={<ProfilePage />} />
             <Route
               path="/login"
               element={(
