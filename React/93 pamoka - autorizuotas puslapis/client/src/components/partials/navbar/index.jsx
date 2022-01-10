@@ -48,7 +48,10 @@ const Navbar = () => {
 
   const handleOpenMenu = () => setMenuOpen(true);
   const handleCloseMenu = () => setMenuOpen(false);
-  const handleLogout = () => dispatch(logoutAction);
+  const handleLogout = () => {
+    handleCloseMenu();
+    dispatch(logoutAction);
+  };
 
   const authLeftRoutes = leftRoutes
     .filter((route) => RoutingService.authenticateRoute(route, auth));
@@ -95,12 +98,12 @@ const Navbar = () => {
                   >
                     <MenuItem onClick={handleCloseMenu}>
                       <PersonIcon sx={{ mr: 2 }} />
-                      <Typography textAlign="center" onClick={handleLogout}>Profile</Typography>
+                      <Typography textAlign="center">Profile</Typography>
                     </MenuItem>
                     <Divider sx={{ my: 0.5 }} />
-                    <MenuItem onClick={handleCloseMenu}>
+                    <MenuItem onClick={handleLogout}>
                       <PowerSettingsNewIcon sx={{ mr: 2 }} />
-                      <Typography textAlign="center" onClick={handleLogout}>Logout</Typography>
+                      <Typography textAlign="center">Logout</Typography>
                     </MenuItem>
                   </Menu>
                 </Box>
