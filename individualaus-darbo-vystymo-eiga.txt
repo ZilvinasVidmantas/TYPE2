@@ -1,6 +1,8 @@
 * Puslapio idėja - sprendžia realią problemą / uždirba pinigus
   * apimtis, 1-2 puslapiai, su 2-4 sekcijomis
 
+------------------------------------------------------------------------------------------------------------
+
 * Puslapių skaičius, struktūra, sekcijos:
   * Kaip atrodys?
   * Ką galima paspaust?
@@ -14,6 +16,77 @@
   
   * Nusibraižyti ant popieriaus/ar su programa apytikslį puslapio vaizdą
 
+------------------------------------------------------------------------------------------------------------
+
 * Duomenų bazės schema ir ryšiai tarp esybių
   * Išsivardinti visas esybes, su strukrūtomos, kurios bus naudojamos puslapyje
+  * Sudaryti duomenų bazės schemą ir ryšius tarp jų
+
+------------------------------------------------------------------------------------------------------------
   
+* Sukurti React aplikaciją naudojant react-create-app biblioteką
+  * npm i -g create-react-app
+  * Naudojant šią biblioteką gali sukurti pradinį savo aplikacijos šabloną.
+    Standartiškai (be parametrų) sukuriama vanilaJS aplikacija be jokių papildomų bibliotekų.
+    Visgi galima naudoti --template nustatymus, jeigu iškart norite sukurti aplikaciją kuri naudoja papildomas bibliotekas.
+    Šablonų yra daug ir atsiranda vis naujų. Po šių kursų rekomenduojama jų anršyti čia, kad nereikėtų visko įrašinėti patiems:
+      https://www.npmjs.com/search?q=cra-template-*
+    pvz.:
+      $create-react-app app-pavadinimas --template typescript - iškart sukuria aplikaciją naudojant typescript
+      $create-react-app app-pavadinimas --template redux-typescript - iškart sukuria aplikaciją naudojant typescript IR reduk toolkit
+  * Visgi mokymosi tikslais STIPRIAI NEREKOMENDUOJAMA kurti aplikacijos su šablonais, nes praleidžiate progą įsigilinti kaip viskas veikia
+    Rokomenduojama visas bibliotekas parsisiųsti ir sukonfiguruoti savarankiškai, kad suprastumėte kas ką daro ir kas už ką atsakingas:
+    $create-reat-app app-pavadinimas
+  * Nauja React aplikacija yra sukuriama atskirame aplanke, todėl reikia komandinės eilutės vietą pakeisti į sukurto aplanko vietą
+    Tai galite padaryti pakeitę komandinės eilutės vietą:
+      $cd app-pavadinimas
+    arba atsidarė sukurtą app-pavadinimas/ aplanką su VSCode. Taip komandinės eilutės pagrindinis kelias bus projekto kelias.
+
+------------------------------------------------------------------------------------------------------------
+
+* Bibliotekų parsiuntimas ir pasiruošimas darbui
+  * Bibliotekos instaliuojamos tokiu būdu:
+    Produkciam kodui(react-router-dom, redux, immer, ...):
+      $npm i bibliotekos-pavadinimas1 bibliotekos-pavadinimas2 bibliotekos-pavadinimas3
+    Vystymui(eslint, typescript, @types/react-redux, ...):
+      $npm i -D bibliotekos-pavadinimas1 bibliotekos-pavadinimas2 bibliotekos-pavadinimas3
+  * Baigiamojo darbo FE aplikacijos daliai jums bus reikalingos tokios PAGRINDINĖS bibliotekos:
+    * eslint - Kodo kokybė ir sistemingumą užtikrinanti biblioteka
+      * "eslint-config-airbnb" - standartizuotas Airbnb kompanijos taisyklių rinkinys
+      * "eslint-plugin-import" - papildomų nustatymų konfigūravimui 
+      * "eslint-plugin-jsx-a11y" - jsx nustatymų konfigūravimui 
+      * "eslint-plugin-react" - react nustatymų konfigūravimui 
+      * "eslint-plugin-react-hooks" - react hooks konfigūravimui
+      * ir t.t.
+
+    * Material UI - Komponentų biblioteka leidžianti greičiau kurti turinį ir jį stilizuoti
+      * "@mui/material" - Pagrindinė komponenetų biblioteka
+      * "@emotion/react" - stiliaus objektų kūrimui naudojant JSX logiką reikalinga biblioteka
+      * "@emotion/styled" - styled ir sx atributo logikai reikalinga biblioteka
+      * "@mui/icons-material" - Material UI ikonos
+
+    * "axios" - pagalbinė biblioteka supaprastinti http/https užklausomų aprašymui
+
+    * Redux - Globalios aplikacijos būsenos valdymui:
+      * "react-redux" - React.js ir Redux bibliotekos apjungimui
+      * "redux-devtools-extension" - vystymo metu naudinga biblioteka, kad matyti pakitimus
+      Naudojant primityvią versiją:
+        * "redux" - standartinės Redux funkcijos
+        * "immer" - paprastesniam globalios būsenos(state) keitimui naudojant reducer'ius
+      Naudojant naują "toolkit" versiją
+        * "@reduxjs/toolkit"
+
+    * "react-router-dom" - Kliento pusės navigacijai 
+    
+    * "typescript" - biblioteka typescript sintaksės sugriežtinimui
+      * !!! naudojant TypeScript, reikia papildomai parsiųsti visų kitų bibliotekų tipus, pvz.:
+        * "@types/react"
+        * "@types/react-redux"
+        * ir t.t.
+
+    * Galite laisvai naudoti bet kokias bibliotekas, kurios jums palengvina darbą ar vystymo procesus, pvz.:
+      * "uuid" - id generavimas
+      * "react-scroll" - slinkimui į tam tikrą sekciją
+      * ir t.t.
+
+------------------------------------------------------------------------------------------------------------

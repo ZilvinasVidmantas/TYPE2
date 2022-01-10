@@ -64,7 +64,7 @@ CodeAcademy TYPE2 grupės repozitorija
 * vanilla JS FE CRUD aplication with localStorage and initial data fetch
 * test
 
-## React pagrindai [160]
+## React pagrindai [372]
 * class components
 * lifecycle methods
 * props and state
@@ -72,36 +72,46 @@ CodeAcademy TYPE2 grupės repozitorija
 * routing
 * data based rendering
 * lifting state methodology
-* context
-* redux
+* React context
+* Redux
 * functional components
 * hooks
-* React + Redux FE CRUD application, with composite entities, using with API
-* test
-
-## Darbinės aplikos kūrimas naudojant Node.js [40]
-* node js moduliai - failai
+* JSON server
+* Axios and ApiService
+* node.js modules
 * npm, package.json and library management
-* webpack configutation
 * eslint configuration
+* Formik validation
+* SessionStorage
+* FE Authentication and Authorization
+* Team project: React + Redux FE CRUD application, with composite entities, using API
 
-## Node.js + Express framework aplikacijos serverio pusei kurti [40]
+## Node.js Express framework [40]
 * express framework basics
-* request handling
 * serving files
-* API
-
-## MongoDB standartas ir fullstack aplikacijos kūrimas [80]
+* request handling
+* middlewares
+* routing
 * MVC pattern
-* REST API with MongoDB schema validation
-* Authentication and Authorization
-* MongoDB + Express + Node.js + React fullstack aplication with authentication
+  * Model
+  * View / ViewData
+  * Controller
+* BE Authentication and Authorization
 
-## SQL standartas ir fullstack aplikacijos kūrimas [40]
+## MongoDB and DB Modeling [40]
+* connection to Database service using cloud
+* DB scheme and models
+* DB valiation
+* DB relation implementation
+
+## TypeScript - OOP pagrindai ir sugriežtinta sintaksė [120]
+* Language interpre
+* Webpack and transipilng modules
+
+## SQL standartas ir fullstack aplikacijos kūrimas [18]
 * REST API with MySQL table validation
 * MySQL + Express + Node.js + React fullstack aplication with authentication
 
-## TypeScript - OOP pagrindai ir sugriežtinta sintaksė [80]
 
 ## TypeScript fullstack MERN aplikacijos kūrimas [200]
 
