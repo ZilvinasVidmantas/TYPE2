@@ -14,7 +14,7 @@
       "name": "Jūzeris",
       "subscribed": true,
       "surname": "Lavonas",
-      "email": "user@gmail.com",
+      "email": "user1@gmail.com",
       "password": "Vilnius123",
       "role": "user"
     },
@@ -23,7 +23,7 @@
       "name": "Serbentautas",
       "subscribed": false,
       "surname": "Bordiūras",
-      "email": "user1@gmail.com",
+      "email": "user2@gmail.com",
       "password": "Vilnius123",
       "role": "user"
     }
