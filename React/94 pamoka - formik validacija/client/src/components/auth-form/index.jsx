@@ -11,7 +11,13 @@ import { Link } from 'react-router-dom';
 import Button from './auth-form-button';
 
 const AuthForm = ({
-  children, title, linkTo, linkTitle, loading, onSubmit,
+  children,
+  title,
+  linkTo,
+  linkTitle,
+  loading,
+  onSubmit,
+  isValid,
 }) => (
   <Container
     maxWidth="xs"
@@ -34,8 +40,12 @@ const AuthForm = ({
         </Typography>
       </Box>
       {children}
-      <Button>
-        {loading ? <CircularProgress color="inherit" /> : title}
+      <Button disabled={!isValid}>
+        {
+        loading
+          ? <CircularProgress color="inherit" />
+          : title
+        }
       </Button>
       <Link to={linkTo}>
         {linkTitle}

@@ -53,7 +53,13 @@ const RegisterPage = () => {
     errors,
     touched,
     values,
-  } = useFormik({ initialValues, validationSchema, onSubmit });
+    isValid,
+  } = useFormik({
+    validateOnMount: true,
+    initialValues,
+    validationSchema,
+    onSubmit,
+  });
 
   return (
     <AuthForm
@@ -61,6 +67,7 @@ const RegisterPage = () => {
       linkTo="/register"
       linkTitle="Jau turite paskyrą? Prisijunkite"
       onSubmit={handleSubmit}
+      isValid={isValid}
     >
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
