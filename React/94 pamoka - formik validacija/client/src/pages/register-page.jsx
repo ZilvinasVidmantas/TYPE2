@@ -33,17 +33,30 @@ const validationSchema = yup.object({
     .required('Is required'),
 });
 
+const fakeRegister = () => new Promise((success) => {
+  setTimeout(() => {
+    success({
+      token: 'sdgfisghfsd',
+      user: {
+        name: 'Banys',
+        role: 'Gangster',
+      },
+    });
+  }, 2000);
+});
+
 const initialValues = {
-  name: '',
-  surname: '',
-  email: '',
-  password: '',
+  name: 'Žilvinas',
+  surname: 'Vidmantas',
+  email: 'aaa@gt.lt',
+  password: 'Labas123',
   subscribed: true,
 };
 
 const RegisterPage = () => {
-  const onSubmit = (...params) => {
-    console.log('Formik.handleSubmit', params);
+  const onSubmit = async () => {
+    const result = await fakeRegister();
+    console.log(result);
   };
 
   const {
@@ -54,6 +67,7 @@ const RegisterPage = () => {
     touched,
     values,
     isValid,
+    isSubmitting,
   } = useFormik({
     validateOnMount: true,
     initialValues,
@@ -68,6 +82,7 @@ const RegisterPage = () => {
       linkTitle="Jau turite paskyrą? Prisijunkite"
       onSubmit={handleSubmit}
       isValid={isValid}
+      loading={isSubmitting}
     >
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
@@ -76,8 +91,10 @@ const RegisterPage = () => {
             label="Vardas"
             onChange={handleChange}
             onBlur={handleBlur}
+            value={values.name}
             error={touched.name && Boolean(errors.name)}
             helperText={touched.name && errors.name}
+            disabled={isSubmitting}
             fullWidth
             variant="outlined"
           />
@@ -88,8 +105,10 @@ const RegisterPage = () => {
             label="Pavardė"
             onChange={handleChange}
             onBlur={handleBlur}
+            value={values.surname}
             error={touched.surname && Boolean(errors.surname)}
             helperText={touched.surname && errors.surname}
+            disabled={isSubmitting}
             fullWidth
             variant="outlined"
           />
@@ -100,8 +119,10 @@ const RegisterPage = () => {
             label="El. paštas"
             onChange={handleChange}
             onBlur={handleBlur}
+            value={values.email}
             error={touched.email && Boolean(errors.email)}
             helperText={touched.email && errors.email}
+            disabled={isSubmitting}
             fullWidth
             variant="outlined"
           />
@@ -112,8 +133,10 @@ const RegisterPage = () => {
             label="Slaptažodis"
             onChange={handleChange}
             onBlur={handleBlur}
+            value={values.password}
             error={touched.password && Boolean(errors.password)}
             helperText={touched.password && errors.password}
+            disabled={isSubmitting}
             fullWidth
             variant="outlined"
             type="password"
@@ -123,9 +146,10 @@ const RegisterPage = () => {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={values.subscribed}
                 name="subscribed"
                 onChange={handleChange}
+                checked={values.subscribed}
+                disabled={isSubmitting}
                 color="primary"
               />
                 )}
