@@ -8,6 +8,13 @@ import {
 import { Formik } from 'formik';
 import AuthForm from '../components/auth-form';
 
+/*
+  Įgalinkite validavimą visiems <input> įvesties laukams, jog jie būtų privalomi
+  Jeigu laukai nėra privalomi, turi būti rodomos klaidos po įvesties laukais
+  (taip pat kaip 'name' įvesties lauke)
+
+*/
+
 const RegisterPage = () => (
   <Formik
     initialValues={{
@@ -32,7 +39,7 @@ const RegisterPage = () => (
       const {
         handleChange, handleSubmit, handleBlur, errors, touched,
       } = formik;
-      console.log(formik);
+
       return (
         <AuthForm
           title="Registruotis"
@@ -47,8 +54,8 @@ const RegisterPage = () => (
                 label="Vardas"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                error={!!touched.name && !!errors.name}
-                helperText={!!touched.name && errors.name}
+                error={Boolean(touched.name) && Boolean(errors.name)}
+                helperText={touched.name && errors.name && errors.name}
                 fullWidth
                 variant="outlined"
               />
