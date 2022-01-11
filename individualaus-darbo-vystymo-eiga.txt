@@ -1,39 +1,45 @@
-* Puslapio idėja - sprendžia realią problemą / uždirba pinigus
-  * apimtis, 1-2 puslapiai, su 2-4 sekcijomis
+-------------------------------------------------- [1] -------------------------------------------------
+                                              Puslapio idėja
 
-------------------------------------------------------------------------------------------------------------
+* Kaip sprendžia prendžia realią problemą arba uždirba pinigus
+* apimtis, 1-2 puslapiai, su 2-4 sekcijomis
 
-* Puslapių skaičius, struktūra, sekcijos:
-  * Kaip atrodys?
-  * Ką galima paspaust?
-  * Ar bus galima prisijungti?
-    * Ką matys/galės paspausti/naudoti prisijungęs vartotojas?
-    * ką matys/galės paspausti/naudoti administratorius?
-    * ką matys/galės paspausti/naudoti neprisijungęs?
-  * Mobili versija?
-    * Kaip ji atrodys?
-    * Kuom ji skirsis nuo darbalaukio versijos?
-  
-  * Nusibraižyti ant popieriaus/ar su programa apytikslį puslapio vaizdą
+-------------------------------------------------- [2] -------------------------------------------------
+                                  Puslapių skaičius, struktūra, sekcijos
 
-------------------------------------------------------------------------------------------------------------
+* Kaip atrodys?
+* Ką galima paspaust?
+* Ar bus galima prisijungti?
+  * Ką matys/galės paspausti/naudoti prisijungęs vartotojas?
+  * ką matys/galės paspausti/naudoti administratorius?
+  * ką matys/galės paspausti/naudoti neprisijungęs?
+* Mobili versija?
+  * Kaip ji atrodys?
+  * Kuom ji skirsis nuo darbalaukio versijos?
 
-* Duomenų bazės schema ir ryšiai tarp esybių
-  * Išsivardinti visas esybes, su strukrūtomos, kurios bus naudojamos puslapyje
-  * Sudaryti duomenų bazės schemą ir ryšius tarp jų
+* Nusibraižyti ant popieriaus/ar su programa apytikslį puslapio vaizdą
 
-------------------------------------------------------------------------------------------------------------
-  
-* Sukurti React aplikaciją naudojant react-create-app biblioteką
+-------------------------------------------------- [3] -------------------------------------------------
+                              Duomenų bazės schema ir ryšiai tarp esybių
+
+* Išsivardinti visas esybes, su strukrūtomos, kurios bus naudojamos puslapyje
+* Sudaryti duomenų bazės schemą ir ryšius tarp jų
+  * one-to-one 1:1
+  * one-to-many 1:N
+  * many-to-many M:M
+
+-------------------------------------------------- [4] -------------------------------------------------
+                        Sukurti React aplikaciją naudojant react-create-app biblioteką
+* instaliavimas:
   * npm i -g create-react-app
-  * Naudojant šią biblioteką gali sukurti pradinį savo aplikacijos šabloną.
-    Standartiškai (be parametrų) sukuriama vanilaJS aplikacija be jokių papildomų bibliotekų.
+  * Naudojant šią biblioteką galite sukurti pradinį savo puspalį pagal aplikacijos šabloną.
+    Standartiškai (be parametrų) sukuriama vanilaJS React.js aplikacija su minimaliomis bibliotekomis.
     Visgi galima naudoti --template nustatymus, jeigu iškart norite sukurti aplikaciją kuri naudoja papildomas bibliotekas.
-    Šablonų yra daug ir atsiranda vis naujų. Po šių kursų rekomenduojama jų anršyti čia, kad nereikėtų visko įrašinėti patiems:
+    Šablonų yra daug ir atsiranda vis naujų. Po šių kursų rekomenduojama jų naršyti čia, kad nereikėtų visko įrašinėti patiems:
       https://www.npmjs.com/search?q=cra-template-*
     pvz.:
       $create-react-app app-pavadinimas --template typescript - iškart sukuria aplikaciją naudojant typescript
-      $create-react-app app-pavadinimas --template redux-typescript - iškart sukuria aplikaciją naudojant typescript IR reduk toolkit
+      $create-react-app app-pavadinimas --template redux-typescript - iškart sukuria aplikaciją naudojant typescript Ir reduk toolkit
   * Visgi mokymosi tikslais STIPRIAI NEREKOMENDUOJAMA kurti aplikacijos su šablonais, nes praleidžiate progą įsigilinti kaip viskas veikia
     Rokomenduojama visas bibliotekas parsisiųsti ir sukonfiguruoti savarankiškai, kad suprastumėte kas ką daro ir kas už ką atsakingas:
     $create-reat-app app-pavadinimas
@@ -42,51 +48,95 @@
       $cd app-pavadinimas
     arba atsidarė sukurtą app-pavadinimas/ aplanką su VSCode. Taip komandinės eilutės pagrindinis kelias bus projekto kelias.
 
-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------- [5] -------------------------------------------------
+                            Bibliotekų parsiuntimas ir pasiruošimas darbui
 
-* Bibliotekų parsiuntimas ir pasiruošimas darbui
-  * Bibliotekos instaliuojamos tokiu būdu:
-    Produkciam kodui(react-router-dom, redux, immer, ...):
-      $npm i bibliotekos-pavadinimas1 bibliotekos-pavadinimas2 bibliotekos-pavadinimas3
-    Vystymui(eslint, typescript, @types/react-redux, ...):
-      $npm i -D bibliotekos-pavadinimas1 bibliotekos-pavadinimas2 bibliotekos-pavadinimas3
-  * Baigiamojo darbo FE aplikacijos daliai jums bus reikalingos tokios PAGRINDINĖS bibliotekos:
-    * eslint - Kodo kokybė ir sistemingumą užtikrinanti biblioteka
-      * "eslint-config-airbnb" - standartizuotas Airbnb kompanijos taisyklių rinkinys
-      * "eslint-plugin-import" - papildomų nustatymų konfigūravimui 
-      * "eslint-plugin-jsx-a11y" - jsx nustatymų konfigūravimui 
-      * "eslint-plugin-react" - react nustatymų konfigūravimui 
-      * "eslint-plugin-react-hooks" - react hooks konfigūravimui
+* Bibliotekos instaliuojamos tokiu būdu:
+  Produkciam kodui(react-router-dom, redux, immer, ...):
+    $npm i bibliotekos-pavadinimas1 bibliotekos-pavadinimas2 bibliotekos-pavadinimas3
+  Vystymui(eslint, typescript, @types/react-redux, ...):
+    $npm i -D bibliotekos-pavadinimas1 bibliotekos-pavadinimas2 bibliotekos-pavadinimas3
+* Baigiamojo darbo FE aplikacijos daliai jums bus reikalingos tokios PAGRINDINĖS bibliotekos:
+  * eslint - Kodo kokybė ir sistemingumą užtikrinanti biblioteka
+    * "eslint-config-airbnb" - standartizuotas Airbnb kompanijos taisyklių rinkinys
+    * "eslint-plugin-import" - papildomų nustatymų konfigūravimui 
+    * "eslint-plugin-jsx-a11y" - jsx nustatymų konfigūravimui 
+    * "eslint-plugin-react" - react nustatymų konfigūravimui 
+    * "eslint-plugin-react-hooks" - react hooks konfigūravimui
+    * ir t.t.
+
+  * Material UI - Komponentų biblioteka leidžianti greičiau kurti turinį ir jį stilizuoti
+    * "@mui/material" - Pagrindinė komponenetų biblioteka
+    * "@emotion/react" - stiliaus objektų kūrimui naudojant JSX logiką reikalinga biblioteka
+    * "@emotion/styled" - styled ir sx atributo logikai reikalinga biblioteka
+    * "@mui/icons-material" - Material UI ikonos
+
+  * "axios" - pagalbinė biblioteka supaprastinti http/https užklausomų aprašymui
+
+  * Redux - Globalios aplikacijos būsenos valdymui:
+    * "react-redux" - React.js ir Redux bibliotekos apjungimui
+    * "redux-devtools-extension" - vystymo metu naudinga biblioteka, kad matyti pakitimus
+    Naudojant primityvią versiją:
+      * "redux" - standartinės Redux funkcijos
+      * "immer" - paprastesniam globalios būsenos(state) keitimui naudojant reducer'ius
+    Naudojant naują "toolkit" versiją
+      * "@reduxjs/toolkit"
+
+  * "react-router-dom" - Kliento pusės navigacijai 
+
+  * Formik - validacijai
+    * "formik" - validacijos apdorojimas anudojant React.js aplikacijas
+    * "yup" - validacijos schemų sudarymas
+  
+  * "typescript" - biblioteka typescript sintaksės sugriežtinimui
+    * !!! naudojant TypeScript, reikia papildomai parsiųsti visų kitų bibliotekų tipus, pvz.:
+      * "@types/react"
+      * "@types/react-redux"
       * ir t.t.
 
-    * Material UI - Komponentų biblioteka leidžianti greičiau kurti turinį ir jį stilizuoti
-      * "@mui/material" - Pagrindinė komponenetų biblioteka
-      * "@emotion/react" - stiliaus objektų kūrimui naudojant JSX logiką reikalinga biblioteka
-      * "@emotion/styled" - styled ir sx atributo logikai reikalinga biblioteka
-      * "@mui/icons-material" - Material UI ikonos
+  * Galite laisvai naudoti bet kokias bibliotekas, kurios jums palengvina darbą ar vystymo procesus, pvz.:
+    * "uuid" - id generavimas
+    * "react-scroll" - slinkimui į tam tikrą sekciją
+    * ir t.t.
 
-    * "axios" - pagalbinė biblioteka supaprastinti http/https užklausomų aprašymui
+-------------------------------------------------- [6] -------------------------------------------------
+                                            Puslapio navigacija
 
-    * Redux - Globalios aplikacijos būsenos valdymui:
-      * "react-redux" - React.js ir Redux bibliotekos apjungimui
-      * "redux-devtools-extension" - vystymo metu naudinga biblioteka, kad matyti pakitimus
-      Naudojant primityvią versiją:
-        * "redux" - standartinės Redux funkcijos
-        * "immer" - paprastesniam globalios būsenos(state) keitimui naudojant reducer'ius
-      Naudojant naują "toolkit" versiją
-        * "@reduxjs/toolkit"
+* Pagal [2] dalyje sudarytą puslapio idėją sukurtite puslapio navigaciją app.jsx faile
+  * Visiems puslapiams(ir autorizuotiems) sukurkite puslapius(su puslapio pavadinimu) aplanke "/pages" ir susiekite juos su <Route /> komponentais
+  * Surašykite visus routus, ir sugrupuokite juos pagal <PAVADINIMASLayout /> komponentus
+  * Sukurkite Navigacijos meniu (arba kelis, priklausomai nuo projekto), kuriame būtų naviguojama į atitinkamus puslapius
+  * Sukurkite nerasto puslapio <Route />
+* Sukurkite "routing/" aplanką sukurkite Navigacijai reikalingas funkcijas bei duomenis
+  * faile "routing/types.js" sukurkite route'ų tipus, pagal tai kokie yra reikalingi jūsų aplikacijai
+  * faile "routing/routes.js" sukurkite route'ų objektus su atitinkamais tipais iš failo "routing/types.js"
+  * Navigaciojos meniu (Navbar'e) ir app.js failuose pakeiskite į'hard-code'intas route'ų nuorodas - tipais, kurie yra išsaugoti "routing/routes.js"
+  * faile "routing/index.js" sukurkite 
 
-    * "react-router-dom" - Kliento pusės navigacijai 
-    
-    * "typescript" - biblioteka typescript sintaksės sugriežtinimui
-      * !!! naudojant TypeScript, reikia papildomai parsiųsti visų kitų bibliotekų tipus, pvz.:
-        * "@types/react"
-        * "@types/react-redux"
-        * ir t.t.
+Pabaigią šią užduotį, turite galėti nueiti į bet kokį puslapį kurį planuojate turėti
 
-    * Galite laisvai naudoti bet kokias bibliotekas, kurios jums palengvina darbą ar vystymo procesus, pvz.:
-      * "uuid" - id generavimas
-      * "react-scroll" - slinkimui į tam tikrą sekciją
-      * ir t.t.
+-------------------------------------------------- [7] -------------------------------------------------
+                                      Turinio kūrimas ir stilizavimas
 
-------------------------------------------------------------------------------------------------------------
+Tai daugiausiai laiko užimanti projekto vystymo dalis, bet ją atlikus, nereikės rūpintis atvaizdavimu atliekant inžinerinius darbus.
+
+* Sukurkite <CssBaseline> visai aplikacijai - https://mui.com/components/css-baseline/
+* Sukurkite <ThemeProvider> visai aplikacijai - https://mui.com/customization/theming/
+  * temos konfigūracija turi būti išsaugota faile "styles/theme.js" ir panaudota <ThemeProvider> kontekste
+* Pradedant mažiausiu ekrano dydžiu, sukurkite visiems puslapiams atvaizdavimą visiems ekrano dydžiams
+  * Kuriant turinį naudokite stiliaus temos savybes, kurias gaunate iš  <ThemeProvider>, 
+    tokiu būdų vėliau galėsite lengvai pakoreguoti stilius keičiant temos kintamuosius.
+    Jeigu temoje esančių kintamųjų neužtenka, arba jie netinka, keiskite "styles/theme.js" faile esančios temos nustatymus.
+  * Patogiausia stilius keisti naudojant:
+    * MUI komponentų sx prop'są: https://mui.com/system/the-sx-prop/
+    * styled funkciją: https://mui.com/system/styled/
+      * Naudodami styled funkciją įsitikinkite, jog naudojate ją iš "@mui/material" paketo, o ne iš "@mui/core".
+        Naudojant styled funkciją iš "@mui/core" paketo nepasisavinsite temos pakitimų aprašytų faile "styles/theme.js".
+* Puslapių vietas, kur naudosite duomenis iš serverio pakeiskite dirbtiniais duomenimis
+
+
+
+
+
+
+
