@@ -6,7 +6,7 @@ import {
   Grid,
 } from '@mui/material';
 import * as yup from 'yup';
-import { Formik } from 'formik';
+import { useFormik } from 'formik';
 import AuthForm from '../components/auth-form';
 
 const validationSchema = yup.object({
@@ -33,101 +33,101 @@ const validationSchema = yup.object({
     .required('Is required'),
 });
 
-const RegisterPage = () => (
-  <Formik
-    initialValues={{
-      name: '',
-      surname: '',
-      email: '',
-      password: '',
-      subscribed: true,
-    }}
-    validationSchema={validationSchema}
-    onSubmit={(...params) => {
-      console.log('Formik.handleSubmit', params);
-    }}
-  >
-    {(formik) => {
-      const {
-        handleChange, handleSubmit, handleBlur, errors, touched, values,
-      } = formik;
-      console.log(touched);
+const initialValues = {
+  name: '',
+  surname: '',
+  email: '',
+  password: '',
+  subscribed: true,
+};
 
-      return (
-        <AuthForm
-          title="Registruotis"
-          linkTo="/register"
-          linkTitle="Jau turite paskyrą? Prisijunkite"
-          onSubmit={handleSubmit}
-        >
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="name"
-                label="Vardas"
+const RegisterPage = () => {
+  const onSubmit = (...params) => {
+    console.log('Formik.handleSubmit', params);
+  };
+
+  const {
+    handleChange,
+    handleSubmit,
+    handleBlur,
+    errors,
+    touched,
+    values,
+  } = useFormik({ initialValues, validationSchema, onSubmit });
+
+  return (
+    <AuthForm
+      title="Registruotis"
+      linkTo="/register"
+      linkTitle="Jau turite paskyrą? Prisijunkite"
+      onSubmit={handleSubmit}
+    >
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            name="name"
+            label="Vardas"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.name && Boolean(errors.name)}
+            helperText={touched.name && errors.name}
+            fullWidth
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            name="surname"
+            label="Pavardė"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.surname && Boolean(errors.surname)}
+            helperText={touched.surname && errors.surname}
+            fullWidth
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            name="email"
+            label="El. paštas"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.email && Boolean(errors.email)}
+            helperText={touched.email && errors.email}
+            fullWidth
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            name="password"
+            label="Slaptažodis"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.password && Boolean(errors.password)}
+            helperText={touched.password && errors.password}
+            fullWidth
+            variant="outlined"
+            type="password"
+          />
+        </Grid>
+        <Grid item sx={{ mb: 2 }} xs={12}>
+          <FormControlLabel
+            control={(
+              <Checkbox
+                checked={values.subscribed}
+                name="subscribed"
                 onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.name && Boolean(errors.name)}
-                helperText={touched.name && errors.name}
-                fullWidth
-                variant="outlined"
+                color="primary"
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="surname"
-                label="Pavardė"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.surname && Boolean(errors.surname)}
-                helperText={touched.surname && errors.surname}
-                fullWidth
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="email"
-                label="El. paštas"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.email && Boolean(errors.email)}
-                helperText={touched.email && errors.email}
-                fullWidth
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="password"
-                label="Slaptažodis"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.password && Boolean(errors.password)}
-                helperText={touched.password && errors.password}
-                fullWidth
-                variant="outlined"
-                type="password"
-              />
-            </Grid>
-            <Grid item sx={{ mb: 2 }} xs={12}>
-              <FormControlLabel
-                control={(
-                  <Checkbox
-                    checked={values.subscribed}
-                    name="subscribed"
-                    onChange={handleChange}
-                    color="primary"
-                  />
                 )}
-                label="Noriu gauti su rinkodara susijusius pranešimus"
-              />
-            </Grid>
-          </Grid>
-        </AuthForm>
-      );
-    }}
+            label="Noriu gauti su rinkodara susijusius pranešimus"
+          />
+        </Grid>
+      </Grid>
+    </AuthForm>
+  );
+};
 
-  </Formik>
-);
 export default RegisterPage;
