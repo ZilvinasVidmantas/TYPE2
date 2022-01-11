@@ -8,13 +8,6 @@ import {
 import { Formik } from 'formik';
 import AuthForm from '../components/auth-form';
 
-/*
-  Įgalinkite validavimą visiems <input> įvesties laukams, jog jie būtų privalomi
-  Jeigu laukai nėra privalomi, turi būti rodomos klaidos po įvesties laukais
-  (taip pat kaip 'name' įvesties lauke)
-
-*/
-
 const RegisterPage = () => (
   <Formik
     initialValues={{
@@ -24,10 +17,24 @@ const RegisterPage = () => (
       password: '',
       subscribe: false,
     }}
-    validate={({ name }) => {
+    validate={({
+      name,
+      surname,
+      email,
+      password,
+    }) => {
       const errors = {};
       if (name === '') {
         errors.name = 'Privalomas laukas';
+      }
+      if (surname === '') {
+        errors.surname = 'Privalomas laukas';
+      }
+      if (email === '') {
+        errors.email = 'Privalomas laukas';
+      }
+      if (password === '') {
+        errors.password = 'Privalomas laukas';
       }
       return errors;
     }}
@@ -54,8 +61,8 @@ const RegisterPage = () => (
                 label="Vardas"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                error={Boolean(touched.name) && Boolean(errors.name)}
-                helperText={touched.name && errors.name && errors.name}
+                error={touched.name && Boolean(errors.name)}
+                helperText={touched.name && errors.name}
                 fullWidth
                 variant="outlined"
               />
@@ -65,6 +72,9 @@ const RegisterPage = () => (
                 name="surname"
                 label="Pavardė"
                 onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.surname && Boolean(errors.surname)}
+                helperText={touched.surname && errors.surname}
                 fullWidth
                 variant="outlined"
               />
@@ -74,6 +84,9 @@ const RegisterPage = () => (
                 name="email"
                 label="El. paštas"
                 onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.email && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
                 fullWidth
                 variant="outlined"
               />
@@ -83,6 +96,9 @@ const RegisterPage = () => (
                 name="password"
                 label="Slaptažodis"
                 onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.password && Boolean(errors.password)}
+                helperText={touched.password && errors.password}
                 fullWidth
                 variant="outlined"
                 type="password"
