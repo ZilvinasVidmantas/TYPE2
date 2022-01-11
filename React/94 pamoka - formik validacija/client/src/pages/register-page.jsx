@@ -40,7 +40,7 @@ const RegisterPage = () => (
       surname: '',
       email: '',
       password: '',
-      subscribe: false,
+      subscribed: true,
     }}
     validationSchema={validationSchema}
     onSubmit={(...params) => {
@@ -49,7 +49,7 @@ const RegisterPage = () => (
   >
     {(formik) => {
       const {
-        handleChange, handleSubmit, handleBlur, errors, touched,
+        handleChange, handleSubmit, handleBlur, errors, touched, values,
       } = formik;
       console.log(touched);
 
@@ -114,7 +114,8 @@ const RegisterPage = () => (
               <FormControlLabel
                 control={(
                   <Checkbox
-                    name="subscribe"
+                    checked={values.subscribed}
+                    name="subscribed"
                     onChange={handleChange}
                     color="primary"
                   />
