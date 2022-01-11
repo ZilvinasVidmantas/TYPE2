@@ -5,8 +5,33 @@ import {
   Checkbox,
   Grid,
 } from '@mui/material';
+import * as yup from 'yup';
 import { Formik } from 'formik';
 import AuthForm from '../components/auth-form';
+
+const validationSchema = yup.object({
+  name: yup
+    .string()
+    .min(2, 'At least 2 letters')
+    .max(32, 'Most 32 letters')
+    .required('Is required'),
+  surname: yup
+    .string()
+    .min(2, 'At least 2 letters')
+    .max(32, 'Most 32 letters')
+    .required('Is required'),
+  email: yup
+    .string()
+    .email('Is not valid email')
+    .required('Is required'),
+  password: yup
+    .string()
+    .min(6, 'At least 6 symbols')
+    .max(32, 'Most 32 symbols')
+    .matches(/^.*[A-ZĄČĘĖĮŠŲŪŽ]+.*$/, 'Atleast one capital letter')
+    .matches(/^.*\d+.*$/, 'Atleast one number')
+    .required('Is required'),
+});
 
 const RegisterPage = () => (
   <Formik
@@ -17,27 +42,7 @@ const RegisterPage = () => (
       password: '',
       subscribe: false,
     }}
-    validate={({
-      name,
-      surname,
-      email,
-      password,
-    }) => {
-      const errors = {};
-      if (name === '') {
-        errors.name = 'Privalomas laukas';
-      }
-      if (surname === '') {
-        errors.surname = 'Privalomas laukas';
-      }
-      if (email === '') {
-        errors.email = 'Privalomas laukas';
-      }
-      if (password === '') {
-        errors.password = 'Privalomas laukas';
-      }
-      return errors;
-    }}
+    validationSchema={validationSchema}
     onSubmit={(...params) => {
       console.log('Formik.handleSubmit', params);
     }}
@@ -46,6 +51,7 @@ const RegisterPage = () => (
       const {
         handleChange, handleSubmit, handleBlur, errors, touched,
       } = formik;
+      console.log(touched);
 
       return (
         <AuthForm
