@@ -132,8 +132,61 @@ Tai daugiausiai laiko užimanti projekto vystymo dalis, bet ją atlikus, nereik�
     * styled funkciją: https://mui.com/system/styled/
       * Naudodami styled funkciją įsitikinkite, jog naudojate ją iš "@mui/material" paketo, o ne iš "@mui/core".
         Naudojant styled funkciją iš "@mui/core" paketo nepasisavinsite temos pakitimų aprašytų faile "styles/theme.js".
-* Puslapių vietas, kur naudosite duomenis iš serverio pakeiskite dirbtiniais duomenimis
 
+-------------------------------------------------- [8] -------------------------------------------------
+                                          Kliento pusės struktūros
+
+* Kiento puslapio vietas, kurose bus naudojami duomenys iš serverio pakeiskite duomenimis aprašytais virš komponenetų
+* Surašę dirbtinius duomenis, pagalvokite kurie iš jų bus naudojami tarp skirtingų jūsų aplikacijos puslapių
+  * Duomenis kurie naudojami tarp skirtingų aplikacijos puslapių perkelkite į Globalią saugyklą (global store),
+    Tam galite naudoti Redux, Reduk Toolkit arba React Kontekstą. Panaudokite Globalio saugyklos duomenis puslapiuose.
+
+Užkrovus duomenis iš globalios saugyklos reikia įgalinti veiksmų atlikimą. Priežingai negu mokantis,
+duomenys visada yra keičiami serverio pusėje, o kliento pusėje tik atvaizduojama jų reprezentacija.
+Pirmiausiai reikėtų suderinti pilną duomenų užkrovimą iš serverio aplikacijos. Todėl šį funkcionalumą atidėsime vėliasniam laikui.
+
+* Peržiūrėję globalios saugyklos duomenis, ir puslapiuose naudojamus duomenis, sudarykite reikalingų duomenų struktūras.
+type User {
+  id: string,
+  name: string,
+  surname: string,
+  email: string,
+  mobile: number,
+  ... etc.
+};
+
+type Car {
+  id: string,
+  brand: string,
+  model: string,
+  year: number,
+  user: User,
+  ...etc.
+};
+
+...etc.
+
+* Susirašykite kokiais serverio adresais pasieksite duomenis, pavyzdžiui:
++----------------------------------------------------------------------------------------------------+
+| Method | Address           | requireAuth | Success response structure | Failure response structure |
++----------------------------------------------------------------------------------------------------+
+| GET    | /api/cars         | false       | {                          | {                          |
+|        |                   |             |    data: Car[],            |   message: string          |
+|        |                   |             |    total: number,          | }                          |
+|        |                   |             | }                          |                            |
++----------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------+
+| GET    | /api/users        | true        | {                          | {                          |
+|        |                   |             |    data: User[],           |   message: string          |
+|        |                   |             |    total: number,          | }                          |
+|        |                   |             | }                          |                            |
++----------------------------------------------------------------------------------------------------+ 
+...etc.
+
+* Sukurkite failą "/services/api-service.js" ir aprašykite funkcijas, kurios parsiųstų šiuos duomenis iš (dar nesukurto) serverio
+
+-------------------------------------------------- [9] -------------------------------------------------
+                                   Serverio pusės aplikacijos kūrimas
 
 
 
