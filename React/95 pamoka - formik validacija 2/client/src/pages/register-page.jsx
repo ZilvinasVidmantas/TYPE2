@@ -14,9 +14,9 @@ import { useFormik } from 'formik';
 import AuthForm from '../components/auth-form';
 
 const API = {
-  checkEmail: () => new Promise((resolve, reject) => {
+  checkEmail: (email) => new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(true);
+      resolve(!['admin@gmail.com'].includes(email));
       reject(new Error('Email already exists'));
     }, 2000);
   }),
@@ -95,6 +95,7 @@ const RegisterPage = () => {
     isValid,
     isSubmitting,
     setFieldValue,
+    setValues,
   } = useFormik({
     validateOnMount: true,
     initialValues,
@@ -102,13 +103,26 @@ const RegisterPage = () => {
     onSubmit,
   });
 
+  const handleEmailChange = (e) => {
+    if (values.emailChecked) {
+      setValues({
+        ...values,
+        email: e.target.value,
+        emailChecked: false,
+        emailAvailable: false,
+      }, true);
+    } else {
+      handleChange(e);
+    }
+  };
+
   const handleEmailBlur = (e) => {
     handleBlur(e);
-    if (!errors.email || values.emailChecked) {
+    if (!errors.email) {
       (async () => {
         try {
           setEmailCheckLoading(true);
-          const emailAvailable = await API.checkEmail();
+          const emailAvailable = await API.checkEmail(values.email);
           setFieldValue('emailAvailable', emailAvailable);
         } catch (error) {
           setFieldValue('emailAvailable', false);
@@ -173,7 +187,7 @@ const RegisterPage = () => {
           <TextField
             name="email"
             label="El. paštas"
-            onChange={handleChange}
+            onChange={handleEmailChange}
             onBlur={handleEmailBlur}
             value={values.email}
             error={touched.email && Boolean(errors.email)}
