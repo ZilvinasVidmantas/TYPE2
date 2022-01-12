@@ -62,8 +62,8 @@ const validationSchema = yup.object({
     // .when('password', (password, schema) => schema.oneOf([password], 'Passwords must match')),
     // .test('password', 'Paswords must match', (value, { parent }) => value === parent.password),
     .oneOf([yup.ref('password')], 'Passwords must match'),
-  emailChecked: yup.boolean(),
-  emailAvailable: yup.boolean(),
+  emailChecked: yup.boolean().oneOf([true]),
+  emailAvailable: yup.boolean().oneOf([true]),
 });
 
 const initialValues = {
