@@ -67,10 +67,10 @@ const validationSchema = yup.object({
 });
 
 const initialValues = {
-  name: 'Žilvinas',
-  surname: 'Vidmantas',
+  name: '',
+  surname: '',
   email: '',
-  password: 'Labas123',
+  password: '',
   passwordConfirmation: '',
   subscribed: true,
   emailChecked: false,
@@ -92,8 +92,9 @@ const RegisterPage = () => {
     errors,
     touched,
     values,
-    isValid,
     isSubmitting,
+    isValid,
+    dirty,
     setFieldValue,
     setValues,
   } = useFormik({
@@ -144,6 +145,10 @@ const RegisterPage = () => {
   } else {
     emailEndornment = <ErrorIcon color="error" />;
   }
+  console.log({
+    dirty,
+    isValid,
+  });
 
   return (
     <AuthForm
@@ -151,7 +156,7 @@ const RegisterPage = () => {
       linkTo="/register"
       linkTitle="Jau turite paskyrą? Prisijunkite"
       onSubmit={handleSubmit}
-      isValid={isValid}
+      isValid={isValid && dirty}
       loading={isSubmitting}
     >
       <Grid container spacing={2}>
