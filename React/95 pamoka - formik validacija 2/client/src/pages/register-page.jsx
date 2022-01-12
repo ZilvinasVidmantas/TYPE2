@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   TextField,
   FormControlLabel,
   Checkbox,
   Grid,
+  InputAdornment,
+  CircularProgress,
 } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ErrorIcon from '@mui/icons-material/Error';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import AuthForm from '../components/auth-form';
 
 const API = {
-  checkEmail: () => new Promise((_, reject) => {
+  checkEmail: () => new Promise((resolve, reject) => {
     setTimeout(() => {
+      resolve(true);
       reject(new Error('Email already exists'));
-    }, 500);
+    }, 2000);
   }),
   register: () => new Promise((success) => {
     setTimeout(() => {
@@ -27,45 +32,54 @@ const API = {
     }, 2000);
   }),
 };
-// Patikrinkite el paštą su yup schemą, naudodami: 'API.checkEmail'
-// iki 9:15 pertrauka
-// iki 9:30 Užduoties atlikimas
 
 const validationSchema = yup.object({
   name: yup.string()
+    .required('Is required')
     .min(2, 'At least 2 letters')
-    .max(32, 'Most 32 letters')
-    .required('Is required'),
+    .max(32, 'Most 32 letters'),
   surname: yup.string()
+    .required('Is required')
     .min(2, 'At least 2 letters')
-    .max(32, 'Most 32 letters')
-    .required('Is required'),
+    .max(32, 'Most 32 letters'),
   email: yup.string()
+    .required('Is required')
     .email('Is not valid email')
-    .required('Is required'),
+    .test('email-validator', 'Email unavailable', (_, context) => {
+      const { emailChecked, emailAvailable } = context.parent;
+      if (!emailChecked) return true;
+
+      return emailAvailable;
+    }),
   password: yup.string()
+    .required('Is required')
     .min(6, 'At least 6 symbols')
     .max(32, 'Most 32 symbols')
     .matches(/^.*[A-ZĄČĘĖĮŠŲŪŽ]+.*$/, 'Atleast one capital letter')
-    .matches(/^.*\d+.*$/, 'Atleast one number')
-    .required('Is required'),
+    .matches(/^.*\d+.*$/, 'Atleast one number'),
   passwordConfirmation: yup.string()
     .required('Is required')
     // .when('password', (password, schema) => schema.oneOf([password], 'Passwords must match')),
     // .test('password', 'Paswords must match', (value, { parent }) => value === parent.password),
     .oneOf([yup.ref('password')], 'Passwords must match'),
+  emailChecked: yup.boolean(),
+  emailAvailable: yup.boolean(),
 });
 
 const initialValues = {
   name: 'Žilvinas',
   surname: 'Vidmantas',
-  email: 'aaa@gt.lt',
+  email: '',
   password: 'Labas123',
   passwordConfirmation: '',
   subscribed: true,
+  emailChecked: false,
+  emailAvailable: false,
 };
 
 const RegisterPage = () => {
+  const [emailCheckLoading, setEmailCheckLoading] = useState(false);
+
   const onSubmit = async () => {
     const result = await API.register();
     console.log(result);
@@ -80,12 +94,42 @@ const RegisterPage = () => {
     values,
     isValid,
     isSubmitting,
+    setFieldValue,
   } = useFormik({
     validateOnMount: true,
     initialValues,
     validationSchema,
     onSubmit,
   });
+
+  const handleEmailBlur = (e) => {
+    handleBlur(e);
+    if (!errors.email || values.emailChecked) {
+      (async () => {
+        try {
+          setEmailCheckLoading(true);
+          const emailAvailable = await API.checkEmail();
+          setFieldValue('emailAvailable', emailAvailable);
+        } catch (error) {
+          setFieldValue('emailAvailable', false);
+        } finally {
+          setFieldValue('emailChecked', true, true);
+          setEmailCheckLoading(false);
+        }
+      })();
+    }
+  };
+
+  let emailEndornment;
+  if (emailCheckLoading) {
+    emailEndornment = <CircularProgress size={24} />;
+  } else if (!values.emailChecked) {
+    emailEndornment = null;
+  } else if (values.emailAvailable) {
+    emailEndornment = <CheckCircleIcon color="success" />;
+  } else {
+    emailEndornment = <ErrorIcon color="error" />;
+  }
 
   return (
     <AuthForm
@@ -130,13 +174,20 @@ const RegisterPage = () => {
             name="email"
             label="El. paštas"
             onChange={handleChange}
-            onBlur={handleBlur}
+            onBlur={handleEmailBlur}
             value={values.email}
             error={touched.email && Boolean(errors.email)}
             helperText={touched.email && errors.email}
             disabled={isSubmitting}
             fullWidth
             variant="outlined"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  {emailEndornment}
+                </InputAdornment>
+              ),
+            }}
           />
         </Grid>
         <Grid item xs={12}>
