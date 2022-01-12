@@ -9,40 +9,51 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import AuthForm from '../components/auth-form';
 
+const API = {
+  checkEmail: () => new Promise((_, reject) => {
+    setTimeout(() => {
+      reject(new Error('Email already exists'));
+    }, 500);
+  }),
+  register: () => new Promise((success) => {
+    setTimeout(() => {
+      success({
+        token: 'sdgfisghfsd',
+        user: {
+          name: 'Banys',
+          role: 'Gangster',
+        },
+      });
+    }, 2000);
+  }),
+};
+// Patikrinkite el paštą su yup schemą, naudodami: 'API.checkEmail'
+// iki 9:15 pertrauka
+// iki 9:30 Užduoties atlikimas
+
 const validationSchema = yup.object({
-  name: yup
-    .string()
+  name: yup.string()
     .min(2, 'At least 2 letters')
     .max(32, 'Most 32 letters')
     .required('Is required'),
-  surname: yup
-    .string()
+  surname: yup.string()
     .min(2, 'At least 2 letters')
     .max(32, 'Most 32 letters')
     .required('Is required'),
-  email: yup
-    .string()
+  email: yup.string()
     .email('Is not valid email')
     .required('Is required'),
-  password: yup
-    .string()
+  password: yup.string()
     .min(6, 'At least 6 symbols')
     .max(32, 'Most 32 symbols')
     .matches(/^.*[A-ZĄČĘĖĮŠŲŪŽ]+.*$/, 'Atleast one capital letter')
     .matches(/^.*\d+.*$/, 'Atleast one number')
     .required('Is required'),
-});
-
-const fakeRegister = () => new Promise((success) => {
-  setTimeout(() => {
-    success({
-      token: 'sdgfisghfsd',
-      user: {
-        name: 'Banys',
-        role: 'Gangster',
-      },
-    });
-  }, 2000);
+  passwordConfirmation: yup.string()
+    .required('Is required')
+    // .when('password', (password, schema) => schema.oneOf([password], 'Passwords must match')),
+    // .test('password', 'Paswords must match', (value, { parent }) => value === parent.password),
+    .oneOf([yup.ref('password')], 'Passwords must match'),
 });
 
 const initialValues = {
@@ -50,12 +61,13 @@ const initialValues = {
   surname: 'Vidmantas',
   email: 'aaa@gt.lt',
   password: 'Labas123',
+  passwordConfirmation: '',
   subscribed: true,
 };
 
 const RegisterPage = () => {
   const onSubmit = async () => {
-    const result = await fakeRegister();
+    const result = await API.register();
     console.log(result);
   };
 
@@ -136,6 +148,21 @@ const RegisterPage = () => {
             value={values.password}
             error={touched.password && Boolean(errors.password)}
             helperText={touched.password && errors.password}
+            disabled={isSubmitting}
+            fullWidth
+            variant="outlined"
+            type="password"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            name="passwordConfirmation"
+            label="Slaptažodžio pakartojimas"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.passwordConfirmation}
+            error={touched.passwordConfirmation && Boolean(errors.passwordConfirmation)}
+            helperText={touched.passwordConfirmation && errors.passwordConfirmation}
             disabled={isSubmitting}
             fullWidth
             variant="outlined"
