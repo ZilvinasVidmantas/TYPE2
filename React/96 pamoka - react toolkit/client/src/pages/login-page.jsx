@@ -50,6 +50,7 @@ const LoginPage = () => {
       linkTo="/login"
       linkTitle="Neturite paskyros? Registruokitės"
       loading={loading}
+      isValid
       onSubmit={handleLogin}
     >
       <Alert severity="error" sx={{ my: 2, visibility: error ? 'visible' : 'hidden' }}>
