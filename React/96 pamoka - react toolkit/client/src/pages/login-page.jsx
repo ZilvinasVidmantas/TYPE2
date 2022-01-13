@@ -10,7 +10,13 @@ import { login } from '../store/auth';
 import AuthForm from '../components/auth-form';
 import ApiService from '../services/api-service';
 
-const title = ['Prisijungti'];
+/*
+  Pagal register-page.jsx pavyzdį įgalinkite formik validacijas:
+    email: privalomas paštas
+    password: privalomas
+
+  Teisingai suvedus laukus, padaryti 'Prisijungti' mygtuką aktyvų
+*/
 
 const LoginPage = () => {
   const [urlSearchParams] = useSearchParams();
@@ -46,11 +52,10 @@ const LoginPage = () => {
 
   return (
     <AuthForm
-      title={title}
+      title="Prisijungti"
       linkTo="/login"
       linkTitle="Neturite paskyros? Registruokitės"
       loading={loading}
-      isValid
       onSubmit={handleLogin}
     >
       <Alert severity="error" sx={{ my: 2, visibility: error ? 'visible' : 'hidden' }}>
@@ -60,7 +65,6 @@ const LoginPage = () => {
         <Grid item xs={12}>
           <TextField
             variant="outlined"
-            required
             fullWidth
             id="email"
             label="El. paštas"
@@ -77,7 +81,6 @@ const LoginPage = () => {
         <Grid item xs={12} sx={{ mb: 4 }}>
           <TextField
             variant="outlined"
-            required
             fullWidth
             name="password"
             label="Slaptažodis"
