@@ -168,15 +168,15 @@ type Car {
 
 * Susirašykite kokiais serverio adresais pasieksite duomenis, pavyzdžiui:
 +----------------------------------------------------------------------------------------------------+
-| Method | Address           | requireAuth | Success response structure | Failure response structure |
+| Method | Address           | auth        | Success response structure | Failure response structure |
 +----------------------------------------------------------------------------------------------------+
-| GET    | /api/cars         | false       | {                          | {                          |
+| GET    | /api/cars         | none        | {                          | {                          |
 |        |                   |             |    data: Car[],            |   message: string          |
 |        |                   |             |    total: number,          | }                          |
 |        |                   |             | }                          |                            |
 +----------------------------------------------------------------------------------------------------+
 +----------------------------------------------------------------------------------------------------+
-| GET    | /api/users        | true        | {                          | {                          |
+| GET    | /api/users        | ADMIN       | {                          | {                          |
 |        |                   |             |    data: User[],           |   message: string          |
 |        |                   |             |    total: number,          | }                          |
 |        |                   |             | }                          |                            |
@@ -186,7 +186,132 @@ type Car {
 * Sukurkite failą "/services/api-service.js" ir aprašykite funkcijas, kurios parsiųstų šiuos duomenis iš (dar nesukurto) serverio
 
 -------------------------------------------------- [9] -------------------------------------------------
-                                   Serverio pusės aplikacijos kūrimas
+                              Serverio pusės autentifikacija ir autorizacija
+
+Serverio tikslas - tiekti duomenis kliento pusės aplikacijai.
+Šiame kurse kuriamos aplikacijos tipas yra - one-page-application.
+One-page-application - reiškia, kad pirminis duomenų užkrovimas vyksta vieną kartą, kurio metu atsiunčiamas
+praktiškai tuščias HTML failas, su JavaScript kodu, kuris užpildo visą aplikacijos turinį. Visi duomenys
+yra parsiunčiami darant XML/XHR dalines užklausas, kurios parsiunčia tik duomenis, neperkraudamos puslapio,
+o jį atnaujina su kliento pusėje esančiu JavaScript programiniu kodu.
+
+Autentifikacija - atpažinimas, identifikavimas
+Autorizacija - privilegijos gauti duomenims, ar atlikti veiksmams
+
+Dalis duomenų, kuriuos teikia serveris, dažnai vadinamas API (application programming interface), turi
+būt pasiekiami tik puslapio vartotojams, kurie turi priegą, t.y. :
+Yra autentifikuoti, ir turi autorizacijos lygmenį kuris suteikia prieigą prie duomenų.
+Praktikoje tai daroma tokiu būdų:
+  * Serverio pusėje sukuriame duomenų bazę, kurioje saugome vartotojų duomenis ir prisijungimus, bei autorizacijos roles.
+    * Duomenų bazę užpildome duomenimis, kurie įgalins prisijungimus.
+    * Priklausomai nuo pasiriktos Duomenų bazės, reikės tai daryti dvejopai
+      * Realiacinėms DB(MySQL, OracleSQL, MSSQL ir t.t.) - kurti duomenų modelius, ir naudojantis jomis kurti migracijas
+      !!! ŠIO KURSO METU NAUDOSIME - MongoDB
+      * Nereliacinėms DB(MongoDB) - kurti duomenų modelius, ir susieti juo ryšiais serverio pusės aplikacijoje
+  * Sulaukus prisijungimo užklausos, identifikuojame vartotoją, kuris bandė prisijungti, ir esant sėkmingui prisijungimui
+    siunčiame užšifruotus duomenis, su vėliau atšifravimui reikalinga informacija - token'ą
+  * Visas sekančias užklausas vartotojas turi daryti atsiųsdamas autentifikacijos token'ą, kad serveris
+    galėtų patikrinti, ar vartotojas daręs užklausą turi autorizacijos teises gauti duomenis
+  
+Autentifikacijos ir autorizacijos logikos sukūrimas:
+  * Prijungiame prie serverio duomenų bazę, kad būtų galima pasiekti duomenis ir jais manipuliuoti.
+  * Sukuriame autentifikacijos užklausas .../login ir .../register, kurių sekmės atveju išsiunčiame kliento pusės
+    aplikacijai užšifruotą token'ą, kurį tikėsimės gauti su sekančiomis vartotojo užklausomis.
+  * Sukuriamia autentifikacijos-autorizacijos funkcijas (middlewares) kurios tikrintų token'ą
+    * Šios funkcijijos turi surasti token'ą
+    * Atšifruoti token'e esančius duomenis
+    * Patikrinti ar token'e esantys duomenys atitinka autorizaciją (patikrinti rolę), jei reikia
+    * Jeigu šie veiksmai pavyko, leidžiame užklausai praeiti apsaugą ir vykdyti norimą užklausą, bei suteikti
+      kliento pusei norimus užklausos rezultatus
+    * Jeigu funkcijoje yra klaidų, siunčiame į kliento pusės aplikaciją klaidos pranešimą
+
+-------------------------------------------------- [10] -------------------------------------------------
+                                Kliento pusės autentifikacija ir autorizacija
+
+Pirmiausia turime autentifikuotis ir gauti token'ą. Dažniausiai tai daroma registracijos arba prisijungimo metu.
+Sėkmingai atlikus autentifikacijos duomenis, turime gauti:
+  * duomenis apie prisijungusį vartotoją
+  * autentifikacijos token'ą
+Gavus šiuos duomenis, turime juos panaudoti, kad suteikti puslapiui papildomą funkcionalumą.
+Jeigu jūsų puslapio logikoje yra keli autorizacijos lygiai(rolės), privalote tai užtikrinti.
+
+PIRMIAUSIAI gavę sėkmingos autentifikacijos duomenis:
+  * Pridedame ApiService objektui atutentifikacijos token'ą į užklausų parametrus (headers)
+    * Nepamirškite, kad atsijungus reikia pašalinti autentifikacijos token'ą iš užklausų parametrų (headers)
+  * Išsaugome autentifikacijos metu gautus duomenis į globalią būseną (Redux || Context)
+  * Išsaugome autentifikacijos metu gautus duomenis į naršyklės atmintį (SessionStorage || LocalStorage)
+  * Įgaliname funkcionalumą, jog globalioje būsenoje esantys duomenys būtų visuomet sinchronizuojami
+    su duomenimis kurie yra naršyklės atmintyje (SessionStorage || LocalStorage)
+
+Atlikus viršuje esančioje pastraipoje esančius veiksmus, turime įgalinti autorizaciją(matomą turinį/funkcionalumą pagal rolę):
+  * Pagal serverio pusėje esančias roles sukuriame puslapio navigacijos apsaugas
+  * Pagal roles slepiame nuorodas ir puslapius
+
+Po šių veiksmų atlikimo, puslapis turi būti pilnai autorizuotas, pagal prisijungusio vartotojo duomenis.
+
+-------------------------------------------------- [11] -------------------------------------------------
+                                     Serverio pusės modelių kūrimas
+
+Pilnai sukūrus puslapio vaizdą ir įgalinus autentifikacijos ir autorizacijos procesus, reikėtų dar kartą peržvelgti
+savo duomenų struktūras kurtas [2] punktu ir Kliento pusės struktūras [8] punktu.
+
+Greitai pastebėsite, kad jos skiriasi. Taip ir turi būti.
+Duomenų bazėje saugomos struktūros turi būti pavienės, ir ryšiai su kitomis struktūromis turi būti sudaromi
+papildomų struktūrų pagalba. Kliento pusėje, mums reikia jau apjungtų-susietų struktūrų.
+
+Šį iššūkį sprendžiame tokia tvarka:
+  * Peržvelgiame savo duomenis dar kartą, ir sudarome galutinę Duomenų bazės schemą su ryšiais.
+  * Sukuriame pavienius duomenų Modelius serverio pusėje.
+  * Įgaliname ryšius tarp Modelių, pagal DB schemą.
+  * Pagal [8] punkto užklausų lentelę sukuriame užklausas ir jose apjungiame Modelius, bei grąžiname duomenis.
+  * Uždedame užklausoms [9] punktu kurtas autorizacijos apsaugas 
+
+-------------------------------------------------- [12] -------------------------------------------------
+                                    Serverio pusės duomenų manipuliacija
+
+Serveris turi ne tik tiekti duomenis, bet ir įgalinti jų kūrimą, atnaujinimą ir trynimą.
+Tvarkingai šiems veiksmams taikome tokius HTTP užklausų tipus:
+
+GET - duomenims gauti
+POST - duomenims kurti
+PUT - duomenims sukeisti
+PATCH - duomenims atnaujinti
+DELETE - duomenims trinti
+
+Peržvelkite savo Kliento pusės aplikaciją, ir sudarykite lentelę, kokius duomenis, ir kas gali keisti.
++--------------------------------------------------------------------------------------------------------------------------+
+| Method | Address           | auth        | body                 |Success response structure | Failure response structure | 
++--------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+| GET    | /api/users/:id    | ADMIN       | userID               | User                      | {                          |
+|        |                   |             |                      |                           |   message: string          |
+|        |                   |             |                      |                           | }                          |
+|        |                   |             |                      |                           |                            |
++--------------------------------------------------------------------------------------------------------------------------+ 
++--------------------------------------------------------------------------------------------------------------------------+
+| PATCH  | /api/users/:id    | ADMIN       | partialUser          | User                      | {                          |
+|        |                   |             |                      |                           |   message: string          |
+|        |                   |             |                      |                           | }                          |
+|        |                   |             |                      |                           |                            |
++--------------------------------------------------------------------------------------------------------------------------+ 
++--------------------------------------------------------------------------------------------------------------------------+
+| GET    | /api/profile      | ADMIN       | userId               | User                      | {                          |
+|        |                   | USER        |                      |                           |   message: string          |
+|        |                   |             |                      |                           | }                          |
+|        |                   |             |                      |                           |                            |
++--------------------------------------------------------------------------------------------------------------------------+ 
+...etc.
+Pagal šios lentelės duomenis turėtumėte suprasti, kad:
+  * Vartotojo duomenis, adresu '/api/users/:id', gali gauti, tik adminas
+  * Vartotojo duomenis, adresu '/api/users/:id', gali atnaujinti, tik adminas
+  * Vartotojo duomenis, adresu '/api/profile', gali gauti, vartotojas ir adminas papildomai perdavęs vartotojoId
+
+Tokių Pilnai sudarytų užklausų jūsų aplikacijoje turi būti apie 15-30
+
+
+
+
+
 
 
 
