@@ -12,10 +12,6 @@ import { login } from '../store/auth';
 import AuthForm from '../components/auth-form';
 import ApiService from '../services/api-service';
 
-// iki 10:50 pertrauka
-// iki 11:05 Kodo peržiūra
-// 10:05 - klausimai
-
 const validationSchema = yup.object({
   email: yup.string()
     .required('Is required')
