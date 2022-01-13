@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Adminas",
+      "subscribed": false,
+      "surname": "Gediminas",
+      "email": "admin@gmail.com",
+      "password": "Vilnius123",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Jūzeris",
+      "subscribed": true,
+      "surname": "Lavonas",
+      "email": "user1@gmail.com",
+      "password": "Vilnius123",
+      "role": "user"
+    },
+    {
+      "id": "81e8cd70-efa8-4862-b41a-c3cd935a9d53",
+      "name": "Serbentautas",
+      "subscribed": false,
+      "surname": "Bordiūras",
+      "email": "user2@gmail.com",
+      "password": "Vilnius123",
+      "role": "user"
+    }
+  ]
+}
