@@ -6,9 +6,9 @@ import {
 } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createLoginSuccessAction } from '../store/auth/action-creators';
+import { login } from '../store/auth';
 import AuthForm from '../components/auth-form';
-import { login } from '../services/api-service';
+import ApiService from '../services/api-service';
 
 const title = ['Prisijungti'];
 
@@ -26,12 +26,12 @@ const LoginPage = () => {
     setError(null);
     (async () => {
       try {
-        const { user, token } = await login({
+        const { user, token } = await ApiService.login({
           email,
           password,
         });
         const redirectTo = urlSearchParams.get('redirectTo');
-        const loginSuccessAction = createLoginSuccessAction({
+        const loginSuccessAction = login({
           user,
           token,
           redirectTo,

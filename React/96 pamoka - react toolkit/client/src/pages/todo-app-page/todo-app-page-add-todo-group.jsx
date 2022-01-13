@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Box, TextField } from '@mui/material';
-import { createAddTodoAction } from '../../store/todos/action-creators';
+import { addTodo } from '../../store/todos';
 
 const TodoAppPageAddTodoGroup = () => {
   const [todoTitle, setTodoTitle] = useState('');
@@ -9,7 +9,7 @@ const TodoAppPageAddTodoGroup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createAddTodoAction(todoTitle));
+    dispatch(addTodo(todoTitle));
     setTodoTitle('');
   };
 

@@ -6,7 +6,7 @@ import {
   styled,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { authSelector } from '../../../store/auth/selectors';
+import { authSelector } from '../../../store/auth';
 import ButtonLink from './navbar-link-button';
 import RoutingService from '../../../routing';
 import {

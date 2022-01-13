@@ -7,7 +7,7 @@ const anonymRequester = axios.create({
   },
 });
 
-export const login = async ({ email, password }) => {
+const login = async ({ email, password }) => {
   try {
     const { data } = await anonymRequester.post('/auth/login', { email, password });
     return data;
@@ -16,7 +16,7 @@ export const login = async ({ email, password }) => {
   }
 };
 
-export const register = async () => {
+const register = async () => {
 
 };
 

@@ -11,7 +11,7 @@ import {
 import { useDispatch } from 'react-redux';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import PersonIcon from '@mui/icons-material/Person';
-import { logoutAction } from '../../../store/auth/action-creators';
+import { logout } from '../../../store/auth';
 import AuthMenuLink from './navbar-auth-menu-link';
 import { ProfileRoute } from '../../../routing/routes';
 
@@ -23,7 +23,7 @@ const NavbarAuthMenu = () => {
   const handleCloseMenu = () => setMenuOpen(false);
   const handleLogout = () => {
     handleCloseMenu();
-    dispatch(logoutAction);
+    dispatch(logout());
   };
 
   return (

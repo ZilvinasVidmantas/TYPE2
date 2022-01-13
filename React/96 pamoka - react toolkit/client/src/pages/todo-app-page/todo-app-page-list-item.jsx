@@ -7,7 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import ListItemText from './todo-app-page-list-item-text';
-import { createDeleteTodoAction, createUpdateTodoAction } from '../../store/todos/action-creators';
+import { deleteTodo, updateTodo } from '../../store/todos';
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
   ':nth-of-type(2n)': {
@@ -19,11 +19,11 @@ const TodoAppPageListItem = ({ id, title, done }) => {
   const dispatch = useDispatch();
 
   const handleDeleteIconClick = () => {
-    dispatch(createDeleteTodoAction(id));
+    dispatch(deleteTodo(id));
   };
 
   const handleUpdateIconClick = () => {
-    dispatch(createUpdateTodoAction(id));
+    dispatch(updateTodo(id));
   };
 
   return (

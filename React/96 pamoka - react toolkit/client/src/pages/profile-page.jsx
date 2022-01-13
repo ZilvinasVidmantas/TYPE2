@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
-import { userSelector } from '../store/auth/selectors';
+import { userSelector } from '../store/auth';
 
 const ProfilePage = () => {
   const user = useSelector(userSelector);

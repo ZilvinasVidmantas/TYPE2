@@ -1,16 +1,10 @@
-import { combineReducers, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
 import todos from './todos';
 import auth from './auth';
 
-const mainReducer = combineReducers({
-  todos,
-  auth,
-});
+const reducer = combineReducers({ todos, auth });
 
-const store = createStore(
-  mainReducer,
-  composeWithDevTools(),
-);
+const store = configureStore({ reducer });
 
 export default store;
