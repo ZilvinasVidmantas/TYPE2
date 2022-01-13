@@ -46,14 +46,12 @@ const checkEmailAvailability = (email) => {
 export const checkEmail = (req, res) => {
   const { email } = req.query;
   try {
-    const emailAvailable = checkEmailAvailability(email);
-    res.status(200).json({
-      available: emailAvailable,
-    });
+    const available = checkEmailAvailability(email);
+    res.status(200).json({ available });
   } catch (error) {
     res.status(400).json({
-      message: error.message
-    })
+      message: 'Server error'
+    });
   }
 }
 
