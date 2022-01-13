@@ -12,14 +12,9 @@ import ErrorIcon from '@mui/icons-material/Error';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import AuthForm from '../components/auth-form';
+import ApiService from '../services/api-service';
 
 const API = {
-  checkEmail: (email) => new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(!['admin@gmail.com'].includes(email));
-      reject(new Error('Email already exists'));
-    }, 2000);
-  }),
   register: () => new Promise((success) => {
     setTimeout(() => {
       success({
@@ -123,7 +118,7 @@ const RegisterPage = () => {
       (async () => {
         try {
           setEmailCheckLoading(true);
-          const emailAvailable = await API.checkEmail(values.email);
+          const emailAvailable = await ApiService.checkEmail(values.email);
           setFieldValue('emailAvailable', emailAvailable);
         } catch (error) {
           setFieldValue('emailAvailable', false);
@@ -145,10 +140,6 @@ const RegisterPage = () => {
   } else {
     emailEndornment = <ErrorIcon color="error" />;
   }
-  console.log({
-    dirty,
-    isValid,
-  });
 
   return (
     <AuthForm

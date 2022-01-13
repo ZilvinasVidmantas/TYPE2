@@ -35,7 +35,27 @@ const createUser = ({ name, subscribed, surname, email, password, role }) => {
   return newUser;
 }
 
+const checkEmailAvailability = (email) => {
+  const { users } = database;
+  const userExists = Boolean(users.find(x => x.email === email));
+  return !userExists;
+}
+
 //  USER MODEL ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+export const checkEmail = (req, res) => {
+  const { email } = req.query;
+  try {
+    const emailAvailable = checkEmailAvailability(email);
+    res.status(200).json({
+      available: emailAvailable,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: error.message
+    })
+  }
+}
 
 export const login = (req, res) => {
   const { email, password } = req.body;

@@ -26,6 +26,15 @@
       "email": "user2@gmail.com",
       "password": "Vilnius123",
       "role": "user"
+    },
+    {
+      "id": "81e8cd70-efa8-4862-b41a-c3cd935a9d3",
+      "name": "Marijus",
+      "subscribed": false,
+      "surname": "Koksas",
+      "email": "user3@gmail.com",
+      "password": "Vilnius123",
+      "role": "user"
     }
   ]
 }
