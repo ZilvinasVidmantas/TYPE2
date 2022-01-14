@@ -2,16 +2,16 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { authSelector } from '../store/auth';
-import { HomeRoute } from './routes';
+import routes from './routes';
 
-const RequirePublic = ({ children }) => {
+const RequirePublicOnly = ({ children }) => {
   const auth = useSelector(authSelector);
 
   if (auth.loggedIn) {
-    return <Navigate to={auth.redirectTo ?? HomeRoute.link} />;
+    return <Navigate to={auth.redirectTo ?? routes.HomePage} />;
   }
 
   return children;
 };
 
-export default RequirePublic;
+export default RequirePublicOnly;
