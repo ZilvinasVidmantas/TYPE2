@@ -8,8 +8,8 @@ import {
 import { useSelector } from 'react-redux';
 import { authSelector } from '../../../store/auth';
 import LinkButton from './navbar-link-button';
-import routes from '../../../routing/routes';
 import AuthMenu from './navbar-auth-menu';
+import routes from '../../../routing/routes';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   height: theme.mixins.navbar.height,

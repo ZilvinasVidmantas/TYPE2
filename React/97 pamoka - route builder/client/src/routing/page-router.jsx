@@ -2,19 +2,21 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import routeStructure from './route-structure';
 import protectPageEnum from './auth-protectors/protect-page-enum';
+import pageRouteEnum from './page-route-enum';
 
-const printRecursive = ({
+const mapRoutesRecursive = ({
   path,
   index,
-  Page,
+  pageName,
   childRoutes,
   auth,
 }) => {
+  const Page = pageRouteEnum[pageName];
   if (childRoutes) {
     // Route is LayoutComponent
     return (
-      <Route key={Page.name} path={path} element={<Page />}>
-        {childRoutes.map(printRecursive)}
+      <Route key={pageName} path={path} element={<Page />}>
+        {childRoutes.map(mapRoutesRecursive)}
       </Route>
     );
   }
@@ -25,7 +27,7 @@ const printRecursive = ({
 
   return (
     <Route
-      key={Page.name}
+      key={pageName}
       path={path}
       index={index}
       element={authenticatedPage}
@@ -33,7 +35,7 @@ const printRecursive = ({
   );
 };
 
-const routes = routeStructure.map(printRecursive);
+const routes = routeStructure.map(mapRoutesRecursive);
 
 const PageRouter = () => (
   <BrowserRouter>
