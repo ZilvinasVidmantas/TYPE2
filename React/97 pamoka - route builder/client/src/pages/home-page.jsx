@@ -1,9 +1,8 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 
 const HomePage = () => (
-  <div>
-    <h1>Home Page</h1>
-  </div>
+  <Typography>HomePage</Typography>
 );
 
 export default HomePage;

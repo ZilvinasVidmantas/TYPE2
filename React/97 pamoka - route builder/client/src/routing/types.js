@@ -1,12 +1,10 @@
-export const PUBLIC = 'public';
-export const VISITOR = 'visitor';
+export const PUBLIC_ONLY = 'public-only';
 export const AUTH = 'auth';
 export const USER = 'user';
 export const ADMIN = 'admin';
 
 export default {
-  PUBLIC,
-  VISITOR,
+  PUBLIC_ONLY,
   AUTH,
   USER,
   ADMIN,

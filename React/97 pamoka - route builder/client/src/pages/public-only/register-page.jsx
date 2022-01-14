@@ -11,8 +11,8 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-import AuthForm from '../components/auth-form';
-import ApiService from '../services/api-service';
+import AuthForm from '../../components/auth-form';
+import ApiService from '../../services/api-service';
 
 const API = {
   register: () => new Promise((success) => {

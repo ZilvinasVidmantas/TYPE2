@@ -11,7 +11,6 @@ import ButtonLink from './navbar-link-button';
 import RoutingService from '../../../routing';
 import {
   HomeRoute,
-  TodoAppRoute,
   LoginRoute,
   RegisterRoute,
 } from '../../../routing/routes';
@@ -19,7 +18,6 @@ import AuthMenu from './navbar-auth-menu';
 
 const leftRoutes = [
   HomeRoute,
-  TodoAppRoute,
 ];
 
 const rightRoutes = [
