@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
-import { authSelector } from '../store/auth';
-import routes from './routes';
+import { authSelector } from '../../store/auth';
+import routes from '../routes';
 
-const RequireAuth = ({ children }) => {
+const AuthProtector = ({ children }) => {
   const { pathname } = useLocation();
   const auth = useSelector(authSelector);
 
@@ -15,4 +15,4 @@ const RequireAuth = ({ children }) => {
   return children;
 };
 
-export default RequireAuth;
+export default AuthProtector;

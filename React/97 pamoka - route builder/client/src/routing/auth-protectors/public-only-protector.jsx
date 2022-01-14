@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { authSelector } from '../store/auth';
-import routes from './routes';
+import { authSelector } from '../../store/auth';
+import routes from '../routes';
 
-const RequirePublicOnly = ({ children }) => {
+const PublicOnlyProtector = ({ children }) => {
   const auth = useSelector(authSelector);
 
   if (auth.loggedIn) {
@@ -14,4 +14,4 @@ const RequirePublicOnly = ({ children }) => {
   return children;
 };
 
-export default RequirePublicOnly;
+export default PublicOnlyProtector;
