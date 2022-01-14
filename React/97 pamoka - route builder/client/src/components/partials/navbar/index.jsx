@@ -7,36 +7,16 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { authSelector } from '../../../store/auth';
-import ButtonLink from './navbar-link-button';
-import RoutingService from '../../../routing';
-import {
-  HomeRoute,
-  LoginRoute,
-  RegisterRoute,
-} from '../../../routing/routes';
+import LinkButton from './navbar-link-button';
+import routes from '../../../routing/routes';
 import AuthMenu from './navbar-auth-menu';
-
-const leftRoutes = [
-  HomeRoute,
-];
-
-const rightRoutes = [
-  LoginRoute,
-  RegisterRoute,
-];
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   height: theme.mixins.navbar.height,
 }));
 
 const Navbar = () => {
-  // eslint-disable-next-line no-unused-vars
   const auth = useSelector(authSelector);
-
-  const authenticatedLeftRoutes = leftRoutes
-    .filter((route) => RoutingService.authenticateRoute(route, auth));
-  const authenticatedRightRoutes = rightRoutes
-    .filter((route) => RoutingService.authenticateRoute(route, auth));
 
   return (
     <AppBar position="static">
@@ -49,10 +29,11 @@ const Navbar = () => {
         }}
         >
           <Box sx={{ display: 'flex' }}>
-            {authenticatedLeftRoutes.map((props) => <ButtonLink key={props.link} {...props} />)}
+            <LinkButton link={routes.HomePage} title="Home" />
           </Box>
           <Box sx={{ display: 'flex' }}>
-            {authenticatedRightRoutes.map((props) => <ButtonLink key={props.link} {...props} />)}
+            <LinkButton link={routes.LoginPage} title="Login" />
+            <LinkButton link={routes.RegisterPage} title="Register" />
           </Box>
           {auth.loggedIn ? <AuthMenu /> : null}
         </Box>

@@ -8,6 +8,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import routes from '../../routing/routes';
 import { login } from '../../store/auth';
 import AuthForm from '../../components/auth-form';
 import ApiService from '../../services/api-service';
@@ -68,7 +69,7 @@ const LoginPage = () => {
   return (
     <AuthForm
       title="Prisijungti"
-      linkTo="/login"
+      linkTo={routes.RegisterPage}
       linkTitle="Neturite paskyros? Registruokitės"
       loading={isSubmitting}
       isValid={isValid && dirty}

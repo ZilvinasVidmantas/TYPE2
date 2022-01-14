@@ -13,7 +13,7 @@ import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import PersonIcon from '@mui/icons-material/Person';
 import { logout } from '../../../store/auth';
 import AuthMenuLink from './navbar-auth-menu-link';
-import { ProfileRoute } from '../../../routing/routes';
+import routes from '../../../routing/routes';
 
 const NavbarAuthMenu = () => {
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const NavbarAuthMenu = () => {
         }}
       >
         <MenuItem onClick={handleCloseMenu}>
-          <AuthMenuLink to={ProfileRoute.link}>
+          <AuthMenuLink to={routes.ProfilePage}>
             <PersonIcon sx={{ mr: 2 }} />
             <Typography textAlign="center">Profile</Typography>
           </AuthMenuLink>

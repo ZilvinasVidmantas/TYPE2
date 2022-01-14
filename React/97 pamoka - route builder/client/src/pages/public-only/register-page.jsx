@@ -13,6 +13,7 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import AuthForm from '../../components/auth-form';
 import ApiService from '../../services/api-service';
+import routes from '../../routing/routes';
 
 const API = {
   register: () => new Promise((success) => {
@@ -144,7 +145,7 @@ const RegisterPage = () => {
   return (
     <AuthForm
       title="Registruotis"
-      linkTo="/register"
+      linkTo={routes.LoginPage}
       linkTitle="Jau turite paskyrą? Prisijunkite"
       onSubmit={handleSubmit}
       isValid={isValid && dirty}

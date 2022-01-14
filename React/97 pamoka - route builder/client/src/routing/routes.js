@@ -1,9 +1,14 @@
-import {
-  PUBLIC_ONLY,
-  AUTH,
-} from './types';
+const routes = {
+  HomePage: '/',
+  CartPage: '/cart',
+  LoginPage: '/login',
+  RegisterPage: '/register',
+  ProfilePage: '/dashboard',
+  UserInfoPage: '/dashboard/user-info',
+  OrdersPage: '/dashboard/orders',
+  StatisticsPage: '/dashboard/admin/statistics',
+  ProductPanelPage: '/dashboard/admin/products',
+  UserPanelPage: '/dashboard/admin/users',
+};
 
-export const HomeRoute = { title: 'Home', link: '/' };
-export const LoginRoute = { title: 'Login', link: '/login', auth: PUBLIC_ONLY };
-export const RegisterRoute = { title: 'Register', link: '/register', auth: PUBLIC_ONLY };
-export const ProfileRoute = { title: 'Profile', link: '/profile', auth: AUTH };
+export default routes;
