@@ -33,7 +33,7 @@ const createFruit = async (req, res) => {
   try {
     await fruitDoc.save();
     const fruit = new FruitViewModel(fruitDoc);
-    res.status(200).json(fruit);
+    res.status(201).json(fruit);
   } catch (error) {
     res.status(400).json({
       message: `Klaida: jau yra vaisus su tokiu pavadinimu: '${name}'`,
@@ -56,13 +56,12 @@ const getFruit = async (req, res) => {
 
 const deleteFruit = async (req, res) => {
   const { id } = req.params;
-  try
-  {
+  try {
     const fruitDoc = await FruitModel.findByIdAndDelete(id);
     const fruit = new FruitViewModel(fruitDoc);
     res.status(200).json(fruit);
   }
-  catch(error){
+  catch (error) {
     console.log(error.message)
     res.status(404).json({
       message: 'Vaisus nerastas'
@@ -73,14 +72,23 @@ const deleteFruit = async (req, res) => {
 const updateFruit = async (req, res) => {
   const { id } = req.params;
   const { name, price } = req.body;
-  const fruit = fruits.find(x => x.id === id);
-  if (fruit) {
-    if (name) fruit.name = name;
-    if (price) fruit.price = price;
-    res.status(200).json(fruit);
-  }
-  else {
-    res.status(404).json({ message: 'Vaisus nerastas' });
+  try {
+    await FruitModel.findById(id);
+
+    try {
+      const fruitDoc = await FruitModel.findByIdAndUpdate(
+        id,
+        { name, price },
+        { new: true }
+      );
+      const fruit = new FruitViewModel(fruitDoc);
+      res.status(200).json(fruit);
+    } catch (error) {
+      res.status(400).json({ message: 'Blogi parametrai' });
+    }
+
+  } catch (error) {
+    res.status(404).json({ message: 'Vaisius nerastas' });
   }
 };
 
