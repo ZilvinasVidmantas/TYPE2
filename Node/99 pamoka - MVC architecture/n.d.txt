@@ -1,0 +1,15 @@
+1. Pabaigti fruit router'io REST API logiką
+  DELETE '/fruits/:id' -> ištrinti vieną vaisių
+  PATCH  '/fruits/:id' -> ATNAUJINTI vieną vaisių
+  PUT    '/fruits/:id' -> Pakeisti vieną vaisių(pilnai)
+
+2. Sukurti savo projektui, express serverį ir jame atlikti tokius darbus:
+  * Įgalinti nuotraukų grąžinimą iš public folder'io
+  * Pasirinkti vieną struktūrą, kuri nėra susijusi ryšiais su kitomis struktūromis ir tai struktūrai sukurti visus 6 REST API requestHandlerius. Tai darykite astkirame router'yje
+
+  GET    '/jūsų-struktūra-daugiskaita'     -> gauti visus
+  POST   '/jūsų-struktūra-daugiskaita/'    -> sukurti vieną
+  GET    '/jūsų-struktūra-daugiskaita/:id' -> gauti vieną 
+  DELETE '/jūsų-struktūra-daugiskaita/:id' -> ištrinti vieną 
+  PATCH  '/jūsų-struktūra-daugiskaita/:id' -> atnaujinti vieną 
+  PUT    '/jūsų-struktūra-daugiskaita/:id' -> rerrašo vieną 
