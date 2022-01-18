@@ -1,22 +1,6 @@
 const FruitModel = require('../models/fruit-model');
 const FruitViewModel = require('../view-models/fruit-view-model');
 
-/*
-  1. Pagal savo vakarykštę pasirinktą struktūrą sukurkite modelį
-  2. Sukurkite savo struktūrai view-model'į
-  3. pagal pavyzdį sukurkite metodus:
-    * get<struktūra-daugiskaita>
-    * create<struktūra-vienaskaita>
-    * get<struktūra-vienaskaita>
-  4. Savarankiškai kurkite sekančius metodus
-*/
-
-const fruits = [
-  { id: '1', name: 'Apple', price: 20.89 },
-  { id: '2', name: 'Pear', price: 28.19 },
-  { id: '3', name: 'Banana', price: 12.99 },
-];
-
 const getFruits = async (req, res) => {
   const fruitDocs = await FruitModel.find();
   const fruits = fruitDocs.map(fruit => new FruitViewModel(fruit));
