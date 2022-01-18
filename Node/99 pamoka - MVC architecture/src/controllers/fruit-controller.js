@@ -95,18 +95,30 @@ const updateFruit = async (req, res) => {
 const replaceFruit = async (req, res) => {
   const { id } = req.params;
   const { name, price } = req.body;
-  const fruit = fruits.find(x => x.id === id);
-  if (fruit) {
-    if (name && price) {
-      fruit.name = name;
-      fruit.price = price;
-      res.status(200).json(fruit);
-    } else {
-      res.status(400).json({ message: 'Nepakanka duomenų' });
+  try {
+    await FruitModel.findById(id);
+
+    try {
+      if (name && price) {
+        const fruitDoc = await FruitModel.findByIdAndUpdate(
+          { _id: id },
+          { name, price },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        const fruit = new FruitViewModel(fruitDoc);
+        res.status(200).json(fruit);
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      res.status(400).json({ message: 'Blogi parametrai' });
     }
-  }
-  else {
-    res.status(404).json({ message: 'Vaisus nerastas' });
+
+  } catch (error) {
+    res.status(404).json({ message: 'Vaisius nerastas' });
   }
 };
 
