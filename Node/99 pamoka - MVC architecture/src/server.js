@@ -5,10 +5,10 @@ require('dotenv').config();
 const fruitRouter = require('./routes/fruit-router');
 
 const server = express();
-const { 
+const {
   SERVER_PORT,
   DB_CONNECTION,
- } = process.env;
+} = process.env;
 
 // Middlewares
 server.use(morgan('tiny'));
@@ -20,7 +20,7 @@ server.use('/api/fruits', fruitRouter);
 
 server.listen(SERVER_PORT, () => {
   console.log(`puslapis veikia ant http://localhost:${SERVER_PORT}/`);
-  (async () =>{
+  (async () => {
     try {
       await Mongoose.connect(DB_CONNECTION);
       console.log('Prisijungta prie duomenų bazės');
@@ -29,3 +29,5 @@ server.listen(SERVER_PORT, () => {
     }
   })();
 });
+
+// 10:00

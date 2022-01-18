@@ -1,4 +1,6 @@
 const { v4: generateId } = require('uuid');
+const FruitModel = require('../models/fruit-model');
+const FruitViewModel = require('../view-models/fruit-view-model');
 
 const fruits = [
   { id: '1', name: 'Apple', price: 20.89 },
@@ -6,26 +8,45 @@ const fruits = [
   { id: '3', name: 'Banana', price: 12.99 },
 ];
 
-const getFruits = (req, res) => {
-  res.status(200).json({ fruits })
+const getFruits = async (req, res) => {
+  const fruitDocs = await FruitModel.find();
+  const fruits = fruitDocs.map(fruit => new FruitViewModel(fruit));
+  res.status(200).json({ fruits });
 };
 
-const createFruit = (req, res) => {
+const createFruit = async (req, res) => {
   const { name, price } = req.body;
-  fruits.push({
-    id: generateId(),
+  const fruitDoc = await FruitModel({
     name,
     price
-  })
-  res.send('Vaisius sėkmingas įdėtas į prekybą');
+  });
+
+  try {
+    await fruitDoc.save();
+    const fruit = new FruitViewModel(fruitDoc);
+    res.status(200).json(fruit);
+  } catch (error) {
+    res.status(400).json({
+      message: `Klaida: jau yra vaisus su tokiu pavadinimu: '${name}'`,
+    });
+  }
 };
 
-const getFruit = (req, res) => {
+const getFruit = async (req, res) => {
   const { id } = req.params;
-  res.status(200).json(fruits.find(x => x.id === id));
+  try {
+    const fruitDoc = await FruitModel.findById(id);
+    const fruit = new FruitViewModel(fruitDoc);
+    res.status(200).json(fruit);
+  } catch (error) {
+    res.status(404).json({
+      message: `Elementas nerastas su id: '${id}'`,
+    });
+  }
+
 };
 
-const deleteFruit = (req, res) => {
+const deleteFruit = async (req, res) => {
   const { id } = req.params;
   const ii = fruits.findIndex(x => x.id === id);
   if (ii >= 0) {
@@ -38,7 +59,7 @@ const deleteFruit = (req, res) => {
   }
 };
 
-const updateFruit = (req, res) => {
+const updateFruit = async (req, res) => {
   const { id } = req.params;
   const { name, price } = req.body;
   const fruit = fruits.find(x => x.id === id);
@@ -52,7 +73,7 @@ const updateFruit = (req, res) => {
   }
 };
 
-const replaceFruit = (req, res) => {
+const replaceFruit = async (req, res) => {
   const { id } = req.params;
   const { name, price } = req.body;
   const fruit = fruits.find(x => x.id === id);
