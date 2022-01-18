@@ -9,14 +9,12 @@ const fruits = [
   { id: '3', name: 'Banana', price: 12.99 },
 ];
 
-// REST API standard
-
-// GET    '/fruits'     -> visus vaisius
+// GET '/api/fruits'     -> visus vaisius
 router.get('/', (req, res) => {
   res.status(200).json({ fruits })
 });
 
-// POST   '/fruits/'    -> sukurti vieną vaisių
+// POST '/api/fruits/'    -> sukurti vieną vaisių
 router.post('/', (req, res) => {
   const { name, price } = req.body;
   fruits.push({
@@ -27,13 +25,13 @@ router.post('/', (req, res) => {
   res.send('Vaisius sėkmingas įdėtas į prekybą');
 });
 
-// GET    '/fruits/:id' -> gauti vieną vaisių
+// GET '/api/fruits/:id' -> gauti vieną vaisių
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   res.status(200).json(fruits.find(x => x.id === id));
 });
 
-// DELETE '/fruits/:id' -> ištrinti vieną vaisių
+// DELETE '/api/fruits/:id' -> ištrinti vieną vaisių
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   const ii = fruits.findIndex(x => x.id === id);
@@ -47,7 +45,7 @@ router.delete('/:id', (req, res) => {
   }
 });
 
-// PATCH  '/fruits/:id' -> ATNAUJINTI vieną vaisių
+// PATCH '/api/fruits/:id' -> ATNAUJINTI vieną vaisių
 router.patch('/:id', (req, res) => {
   const { id } = req.params;
   const { name, price } = req.body;
@@ -62,7 +60,7 @@ router.patch('/:id', (req, res) => {
   }
 });
 
-// PUT    '/fruits/:id' -> Perrašo vieną vaisių
+// PUT '/api/fruits/:id' -> Perrašo vieną vaisių
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const { name, price } = req.body;
