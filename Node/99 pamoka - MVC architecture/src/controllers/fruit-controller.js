@@ -56,14 +56,17 @@ const getFruit = async (req, res) => {
 
 const deleteFruit = async (req, res) => {
   const { id } = req.params;
-  const ii = fruits.findIndex(x => x.id === id);
-  if (ii >= 0) {
-    const [deletedFruit] = fruits.splice(ii, 1);
-    res.status(200).json(deletedFruit);
-  } else {
+  try
+  {
+    const fruitDoc = await FruitModel.findByIdAndDelete(id);
+    const fruit = new FruitViewModel(fruitDoc);
+    res.status(200).json(fruit);
+  }
+  catch(error){
+    console.log(error.message)
     res.status(404).json({
       message: 'Vaisus nerastas'
-    })
+    });
   }
 };
 
