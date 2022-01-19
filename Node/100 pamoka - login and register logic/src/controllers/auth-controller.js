@@ -1,4 +1,5 @@
 const UserModel = require('../models/user-model');
+const UserViewModel = require('../view-models/user-view-model');
 const { hashPasswordAsync } = require('../helpers/hash');
 
 const register = async (req, res) => {
@@ -12,9 +13,10 @@ const register = async (req, res) => {
       surname,
     });
 
+    const user = new UserViewModel(userDoc);
     res.status(200).json({
       message: 'Registracija pavyko',
-      user: userDoc,
+      user
     });
 
     const hashedPassword = await hashPasswordAsync(password);

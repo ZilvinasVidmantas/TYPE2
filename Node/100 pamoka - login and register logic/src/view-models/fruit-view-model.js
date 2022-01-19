@@ -1,10 +1,10 @@
 class FruitViewModel {
-  constructor(fruitModel) {
-    this.id = fruitModel._id;
-    this.name = fruitModel.name;
-    this.price = fruitModel.price;
-    this.createdAt = fruitModel.createdAt;
-    this.updatedAt = fruitModel.updatedAt;
+  constructor({ _id, name, price, createdAt, updatedAt }) {
+    this.id = _id;
+    this.name = name;
+    this.price = price;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
   }
 }
 
