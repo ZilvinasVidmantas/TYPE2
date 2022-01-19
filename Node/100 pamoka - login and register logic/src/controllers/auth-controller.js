@@ -16,7 +16,7 @@ const register = async (req, res) => {
     });
 
     const user = new UserViewModel(userDoc);
-    res.status(200).json({
+    res.status(201).json({
       user,
       token: createFakeToken({ email, role: userDoc.role })
     });
@@ -46,7 +46,7 @@ const login = async (req, res) => {
       });
     }
     else {
-      res.status(400).json({ message: 'Incorrect password' });
+      res.status(401).json({ message: 'Incorrect password' });
     }
 
   } catch (error) {
