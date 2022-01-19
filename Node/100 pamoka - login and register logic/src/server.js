@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const Mongoose = require('mongoose');
 require('dotenv').config();
 const fruitRouter = require('./routes/fruit-router');
+const authRouter = require('./routes/auth-router');
 
 const server = express();
 const {
@@ -17,6 +18,7 @@ server.use(express.json());
 
 // Response handlers
 server.use('/api/fruits', fruitRouter);
+server.use('/api/auth', authRouter);
 
 server.listen(SERVER_PORT, () => {
   console.log(`puslapis veikia ant http://localhost:${SERVER_PORT}/`);
@@ -29,5 +31,3 @@ server.listen(SERVER_PORT, () => {
     }
   })();
 });
-
-// 10:00
