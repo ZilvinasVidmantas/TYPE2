@@ -2,8 +2,6 @@ const Mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const validator = require('validator');
 
-// 11:18
-
 const userSchema = new Mongoose.Schema({
   email: {
     type: 'string',
