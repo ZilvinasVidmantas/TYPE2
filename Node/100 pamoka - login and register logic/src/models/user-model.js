@@ -18,7 +18,6 @@ const userSchema = new Mongoose.Schema({
     validate: [
       { validator: (value) => value.length >= 8, message: 'Min 8 characters' },
       { validator: (value) => value.length <= 32, message: 'Max 32 characters' },
-      { validator: (value) => value.length <= 32, message: 'Max 32 characters' },
       { validator: (value) => /^.*[0-9].*$/.test(value), message: 'At least one number' },
       { validator: (value) => /^.*[A-ZĄČĘĖĮŠŲŪŽ].*$/.test(value), message: 'At least one capital letter' },
     ],
