@@ -2,6 +2,8 @@ const Mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const validator = require('validator');
 
+// 11:18
+
 const userSchema = new Mongoose.Schema({
   email: {
     type: 'string',
@@ -22,6 +24,11 @@ const userSchema = new Mongoose.Schema({
       { validator: (value) => /^.*[0-9].*$/.test(value), message: 'At least one number' },
       { validator: (value) => /^.*[A-ZĄČĘĖĮŠŲŪŽ].*$/.test(value), message: 'At least one capital letter' },
     ],
+  },
+  role: {
+    type: 'string',
+    enum: ['USER', 'ADMIN'],
+    default: 'USER',
   },
   name: {
     type: 'string',
