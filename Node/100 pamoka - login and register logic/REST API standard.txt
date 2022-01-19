@@ -1,0 +1,6 @@
+GET    '/jūsų-struktūra-daugiskaita'     -> gauti visus
+POST   '/jūsų-struktūra-daugiskaita'     -> sukurti vieną
+GET    '/jūsų-struktūra-daugiskaita/:id' -> gauti vieną 
+DELETE '/jūsų-struktūra-daugiskaita/:id' -> ištrinti vieną 
+PATCH  '/jūsų-struktūra-daugiskaita/:id' -> atnaujinti vieną 
+PUT    '/jūsų-struktūra-daugiskaita/:id' -> perrašyti vieną 
