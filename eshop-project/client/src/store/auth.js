@@ -4,7 +4,6 @@ import SessionService from '../services/session-service';
 
 const initialState = SessionService.get('auth') ?? {
   loggedIn: false,
-  token: null,
   user: null,
   redirectTo: null,
 };
@@ -15,14 +14,11 @@ const authSlice = createSlice({
   reducers: {
     login(state, action) {
       state.loggedIn = true;
-      state.token = action.payload.token;
       state.user = action.payload.user;
       state.redirectTo = action.payload.redirectTo;
-      SessionService.set('auth', state);
     },
     logout(state) {
       state.loggedIn = false;
-      state.token = null;
       state.user = null;
       state.redirectTo = null;
     },

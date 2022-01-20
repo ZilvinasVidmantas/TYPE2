@@ -35,7 +35,7 @@ const LoginPage = () => {
   const onSubmit = async ({ email, password }) => {
     setError(null);
     try {
-      const { user, token } = await ApiService.login({
+      const user = await ApiService.login({
         email,
         password,
       });
@@ -43,7 +43,6 @@ const LoginPage = () => {
       const redirectTo = urlSearchParams.get('redirectTo');
       const loginSuccessAction = login({
         user,
-        token,
         redirectTo,
       });
       dispatch(loginSuccessAction);
