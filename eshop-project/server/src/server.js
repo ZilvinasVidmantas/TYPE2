@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const Mongoose = require('mongoose');
 require('dotenv').config();
+const cors = require('cors');
 const authRouter = require('./routes/auth-router');
 const userRouter = require('./routes/user-router');
 
@@ -11,8 +12,14 @@ const {
   DB_CONNECTION,
 } = process.env;
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 // Middlewares
 server.use(morgan('tiny'));
+server.use(cors(corsOptions));
 server.use(express.json());
 
 // Response handlers
@@ -30,5 +37,3 @@ server.listen(SERVER_PORT, () => {
     }
   })();
 });
-
-// 11:15

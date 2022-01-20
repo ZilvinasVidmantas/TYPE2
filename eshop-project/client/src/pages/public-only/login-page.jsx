@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import {
   TextField,
@@ -38,6 +39,7 @@ const LoginPage = () => {
         email,
         password,
       });
+
       const redirectTo = urlSearchParams.get('redirectTo');
       const loginSuccessAction = login({
         user,
