@@ -13,4 +13,3 @@ router.use(authMiddleware);
 router.get('/', adminMiddleware, getUsers);
 
 module.exports = router;
-

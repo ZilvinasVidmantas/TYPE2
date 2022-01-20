@@ -5,7 +5,7 @@ const adminMiddleware = (req, res, next) => {
     });
     return;
   }
-  
+
   next();
 };
 

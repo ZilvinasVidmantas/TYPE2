@@ -8,11 +8,11 @@ const authMiddleware = (req, res, next) => {
   if (!token) res.status(400).json({ message: 'Bad auth data' });
 
   try {
-    const user = jwt.verify(token, process.env.TOKEN_SECRET);
-    req.user = user;
+    const decodedUser = jwt.verify(token, process.env.TOKEN_SECRET);
+    req.user = decodedUser;
     next();
   } catch (error) {
-    res.status(400).json({ meesage: 'Invalid token' })
+    res.status(400).json({ meesage: 'Invalid token' });
   }
 };
 
