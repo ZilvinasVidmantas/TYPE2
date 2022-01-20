@@ -2,7 +2,6 @@ const express = require('express');
 const morgan = require('morgan');
 const Mongoose = require('mongoose');
 require('dotenv').config();
-const fruitRouter = require('./routes/fruit-router');
 const authRouter = require('./routes/auth-router');
 const userRouter = require('./routes/user-router');
 
@@ -14,11 +13,9 @@ const {
 
 // Middlewares
 server.use(morgan('tiny'));
-server.use(express.static('public'));
 server.use(express.json());
 
 // Response handlers
-server.use('/api/fruits', fruitRouter);
 server.use('/api/auth', authRouter);
 server.use('/api/users', userRouter);
 
