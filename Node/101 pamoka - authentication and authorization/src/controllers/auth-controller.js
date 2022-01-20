@@ -1,8 +1,7 @@
 const UserModel = require('../models/user-model');
 const UserViewModel = require('../view-models/user-view-model');
 const { hashPasswordAsync, comparePasswordsAsync } = require('../helpers/hash');
-
-const createFakeToken = ({ email, role }) => 'k.sdafgishopisrtgohgjnsrtgjhbo';
+const generateToken = require('../helpers/generate-token');
 
 const register = async (req, res) => {
   const { email, password, repeatPassword, name, surname } = req.body;
@@ -18,7 +17,7 @@ const register = async (req, res) => {
     const user = new UserViewModel(userDoc);
     res.status(201).json({
       user,
-      token: createFakeToken({ email, role: userDoc.role })
+      token: generateToken({ email, role: userDoc.role })
     });
 
     const hashedPassword = await hashPasswordAsync(password);
@@ -42,7 +41,7 @@ const login = async (req, res) => {
       const user = new UserViewModel(userDoc);
       res.status(200).json({
         user,
-        token: createFakeToken({ email, role: userDoc.role }),
+        token: generateToken({ email, role: userDoc.role }),
       });
     }
     else {
