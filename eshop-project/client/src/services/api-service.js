@@ -1,47 +1,52 @@
 import axios from 'axios';
 import SessionService from './session-service';
 
-const requester = axios.create({
-  baseURL: 'http://localhost:5000/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-const setAuth = (token) => {
-  requester.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const login = async ({ email, password }) => {
-  try {
-    const { data: { user, token } } = await requester.post('/auth/login', { email, password });
-    SessionService.set('auth', {
-      loggedIn: true,
-      user,
-      token,
+// Singleton pattern - only one object of a class
+const ApiService = new (class ApiService {
+  constructor() {
+    const { token } = SessionService.get('auth') ?? {};
+    this.requester = axios.create({
+      baseURL: 'http://localhost:5000/api',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
-    setAuth(token);
-    return user;
-  } catch (error) {
-    throw new Error(error.response.data.message);
+    if (token) {
+      this.requester.defaults.headers.common.Authorization = `Bearer ${token}`;
+    }
   }
-};
 
-const register = async () => {
-
-};
-
-const checkEmail = async (email) => {
-  try {
-    const { data } = await requester.get(`/auth/check-email?email=${email}`);
-    return data.available;
-  } catch (error) {
-    return error.message;
+  setAuth(token) {
+    this.requester.defaults.headers.common.Authorization = `Bearer ${token}`;
   }
-};
 
-export default {
-  login,
-  register,
-  checkEmail,
-};
+  async login({ email, password }) {
+    try {
+      const { data: { user, token } } = await this.requester.post('/auth/login', { email, password });
+      SessionService.set('auth', {
+        loggedIn: true,
+        user,
+        token,
+      });
+      this.setAuth(token);
+      return user;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+
+  async register() {
+    console.log(this);
+  }
+
+  async checkEmail(email) {
+    try {
+      const { data } = await this.requester.get(`/auth/check-email?email=${email}`);
+      return data.available;
+    } catch (error) {
+      return error.message;
+    }
+  }
+})();
+
+export default ApiService;
