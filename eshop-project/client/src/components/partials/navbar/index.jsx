@@ -31,10 +31,14 @@ const Navbar = () => {
           <Box sx={{ display: 'flex' }}>
             <LinkButton link={routes.HomePage} title="Home" />
           </Box>
-          <Box sx={{ display: 'flex' }}>
-            <LinkButton link={routes.LoginPage} title="Login" />
-            <LinkButton link={routes.RegisterPage} title="Register" />
-          </Box>
+          {
+            !auth.loggedIn ? (
+              <Box sx={{ display: 'flex' }}>
+                <LinkButton link={routes.LoginPage} title="Login" />
+                <LinkButton link={routes.RegisterPage} title="Register" />
+              </Box>
+            ) : null
+          }
           {auth.loggedIn ? <AuthMenu /> : null}
         </Box>
       </StyledContainer>

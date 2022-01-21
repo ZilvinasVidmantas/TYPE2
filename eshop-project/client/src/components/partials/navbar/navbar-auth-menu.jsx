@@ -8,22 +8,20 @@ import {
   Box,
   Typography,
 } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import PersonIcon from '@mui/icons-material/Person';
-import { logout } from '../../../store/auth';
+import AuthService from '../../../services/auth-service';
 import AuthMenuLink from './navbar-auth-menu-link';
 import routes from '../../../routing/routes';
 
 const NavbarAuthMenu = () => {
-  const dispatch = useDispatch();
   const anchorRef = useRef();
   const [menuOpen, setMenuOpen] = useState(false);
   const handleOpenMenu = () => setMenuOpen(true);
   const handleCloseMenu = () => setMenuOpen(false);
   const handleLogout = () => {
     handleCloseMenu();
-    dispatch(logout());
+    AuthService.logout();
   };
 
   return (

@@ -1,9 +1,7 @@
 import axios from 'axios';
 import SessionService from './session-service';
 import reduxStore from '../store/index';
-import { login } from '../store/auth';
-
-// delete axios.defaults.headers.common["Authorization"];
+import { login, logout } from '../store/auth';
 
 // Singleton pattern - only one object of a class
 const AuthService = new (class AuthService {
@@ -34,6 +32,12 @@ const AuthService = new (class AuthService {
     } catch (error) {
       throw new Error(error.response.data.message);
     }
+  }
+
+  logout() {
+    SessionService.clear('auth_token');
+    delete this.requester.defaults.headers.common.Authorization;
+    reduxStore.dispatch(logout());
   }
 
   async register() {
