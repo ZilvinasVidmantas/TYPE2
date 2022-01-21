@@ -37,9 +37,8 @@ const Navbar = () => {
                 <LinkButton link={routes.LoginPage} title="Login" />
                 <LinkButton link={routes.RegisterPage} title="Register" />
               </Box>
-            ) : null
+            ) : <AuthMenu />
           }
-          {auth.loggedIn ? <AuthMenu /> : null}
         </Box>
       </StyledContainer>
     </AppBar>
