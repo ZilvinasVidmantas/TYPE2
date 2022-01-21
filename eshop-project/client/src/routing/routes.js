@@ -10,14 +10,14 @@ const pathValid = (path, index) => {
   return index;
 };
 
-const printRouteRecursive = (paths, {
+const mapRoutePathsRecursive = (paths, {
   path,
   index,
   pageName,
   childRoutes,
 }) => {
   if (childRoutes) {
-    const childPaths = childRoutes.reduce(printRouteRecursive, {});
+    const childPaths = childRoutes.reduce(mapRoutePathsRecursive, {});
     Object.entries(childPaths).forEach(([childPageName, childPathValue]) => {
       const finalParentPath = path[path.length - 1] !== '/' ? `${path}/` : path;
       const finalChildPath = childPathValue ?? '/';
@@ -33,6 +33,6 @@ const printRouteRecursive = (paths, {
   return newPaths;
 };
 
-const routes = routeStructure.reduce(printRouteRecursive, {});
+const routes = routeStructure.reduce(mapRoutePathsRecursive, {});
 
 export default routes;
