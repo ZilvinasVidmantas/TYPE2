@@ -40,8 +40,16 @@ const AuthService = new (class AuthService {
     reduxStore.dispatch(logout());
   }
 
-  async register() {
-    console.log(this);
+  async register(formData) {
+    try {
+      const response = await this.requester.post('/register', formData);
+      const { user, token } = response.data;
+      SessionService.set('auth_token', token);
+      this.setAuth(token);
+      return user;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
 
   async authenticate(token) {
@@ -65,7 +73,3 @@ const AuthService = new (class AuthService {
 })();
 
 export default AuthService;
-
-/*
-  4. Padaryti registraciją
-*/

@@ -9,8 +9,10 @@ import {
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
+import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { login } from '../../store/auth';
 import AuthForm from '../../components/auth-form';
 import AuthService from '../../services/auth-service';
 import routes from '../../routing/routes';
@@ -41,8 +43,6 @@ const validationSchema = yup.object({
     .matches(/^.*\d+.*$/, 'Atleast one number'),
   passwordConfirmation: yup.string()
     .required('Is required')
-    // .when('password', (password, schema) => schema.oneOf([password], 'Passwords must match')),
-    // .test('password', 'Paswords must match', (value, { parent }) => value === parent.password),
     .oneOf([yup.ref('password')], 'Passwords must match'),
   emailChecked: yup.boolean().oneOf([true]),
   emailAvailable: yup.boolean().oneOf([true]),
@@ -60,11 +60,20 @@ const initialValues = {
 };
 
 const RegisterPage = () => {
+  const dispatch = useDispatch();
   const [emailCheckLoading, setEmailCheckLoading] = useState(false);
 
-  const onSubmit = async () => {
-    const result = await AuthService.register();
-    console.log(result);
+  const onSubmit = async ({
+    email, name, surname, password, passwordConfirmation,
+  }) => {
+    const user = await AuthService.register({
+      email,
+      name,
+      surname,
+      password,
+      repeatPassword: passwordConfirmation,
+    });
+    dispatch(login({ user }));
   };
 
   const {
