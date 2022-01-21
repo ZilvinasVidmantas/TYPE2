@@ -12,7 +12,7 @@ import * as yup from 'yup';
 import routes from '../../routing/routes';
 import { login } from '../../store/auth';
 import AuthForm from '../../components/auth-form';
-import ApiService from '../../services/api-service';
+import AuthService from '../../services/auth-service';
 
 const validationSchema = yup.object({
   email: yup.string()
@@ -35,7 +35,7 @@ const LoginPage = () => {
   const onSubmit = async ({ email, password }) => {
     setError(null);
     try {
-      const user = await ApiService.login({
+      const user = await AuthService.login({
         email,
         password,
       });

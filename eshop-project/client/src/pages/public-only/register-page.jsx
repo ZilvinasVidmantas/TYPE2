@@ -12,7 +12,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import AuthForm from '../../components/auth-form';
-import ApiService from '../../services/api-service';
+import AuthService from '../../services/auth-service';
 import routes from '../../routing/routes';
 
 const API = {
@@ -119,7 +119,7 @@ const RegisterPage = () => {
       (async () => {
         try {
           setEmailCheckLoading(true);
-          const emailAvailable = await ApiService.checkEmail(values.email);
+          const emailAvailable = await AuthService.checkEmail(values.email);
           setFieldValue('emailAvailable', emailAvailable);
         } catch (error) {
           setFieldValue('emailAvailable', false);

@@ -2,6 +2,7 @@ const UserModel = require('../models/user-model');
 const UserViewModel = require('../view-models/user-view-model');
 const { hashPasswordAsync, comparePasswordsAsync } = require('../helpers/hash');
 const generateToken = require('../helpers/generate-token');
+const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
   const { email, password, repeatPassword, name, surname } = req.body;
@@ -53,7 +54,20 @@ const login = async (req, res) => {
   }
 };
 
+const auth = async (req, res) => {
+  const { token } = req.body;
+  try {
+    const { email } = jwt.verify(token, process.env.TOKEN_SECRET);
+    const userDoc = await UserModel.findOne({ email });
+    const user = new UserViewModel(userDoc);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(403).json({ message: 'Token not valid' });
+  }
+}
+
 module.exports = {
   register,
   login,
+  auth,
 };
