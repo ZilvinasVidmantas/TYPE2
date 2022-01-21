@@ -66,8 +66,21 @@ const auth = async (req, res) => {
   }
 }
 
+const checkEmail = async (req, res) => {
+  const { email } = req.query;
+  if (!email) {
+    res.status(400).json({
+      message: 'No email provided',
+    });
+    return;
+  }
+  const userDoc = await UserModel.findOne({ email });
+  res.status(200).json({ available: !userDoc });
+}
+
 module.exports = {
   register,
   login,
   auth,
+  checkEmail,
 };

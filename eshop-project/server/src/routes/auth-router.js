@@ -3,6 +3,7 @@ const {
   register,
   login,
   auth,
+  checkEmail,
 } = require('../controllers/auth-controller');
 const authConfigureMiddleware = require('../middlewares/auth-congifure-middleware');
 
@@ -18,5 +19,7 @@ router.post('/register', register);
 
 // POST - /api/auth/login
 router.post('/login', login);
+
+router.get('/check-email', checkEmail);
 
 module.exports = router;

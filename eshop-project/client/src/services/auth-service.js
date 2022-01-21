@@ -9,7 +9,7 @@ const AuthService = new (class AuthService {
     const token = SessionService.get('auth_token');
 
     this.requester = axios.create({
-      baseURL: 'http://localhost:5000/api',
+      baseURL: 'http://localhost:5000/api/auth',
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -24,7 +24,7 @@ const AuthService = new (class AuthService {
 
   async login({ email, password }) {
     try {
-      const response = await this.requester.post('/auth/login', { email, password });
+      const response = await this.requester.post('/login', { email, password });
       const { user, token } = response.data;
       SessionService.set('auth_token', token);
       this.setAuth(token);
@@ -46,7 +46,7 @@ const AuthService = new (class AuthService {
 
   async authenticate(token) {
     try {
-      const { data: user } = await this.requester.post('/auth', { token });
+      const { data: user } = await this.requester.post('/', { token });
       reduxStore.dispatch(login({ user }));
       this.setAuth(token);
     } catch (error) {
@@ -56,7 +56,7 @@ const AuthService = new (class AuthService {
 
   async checkEmail(email) {
     try {
-      const { data } = await this.requester.get(`/auth/check-email?email=${email}`);
+      const { data } = await this.requester.get(`/check-email?email=${email}`);
       return data.available;
     } catch (error) {
       return error.message;
@@ -67,7 +67,5 @@ const AuthService = new (class AuthService {
 export default AuthService;
 
 /*
-   9:10
-  3. Padaryti atsijungimą
   4. Padaryti registraciją
 */

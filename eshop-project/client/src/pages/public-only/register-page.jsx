@@ -15,20 +15,6 @@ import AuthForm from '../../components/auth-form';
 import AuthService from '../../services/auth-service';
 import routes from '../../routing/routes';
 
-const API = {
-  register: () => new Promise((success) => {
-    setTimeout(() => {
-      success({
-        token: 'sdgfisghfsd',
-        user: {
-          name: 'Banys',
-          role: 'Gangster',
-        },
-      });
-    }, 2000);
-  }),
-};
-
 const validationSchema = yup.object({
   name: yup.string()
     .required('Is required')
@@ -77,7 +63,7 @@ const RegisterPage = () => {
   const [emailCheckLoading, setEmailCheckLoading] = useState(false);
 
   const onSubmit = async () => {
-    const result = await API.register();
+    const result = await AuthService.register();
     console.log(result);
   };
 
