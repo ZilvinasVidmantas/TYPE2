@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { loggedInSelector } from '../store/auth';
 import routeStructure from './route-structure';
 import protectPageEnum from './auth-protectors/protect-page-enum';
 import pageRouteEnum from './page-route-enum';
@@ -37,12 +39,16 @@ const mapRoutesRecursive = ({
 
 const routes = routeStructure.map(mapRoutesRecursive);
 
-const PageRouter = () => (
-  <BrowserRouter>
-    <Routes>
-      {routes}
-    </Routes>
-  </BrowserRouter>
-);
+const PageRouter = () => {
+  const loggedIn = useSelector(loggedInSelector);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        {loggedIn !== null ? routes : null }
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default PageRouter;

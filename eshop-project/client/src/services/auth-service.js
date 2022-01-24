@@ -1,7 +1,7 @@
 import axios from 'axios';
 import SessionService from './session-service';
 import reduxStore from '../store/index';
-import { login, logout } from '../store/auth';
+import { login, logout, authFailed } from '../store/auth';
 
 // Singleton pattern - only one object of a class
 const AuthService = new (class AuthService {
@@ -15,6 +15,8 @@ const AuthService = new (class AuthService {
 
     if (token) {
       this.authenticate(token);
+    } else {
+      reduxStore.dispatch(authFailed());
     }
   }
 
@@ -58,6 +60,7 @@ const AuthService = new (class AuthService {
       reduxStore.dispatch(login({ user }));
       this.setAuth(token);
     } catch (error) {
+      reduxStore.dispatch(authFailed());
       console.error('Token is not valid');
     }
   }

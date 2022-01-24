@@ -1,9 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import SessionService from '../services/session-service';
 
-const initialState = SessionService.get('auth') ?? {
-  loggedIn: false,
+const initialState = {
+  loggedIn: null,
   user: null,
   redirectTo: null,
 };
@@ -12,6 +11,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    authFailed(state) {
+      state.loggedIn = false;
+    },
     login(state, { payload }) {
       state.loggedIn = true;
       state.user = payload.user;
@@ -25,7 +27,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, authFailed } = authSlice.actions;
 
 export const authSelector = (state) => state.auth;
 export const loggedInSelector = (state) => state.auth.loggedIn;
