@@ -1,63 +1,41 @@
-/* eslint-disable */
 import React from 'react';
 import {
   Box,
   Typography,
-  Grid,
-  Button,
   TextField,
 } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { userSelector } from '../../../store/auth';
 
-const ProfilePageUserInfo = () => {
-  const user = useSelector(userSelector);
-  console.log(user);
-  // const { id } = useParams();
-
-  // const userFieldsData = [
-  //   { name: 'El. paštas', value: user?.email },
-  //   { name: 'Vartotojo vardas', value: `${user?.name} ${user?.surname[0]}.` },
-  //   { name: 'Vardas', value: user?.name },
-  //   { name: 'Pavardė', value: user?.surname },
-  //   { name: 'Miestas', value: user?.city },
-  //   { name: 'Telefono numeris', value: user?.mobile },
-  // ];
+const ProfilePageUserInfo = ({ formik }) => {
+  const { values, handleChange } = formik;
+  const userFieldsData = [
+    { name: 'name', label: 'Vardas', value: values.name },
+    { name: 'surname', label: 'Pavardė', value: values.surname },
+    { name: 'email', label: 'El. paštas', value: values.email },
+  ];
 
   return (
     <Box>
-      <Box sx={{ py: 5 }}>
-        <Typography variant="h6">Vartotojo informacija</Typography>
-      </Box>
+      <Typography variant="h5" sx={{ mb: 4 }}>Vartotojo informacija</Typography>
       <Box sx={{
         display: 'flex',
         gap: 3,
         flexDirection: 'column',
       }}
       >
-        {/* <Grid container rowSpacing={4} columnSpacing={6} sx={{ py: 1 }}>
-          {userFieldsData.map(({ name, value }) => (
-            <Grid item xs={12} sm={6} key={name}>
-              <TextField
-                disabled={name === 'El. paštas' || name === 'Vartotojo vardas'}
-                fullWidth
-                id="outlined-size-small"
-                label={name}
-                value={value}
-                // onChange={(e) => handleFieldChange(e.target.value)}
-                size="small"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-          ))}
-        </Grid> */}
-        <Box sx={{ pb: 3, display: 'flex', justifyContent: 'flex-end' }}>
-          <Button variant="outlined" sx={{ textTransform: 'none' }}>
-            Išsaugoti
-          </Button>
-        </Box>
+        {userFieldsData.map(({ name, value, label }) => (
+          <TextField
+            fullWidth
+            id="outlined-size-small"
+            label={label}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            // Props needed for formik
+            name={name}
+            value={value}
+            onChange={handleChange}
+          />
+        ))}
       </Box>
     </Box>
   );
