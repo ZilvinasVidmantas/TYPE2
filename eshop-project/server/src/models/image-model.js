@@ -6,6 +6,10 @@ const imageSchema = new Mongoose.Schema({
     type: 'string',
     unique: true,
   },
+  user: {
+    type: Mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
 }, {
   timestamps: true,
 });

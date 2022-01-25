@@ -28,10 +28,10 @@ const userSchema = new Mongoose.Schema({
     default: 'USER',
   },
   mainImg: {
-    type: Mongoose.Schema.Types.ObjectId, ref: 'Image',
+    type: Mongoose.Schema.Types.ObjectId,
+    ref: 'Image',
     unique: true,
   },
-  images: [{ type: Mongoose.Schema.Types.ObjectId, ref: 'Image' }],
   name: {
     type: 'string',
     required: true,

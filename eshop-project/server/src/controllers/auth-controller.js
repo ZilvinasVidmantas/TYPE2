@@ -37,8 +37,7 @@ const login = async (req, res) => {
 
   try {
     const userDoc = await UserModel.findOne({ email })
-      .populate('mainImg')
-      .populate('images');
+      .populate('mainImg');
     const passwordsAreEqual = await comparePasswordsAsync(password, userDoc.password);
     if (passwordsAreEqual) {
       const user = new UserViewModel(userDoc);
