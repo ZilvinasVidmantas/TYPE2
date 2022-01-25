@@ -1,4 +1,4 @@
-class UserViewModel {
+class ImageViewModel {
   constructor({ _id, src, createdAt, updatedAt }) {
     this.id = _id;
     this.src = src;
@@ -7,4 +7,4 @@ class UserViewModel {
   }
 }
 
-module.exports = UserViewModel;
+module.exports = ImageViewModel;

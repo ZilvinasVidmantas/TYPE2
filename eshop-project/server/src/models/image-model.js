@@ -16,6 +16,6 @@ const imageSchema = new Mongoose.Schema({
 
 imageSchema.plugin(uniqueValidator);
 
-const UserModel = Mongoose.model('Image', imageSchema);
+const ImageModel = Mongoose.model('Image', imageSchema);
 
-module.exports = UserModel;
+module.exports = ImageModel;

@@ -12,9 +12,10 @@ const updateUser = async (req, res) => {
   const { email } = req.user;
   const { images } = req.body;
 
-  // 10:35
-  // kodo peržiūra - 10:45 - klausimai
+  // 11:50
+  // kodo peržiūra - 11:55 - klausimai
 
+  // RYTOJ
   // 1. FE įgalinsim nuotraukų rodymą
   // 2. Pažingsniui šgalinsime atnaujinimo logiką
 
