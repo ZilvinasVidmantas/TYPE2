@@ -27,6 +27,8 @@ const userSchema = new Mongoose.Schema({
     enum: ['USER', 'ADMIN'],
     default: 'USER',
   },
+  mainImg: { type: Mongoose.Schema.Types.ObjectId, ref: 'Image' },
+  images: [{ type: Mongoose.Schema.Types.ObjectId, ref: 'Image' }],
   name: {
     type: 'string',
     required: true,

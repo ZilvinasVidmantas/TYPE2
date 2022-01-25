@@ -1,4 +1,5 @@
 const UserModel = require('../models/user-model');
+const ImageModel = require('../models/image-model');
 const UserViewModel = require('../view-models/user-view-model');
 
 const getUsers = async (req, res) => {
@@ -7,6 +8,20 @@ const getUsers = async (req, res) => {
   res.status(200).json({ users });
 };
 
+const updateUser = async (req, res) => {
+  const { email } = req.user;
+  const { images } = req.body;
+
+  // 10:35
+  // kodo peržiūra - 10:45 - klausimai
+
+  // 1. FE įgalinsim nuotraukų rodymą
+  // 2. Pažingsniui šgalinsime atnaujinimo logiką
+
+  res.status(200).json(user);
+}
+
 module.exports = {
-  getUsers
+  getUsers,
+  updateUser,
 };
