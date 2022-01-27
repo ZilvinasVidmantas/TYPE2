@@ -1,7 +1,7 @@
 import axios from 'axios';
 import AuthService from './auth-service';
 
-const ImageService = new (class ImageService {
+const UserImageService = new (class ImageService {
   constructor() {
     this.requester = axios.create({
       baseURL: 'http://localhost:5000/api/images',
@@ -24,4 +24,4 @@ const ImageService = new (class ImageService {
   }
 })();
 
-export default ImageService;
+export default UserImageService;

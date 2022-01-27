@@ -37,7 +37,7 @@ const validationSchema = yup.object({
 
 const ProfilePageUserInfo = ({ user }) => {
   const {
-    initialValues, values, errors, touched, isSubmitting, dirty, isValid,
+    initialValues, values, errors, touched, isSubmitting,
     handleChange, handleBlur, setValues, setFieldValue,
   } = useFormik({
     initialValues: {

@@ -4,7 +4,7 @@ import {
   Typography,
   Button,
 } from '@mui/material';
-import ImageService from '../../../services/image-service';
+import UserImageService from '../../../services/user-image-service';
 
 const imageContainerStyle = {
   position: 'relative',
@@ -37,7 +37,7 @@ const ProfilePageImages = () => {
   const [imgData, setImgData] = useState([]);
   useEffect(() => {
     (async () => {
-      const fetchedImgData = await ImageService.getUserImages();
+      const fetchedImgData = await UserImageService.getUserImages();
       const emptyCount = emptyImgCount - fetchedImgData.length;
 
       const finalImgData = emptyCount > 0
