@@ -5,6 +5,7 @@ require('dotenv').config();
 const cors = require('cors');
 const authRouter = require('./routes/auth-router');
 const userRouter = require('./routes/user-router');
+const imageRouter = require('./routes/image-router');
 
 const server = express();
 const {
@@ -26,6 +27,7 @@ server.use(express.json());
 // Response handlers
 server.use('/api/auth', authRouter);
 server.use('/api/users', userRouter);
+server.use('/api/images', imageRouter);
 
 server.listen(SERVER_PORT, () => {
   console.log(`puslapis veikia ant http://localhost:${SERVER_PORT}/`);
