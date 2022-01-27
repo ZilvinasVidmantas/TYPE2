@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Box,
   Typography,
@@ -22,35 +22,42 @@ const imageStyle = {
   objectPosition: 'center',
 };
 
-const emptyImgCount = 6;
-const emptyImages = Array
-  .from(new Array(emptyImgCount))
-  .map((x, i) => ({
-    id: i,
-    src: '/no-image.jpg',
-    createdAt: new Date(0),
-    updatedAt: new Date(0),
-  }
-  ));
-
 const ProfilePageImages = () => {
   const [imgData, setImgData] = useState([]);
+  const fileUploadRef = useRef(null);
+
+  const handleUploadFiles = () => {
+    fileUploadRef.current.click();
+  };
+
   useEffect(() => {
     (async () => {
       const fetchedImgData = await UserImageService.getUserImages();
-      const emptyCount = emptyImgCount - fetchedImgData.length;
-
-      const finalImgData = emptyCount > 0
-        ? [...imgData, ...emptyImages.slice(0, emptyCount)]
-        : fetchedImgData.slice(0, 6);
-
-      setImgData(finalImgData);
+      setImgData(fetchedImgData);
     })();
   }, []);
 
   return (
     <Box sx={{ mt: { xs: 4, lg: 0 } }}>
-      <Typography variant="h5" sx={{ mb: 3 }}>Nuotraukos</Typography>
+
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+        <Typography variant="h5" sx={{ mb: 3 }}>Nuotraukos</Typography>
+        <Button
+          variant="outlined"
+          size="small"
+          sx={{ textTransform: 'none' }}
+          onClick={handleUploadFiles}
+        >
+          Įkelti Nuotraukas
+        </Button>
+        <input
+          type="file"
+          hidden
+          ref={fileUploadRef}
+          accept=".jpg, .jpeg, .png"
+          multiple
+        />
+      </Box>
       <Box>
         <Box sx={{
           display: 'grid',
@@ -72,9 +79,6 @@ const ProfilePageImages = () => {
             ))
           }
         </Box>
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
-        <Button variant="outlined">Įkelti nuotraukas</Button>
       </Box>
     </Box>
   );

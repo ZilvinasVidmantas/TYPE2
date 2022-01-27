@@ -5,20 +5,12 @@ import {
   Box,
 } from '@mui/material';
 
-const StyledMainImage = styled('img')(({ theme }) => ({
+const StyledMainImage = styled('img')({
   borderRadius: '50%',
   height: '250px',
   width: '250px',
   objectFit: 'cover',
-  [theme.breakpoints.up('md')]: {
-    height: '285px',
-    width: '285px',
-  },
-  [theme.breakpoints.up('lg')]: {
-    height: '210px',
-    width: '210px',
-  },
-}));
+});
 
 const MainImage = ({ mainImg }) => (
   <Box sx={{

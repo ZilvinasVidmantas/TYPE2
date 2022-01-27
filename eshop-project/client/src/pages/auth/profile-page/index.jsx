@@ -18,10 +18,10 @@ const ProfilePage = () => {
     <Container maxWidth="md">
       <Typography variant="h4" sx={{ mb: 3 }}>Jūsų profilis</Typography>
       <Grid container rowSpacing={4}>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12} md={5}>
           <MainImage mainImg={user.mainImg} />
         </Grid>
-        <Grid item xs={12} lg={8}>
+        <Grid item xs={12} md={7}>
           <UserInfo user={user} />
         </Grid>
         <Grid item xs={12}>
