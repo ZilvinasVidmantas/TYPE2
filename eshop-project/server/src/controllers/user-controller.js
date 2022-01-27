@@ -23,7 +23,7 @@ const updateUser = async (req, res) => {
   const userDoc = await UserModel.findOneAndUpdate(
     { email: req.user.email },
     props,
-    { new: true },
+    { new: false },
   ).populate('mainImg');
 
   res.status(200).json({

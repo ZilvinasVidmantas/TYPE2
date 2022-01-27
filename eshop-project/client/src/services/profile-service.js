@@ -3,7 +3,7 @@ import AuthService from './auth-service';
 import store from '../store';
 import { updateUser } from '../store/auth';
 
-const UserService = new (class ImageService {
+const ProfileService = new (class ProfileService {
   static validateToken() {
     const token = AuthService.getToken();
     if (!token) {
@@ -21,7 +21,7 @@ const UserService = new (class ImageService {
   }
 
   async updateUserData(body) {
-    const token = ImageService.validateToken();
+    const token = ProfileService.validateToken();
     const { data } = await this.requester.patch('/users/', body, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -31,7 +31,7 @@ const UserService = new (class ImageService {
   }
 
   async getUserImages() {
-    const token = ImageService.validateToken();
+    const token = ProfileService.validateToken();
     const { data } = await this.requester.get('/images/', {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -41,4 +41,4 @@ const UserService = new (class ImageService {
   }
 })();
 
-export default UserService;
+export default ProfileService;
