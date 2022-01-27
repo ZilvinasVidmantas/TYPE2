@@ -74,11 +74,14 @@ const ProfilePage = () => {
             <ProfilePageUserInfo formik={formik} />
           </Grid>
           <Grid item xs={12} lg={8}>
-            <ProfilePagePhoto formik={formik} />
+            <ProfilePagePhoto
+              formik={formik}
+              mainImg={user.mainImg}
+            />
           </Grid>
         </Grid>
 
-        <Fade in={formik.dirty}>
+        <Fade in={formik.dirty && formik.isValid}>
           <Box sx={{ mt: 8, display: 'flex', justifyContent: 'center' }}>
             <Button variant="contained" size="large">
               Išsaugoti pakeitimus

@@ -60,7 +60,8 @@ const auth = async (req, res) => {
   const { token } = req.body;
   try {
     const { email } = jwt.verify(token, process.env.TOKEN_SECRET);
-    const userDoc = await UserModel.findOne({ email });
+    const userDoc = await UserModel.findOne({ email })
+      .populate('mainImg');;
     const user = new UserViewModel(userDoc);
     res.status(200).json(user);
   } catch (error) {
