@@ -4,7 +4,7 @@ import {
   Typography,
   Button,
 } from '@mui/material';
-import UserImageService from '../../../services/user-image-service';
+import ProfileService from '../../../services/profile-service';
 
 const imageContainerStyle = {
   position: 'relative',
@@ -32,7 +32,7 @@ const ProfilePageImages = () => {
 
   useEffect(() => {
     (async () => {
-      const fetchedImgData = await UserImageService.getUserImages();
+      const fetchedImgData = await ProfileService.getUserImages();
       setImgData(fetchedImgData);
     })();
   }, []);

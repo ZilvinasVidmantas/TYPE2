@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useFormik } from 'formik';
 import {
   Box,
@@ -12,6 +12,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import * as yup from 'yup';
 import ErrorIcon from '@mui/icons-material/Error';
 import AuthService from '../../../services/auth-service';
+import ProfileService from '../../../services/profile-service';
 
 const validationSchema = yup.object({
   name: yup.string()
@@ -36,21 +37,37 @@ const validationSchema = yup.object({
 });
 
 const ProfilePageUserInfo = ({ user }) => {
-  const {
-    initialValues, values, errors, touched, isSubmitting,
-    handleChange, handleBlur, setValues, setFieldValue,
-  } = useFormik({
-    initialValues: {
-      name: user.name,
-      surname: user.surname,
-      email: user.email,
-      emailChecked: false,
-      emailAvailable: false,
-    },
-    validationSchema,
-  });
-
   const [emailCheckLoading, setEmailCheckLoading] = useState(false);
+
+  const initialValues = useMemo(() => ({
+    name: user.name,
+    surname: user.surname,
+    email: user.email,
+    emailChecked: true,
+    emailAvailable: true,
+  }), [user]);
+
+  const onSubmit = async (values) => {
+    const body = Object.entries(values)
+      .reduce((oldResult, [name, value]) => {
+        const newResult = { ...oldResult };
+        if (value !== initialValues[name]) {
+          newResult[name] = value;
+        }
+        return newResult;
+      }, {});
+    await ProfileService.updateUserData(body);
+  };
+
+  const {
+    values, errors, touched, isSubmitting, dirty, isValid,
+    handleChange, handleBlur, setValues, setFieldValue, handleSubmit,
+  } = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit,
+    enableReinitialize: true,
+  });
 
   const handleEmailChange = (e) => {
     if (values.emailChecked) {
@@ -70,8 +87,8 @@ const ProfilePageUserInfo = ({ user }) => {
       setValues({
         ...values,
         email: initialValues.email,
-        emailChecked: false,
-        emailAvailable: false,
+        emailChecked: true,
+        emailAvailable: true,
       }, true);
       return;
     }
@@ -104,7 +121,7 @@ const ProfilePageUserInfo = ({ user }) => {
   }
 
   return (
-    <Box component="form">
+    <Box component="form" onSubmit={handleSubmit}>
       <Typography variant="h5" sx={{ mb: 4 }}>Vartotojo informacija</Typography>
       <Box sx={{
         display: 'flex',
@@ -157,7 +174,7 @@ const ProfilePageUserInfo = ({ user }) => {
         />
       </Box>
       <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
-        <Button variant="outlined" size="large" disabled>
+        <Button variant="outlined" size="large" type="submit" disabled={!dirty || !isValid}>
           Išsaugoti pakeitimus
         </Button>
       </Box>
