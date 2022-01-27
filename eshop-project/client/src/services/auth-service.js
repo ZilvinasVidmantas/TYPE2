@@ -21,7 +21,12 @@ const AuthService = new (class AuthService {
   }
 
   setAuth(token) {
+    this.token = token;
     this.requester.defaults.headers.common.Authorization = `Bearer ${token}`;
+  }
+
+  getToken() {
+    return this.token;
   }
 
   async login({ email, password }) {

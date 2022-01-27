@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
   Button,
   styled,
 } from '@mui/material';
+import ImageService from '../../../services/image-service';
 
 const imageContainerStyle = {
   position: 'relative',
@@ -37,9 +38,32 @@ const MainImage = styled('img')(({ theme }) => ({
   },
 }));
 
+const emptyImgCount = 6;
+const emptyImages = Array
+  .from(new Array(emptyImgCount))
+  .map((x, i) => ({
+    id: i,
+    src: '/no-image.jpg',
+    createdAt: new Date(0),
+    updatedAt: new Date(0),
+  }
+  ));
+
 // eslint-disable-next-line no-unused-vars
 const ProfilePagePhoto = ({ formik, mainImg }) => {
-  console.log(mainImg);
+  const [imgData, setImgData] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const fetchedImgData = await ImageService.getUserImages();
+      const emptyCount = emptyImgCount - fetchedImgData.length;
+
+      const finalImgData = emptyCount > 0
+        ? [...imgData, ...emptyImages.slice(0, emptyCount)]
+        : fetchedImgData.slice(0, 6);
+
+      setImgData(finalImgData);
+    })();
+  }, []);
 
   return (
     <Box sx={{ mt: { xs: 4, lg: 0 } }}>
@@ -71,54 +95,18 @@ const ProfilePagePhoto = ({ formik, mainImg }) => {
           flexGrow: 1,
         }}
         >
-          <Box sx={imageContainerStyle}>
-            <img
-              src="https://picsum.photos/id/444/150/151"
-              alt="user"
-              style={imageStyle}
-            />
 
-          </Box>
-          <Box sx={imageContainerStyle}>
-            <img
-              src="https://picsum.photos/id/443/150/152"
-              alt="user"
-              style={imageStyle}
-            />
-
-          </Box>
-          <Box sx={imageContainerStyle}>
-            <img
-              src="https://picsum.photos/id/442/150/153"
-              alt="user"
-              style={imageStyle}
-            />
-
-          </Box>
-          <Box sx={imageContainerStyle}>
-            <img
-              src="https://picsum.photos/id/441/150/154"
-              alt="user"
-              style={imageStyle}
-            />
-
-          </Box>
-          <Box sx={imageContainerStyle}>
-            <img
-              src="https://picsum.photos/id/449/150/155"
-              alt="user"
-              style={imageStyle}
-            />
-
-          </Box>
-          <Box sx={imageContainerStyle}>
-            <img
-              src="https://picsum.photos/id/448/150/156"
-              alt="user"
-              style={imageStyle}
-            />
-
-          </Box>
+          {
+            imgData.map(({ id, src }) => (
+              <Box key={id} sx={imageContainerStyle}>
+                <img
+                  src={src}
+                  alt={src}
+                  style={imageStyle}
+                />
+              </Box>
+            ))
+          }
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <Button variant="outlined" sx={{ textTransform: 'none' }}>Įkelti nuotraukas</Button>
