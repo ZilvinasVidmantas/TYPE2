@@ -6,11 +6,31 @@ import {
 } from '@mui/material';
 
 const ProfilePageUserInfo = ({ formik }) => {
-  const { values, handleChange } = formik;
+  const {
+    values, errors, touched, handleChange, handleBlur,
+  } = formik;
   const userFieldsData = [
-    { name: 'name', label: 'Vardas', value: values.name },
-    { name: 'surname', label: 'Pavardė', value: values.surname },
-    { name: 'email', label: 'El. paštas', value: values.email },
+    {
+      name: 'name',
+      label: 'Vardas',
+      value: values.name,
+      error: touched.name && Boolean(errors.name),
+      helperText: touched.name && errors.name,
+    },
+    {
+      name: 'surname',
+      label: 'Pavardė',
+      value: values.surname,
+      error: touched.surname && Boolean(errors.surname),
+      helperText: touched.surname && errors.surname,
+    },
+    {
+      name: 'email',
+      label: 'El. paštas',
+      value: values.email,
+      error: touched.email && Boolean(errors.email),
+      helperText: touched.email && errors.email,
+    },
   ];
 
   return (
@@ -22,18 +42,22 @@ const ProfilePageUserInfo = ({ formik }) => {
         flexDirection: 'column',
       }}
       >
-        {userFieldsData.map(({ name, value, label }) => (
+        {userFieldsData.map(({
+          name, label, value, error, helperText,
+        }) => (
           <TextField
             fullWidth
-            id="outlined-size-small"
-            label={label}
             InputLabelProps={{
               shrink: true,
             }}
             // Props needed for formik
             name={name}
+            label={label}
             value={value}
+            error={error}
+            helperText={helperText}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
         ))}
       </Box>
