@@ -42,6 +42,8 @@ const ProfilePage = () => {
       name: user.name,
       surname: user.surname,
       email: user.email,
+      emailChecked: false,
+      emailAvailable: false,
     },
     validationSchema,
   });
