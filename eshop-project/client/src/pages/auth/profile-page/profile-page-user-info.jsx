@@ -1,20 +1,54 @@
 import React, { useState } from 'react';
+import { useFormik } from 'formik';
 import {
   Box,
   Typography,
   TextField,
+  Button,
   InputAdornment,
   CircularProgress,
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import * as yup from 'yup';
 import ErrorIcon from '@mui/icons-material/Error';
 import AuthService from '../../../services/auth-service';
 
-const ProfilePageUserInfo = ({ formik }) => {
+const validationSchema = yup.object({
+  name: yup.string()
+    .required('Is required')
+    .min(2, 'At least 2 letters')
+    .max(32, 'Most 32 letters'),
+  surname: yup.string()
+    .required('Is required')
+    .min(2, 'At least 2 letters')
+    .max(32, 'Most 32 letters'),
+  email: yup.string()
+    .required('Is required')
+    .email('Is not valid email')
+    .test('email-validator', 'Email unavailable', (_, context) => {
+      const { emailChecked, emailAvailable } = context.parent;
+      if (!emailChecked) return true;
+
+      return emailAvailable;
+    }),
+  emailChecked: yup.boolean().oneOf([true]),
+  emailAvailable: yup.boolean().oneOf([true]),
+});
+
+const ProfilePageUserInfo = ({ user }) => {
   const {
-    initialValues, values, errors, touched, isSubmitting,
+    initialValues, values, errors, touched, isSubmitting, dirty, isValid,
     handleChange, handleBlur, setValues, setFieldValue,
-  } = formik;
+  } = useFormik({
+    initialValues: {
+      name: user.name,
+      surname: user.surname,
+      email: user.email,
+      emailChecked: false,
+      emailAvailable: false,
+    },
+    validationSchema,
+  });
 
   const [emailCheckLoading, setEmailCheckLoading] = useState(false);
 
@@ -70,7 +104,7 @@ const ProfilePageUserInfo = ({ formik }) => {
   }
 
   return (
-    <Box>
+    <Box component="form">
       <Typography variant="h5" sx={{ mb: 4 }}>Vartotojo informacija</Typography>
       <Box sx={{
         display: 'flex',
@@ -122,10 +156,13 @@ const ProfilePageUserInfo = ({ formik }) => {
           }}
         />
       </Box>
+      <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
+        <Button variant="outlined" size="large" disabled>
+          Išsaugoti pakeitimus
+        </Button>
+      </Box>
     </Box>
   );
 };
 
 export default ProfilePageUserInfo;
-
-// 11:23

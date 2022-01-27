@@ -3,7 +3,6 @@ import {
   Box,
   Typography,
   Button,
-  styled,
 } from '@mui/material';
 import ImageService from '../../../services/image-service';
 
@@ -23,21 +22,6 @@ const imageStyle = {
   objectPosition: 'center',
 };
 
-const MainImage = styled('img')(({ theme }) => ({
-  borderRadius: '50%',
-  height: '250px',
-  width: '250px',
-  objectFit: 'cover',
-  [theme.breakpoints.up('md')]: {
-    height: '285px',
-    width: '285px',
-  },
-  [theme.breakpoints.up('lg')]: {
-    height: '210px',
-    width: '210px',
-  },
-}));
-
 const emptyImgCount = 6;
 const emptyImages = Array
   .from(new Array(emptyImgCount))
@@ -49,8 +33,7 @@ const emptyImages = Array
   }
   ));
 
-// eslint-disable-next-line no-unused-vars
-const ProfilePagePhoto = ({ formik, mainImg }) => {
+const ProfilePageImages = () => {
   const [imgData, setImgData] = useState([]);
   useEffect(() => {
     (async () => {
@@ -68,25 +51,7 @@ const ProfilePagePhoto = ({ formik, mainImg }) => {
   return (
     <Box sx={{ mt: { xs: 4, lg: 0 } }}>
       <Typography variant="h5" sx={{ mb: 3 }}>Nuotraukos</Typography>
-      <Box sx={{
-        display: 'flex',
-        gap: 4,
-        flexDirection: { xs: 'column', sm: 'row' },
-        flexWrap: { xs: 'nowrap', sm: 'wrap', md: 'nowrap' },
-        alignItems: 'center',
-      }}
-      >
-        <Box sx={{
-          textAlign: 'center',
-          width: { xs: '100%', md: 'auto' },
-        }}
-        >
-          <MainImage
-            src={(mainImg && mainImg.src) ?? '/no-image.jpg'}
-            alt="user"
-          />
-        </Box>
-
+      <Box>
         <Box sx={{
           display: 'grid',
           gap: 1,
@@ -95,7 +60,6 @@ const ProfilePagePhoto = ({ formik, mainImg }) => {
           flexGrow: 1,
         }}
         >
-
           {
             imgData.map(({ id, src }) => (
               <Box key={id} sx={imageContainerStyle}>
@@ -108,13 +72,12 @@ const ProfilePagePhoto = ({ formik, mainImg }) => {
             ))
           }
         </Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Button variant="outlined" sx={{ textTransform: 'none' }}>Įkelti nuotraukas</Button>
-          <Button variant="outlined" sx={{ textTransform: 'none' }}>Pasirinkti pagrindinę</Button>
-        </Box>
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
+        <Button variant="outlined">Įkelti nuotraukas</Button>
       </Box>
     </Box>
   );
 };
 
-export default ProfilePagePhoto;
+export default ProfilePageImages;
