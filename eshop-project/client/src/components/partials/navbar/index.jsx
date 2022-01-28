@@ -15,11 +15,11 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   height: theme.mixins.navbar.height,
 }));
 
-const Navbar = () => {
+const Navbar = ({ drawerIcon, ...props }) => {
   const auth = useSelector(authSelector);
 
   return (
-    <AppBar position="static">
+    <AppBar {...props}>
       <StyledContainer maxWidth="xl">
         <Box sx={{
           display: 'flex',
@@ -29,6 +29,7 @@ const Navbar = () => {
         }}
         >
           <Box sx={{ display: 'flex' }}>
+            {drawerIcon}
             <LinkButton link={routes.HomePage} title="Home" />
           </Box>
           {
