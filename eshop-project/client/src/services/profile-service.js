@@ -32,6 +32,7 @@ const ProfileService = new (class ProfileService {
 
   async getUserImages() {
     const token = ProfileService.validateToken();
+
     const { data } = await this.requester.get('/images/', {
       headers: {
         Authorization: `Bearer ${token}`,
