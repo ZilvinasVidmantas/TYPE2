@@ -4,6 +4,7 @@ import {
   Button,
   Box,
 } from '@mui/material';
+import Modal from '@components/modal';
 
 const StyledMainImage = styled('img')({
   borderRadius: '50%',
@@ -13,8 +14,10 @@ const StyledMainImage = styled('img')({
 });
 
 const MainImage = ({ mainImg }) => {
-  const [openModal, setOpenModal] = useState(false);
-  const toggleModal = () => setOpenModal(!openModal);
+  const [open, setOpen] = useState(true);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <Box sx={{
@@ -22,14 +25,16 @@ const MainImage = ({ mainImg }) => {
       flexDirection: { xs: 'column' },
       alignItems: { xs: 'center' },
       gap: 2,
-      backgroundColor: openModal ? 'red' : 'none',
     }}
     >
       <StyledMainImage
         src={(mainImg && mainImg.src) ?? '/no-image.jpg'}
         alt="user"
       />
-      <Button variant="outlined" size="large" onClick={toggleModal}>Keisti</Button>
+      <Button variant="outlined" size="large" onClick={handleOpen}>Keisti</Button>
+      <Modal open={open} onClose={handleClose}>
+        Turinys 3000
+      </Modal>
     </Box>
   );
 };

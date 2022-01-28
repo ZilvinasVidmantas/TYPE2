@@ -1,3 +1,5 @@
+const relativePaths = require('./relative-paths');
+
 module.exports = {
   env: {
     browser: true,
@@ -23,5 +25,13 @@ module.exports = {
     'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
     'react/jsx-props-no-spreading': 0,
     'quote-props': [2, 'as-needed'],
+  },
+  settings: {
+    'import/resolver': {
+      'eslint-import-resolver-custom-alias': {
+        alias: relativePaths,
+        extensions: ['.js', '.jsx'],
+      },
+    },
   },
 };
