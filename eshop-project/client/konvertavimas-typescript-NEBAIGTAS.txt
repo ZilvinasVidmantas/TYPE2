@@ -1,0 +1,41 @@
+Projekto konvertavimas:
+* įsirašykite bibliotekas
+  npm install -D typescript @types/node @types/react @types/react-dom
+* Sukurkite failą pagrindiniame projekto kataloge:
+  ./tsconfig.json:
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src"
+  ]
+}
+
+js failų konvertavimas:
+  find ./src -type f \( -iname '*.js' \) -exec sh -c 'mv "$1" "${1%.js*}.ts"' _ {} \;
+
+jsx failų konvertavimas
+  find ./src -type f \( -iname '*.jsx' \)  -exec sh -c 'mv "$1" "${1%.jsx*}.tsx"' _ {} \;
+
+Išsisaugokite:
+  .... NEBAIGTA
+  'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
