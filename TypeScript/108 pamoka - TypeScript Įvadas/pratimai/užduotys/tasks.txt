@@ -15,4 +15,4 @@ Aplanke './TS-1-event-listener/':
   10. Pabandykite surasti sau iškilusių klausimų atsakymus: https://google.lt
   11. Neradus atsakymų į iškilusius klausimus, suformuokite juos raštu ir klauskite dėstytojo.
 
-Aplanke užduotis './TS-2-primitive-types/'
+Aplanke užduotis './TS-1-primitive-types/'

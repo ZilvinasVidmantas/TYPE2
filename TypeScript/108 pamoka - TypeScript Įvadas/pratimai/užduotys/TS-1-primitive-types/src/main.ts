@@ -3,9 +3,9 @@ TypeScript'e galioja tie patys primityvūs duomenų tipai kaip ir JavaScript'e:
   * string - simbolių darinys
   * number - skaičius
   * boolean - loginis kintamasis 
-  * null - tipas pasakantis, kad reikėmės/nuorodos nėra
+  * null - tipas pasakantis, kad reikšmės/nuorodos nėra
   * undefined - neapibrėžtas tipas
-  * symbol - skirtas unikalioms reikšmėms kurtis - šio kurso metu jo nenagrinėsime
+  * symbol - skirtas unikalioms reikšmėms kurti - šio kurso metu jo nenagrinėsime
 */
 
 // Kuriant kintamuosius, reikia šiuos tipus priskirti kintamiesiems:
