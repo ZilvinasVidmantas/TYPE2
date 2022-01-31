@@ -1,5 +1,5 @@
 Parsisiųskite pamokos failus.
-[Nuoroda į "/parsiuntimui"]
+[Nuoroda į "/pratimai"]
 
 Kiekvienamas aplankas-tema turi failą './src/main.ts'.
 Jums reikia:

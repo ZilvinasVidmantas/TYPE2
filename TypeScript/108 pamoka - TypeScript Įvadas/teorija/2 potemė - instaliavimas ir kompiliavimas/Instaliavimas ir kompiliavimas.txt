@@ -5,7 +5,7 @@ Node.js - tai C++ programa, kuri leidžia kompiliuoti ir vykdyti JavaScript kod�
 * Parsiuntimas - https://nodejs.org/en/
 
 Įsirašius Node.js, automatiškai yra įrašoma papildoma komandinės eilutės komanda:
-* npm(node package manager) - tai komanda, skirta tvarkyti bibliotekomsglobalioje repozitorijoje: https://www.npmjs.com/ .
+* npm(node package manager) - tai komanda, skirta tvarkyti bibliotekoms globalioje repozitorijoje: https://www.npmjs.com/ .
 
 Susiinstaliavus Node.js reikia instaliuoti TypeScript transpiliatorių, kuris bus naudojamas paversti TypeScript kodą į JavaScript kodą. Komandinėje eilutėje rašome:
 $npm install --global typescript

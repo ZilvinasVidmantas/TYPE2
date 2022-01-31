@@ -7,7 +7,7 @@
     * Funkcijų grąžinimo tipai
     * Klasių savybių tipai.
     * Klasių metodų tipai
-    * 'this' nuorodo tipas, funkcijos vykdymo metu
+    * 'this' nuorodos tipas, funkcijos vykdymo metu
     * OOP inkapsuliacija
       * Klasių savybių ir metodų pasiekiamumo lygiai
     * OOP Abstrakcija ir OOP Polimorfizmas
@@ -30,8 +30,6 @@
       1. Kuomet programa yra didelės apimties ir/arba prie jos dirba daug žmonių, didėja tikikybė, jos bus padaryta nepastebėtų klaidų. TypeScript sprendžia šią problemą tikrinant kodo kokybę kompiliacijos/rašymo metu.
 
       2. Dažniausiai programinis kodas skaidomas moduliais ir perpanaudojamomis funkcijomis. Dideli ir sudėtingi procesai yra skaidomi mažais. Kuriant aplikacijos funkcionalumą ir norint suprasti veikimo principus, reikia išsiaiškinti visų sudedamųjų dalių veikimą.
-      TypeScript sprendžia šią problemą aprašant kiekvieną modulį, funkciją, klasę ar kintamuosius girežtais tipais. Aprašius programavimo konstruktus tipais, gali greičiau ir lengviau suprasti funkcionalumą. Taip yra taupomas laikas perprasti atskiroms programos dalims.
+      TypeScript sprendžia šią problemą aprašant kiekvieną modulį, funkciją, klasę ar kintamuosius girežtais tipais. Aprašius programavimo konstruktus tipais, galima greičiau ir lengviau suprasti funkcionalumą. Taip yra taupomas laikas perprasti atskiroms programos dalims.
 
       Naudokite TypeScript didelėms programoms, arba toms kurias planuojamos plėsti.
-
-
