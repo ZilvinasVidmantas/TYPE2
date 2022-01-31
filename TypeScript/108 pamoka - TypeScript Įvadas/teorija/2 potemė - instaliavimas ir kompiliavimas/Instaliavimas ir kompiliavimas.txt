@@ -24,7 +24,7 @@ Sekanti dalis - transpiliavimo taisyklių konfigūravimas
   $tsc --init
     * tsc - komanda skirta transpiliuoti TS kodą į JS kodą
     * --init - nustatymas skirtas sukurti standartines transpiliaivmo taisykles
-Aplanke, kuriame paleidote komandą turėjo susikurti failas 'ts-config.json'. Šis failas yra skirtas nustatyti TypeScript transpiliatoriaus nustatymus visiems failams kurie yra aplanke (įskaitant vaikinius aplankus). Atsidarykite šį failą ir pamatysite daug išvardintų taisyklių, kurias galite atkomentuoti - padaryti aktyviomis. Visą informaciją apie taisyklių variacijas galite rasti: https://www.typescriptlang.org/tsconfig
+Aplanke, kuriame paleidote komandą turėjo susikurti failas 'tsconfig.json'. Šis failas yra skirtas nustatyti TypeScript transpiliatoriaus nustatymus visiems failams kurie yra aplanke (įskaitant vaikinius aplankus). Atsidarykite šį failą ir pamatysite daug išvardintų taisyklių, kurias galite atkomentuoti - padaryti aktyviomis. Visą informaciją apie taisyklių variacijas galite rasti: https://www.typescriptlang.org/tsconfig
 
 Šiam paskaitų ciklui naudosime tokią konfigūraciją:
 {
@@ -63,5 +63,4 @@ Tam, kad transpiliuoti TS failus į JS failus, naudokite tokią komandą:
 
 Tam, kad TS failai būtų transpiliuojami į JS failus kiekvieną kart įvykus TS failų pakitimams, naudokite tokią komandą:
   $tsc --watch
-
 
