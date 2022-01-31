@@ -1,0 +1,18 @@
+Aplanke './TS-1-tasks/':
+  1. Sukurkite './src/' aplanką, kuriame rašysite TypeScript programinį kodą
+  2. Sukurkite failą './src/main.ts', kuris spausdintų 'Labas Pasauli!'
+  3. Transpiliuokite failą į JavaScript kalbą ir patikrinkite aplanką './public'
+  4. Įtraukite transpiliuotą JavaScript failą į HTML failą './public/index.html'
+  5. 'tsconfig.json' faile, atkomentuokite užkomentuotus nustatymus. Pakartotinai perkompiliuokite, kas pasikeitė?
+    Peržiūrėje failus, vėl užkomentuokite šias tris eilutes ir failus ištrinkite.
+  6. tsconfig.json' faile pakeiskite savybės "outDir" reikšmę ir vėl perkompiliuokite:
+    "./public" -> "./public/js"
+  7. './public/index.html' faile pakeiskite kelią iki sukompiliuoto JavaScript failo
+
+Aplanke './TS-1-event-listener/':
+  8. Transpiliuokite TypeScript failą ir įtraukite JavaScript failą į HTML failą
+  9. Peržiūrėkite kodą, main.ts. įspaudę CTRL paspauskitę ant tipų. Panagrinėkite DOM tipus.
+  10. Pabandykite surasti sau iškilusių klausimų atsakymus: https://google.lt
+  11. Neradus atsakymų į iškilusius klausimus, suformuokite juos raštu ir klauskite dėstytojo.
+
+Aplanke užduotis './TS-2-primitive-types/'

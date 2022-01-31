@@ -1,0 +1,37 @@
+Įvadas:
+  TypeScript - tai JavaScript programavimo kalbos sintaksės sugriežtinimas. Jeigu lietuvių kalba būtų JavaScript, tai žemaičių kalba būtų - TypeScript. 
+  JavaScript programavimo įrankiai ir konstruktai išlieka, tačiau naudojant TS(TypeScript) galime sugriežtinti kodo tvarką. 
+  Tam naudojami tipų aprašymai ir kiti kodo konstruktų sugriežtinimai, tokie kaip:
+    * Kintamųjų tipai
+    * Funkcijos parametrų tipai
+    * Funkcijų grąžinimo tipai
+    * Klasių savybių tipai.
+    * Klasių metodų tipai
+    * 'this' nuorodo tipas, funkcijos vykdymo metu
+    * OOP inkapsuliacija
+      * Klasių savybių ir metodų pasiekiamumo lygiai
+    * OOP Abstrakcija ir OOP Polimorfizmas
+      * Abstrakčių klasių ir metodų kūrimas
+    * ENUM
+
+  Taip pat TypeScript turi operatorių ir vystymo aplinkos funkcijų dinamiškai kurti tipus. Naudojant TypeScript, kodo korektiškumas tikrinamas jį rašant, o ne jį vykdant.
+  
+  Norint geriau suprasti priežastis, kodėl verta naudoti TypeScript reikia pirmiau susipažinti su tokiais terminais:
+    * Compile time - laikas kuomet programinis kodas paverčiamas kompiuteriui suprantamu mašininiu kodu.
+    * Programa - Sukompiliuotas(paruoštasas) mašininis kodas, kurį gali įvykdyti kompiuteris.
+    * Procesas - Šiuo metu vykdoma Programa.
+    * Runtime - Laikas, kurio metu vyksta procesas.
+  
+  Dažnai kylantis klausimai: 
+    - Kodėl reiktų naudoti TypeScript, jeigu programa veikia ir be jo? 
+      Aprašant tipus ir sugriežtinant programinį kodą, mes galime matyti klaidas, kompiliuojant/transpiliuojant (Compile time) kodą, o ne jį vykdant(runtime). Tai sumažina tikimybę, kad bus nepastebėtos klaidos, bei taupo testuotojų ir programuotojų darbo laiką.
+
+    - Kuomet verta naudoti TypeScript?
+      1. Kuomet programa yra didelės apimties ir/arba prie jos dirba daug žmonių, didėja tikikybė, jos bus padaryta nepastebėtų klaidų. TypeScript sprendžia šią problemą tikrinant kodo kokybę kompiliacijos/rašymo metu.
+
+      2. Dažniausiai programinis kodas skaidomas moduliais ir perpanaudojamomis funkcijomis. Dideli ir sudėtingi procesai yra skaidomi mažais. Kuriant aplikacijos funkcionalumą ir norint suprasti veikimo principus, reikia išsiaiškinti visų sudedamųjų dalių veikimą.
+      TypeScript sprendžia šią problemą aprašant kiekvieną modulį, funkciją, klasę ar kintamuosius girežtais tipais. Aprašius programavimo konstruktus tipais, gali greičiau ir lengviau suprasti funkcionalumą. Taip yra taupomas laikas perprasti atskiroms programos dalims.
+
+      Naudokite TypeScript didelėms programoms, arba toms kurias planuojamos plėsti.
+
+
