@@ -2,8 +2,6 @@
   "compilerOptions": {
     "target": "es2016",                       // į kokią JavaScript versiją paversti kodą                 
     "module": "commonjs",                     // Transpiliuojamų failų modulio tipas                        
-    "declaration": true,                      // ar sukurti deklaruotų kintamųjų tipų failą                        
-    "declarationMap": true,                   // ar susieti deklaruotų kintamųjų nuorodas su kintamaisiais                
     "experimentalDecorators": true,           // ar leisti naudoti dekoratorius               
     "emitDecoratorMetadata": true,            // ar sukurti dekoratorių aprašymų failą               
     "sourceMap": true,                        // ar susieti transpiliuoto JavaScript failų eilutes su orginalių failų eilutėmis                           

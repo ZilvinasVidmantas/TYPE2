@@ -2,6 +2,6 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "./src",                       // aplankas, kuriame ieškoti TypeScript failų                           
-    "outDir": "./public",                     // aplankas į kurį sudėti transpiliuotus JavaScrip
+    "outDir": "./public/js",                     // aplankas į kurį sudėti transpiliuotus JavaScrip
   }
 }
