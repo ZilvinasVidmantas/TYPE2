@@ -1,12 +1,9 @@
 Šioje pamokoje išmoksite:
-  * aprašyti primityvius tipus
   * aprašyti funkcijų parametrus ir funkcijų grąžinimo tipus
   * aprašyti objektų tipus
   * aprašyti masyvų tipus
 
-Parsisiųskite pamokos failus.
-[Nuoroda į "/pratimai"]
-
+Aplanke './pratimai'
 Kiekvienamas aplankas-tema turi failą './src/main.ts'.
 Jums reikia:
   * transpiliuoti šį failą į JavaScript failą:
