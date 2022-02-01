@@ -1,5 +1,5 @@
 /*
-  Aprašant masyvų tipus reikia nurodyti kokie elementai sudarys masyvai, galimos 2 sintaksės:
+  Aprašant masyvų tipus reikia nurodyti kokie elementai sudarys masyvą, galimos 2 sintaksės:
     * tipas[] -> number[], string[], Person[] ir t.t.
     * Array<tipas> -> Array<number>, Array<string>, Array<Person> ir t.t.
 */
