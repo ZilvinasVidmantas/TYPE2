@@ -1,0 +1,55 @@
+---------------------- Failų pavadinimai ir struktūra --------------------------
+
+Visi failų pavadinimai: kebab-case
+
+Jeigu komponenetas kompleksinis, jis turi būti aplanke, ir pirminis failas vadiniasi index.jsx
+
+Kompleksinį komponentą sudarantys vaikiniai komopnentai, turi prasidėti taip, kaip vadinasi komponentas(aplankas)
+  papildomi turinio failai (nuotraukos, v. įraš. ir t.t.) laikomi puslapio aplanke
+
+Naudojama MUI bibliotekos komonenetus (nenaudojame paprastų HTML elementų)
+  vienintelė iššimtis, media failai - <img />, <image>, <source/>, <audio/>  
+
+Kuomet importuojame komponentus, turime rašyti pilą komponento pavadinimą, išskyrus
+tuos atvejus, kai naudojame komponentą iš to paties folder'io. Tokiu atveju, komponeneto pavadinimas
+naudojamas be aplanko pavadinimas, pvz:
+    failų struktūra:
+      components/
+        buttons/
+          capsule-trans-button.jsx
+      home-page/
+        home-page-footer.jsx
+        home-page-navbar.jsx
+        home-page-sidebar.jsx
+        home-page-layout.jsx
+        index.jsx
+      
+    Esame 'home-page/index.jsx' faile, tuomet importuosime komponenetus tokiais pavadinimas:
+      import Footer from './home-page-footer.jsx';
+      import Sidebar from './home-page-sidebar.jsx';
+      import CapsuleTransButton from '../components/buttons/capsule-trans-button.jsx';
+
+---------------------- Stilizavimas --------------------------
+
+Stiliai aprašomi arba naudojant Mui bibliotekos styled funkciją, arba naudojant komponentų prop'sus
+
+---------------------- Task manager --------------------------
+
+Task'ų pavadinimai turi prasidėti didžiosimis raidėmis pagal paskirtį (FE | BE | FS). 
+  Po raidžių seka '-' ir užduoties numeris, tuomet ':'.
+  Už dvitaškio yra įvardinamas užduoties tikslas. 
+
+---------------------- GIT --------------------------
+
+Pull Request pavadinimas turi sutapti su task'o kurį atlikote pavadinimu
+
+Darbai skaidomi commit'ais, kurie prasideda:
+  feat: darbas kuriame buvo sukurtas naujas kodas
+  fix: darbas kuriame buvo pataisytas esamas kodas
+  refactor: darbas kuriame buvo pakeistas susiejimas tarp programinio kodo dalių.
+  chore: darbas kuriame buvo išvalytas programinis kodas (pakeitos kabutės, išvalyti komentarai ir t.t.)
+  style: stilizavimo darbai
+  docs: Readme.md, conventions.txt ir kitų vystymui skirtų failų dokumentavimas
+
+  daugiau info: https://www.conventionalcommits.org/en/v1.0.0-beta.2/
+

@@ -1,0 +1,55 @@
+[{
+	"title" : "Game Cards",
+	"paragraph" : "Cards for games...",
+	"buttons" : ["Create", "Exit", "Edit", "Submit", "Delete"],
+	"cards" : [
+		{
+			"race" : "Dwarf",
+			"role" : "Vanguard",
+			"photo" : "https://preview.redd.it/5cqwv72h4ac51.jpg?auto=webp&s=6cf6dee4ab2eb645c9f866e97c5ff6bddf8dcb21",
+			"info" : {
+				"attack" : 15,
+				"defense" : 32,
+				"hitPoints" : 120,
+				"speed" : 5
+			}
+		},{
+			"race": "Elf",
+			"role" : "Archer",
+			"photo" : "https://i.pinimg.com/originals/53/9b/3f/539b3f440d8e3896c8bbd8dad6bb1b6c.jpg",
+			"info" : {
+				"attack" : 35,
+				"defense" : 15,
+				"hitPoints" : 50,
+				"speed" : 8
+			}
+		}
+	]
+},{
+	"title" : "Cars Cards",
+	"paragraph" : "Cards about cars...",
+	"buttons" : ["Create", "Exit", "Edit", "Submit", "Delete"],
+	"cards" : [
+		{
+			"brand" : "Audi",
+			"model" : "TT",
+			"photo" : "https://cdn.motor1.com/images/mgl/ybzqq/s1/2019-audi-tt-rs-coupe.webp",
+			"info" : {
+				"year" : 1998,
+				"class" : "Sports car",
+				"price" : 50000,
+				"topSpeed" : 250
+			}
+		},{
+			"brand": "Honda",
+			"model" : "Civic",
+			"photo" : "https://carsguide-res.cloudinary.com/image/upload/f_auto%2Cfl_lossy%2Cq_auto%2Ct_default/v1/editorial/Honda-Civic-2022-1600-01.jpg",
+			"info" : {
+				"year" : 1972,
+				"class" : "Compact car",
+				"price" : 22000,
+				"topSpeed" : 210
+			}
+		}
+	]
+}]

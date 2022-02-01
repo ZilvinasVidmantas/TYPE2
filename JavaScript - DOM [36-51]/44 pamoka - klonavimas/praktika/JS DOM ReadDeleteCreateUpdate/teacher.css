@@ -1,0 +1,92 @@
+#moviesList{
+  columns: 3;
+}
+#moviesList > li{
+  border: 1px solid black;
+  margin: 2px 0;
+  border-radius: 10px;
+  display: inline-block;
+  height: 90px;
+  width: 300px;
+  padding: 5px;
+  position: relative;
+}
+#moviesList li{
+  list-style-type: none;
+}
+.listDeleteBtn{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 80px;
+}
+
+#modalBoxCreate{
+  position: fixed;
+  height: 500px;
+  width: 800px;
+  background-color: antiquewhite;
+  top: 200px;
+  left: 200px;
+}
+#modalBoxEdit{
+  position: fixed;
+  height: 500px;
+  width: 800px;
+  background-color: antiquewhite;
+  top: 200px;
+  left: 200px;
+  z-index: 10;
+}
+
+#moviesDiv{
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  justify-content: center;
+}
+#moviesDiv0{
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  justify-content: center;
+}
+
+.moviesDivs{
+  position: relative;
+  display: inline-block;
+  background-color: azure;
+  width: 400px;
+  height: 450px;
+  margin: 20px;
+  padding: 5px;
+  border: 5px dashed Orange;
+  overflow: auto;
+}
+
+.divDeleteBtn{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 80px;
+}
+
+.divEditBtn{
+  position: absolute;
+  top: 50px;
+  right: 5px;
+  width: 80px;
+}
+
+.moviesDivs img{
+  float: left;
+  clear: both;
+  margin: 0 5px;
+}
+
+.moviesDivs h2{
+  margin-right: 100px;
+  text-align: center;
+}
+
+.moviesDivs b{
+  line-height: 30px;
+}

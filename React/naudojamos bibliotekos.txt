@@ -1,3 +1,0 @@
-material-ui: https://mui.com/getting-started/usage/
-formik: https://formik.org/docs/examples/with-material-ui
-yup (validavimo schemų konstravimas) : https://www.npmjs.com/package/yup

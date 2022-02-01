@@ -1,3 +1,0 @@
-* Komponentus rašome atskirai:
-  * Kuomet jie yra naudojami daugiau nei vienoje vietoje
-  * Kuomet jie turi funkcionalumo (ne tik atvaizdavimas)

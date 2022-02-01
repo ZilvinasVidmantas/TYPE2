@@ -1,0 +1,5 @@
+Žaidimas:
+  https://codecombat.com/play
+Vidosai:
+  https://www.youtube.com/watch?v=T-HGdc8L-7w&list=PLRqwX-V7Uu6YgpA3Oht-7B4NBQwFVe3pr&index=18&ab_channel=TheCodingTrain
+  https://www.youtube.com/watch?v=rHiSsgFRgx4&list=PLRqwX-V7Uu6YgpA3Oht-7B4NBQwFVe3pr&index=19&ab_channel=TheCodingTrain

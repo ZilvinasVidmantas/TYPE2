@@ -1,0 +1,9 @@
+!!!NEPRIVALOMA!!!
+
+Siūloma tiems, kuriems prasčiau sekasi. Bet žinoma gali pasidaryti ir visi.
+
+Pasidarykite šiuos tutorials:
+	ToDoList: https://youtu.be/Mykv_Ee1IeU
+	ToDoList(ilgesnis): https://medium.com/codingthesmartway-com-blog/building-a-vanilla-javascript-todo-app-from-start-to-finish-ep-1-introduction-project-setup-8165cf33f37
+	FetchAPI CRUD: https://youtu.be/ccX3ApO4qz8
+	CRUD: https://youtu.be/-rNQeJi3Wp4

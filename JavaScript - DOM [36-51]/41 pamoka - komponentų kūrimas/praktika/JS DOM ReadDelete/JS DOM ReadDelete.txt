@@ -1,0 +1,23 @@
+JS DOM ReadDelete aplankale esančiais duomenimis atlikite šiuos veiksmus:
+
+0) Jei reikia - koreguokite ir keiskite HTML failą kaip jums patogu (pridėkite klases, ID, naujus tag'us ir kita)
+0.1) Stilizavimą palike pabaigai. Kai atliksite visas užduotis, grįžkite prie kiekvienos stilizavimo dalies.
+0.2) Panaikinimo mygtukas - paslepia elementą (display: none) arba tiesiog išrašo kąnors į konsolę.
+
+1) Naudodamiesi moviesData[0] duomenimis atlikite šiuos veiksmus:
+	1.1) JS'u 1 sekcijoje sukurkite antraštę ir paragrafą.
+	1.2) JS'u 1 sekcijoje sukurkite div'ą, kurio viduje bus nerikiuotas sąrašas su visų filmų pavadinimais ir mygtukais šalia kiekvieno pavadinimo.
+	1.3) JS'u paspaudus ant mygtuko esančio šalia pavadinimo - panaikinamas sąrašo elementas.
+	1.4) JS'u stilizuokite.
+
+2) Naudodamiesi moviesData[0] duomenimis atlikite šiuos veiksmus:
+	2.1) JS'u 2 sekcijoje sukurkite mygtuką.
+	2.2) JS'u paspaudus ant mygtuko apačioje sukuriamas filmų div'as, kuriame būtų: 
+		2.2.1) Mygtukas, kurį paspaudus - panaikintų filmo div'ą.
+		2.2.2) Filmo pavadinimas, paveiksliukas, aprašymas...
+	2.3) JS'u stilizuokite.
+
+-----------------
+3) Kas jau pasibaigėte 1 ir 2 užduotį - pasidarykite praėjusios pamokos 4'tą užduotį naujoje sekcijoje.
+extra 4) Kas jau pasibaige praėjusios pamokos 4'tą užduotį - patobulinkite ją:
+	extra 4.1) Padarykite, kad galima būtų filtruoti filmų sąrašą pagal keletą kriterijų (pradžioje pagal 2, po to pagal 3, po to pagal tiek kiek vartotojas pasirenka)

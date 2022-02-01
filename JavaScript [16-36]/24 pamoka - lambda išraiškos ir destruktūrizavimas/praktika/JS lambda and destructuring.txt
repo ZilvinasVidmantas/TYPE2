@@ -1,0 +1,75 @@
+Lambda(arrow functions):
+  Syntax: 
+    param => expression
+  Pvz:
+    (param) => {
+      let a = 1;
+      return a + param;
+    }
+  Palyginimas:
+    Paprasta funkcija:
+      var add = function (a, b, c) {
+        return a + b + c;
+      }
+    Lambda funkcija:
+      var add = (a, b, c) => a + b + c;
+  Ką daro:
+    Sutrumpina funkcijos aprašymą, bet yra limituota ir negali būti panaudojama visais atvejais.
+  Link:
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+  Video:
+    https://youtu.be/LaqYB8wVeKA
+
+Destructuring:
+  Syntax:
+    [variable1, variable2] = [value1, value2]
+  Pvz:
+    [a, b] = [10, 20]
+  Palyginimas:
+    Paprastas priskyrimas:
+      let a = 10; let b = 20;
+    Destructuring:
+      let [a, b] = [10, 20];
+  Ką daro:
+    Palengvina ir pagreitina kaip galima priskirti reikšmes esančias masyvuose arba objektuose atskiriems kintamiesiems.
+  Link:
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+  Video:
+    https://youtu.be/UgEaJBz3bjY
+    https://youtu.be/NIq3qLaHCIs
+    https://youtu.be/-vR3a11Wzt0
+
+
+
+Užduotys:
+1) Parašykite lambda, kuri grąžina tekstą "Labas!".
+2) Parašykite lambda, kuri grąžina dviejų kintamųjų sudėtį.
+3) Parašykite lambda, kuri grąžina jai paduoto teksto ilgį.
+4) Parašykite lambda, kuri grąžina jai paduoto teksto pirmąją raidę.
+5) Parašykite lambda, kuri grąžina jai paduoto teksto paskutinę raidę.
+6) Parašykite lambda, kuri grąžina jai paduoto skaičiaus kvadratą.
+7+) Parašykite lambda, kuri iš jai paduoto masyvo išveda visus kintamuosius į konsolę.
+8+) Parašykite lambda, kuri iš jai paduoto masyvo išveda kas antrą kintamąjį į konsolę.
+9++) Parašykite lambda, kuri iš jai paduoto masyvo išveda kas kažkelintą (nurodytą) kintamąjį į konsolę.
+10+) Parašykite lambda, kuri iš jai paduoto skaičių masyvo į konsolę išveda tik lyginius skaičius.
+11+) Parašykite lambda, kuri iš jai paduoto skaičių masyvo į konsolę išveda tik nelyginius skaičius. 
+12+) Parašykite lambda, kuri iš jai paduoto string masyvo į konsolę išveda tik žodžius ilgesnius nei 3 simbolių. 
+13++) Parašykite lambda, kuri iš jai paduoto string masyvo į konsolę išveda tik žodžius, kurie prasideda kažkokia (nurodyta) raide.
+14+++) Parašykite lambda, kuri iš jai paduoto string masyvo į konsolę išveda tik žodžius, kurie yra ilgesni nei A, bet trumpesni nei B ir prasideda mažąja raide. (A - trumpiausias galimas žodžio ilgis, B - ilgiausias galimas žodžio ilgis).
+15+) Parašykite lambda, kuri iš jai paduoto mišraus masyvo grąžina masyvą tik su string kintamaisiais.
+16++) Parašykite lambda, kuri iš jai paduoto mišraus masyvo grąžina masyvą tik su string kintamaisiais, kurie yra ilgesni nei A. (A - trumpiausias galimas žodžio ilgis).
+17++) Parašykite lambda, kuri iš jai paduoto mišraus masyvo grąžina masyvą tik su string kintamaisiais, kurie prasideda didžiąja raide.
+18+) Parašykite lambda, kuri iš jai paduoto mišraus masyvo grąžina masyvą tik su number kintamaisiais.
+19+) Parašykite lambda, kuri iš jai paduoto mišraus masyvo grąžina masyvą tik su number kintamaisiais, kurie yra didesni negu A. (A - mažiausias galimas skaičius).
+20+) Parašykite lambda, kuri iš jai paduoto mišraus masyvo grąžina masyvą tik su number kintamaisiais, kurie yra mažesni negu A. (A - didžiausias galimas skaičius).
+21++) Parašykite lambda, kuri iš jai paduoto mišraus masyvo grąžina masyvą tik su number kintamaisiais, kurie yra didesni negu A, bet mažesni negu B. (A - mažiausias galimas skaičius, B - didžiausias galimas skaičius).
+22+++) Parašykite lambda, kuri iš jai paduoto mišraus masyvo grąžina masyvą tik su number kintamaisiais, kurie yra didesni negu A, bet mažesni negu B ir lyginiai arba nelyginiai (lyginis - true, nelyginis - false) (arba galima priskirti raides, tarkim jei nori lyginių, parašai "l" kaip parametrą, jei nelyginių, parašai "n" kaip parametrą ir pns.)
+23) Naudodami destructuring priskirkite 2 kintamiesiems 2 reikšmes.
+24) Naudodami destructuring priskirkite 10 kintamųjų 10 reikšmių.
+25+) Naudodami destructuring priskirkite 3 kintamiesiems 5 reikšmes.
+26+) Naudodami destructuring priskirkite 1 kintamajam visas reikšmes išskyrus pirmas 3.
+27+) Naudodami destructuring pirskirkite 1 kintamajam 3'čią reikšmę, 2'am kintamajam 7'tą reikšmę, 3'čiam kintamająm visas likusias (8'tą, 9'tą ir t.t.).
+28) Naudodami destructuring priskirkite 3 kintamiesiems 3 reikšmes paimtas iš objekto.
+29+) Naudodami destructuring priskirkite 3 kintamiesiems 3 reikšmes paimtas iš objekto, bet pakeisti 1'osios reikšmę.
+30+) Naudodami destructuring sukeiskite 2 kintamųjų reikšmes.
+31++) Naudodami destructuring priskirkite objektui 3 naujas reikšmes. Padaryti vieną pavyzdį, kur objektas tų reikšmių neturi, kitą, kur tas reikšmes objektas jau turi.

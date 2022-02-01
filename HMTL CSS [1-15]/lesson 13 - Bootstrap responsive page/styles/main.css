@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,400;1,600;1,700;1,800&display=swap');
+@import url(css2.css);
+
+body{
+    font-family: "Open Sans", sans-serif;
+}
+
+nav{
+    font-weight: 400;
+}
+
+main{
+    position: relative;
+}
+
+.pirmas{
+    min-height: 60vh;
+}
+.pirmas::before {    
+    content: "";
+    background-image: url(../images/pexels-photo-1170412.jpeg);
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.4;
+}
+
+.infoHero div{
+    position: relative;
+}
+
+.heroName{
+    font-weight: 800!important;
+}
+
+.heroInfo{
+    font-weight: 400;
+}
+
+.antras{
+    padding-top: 60px;
+    font-weight: 400;
+    background: rgb(75,71,138);
+    background: linear-gradient(90deg, rgba(75,71,138,1) 13%, rgba(136,150,187,1) 53%, rgba(0,146,255,1) 100%);
+}
+
+.trecias{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    font-weight: 400;
+    background: rgb(182,179,230);
+    background: linear-gradient(90deg, rgba(182,179,230,1) 13%, rgba(205,214,237,1) 53%, rgba(203,221,235,1) 100%);
+}

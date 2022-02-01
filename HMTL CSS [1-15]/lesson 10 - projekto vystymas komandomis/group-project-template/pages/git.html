@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grupinio projekto šablonas</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="../js/navbar.js" defer></script>
+  <script src="../js/sidebar.js" defer></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container h-100">
+      <div class="d-flex h-100 justify-content-between">
+        <a href="#main" class="navbar__logo-container">
+          <img src="https://codeacademy.lt/wp-content/themes/codeacademy/dist/images/codeacademy-white.svg">
+        </a>
+        <div class="navbar__toggler">
+          <div class="navbar__toggler__line"></div>
+          <div class="navbar__toggler__line"></div>
+          <div class="navbar__toggler__line"></div>
+        </div>
+        <div class="navbar__navigation-container">
+          <ul class="navbar__navigation">
+            <li><a class="navbar__link" href="../index.html">HTML</a></li>
+            <li><a class="navbar__link" href="display-types.html">Display types</a></li>
+            <li><a class="navbar__link" href="flex.html">Flex</a></li>
+            <li><a class="navbar__link" href="grid.html">Grid</a></li>
+            <li><a class="navbar__link" href="position.html">Position</a></li>
+            <li><a class="navbar__link active" href="git.html">GIT</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar__toggler">></div>
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li><a class="sidebar__link" href="#main">Pagrindinis</a></li>
+        <li><a class="sidebar__link" href="#git-init">Pasirengimas darbui</a></li>
+        <li><a class="sidebar__link" href="#git-files-update">Failų atnaujinimas</a></li>
+        <li><a class="sidebar__link" href="#git-feature-flow">Naujo funkcionalumo kūrimas</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main id="main" class="pt-navbar-height">
+    <div class="container container--narrow  container--with-sidebar-left mt-4">
+      <h1 class="mb-3">GIT - projektų versijavimo kontrolė</h1>
+      <p>
+        Projektų versijavimo kontrolė, tai būdas keliems žmonės ar komandoms nepertraukiamai vystyti projektą. <br><br>
+        Visi projekto failai, kodas ir kita informacija patalpinama globalioje repozitorijoje, kuria gali naudotis visi
+        projekto vystytojai. Globalios repozitorijos kodas nėra keičiamas tiesiogiai. Klaidų prevencijos ir
+        nenutraukiamui darbui reikalinga tvarka, kuri bus aprašoma sekančiose potemėje.
+      </p>
+    </div>
+
+    <section id="git-init" class="navbar-anchor-fix">
+      <div class="container container--narrow  container--with-sidebar-left mt-5">
+        <h2 class="mb-2">Pasirengimas darbui</h2>
+        <ul class="ul">
+          <li>
+            <span>Susikurti repozitoriją serveriuojančios kompanijos paskyrą, mūsų atveju</span>
+            <strong><a href="https://github.com/" target="blank">Github</a></strong>.
+          </li>
+          <li>
+            <span>Parsisiųsti programą, kuri mums suteikia sąsaja vykdyti GIT komandas - </span>
+            <strong><a href="https://git-scm.com/downloads" target="blank">GIT bash</a></strong>.
+          </li>
+          <li>
+            <span>Atsidarius terminalą, reikia užregistruoti kas jūs esate, jog tai matytūsi jūsų kodo pakitimuose,
+              tam reikalinga įvykdyti šias komandas:</span>
+            <ul class="ul">
+              <li><strong>git config --global user.name "VARDAS PAVARDĖ"</strong></li>
+              <li><strong>git config --global user.email "JŪSŲ_PAŠTAS@domenas.com"</strong></li>
+            </ul>
+          </li>
+          <li>
+            <span>Reikia pasiklonuoti jus dominančia repozitoriją, pavyzdžiui</span>
+            <strong><a href="https://github.com/ZilvinasVidmantas/TYPE2.git"
+                target="blank">ZilvinasVidmantas/TYPE2</a></strong>
+            <ul>
+              <li><strong>git clone https://github.com/ZilvinasVidmantas/TYPE2.git</strong></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="git-files-update" class="navbar-anchor-fix">
+      <div class="container container--narrow container--with-sidebar-left mt-5">
+        <h2 class="pb-2">Failų atnaujinimas/atsisiuntimas</h2>
+        <p>
+          Keičiant failus savo kompiuteryje, reikia užfiksuoti pakitimus naudojant komandą: <br>
+        <pre class="code"><strong>git add</strong> .</pre>
+        Tuomet užfiksavus, reikia juos patvirtinti su patvirtinimo žinute:
+        <pre class="code"><strong>git commit -m "atliktą darbą apibudinanti žinutė"</strong></pre>
+        Tokiu būdu yra užtvirtinamas pakitimas jūsų darbinėje šakoje privačiai. Tam kad šiuos pakitimus pamatytų kiti
+        žmonės reikia juos paviešinti. Kitaip tariant savo pakitimus nusiųsti į globalią repozitoriją, tai darome
+        rašydami:
+        <pre class="code"><strong>git push</strong></pre>
+        <hr class="my-2">
+        Norint atnaujinti privačios repozitorijos informaciją, turi nebūti jokių pakitimų kuomet bandysite tai daryti.
+        Prieš parsisiunčiant informaciją reikėtų užtvirtinti visus pakitimus (<em>git commit ...</em>). Failų
+        atsiuntimas daromas rašant tokią komandą: <br>
+        <pre class="code"><strong>git pull</strong></pre>
+        </p>
+      </div>
+    </section>
+
+    <section id="git-feature-flow" class="navbar-anchor-fix">
+      <div class="container container--with-sidebar-left pt-5">
+        <h2 class="pb-2">Naujo funkcionalumo kūrimas</h2>
+        <p class="pb-3">
+          Tam kad dirbant komandoje galėtumėte dirbti nepertraukiamai laikomasi sutartinės tvarkos. <br>
+          Ši tvarka pateikta iliustracija žemiau.
+        </p>
+        <img src="../images/git-feature-flow.png" class="w-100">
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer bg-dark text-center text-light py-3 mt-5">
+    <span>All rights reserved CodeAcademy © 2021</span>
+  </footer>
+
+</body>
+
+</html>
+

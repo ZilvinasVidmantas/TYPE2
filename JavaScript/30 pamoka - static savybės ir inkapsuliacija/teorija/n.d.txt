@@ -1,3 +1,0 @@
-Įvadas į OOP:
-  https://www.youtube.com/watch?v=PFmuCDHHpwk&ab_channel=ProgrammingwithMosh
-Atlikt užduotis pagal: "JavaScript/JS praktika/terminai.txt"

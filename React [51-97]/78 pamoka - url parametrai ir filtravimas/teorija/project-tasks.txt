@@ -1,0 +1,72 @@
+car-search-page
+  * įgalinti atvaizdavimą lentele arba gridu su mašinų nuotraukomis
+    * nuotraukos turi būti kvadratinės
+    * vaiduoti skirtingą kiekį mašinos kortelių priklausomai nuo ekrano dydžio
+      * xs - 1
+      * md - 2
+      * lg - 3
+      * xl - 4
+  
+  * Perkelti parsiuntimus, ne kontektui, o car-search-page'ui
+    * filtravimą įgalinti su 'react-router-dom' bibliotekos hook'su useSearchParams (nebenaudosime filterBuilder)
+  
+  * Parsiųsti tik pirmas 20 mašinų
+    * kol siunčiami duomenys naudoti MUI skeleton komponentą:
+      * https://mui.com/components/skeleton/
+    * lentelės atveju
+      * įgalinti puslapiavimą(pagination)
+    * grido atveju
+      * įgalinti mašinų parsiuntimą scroll'inant
+  
+  * Pritaikyti dizainą visiems ekrano dydžiams
+
+  * Sukurti dizainą paieškai:
+    * Įvedus tikrinama pagal mašinos brand ir model sayves
+
+  * filtrai:   
+    Visi filtrai turi naudoti useSearchParams
+      https://reactrouter.com/docs/en/v6/getting-started/tutorial#search-params
+      * brand: 
+        * Nustatyti markės filtrą, su autoComplete field'u
+        * https://mui.com/components/autocomplete/
+      * model:  
+        * tiktai pasirinkus mašinos markę, turi atsirasti modelio pasirinkimo autoComplete field'as
+        * https://mui.com/components/autocomplete/
+      * price:
+        * rangeSlider(mūsų kurti)
+      * year:
+        * rangeSlider(mūsų kurti)
+      * transmittionType
+        * Select
+        * https://mui.com/components/selects/
+      * fuelType
+        * Select
+        * https://mui.com/components/selects/
+
+--------------------------------------------------------
+
+json-server
+  * iškelti automobilių brands, models, transsmitions, fuelTypes, ir carFuelTypes į atskiras struktūras
+    * pavyzdys db-schema.jpg
+    * sukurti cars ir carFuelTypes susieti su esamas kitų struktūrų objektais naudojant išorinius raktus
+      * cars:
+        * modelId
+        * userId
+        * transmitionId
+      * carFuelTypes:
+        * fuelTypeId
+        * carId
+
+  * pakeisti visus variklio tūrius skaičiais
+
+-------------------------------------------------
+
+car-page
+  * desktop dizainas
+    * car-page padaryti sliderį'į iš visų mašinos nuotraukų:
+      https://swiperjs.com/
+    * charakteristikos, turi atsirasti dešniame side-menu
+
+-------------------------------------------------
+home-page.jsx
+  Sukurti pradinį reprezentacinį puslapį

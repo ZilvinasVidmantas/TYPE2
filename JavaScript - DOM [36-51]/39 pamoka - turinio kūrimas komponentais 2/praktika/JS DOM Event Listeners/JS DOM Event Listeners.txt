@@ -1,0 +1,41 @@
+JS DOM Event Listeners aplankale esančiais duomenimis atlikite šiuos veiksmus:
+
+0) Jei reikia - koreguokite ir keiskite HTML failą kaip jums patogu (pridėkite klases, ID, naujus tag'us ir kita)
+0.1) Stilizavimą palike pabaigai (išskyrus 4 užduoties). Kai atliksite visas užduotis, grįžkite prie kiekvienos stilizavimo dalies.
+
+(keypress/keydown; click; mouseover; mouseout)
+
+1) Naudodamiesi data[0] duomeninis atlikite šiuos veiksmus:
+	1.1) JS'u 1 sekcijoje sukurkite antraštę su 1 paveiksliuku po ja.
+	1.2) JS'u 1 sekciją papildykite likusiais paveiksliukais.
+	1.3) JS'u padarykite, kad paspaudus ant vieno iš paveiksliukų įkeltų 1.2 dalyje, jis būtų rodomas 1.1 dalyje esančio paveiksliuko vietoje.
+	1.4) JS'u 1 sekciją stilizuokite priskirdami klases.
+2) Naudodamiesi data[1] duomeninis atlikite šiuos veiksmus:
+	2.1) JS'u 2 sekcijoje sukurkite antraštę ir paragrafą.
+	2.2) JS'u 2 sekciją papildykite form'a, kurioje būtų label'is, input'as ir button'as.
+	2.3) JS'u padarykite, kad paspaudus ant mygtuko į ekraną būtų išvedamas FizzBuzz testo atsakymas. (kiekvieną FizzBuzz išvestį galima kelti į naują div'ą, kad vėliau būtų lengviau stilizuoti)
+	2.4) JS'u 2 sekciją stilizuokite priskirdami klases.
+3) Naudodamiesi data[2] duomeninis atlikite šiuos veiksmus:
+	3.1) JS'u 3 sekcijoje sukurkite antraštę ir paragrafą.
+	3.2) JS'u padarykite, kad pele užėjus ant antraštės jos tekstas padidėtų ir pasikeistų fono spalva.
+	3.3) JS'u padarykite, kad pele nuėjus nuo antraštės jos tekstas ir fono spalva grįžtų į pradinę būseną.
+	3.4) JS'u padarykite, kad pele užėjus ant paragrafo jo tekstas pasikeistų į piktoParagrafo tekstą, jis įgautų ryškią teksto ir fono spalvą.Nuėjus nuo elemento su pele, jis grįžtų į pradinę būseną.
+	extra - 3.5) Papildyti, kad tekstas per keletą sekundžių taptų nematomas. Nuėjus nuo elemento su pele, jis grįžtų į pradinę būseną.
+	3.5) JS'u 3 sekciją stilizuokite priskirdami klases.
+4) 	Naudodamiesi data[3] duomenimis atlikite šiuos veiksmus:
+	4.1) JS'u 4 sekcijoje sukurkite antraštę su paveiksliukais.
+	4.2) JS'u 4 sekciją papildykite paveiksliukų pavadinimais. (paveiksliukus ir jų pavadinimus laikyti atskiruose div'uose)
+	4.3) JS'u 4 sekciją papildykite kiekvienam pavadinimui/paveiksliukui skirtais aprašymais.(paveiksliukus ir jų pavadinimus bei aprašymus laikyti atskiruose div'uose)
+	4.4) JS'u 4 sekciją stilizuokite priskirdami klases.
+	4.5) JS'u 4 sekcijos viršuje pridėkite mygtuką, kurį paspaudus pasikeistų 4'tos sekcijos stiliai (padaryti dark/light mode'ą).
+	
+extra - 5) Naudodamiesi data[4] duomenimis atlikite šiuos veiksmus:
+	5.1) JS'u 5 sekcijoje sukurkite paveiksliuką.
+	5.2) JS'u padarykite, kad spaudžiant "f" mygtuką klaviatūroje - paveiksliukas rotuotų aplink Y ašį 180 laipsnių.
+	5.3) JS'u padarykite, kad spaudžiant rodyklių mygtukus klaviatūroje - paveiksliukas judėtų (keistų savo poziciją) puslapyje. 
+	(https://keycode.info/)
+	extra - 5.4) Nupieškite ekrane (su stiliais arba JS'u) kliūčių ruožą, per kurį paveiksliukas turi pereiti. Palietus kliūtį - paveiksliukas nukeliamas į jo pradinę vietą.
+
+
+
+

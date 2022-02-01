@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+.position-example-container {
+    display: flex;
+    width: 640px;
+    margin-left: 50px;
+    padding: 10px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 10px;
+    box-shadow: 0 0 0 1px #000;
+}
+
+.square {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 80px;
+    width: 80px;
+    background: #b8a158;
+}
+
+.square--relative {
+    position: relative;
+    background: blue;
+    top: 40px;
+    right: 40px;
+}
+
+.square--absolute {
+    position: absolute;
+    background: red;
+    top: 0;
+    left: 0;
+}
+
+.pos-relative {
+    position: relative;
+}

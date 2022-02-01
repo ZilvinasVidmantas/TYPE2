@@ -1,2 +1,0 @@
-0. 
-1. Išspręsti( arba atsinešti konkrečius tikslius klausimus) užduotis './function-tasks-1.js';

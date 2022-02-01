@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>38 pamoka - Turinio kūrimas komponentais</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="styles/main.css">
+  <!--  Data -->
+  <script src="js/data/sectionData.js" defer></script>
+  <!-- Components -->
+  <script src="js/components/Section.js" defer></script>
+  <script src="js/components/Paragraph.js" defer></script>
+  <script src="js/components/CodeExample.js" defer></script>
+  <!-- Main -->
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+  <!-- <main id="main">
+    <div class="container">
+      <h1 class="h2 mb-4">DOM - document object model</h1>
+      <p id="mainParagraph" class="pb-0">
+        DOM - tai visas HTML turinys paverstas JavaScript objektu. Kiekvienas HTML kompiuterinės kalbos elementas yra paverčiamas JavaScript
+        objektu ir susiejamas medžio hierarchija. Visas šis medžio hierarchija surestas objektų medis saugomas kintamajame
+        <strong>document</strong>.
+        <br>
+        <br>
+        Keičiant kintamajį document <em>(ar jame esančius elementus)</em> JavaScript variklis incijuoja 'Render' variklio perpiešimo logiką.
+        Tokiu būdu atsinaujina 'viewport'e matomas vaizdas.
+        <br>
+        <br>
+        Keičiant document <em>(ar jame esančius elementus)</em> galima atlikti tokius veikmus:
+      </p>
+      <ul>
+        <li class="js-mainListItem">Kurti</li>
+        <li class="js-mainListItem">Trinti</li>
+        <li class="js-mainListItem">Redaguoti</li>
+        <li class="js-mainListItem">Stilizuoti</li>
+      </ul>
+    </div>
+  </main> -->
+
+  <!-- <section>
+    <div class="container">
+      <h2 class="h3">Elementų paieška</h2>
+      <p>Norint su JavaScript keisti HTML turinį <em>(keisti JavaScript objektus, kurie susieti su HTML turiniu)</em> turime surasti
+        elementus. Tai darome ieškant elementų pagal selektorių. Selektoriaus logika yra tokia pati kaip ir CSS selektorių.</p>
+        <article class="ps-4">
+          <h3 class="h4">Element.querySelector - surasti pirmą elementą pagal selektorių</h3>
+          <pre class="code">
+            <span class="code__comment">//  By attribute id=""</span>
+            const main = document.querySelector('#main');
+            <span class="code__comment">//  By attribute class=""</span>
+            const h1 = main.querySelector('.h1');
+            <span class="code__comment">//  By tag name </span>
+            const mainParagraph = main.querySelector('p');
+          </pre>
+        </article>
+        <article class="ps-4">
+          <h3 class="h4">Element.querySelectorAll - surasti visus elementus pagal selektorių</h3>
+          <pre class="code">
+            <span class="code__comment">// Select many by criteria</span>
+            const mainListItems = document.querySelectorAll('.js-mainListItem');
+          </pre>
+        </article>
+      </div>
+    </section> -->
+
+    <div id="root"></div>
+
+</body>
+
+</html>

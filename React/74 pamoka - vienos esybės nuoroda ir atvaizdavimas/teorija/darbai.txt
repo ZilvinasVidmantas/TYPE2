@@ -1,6 +1,0 @@
-car-search-page pakeisti lentelę, gridu, su mašinų nuotraukomi
-car-page tablet dizainas
-car-page desktop dizainas
-json-server: papildyti duomenis nuotraukomis ir mašinos charakteristikomis
-car-page padaryti sliderį'į iš visų mašinos nuotraukų:
-  https://swiperjs.com/

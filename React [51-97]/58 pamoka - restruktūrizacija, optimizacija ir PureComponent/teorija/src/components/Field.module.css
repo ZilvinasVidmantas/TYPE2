@@ -1,0 +1,21 @@
+.container {
+  font-size: 1.2rem;
+  margin-bottom: 0.5em;
+}
+
+.label {
+  font-size: 0.9em;
+  display: block;
+  margin-bottom: 0.15em;
+}
+
+.label.labelError {
+  color: red;
+}
+
+.error {
+  margin-top: 0.15em;
+  display: block;
+  color: red;
+  font-size: 0.8em;
+}

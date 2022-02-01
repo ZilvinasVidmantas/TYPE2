@@ -1,4 +1,0 @@
-perskaityti project-tasks.txt
-
-  Peržiūrėti nuorodas kurios duotos šiame faile ir pagal tai susirasti video medžiagą internete ir ją peržiūrėti.
-  Neradus video nuodugniai įsiskaityti dokumentaciją 

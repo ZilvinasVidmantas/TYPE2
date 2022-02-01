@@ -1,0 +1,13 @@
+1. Peržiūrėti video:
+  https://www.youtube.com/watch?v=9ooYYRLdg_g&ab_channel=Academind
+  https://www.youtube.com/watch?v=fD0t_DKREbE&ab_channel=ProgrammingwithMosh
+
+2. Parašyti 50 žodžių santrumpą, kuom skiriasi ir kas yra primityvūs ir nuorodos tipo kintamieji
+  2.1. pateikti kodo pavyzdį
+  2.2. pateikti iliustraciją
+
+3. 
+  Skaitote save kompiuteriškai raštingu:
+    https://www.youtube.com/watch?v=hdI2bqOjy3c&t=3s&ab_channel=TraversyMedia
+  Skaitose save nelabai kompiuteriškai raštingu:
+    https://www.youtube.com/watch?v=PkZNo7MFNFg&ab_channel=freeCodeCamp.org

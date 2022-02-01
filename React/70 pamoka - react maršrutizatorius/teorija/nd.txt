@@ -1,6 +1,0 @@
-Stilizuokite Navbar'o linkus
-  * Papildomai sukurkite stilius, kurie paryškintų aktyvaus puslapio link'ą
-    
-Pakeiskite Logo
-  * Įdėkite nuotrauką
-  * padarykite, jog paspaudus logo, būtų naviguojama į Pagrindinį puslapį

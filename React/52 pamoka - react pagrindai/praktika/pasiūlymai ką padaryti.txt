@@ -1,9 +1,0 @@
-Stilizuokite ką darėme kartu.
-
-Susikurti papildomų duomenų su hook/useState.
-Susikurti naują komponentą, kuriame tuos duomenis išvesite.
-Su props perduoti tuos duomenis į naują komponentą.
-Kreiptis į naują komponentą kelis kartus su skirtingais filtravimais / duomenimis.
-Sukurti onClick event'ų, kurie pakeis kažkokią jūsų duomenų informaciją.
-
-Stilizuokite ką darėte savarankiškai.

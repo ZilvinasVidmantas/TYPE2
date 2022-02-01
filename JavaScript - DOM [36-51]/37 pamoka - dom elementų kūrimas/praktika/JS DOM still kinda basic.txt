@@ -1,0 +1,12 @@
+JS DOM still kinda basics aplankale esančiais duomenimis atlikite šiuos veiksmus:
+
+0) Jei reikia - koreguokite ir keiskite HTML failą kaip jums patogu (pridėkite klases, ID, naujus tag'us ir kita)
+
+1) JS'u pasiimkite reikšmes iš 1 sekcijoje esančios formos. (galite pakeisti formų reikšmes(value))
+2) JS'u pasiimkite reikšmes iš 2 sekcijoje esančios formos kai paspaudžiate mygtuką.
+3) JS'u pakeiskite 3 sekcijos antraštės tekstą kai paspaudžiama ant mygtuko. (pakeisti tekstą į ką norit).
+4) JS'u 4 sekcijos div'e sukurkite x stulpelių ir y eilučių (x ir y nurodomas formoje) lentelę paspaudžiant ant mygtuko.
+5) JS'u iš 5 sekcijoje esančios formos išimkite pažymėtą opciją kai paspaudžiate mygtuką.
+6) JS'u 6 sekcijoje esančiose formose užpildykite x/y/z laukelius ir paspaudus atitinkamą mygtuką apskaičiuokite 2D arba 3D (priklausomai ar z paliktas tušias/0 ar duotas dydis) keturkampio Plotą, Perimetrą, Paviršiaus plotą ir Turį.
+-----------------------------------------------------------------
+extra) Stilizuokite 1-6 užduočių informaciją panaudodami JS'ą.

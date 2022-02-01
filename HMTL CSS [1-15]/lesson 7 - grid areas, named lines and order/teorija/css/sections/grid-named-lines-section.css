@@ -1,0 +1,159 @@
+:root {
+  --card-height: 320px;
+  --card-height-md: 240px;
+  --card-height-lg: 300px;
+  --card-shift-md: 40px;
+  --card-shift-lg: 80px;
+  --card-shift-sm: 60px;
+}
+
+.grid-named-lines{ 
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: grid;
+  justify-content: center;
+  background: #eee;
+  grid-template-columns: 
+    [card-1-start card-2-start card-3-start card-4-start card-1-img-start card-2-img-start card-3-img-start card-4-img-start]
+    var(--card-height)
+    [card-1-end card-2-end card-3-end card-4-end card-1-img-end card-2-img-end card-3-img-end card-4-img-end]
+  ;
+  grid-template-rows: 
+      [card-1-img-start]
+      var(--card-shift-sm)      
+      [card-1-start]
+      calc(var(--card-height) - var(--card-shift-sm))
+      /* [card-1-img-end] */
+      var(--card-shift-sm)
+      [card-1-end card-1-img-end]
+      2rem
+      [card-2-img-start]
+      var(--card-shift-sm)      
+      [card-2-start]
+      calc(var(--card-height) - var(--card-shift-sm))
+      [card-2-img-end]
+      var(--card-shift-sm)
+      [card-2-end]
+      2rem
+      [card-3-img-start]
+      var(--card-shift-sm)      
+      [card-3-start]
+      calc(var(--card-height) - var(--card-shift-sm))
+      [card-3-img-end]
+      var(--card-shift-sm)
+      [card-3-end]
+      2rem
+      [card-4-img-start]
+      var(--card-shift-sm)      
+      [card-4-start]
+      calc(var(--card-height) - var(--card-shift-sm))
+      [card-4-img-end]
+      var(--card-shift-sm)
+      [card-4-end]
+}
+
+.grid__card {
+  padding: 1rem;
+  order: 2;
+  background: #fffc;
+  box-shadow: var(--shadow);
+}
+
+.grid__card-img {
+  height: 100%;
+  width: 100%;
+  order: 1;
+}
+
+.grid__card--1 { grid-area: card-1-start / card-1-start / card-1-end / card-1-end; }
+.grid__card--2 { grid-area: card-2-start / card-2-start / card-2-end / card-2-end; }
+.grid__card--3 { grid-area: card-3-start / card-3-start / card-3-end / card-3-end; }
+.grid__card--4 { grid-area: card-4-start / card-4-start / card-4-end / card-4-end; }
+
+.grid__card-img--1 { grid-area: card-1-img-start / card-1-img-start / card-1-img-end / card-1-img-end; }
+.grid__card-img--2 { grid-area: card-2-img-start / card-2-img-start / card-2-img-end / card-2-img-end; }
+.grid__card-img--3 { grid-area: card-3-img-start / card-3-img-start / card-3-img-end / card-3-img-end; }
+.grid__card-img--4 { grid-area: card-4-img-start / card-4-img-start / card-4-img-end / card-4-img-end; }
+
+
+@media screen and (min-width: 768px){
+  .grid-named-lines{
+    grid-template-columns: 
+      auto
+      [card-1-start card-3-start]
+      var(--card-shift-md)
+      [card-1-img-start card-3-img-start]
+      calc( var(--card-height-md) - var(--card-shift-md))
+      [card-1-end card-3-end]
+      var(--card-shift-md)
+      [card-1-img-end card-3-img-end]
+      1rem
+      [card-2-img-start card-4-img-start]
+      var(--card-shift-md)
+      [card-2-start card-4-start]
+      calc( var(--card-height-md) - var(--card-shift-md))
+      [card-2-img-end card-4-img-end]
+      var(--card-shift-md)
+      [card-2-end card-4-end]
+      auto;
+    grid-template-rows: 
+      40px
+      [card-1-img-start card-2-img-start]
+      var(--card-shift-md)
+      [card-1-start card-2-start]
+      calc( var(--card-height-md) - var(--card-shift-md))
+      [card-1-img-end card-2-img-end]
+      var(--card-shift-md)
+      [card-1-end card-2-end]
+      40px
+      [card-3-img-start card-4-img-start]
+      var(--card-shift-md)
+      [card-3-start card-4-start]
+      calc( var(--card-height-md) - var(--card-shift-md))
+      [card-3-img-end card-4-img-end]
+      var(--card-shift-md)
+      [card-3-end card-4-end]
+      40px;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .grid-named-lines{
+    grid-template-columns: 
+      auto
+      [card-1-start card-3-start]
+      var(--card-shift-lg)
+      [card-1-img-start card-3-img-start]
+      calc( var(--card-height-lg) - var(--card-shift-lg))
+      [card-1-end card-3-end]
+      var(--card-shift-lg)
+      [card-1-img-end card-3-img-end]
+      1rem
+      [card-2-img-start card-4-img-start]
+      var(--card-shift-lg)
+      [card-2-start card-4-start]
+      calc( var(--card-height-lg) - var(--card-shift-lg))
+      [card-2-img-end card-4-img-end]
+      var(--card-shift-lg)
+      [card-2-end card-4-end]
+      auto;
+    grid-template-rows: 
+      40px
+      [card-1-img-start card-2-img-start]
+      var(--card-shift-lg)
+      [card-1-start card-2-start]
+      calc( var(--card-height-lg) - var(--card-shift-lg))
+      [card-1-img-end card-2-img-end]
+      var(--card-shift-lg)
+      [card-1-end card-2-end]
+      40px
+      [card-3-img-start card-4-img-start]
+      var(--card-shift-lg)
+      [card-3-start card-4-start]
+      calc( var(--card-height-lg) - var(--card-shift-lg))
+      [card-3-img-end card-4-img-end]
+      var(--card-shift-lg)
+      [card-3-end card-4-end]
+      40px;
+  }
+}

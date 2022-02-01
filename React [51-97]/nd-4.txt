@@ -1,0 +1,22 @@
+Peržiūrėti:
+  Mui Theming - https://www.youtube.com/watch?v=EyqpbNgrW3o&ab_channel=codingNerd
+  Reack router - https://www.youtube.com/watch?v=0cSVuySEB0A&ab_channel=HiteshChoudhary
+
+Perskaityti:
+  https://reactjs.org/docs/hooks-effect.html
+  https://reactjs.org/docs/hooks-reference.html#useeffect
+  https://reactjs.org/docs/hooks-reference.html#usereducer
+  https://reactjs.org/docs/hooks-reference.html#usecontext
+  https://reactrouter.com/docs/en/v6/getting-started/tutorial
+
+Pasidaryti:
+  CarContext.js sukurkite funkcijas kurios grąžina filtrus:
+    * buildRangeFilter(collection, property, filterTitle)
+    * buildCheckboxGroupFilter(collection, property, filterTitle)
+
+  Jeigu per greit gavosi, sukurkite klasę <FilterBuilder>
+    * constructor(collection)
+    * createFilter(filterType, property, filterTitle)
+      * Ši funkcija turi sukurti filtrą, pagal <filterType>
+
+  Šių funkcijų ar klasės produktus, panaudokite kontektų filtrams generuoti

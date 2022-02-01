@@ -1,0 +1,29 @@
+.swiper-button-next {
+  background-image: url(../assets/arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  transform: rotate(180deg );
+  background-color: white;
+  height: 27px;
+  border-radius: 120%;
+}
+.swiper-button-next::after {
+  display: none;
+}
+.swiper-button-prev {
+  background-image: url(../assets/arrow.svg);
+
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-color: white;
+  height: 27px;
+  border-radius: 120%;
+  background-position: center;
+}
+
+.swiper-button-prev::after {
+  display: none;
+
+}
+

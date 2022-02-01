@@ -1,0 +1,32 @@
+-- iki [09-27]
+iki 2 savaitės pradžios
+  function-tasks-1.js -> pilnai
+  function-tasks-array-iterative-1.js -> pilnai
+
+-- iki [10-04]
+iki 3 savaitės pradžios
+  object-tasks.js -> pilnai
+  function-tasks-2.js -> pilnai
+  function-tasks-3.js  -> [1.- 22.]
+  function-tasks-array-iterative-2.js -> [1. - 7.]
+
+-- iki [10-11]
+iki 4 savaitės pradžios
+  function-tasks-3.js -> pilnai
+  function-tasks-array-iterative-2.js -> pilnai
+  classes-tasks-1.js -> pilnai
+  classes-tasks-2.js -> pilnai
+
+-- iki [10-18]
+iki 5 savaitės pradžios
+  classes-tasks-3 -> pilnai
+  js-exam-revision.txt -> pilnai
+  js-iteration-and-classes-task.txt -> pilnai
+
+[2021-10-18, 9:30]
+Pirmadienį, po 4 savaitės - atsiskaitymas iš JS inžinerinės dalies.
+  Trukmė: 1.5val
+
+  Vertinimas:
+    5 balai už atliktas pratybų užduotis
+    5 balai už kontrolinio darbą

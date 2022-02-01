@@ -1,0 +1,107 @@
+body{
+	margin: 0;
+}
+
+.card-grid{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-items: center;
+	grid-gap: 1rem;
+}
+
+.card{
+	width: 300px;
+	height: 470px;
+	position: relative;
+	border: 5px solid #885600;
+	border-radius: 5px;
+}
+
+.card > .deleteCard{
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	right: 0;
+}
+
+.card > .editCard{
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+}
+
+.card > img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.card-content{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 25%;
+	background-color: #ECB85BDD;
+	color: #000;
+}
+
+.card-header{
+	font-size: 1.75rem;
+	margin: 0.5rem 0;
+	text-align: center;
+	text-shadow: 1px 1px #FFF;
+}
+
+.status-grid{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-items: center;
+	grid-auto-rows: 30px;
+}
+
+.status{
+	padding-left: 0.5rem;
+	line-height: 30px;
+	font-size: 1.25rem;
+}
+
+.status>*:before{
+	display: inline-block;
+	content: "";
+	background-size: cover;
+	background-position: center;
+	width: 30px;
+	height: 30px;
+	font-weight: bold;
+	vertical-align: top;
+	margin-right: 0.75rem;
+}
+
+.attack::before{
+	background-image: url(../images/sample/attack.png);
+}
+.defense::before{
+	background-image: url(../images/sample/defense.png);
+}
+.life::before{
+	background-image: url(../images/sample/health.png);
+}
+.speed::before{
+	background-image: url(../images/sample/speed.png);
+}
+
+
+
+
+
+
+
+
+
+
+
