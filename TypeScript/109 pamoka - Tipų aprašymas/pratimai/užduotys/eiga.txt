@@ -1,0 +1,10 @@
+Failus skaitykite ir atlikite tokia tvarka:
+  * TS-2-typed-functions
+  * TS-2-typed-objects
+  * TS-2-typed-arrays
+
+Kiekvienas užduočių aplankas './TS-2...' turi savo atskirą tsconfig.json failą, kuriuose kartojasi tos pačios tasyklės.
+Aprašykite  kompiliavimo taisykles faile './tsconfig.base.json', ir kiekvienam aplanke jį įtraukite:
+  Kaip tai padaryti rasite čia:
+  https://www.typescriptlang.org/tsconfig#extends
+
