@@ -9,3 +9,4 @@ console.groupCollapsed('2 - https://edabit.com/challenge/9KEKJG5PZTFmG3Zau');
 
 }
 console.groupEnd();
+

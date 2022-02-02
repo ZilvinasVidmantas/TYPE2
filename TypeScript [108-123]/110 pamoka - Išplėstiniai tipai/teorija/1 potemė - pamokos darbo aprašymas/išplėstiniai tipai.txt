@@ -1,0 +1,27 @@
+Šioje pamokoje nagrinėsime temas:
+  * Sajungos operatorius - "|" (union operator)
+  * Rinkiniai (Tuples)
+  * Tipų prielaidos (type assertions)
+  * Konkretūs tipai (literal types)
+  * Išvardinimai (ENUM)
+
+Darbo eiga:
+  Aplanke 'užduotys/' eikite ta tvarka, kaip nurodyta faile eiga.txt:
+    * perskaitykite komentaruose duotus pavyzdžius
+    * atlikite užduotis
+    * sukompiliuokite kodą į '/public' aplanką
+    * '/public' aplanke sukurkite 'index.html' failą
+    * Pasitiktinkite rezultatus įtraukdami sukompiliutą '***.js' failą į jūsų sukurtą 'index.html' 
+
+  Nepavykus išspręsti užduočių:
+    1. https://google.lt 
+    2. Peržiūrėkite atitinkamą failą aplanke '/užduotys'
+    3. Jei vis dar nėra aišku, kreipkitės į dėstytoją
+
+  Lavinti reikia ne tik programavimo įgūdžius, bet ir gebėjimus savarankiškai spręsti problemas,
+  ieškoti sprendimų internete ir juos pritaikyti.
+
+  Ieškoti irgi reikia mokytis. Tai lygiai taip pat lavinamas įgūdis.
+  Japonų patarlė: "Žinoti klausimą reiškia žinoti pusę atsakymo"
+  Šių dienų realybė: "Mokėti suformuluoti klausimą reiškia žinoti atsakymą"
+
