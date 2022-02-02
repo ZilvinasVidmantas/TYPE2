@@ -20,7 +20,7 @@ type HttpRequest = {
   body?: {
     [key: string]: string,
   }
-  method: Request,
+  method: HttpType,
 };
 
 const req1 = {
