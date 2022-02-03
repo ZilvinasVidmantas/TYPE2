@@ -6,6 +6,11 @@ const theme = createTheme({
       height: 56,
     },
   },
+  transitions: {
+    duration: {
+      slow: 600,
+    },
+  },
 });
 
 export default theme;
