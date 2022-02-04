@@ -1,0 +1,16 @@
+Atlikite užduotis, aprašydami tipais funkcijas(jų grąžinimo tipus ir parametrus).
+
+Darbo eiga:
+* atsidarykite terminale aplanką '/uzduotys'
+* paleiskite komandą: 'tsc --watch'
+* '/public' aplanke sukurkite 'index.html' failą
+* įtraukite sukompiliuotą 'main.js' failą į jūsų sukurtą 'index.html' 
+* atlikite užduotis po vieną faile 'uzduotys/src/main.ts'
+  * panaudokite funkciją su savo sugalvotais argumentais
+  * atspausdinkite funkcijos argumentus ir funkcijos rezultatą
+
+Nepavykus išspręsti užduočių:
+  1. https://google.lt 
+  2. Peržiūrėkite atitinkamą failą aplanke '/užduotys'
+  3. Jei vis dar nėra aišku, kreipkitės į dėstytoją
+
