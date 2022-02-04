@@ -188,19 +188,65 @@ console.groupEnd();
 
 console.group('13 - https://edabit.com/challenge/i6YqzHcSiPiEQKjeX');
 {
+  type Card = {
+    tile: string,
+    score: number
+  }
+
+  const solution = (cards: Card[]): number => {
+    return cards.reduce((sum, { score }) => sum + score, 0);
+  }
+
+  const cards1: Card[] = [
+    { tile: "N", score: 1 },
+    { tile: "K", score: 5 },
+    { tile: "Z", score: 10 },
+    { tile: "X", score: 8 },
+    { tile: "D", score: 2 },
+    { tile: "A", score: 1 },
+    { tile: "E", score: 1 }
+  ];
+  const cards2: Card[] = [
+    { tile: "B", score: 2 },
+    { tile: "V", score: 4 },
+    { tile: "F", score: 4 },
+    { tile: "U", score: 1 },
+    { tile: "D", score: 2 },
+    { tile: "O", score: 1 },
+    { tile: "U", score: 1 }
+  ];
+
+  console.log(cards1, '->', solution(cards1));
+  console.log(cards2, '->', solution(cards2));
 
 }
 console.groupEnd();
 
 console.group('14 - https://edabit.com/challenge/8s2jy9hR2TAeQinKD');
 {
+  type StolenItemObject = {
+    [key: string]: number,
+  }
 
+  const solution = (items: StolenItemObject, limit: number): number => {
+    return Object.values(items).reduce((sum, price) => sum + price) - limit;
+  }
+
+  const items1: StolenItemObject = { "baseball bat": 20 };
+  const limit1: number = 5;
+  const items2: StolenItemObject = { skate: 10, painting: 20 };
+  const limit2: number = 19;
+  const items3: StolenItemObject = { skate: 200, painting: 200, shoes: 1 };
+  const limit3: number = 400;
+
+  console.log({ items1, limit1 }, '->', solution(items1, limit1));
+  console.log({ items2, limit2 }, '->', solution(items2, limit2));
+  console.log({ items3, limit3 }, '->', solution(items3, limit3));
 }
 console.groupEnd();
 
 console.group('15 - https://edabit.com/challenge/pPNAs5PvB3WvnDwDM');
 {
-
   type ObjectLikeArray<Type> = Array<[string, Type]>;
   type ObjectToArray = <T>(obj: { [key: string]: T }) => ObjectLikeArray<T>;
   type NumberObject = { [key: string]: number };
@@ -224,5 +270,3 @@ console.group('15 - https://edabit.com/challenge/pPNAs5PvB3WvnDwDM');
   console.log(obj3, '->', res3);
 }
 console.groupEnd();
-
-
