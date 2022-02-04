@@ -154,14 +154,18 @@ console.group('14 - https://edabit.com/challenge/8s2jy9hR2TAeQinKD');
 console.groupEnd();
 console.group('15 - https://edabit.com/challenge/pPNAs5PvB3WvnDwDM');
 {
-}
-console.groupEnd();
-console.group('16 - https://edabit.com/challenge/QXWM2oo7rQNiyDsip');
-{
-}
-console.groupEnd();
-console.group('17 - https://edabit.com/challenge/pLNavsePxJ87t9Nak');
-{
+    const solution = (object) => {
+        return Object.entries(object);
+    };
+    const obj1 = { a: 1, b: 2 };
+    const obj2 = { name: 'Sasaris', surname: 'Kova' };
+    const obj3 = { name: 'Bekas', age: 12, sick: false };
+    const res1 = solution(obj1);
+    const res2 = solution(obj2);
+    const res3 = solution(obj3);
+    console.log(obj1, '->', res1);
+    console.log(obj2, '->', res2);
+    console.log(obj3, '->', res3);
 }
 console.groupEnd();
 //# sourceMappingURL=main.js.map

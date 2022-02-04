@@ -89,16 +89,3 @@ console.group('15 - https://edabit.com/challenge/pPNAs5PvB3WvnDwDM');
 
 }
 console.groupEnd();
-
-console.group('16 - https://edabit.com/challenge/QXWM2oo7rQNiyDsip');
-{
-
-}
-console.groupEnd();
-
-console.group('17 - https://edabit.com/challenge/pLNavsePxJ87t9Nak');
-{
-
-}
-console.groupEnd();
-

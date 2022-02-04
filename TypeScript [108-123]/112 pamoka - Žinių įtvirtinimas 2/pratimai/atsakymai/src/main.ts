@@ -201,23 +201,28 @@ console.groupEnd();
 console.group('15 - https://edabit.com/challenge/pPNAs5PvB3WvnDwDM');
 {
 
+  type ObjectLikeArray<Type> = Array<[string, Type]>;
+  type ObjectToArray = <T>(obj: { [key: string]: T }) => ObjectLikeArray<T>;
+  type NumberObject = { [key: string]: number };
+  type StringObject = { [key: string]: string };
+  type PrimitiveObject = { [key: string]: number | string | boolean };
+
+  const solution: ObjectToArray = (object) => {
+    return Object.entries(object);
+  }
+
+  const obj1: NumberObject = { a: 1, b: 2 };
+  const obj2: StringObject = { name: 'Sasaris', surname: 'Kova' };
+  const obj3: PrimitiveObject = { name: 'Bekas', age: 12, sick: false };
+
+  const res1: ObjectLikeArray<number> = solution(obj1);
+  const res2: ObjectLikeArray<string> = solution(obj2);
+  const res3: ObjectLikeArray<number | string | boolean> = solution(obj3);
+
+  console.log(obj1, '->', res1);
+  console.log(obj2, '->', res2);
+  console.log(obj3, '->', res3);
 }
 console.groupEnd();
-
-console.group('16 - https://edabit.com/challenge/QXWM2oo7rQNiyDsip');
-{
-
-}
-console.groupEnd();
-
-console.group('17 - https://edabit.com/challenge/pLNavsePxJ87t9Nak');
-{
-
-}
-console.groupEnd();
-
-
-
-
 
 

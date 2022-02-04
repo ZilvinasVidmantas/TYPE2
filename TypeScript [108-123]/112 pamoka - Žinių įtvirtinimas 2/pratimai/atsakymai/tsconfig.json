@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2016",                       // į kokią JavaScript versiją paversti kodą                 
+    "target": "es2017",                       // į kokią JavaScript versiją paversti kodą                 
     "rootDir": "./src",                       // aplankas, kuriame ieškoti TypeScript failų                           
     "outDir": "./public",                     // aplankas į kurį sudėti transpiliuotus JavaScript failus                             
     "module": "commonjs",                     // Transpiliuojamų failų modulio tipas                        
