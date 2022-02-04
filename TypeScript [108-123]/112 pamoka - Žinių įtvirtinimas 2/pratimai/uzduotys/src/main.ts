@@ -10,7 +10,7 @@ console.group('2. Sukurkite funkciją, kuri priima skaičių masyvą ir grąžin
 {
   // Užduoties sprendimas aprašant tipus ir sprendimo atspausdinimas
 }
-console.groupEnd()
+console.groupEnd();
 
 console.group('3. Sukurkite funkciją, kuri priima skaičių masyvą ir grąžina naują masyvą sudarytą iš pradinio masyvo natūralių skaičių');
 {
@@ -65,3 +65,41 @@ console.group('11. Sukurti funkciją, kuri priima skaičių masyvą ir grąžina
   // Užduoties sprendimas aprašant tipus ir sprendimo atspausdinimas
 }
 console.groupEnd();
+
+
+console.group('12 - https://edabit.com/challenge/48EJWLhF224na8po3');
+{
+
+}
+console.groupEnd();
+
+console.group('13 - https://edabit.com/challenge/i6YqzHcSiPiEQKjeX');
+{
+
+}
+console.groupEnd();
+
+console.group('14 - https://edabit.com/challenge/8s2jy9hR2TAeQinKD');
+{
+
+}
+console.groupEnd();
+
+console.group('15 - https://edabit.com/challenge/pPNAs5PvB3WvnDwDM');
+{
+
+}
+console.groupEnd();
+
+console.group('16 - https://edabit.com/challenge/QXWM2oo7rQNiyDsip');
+{
+
+}
+console.groupEnd();
+
+console.group('17 - https://edabit.com/challenge/pLNavsePxJ87t9Nak');
+{
+
+}
+console.groupEnd();
+
