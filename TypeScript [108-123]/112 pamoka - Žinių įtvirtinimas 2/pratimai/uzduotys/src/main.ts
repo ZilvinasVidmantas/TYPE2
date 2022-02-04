@@ -66,7 +66,6 @@ console.group('11. Sukurti funkciją, kuri priima skaičių masyvą ir grąžina
 }
 console.groupEnd();
 
-
 console.group('12 - https://edabit.com/challenge/48EJWLhF224na8po3');
 {
 
