@@ -154,7 +154,35 @@ console.groupEnd();
 
 console.group('12 - https://edabit.com/challenge/48EJWLhF224na8po3');
 {
+  type GenerationNumber = -1 | -2 | -3 | 0 | 1 | 2 | 3;
+  type Sex = 'm' | 'f';
+  type GenTitleObject = {
+    [key in GenerationNumber]: {
+      [key in Sex]: string
+    }
+  };
 
+  const genTitleObject: GenTitleObject = {
+    '-3': { m: 'great grandfather', f: 'great grandmother' },
+    '-2': { m: 'grandfather', f: 'grandmother' },
+    '-1': { m: 'father', f: 'mother' },
+    0: { m: 'me!', f: 'me!' },
+    1: { m: 'son', f: 'daughter' },
+    2: { m: 'grandson', f: 'granddaughter' },
+    3: { m: 'great grandson', f: 'great granddaughter' },
+  };
+
+  const solution = (g: GenerationNumber, s: Sex): string => genTitleObject[g][s];
+
+  // Spausdinimas
+  const sexes: Sex[] = ['m', 'f'];
+  const generations: GenerationNumber[] = [-3, -2, -1, 0, 1, 2, 3];
+
+  sexes.forEach(sex => {
+    generations.forEach(gen => {
+      console.log({ sex, gen }, '->', solution(gen, sex))
+    })
+  });
 }
 console.groupEnd();
 
@@ -187,6 +215,8 @@ console.group('17 - https://edabit.com/challenge/pLNavsePxJ87t9Nak');
 
 }
 console.groupEnd();
+
+
 
 
 

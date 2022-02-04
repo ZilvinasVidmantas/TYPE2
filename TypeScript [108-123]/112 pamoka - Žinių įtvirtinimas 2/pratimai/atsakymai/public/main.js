@@ -101,8 +101,8 @@ console.groupEnd();
 console.group('10. Sukurti funkciją, kuri priima skaičių masyvą ir grąžina masyvą, kurio pirmas elementas yra mažiausia pradinio masyvo reikšmė, o antras grąžinamo masyvo elementas yra didiausia reikšmė pradiniame masyve.');
 {
     function solution(arr) {
-        arr.sort((a, b) => a - b);
-        return [arr[0], arr[arr.length - 1]];
+        const sortedArr = [...arr].sort((a, b) => a - b);
+        return [sortedArr[0], sortedArr[sortedArr.length - 1]];
     }
     const result = solution(numbers);
     console.log(numbers);
@@ -112,15 +112,56 @@ console.groupEnd();
 console.group('11. Sukurti funkciją, kuri priima skaičių masyvą ir grąžina objektą, kurio savybė "min" yra mažiausia pradinio masyvo reikšmė, o savybė "max" yra didiausia reikšmė pradiniame masyve.');
 {
     function solution(arr) {
-        arr.sort((a, b) => a - b);
+        const sortedArr = [...arr].sort((a, b) => a - b);
         return {
-            min: arr[0],
-            max: arr[arr.length - 1],
+            min: sortedArr[0],
+            max: sortedArr[sortedArr.length - 1],
         };
     }
     const result = solution(numbers);
     console.log(numbers);
     console.log(result);
+}
+console.groupEnd();
+console.group('12 - https://edabit.com/challenge/48EJWLhF224na8po3');
+{
+    const genTitleObject = {
+        '-3': { m: 'great grandfather', f: 'great grandmother' },
+        '-2': { m: 'grandfather', f: 'grandmother' },
+        '-1': { m: 'father', f: 'mother' },
+        0: { m: 'me!', f: 'me!' },
+        1: { m: 'son', f: 'daughter' },
+        2: { m: 'grandson', f: 'granddaughter' },
+        3: { m: 'great grandson', f: 'great granddaughter' },
+    };
+    const solution = (g, s) => genTitleObject[g][s];
+    const sexes = ['m', 'f'];
+    const generations = [-3, -2, -1, 0, 1, 2, 3];
+    sexes.forEach(sex => {
+        generations.forEach(gen => {
+            console.log({ sex, gen }, '->', solution(gen, sex));
+        });
+    });
+}
+console.groupEnd();
+console.group('13 - https://edabit.com/challenge/i6YqzHcSiPiEQKjeX');
+{
+}
+console.groupEnd();
+console.group('14 - https://edabit.com/challenge/8s2jy9hR2TAeQinKD');
+{
+}
+console.groupEnd();
+console.group('15 - https://edabit.com/challenge/pPNAs5PvB3WvnDwDM');
+{
+}
+console.groupEnd();
+console.group('16 - https://edabit.com/challenge/QXWM2oo7rQNiyDsip');
+{
+}
+console.groupEnd();
+console.group('17 - https://edabit.com/challenge/pLNavsePxJ87t9Nak');
+{
 }
 console.groupEnd();
 //# sourceMappingURL=main.js.map
