@@ -71,7 +71,7 @@ console.groupEnd();
 
 console.group('5. Parašykite funkciją, kuri sujungia tokių pat tipų masyvus į vieną masyvą');
 {
-  function solution<Type>(arr1: Type[], arr2: Type[]): Type[] {
+  function solution<Type extends PrimitiveType>(arr1: Type[], arr2: Type[]): Type[] {
     return [...arr1, ...arr2];
   }
 
@@ -82,13 +82,13 @@ console.group('5. Parašykite funkciją, kuri sujungia tokių pat tipų masyvus 
   const args2: ArgumentSample<string> = [['labas', 'mano', 'vardas'], ['yra', 'ponas', 'krabas']];
   const args3: ArgumentSample<boolean> = [[true, true, true], [false, false, false]];
 
-  console.log({ args: args1, result: solution(...args1) });
+  console.log({ args: args1, result: solution([1, 2, 3], [4, 5, 6]) });
   console.log({ args: args2, result: solution(...args2) });
   console.log({ args: args3, result: solution(...args3) });
 }
 console.groupEnd();
 
-console.group('6. Parašykite funkciją, kuri priimtų bet kokią reikšmę ir grąžintų objektą su savybėmis-funkcijomis "setValue" - reikšmei nustatyti ir "getValue" tai reikšmei nustatyti. Funkcijai perduota reikšmė neturi būti pasiekiama tiesiogiai.');
+console.group('6. Parašykite funkciją, kuri priimtų bet kokią reikšmę ir grąžintų objektą su savybėmis-funkcijomis "setValue" - reikšmei nustatyti ir "getValue" tai reikšmei gauti. Funkcijai perduota reikšmė neturi būti pasiekiama tiesiogiai.');
 {
   type IncapsulatedValueObject<Type> = {
     setValue: (newValue: Type) => void,
@@ -124,5 +124,11 @@ console.group('6. Parašykite funkciją, kuri priimtų bet kokią reikšmę ir g
   obj1.setValue(9);
   obj2.setValue(['Pakeista']);
   obj3.setValue({ name: 'Pakaitalas', surname: 'Fuflo' });
+
+  console.log({
+    value1: obj1.getValue(),
+    value2: obj2.getValue(),
+    value3: obj3.getValue(),
+  })
 }
 console.groupEnd();

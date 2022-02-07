@@ -85,25 +85,3 @@ console.group('6. Parašykite funkciją, kuri priimtų bet kokią reikšmę ir g
     obj2.setValue(['Pakeista']);
     obj3.setValue({ name: 'Pakaitalas', surname: 'Fuflo' });
 }
-console.groupEnd();
-console.group('6. Perskaitykite straipsnį apie dvipusio susieto sąrašo struktūrą(Doubly Linked List) ir parašykite implementaciją naudojant TypeScript.');
-{
-    console.group('6.1 Sukurkite funkciją iteruoti per dvipusį sąrašą.');
-    {
-    }
-    console.groupEnd();
-    console.group('6.2 Sukurkite funkciją iteruoti per dvipusį sąrašą atvirkščia tvarka.');
-    {
-    }
-    console.groupEnd();
-    console.group('6.3 Sukurkite funkciją paversti dvipusį sąrašą masyvu');
-    {
-    }
-    console.groupEnd();
-    console.group('6.4 Sukurkite funkciją paversti masyvą dvipusiu sąrašu');
-    {
-    }
-    console.groupEnd();
-}
-console.groupEnd();
-//# sourceMappingURL=main.js.map
