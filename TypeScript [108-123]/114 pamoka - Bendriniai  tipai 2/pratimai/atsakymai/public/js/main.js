@@ -40,33 +40,31 @@ class List {
         this.deleteItem = (data) => {
             if (this.head === null)
                 return false;
-            if (this.head.data === data) {
-                if (this.head.next !== null) {
-                    this.head = this.head.next;
-                }
-                else {
-                    this.head = null;
-                    this.tail = null;
-                }
-                return true;
-            }
-            let prev = this.head;
+            let current = this.head;
+            let previous = current;
             while (true) {
-                if (prev.next === null)
-                    return false;
-                const current = prev.next;
                 if (current.data === data) {
-                    if (current.next === null) {
-                        prev.next = null;
-                        this.tail = prev;
+                    previous.next = current.next;
+                    if (current === this.head) {
+                        if (current.next === null) {
+                            this.tail = null;
+                        }
+                        this.head = current.next;
+                        return true;
                     }
-                    else {
-                        prev.next = current.next;
-                    }
+                    if (current.next === null)
+                        this.tail = previous;
+                    else
+                        this.tail = current.next;
                     return true;
                 }
-                prev = prev.next;
+                ;
+                if (current.next === null)
+                    break;
+                previous = current;
+                current = current.next;
             }
+            return false;
         };
         if (initialNode !== undefined) {
             this.head = initialNode;
@@ -166,10 +164,10 @@ console.group('7. Sukurkite metodą List.deleteItem(data: T): boolean, kuris iš
         console.log(numberList.toArray());
     }
     console.groupEnd();
-    console.group('Trinamas paskutinis elementas');
+    console.group('Trinamas pirmasis elementas');
     {
-        console.log('trinama:', 3);
-        let deleteSuccess = numberList.deleteItem(3);
+        console.log('trinama:', 5);
+        let deleteSuccess = numberList.deleteItem(5);
         console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
         console.log(numberList.toArray());
     }
@@ -182,10 +180,10 @@ console.group('7. Sukurkite metodą List.deleteItem(data: T): boolean, kuris iš
         console.log(numberList.toArray());
     }
     console.groupEnd();
-    console.group('Trinamas pirmasis elementas');
+    console.group('Trinamas paskutinis elementas');
     {
-        console.log('trinama:', 5);
-        let deleteSuccess = numberList.deleteItem(5);
+        console.log('trinama:', 3);
+        let deleteSuccess = numberList.deleteItem(3);
         console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
         console.log(numberList.toArray());
     }

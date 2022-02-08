@@ -123,45 +123,37 @@ class List<Type> {
 
   // 7. 
   public deleteItem = (data: Type): boolean => {
-    // Jeigu nėra elementų grąžiname false - nepavyko ištrinti
     if (this.head === null) return false;
 
-    // Trinamas pirmasis elementas
-    if (this.head.data === data) {
-      // Ar pirmasis elementas turi sekantį?
-      if (this.head.next !== null) {
-        this.head = this.head.next;
-      } else {
-        this.head = null;
-        this.tail = null;
-      }
-      // pavyko ištrinti pirmajį elementą
-      return true;
-    }
+    let current: ListNode<Type> = this.head;
+    let previous: ListNode<Type> = current;
 
-    let prev: ListNode<Type> = this.head;
     while (true) {
-      if (prev.next === null) return false;
-
-      const current: ListNode<Type> = prev.next;
-      // current yra trinamas elementas
+      // Ar rastas elementas kurį reikia trinti
       if (current.data === data) {
-        // ar trinamas elementas yra paskutinis?
-        if (current.next === null) {
-          // ištrinamas paskutinis elementas
-          prev.next = null
-          this.tail = prev;
-        } else {
-          // ištrinamas vidurinis elementas
-          prev.next = current.next;
+        previous.next = current.next;
+        if (current === this.head) {
+          // trinamas pirmasis elementas
+          if (current.next === null) {
+            this.tail = null;
+          }
+          this.head = current.next;
+          return true;
         }
+        // trinamas paskutinis elementas
+        if (current.next === null) this.tail = previous;
+        // trinamas vidurinis elementas
+        else this.tail = current.next;
 
-        // pavyko ištrinti
+        // elementas ištrintas
         return true;
-      }
-      prev = prev.next;
+      };
+      if (current.next === null) break;
+      previous = current;
+      current = current.next;
     }
-  }
+    return false;
+  };
 }
 // ↑↑↑ Klasės ↑↑↑
 
@@ -281,10 +273,10 @@ console.group('7. Sukurkite metodą List.deleteItem(data: T): boolean, kuris iš
   }
   console.groupEnd();
 
-  console.group('Trinamas paskutinis elementas');
+  console.group('Trinamas pirmasis elementas');
   {
-    console.log('trinama:', 3);
-    let deleteSuccess: boolean = numberList.deleteItem(3);
+    console.log('trinama:', 5);
+    let deleteSuccess: boolean = numberList.deleteItem(5);
     console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
     console.log(numberList.toArray());
   }
@@ -299,10 +291,10 @@ console.group('7. Sukurkite metodą List.deleteItem(data: T): boolean, kuris iš
   }
   console.groupEnd();
 
-  console.group('Trinamas pirmasis elementas');
+  console.group('Trinamas paskutinis elementas');
   {
-    console.log('trinama:', 5);
-    let deleteSuccess: boolean = numberList.deleteItem(5);
+    console.log('trinama:', 3);
+    let deleteSuccess: boolean = numberList.deleteItem(3);
     console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
     console.log(numberList.toArray());
   }
