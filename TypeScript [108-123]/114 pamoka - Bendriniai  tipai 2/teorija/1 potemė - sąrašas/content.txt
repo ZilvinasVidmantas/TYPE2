@@ -1,0 +1,18 @@
+Šioje pamokoje panaudosime bendrinius tipus (Generics), kad sukurti sąrašo struktūrą.
+Sąrašas tai struktūra sudaryta iš mazgų. Kiekvienas mazgas turi duomenis, ir nuorodą į sekantį mazgą.
+HEAD, tai nuoroda į pradinį mazgą. TAIL, tai nuoroda į paskutinį mazgą.
+
+[linked-list.png]
+
+Pridedant ar trinant sąrašo mazgus, reikia pasirūpinti ne tik duomenų pridėjimu/ištrynimu, bet ir gretimų mazgų nuorodų pakeitimu.
+  Pridėjimas
+  [insert.png]
+
+  Trynimas
+  [delete.png]
+
+Prieš darant užduotis rekomenduojama peržiūrėti:
+https://www.youtube.com/watch?v=_jQhALI4ujg&ab_channel=Computerphile
+
+Prie darant užduotis rekomenduojama perskaityti:
+https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm
