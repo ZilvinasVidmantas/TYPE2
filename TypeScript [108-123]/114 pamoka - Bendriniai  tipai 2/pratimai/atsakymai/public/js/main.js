@@ -32,6 +32,42 @@ class List {
                 currentNode = currentNode.next;
             }
         };
+        this.toArray = () => {
+            const arr = [];
+            this.forEach(x => arr.push(x));
+            return arr;
+        };
+        this.deleteItem = (data) => {
+            if (this.head === null)
+                return false;
+            if (this.head.data === data) {
+                if (this.head.next !== null) {
+                    this.head = this.head.next;
+                }
+                else {
+                    this.head = null;
+                    this.tail = null;
+                }
+                return true;
+            }
+            let prev = this.head;
+            while (true) {
+                if (prev.next === null)
+                    return false;
+                const current = prev.next;
+                if (current.data === data) {
+                    if (current.next === null) {
+                        prev.next = null;
+                        this.tail = prev;
+                    }
+                    else {
+                        prev.next = current.next;
+                    }
+                    return true;
+                }
+                prev = prev.next;
+            }
+        };
         if (initialNode !== undefined) {
             this.head = initialNode;
             this.tail = initialNode;
@@ -111,6 +147,49 @@ console.group('5. Sukurkite metodą List.forEach klasėje List, kuris vykdytų p
     numberList.forEach(putInStringArr);
     const numberListStringRepresentation = stringArr.join(' → ');
     console.log(numberListStringRepresentation);
+}
+console.groupEnd();
+console.group('6. Sukurkite metodą List.toArray(): T[], kuris paverstų sąrašą masyvu');
+{
+    console.log(numberList.toArray());
+    console.log(stringList.toArray());
+}
+console.groupEnd();
+console.group('7. Sukurkite metodą List.deleteItem(data: T): boolean, kuris ištrintų pirmą surastą elementą sąraše');
+{
+    console.group('Trinamas neegzituojantis elementas');
+    {
+        console.log(numberList.toArray());
+        console.log('trinama:', 6);
+        let deleteSuccess = numberList.deleteItem(6);
+        console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
+        console.log(numberList.toArray());
+    }
+    console.groupEnd();
+    console.group('Trinamas paskutinis elementas');
+    {
+        console.log('trinama:', 3);
+        let deleteSuccess = numberList.deleteItem(3);
+        console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
+        console.log(numberList.toArray());
+    }
+    console.groupEnd();
+    console.group('Trinamas vidurinis elementas');
+    {
+        console.log('trinama:', 1);
+        let deleteSuccess = numberList.deleteItem(1);
+        console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
+        console.log(numberList.toArray());
+    }
+    console.groupEnd();
+    console.group('Trinamas pirmasis elementas');
+    {
+        console.log('trinama:', 5);
+        let deleteSuccess = numberList.deleteItem(5);
+        console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
+        console.log(numberList.toArray());
+    }
+    console.groupEnd();
 }
 console.groupEnd();
 //# sourceMappingURL=main.js.map

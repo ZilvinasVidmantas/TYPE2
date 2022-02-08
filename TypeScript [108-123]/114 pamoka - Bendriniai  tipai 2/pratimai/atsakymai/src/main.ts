@@ -52,7 +52,7 @@
 // ↓↓↓ Tipai ↓↓↓
 type ListNode<T> = {
   data: T,
-  next: ListNode<T> | null
+  next: ListNode<T> | null,
 };
 
 type ForEachCallback<T> = (value: T) => void;
@@ -111,6 +111,57 @@ class List<Type> {
       currentNode = currentNode.next;
     }
   };
+
+
+  // 6. 
+  public toArray = () => {
+    const arr: Type[] = [];
+    this.forEach(x => arr.push(x));
+
+    return arr;
+  }
+
+  // 7. 
+  public deleteItem = (data: Type): boolean => {
+    // Jeigu nėra elementų grąžiname false - nepavyko ištrinti
+    if (this.head === null) return false;
+
+    // Trinamas pirmasis elementas
+    if (this.head.data === data) {
+      // Ar pirmasis elementas turi sekantį?
+      if (this.head.next !== null) {
+        this.head = this.head.next;
+      } else {
+        this.head = null;
+        this.tail = null;
+      }
+      // pavyko ištrinti pirmajį elementą
+      return true;
+    }
+
+    let prev: ListNode<Type> = this.head;
+    while (true) {
+      if (prev.next === null) return false;
+
+      const current: ListNode<Type> = prev.next;
+      // current yra trinamas elementas
+      if (current.data === data) {
+        // ar trinamas elementas yra paskutinis?
+        if (current.next === null) {
+          // ištrinamas paskutinis elementas
+          prev.next = null
+          this.tail = prev;
+        } else {
+          // ištrinamas vidurinis elementas
+          prev.next = current.next;
+        }
+
+        // pavyko ištrinti
+        return true;
+      }
+      prev = prev.next;
+    }
+  }
 }
 // ↑↑↑ Klasės ↑↑↑
 
@@ -211,14 +262,51 @@ console.group('5. Sukurkite metodą List.forEach klasėje List, kuris vykdytų p
 }
 console.groupEnd();
 
-console.group('6. Sukurkite metodą List.toArray(): T[], kuris paverstų sąrašą  masyvu');
+console.group('6. Sukurkite metodą List.toArray(): T[], kuris paverstų sąrašą masyvu');
 {
-  
+  console.log(numberList.toArray());
+  console.log(stringList.toArray());
 }
 console.groupEnd();
 
 console.group('7. Sukurkite metodą List.deleteItem(data: T): boolean, kuris ištrintų pirmą surastą elementą sąraše');
 {
-  
+  console.group('Trinamas neegzituojantis elementas');
+  {
+    console.log(numberList.toArray());
+    console.log('trinama:', 6);
+    let deleteSuccess: boolean = numberList.deleteItem(6);
+    console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
+    console.log(numberList.toArray());
+  }
+  console.groupEnd();
+
+  console.group('Trinamas paskutinis elementas');
+  {
+    console.log('trinama:', 3);
+    let deleteSuccess: boolean = numberList.deleteItem(3);
+    console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
+    console.log(numberList.toArray());
+  }
+  console.groupEnd();
+
+  console.group('Trinamas vidurinis elementas');
+  {
+    console.log('trinama:', 1);
+    let deleteSuccess: boolean = numberList.deleteItem(1);
+    console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
+    console.log(numberList.toArray());
+  }
+  console.groupEnd();
+
+  console.group('Trinamas pirmasis elementas');
+  {
+    console.log('trinama:', 5);
+    let deleteSuccess: boolean = numberList.deleteItem(5);
+    console.log(deleteSuccess ? 'ištrinta' : 'elementas nerastas');
+    console.log(numberList.toArray());
+  }
+  console.groupEnd();
+
 }
 console.groupEnd();
