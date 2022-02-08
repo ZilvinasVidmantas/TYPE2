@@ -210,3 +210,15 @@ console.group('5. Sukurkite metodą List.forEach klasėje List, kuris vykdytų p
   console.log(numberListStringRepresentation);
 }
 console.groupEnd();
+
+console.group('6. Sukurkite metodą List.toArray(): T[], kuris paverstų sąrašą  masyvu');
+{
+  
+}
+console.groupEnd();
+
+console.group('7. Sukurkite metodą List.deleteItem(data: T): boolean, kuris ištrintų pirmą surastą elementą sąraše');
+{
+  
+}
+console.groupEnd();
