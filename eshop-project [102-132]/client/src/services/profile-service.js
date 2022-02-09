@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import AuthService from './auth-service';
 import store from '../store';
@@ -39,6 +40,26 @@ const ProfileService = new (class ProfileService {
       },
     });
     return data.images;
+  }
+
+  async uploadImages(files) {
+    const token = ProfileService.validateToken();
+
+    const formData = new FormData();
+    // for (let i = 0; i < files.length; i++) {
+    //   formData.append(`files[${i}]`, files[i])
+    // }
+
+    formData.append('image', files[0]);
+
+    const { data } = await this.requester.post('/images/', formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data'
+      },
+    });
+
+    console.log(data);
   }
 })();
 

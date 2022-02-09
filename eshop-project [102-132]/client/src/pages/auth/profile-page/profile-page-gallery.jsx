@@ -5,12 +5,18 @@ import {
   Button,
 } from '@mui/material';
 import ImageGrid from './profile-page-image-grid';
+import ProfileService from '../../../services/profile-service';
 
 const ProfilePageGallery = ({ imgData }) => {
   const fileUploadRef = useRef(null);
 
   const handleUploadFiles = () => {
     fileUploadRef.current.click();
+  };
+
+  const handleImagesLoaded = () => {
+    const input = fileUploadRef.current;
+    ProfileService.uploadImages(input.files);
   };
 
   return (
@@ -32,6 +38,7 @@ const ProfilePageGallery = ({ imgData }) => {
           ref={fileUploadRef}
           accept=".jpg, .jpeg, .png"
           multiple
+          onChange={handleImagesLoaded}
         />
       </Box>
       <Box>
