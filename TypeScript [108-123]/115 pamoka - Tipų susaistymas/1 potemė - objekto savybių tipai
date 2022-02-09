@@ -91,3 +91,8 @@ Prisiminkime mūsų praeitas temą - bendrinius tipus. Tipus galime aprašyti pa
 
 TypeScript kūrėjai nujautė, jog programuotojams būtų naudingi tokie bendrinių tipų modifikatoriai, todėl Partial, Required ir Readonly jau egzistuoja TypeScript funkcijų pakete, jų aprašyti patiems nereikia.
 
+
+Papildomos nuorodos:
+  * https://www.typescriptlang.org/docs/handbook/2/keyof-types.html
+  * https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html
+  * https://www.typescriptlang.org/docs/handbook/2/mapped-types.html
