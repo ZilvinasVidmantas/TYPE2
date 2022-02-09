@@ -1,7 +1,7 @@
 type Person = {
   readonly name: string,
   readonly surname: string,
-  readonly sex: string,
+  readonly sex: 'male' | 'female',
   age: number,
   income?: number,
   married?: boolean,
@@ -110,13 +110,35 @@ console.groupEnd();
 
 console.groupCollapsed('3. Sukurtite masyvą su vardais, pavardėmis ir lytimi, pagal pradinį žmonių masyvą');
 {
-  // ...sprendimas ir spausdinimas
+  type TaskProps = {
+    name: Person["name"],
+    surname: Person["surname"],
+    sex: Person["sex"],
+  }
+
+  const selectTaskProps = ({ name, surname, sex }: Person): TaskProps => ({
+    name, surname, sex
+  });
+
+  const result: TaskProps[] = people.map(selectTaskProps);
+
+  console.table(people);
+  console.table(result);
 }
 console.groupEnd();
 
 console.groupCollapsed('4. Suformuokite visų vyrų masyvą');
 {
-  // ...sprendimas ir spausdinimas
+  type Male = {
+    [Key in keyof Person]: Key extends 'sex' ? 'male' : Person[Key];
+  }
+
+  const isMale = ({ sex }: Person): boolean => sex === 'male';
+
+  const males: Male[] = people.filter(isMale) as Male[];
+
+  console.table(people);
+  console.table(males);
 }
 console.groupEnd();
 
