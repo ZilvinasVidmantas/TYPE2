@@ -1,4 +1,15 @@
 "use strict";
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 const people = [
     {
         name: 'Jonas',
@@ -6,7 +17,7 @@ const people = [
         sex: 'male',
         age: 26,
         married: false,
-        hasCar: false,
+        hasCar: true,
     },
     {
         name: 'Severija',
@@ -14,6 +25,7 @@ const people = [
         sex: 'female',
         age: 26,
         income: 1300,
+        hasCar: true,
     },
     {
         name: 'Valdas',
@@ -126,10 +138,31 @@ console.groupCollapsed('7. Suformuokite objektų masyvą iš žmonių kurie yra 
 console.groupEnd();
 console.groupCollapsed('8. Sukurkite objektą, kuriame būtų apskaičiuotas vairuojančių žmonių kiekis pagal lytį');
 {
+    const groupCarOwnersBySexReducer = (result, person) => {
+        if (!person.hasCar)
+            return result;
+        if (!result[person.sex])
+            result[person.sex] = 0;
+        result[person.sex] = result[person.sex] + 1;
+        return result;
+    };
+    const groupedPeopleBySex = people.reduce(groupCarOwnersBySexReducer, {});
+    console.table(people);
+    console.log(groupedPeopleBySex);
 }
 console.groupEnd();
 console.groupCollapsed('9. Performuokite žmonių masyvą, jog kiekvieno žmogaus savybė "income", taptų "salary"');
 {
+    const convertBritish = (_a) => {
+        var { income } = _a, person = __rest(_a, ["income"]);
+        const result = Object.assign({}, person);
+        if (income)
+            result.salary = income;
+        return result;
+    };
+    const britishPeople = people.map(convertBritish);
+    console.table(people);
+    console.table(britishPeople);
 }
 console.groupEnd();
 console.groupCollapsed('10. Suformuokite žmonių masyvą, kuriame nebūtų lyties, vardo ir pavardės');

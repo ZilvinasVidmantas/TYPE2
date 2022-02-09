@@ -15,7 +15,7 @@ const people: Person[] = [
     sex: 'male',
     age: 26,
     married: false,
-    hasCar: false,
+    hasCar: true,
   },
   {
     name: 'Severija',
@@ -23,6 +23,7 @@ const people: Person[] = [
     sex: 'female',
     age: 26,
     income: 1300,
+    hasCar: true,
   },
   {
     name: 'Valdas',
@@ -210,13 +211,45 @@ console.groupCollapsed('8. Sukurkite objektą, kuriame būtų apskaičiuotas vai
   }
 */
 {
-  // ...sprendimas ir spausdinimas
+  type CarOwnerCountBySex = {
+    [Key in Person["sex"]]?: number
+  }
+
+  const groupCarOwnersBySexReducer = (result: CarOwnerCountBySex, person: Person): CarOwnerCountBySex => {
+    if (!person.hasCar) return result;
+
+    if (!result[person.sex]) result[person.sex] = 0;
+
+    result[person.sex] = result[person.sex] as number + 1;
+
+    return result;
+  };
+
+  const groupedPeopleBySex: CarOwnerCountBySex = people.reduce(groupCarOwnersBySexReducer, {});
+
+  console.table(people);
+  console.log(groupedPeopleBySex);
 }
 console.groupEnd();
 
 console.groupCollapsed('9. Performuokite žmonių masyvą, jog kiekvieno žmogaus savybė "income", taptų "salary"');
 {
-  // ...sprendimas ir spausdinimas
+  type PersonBritish = {
+    [Key in keyof Person as Key extends 'income' ? 'salary' : Key]: Person[Key]
+  }
+
+  const convertBritish = ({ income, ...person }: Person): PersonBritish => {
+    const result: PersonBritish = { ...person }
+    if (income) result.salary = income;
+
+    return result;
+  }
+
+  const britishPeople: PersonBritish[] = people.map(convertBritish);
+
+  console.table(people);
+  console.table(britishPeople);
+
 }
 console.groupEnd();
 
