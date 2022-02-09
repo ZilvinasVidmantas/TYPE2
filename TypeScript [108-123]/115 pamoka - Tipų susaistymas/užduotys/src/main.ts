@@ -1,7 +1,7 @@
 type Person = {
   readonly name: string,
   readonly surname: string,
-  readonly sex: 'male' | 'female',
+  readonly sex: string,
   age: number,
   income?: number,
   married?: boolean,
@@ -84,61 +84,19 @@ console.groupEnd();
 
 console.groupCollapsed('2. Sukurkite funkciją, kuri paverčia žmogaus objektą -> {married: boolean, hasCar: boolean} objektu. Naudojant šią funkciją performuokite visą žmonių masyvą.');
 {
-  type TaskProps = {
-    married: boolean,
-    hasCar: boolean,
-  }
-
-  // type TaskProps = {
-  //   married: NonNullable<Person["married"]>,
-  //   hasCar: NonNullable<Person["hasCar"]>,
-  // }
-
-  // type TaskProps = Pick<Required<Person>, "hasCar" | "married">;
-
-  const selectTaskProps = ({ married, hasCar }: Person): TaskProps => ({
-    married: Boolean(married),
-    hasCar: Boolean(hasCar),
-  });
-
-  const result: TaskProps[] = people.map(selectTaskProps);
-
-  console.table(people);
-  console.table(result);
+  // ...sprendimas ir spausdinimas
 }
 console.groupEnd();
 
 console.groupCollapsed('3. Sukurtite masyvą su vardais, pavardėmis ir lytimi, pagal pradinį žmonių masyvą');
 {
-  type TaskProps = {
-    name: Person["name"],
-    surname: Person["surname"],
-    sex: Person["sex"],
-  }
-
-  const selectTaskProps = ({ name, surname, sex }: Person): TaskProps => ({
-    name, surname, sex
-  });
-
-  const result: TaskProps[] = people.map(selectTaskProps);
-
-  console.table(people);
-  console.table(result);
+  // ...sprendimas ir spausdinimas
 }
 console.groupEnd();
 
 console.groupCollapsed('4. Suformuokite visų vyrų masyvą');
 {
-  type Male = {
-    [Key in keyof Person]: Key extends 'sex' ? 'male' : Person[Key];
-  }
-
-  const isMale = ({ sex }: Person): boolean => sex === 'male';
-
-  const males: Male[] = people.filter(isMale) as Male[];
-
-  console.table(people);
-  console.table(males);
+  // ...sprendimas ir spausdinimas
 }
 console.groupEnd();
 
