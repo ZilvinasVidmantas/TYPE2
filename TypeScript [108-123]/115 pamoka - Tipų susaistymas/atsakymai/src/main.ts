@@ -255,12 +255,32 @@ console.groupEnd();
 
 console.groupCollapsed('10. Suformuokite žmonių masyvą, kuriame nebūtų lyties, vardo ir pavardės');
 {
-  // ...sprendimas ir spausdinimas
+  type AnonymousPerson = Omit<Person, 'name' | 'surname' | 'sex'>;
+
+  const createAnonymous = ({ name, surname, sex, ...anonPerson }: Person): AnonymousPerson => anonPerson;
+
+  const anonymousPeople: AnonymousPerson[] = people.map(createAnonymous);
+
+  console.table(people);
+  console.table(anonymousPeople);
+
 }
 console.groupEnd();
 
 console.groupCollapsed('11. Suformuokite žmonių masyvą, kuriame "name" ir "surname" savybės, būtų pakeistos "fullname" savybe');
 {
-  // ...sprendimas ir spausdinimas
+  type FullnamePerson = Omit<Person, 'name' | 'surname'> & {
+    readonly fullname: string,
+  }
+
+  const createFullnamePerson = ({ name, surname, ...rest }: Person): FullnamePerson => ({
+    ...rest,
+    fullname: name + ' ' + surname
+  })
+
+  const fullnamePeople: FullnamePerson[] = people.map(createFullnamePerson);
+
+  console.table(people);
+  console.table(fullnamePeople);
 }
 console.groupEnd();

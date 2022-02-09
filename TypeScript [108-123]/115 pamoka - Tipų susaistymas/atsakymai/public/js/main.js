@@ -167,10 +167,24 @@ console.groupCollapsed('9. Performuokite žmonių masyvą, jog kiekvieno žmogau
 console.groupEnd();
 console.groupCollapsed('10. Suformuokite žmonių masyvą, kuriame nebūtų lyties, vardo ir pavardės');
 {
+    const createAnonymous = (_a) => {
+        var { name, surname, sex } = _a, anonPerson = __rest(_a, ["name", "surname", "sex"]);
+        return anonPerson;
+    };
+    const anonymousPeople = people.map(createAnonymous);
+    console.table(people);
+    console.table(anonymousPeople);
 }
 console.groupEnd();
 console.groupCollapsed('11. Suformuokite žmonių masyvą, kuriame "name" ir "surname" savybės, būtų pakeistos "fullname" savybe');
 {
+    const createFullnamePerson = (_a) => {
+        var { name, surname } = _a, rest = __rest(_a, ["name", "surname"]);
+        return (Object.assign(Object.assign({}, rest), { fullname: name + ' ' + surname }));
+    };
+    const fullnamePeople = people.map(createFullnamePerson);
+    console.table(people);
+    console.table(fullnamePeople);
 }
 console.groupEnd();
 //# sourceMappingURL=main.js.map
