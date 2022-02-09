@@ -89,13 +89,20 @@ console.groupCollapsed('2. Sukurkite funkciją, kuri paverčia žmogaus objektą
     hasCar: boolean,
   }
 
+  // type TaskProps = {
+  //   married: NonNullable<Person["married"]>,
+  //   hasCar: NonNullable<Person["hasCar"]>,
+  // }
+
+  // type TaskProps = Pick<Required<Person>, "hasCar" | "married">;
+
   const selectTaskProps = ({ married, hasCar }: Person): TaskProps => ({
     married: Boolean(married),
-    hasCar: Boolean(hasCar)
-  })
+    hasCar: Boolean(hasCar),
+  });
 
   const result: TaskProps[] = people.map(selectTaskProps);
-  
+
   console.table(people);
   console.table(result);
 }
