@@ -167,7 +167,7 @@ console.groupCollapsed('6. Suformuokite objektų masyvą su žmonių vardais ir 
   const personHasCar = ({ hasCar }: Person): boolean => Boolean(hasCar);
 
   const createIdentity = ({ name, surname }: Person): Identity => ({ name, surname });
-  
+
   const identityReducer = (result: Identity[], { hasCar, name, surname }: Person): Identity[] => {
     if (hasCar) result.push({ name, surname })
     return result;
@@ -185,7 +185,20 @@ console.groupEnd();
 
 console.groupCollapsed('7. Suformuokite objektų masyvą iš žmonių kurie yra susituokę');
 {
-  // ...sprendimas ir spausdinimas
+  type MarriedPerson = Omit<Person, "married"> & {
+    married: true
+  };
+
+  const marriedReducer = (result: MarriedPerson[], person: Person): MarriedPerson[] => {
+    if (person.married) result.push(person as MarriedPerson);
+
+    return result;
+  }
+
+  const marriedPeople: MarriedPerson[] = people.reduce(marriedReducer, []);
+
+  console.table(people);
+  console.table(marriedPeople);
 }
 console.groupEnd();
 

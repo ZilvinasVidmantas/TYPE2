@@ -114,6 +114,14 @@ console.groupCollapsed('6. Suformuokite objektų masyvą su žmonių vardais ir 
 console.groupEnd();
 console.groupCollapsed('7. Suformuokite objektų masyvą iš žmonių kurie yra susituokę');
 {
+    const marriedReducer = (result, person) => {
+        if (person.married)
+            result.push(person);
+        return result;
+    };
+    const marriedPeople = people.reduce(marriedReducer, []);
+    console.table(people);
+    console.table(marriedPeople);
 }
 console.groupEnd();
 console.groupCollapsed('8. Sukurkite objektą, kuriame būtų apskaičiuotas vairuojančių žmonių kiekis pagal lytį');
