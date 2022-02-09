@@ -84,20 +84,7 @@ console.groupEnd();
 
 console.groupCollapsed('2. Sukurkite funkciją, kuri paverčia žmogaus objektą -> {married: boolean, hasCar: boolean} objektu. Naudojant šią funkciją performuokite visą žmonių masyvą.');
 {
-  type TaskProps = {
-    married: boolean,
-    hasCar: boolean,
-  }
-
-  const selectTaskProps = ({ married, hasCar }: Person): TaskProps => ({
-    married: Boolean(married),
-    hasCar: Boolean(hasCar)
-  })
-
-  const result: TaskProps[] = people.map(selectTaskProps);
-  
-  console.table(people);
-  console.table(result);
+  // ...sprendimas ir spausdinimas
 }
 console.groupEnd();
 
