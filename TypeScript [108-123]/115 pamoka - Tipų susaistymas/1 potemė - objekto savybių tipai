@@ -1,0 +1,93 @@
+---------------------------------- Objekto savybių pavadinimų aprašymas ----------------------
+Aprašant objektų tipus, savybes galime aprašyti dinamiškai ir priklausomai nuo kitų tipų. 
+
+Norint nurodyti objektų savybių pavadinimų tipus galime aprašyti juos tarp laužtinių skliaustų:
+  type IterableObject = {
+    [index: number]: any
+  }
+  ---
+  type Dictionary = {
+    [key: string]: string
+  }
+
+Objekto savybių pavadinimai gali būti aprašomi ir naudojant kitus, jau aprašytus, tipus. Tam, kad tai padaryti, reikia susipažinti su TypeScript operatoriais:
+  * Tipas['savybės_pavadinimas'] -> grąžina 'Tipas' objekto savybės 'savybės_pavadinimas' tipą
+  * keyof Tipas -> Tipo 'Tipas' savybių sąjunga.
+
+Dinaminis objekto savybių pavadinimų aprašymas:  
+  type PrimitiveType =  number | string | boolean;
+  type PrimitiveKeyObject = {
+    [key in keyof PrimitiveType]: string
+  }
+  ---
+  type Person = {
+    name: string,
+    surname: string,
+    sex: "male" | "female",
+    age: number,
+    income: number,
+    married: boolean,
+    hasCar: boolean,
+  };
+  type PersonStrigified = {
+    [key in keyof Person]: string
+  }
+
+Dinamiškai aprašant objekto tipus, galime naudoti savybių modifikatorius:
+  * '?' - savybė nėra privaloma
+  * 'readonly' - reikšmė gali būti nustatyta tik vieną kartą,
+
+    type Person = {
+      name: string,
+      surname: string,
+      sex: "male" | "female",
+      age: number,
+      readonly income: number,
+      married?: boolean,
+      hasCar?: boolean,
+    };
+    Modifikatorių pridėjimas:
+      type PersonPartial = {
+        [key in keyof Person]?: Person[key]
+      }
+      type PersonReadonly = {
+        readonly [key in keyof Person]: Person[key]
+      }
+
+      pridedant modifikatorius, galima papildomai rašyti + dėl aiškumo:
+    
+      type PersonPartial = {
+        [key in keyof Person]+?: Person[key]
+      }
+      type PersonReadonly = {
+        +readonly [key in keyof Person]: Person[key]
+      }
+
+    Modifikatorių pašalinimas:
+      type PersonRequired = {
+        [key in keyof Person]-?: Person[key]
+      }
+      type PersonMutable = {
+        -readonly [key in keyof Person]: Person[key]
+      }
+
+Prisiminkime mūsų praeitas temą - bendrinius tipus. Tipus galime aprašyti pagal dinamiškai priimamus kitus tipus naudojant '<Tipas>' sintaksę. Derinant tai su dinaminiu objektų kūrimu galime susikurti naudingus bendrinius tipų modifikatorius:
+  Paversti visas objekto savybes neprivalomas:
+    type Partial<T> = {
+      [Key in keyof T]+?: T[Key]
+    }
+  Paversti visas objekto savybes privalomas:
+    type Required<T> = {
+      [Key in keyof T]-?: T[Key]
+    }
+  Paversti visas objekto savybes tik naudojamas:
+    type Readonly<T> = {
+      +readonly [Key in keyof T]: T[Key]
+    }
+  Paversti visas objekto savybes tik keičiamomis:
+    type Mutable<T> = {
+      -readonly [Key in keyof T]: T[Key]
+    }
+
+TypeScript kūrėjai nujautė, jog programuotojams būtų naudingi tokie bendrinių tipų modifikatoriai, todėl Partial, Required ir Readonly jau egzistuoja TypeScript funkcijų pakete, jų aprašyti patiems nereikia.
+
