@@ -12,11 +12,8 @@ router.use(authMiddleware);
 
 router.get('/', getImages);
 
-router.post('/', upload.single('image'), (req, res) => {
-  console.log('req.file');
-  console.log(req.file);
-  console.log('req.body');
-  console.log(req.body);
+router.post('/', upload.array('files'), (req, res) => {
+  console.log(req.files);
 
   res.status(200).send('O.K.');
 })
