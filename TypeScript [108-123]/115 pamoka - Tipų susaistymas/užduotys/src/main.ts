@@ -60,7 +60,7 @@ const people: Person[] = [
 
 // !!! UŽDUOTIS ATLIKTI APRAŠANT TIPUS !!!
 // !!! UŽDUOTIS ATLIKTI KURIANT FUNKCIJAS, pilnai jas aprašant tipais !!!
-console.groupCollapsed('1. Sukurkite funkciją, kuri paverčia žmogaus objektą -> {name: string, surname: string} objektu. Naudojant šią funkciją perdormuokite visą žmonių masyvą');
+console.groupCollapsed('1. Sukurkite funkciją, kuri paverčia žmogaus objektą -> {name: string, surname: string} objektu. Naudojant šią funkciją performuokite visą žmonių masyvą');
 {
   // Tipai:
   type Identity = {
@@ -82,7 +82,7 @@ console.groupCollapsed('1. Sukurkite funkciją, kuri paverčia žmogaus objektą
 }
 console.groupEnd();
 
-console.groupCollapsed('2. Sukurkite funkciją, kuri paverčia žmogaus objektą -> {married: boolean, hasCar: boolean} objektu. Naudojant šią funkciją perdormuokite visą žmonių masyvą.');
+console.groupCollapsed('2. Sukurkite funkciją, kuri paverčia žmogaus objektą -> {married: boolean, hasCar: boolean} objektu. Naudojant šią funkciją performuokite visą žmonių masyvą.');
 {
   // ...sprendimas ir spausdinimas
 }
@@ -94,25 +94,25 @@ console.groupCollapsed('3. Sukurtite masyvą su vardais, pavardėmis ir lytimi, 
 }
 console.groupEnd();
 
-console.groupCollapsed('4. Atspausdinkite visus vyrus');
+console.groupCollapsed('4. Suformuokite visų vyrų masyvą');
 {
   // ...sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('5. Atspausdinkite visas moteris');
+console.groupCollapsed('5. Suformuokite visų moterų masyvą');
 {
   // ...sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('6. Atspausdinkite žmonių vardus ir pavardes, kurie turi mašinas');
+console.groupCollapsed('6. Suformuokite objektų masyvą su žmonių vardais ir pavardėm, kurie turi mašinas');
 {
   // ...sprendimas ir spausdinimas
 }
 console.groupEnd();
 
-console.groupCollapsed('7. Atspausdinkite žmones kurie yra susituokę');
+console.groupCollapsed('7. Suformuokite objektų masyvą iš žmonių kurie yra susituokę');
 {
   // ...sprendimas ir spausdinimas
 }
