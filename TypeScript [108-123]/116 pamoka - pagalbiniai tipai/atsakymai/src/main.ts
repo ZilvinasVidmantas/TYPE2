@@ -190,8 +190,8 @@ console.group('5. Sukurkite funkciją, kuri atnaujina perduotas Item savybes iš
     {
       title: 'item3',
       images: [
-        { id: '1', src: 'asdasdas'},
-        { id: '2', src: 'zzzzzzzzzzzz'},
+        { id: '1', src: 'asdasdas' },
+        { id: '2', src: 'zzzzzzzzzzzz' },
       ]
     }
   );
@@ -209,12 +209,33 @@ console.groupEnd();
 
 console.group('6. Sukurkite funkciją, kuri pašalina Item savybes "description" ir "images"');
 {
+  type MinifiedItem = Omit<Item, 'description' | 'images'>;
+
+  const solution = ({ description, images, ...minifiedItem }: Item): MinifiedItem => minifiedItem;
+
+  const item: Item = {
+    id: 'sdfsdf',
+    title: 'asdasd',
+    description: 'aprasymas',
+    price: 1465465,
+    categories: [],
+    inStock: 12,
+    mainImg: { id: 'asdasdsa', src: 'asdasdasd' },
+    images: [],
+  }
+
+  const minifiedItem: MinifiedItem = solution(item);
+
+  console.log('Pilnas:');
+  console.log(item);
+  console.log('Sumažintas:');
+  console.log(minifiedItem);
 
 }
 console.groupEnd();
 
 console.group('7. Naudodami bendrinius tipus sukurkite funkciją, kuri atnaujintų, bet kokį objektą naudojant to objekto dalinėmis savybėmis');
 {
-
+  
 }
 console.groupEnd();

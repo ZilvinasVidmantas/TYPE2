@@ -1,4 +1,15 @@
 "use strict";
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 console.group('1. Sukurkite funkciją, kuri atnaujina Image src savybę');
 {
     const solution = (image, src) => (Object.assign(Object.assign({}, image), { src }));
@@ -139,6 +150,25 @@ console.group('5. Sukurkite funkciją, kuri atnaujina perduotas Item savybes iš
 console.groupEnd();
 console.group('6. Sukurkite funkciją, kuri pašalina Item savybes "description" ir "images"');
 {
+    const solution = (_a) => {
+        var { description, images } = _a, minifiedItem = __rest(_a, ["description", "images"]);
+        return minifiedItem;
+    };
+    const item = {
+        id: 'sdfsdf',
+        title: 'asdasd',
+        description: 'aprasymas',
+        price: 1465465,
+        categories: [],
+        inStock: 12,
+        mainImg: { id: 'asdasdsa', src: 'asdasdasd' },
+        images: [],
+    };
+    const minifiedItem = solution(item);
+    console.log('Pilnas:');
+    console.log(item);
+    console.log('Sumažintas:');
+    console.log(minifiedItem);
 }
 console.groupEnd();
 console.group('7. Naudodami bendrinius tipus sukurkite funkciją, kuri atnaujintų, bet kokį objektą naudojant to objekto dalinėmis savybėmis');
