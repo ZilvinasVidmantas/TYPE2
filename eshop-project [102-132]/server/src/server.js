@@ -9,6 +9,7 @@ const imageRouter = require('./routes/image-router');
 
 const server = express();
 const {
+  SERVER_DOMAIN,
   SERVER_PORT,
   DB_CONNECTION,
   PUBLIC_PATH,
@@ -31,7 +32,7 @@ server.use('/api/users', userRouter);
 server.use('/api/images', imageRouter);
 
 server.listen(SERVER_PORT, () => {
-  console.log(`puslapis veikia ant http://localhost:${SERVER_PORT}/`);
+  console.log(`puslapis veikia ant ${SERVER_DOMAIN}:${SERVER_PORT}/`);
   (async () => {
     try {
       await Mongoose.connect(DB_CONNECTION);
@@ -41,6 +42,3 @@ server.listen(SERVER_PORT, () => {
     }
   })();
 });
-
-
-// 14:35
