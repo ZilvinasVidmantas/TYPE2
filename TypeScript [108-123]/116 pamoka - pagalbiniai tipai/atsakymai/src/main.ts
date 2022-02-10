@@ -166,7 +166,44 @@ console.groupEnd();
 
 console.group('5. Sukurkite funkciją, kuri atnaujina perduotas Item savybes išskyrus id');
 {
+  type ItemProps = Partial<Omit<Item, 'id'>>;
 
+  const solution = (item: Item, props: ItemProps): Item => ({
+    ...item,
+    ...props,
+  });
+
+  const item: Item = {
+    id: 'sdfsdf',
+    title: 'asdasd',
+    price: 1465465,
+    categories: [],
+    inStock: 12,
+    mainImg: { id: 'asdasdsa', src: 'asdasdasd' },
+    images: [],
+  }
+
+  const updatedItem1: Item = solution(item, { price: 100 });
+  const updatedItem2: Item = solution(item, { inStock: 50 });
+  const updatedItem3: Item = solution(
+    item,
+    {
+      title: 'item3',
+      images: [
+        { id: '1', src: 'asdasdas'},
+        { id: '2', src: 'zzzzzzzzzzzz'},
+      ]
+    }
+  );
+
+  console.log('original item');
+  console.log(item);
+  console.log('updatedItem1:');
+  console.log(updatedItem1);
+  console.log('updatedItem2:');
+  console.log(updatedItem2);
+  console.log('updatedItem3:');
+  console.log(updatedItem3);
 }
 console.groupEnd();
 
@@ -176,7 +213,7 @@ console.group('6. Sukurkite funkciją, kuri pašalina Item savybes "description"
 }
 console.groupEnd();
 
-console.group('7. Pakeiskite Category tipą, jog "title" savybės tipas būtų atskirai DIDŽIOSIOMIS RAIDĖMIS aprašyta string`ų sajunga CategoryTypes. Pakeitus tipą, atnaujinkite praeitas užduotis');
+console.group('7. Naudodami bendrinius tipus sukurkite funkciją, kuri atnaujintų, bet kokį objektą naudojant to objekto dalinėmis savybėmis');
 {
 
 }
