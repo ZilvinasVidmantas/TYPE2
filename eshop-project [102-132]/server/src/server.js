@@ -18,11 +18,11 @@ const corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-
 // Middlewares
 server.use(morgan('tiny'));
 server.use(cors(corsOptions));
 server.use(express.json());
+server.use(express.static('public'));
 
 // Response handlers
 server.use('/api/auth', authRouter);
