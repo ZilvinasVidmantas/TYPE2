@@ -40,9 +40,6 @@ console.groupEnd();
 
 console.group('2. Sukurkite funkciją, kuri atnaujina visas Category savybes išskyrus id');
 {
-  // 9:40 - pertrauka
-  // peržiūra
-  // 9:50 - klausimas
   type CategoryProps = Omit<Category, 'id'>;
 
   const solution = (category: Category, categoryProps: CategoryProps): void => {
@@ -88,6 +85,45 @@ console.groupEnd();
 console.group('3. Sukurkite funkciją, kuri atnaujina perduotas Category savybes išskyrus id');
 {
 
+  type CategoryProps = Partial<Omit<Category, 'id'>>;
+
+  const solution = (category: Category, categoryProps: CategoryProps): void => {
+    Object.assign(category, categoryProps);
+  }
+
+  const cat1: Category = {
+    id: '1',
+    title: 'Vyrams',
+    parentCategory: null,
+  }
+
+  const cat11: Category = {
+    id: '1-1',
+    title: 'Avalynė',
+    parentCategory: cat1,
+  }
+
+  const cat12: Category = {
+    id: '1-2',
+    title: 'Category X',
+    parentCategory: cat1,
+  }
+
+  const cat111: Category = {
+    id: '1-1-1',
+    title: 'Sportbačiai',
+    parentCategory: null,
+  }
+
+  const categories: Category[] = [cat1, cat11, cat12, cat111];
+
+  console.table(JSON.parse(JSON.stringify(categories)));
+
+  solution(cat11, {});
+  solution(cat12, { title: 'Kelnės' });
+  solution(cat111, { parentCategory: cat11 });
+
+  console.table(categories);
 }
 console.groupEnd();
 
@@ -98,6 +134,18 @@ console.group('4. Sukurkite funkciją, kuri atnaujina visas Item savybes išskyr
 console.groupEnd();
 
 console.group('5. Sukurkite funkciją, kuri atnaujina perduotas Item savybes išskyrus id');
+{
+
+}
+console.groupEnd();
+
+console.group('6. Sukurkite funkciją, kuri pašalina Item savybes "description" ir "images"');
+{
+
+}
+console.groupEnd();
+
+console.group('7. Pakeiskite Category tipą, jog "title" savybės tipas būtų atskirai DIDŽIOSIOMIS RAIDĖMIS aprašyta string`ų sajunga CategoryTypes. Pakeitus tipą, atnaujinkite praeitas užduotis');
 {
 
 }

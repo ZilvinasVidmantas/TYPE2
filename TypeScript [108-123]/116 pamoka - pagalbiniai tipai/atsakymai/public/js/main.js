@@ -48,6 +48,35 @@ console.group('2. Sukurkite funkciją, kuri atnaujina visas Category savybes iš
 console.groupEnd();
 console.group('3. Sukurkite funkciją, kuri atnaujina perduotas Category savybes išskyrus id');
 {
+    const solution = (category, categoryProps) => {
+        Object.assign(category, categoryProps);
+    };
+    const cat1 = {
+        id: '1',
+        title: 'Vyrams',
+        parentCategory: null,
+    };
+    const cat11 = {
+        id: '1-1',
+        title: 'Avalynė',
+        parentCategory: cat1,
+    };
+    const cat12 = {
+        id: '1-2',
+        title: 'Category X',
+        parentCategory: cat1,
+    };
+    const cat111 = {
+        id: '1-1-1',
+        title: 'Sportbačiai',
+        parentCategory: null,
+    };
+    const categories = [cat1, cat11, cat12, cat111];
+    console.table(JSON.parse(JSON.stringify(categories)));
+    solution(cat11, {});
+    solution(cat12, { title: 'Kelnės' });
+    solution(cat111, { parentCategory: cat11 });
+    console.table(categories);
 }
 console.groupEnd();
 console.group('4. Sukurkite funkciją, kuri atnaujina visas Item savybes išskyrus id');
@@ -55,6 +84,14 @@ console.group('4. Sukurkite funkciją, kuri atnaujina visas Item savybes išskyr
 }
 console.groupEnd();
 console.group('5. Sukurkite funkciją, kuri atnaujina perduotas Item savybes išskyrus id');
+{
+}
+console.groupEnd();
+console.group('6. Sukurkite funkciją, kuri pašalina Item savybes "description" ir "images"');
+{
+}
+console.groupEnd();
+console.group('7. Pakeiskite Category tipą, jog "title" savybės tipas būtų atskirai DIDŽIOSIOMIS RAIDĖMIS aprašyta string`ų sajunga CategoryTypes. Pakeitus tipą, atnaujinkite praeitas užduotis');
 {
 }
 console.groupEnd();
