@@ -129,7 +129,38 @@ console.groupEnd();
 
 console.group('4. Sukurkite funkciją, kuri atnaujina visas Item savybes išskyrus id');
 {
+  type ItemProps = Omit<Item, 'id'>;
 
+  const solution = ({ id }: Item, props: ItemProps): Item => ({
+    id,
+    ...props,
+  });
+
+  const item: Item = {
+    id: 'sdfsdf',
+    title: 'asdasd',
+    price: 1465465,
+    categories: [],
+    inStock: 12,
+    mainImg: { id: 'asdasdsa', src: 'asdasdasd' },
+    images: [],
+  }
+
+  const itemProps: ItemProps = {
+    title: 'Updated',
+    price: 111111111,
+    categories: [],
+    inStock: 111111111,
+    mainImg: { id: '111111111', src: '1111111111111' },
+    images: [],
+  }
+
+  const updatedItem: Item = solution(item, itemProps);
+
+  console.log('Prieš:')
+  console.log(item);
+  console.log('Po:')
+  console.log(updatedItem);
 }
 console.groupEnd();
 

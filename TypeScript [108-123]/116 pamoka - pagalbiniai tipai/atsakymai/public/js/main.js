@@ -81,6 +81,29 @@ console.group('3. Sukurkite funkciją, kuri atnaujina perduotas Category savybes
 console.groupEnd();
 console.group('4. Sukurkite funkciją, kuri atnaujina visas Item savybes išskyrus id');
 {
+    const solution = ({ id }, props) => (Object.assign({ id }, props));
+    const item = {
+        id: 'sdfsdf',
+        title: 'asdasd',
+        price: 1465465,
+        categories: [],
+        inStock: 12,
+        mainImg: { id: 'asdasdsa', src: 'asdasdasd' },
+        images: [],
+    };
+    const itemProps = {
+        title: 'Updated',
+        price: 111111111,
+        categories: [],
+        inStock: 111111111,
+        mainImg: { id: '111111111', src: '1111111111111' },
+        images: [],
+    };
+    const updatedItem = solution(item, itemProps);
+    console.log('Prieš:');
+    console.log(item);
+    console.log('Po:');
+    console.log(updatedItem);
 }
 console.groupEnd();
 console.group('5. Sukurkite funkciją, kuri atnaujina perduotas Item savybes išskyrus id');
