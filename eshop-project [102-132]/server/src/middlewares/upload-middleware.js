@@ -5,7 +5,8 @@ const storage = multer.diskStorage({
   // TUOMET PAPILDOMAI REIKTŲ SUKURTI APSAUGAS, KAD TIK TAS VARTOTOJAS
   // ARBA ADMINAS GALĖTŲ PASIEKTI TĄ APLANKĄ
   destination: function (req, file, cb) {
-    cb(null, 'public/images/')
+    const { PUBLIC_PATH, IMG_FOLDER_NAME } = process.env;
+    cb(null, `${PUBLIC_PATH}/${IMG_FOLDER_NAME}/`);
   },
   filename: function (req, file, cb) {
     const { originalname } = file;

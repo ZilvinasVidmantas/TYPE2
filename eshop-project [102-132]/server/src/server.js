@@ -11,6 +11,7 @@ const server = express();
 const {
   SERVER_PORT,
   DB_CONNECTION,
+  PUBLIC_PATH,
 } = process.env;
 
 const corsOptions = {
@@ -22,7 +23,7 @@ const corsOptions = {
 server.use(morgan('tiny'));
 server.use(cors(corsOptions));
 server.use(express.json());
-server.use(express.static('public'));
+server.use(express.static(PUBLIC_PATH));
 
 // Response handlers
 server.use('/api/auth', authRouter);
@@ -40,3 +41,6 @@ server.listen(SERVER_PORT, () => {
     }
   })();
 });
+
+
+// 14:35
