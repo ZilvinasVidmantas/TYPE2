@@ -236,6 +236,66 @@ console.groupEnd();
 
 console.group('7. Naudodami bendrinius tipus sukurkite funkciją, kuri atnaujintų, bet kokį objektą naudojant to objekto dalinėmis savybėmis');
 {
-  
+  type House = {
+    address: string,
+    price: number,
+  }
+
+  const updateObject = <T>(object: T, props: Partial<T>): T => ({
+    ...object,
+    ...props
+  });
+
+  const image: Image = { id: '1', src: 'bad path' };
+  const updatedImage: Image = updateObject(image, { src: 'http://unsplash.it/200/200' });
+
+  const house: House = { address: 'Kybartai, kluonio g. 12', price: 200000 };
+  const updatedHouse: House = updateObject(house, { price: 180000 });
+
+  console.log('original image:');
+  console.log(image);
+  console.log('updated image:');
+  console.log(updatedImage);
+
+  console.log('original house:');
+  console.log(house);
+  console.log('updated house:');
+  console.log(updatedHouse);
+}
+console.groupEnd();
+
+console.group('8. Atlikti tą patį kaip 7 užduotyje, bet bendrinis tipas privalo turėti savybę "id", ir neleiskite jos pakeisti.');
+{
+  type ObjectWithId = { id: string };
+
+  type House = {
+    address: string,
+    price: number,
+  }
+
+  const updateObjectWithIdProp = <T extends ObjectWithId>(object: T, props: Omit<Partial<T>, 'id'>): T => ({
+    ...object,
+    ...props
+  });
+
+  const image: Image = { id: '1', src: 'bad path' };
+  const updatedImage: Image = updateObjectWithIdProp(image, { src: 'http://unsplash.it/200/200' });
+  // NELEIDŽIAMA KEISTI "id" SAVYBĖS
+  // const updatedImage: Image = updateObjectWithIdProp(image, { id: '17' });
+
+  // NETINKA, NES HOUSE NETURI SAVYBĖS - "id"
+  // const house: House = { address: 'Kybartai, kluonio g. 12', price: 200000 };
+  // const updatedHouse: House = updateObject(house, { price: 180000 });
+
+  console.log('original:');
+  console.log(image);
+  console.log('updated:');
+  console.log(updatedImage);
+
+  // NETINKA, NES HOUSE NETURI SAVYBĖS - "id"
+  // console.log('original house:');
+  // console.log(house);
+  // console.log('updated house:');
+  // console.log(updatedHouse);
 }
 console.groupEnd();

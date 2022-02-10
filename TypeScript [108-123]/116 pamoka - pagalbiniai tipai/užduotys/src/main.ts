@@ -63,3 +63,9 @@ console.group('7. Naudodami bendrinius tipus sukurkite funkciją, kuri atnaujint
 
 }
 console.groupEnd();
+
+
+console.group('8. Atlikti tą patį kaip 7 užduotyje, bet bendrinis tipas privalo turėti savybę "id", ir neleiskite jos pakeisti.');
+{
+
+}

@@ -173,6 +173,30 @@ console.group('6. Sukurkite funkciją, kuri pašalina Item savybes "description"
 console.groupEnd();
 console.group('7. Naudodami bendrinius tipus sukurkite funkciją, kuri atnaujintų, bet kokį objektą naudojant to objekto dalinėmis savybėmis');
 {
+    const updateObject = (object, props) => (Object.assign(Object.assign({}, object), props));
+    const image = { id: '1', src: 'bad path' };
+    const updatedImage = updateObject(image, { src: 'http://unsplash.it/200/200' });
+    const house = { address: 'Kybartai, kluonio g. 12', price: 200000 };
+    const updatedHouse = updateObject(house, { price: 180000 });
+    console.log('original image:');
+    console.log(image);
+    console.log('updated image:');
+    console.log(updatedImage);
+    console.log('original house:');
+    console.log(house);
+    console.log('updated house:');
+    console.log(updatedHouse);
+}
+console.groupEnd();
+console.group('8. Atlikti tą patį kaip 7 užduotyje, bet bendrinis tipas privalo turėti savybę "id", ir neleiskite jos pakeisti.');
+{
+    const updateObjectWithIdProp = (object, props) => (Object.assign(Object.assign({}, object), props));
+    const image = { id: '1', src: 'bad path' };
+    const updatedImage = updateObjectWithIdProp(image, { src: 'http://unsplash.it/200/200' });
+    console.log('original:');
+    console.log(image);
+    console.log('updated:');
+    console.log(updatedImage);
 }
 console.groupEnd();
 //# sourceMappingURL=main.js.map
