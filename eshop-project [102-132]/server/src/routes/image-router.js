@@ -1,7 +1,10 @@
 const express = require('express');
 const authMiddleware = require('../middlewares/auth-middleware');
-const { getImages } = require('../controllers/image-controller');
 const { uploadManyMiddleware } = require('../middlewares/upload-middleware');
+const { 
+  getImages,
+  uploadImages,
+} = require('../controllers/image-controller');
 
 const router = express.Router();
 
@@ -10,8 +13,6 @@ router.use(authMiddleware);
 
 router.get('/', getImages);
 
-router.post('/', uploadManyMiddleware('files'), (req, res) => {
-  res.status(200).send('O.K.');
-})
+router.post('/', uploadManyMiddleware('files'), uploadImages)
 
 module.exports = router;

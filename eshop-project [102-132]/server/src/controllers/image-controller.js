@@ -14,6 +14,22 @@ const getImages = async (req, res) => {
   });
 };
 
+const uploadImages = async (req, res) => {
+  const userDoc = await UserModel.findOne({ email: req.user.email });
+  const imgData = req.files.map(({ filename }) => ({
+    src: filename,
+    user: userDoc.id,
+  }));
+
+  const imgDocs = await ImageModel.insertMany(imgData);
+  const images = imgDocs.map(x => new ImageViewModel(x));
+
+  res.status(200).send({
+    images,
+  });
+}
+
 module.exports = {
-  getImages
+  getImages,
+  uploadImages,
 };
