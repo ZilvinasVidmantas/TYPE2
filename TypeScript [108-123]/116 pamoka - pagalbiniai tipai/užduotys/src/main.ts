@@ -12,7 +12,7 @@ type Image = {
 type Item = {
   id: string,
   title: string,
-  description: string,
+  description?: string,
   price: number,
   categories: Category[],
   inStock: number,
@@ -49,4 +49,3 @@ console.group('5. Sukurkite funkciją, kuri atnaujina perduotas Item savybes iš
 
 }
 console.groupEnd();
-
