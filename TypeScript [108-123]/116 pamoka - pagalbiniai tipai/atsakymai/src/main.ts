@@ -273,7 +273,7 @@ console.group('8. Atlikti tą patį kaip 7 užduotyje, bet bendrinis tipas priva
     price: number,
   }
 
-  const updateObjectWithIdProp = <T extends ObjectWithId>(object: T, props: Omit<Partial<T>, 'id'>): T => ({
+  const updateObjectWithIdProp = <T extends ObjectWithId>(object: T, props: Partial<Omit<T, 'id'>>): T => ({
     ...object,
     ...props
   });
