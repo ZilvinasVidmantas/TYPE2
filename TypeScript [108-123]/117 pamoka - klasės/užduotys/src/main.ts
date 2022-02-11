@@ -31,10 +31,6 @@ console.group('4. Sukurkite Person klasei statinę savybę "heightUnits". Jos ti
 console.groupEnd();
 
 console.group('5. "height" setterio antram parametrui pakeiskite sąjungos tipą į [4.] užduotyje sukurtą išvardinimą(enum). Priderinkite pavyzdžius ir metodą.');
-{
-
-}
-console.groupEnd();
 
 console.group('6. "height" geteriui sukurkite logiką, jog jis grąžintų matavimo vienetus, pagal statinės savybės "heightUnits" reikšmę.');
 {

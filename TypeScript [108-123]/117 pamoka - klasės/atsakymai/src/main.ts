@@ -1,10 +1,8 @@
-enum HeightUnit {
-  CM = 'cm',
-  M = 'm',
-  IN = 'in',
+enum HeightUnits {
+  CENTIMETRES = 'cm',
+  METRES = 'm',
+  INCHES = 'in',
 };
-
-type HeightUnits = 'cm' | 'm' | 'in';
 
 type PersonProps = {
   name: string,
@@ -14,10 +12,8 @@ type PersonProps = {
   heightUnits?: HeightUnits,
 };
 
-
-
 class Person {
-  static heightUnits: HeightUnit = HeightUnit.CM;
+  static heightUnits: HeightUnits = HeightUnits.CENTIMETRES;
 
   private name: string;
   private surname: string;
@@ -53,9 +49,9 @@ class Person {
 
   public setHeight(height: number, units?: HeightUnits): void {
     switch (units) {
-      case "cm": this.height = height; break;
-      case "m": this.height = height * 100; break;
-      case "in": this.height = height * 2.54; break;
+      case HeightUnits.CENTIMETRES: this.height = height; break;
+      case HeightUnits.METRES: this.height = height * 100; break;
+      case HeightUnits.INCHES: this.height = height * 2.54; break;
       default: this.height = height;
     }
   }
@@ -67,9 +63,9 @@ class Person {
   public getHeight(): Person['height'] {
     if (this.height === undefined) return this.height;
     switch (Person.heightUnits) {
-      case HeightUnit.CM: return this.height;
-      case HeightUnit.M: return this.height / 100;
-      case HeightUnit.IN: return this.height / 2.54;
+      case HeightUnits.CENTIMETRES: return this.height;
+      case HeightUnits.METRES: return this.height / 100;
+      case HeightUnits.INCHES: return this.height / 2.54;
     }
   }
 
@@ -156,7 +152,7 @@ console.group('3. Sukurkite Person klasei savybę "height" kurios vertė būtų 
     surname: 'Magelanas',
     age: 20,
     height: 70,
-    heightUnits: 'in',
+    heightUnits: HeightUnits.INCHES,
   };
 
   const personProps3: PersonProps = {
@@ -164,7 +160,7 @@ console.group('3. Sukurkite Person klasei savybę "height" kurios vertė būtų 
     surname: 'Magelanas',
     age: 20,
     height: 1.75,
-    heightUnits: 'm',
+    heightUnits: HeightUnits.METRES,
   };
   const person1: Person = new Person(personProps1);
   const person2: Person = new Person(personProps2);
@@ -176,9 +172,9 @@ console.group('3. Sukurkite Person klasei savybę "height" kurios vertė būtų 
 
   console.log('\n---\n');
 
-  const newHeightProps1: Parameters<Person["setHeight"]> = [1.55, 'm'];
-  const newHeightProps2: Parameters<Person["setHeight"]> = [65, 'in'];
-  const newHeightProps3: Parameters<Person["setHeight"]> = [165, 'cm'];
+  const newHeightProps1: Parameters<Person["setHeight"]> = [1.55, HeightUnits.METRES];
+  const newHeightProps2: Parameters<Person["setHeight"]> = [65, HeightUnits.INCHES];
+  const newHeightProps3: Parameters<Person["setHeight"]> = [165, HeightUnits.CENTIMETRES];
 
   console.log('Keisime šio žmogaus ūgį:', person1);
 
@@ -202,13 +198,13 @@ console.group('4. Sukurkite Person klasei statinę savybę "heightUnits". Jos ti
   console.log('Person klasės statinės savybės:');
   console.dir({ ...Person });
 
-  console.log('Keičiami matavimo vienetai į:', HeightUnit.IN)
-  Person.heightUnits = HeightUnit.IN;
+  console.log('Keičiami matavimo vienetai į:', HeightUnits.INCHES)
+  Person.heightUnits = HeightUnits.INCHES;
   console.log('Person klasės statinės savybės:');
   console.dir({ ...Person });
 
-  console.log('Keičiami matavimo vienetai į:', HeightUnit.M)
-  Person.heightUnits = HeightUnit.M;
+  console.log('Keičiami matavimo vienetai į:', HeightUnits.METRES)
+  Person.heightUnits = HeightUnits.METRES;
   console.log('Person klasės statinės savybės:');
   console.dir({ ...Person });
 }
@@ -216,11 +212,6 @@ console.groupEnd();
 console.log('');
 
 console.group('5. "height" setterio antram parametrui pakeiskite sąjungos tipą į [4.] užduotyje sukurtą išvardinimą(enum). Priderinkite pavyzdžius ir metodą.');
-{
-
-}
-console.groupEnd();
-console.log('');
 
 console.group('6. "height" geteriui sukurkite logiką, jog jis grąžintų matavimo vienetus, pagal statinės savybės "heightUnits" reikšmę.');
 {
@@ -233,16 +224,16 @@ console.group('6. "height" geteriui sukurkite logiką, jog jis grąžintų matav
 
   console.log('Sukurtas objektas:', person);
   console.log('\n--\n');
-  
-  Person.heightUnits = HeightUnit.CM;
+
+  Person.heightUnits = HeightUnits.CENTIMETRES;
   console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
   console.log('žmogaus ūgis', person.getHeight());
 
-  Person.heightUnits = HeightUnit.IN;
+  Person.heightUnits = HeightUnits.INCHES;
   console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
   console.log('žmogaus ūgis', person.getHeight());
 
-  Person.heightUnits = HeightUnit.M;
+  Person.heightUnits = HeightUnits.METRES;
   console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
   console.log('žmogaus ūgis', person.getHeight());
 
@@ -252,9 +243,9 @@ console.log('');
 
 console.group('7. Analogiškai pagal [4.]-[6.] punktus sukurkite savybę weight su statiniu išvardinimu "weightUnits", kurio pasirinkimai turi būti: "KG", "LBS"');
 {
-
+  
 }
 console.groupEnd();
 console.log('');
 
-console.log('8. Sukurkite klasei Person metodą "toString". Kuris paverstų žmogaus savybes gražiu formatu: vardas ir pavardė pirmoje eilutėje, o "height" ir "weight" savybės atskirose eilutėse, atitrauktos nuo kairio krašto per "tab" simbolį, ir su matavimo vienetais(kurie išsaugoti) statinėse Person klasės savybėse');
+console.group('8. Sukurkite klasei Person metodą "toString". Kuris paverstų žmogaus savybes gražiu formatu: vardas ir pavardė pirmoje eilutėje, o "height" ir "weight" savybės atskirose eilutėse, atitrauktos nuo kairio krašto per "tab" simbolį, ir su matavimo vienetais(kurie išsaugoti) statinėse Person klasės savybėse');

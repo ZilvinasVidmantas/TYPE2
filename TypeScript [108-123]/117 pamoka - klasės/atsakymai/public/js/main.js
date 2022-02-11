@@ -1,10 +1,10 @@
 "use strict";
-var HeightUnit;
-(function (HeightUnit) {
-    HeightUnit["CM"] = "cm";
-    HeightUnit["M"] = "m";
-    HeightUnit["IN"] = "in";
-})(HeightUnit || (HeightUnit = {}));
+var HeightUnits;
+(function (HeightUnits) {
+    HeightUnits["CENTIMETRES"] = "cm";
+    HeightUnits["METRES"] = "m";
+    HeightUnits["INCHES"] = "in";
+})(HeightUnits || (HeightUnits = {}));
 ;
 class Person {
     constructor({ name, surname, age, height, heightUnits }) {
@@ -32,13 +32,13 @@ class Person {
     }
     setHeight(height, units) {
         switch (units) {
-            case "cm":
+            case HeightUnits.CENTIMETRES:
                 this.height = height;
                 break;
-            case "m":
+            case HeightUnits.METRES:
                 this.height = height * 100;
                 break;
-            case "in":
+            case HeightUnits.INCHES:
                 this.height = height * 2.54;
                 break;
             default: this.height = height;
@@ -51,16 +51,16 @@ class Person {
         if (this.height === undefined)
             return this.height;
         switch (Person.heightUnits) {
-            case HeightUnit.CM: return this.height;
-            case HeightUnit.M: return this.height / 100;
-            case HeightUnit.IN: return this.height / 2.54;
+            case HeightUnits.CENTIMETRES: return this.height;
+            case HeightUnits.METRES: return this.height / 100;
+            case HeightUnits.INCHES: return this.height / 2.54;
         }
     }
     getFullname() {
         return this.name + ' ' + this.surname;
     }
 }
-Person.heightUnits = HeightUnit.CM;
+Person.heightUnits = HeightUnits.CENTIMETRES;
 console.group('1. Sukurkite Person klasei savybes "name" ir "surname". Kiekvienai iš jų sukurkite setterius, ir bendrą getterį fullname');
 {
     const person = new Person({
@@ -127,14 +127,14 @@ console.group('3. Sukurkite Person klasei savybę "height" kurios vertė būtų 
         surname: 'Magelanas',
         age: 20,
         height: 70,
-        heightUnits: 'in',
+        heightUnits: HeightUnits.INCHES,
     };
     const personProps3 = {
         name: 'Amerikas',
         surname: 'Magelanas',
         age: 20,
         height: 1.75,
-        heightUnits: 'm',
+        heightUnits: HeightUnits.METRES,
     };
     const person1 = new Person(personProps1);
     const person2 = new Person(personProps2);
@@ -143,9 +143,9 @@ console.group('3. Sukurkite Person klasei savybę "height" kurios vertė būtų 
     console.log('Sukurtas Person su ūgio matavimo vienetais - coliais:', '\n\tprops:', personProps2, '\n\tperson:', person2);
     console.log('Sukurtas Person su ūgio matavimo vienetais - metrais', '\n\tprops:', personProps3, '\n\tperson:', person3);
     console.log('\n---\n');
-    const newHeightProps1 = [1.55, 'm'];
-    const newHeightProps2 = [65, 'in'];
-    const newHeightProps3 = [165, 'cm'];
+    const newHeightProps1 = [1.55, HeightUnits.METRES];
+    const newHeightProps2 = [65, HeightUnits.INCHES];
+    const newHeightProps3 = [165, HeightUnits.CENTIMETRES];
     console.log('Keisime šio žmogaus ūgį:', person1);
     console.log('Nustatomas ūgis:', newHeightProps1);
     person1.setHeight(...newHeightProps1);
@@ -163,22 +163,18 @@ console.group('4. Sukurkite Person klasei statinę savybę "heightUnits". Jos ti
 {
     console.log('Person klasės statinės savybės:');
     console.dir(Object.assign({}, Person));
-    console.log('Keičiami matavimo vienetai į:', HeightUnit.IN);
-    Person.heightUnits = HeightUnit.IN;
+    console.log('Keičiami matavimo vienetai į:', HeightUnits.INCHES);
+    Person.heightUnits = HeightUnits.INCHES;
     console.log('Person klasės statinės savybės:');
     console.dir(Object.assign({}, Person));
-    console.log('Keičiami matavimo vienetai į:', HeightUnit.M);
-    Person.heightUnits = HeightUnit.M;
+    console.log('Keičiami matavimo vienetai į:', HeightUnits.METRES);
+    Person.heightUnits = HeightUnits.METRES;
     console.log('Person klasės statinės savybės:');
     console.dir(Object.assign({}, Person));
 }
 console.groupEnd();
 console.log('');
 console.group('5. "height" setterio antram parametrui pakeiskite sąjungos tipą į [4.] užduotyje sukurtą išvardinimą(enum). Priderinkite pavyzdžius ir metodą.');
-{
-}
-console.groupEnd();
-console.log('');
 console.group('6. "height" geteriui sukurkite logiką, jog jis grąžintų matavimo vienetus, pagal statinės savybės "heightUnits" reikšmę.');
 {
     const person = new Person({
@@ -189,13 +185,13 @@ console.group('6. "height" geteriui sukurkite logiką, jog jis grąžintų matav
     });
     console.log('Sukurtas objektas:', person);
     console.log('\n--\n');
-    Person.heightUnits = HeightUnit.CM;
+    Person.heightUnits = HeightUnits.CENTIMETRES;
     console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
     console.log('žmogaus ūgis', person.getHeight());
-    Person.heightUnits = HeightUnit.IN;
+    Person.heightUnits = HeightUnits.INCHES;
     console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
     console.log('žmogaus ūgis', person.getHeight());
-    Person.heightUnits = HeightUnit.M;
+    Person.heightUnits = HeightUnits.METRES;
     console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
     console.log('žmogaus ūgis', person.getHeight());
 }
@@ -206,5 +202,5 @@ console.group('7. Analogiškai pagal [4.]-[6.] punktus sukurkite savybę weight 
 }
 console.groupEnd();
 console.log('');
-console.log('8. Sukurkite klasei Person metodą "toString". Kuris paverstų žmogaus savybes gražiu formatu: vardas ir pavardė pirmoje eilutėje, o "height" ir "weight" savybės atskirose eilutėse, atitrauktos nuo kairio krašto per "tab" simbolį, ir su matavimo vienetais(kurie išsaugoti) statinėse Person klasės savybėse');
+console.group('8. Sukurkite klasei Person metodą "toString". Kuris paverstų žmogaus savybes gražiu formatu: vardas ir pavardė pirmoje eilutėje, o "height" ir "weight" savybės atskirose eilutėse, atitrauktos nuo kairio krašto per "tab" simbolį, ir su matavimo vienetais(kurie išsaugoti) statinėse Person klasės savybėse');
 //# sourceMappingURL=main.js.map
