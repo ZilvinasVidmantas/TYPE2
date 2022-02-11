@@ -14,6 +14,8 @@ type PersonProps = {
   heightUnits?: HeightUnits,
 };
 
+
+
 class Person {
   static heightUnits: HeightUnit = HeightUnit.CM;
 
@@ -231,7 +233,8 @@ console.group('6. "height" geteriui sukurkite logiką, jog jis grąžintų matav
 
   console.log('Sukurtas objektas:', person);
   console.log('\n--\n');
-
+  
+  Person.heightUnits = HeightUnit.CM;
   console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
   console.log('žmogaus ūgis', person.getHeight());
 
