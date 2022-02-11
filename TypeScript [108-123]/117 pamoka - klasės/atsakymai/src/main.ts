@@ -243,7 +243,9 @@ console.log('');
 
 console.group('7. Analogiškai pagal [4.]-[6.] punktus sukurkite savybę weight su statiniu išvardinimu "weightUnits", kurio pasirinkimai turi būti: "KG", "LBS"');
 {
-  
+  // iki 14:10 Atliekate užduotį
+  // iki 14:20 pertrauka
+  // 14:20 - tęsiame
 }
 console.groupEnd();
 console.log('');
