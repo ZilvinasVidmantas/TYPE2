@@ -1,4 +1,11 @@
 "use strict";
+var HeightUnit;
+(function (HeightUnit) {
+    HeightUnit["CM"] = "cm";
+    HeightUnit["M"] = "m";
+    HeightUnit["IN"] = "in";
+})(HeightUnit || (HeightUnit = {}));
+;
 class Person {
     constructor({ name, surname, age, height, heightUnits }) {
         this.name = name;
@@ -41,12 +48,19 @@ class Person {
         return this.age;
     }
     getHeight() {
-        return this.height;
+        if (this.height === undefined)
+            return this.height;
+        switch (Person.heightUnits) {
+            case HeightUnit.CM: return this.height;
+            case HeightUnit.M: return this.height / 100;
+            case HeightUnit.IN: return this.height / 2.54;
+        }
     }
     getFullname() {
         return this.name + ' ' + this.surname;
     }
 }
+Person.heightUnits = HeightUnit.CM;
 console.group('1. Sukurkite Person klasei savybes "name" ir "surname". Kiekvienai iš jų sukurkite setterius, ir bendrą getterį fullname');
 {
     const person = new Person({
@@ -147,6 +161,16 @@ console.groupEnd();
 console.log('');
 console.group('4. Sukurkite Person klasei statinę savybę "heightUnits". Jos tipas turi būti išvardinimas(enum), kurio pasirinkimai yra: "CM", "M", "IN". Numatytoji(default) "heightUnits" reikšmė turi būti centimetrai');
 {
+    console.log('Person klasės statinės savybės:');
+    console.dir(Object.assign({}, Person));
+    console.log('Keičiami matavimo vienetai į:', HeightUnit.IN);
+    Person.heightUnits = HeightUnit.IN;
+    console.log('Person klasės statinės savybės:');
+    console.dir(Object.assign({}, Person));
+    console.log('Keičiami matavimo vienetai į:', HeightUnit.M);
+    Person.heightUnits = HeightUnit.M;
+    console.log('Person klasės statinės savybės:');
+    console.dir(Object.assign({}, Person));
 }
 console.groupEnd();
 console.log('');
@@ -157,6 +181,22 @@ console.groupEnd();
 console.log('');
 console.group('6. "height" geteriui sukurkite logiką, jog jis grąžintų matavimo vienetus, pagal statinės savybės "heightUnits" reikšmę.');
 {
+    const person = new Person({
+        name: 'Serbentautas',
+        surname: 'Bordiūras',
+        age: 20,
+        height: 180,
+    });
+    console.log('Sukurtas objektas:', person);
+    console.log('\n--\n');
+    console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
+    console.log('žmogaus ūgis', person.getHeight());
+    Person.heightUnits = HeightUnit.IN;
+    console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
+    console.log('žmogaus ūgis', person.getHeight());
+    Person.heightUnits = HeightUnit.M;
+    console.log('Person klasės ūgio matavimo vienetai:', Person.heightUnits);
+    console.log('žmogaus ūgis', person.getHeight());
 }
 console.groupEnd();
 console.log('');
