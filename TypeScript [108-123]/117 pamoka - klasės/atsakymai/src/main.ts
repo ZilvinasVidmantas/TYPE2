@@ -36,7 +36,7 @@ console.group('1. Sukurkite Person klasei savybes "name" ir "surname". Kiekviena
 }
 console.groupEnd();
 
-console.group('2. Sukurkite Person klasei savybę "ag"e. Inkapsuliuokite šią savybę taip, jog reikšmė galėtų būti tik sveiki skaičiai nuo 1 iki 150');
+console.group('2. Sukurkite Person klasei savybę "age". Inkapsuliuokite šią savybę taip, jog reikšmė galėtų būti tik sveiki skaičiai nuo 1 iki 150');
 {
 
 }
