@@ -1,13 +1,37 @@
 class Person {
   private name: string;
+  private surname: string;
 
-  constructor(name: string) {
+  constructor(name: string, surname: string) {
     this.name = name;
+    this.surname = surname;
+  }
+
+  public setName(name: string): void {
+    this.name = name;
+  }
+
+  public setSurname(surname: string): void {
+    this.surname = surname;
+  }
+
+  public getFullname(): string {
+    return this.name + ' ' + this.surname;
   }
 }
 
 console.group('1. Sukurkite Person klasei savybes "name" ir "surname". Kiekvienai iš jų sukurkite setterius, ir bendrą getterį fullname');
 {
+  const p1: Person = new Person('Serbentautas', 'Bordiūras');
+  const newName: string = 'Bolvaris';
+  const newSurname: string = 'Kepurė';
+
+  console.log('Pradinis žmogaus pilnas vardas:\n\t', p1.getFullname());
+  console.log('Keičiamas vardas ir pavardė:', { newName, newSurname });
+  p1.setName(newName);
+  p1.setSurname(newSurname);
+  
+  console.log('Pakeistas žmogaus pilnas vardas:\n\t', p1.getFullname());
 
 }
 console.groupEnd();
@@ -48,4 +72,4 @@ console.group('7. Analogiškai pagal [4.]-[6.] punktus sukurkite savybę weight 
 }
 console.groupEnd();
 
-console.group('8. Sukurkite klasei Person metodą "toString". Kuris paverstų žmogaus savybes gražiu formatu: vardas ir pavardė pirmoje eilutėje, o "height" ir "weight" savybės atskirose eilutėse, atitrauktos nuo kairio krašto per "tab" simbolį, ir su matavimo vienetais(kurie išsaugoti) statinėse Person klasės savybėse');
+console.log('8. Sukurkite klasei Person metodą "toString". Kuris paverstų žmogaus savybes gražiu formatu: vardas ir pavardė pirmoje eilutėje, o "height" ir "weight" savybės atskirose eilutėse, atitrauktos nuo kairio krašto per "tab" simbolį, ir su matavimo vienetais(kurie išsaugoti) statinėse Person klasės savybėse');
