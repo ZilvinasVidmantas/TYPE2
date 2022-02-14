@@ -1,38 +1,10 @@
-"use strict";
-class Person {
-    constructor(id, name, surname) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-    }
-    sayMyName() {
-        console.log(this.name, this.surname);
-    }
-}
-class WorkPerson extends Person {
-    constructor(id, name, surname, hourPay, fullTimeEquivalent) {
-        super(id, name, surname);
-        this.hourPay = hourPay;
-        this.fullTimeEquivalent = fullTimeEquivalent;
-    }
-}
-class SelfEmployedPerson extends Person {
-    constructor(id, name, surname, hourPay, hoursWorked = 0) {
-        super(id, name, surname);
-        this.hourPay = hourPay;
-        this.hoursWorked = hoursWorked;
-    }
-}
-class BuisnessLicencePerson extends Person {
-    constructor(id, name, surname, jobs = []) {
-        super(id, name, surname);
-        this.jobs = jobs;
-    }
-}
+import WorkPerson from './WorkPerson.js';
+import SelfEmployedPerson from './SelfEmployedPerson.js';
+import BuisnessLicencePerson from './BuisnessLicencePerson.js';
 console.group('0. WorkPerson klasės objektai');
 {
-    const backendDeveloper = new SelfEmployedPerson('25169845878', 'Apsas', 'Revestenis', 25, 1);
-    const frontendDeveloper = new SelfEmployedPerson('25169145878', 'Klikas', 'Eventauskas', 25, 0.5);
+    const backendDeveloper = new WorkPerson('25169845878', 'Apsas', 'Revestenis', 25, 1);
+    const frontendDeveloper = new WorkPerson('25169145878', 'Klikas', 'Eventauskas', 25, 0.5);
     console.log(backendDeveloper);
     console.log(frontendDeveloper);
 }

@@ -1,80 +1,11 @@
-type Job = {
-  id: string,
-  title: string,
-  pay: number,
-  finished?: boolean,
-  dateFinished?: Date,
-}
-
-class Person {
-  protected id: string;
-  protected name: string;
-  protected surname: string;
-
-  constructor(id: string, name: string, surname: string,) {
-    this.id = id;
-    this.name = name;
-    this.surname = surname;
-  }
-
-  public sayMyName(): void {
-    console.log(this.name, this.surname);
-  }
-}
-
-// Worker is Person
-class WorkPerson extends Person {
-  private hourPay: number;
-  private fullTimeEquivalent: number;
-
-  constructor(
-    id: string,
-    name: string,
-    surname: string,
-    hourPay: number,
-    fullTimeEquivalent: number,
-  ) {
-    super(id, name, surname);
-    this.hourPay = hourPay;
-    this.fullTimeEquivalent = fullTimeEquivalent;
-  }
-}
-
-class SelfEmployedPerson extends Person {
-  private hourPay: number;
-  private hoursWorked: number;
-
-  constructor(
-    id: string,
-    name: string,
-    surname: string,
-    hourPay: number,
-    hoursWorked: number = 0,
-  ) {
-    super(id, name, surname);
-    this.hourPay = hourPay;
-    this.hoursWorked = hoursWorked;
-  }
-}
-
-class BuisnessLicencePerson extends Person {
-  private jobs: Job[];
-
-  constructor(
-    id: string,
-    name: string,
-    surname: string,
-    jobs: Job[] = []
-  ) {
-    super(id, name, surname);
-    this.jobs = jobs;
-  }
-}
+import WorkPerson from './WorkPerson.js';
+import SelfEmployedPerson from './SelfEmployedPerson.js';
+import BuisnessLicencePerson from './BuisnessLicencePerson.js';
 
 console.group('0. WorkPerson klasės objektai');
 {
-  const backendDeveloper = new SelfEmployedPerson('25169845878', 'Apsas', 'Revestenis', 25, 1);
-  const frontendDeveloper = new SelfEmployedPerson('25169145878', 'Klikas', 'Eventauskas', 25, 0.5);
+  const backendDeveloper = new WorkPerson('25169845878', 'Apsas', 'Revestenis', 25, 1);
+  const frontendDeveloper = new WorkPerson('25169145878', 'Klikas', 'Eventauskas', 25, 0.5);
 
   console.log(backendDeveloper);
   console.log(frontendDeveloper);
