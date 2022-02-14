@@ -38,7 +38,7 @@ console.group('1. Sukurkite darbuotoją pagal individualią veiklą - užmokesti
 }
 console.groupEnd();
 
-console.group('2. Sukurkite darbuotoją pagal Verslo liudijimą - sutartitnis užmokestis, kuris būtų Žmogus.');
+console.group('2. Sukurkite darbuotoją pagal Verslo liudijimą - sutartitnis užmokestis už atliktą darbą, kuris būtų Žmogus.');
 {
 
 }
