@@ -4,8 +4,20 @@ import BuisnessLicencePerson from './BuisnessLicencePerson.js';
 
 console.group('0. WorkPerson klasės objektai');
 {
-  const backendDeveloper = new WorkPerson('25169845878', 'Apsas', 'Revestenis', 25, 1);
-  const frontendDeveloper = new WorkPerson('25169145878', 'Klikas', 'Eventauskas', 25, 0.5);
+  const backendDeveloper = new WorkPerson({
+    id: '25169845878',
+    name: 'Apsas',
+    surname: 'Revestenis',
+    hourPay: 25,
+    fullTimeEquivalent: 1
+  });
+  const frontendDeveloper = new WorkPerson({
+    id: '25167745878',
+    name: 'Eventas',
+    surname: 'Klikauskas',
+    hourPay: 25,
+    fullTimeEquivalent: 0.5
+  });
 
   console.log(backendDeveloper);
   console.log(frontendDeveloper);
@@ -42,5 +54,5 @@ console.groupEnd();
 // 4. Sukurkite tipą PersonProps - objektą, ir pakeiskite klasių konstruktorius pritaikydami šį tipą
 // 5. 1, 2 uždavinių pavyzdinius darbuotojus įdėkite į viešai aprašytą masyvą
 
-// pertrauka iki 10:30
-// Užduotys atliekamos 20min. iki 10:50
+// pertrauka iki 11:43
+// Iki pamokos galo atliekamos užduotys
