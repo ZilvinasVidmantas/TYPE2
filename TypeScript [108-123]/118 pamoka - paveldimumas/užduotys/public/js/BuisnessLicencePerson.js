@@ -14,6 +14,16 @@ class BuisnessLicencePerson extends Person {
     constructor(_a) {
         var { jobs = [] } = _a, personProps = __rest(_a, ["jobs"]);
         super(personProps);
+        this.calcPay = () => {
+            let sum = 0;
+            this.jobs.forEach(job => {
+                if (job.finished && !job.payed) {
+                    sum += job.pay;
+                    job.payed = true;
+                }
+            });
+            return sum;
+        };
         this.jobs = jobs;
     }
 }

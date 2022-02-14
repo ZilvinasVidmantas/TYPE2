@@ -18,6 +18,10 @@ class SelfEmployedPerson extends Person {
     this.hourPay = hourPay;
     this.hoursWorked = hoursWorked;
   }
+
+  public calcPay = (): number => {
+    return this.hourPay * this.hoursWorked;
+  }
 }
 
 export default SelfEmployedPerson;

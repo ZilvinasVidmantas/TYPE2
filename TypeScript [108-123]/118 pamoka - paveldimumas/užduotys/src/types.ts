@@ -3,5 +3,6 @@ export type Job = {
   title: string,
   pay: number,
   finished?: boolean,
+  payed?: boolean,
   dateFinished?: Date,
 }

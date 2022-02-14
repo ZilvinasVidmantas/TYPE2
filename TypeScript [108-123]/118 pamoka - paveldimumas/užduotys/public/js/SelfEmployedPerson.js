@@ -14,6 +14,9 @@ class SelfEmployedPerson extends Person {
     constructor(_a) {
         var { hourPay, hoursWorked = 0 } = _a, personProps = __rest(_a, ["hourPay", "hoursWorked"]);
         super(personProps);
+        this.calcPay = () => {
+            return this.hourPay * this.hoursWorked;
+        };
         this.hourPay = hourPay;
         this.hoursWorked = hoursWorked;
     }
