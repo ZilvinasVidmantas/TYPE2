@@ -110,3 +110,6 @@ console.groupEnd();
 // 3. Iškelkite klases į atskirus failus
 // 4. Sukurkite tipą PersonProps - objektą, ir pakeiskite klasių konstruktorius pritaikydami šį tipą
 // 5. 1, 2 uždavinių pavyzdinius darbuotojus įdėkite į viešai aprašytą masyvą
+
+// pertrauka iki 10:30
+// Užduotys atliekamos 20min. iki 10:50
