@@ -2,7 +2,7 @@ import Person, { type PersonProps } from './Person.js';
 import type { Job } from './types.js';
 
 export type BuisnessLicencePersonProps = PersonProps & {
-  jobs: Job[],
+  jobs?: Job[],
 };
 
 class BuisnessLicencePerson extends Person {

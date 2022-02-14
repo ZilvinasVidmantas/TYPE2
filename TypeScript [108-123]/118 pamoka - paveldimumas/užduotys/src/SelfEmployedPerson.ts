@@ -2,7 +2,7 @@ import Person, { type PersonProps } from './Person.js';
 
 export type SelfEmployedPersonProps = PersonProps & {
   hourPay: number,
-  hoursWorked: number,
+  hoursWorked?: number,
 }
 
 class SelfEmployedPerson extends Person {
