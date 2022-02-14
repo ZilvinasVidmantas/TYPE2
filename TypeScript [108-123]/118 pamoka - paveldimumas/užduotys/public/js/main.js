@@ -23,7 +23,13 @@ console.group('0. WorkPerson klasės objektai');
 console.groupEnd();
 console.group('1. Sukurkite darbuotoją pagal individualią veiklą - užmokestis už kiekvieną valandą, kuris būtų Žmogus.');
 {
-    const selfEmployed1 = new SelfEmployedPerson('25169845878', 'Beribė', 'Jūračka', 25, 10);
+    const selfEmployed1 = new SelfEmployedPerson({
+        id: '25169845878',
+        name: 'Beribė',
+        surname: 'Jūračka',
+        hourPay: 25,
+        hoursWorked: 10
+    });
     const selfEmployed2 = new SelfEmployedPerson('25169145878', 'Fanalijus', 'Analijus', 10);
     console.log(selfEmployed1);
     console.log(selfEmployed2);

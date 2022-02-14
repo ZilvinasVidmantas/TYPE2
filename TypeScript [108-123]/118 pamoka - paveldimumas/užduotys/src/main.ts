@@ -27,7 +27,13 @@ console.groupEnd();
 
 console.group('1. Sukurkite darbuotoją pagal individualią veiklą - užmokestis už kiekvieną valandą, kuris būtų Žmogus.');
 {
-  const selfEmployed1 = new SelfEmployedPerson('25169845878', 'Beribė', 'Jūračka', 25, 10);
+  const selfEmployed1 = new SelfEmployedPerson({
+    id: '25169845878',
+    name: 'Beribė',
+    surname: 'Jūračka',
+    hourPay: 25,
+    hoursWorked: 10
+  });
   const selfEmployed2 = new SelfEmployedPerson('25169145878', 'Fanalijus', 'Analijus', 10);
 
   console.log(selfEmployed1);
@@ -49,10 +55,12 @@ console.group('2. Sukurkite darbuotoją pagal Verslo liudijimą - sutartitnis u�
 }
 console.groupEnd();
 
-
-// 3. Iškelkite klases į atskirus failus
-// 4. Sukurkite tipą PersonProps - objektą, ir pakeiskite klasių konstruktorius pritaikydami šį tipą
-// 5. 1, 2 uždavinių pavyzdinius darbuotojus įdėkite į viešai aprašytą masyvą
-
-// pertrauka iki 11:43
-// Iki pamokos galo atliekamos užduotys
+/*
+ 3. Iškelkite klases į atskirus failus
+ 4. Sukurkite tipą PersonProps - objektą, ir pakeiskite klasių konstruktorius pritaikydami šį tipą
+ 5. Kiekvienai vaikinei klasei sukurkite metodą, kuris suskaičiuotų pinigus, kuriuso reikia pervesti darbuotojams:
+  5.1 WorkPersonProps: Suskaičiuoti visas šio mėnesio darbo dienas, ir paskaičiuoti atlyginimą pagal etatą ir valandinį
+  5.2 BuisnessLicencePersonProps: Praiteruoti per darbų masyvą, ir suskaičiuoti sumą visų ATLKIKTŲ darbų. Suskaičiavus sumą, 
+    prieš grąžinant atsakymą, kiekvieno objektą (kuris buvo įskaičiuotas į sumą) ištrinti.
+  5.3 SelfEmployedPersonProps: Sudauginti išdirbtū valandų skaičių su valandiniu įkainiu. 
+*/
