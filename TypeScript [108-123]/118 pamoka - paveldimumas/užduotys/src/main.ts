@@ -1,9 +1,8 @@
-
 class Person {
-  private id: string;
-  private name: string;
-  private surname: string;
-  
+  protected id: string;
+  protected name: string;
+  protected surname: string;
+
   constructor(id: string, name: string, surname: string,) {
     this.id = id;
     this.name = name;
@@ -33,10 +32,14 @@ class WorkPerson extends Person {
   }
 }
 
-const person1: Person = new Person('39325468985', 'Benkorčius', 'Tūlikas');
-const worker1: WorkPerson = new WorkPerson('39325468985', 'Apsas', 'Rekvestenis', 13, 1);
+console.group('1. Sukurkite darbuotoją pagal individualią veiklą - užmokestis už kiekvieną valandą, kuris būtų Žmogus.');
+{
 
-worker1.sayMyName();
+}
+console.groupEnd();
 
+console.group('2. Sukurkite darbuotoją pagal Verslo liudijimą - sutartitnis užmokestis, kuris būtų Žmogus.');
+{
 
-console.log(person1);
+}
+console.groupEnd();
