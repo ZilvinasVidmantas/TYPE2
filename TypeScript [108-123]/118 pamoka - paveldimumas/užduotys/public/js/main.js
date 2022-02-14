@@ -60,4 +60,24 @@ console.group('2. Sukurkite darbuotoją pagal Verslo liudijimą - sutartitnis u�
     console.log(marketingSpecialist);
 }
 console.groupEnd();
+console.group('5.1 WorkPerson klasės atlyginimai:');
+{
+    const backendDeveloper = new WorkPerson({
+        id: '25169845878',
+        name: 'Apsas',
+        surname: 'Revestenis',
+        hourPay: 25,
+        fullTimeEquivalent: 1
+    });
+    const frontendDeveloper = new WorkPerson({
+        id: '25167745878',
+        name: 'Eventas',
+        surname: 'Klikauskas',
+        hourPay: 25,
+        fullTimeEquivalent: 0.5
+    });
+    console.log(backendDeveloper, backendDeveloper.calcPay());
+    console.log(frontendDeveloper, frontendDeveloper.calcPay());
+}
+console.groupEnd();
 //# sourceMappingURL=main.js.map

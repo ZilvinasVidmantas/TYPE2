@@ -10,10 +10,25 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import Person from './Person.js';
+const calcMonthWorkDays = (year = new Date().getFullYear(), month = new Date().getMonth()) => {
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    let days = 0;
+    for (let day = 1; day <= daysInMonth; day++) {
+        const currentDate = new Date(year, month, day);
+        const weekDay = currentDate.getDay();
+        if (weekDay > 0 && weekDay < 6) {
+            days++;
+        }
+    }
+    return days;
+};
 class WorkPerson extends Person {
     constructor(_a) {
         var { hourPay, fullTimeEquivalent } = _a, personProps = __rest(_a, ["hourPay", "fullTimeEquivalent"]);
         super(personProps);
+        this.calcPay = () => {
+            return calcMonthWorkDays() * this.hourPay * this.fullTimeEquivalent * 8;
+        };
         this.hourPay = hourPay;
         this.fullTimeEquivalent = fullTimeEquivalent;
     }

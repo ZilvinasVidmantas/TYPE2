@@ -8,7 +8,7 @@ export type BuisnessLicencePersonProps = PersonProps & {
 class BuisnessLicencePerson extends Person {
   private jobs: Job[];
 
-  constructor({ jobs, ...personProps }: BuisnessLicencePersonProps) {
+  constructor({ jobs = [], ...personProps }: BuisnessLicencePersonProps) {
     super(personProps);
     this.jobs = jobs;
   }
