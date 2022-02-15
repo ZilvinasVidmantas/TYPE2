@@ -127,11 +127,6 @@ console.groupEnd();
     Kiauras Debugnė, 39345786525
       hourPay: 20,
       fullTimeEquivalent: 1
+  8. Įgalinkite toString metodo abstrakciją naudodami interface'us
 */
 
-/*
-  11:15
-  Kuom skiriasi Abstrakti klase nuo interfeiso.
-*/
-
-console.dir(employees[0].toString());
