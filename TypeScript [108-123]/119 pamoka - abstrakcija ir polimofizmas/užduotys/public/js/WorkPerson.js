@@ -9,7 +9,7 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import Person from './Person.js';
+import Employee from './Employee.js';
 const calcMonthWorkDays = (year = new Date().getFullYear(), month = new Date().getMonth()) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     let days = 0;
@@ -22,7 +22,7 @@ const calcMonthWorkDays = (year = new Date().getFullYear(), month = new Date().g
     }
     return days;
 };
-class WorkPerson extends Person {
+class WorkPerson extends Employee {
     constructor(_a) {
         var { hourPay, fullTimeEquivalent } = _a, personProps = __rest(_a, ["hourPay", "fullTimeEquivalent"]);
         super(personProps);

@@ -1,11 +1,12 @@
-import Person, { type PersonProps } from './Person.js';
+import { type PersonProps } from './Person.js';
+import Employee from './Employee.js';
 
 export type SelfEmployedPersonProps = PersonProps & {
   hourPay: number,
   hoursWorked?: number,
 }
 
-class SelfEmployedPerson extends Person {
+class SelfEmployedPerson extends Employee {
   private hourPay: number;
   private hoursWorked: number;
 

@@ -9,8 +9,8 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import Person from './Person.js';
-class BuisnessLicencePerson extends Person {
+import Employee from './Employee.js';
+class BuisnessLicencePerson extends Employee {
     constructor(_a) {
         var { jobs = [] } = _a, personProps = __rest(_a, ["jobs"]);
         super(personProps);

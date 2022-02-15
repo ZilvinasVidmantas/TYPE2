@@ -1,4 +1,5 @@
-import Person, { type PersonProps } from './Person.js';
+import { type PersonProps } from './Person.js';
+import Employee from './Employee.js';
 
 const calcMonthWorkDays = (
   year: number = new Date().getFullYear(),
@@ -21,7 +22,7 @@ export type WorkPersonProps = PersonProps & {
   fullTimeEquivalent: number,
 };
 
-class WorkPerson extends Person {
+class WorkPerson extends Employee {
   private hourPay: number;
   private fullTimeEquivalent: number;
 

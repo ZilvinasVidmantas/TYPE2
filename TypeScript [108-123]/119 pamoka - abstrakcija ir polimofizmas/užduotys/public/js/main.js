@@ -1,7 +1,7 @@
 import WorkPerson from './WorkPerson.js';
 import SelfEmployedPerson from './SelfEmployedPerson.js';
 import BuisnessLicencePerson from './BuisnessLicencePerson.js';
-const empoyees = [];
+const employees = [];
 console.group('0. WorkPerson klasės objektai');
 {
     const backendDeveloper = new WorkPerson({
@@ -18,8 +18,8 @@ console.group('0. WorkPerson klasės objektai');
         hourPay: 25,
         fullTimeEquivalent: 0.5
     });
-    empoyees.push(backendDeveloper);
-    empoyees.push(frontendDeveloper);
+    employees.push(backendDeveloper);
+    employees.push(frontendDeveloper);
     console.log(backendDeveloper);
     console.log(frontendDeveloper);
 }
@@ -39,8 +39,8 @@ console.group('1. Sukurkite darbuotoją pagal individualią veiklą - užmokesti
         surname: 'Analijus',
         hourPay: 10
     });
-    empoyees.push(selfEmployed1);
-    empoyees.push(selfEmployed2);
+    employees.push(selfEmployed1);
+    employees.push(selfEmployed2);
     console.log(selfEmployed1);
     console.log(selfEmployed2);
 }
@@ -61,15 +61,15 @@ console.group('2. Sukurkite darbuotoją pagal Verslo liudijimą - sutartitnis u�
             { id: 'job2', title: 'Google adds', pay: 700, finished: true, dateFinished: new Date(2022, 2, 14) },
         ]
     });
-    empoyees.push(designer);
-    empoyees.push(marketingSpecialist);
+    employees.push(designer);
+    employees.push(marketingSpecialist);
     console.log(designer);
     console.log(marketingSpecialist);
 }
 console.groupEnd();
 console.group('5.Atlyginimų skaičiavimai:');
 {
-    empoyees.forEach(x => {
+    employees.forEach(x => {
         x.sayMyName();
         console.log(x.calcPay());
     });

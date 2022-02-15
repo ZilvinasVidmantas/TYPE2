@@ -1,8 +1,9 @@
 import WorkPerson from './WorkPerson.js';
 import SelfEmployedPerson from './SelfEmployedPerson.js';
 import BuisnessLicencePerson from './BuisnessLicencePerson.js';
+import Employee from './Employee.js';
 
-const empoyees = [];
+const employees: Employee[] = [];
 
 console.group('0. WorkPerson klasės objektai');
 {
@@ -20,8 +21,8 @@ console.group('0. WorkPerson klasės objektai');
     hourPay: 25,
     fullTimeEquivalent: 0.5
   });
-  empoyees.push(backendDeveloper);
-  empoyees.push(frontendDeveloper);
+  employees.push(backendDeveloper);
+  employees.push(frontendDeveloper);
 
   console.log(backendDeveloper);
   console.log(frontendDeveloper);
@@ -45,8 +46,8 @@ console.group('1. Sukurkite darbuotoją pagal individualią veiklą - užmokesti
     hourPay: 10
   });
 
-  empoyees.push(selfEmployed1);
-  empoyees.push(selfEmployed2);
+  employees.push(selfEmployed1);
+  employees.push(selfEmployed2);
 
   console.log(selfEmployed1);
   console.log(selfEmployed2);
@@ -71,8 +72,8 @@ console.group('2. Sukurkite darbuotoją pagal Verslo liudijimą - sutartitnis u�
     ]
   });
 
-  empoyees.push(designer);
-  empoyees.push(marketingSpecialist);
+  employees.push(designer);
+  employees.push(marketingSpecialist);
 
   console.log(designer);
   console.log(marketingSpecialist);
@@ -81,7 +82,7 @@ console.groupEnd();
 
 console.group('5.Atlyginimų skaičiavimai:');
 {
-  empoyees.forEach(x => {
+  employees.forEach(x => {
     x.sayMyName();
     console.log(x.calcPay());
   });
@@ -95,6 +96,29 @@ console.groupEnd();
     5.1 WorkPersonProps: Suskaičiuoti visas šio mėnesio darbo dienas, ir paskaičiuoti atlyginimą pagal etatą ir valandinį
     5.2 BuisnessLicencePersonProps: Praiteruoti per darbų masyvą, ir suskaičiuoti sumą visų ATLKIKTŲ darbų. Suskaičiavus sumą, 
       prieš grąžinant atsakymą, kiekvieno objektą (kuris buvo įskaičiuotas į sumą) ištrinti.
-    5.3 SelfEmployedPersonProps: Sudauginti išdirbtū valandų skaičių su valandiniu įkainiu. 
-  
+    5.3 SelfEmployedPersonProps: Sudauginti išdirbtų valandų skaičių su valandiniu įkainiu. 
+  6. Sukurkite bendrą Employee abtrakčia klasę. Sukurkite masyvą visiems darbuotojams laikyti
+    ir sudėkite visus kurtus darbuotojus į šį masyvą.
+  7. Person klasę padarykite abstrakčią. Tuomet joje sukurkite metodą - toString(): string
+    Šis metodas, turi pirmoje eilutė atspausdinti vardą pavardę ir asmens kodą, o likusias savybes
+    atspausdinti reikia sekančiose eilutėse, atitrauktas nuo kairio krašto per \t simbolį, pvz.:
+    Lempa Saulaitytė, 24155555555
+      Jobs:
+         id: 'asdas'
+         title: 'Dabrbas 3000'
+         pay: 2555
+         finished: true/false
+         payed: true
+         dateFinished: 2022-01-13
+
+         id: 'asdas'
+         title: 'Dabrbas 3000'
+         pay: 2555
+         finished: true/false
+         payed: true
+         dateFinished: 2022-01-13
+        
+    Kiauras Debugnė, 39345786525
+      hourPay: 20,
+      fullTimeEquivalent: 1
 */
