@@ -4,6 +4,7 @@ const { uploadManyMiddleware } = require('../middlewares/upload-middleware');
 const { 
   getImages,
   uploadImages,
+  deleteImage,
 } = require('../controllers/image-controller');
 
 const router = express.Router();
@@ -13,6 +14,8 @@ router.use(authMiddleware);
 
 router.get('/', getImages);
 
-router.post('/', uploadManyMiddleware('files'), uploadImages)
+router.post('/', uploadManyMiddleware('files'), uploadImages);
+
+router.delete('/:id', deleteImage)
 
 module.exports = router;

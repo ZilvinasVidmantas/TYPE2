@@ -7,16 +7,17 @@ import {
 import ImageGrid from './profile-page-image-grid';
 import ProfileService from '../../../services/profile-service';
 
-const ProfilePageGallery = ({ imgData }) => {
+const ProfilePageGallery = ({ imgData, updateImgData, handleImageDelete }) => {
   const fileUploadRef = useRef(null);
 
   const handleUploadFiles = () => {
     fileUploadRef.current.click();
   };
 
-  const handleImagesLoaded = () => {
+  const handleImagesLoaded = async () => {
     const input = fileUploadRef.current;
-    ProfileService.uploadImages(input.files);
+    const data = await ProfileService.uploadImages(input.files);
+    updateImgData(data);
   };
 
   return (
@@ -42,7 +43,7 @@ const ProfilePageGallery = ({ imgData }) => {
         />
       </Box>
       <Box>
-        <ImageGrid imgData={imgData} />
+        <ImageGrid imgData={imgData} handleImageDelete={handleImageDelete} />
       </Box>
     </Box>
   );

@@ -16,6 +16,15 @@ const ProfilePage = () => {
   const user = useSelector(userSelector);
   const [imgData, setImgData] = useState([]);
 
+  const updateImgData = (newImgData) => {
+    setImgData([...imgData, ...newImgData]);
+  };
+
+  const handleImageDelete = async (id) => {
+    await ProfileService.deleteImage(id);
+    setImgData(imgData.filter((x) => x.id !== id));
+  };
+
   useEffect(() => {
     (async () => {
       const fetchedImgData = await ProfileService.getUserImages();
@@ -34,7 +43,11 @@ const ProfilePage = () => {
           <UserInfo user={user} />
         </Grid>
         <Grid item xs={12}>
-          <Gallery imgData={imgData} />
+          <Gallery
+            imgData={imgData}
+            updateImgData={updateImgData}
+            handleImageDelete={handleImageDelete}
+          />
         </Grid>
       </Grid>
     </Container>

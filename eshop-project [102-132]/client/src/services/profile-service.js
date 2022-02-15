@@ -56,8 +56,21 @@ const ProfileService = new (class ProfileService {
       },
     });
 
-    console.log(data);
+    return data.images;
+  }
+
+  async deleteImage(id) {
+    const token = ProfileService.validateToken();
+
+    await this.requester.delete(`images/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   }
 })();
 
 export default ProfileService;
+
+// 14:30

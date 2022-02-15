@@ -1,6 +1,7 @@
 const ImageModel = require('../models/image-model');
 const UserModel = require('../models/user-model');
 const ImageViewModel = require('../view-models/image-view-model');
+const { deleteFile } = require('../helpers/file-helpers');
 
 const getImages = async (req, res) => {
   const userDoc = await UserModel.findOne({ email: req.user.email });
@@ -29,7 +30,32 @@ const uploadImages = async (req, res) => {
   });
 }
 
+const deleteImage = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const imageDoc = await ImageModel.findById(id);
+    const { PUBLIC_PATH, IMG_FOLDER_NAME } = process.env;
+    const imgPath = `${PUBLIC_PATH}/${IMG_FOLDER_NAME}/${imageDoc.src}`;
+    deleteFile(imgPath);
+
+    await imageDoc.delete();
+
+    res.status(200).send({
+      message: 'Foto Successfully deleted',
+      id,
+    });
+
+
+  } catch (error) {
+
+    res.status(404).send({
+      message: 'Foto not found',
+    })
+  }
+}
+
 module.exports = {
   getImages,
   uploadImages,
+  deleteImage,
 };

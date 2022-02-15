@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, Fab } from '@mui/material';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const imageContainerStyle = {
   position: 'relative',
@@ -17,7 +18,12 @@ const imageStyle = {
   objectPosition: 'center',
 };
 
-const ProfilePageImageGrid = ({ imgData, columns, handleSelectImage }) => (
+const ProfilePageImageGrid = ({
+  imgData,
+  columns,
+  handleSelectImage,
+  handleImageDelete,
+}) => (
   <Box sx={{
     display: 'grid',
     gap: 1,
@@ -38,6 +44,25 @@ const ProfilePageImageGrid = ({ imgData, columns, handleSelectImage }) => (
             alt={src}
             style={imageStyle}
           />
+          { handleImageDelete && (
+          <Fab
+            size="small"
+            sx={{
+              position: 'absolute',
+              top: 8,
+              right: 8,
+              height: 22,
+              minHeight: 22,
+              width: 22,
+              borderRadius: 0,
+              bgcolor: 'error.main',
+              color: 'common.white',
+            }}
+            onClick={() => handleImageDelete(id)}
+          >
+            <ClearIcon fontSize="small" />
+          </Fab>
+          )}
         </Box>
       ))
     }
