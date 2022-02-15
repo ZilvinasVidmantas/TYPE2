@@ -1,7 +1,6 @@
 const ImageModel = require('../models/image-model');
 const UserModel = require('../models/user-model');
 const ImageViewModel = require('../view-models/image-view-model');
-const UserViewModel = require('../view-models/user-view-model');
 const { deleteFile } = require('../helpers/file-helpers');
 
 const getImages = async (req, res) => {
@@ -35,6 +34,8 @@ const deleteImage = async (req, res) => {
   const { id } = req.params;
   try {
     const imageDoc = await ImageModel.findById(id);
+    await UserModel.findOneAndUpdate({ mainImg: id }, { mainImg: null });
+
     const { PUBLIC_PATH, IMG_FOLDER_NAME } = process.env;
     const imgPath = `${PUBLIC_PATH}/${IMG_FOLDER_NAME}/${imageDoc.src}`;
     deleteFile(imgPath);
@@ -48,6 +49,7 @@ const deleteImage = async (req, res) => {
 
 
   } catch (error) {
+    console.log(error);
     res.status(404).send({
       message: 'Foto not found',
     });
