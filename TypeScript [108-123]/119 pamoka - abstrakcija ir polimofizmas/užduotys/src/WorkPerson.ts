@@ -1,5 +1,6 @@
 import { type PersonProps } from './Person.js';
 import Employee from './Employee.js';
+import { formatLine } from './helpers.js';
 
 const calcMonthWorkDays = (
   year: number = new Date().getFullYear(),
@@ -35,6 +36,13 @@ class WorkPerson extends Employee {
   public calcPay = (): number => {
     return calcMonthWorkDays() * this.hourPay * this.fullTimeEquivalent * 8;
   }
+
+  public toString(): string {
+    return this.getInitialsHeader() +
+      formatLine(`hour pay: ${this.hourPay}`, 1) +
+      formatLine(`full time equivalent: ${this.fullTimeEquivalent}`, 1) + '\n';
+  }
 }
 
 export default WorkPerson;
+

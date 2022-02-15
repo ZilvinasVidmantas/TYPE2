@@ -89,6 +89,12 @@ console.group('5.Atlyginimų skaičiavimai:');
 }
 console.groupEnd();
 
+console.group('7. Darbuotojų toString metodai:');
+{
+  employees.forEach(emp => console.log(emp.toString()));
+}
+console.groupEnd();
+
 /*
   3. Iškelkite klases į atskirus failus
   4. Sukurkite tipą PersonProps - objektą, ir pakeiskite klasių konstruktorius pritaikydami šį tipą

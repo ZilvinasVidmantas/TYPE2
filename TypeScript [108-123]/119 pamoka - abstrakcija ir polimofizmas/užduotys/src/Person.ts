@@ -4,7 +4,7 @@ export type PersonProps = {
   surname: string,
 };
 
-class Person {
+abstract class Person {
   protected id: string;
   protected name: string;
   protected surname: string;
@@ -18,5 +18,18 @@ class Person {
   public sayMyName(): void {
     console.log(this.name, this.surname);
   }
+
+  protected getInitialsHeader(): string {
+    const name = Object.getPrototypeOf(this).constructor.name;
+
+    const formatted = name.replaceAll(
+      /(?!^[A-Z])[A-Z]/g,
+      (letter: string): string => ' ' + letter.toLowerCase()
+    );
+
+    return `${formatted}\n${this.name} ${this.surname}, ${this.id}:\n`;
+  }
+
+  public abstract toString(): string;
 }
 export default Person;

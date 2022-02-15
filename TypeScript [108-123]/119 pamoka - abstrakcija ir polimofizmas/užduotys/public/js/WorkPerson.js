@@ -10,6 +10,7 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import Employee from './Employee.js';
+import { formatLine } from './helpers.js';
 const calcMonthWorkDays = (year = new Date().getFullYear(), month = new Date().getMonth()) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     let days = 0;
@@ -31,6 +32,11 @@ class WorkPerson extends Employee {
         };
         this.hourPay = hourPay;
         this.fullTimeEquivalent = fullTimeEquivalent;
+    }
+    toString() {
+        return this.getInitialsHeader() +
+            formatLine(`hour pay: ${this.hourPay}`, 1) +
+            formatLine(`full time equivalent: ${this.fullTimeEquivalent}`, 1) + '\n';
     }
 }
 export default WorkPerson;

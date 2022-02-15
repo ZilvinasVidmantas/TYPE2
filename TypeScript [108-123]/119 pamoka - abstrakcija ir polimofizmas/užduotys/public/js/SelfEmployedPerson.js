@@ -10,6 +10,7 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import Employee from './Employee.js';
+import { formatLine } from './helpers.js';
 class SelfEmployedPerson extends Employee {
     constructor(_a) {
         var { hourPay, hoursWorked = 0 } = _a, personProps = __rest(_a, ["hourPay", "hoursWorked"]);
@@ -19,6 +20,11 @@ class SelfEmployedPerson extends Employee {
         };
         this.hourPay = hourPay;
         this.hoursWorked = hoursWorked;
+    }
+    toString() {
+        return this.getInitialsHeader() +
+            formatLine(`hour pay: ${this.hourPay}`, 1) +
+            formatLine(`hours worked: ${this.hoursWorked}`, 1) + '\n';
     }
 }
 export default SelfEmployedPerson;

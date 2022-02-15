@@ -1,5 +1,6 @@
 import { type PersonProps } from './Person.js';
 import Employee from './Employee.js';
+import { formatLine } from './helpers.js';
 
 export type SelfEmployedPersonProps = PersonProps & {
   hourPay: number,
@@ -22,6 +23,12 @@ class SelfEmployedPerson extends Employee {
 
   public calcPay = (): number => {
     return this.hourPay * this.hoursWorked;
+  }
+
+  public toString(): string {
+    return this.getInitialsHeader() +
+      formatLine(`hour pay: ${this.hourPay}`, 1) +
+      formatLine(`hours worked: ${this.hoursWorked}`, 1) + '\n';
   }
 }
 
