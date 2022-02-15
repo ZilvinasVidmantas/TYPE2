@@ -25,6 +25,10 @@ const ProfilePage = () => {
     setImgData(imgData.filter((x) => x.id !== id));
   };
 
+  const setMainImage = async (id) => {
+    await ProfileService.setMainImage(id);
+  };
+
   useEffect(() => {
     (async () => {
       const fetchedImgData = await ProfileService.getUserImages();
@@ -37,7 +41,7 @@ const ProfilePage = () => {
       <Typography variant="h4" sx={{ mb: 3 }}>Jūsų profilis</Typography>
       <Grid container rowSpacing={4}>
         <Grid item xs={12} md={5}>
-          <MainImage mainImg={user.mainImg} imgData={imgData} />
+          <MainImage mainImg={user.mainImg} imgData={imgData} setMainImage={setMainImage} />
         </Grid>
         <Grid item xs={12} md={7}>
           <UserInfo user={user} />

@@ -16,6 +16,6 @@ router.get('/', getImages);
 
 router.post('/', uploadManyMiddleware('files'), uploadImages);
 
-router.delete('/:id', deleteImage)
+router.delete('/:id', deleteImage);
 
 module.exports = router;

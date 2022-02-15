@@ -14,7 +14,7 @@ const StyledMainImage = styled('img')({
   objectFit: 'cover',
 });
 
-const MainImage = ({ mainImg, imgData }) => {
+const MainImage = ({ mainImg, imgData, setMainImage }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -39,8 +39,7 @@ const MainImage = ({ mainImg, imgData }) => {
             imgData={imgData}
             columns={4}
             handleSelectImage={(id) => {
-              console.log('Gavau id:', id);
-              console.log('Padarysiu ją pagrindine siunčiant užklausą');
+              setMainImage(id);
               handleClose();
             }}
           />

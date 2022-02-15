@@ -69,8 +69,20 @@ const ProfileService = new (class ProfileService {
       },
     });
   }
+
+  async setMainImage(id) {
+    const token = ProfileService.validateToken();
+
+    const { data } = await this.requester.patch(`users/mainImg/${id}`, null, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    store.dispatch(updateUser({ user: data.user }));
+    return true;
+  }
 })();
 
 export default ProfileService;
-
-// 14:30

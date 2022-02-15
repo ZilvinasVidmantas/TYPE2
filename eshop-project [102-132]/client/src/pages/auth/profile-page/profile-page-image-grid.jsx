@@ -2,11 +2,17 @@ import React from 'react';
 import { Box, Fab } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 
-const imageContainerStyle = {
+const imageContainerStyle = (theme) => ({
   position: 'relative',
   width: '100%',
   pt: '100%',
-};
+  '&.selectable': {
+    ':hover': {
+      cursor: 'pointer',
+      boxShadow: `0 0 0 2px ${theme.palette.primary.main}`,
+    },
+  },
+});
 
 const imageStyle = {
   position: 'absolute',
@@ -37,6 +43,7 @@ const ProfilePageImageGrid = ({
         <Box
           key={id}
           sx={imageContainerStyle}
+          className={handleSelectImage ? 'selectable' : undefined}
           onClick={handleSelectImage ? () => handleSelectImage(id) : undefined}
         >
           <img
