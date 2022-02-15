@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import {
   Divider,
   Menu,
@@ -10,12 +10,15 @@ import {
 } from '@mui/material';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import PersonIcon from '@mui/icons-material/Person';
+import { useSelector } from 'react-redux';
+import { userSelector } from '../../../store/auth';
 import AuthService from '../../../services/auth-service';
 import AuthMenuLink from './navbar-auth-menu-link';
 import routes from '../../../routing/routes';
 
 const NavbarAuthMenu = () => {
   const anchorRef = useRef();
+  const user = useSelector(userSelector);
   const [menuOpen, setMenuOpen] = useState(false);
   const handleOpenMenu = () => setMenuOpen(true);
   const handleCloseMenu = () => setMenuOpen(false);
@@ -24,10 +27,12 @@ const NavbarAuthMenu = () => {
     AuthService.logout();
   };
 
+  const initials = useMemo(() => `${user.name[0]}${user.surname[0]}`, [user]);
+
   return (
     <Box>
       <IconButton onClick={handleOpenMenu} ref={anchorRef}>
-        <Avatar src="/static/images/lady-of-the-night.jpg" />
+        <Avatar src={user?.mainImg?.src}>{initials}</Avatar>
       </IconButton>
       <Menu
         open={menuOpen}
