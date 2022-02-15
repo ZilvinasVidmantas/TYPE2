@@ -1,0 +1,32 @@
+Kuom skiriasi abstrakti klasė nuo Interface:
+  * Bet kokia klase gali paveldėti tik vieną klasę, iš to seka, kad vaikinė-paveldinčioji klasė yra tikslesnis tėvinės klasės apibūdinimas.
+    Todėl jeigu tėvinė klasė yra abstrakti, jos reikalaujami metodai turi būti susiję su pačiu abstrakčios klasės apibūdinimu, dažniausiai
+    naudoti abstrakčios klasės savybes (public arba protected).
+
+  * Bet kokia klasė gali implementuoti bet kokį kiekį interface'ų. Todėl interface'ai gali reikalauti implementuoti funkcionalumą ar savybes
+    nepriklausomai nuo pačios klasės apibūdinimo aprašymo.
+
+  * Praktikoje geriau vengti abstrakčių klasių, nes keičiantis jų apibūdinimui, gali tekti perkelti abstrakčius-reikalaujamus metodus ar savybes
+    į kitus programavimo konstruktus. Taip pat gali tekti perdarinėti klasių hierarchinį medį.
+
+  * Jeigu bendrą funkcionulą aprašome abstrakčiose, kuris nesusijęs su abstrakčia klase(savybėmis ar kitais metodais), galime susidurti su problema,
+    jog susiejant klases hierachiškai su dėl bendro funkcionalumo, neįmanoma išgauti norimo klasių hierarchijos medžio.
+
+    A, B, C -> Funkcionalumą turinčios abstrakčios klasės
+    D, E, F -> Klasės kuriom reikia funcionalumo iš abstrakčių klasių.
+
+    Bandant aprašyti bendrą funkcionalumą (arba reikalavimus funkcionalumui įgalinti), susiduriame su neįmanomu hierarchijos atveju
+      D <- A + B,
+      E <- A + C,
+      F <- C + B:
+
+    Būtent todėl ir geriau naudoti Interface'us, o ne abstrakčias klases. 
+
+  * SUPER SUPAPRASTINTA:
+    * Tiek abstrakčios klasės, tik interface'ai įpareigoja klases implementuoti abstrakčioje klasėje/interface'ę aprašomus metodus/savybes.
+      Interface'us naudojame, kuomet reikia aprašyti papildomą funkcionalumą.
+      Abstrakčias klases naudojame, kuomet naudojame abstrakčios klasės savybes ar metodus.
+
+https://www.youtube.com/watch?v=v9ejT8FO-7I&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc
+
+      
