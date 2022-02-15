@@ -39,13 +39,17 @@ const mapRoutesRecursive = ({
 
 const routes = routeStructure.map(mapRoutesRecursive);
 
+const EmptyComponent = () => <div />;
+
 const PageRouter = () => {
   const loggedIn = useSelector(loggedInSelector);
 
   return (
     <BrowserRouter>
       <Routes>
-        {loggedIn !== null ? routes : null }
+        {loggedIn !== null
+          ? routes
+          : <Route path="*" element={<EmptyComponent />} />}
       </Routes>
     </BrowserRouter>
   );
