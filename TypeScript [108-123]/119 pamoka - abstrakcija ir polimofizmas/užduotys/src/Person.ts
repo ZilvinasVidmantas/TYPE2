@@ -4,7 +4,7 @@ export type PersonProps = {
   surname: string,
 };
 
-abstract class Person {
+class Person {
   protected id: string;
   protected name: string;
   protected surname: string;
@@ -29,7 +29,7 @@ abstract class Person {
 
     return `${formatted}\n${this.name} ${this.surname}, ${this.id}:\n`;
   }
-
-  public abstract toString(): string;
 }
 export default Person;
+
+

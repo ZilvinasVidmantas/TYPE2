@@ -2,12 +2,14 @@ import { type PersonProps } from './Person.js';
 import Employee from './Employee.js';
 import type { Job } from './types.js';
 import { formatLine } from './helpers.js';
+import { type IStrigifyable } from './types';
 
 export type BuisnessLicencePersonProps = PersonProps & {
   jobs?: Job[],
 };
 
-class BuisnessLicencePerson extends Employee {
+class BuisnessLicencePerson extends Employee implements IStrigifyable {
+
   private jobs: Job[];
 
   constructor({ jobs = [], ...personProps }: BuisnessLicencePersonProps) {
@@ -27,7 +29,7 @@ class BuisnessLicencePerson extends Employee {
     return sum;
   }
 
-  public toString(): string {
+  public override toString(): string {
     let result = this.getInitialsHeader() + formatLine('jobs:' + (this.jobs.length === 0 ? ' []' : ''), 1);
     if (this.jobs.length > 0) {
       result += this.jobs.map(({ id, title, pay, finished, payed, dateFinished }) =>
@@ -45,3 +47,4 @@ class BuisnessLicencePerson extends Employee {
 }
 
 export default BuisnessLicencePerson;
+

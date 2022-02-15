@@ -1,6 +1,7 @@
 import { type PersonProps } from './Person.js';
 import Employee from './Employee.js';
 import { formatLine } from './helpers.js';
+import { type IStrigifyable } from './types';
 
 const calcMonthWorkDays = (
   year: number = new Date().getFullYear(),
@@ -23,7 +24,7 @@ export type WorkPersonProps = PersonProps & {
   fullTimeEquivalent: number,
 };
 
-class WorkPerson extends Employee {
+class WorkPerson extends Employee implements IStrigifyable {
   private hourPay: number;
   private fullTimeEquivalent: number;
 
@@ -37,7 +38,7 @@ class WorkPerson extends Employee {
     return calcMonthWorkDays() * this.hourPay * this.fullTimeEquivalent * 8;
   }
 
-  public toString(): string {
+  public override toString(): string {
     return this.getInitialsHeader() +
       formatLine(`hour pay: ${this.hourPay}`, 1) +
       formatLine(`full time equivalent: ${this.fullTimeEquivalent}`, 1) + '\n';

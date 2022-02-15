@@ -128,3 +128,10 @@ console.groupEnd();
       hourPay: 20,
       fullTimeEquivalent: 1
 */
+
+/*
+  11:15
+  Kuom skiriasi Abstrakti klase nuo interfeiso.
+*/
+
+console.dir(employees[0].toString());

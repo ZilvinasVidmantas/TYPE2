@@ -80,4 +80,5 @@ console.group('7. Darbuotojų toString metodai:');
     employees.forEach(emp => console.log(emp.toString()));
 }
 console.groupEnd();
+console.dir(employees[0].toString());
 //# sourceMappingURL=main.js.map

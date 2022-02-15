@@ -6,3 +6,7 @@ export type Job = {
   payed?: boolean,
   dateFinished?: Date,
 }
+
+export interface IStrigifyable {
+  toString: () => string,
+}
