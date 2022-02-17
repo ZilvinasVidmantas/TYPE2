@@ -1,0 +1,10 @@
+$primary: #ff55ff;
+
+.card {
+  &__header {
+    color: $primary;
+  }
+  &__body {
+    background-color: $primary;
+  }
+}
