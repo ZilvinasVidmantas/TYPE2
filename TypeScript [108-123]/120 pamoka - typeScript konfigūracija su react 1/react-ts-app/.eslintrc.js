@@ -25,5 +25,15 @@ module.exports = {
     quotes: [2, 'single'],
     semi: [2, 'always'],
     "@typescript-eslint/semi": [2, 'always'],
+    // "@typescript-eslint/typedef": [2, {
+    //   arrayDestructuring: false,
+    //   arrowParameter: false,
+    //   memberVariableDeclaration: false,
+    //   objectDestructuring: false,
+    //   parameter: false,
+    //   propertyDeclaration: false,
+    //   variableDeclaration: true,
+    //   variableDeclarationIgnoreFunction: false,
+    // }]
   }
 }
