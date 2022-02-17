@@ -1,31 +1,29 @@
 module.exports = {
-  extends: [
-    'airbnb-typescript',
-    'airbnb/hooks',
-    'plugin:@typescript-eslint/recommended',
+  'env': {
+    'browser': true,
+    'es2021': true,
+    'node': true
+  },
+  'extends': [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
-  plugins: ['react', '@typescript-eslint'],
-  env: {
-    browser: true,
-    es6: true,
-    jest: true,
-  },
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+  'parser': '@typescript-eslint/parser',
+  'parserOptions': {
+    'ecmaFeatures': {
+      'jsx': true
     },
-    ecmaVersion: 2018,
-    sourceType: 'module',
-    project: './tsconfig.json',
+    'ecmaVersion': 'latest',
+    'sourceType': 'module'
   },
-  rules: {
-    'linebreak-style': 'off',
-    'import/extensions': [0],
-    'import/no-extraneous-dependencies': [0],
+  'plugins': [
+    'react',
+    '@typescript-eslint'
+  ],
+  'rules': {
+    quotes: [2, 'single'],
+    semi: [2, 'always'],
+    "@typescript-eslint/semi": [2, 'always'],
   }
-};
+}
