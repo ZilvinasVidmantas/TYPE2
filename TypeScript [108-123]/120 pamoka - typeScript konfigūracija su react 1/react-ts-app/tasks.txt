@@ -1,0 +1,19 @@
+Visos struktūros turi būti aprašytos TypeScript tipais!!!
+
+1. Sukurkite "services/api-service.ts" failą, ir sukurkite klasę "ApiService".
+
+2. Ši klasė turi naudoti "axios" biblioteką užklausoms daryti.
+  * išjunkite projektą ir parsiųskite axios biblioteką
+  * įsitraukite biblioteką
+  * panaudokite axios biblioteką sukurti 'instance'ą daryti užklausoms klasės konstruktoriuje. Reikšmę išsaugokite 'this'
+  * neprivaloma: Padarykite jog ApiService būtų Singleton'ApiService
+
+3. Šioje klasėje sukurkite metodą "getPosts", kuris pariųstų duomenis iš adreso: https://jsonplaceholder.typicode.com/posts
+  * panaudokite [2.] užduoties  užklausoms daryti sukurtą reikšme parsiųsti duomenims
+
+4. app.tsx faile panaudokite sukurtą service'ą, kad išsaugoti masyvą į komponento būseną(state);
+  * naudokite useState, kad laikyti duomenis
+  * naudokite useEffect, kad parsiųsti duomenis po pirmos komponento užkrovimo
+
+5. app.tsx faile, su kiekvienu masyvo [4.] objektu sukurtite kortelės komponentą 
+  * panaudokite state'e išsaugotą kolekciją, ir Array,prototype.map, kad sukurti koreteles (card.tsx) komponentus
