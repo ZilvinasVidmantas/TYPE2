@@ -15,6 +15,7 @@ const App = () => {
 
   return (
     <div>
+      {posts.map(({ id, title, body }) => <Card key={id} title={title} text={body} />)}
     </div>
   );
 };
