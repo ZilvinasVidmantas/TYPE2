@@ -24,6 +24,7 @@ module.exports = {
   'rules': {
     quotes: [2, 'single'],
     semi: [2, 'always'],
+    'quote-props': [2, 'as-needed'],
     "@typescript-eslint/semi": [2, 'always'],
     // "@typescript-eslint/typedef": [2, {
     //   arrayDestructuring: false,
