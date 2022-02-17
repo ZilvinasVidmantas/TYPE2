@@ -35,6 +35,7 @@ module.exports = {
       ignoreComments: true,
     }],
     'eol-last': [2, 'unix'],
+    'newline-before-return': [2],
     "@typescript-eslint/semi": [2, 'always'],
     // "@typescript-eslint/typedef": [2, {
     //   arrayDestructuring: false,
