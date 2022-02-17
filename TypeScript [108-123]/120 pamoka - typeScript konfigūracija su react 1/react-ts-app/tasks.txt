@@ -17,3 +17,4 @@ Visos struktūros turi būti aprašytos TypeScript tipais!!!
 
 5. app.tsx faile, su kiekvienu masyvo [4.] objektu sukurtite kortelės komponentą 
   * panaudokite state'e išsaugotą kolekciją, ir Array,prototype.map, kad sukurti koreteles (card.tsx) komponentus
+

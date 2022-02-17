@@ -1,11 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-
-type Post = {
-  userId: number,
-  id: number,
-  title: string,
-  body: string
-};
+import Post from '../types/post';
 
 const ApiService = new (class ApiService {
   private requester: AxiosInstance;
