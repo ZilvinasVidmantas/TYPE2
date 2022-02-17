@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-type Props = {
+type CardProps = {
   title: string;
   text: string;
 };
 
-const Card: React.FC<Props> = ({ title, text }) => {
+const Card: React.FC<CardProps> = ({ title, text }) => {
   return (
     <article style={{
       width: 200,

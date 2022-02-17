@@ -18,7 +18,7 @@ const ApiService = new (class ApiService {
     });
   }
 
-  getPosts = async (): Promise<Error | Post[]> => {
+  getPosts = async (): Promise<Post[]> => {
     try {
       const { data } = await this.requester.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
 

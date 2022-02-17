@@ -25,6 +25,16 @@ module.exports = {
     quotes: [2, 'single'],
     semi: [2, 'always'],
     'quote-props': [2, 'as-needed'],
+    'linebreak-style': [2, 'unix'],
+    'no-multiple-empty-lines': [2, {
+      max: 1,
+      maxEOF: 0,
+    }],
+    'no-trailing-spaces': [2, {
+      skipBlankLines: true,
+      ignoreComments: true,
+    }],
+    'eol-last': [2, 'unix'],
     "@typescript-eslint/semi": [2, 'always'],
     // "@typescript-eslint/typedef": [2, {
     //   arrayDestructuring: false,
