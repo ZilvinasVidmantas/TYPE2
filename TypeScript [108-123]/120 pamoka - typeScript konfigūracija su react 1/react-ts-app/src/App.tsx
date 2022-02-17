@@ -9,7 +9,7 @@ const App = () => {
   useEffect(() => {
     (async () => {
       const fetchedPosts = await ApiService.getPosts();
-      setPosts(posts);
+      setPosts(fetchedPosts);
     })();
   }, []);
 
