@@ -3,9 +3,9 @@ import { Box } from '@mui/material';
 import Card from './card';
 import Post from '../../types/post';
 import ApiService from '../../services/api-service';
-import { PaletteColorNames } from '../../types/theme-types';
+import { PaletteColorNames } from '../../theme/theme-types';
 
-const colorArr: PaletteColorNames[] = ['primary', 'secondary', 'error', 'info'];
+const colorArr: PaletteColorNames[] = ['twitter', 'info', 'facebook'];
 
 const PostsPage = () => {
   const [posts, setPosts] = useState<Post[]>([]);

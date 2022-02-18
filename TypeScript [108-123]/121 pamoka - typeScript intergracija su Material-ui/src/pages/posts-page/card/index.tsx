@@ -4,7 +4,7 @@ import {
   Divider,
   Box,
 } from '@mui/material';
-import { PaletteColorNames } from '../../../types/theme-types';
+import { PaletteColorNames } from '../../../theme/theme-types';
 import CardContainer from './card-container';
 
 type CardProps = {

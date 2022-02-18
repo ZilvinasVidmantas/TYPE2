@@ -2,7 +2,7 @@ import {
   Paper,
   styled,
 } from '@mui/material';
-import { PaletteColorNames } from '../../../types/theme-types';
+import { PaletteColorNames } from '../../../theme/theme-types';
 
 type AdditionalProps = { bgcolor?: PaletteColorNames };
 

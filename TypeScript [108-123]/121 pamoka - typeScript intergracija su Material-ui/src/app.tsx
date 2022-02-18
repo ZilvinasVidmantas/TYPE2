@@ -9,7 +9,7 @@ import BaseLayout from './layouts/base-layout';
 import HomePage from './pages/home-page';
 import PostsPage from './pages/posts-page';
 import UsersPage from './pages/users-page';
-import theme from './styles/theme';
+import theme from './theme';
 
 const App = () => {
 

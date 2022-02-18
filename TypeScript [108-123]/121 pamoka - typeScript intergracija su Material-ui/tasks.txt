@@ -1,3 +1,3 @@
 1. Sukurkite papildomą Twiter spalvą, pagal Twiter puslapio pagrindinę spalvą. Aprašykite ją temos tipe.
 2. Patobulinkite theme.mixins.toolbar, ka jo minimalus aukštis ant visų ekrano dydžių būtų 60px.
-3. Sukurkite footer mixiną, kurisme būtų nurodytas minimalus 60px aukštis. Atnaujinkite temos tipą.
+3. Sukurkite footer mixiną, kuriame būtų nurodytas minimalus 60px aukštis. Atnaujinkite temos tipą.
