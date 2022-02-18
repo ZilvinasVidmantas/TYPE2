@@ -1,0 +1,9 @@
+1. Aprašyti StyledNavLink tipą, faile 'src\layouts\base-layout\base-layout-navbar.tsx';
+  * tipas toks pats kaip 'react-router-dom' bibliotekos komponentas NavLink
+  * Iškelkite šį "StyledNavLink" komponentą į atskirą failą pervadindami jį į 'base-layout-navbar-link'
+  
+2. Analogiškai pagal post'ų parsiuntimą, parsiųskite varototojus ir juos atvaizduokite lentele: https://jsonplaceholder.typicode.com/users
+  * Sukurkite vartotojo tipą faile 'src\types\user.ts'
+  * Sukurkite metodą vartotojams parsiųsti 'src\services\api-service.ts'
+  * Parsiųskite vartotojos ir išsaugokite 'UsersPage' komponento būsenoje (state)
+  * Atvaizduokite visus parsiųstus vartotojus lentele.

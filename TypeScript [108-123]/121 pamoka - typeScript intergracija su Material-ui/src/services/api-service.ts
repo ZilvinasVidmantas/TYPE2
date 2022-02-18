@@ -25,11 +25,3 @@ const ApiService = new (class ApiService {
 })();
 
 export default ApiService;
-
-/* 
-  1. Sukurti navigacija (labai minimalią) naudojant react-router-dom biblioteką, kad galėtumėte nueiti į 2 puslapius:
-    * /posts - šiuo metu matomas puslapis app.tsx
-    * /users - puslapis kuriame reikės atvaizduoti visus user'ius
-    
-  2. Analogiškai pagal post'ų parsiuntimą, parsiųskite varototojus ir juos atvaizduokite lentele: https://jsonplaceholder.typicode.com/users
-*/
