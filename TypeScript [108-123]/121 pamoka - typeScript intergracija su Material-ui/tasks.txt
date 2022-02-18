@@ -1,5 +1,3 @@
-1. Analogiškai pagal post'ų parsiuntimą, parsiųskite varototojus ir juos atvaizduokite lentele: https://jsonplaceholder.typicode.com/users
-  * Sukurkite vartotojo tipą faile 'src\types\user.ts'
-  * Sukurkite metodą vartotojams parsiųsti 'src\services\api-service.ts'
-  * Parsiųskite vartotojos ir išsaugokite 'UsersPage' komponento būsenoje (state)
-  * Atvaizduokite visus parsiųstus vartotojus lentele.
+1. Sukurkite papildomą Twiter spalvą, pagal Twiter puslapio pagrindinę spalvą. Aprašykite ją temos tipe.
+2. Patobulinkite theme.mixins.toolbar, ka jo minimalus aukštis ant visų ekrano dydžių būtų 60px.
+3. Sukurkite footer mixiną, kurisme būtų nurodytas minimalus 60px aukštis. Atnaujinkite temos tipą.
