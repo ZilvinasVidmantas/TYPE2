@@ -3,7 +3,7 @@ import {
   styled,
   PaperProps,
 } from '@mui/material';
-import { PaletteColorNames } from '../types/theme-types';
+import { PaletteColorNames } from '../../../types/theme-types';
 
 type CardContainerProps = PaperProps & { bgcolor?: PaletteColorNames };
 
