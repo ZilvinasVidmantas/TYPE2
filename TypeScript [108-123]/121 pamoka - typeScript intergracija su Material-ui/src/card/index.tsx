@@ -1,13 +1,11 @@
 import * as React from 'react';
 import {
-  Paper,
   Typography,
   Divider,
   Box,
-  styled,
-  PaperProps,
 } from '@mui/material';
-import { PaletteColorNames} from './types/theme-types';
+import { PaletteColorNames } from '../types/theme-types';
+import CardContainer from './card-container';
 
 type CardProps = {
   title: string;
@@ -15,20 +13,9 @@ type CardProps = {
   bgcolor?: PaletteColorNames
 };
 
-type CardContainerProps = PaperProps & { bgcolor?: PaletteColorNames };
-
-type CardContainerType = React.FC<CardContainerProps>;
-
-const CardContainer = styled(Paper)<CardContainerProps>(({ theme, bgcolor }) => ({
-  width: 200,
-  borderRadius: 4,
-  display: 'inline-block',
-  bgcolor: bgcolor && theme.palette[bgcolor].main,
-})) as CardContainerType;
-
 const Card: React.FC<CardProps> = ({ title, text, bgcolor }) => {
   return (
-    <CardContainer bgcolor={bgcolor}>
+    <CardContainer bgcolor={bgcolor} elevation={4}>
       <Typography sx={{ p: '1rem', fontSize: '1.4rem', textTransform: 'capitalize' }} >{title}</Typography>
       <Divider />
       <Box sx={{ p: '1rem' }}>{text}</Box>
