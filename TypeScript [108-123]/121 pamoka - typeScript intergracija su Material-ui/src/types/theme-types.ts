@@ -1,6 +1,4 @@
+import { Palette, PaletteColor } from '@mui/material';
+import { SubTypeProps } from './ts-helpers';
 
-// type PaletteColors = keyof {
-//   [Key in keyof Palette]: Palette[Key] extends SimplePaletteColorOptions ? Key : never
-// };
-
-export type PaletteColorNames = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
+export type PaletteColorNames = SubTypeProps<Palette, PaletteColor>;

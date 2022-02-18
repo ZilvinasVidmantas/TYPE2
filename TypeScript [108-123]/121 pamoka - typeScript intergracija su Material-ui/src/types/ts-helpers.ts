@@ -1,0 +1,8 @@
+
+export type Focus<Base, PropTypes> = {
+  [Key in keyof Base]: Base[Key] extends PropTypes ? Key : never
+};
+
+export type SubTypeProps<Base, PropTypes> = Focus<Base, PropTypes>[keyof Base];
+
+export type SubType<Base, PropTypes> = Pick<Base, SubTypeProps<Base, PropTypes>>;
