@@ -1,5 +1,2 @@
-1. Peržiūrėti redux setup sukurtus failus: 
-  * src/index.tsx
-  * src/app/*
-// 10 + 10 -> 9:25
-
+peržiūrėti kodą, ir pasiruošti užduoti klausimus, kur kylą neaiškumai:
+  * https://github.com/ZilvinasVidmantas/TYPE2/commit/4c86246f554f66516c0a44af1cf7aafe72195f46
