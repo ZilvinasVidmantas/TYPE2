@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
 export interface User {
   name: string,
@@ -14,10 +15,16 @@ export interface AuthState {
 
 const initialState: AuthState = {
   loggedIn: false,
+  // user: {
+  //   name: 'Penediktas',
+  //   surname: 'Tušinis',
+  //   role: 'USER',
+  //   email: 'pentuska@gmail.com',
+  // }
   user: null
 };
 
-export const counterSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -33,6 +40,8 @@ export const counterSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { login, logout } = counterSlice.actions;
+export const { login, logout } = authSlice.actions;
 
-export default counterSlice.reducer;
+export const selectUser = (state: RootState): AuthState['user'] => state.auth.user;
+
+export default authSlice.reducer;

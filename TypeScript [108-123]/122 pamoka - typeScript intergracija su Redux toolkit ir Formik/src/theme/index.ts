@@ -22,6 +22,7 @@ const theme = createTheme(baseTheme, {
   },
   mixins: {
     toolbar: {
+      height: 60,
       minHeight: 60,
       [baseTheme.breakpoints.up('sm')]: {
         minHeight: 60

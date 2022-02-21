@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const BaseLayoutNavbarLink = styled(NavLink)(({ theme }) => ({
   color: theme.palette.grey[300],
   textDecoration: 'none',
-  padding: theme.spacing(2),
+  padding: theme.spacing(1),
   ':hover': {
     textDecoration: 'underline',
   },
