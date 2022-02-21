@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEventHandler } from 'react';
 import {
   TextField,
   Grid,
@@ -9,19 +9,39 @@ import {
   Button,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import AuthService from '../../services/auth-service';
+import { useAppDispatch } from '../../app/hooks';
+import { login } from '../../app/features/auth-slice';
 
 const formControlMixin = {
   height: 56,
 };
 
 const LoginPage = () => {
+  const dispatch = useAppDispatch();
+
+  const handleSubmit: FormEventHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await AuthService.login({
+        email: 'admin@gmail.com',
+        password: 'Vilnius123'
+      });
+      const reduxAction = login(user);
+      dispatch(reduxAction);
+    }
+    catch (err) {
+      console.log(err.message ? err.message : err);
+    }
+  };
+
   return (
     <Container
       maxWidth="xs"
       component="main"
       sx={{ pt: '7vh' }}
     >
-      <Box component="form">
+      <Box component="form" onSubmit={handleSubmit}>
         <Box sx={{
           mb: 3,
           display: 'flex',
@@ -60,7 +80,9 @@ const LoginPage = () => {
           fullWidth
           variant="contained"
           size="large"
-          sx={formControlMixin}>
+          sx={formControlMixin}
+          type="submit"
+        >
           Login
         </Button>
       </Box>

@@ -44,7 +44,6 @@ const mockServerLogin = (curdetials: Crudentials): Promise<User> =>
   });
 
 const AuthService = new (class AuthService {
-
   login = async (curdetials: Crudentials): Promise<User> => {
     try {
       return await mockServerLogin(curdetials);
@@ -53,7 +52,6 @@ const AuthService = new (class AuthService {
       console.log(err.message ? err.message : err);
     }
   };
-
 })();
 
 export default AuthService;
