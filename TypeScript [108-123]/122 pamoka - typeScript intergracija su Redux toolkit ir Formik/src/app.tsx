@@ -9,6 +9,7 @@ import BaseLayout from './layouts/base-layout';
 import HomePage from './pages/home-page';
 import PostsPage from './pages/posts-page';
 import UsersPage from './pages/users-page';
+import LoginPage from './pages/login-page';
 import theme from './theme';
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
               <Route index element={<HomePage />} />
               <Route path="posts" element={<PostsPage />} />
               <Route path="users" element={<UsersPage />} />
+              <Route path="login" element={<LoginPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
