@@ -34,6 +34,8 @@ module.exports = {
       skipBlankLines: true,
       ignoreComments: true,
     }],
+    'no-throw-literal': [2],
+    'prefer-promise-reject-errors': [2],
     'eol-last': [2, 'unix'],
     'newline-before-return': [2],
     "@typescript-eslint/semi": [2, 'always'],

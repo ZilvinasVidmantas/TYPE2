@@ -1,4 +1,4 @@
-type User = {
+type FullUser = {
   id: number,
   name: string,
   username: string,
@@ -21,4 +21,4 @@ type User = {
     bs: string,
   }
 };
-export default User;
+export default FullUser;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import User from '../../types/user';
+import FullUser from '../../types/full-user';
 import ApiService from '../../services/api-service';
 import { Container } from '@mui/material';
 import Table from '@mui/material/Table';
@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 const UsersPage = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<FullUser[]>([]);
   useEffect(() => {
     (async () => {
       const fetchedUsers = await ApiService.getUsers();

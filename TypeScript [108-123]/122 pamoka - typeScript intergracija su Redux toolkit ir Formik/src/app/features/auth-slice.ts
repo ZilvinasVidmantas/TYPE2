@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-
-export interface User {
-  name: string,
-  surname: string,
-  role: 'ADMIN' | 'USER',
-  email: string,
-}
+import User from '../../types/user';
 
 export interface AuthState {
   loggedIn: boolean,

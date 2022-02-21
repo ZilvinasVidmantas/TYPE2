@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import Post from '../types/post';
-import User from '../types/user';
+import FullUser from '../types/full-user';
 
 const ApiService = new (class ApiService {
   private requester: AxiosInstance;
@@ -24,9 +24,9 @@ const ApiService = new (class ApiService {
     }
   };
 
-  getUsers = async (): Promise<User[]> => {
+  getUsers = async (): Promise<FullUser[]> => {
     try {
-      const { data } = await this.requester.get<User[]>('https://jsonplaceholder.typicode.com/users');
+      const { data } = await this.requester.get<FullUser[]>('https://jsonplaceholder.typicode.com/users');
 
       return data;
 
