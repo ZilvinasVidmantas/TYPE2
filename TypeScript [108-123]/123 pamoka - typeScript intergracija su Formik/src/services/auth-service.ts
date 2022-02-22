@@ -32,24 +32,31 @@ const mockServerLogin = (curdetials: Crudentials): Promise<User> =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       const foundUser: DbUser | undefined = dbUsers.find(x => x.email === curdetials.email);
-
-      if (!foundUser)
+      if (!foundUser) {
         reject(new Error('Vartotojas su tokiu paštu nerastas'));
-      if (foundUser.password !== curdetials.password)
+
+        return;
+      }
+
+      if (foundUser.password !== curdetials.password) {
         reject(new Error('Slaptažodžiai nesutampa'));
 
+        return;
+      }
       const { password, ...user } = foundUser;
       resolve(user);
     }, 1000);
   });
 
 const AuthService = new (class AuthService {
-  login = async (curdetials: Crudentials): Promise<User> => {
+  login = async (curdetials: Crudentials): Promise<User | string> => {
     try {
-      return await mockServerLogin(curdetials);
+      const result = await mockServerLogin(curdetials);
+
+      return result;
     }
     catch (err) {
-      console.log(err.message ? err.message : err);
+      return err.message ? err.message : err;
     }
   };
 })();

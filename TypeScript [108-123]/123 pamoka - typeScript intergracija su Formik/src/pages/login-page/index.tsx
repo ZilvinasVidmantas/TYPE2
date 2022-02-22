@@ -1,5 +1,5 @@
-import React from 'react';
-import { useFormik } from 'formik';
+import React, { useState, FormEventHandler } from 'react';
+import { FormikHelpers, useFormik } from 'formik';
 import {
   TextField,
   Grid,
@@ -8,13 +8,22 @@ import {
   Avatar,
   Typography,
   Button,
-  TextFieldProps,
+  CircularProgress,
+  Alert,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import AuthService from '../../services/auth-service';
 import { useAppDispatch } from '../../app/hooks';
 import { login } from '../../app/features/auth-slice';
 import * as yup from 'yup';
+
+interface InitialValues {
+  email: string,
+  password: string,
+}
+
+type FormikAsyncOnSubmit =
+  (data: InitialValues, formikBag: FormikHelpers<InitialValues>) => Promise<void>;
 
 const validationSchema = yup.object({
   email: yup
@@ -31,11 +40,6 @@ const formControlMixin = {
   height: 56,
 };
 
-interface InitialValues {
-  email: string,
-  password: string,
-}
-
 const initialValues: InitialValues = {
   email: '',
   password: '',
@@ -43,32 +47,20 @@ const initialValues: InitialValues = {
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
+  const [serverError, setServerError] = useState<null | string>(null);
 
-  const onSubmit = async () => {
-    try {
-      const user = await AuthService.login({
-        email: 'admin@gmail.com',
-        password: 'Vilnius123'
-      });
-      const reduxAction = login(user);
+  const deleteServerError = () => setServerError(null);
+
+  const onSubmit: FormikAsyncOnSubmit = async (values) => {
+    deleteServerError();
+    const fetchedUser = await AuthService.login(values);
+    if (typeof fetchedUser === 'string') {
+      setServerError(fetchedUser);
+    } else {
+      const reduxAction = login(fetchedUser);
       dispatch(reduxAction);
     }
-    catch (err) {
-      console.log(err.message ? err.message : err);
-    }
   };
-
-  /* 10:20
-    values
-      * Kaip nustatomos pradinės 'values' reikšmės?
-      * Kaip keičiamos 'values' reikšmės?
-    errors
-      * Kokia yra errors struktūra?
-      * Kaip nustatomos klaidos?
-    touched
-      * Kokia yra touched struktūra / reikšmės?
-      * Kokia dažniausiai naudojama praktika nustatyti touched objekto reikšmes?
-  */
 
   const {
     values, touched, errors, dirty, isValid, isSubmitting,
@@ -79,81 +71,84 @@ const LoginPage = () => {
     onSubmit,
   });
 
+  const handleAsyncSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    if (isSubmitting) event.preventDefault();
+    else handleSubmit(event);
+  };
+
   return (
-    <>
-      <Container
-        maxWidth="xs"
-        component="main"
-        sx={{ pt: '7vh' }}
-      >
-        <Box component="form" onSubmit={handleSubmit}>
-          <Box sx={{
-            mb: 3,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-          >
-            <Avatar>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">Login</Typography>
-          </Box>
-          <Grid container spacing={4}>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                label="El. paštas"
-                fullWidth
-                autoComplete="email"
-                InputProps={{ sx: formControlMixin }}
-                // Formik props
-                name="email"
-                value={values.email}
-                error={touched.email && Boolean(errors.email)}
-                helperText={touched.email && errors.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </Grid>
-            <Grid item xs={12} sx={{ mb: 4 }}>
-              <TextField
-                variant="outlined"
-                label="Slaptažodis"
-                type="password"
-                fullWidth
-                InputProps={{ sx: formControlMixin }}
-                // Formik props
-                name="password"
-                value={values.password}
-                error={touched.password && Boolean(errors.password)}
-                helperText={touched.password && errors.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </Grid>
-          </Grid>
-          <Button
-            fullWidth
-            variant="contained"
-            size="large"
-            sx={formControlMixin}
-            type="submit"
-          >
-            Login
-          </Button>
+    <Container
+      maxWidth="xs"
+      component="main"
+      sx={{ pt: '7vh' }}
+    >
+      <Box component="form" onSubmit={handleAsyncSubmit}>
+        <Box sx={{
+          mb: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+        >
+          <Avatar>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">Login</Typography>
         </Box>
-      </Container>
-      <Box component="pre" sx={{ position: 'fixed', top: 200, left: 0, pl: 20 }}>
-        {
-          JSON.stringify(
-            { values, touched, errors, dirty, isValid, isSubmitting },
-            null,
-            2
-          )
-        }
+        {serverError && (
+          <Alert onClose={deleteServerError} color="error" sx={{ mb: 3 }}>
+            {serverError}
+          </Alert>
+        )}
+        <Grid container spacing={4}>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              label="El. paštas"
+              fullWidth
+              autoComplete="email"
+              InputProps={{ sx: formControlMixin }}
+              // Formik props
+              name="email"
+              value={values.email}
+              error={touched.email && Boolean(errors.email)}
+              helperText={touched.email && errors.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={isSubmitting}
+            />
+          </Grid>
+          <Grid item xs={12} sx={{ mb: 4 }}>
+            <TextField
+              variant="outlined"
+              label="Slaptažodis"
+              type="password"
+              fullWidth
+              InputProps={{ sx: formControlMixin }}
+              // Formik props
+              name="password"
+              value={values.password}
+              error={touched.password && Boolean(errors.password)}
+              helperText={touched.password && errors.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={isSubmitting}
+            />
+          </Grid>
+        </Grid>
+        <Button
+          fullWidth
+          variant="contained"
+          size="large"
+          sx={formControlMixin}
+          type="submit"
+          disabled={!isValid || !dirty || isSubmitting}
+        >
+          {isSubmitting ? <CircularProgress color="inherit" /> : 'Login'}
+        </Button>
       </Box>
-    </>
+    </Container>
+
   );
 };
 
