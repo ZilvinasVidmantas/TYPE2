@@ -52,6 +52,7 @@ const LoginPage = () => {
   const deleteServerError = () => setServerError(null);
 
   const onSubmit: FormikAsyncOnSubmit = async (values) => {
+    console.log('onSubmit');
     deleteServerError();
     const fetchedUser = await AuthService.login(values);
     if (typeof fetchedUser === 'string') {
@@ -72,6 +73,7 @@ const LoginPage = () => {
   });
 
   const handleAsyncSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    console.log(event);
     if (isSubmitting) event.preventDefault();
     else handleSubmit(event);
   };
