@@ -8,6 +8,7 @@ import {
   Avatar,
   Typography,
   Button,
+  TextFieldProps,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import AuthService from '../../services/auth-service';
@@ -23,7 +24,7 @@ const validationSchema = yup.object({
   password: yup
     .string()
     .required('Password is required')
-    .min(8, 'Password should be of minimum 8 characters length'),
+    .min(8, 'Min 8 chars'),
 });
 
 const formControlMixin = {
@@ -57,10 +58,16 @@ const LoginPage = () => {
     }
   };
 
-  /*
+  /* 10:20
     values
       * Kaip nustatomos pradinės 'values' reikšmės?
       * Kaip keičiamos 'values' reikšmės?
+    errors
+      * Kokia yra errors struktūra?
+      * Kaip nustatomos klaidos?
+    touched
+      * Kokia yra touched struktūra / reikšmės?
+      * Kokia dažniausiai naudojama praktika nustatyti touched objekto reikšmes?
   */
 
   const {
@@ -102,10 +109,11 @@ const LoginPage = () => {
                 InputProps={{ sx: formControlMixin }}
                 // Formik props
                 name="email"
-                onChange={handleChange}
-                error={Boolean(errors.email)}
-                helperText={errors.email}
                 value={values.email}
+                error={touched.email && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Grid>
             <Grid item xs={12} sx={{ mb: 4 }}>
@@ -118,7 +126,10 @@ const LoginPage = () => {
                 // Formik props
                 name="password"
                 value={values.password}
+                error={touched.password && Boolean(errors.password)}
+                helperText={touched.password && errors.password}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Grid>
           </Grid>
