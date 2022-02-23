@@ -1,4 +1,4 @@
-import { PageName } from './page-route-map';
+import { PageName, ConcretePageName, DynamicPageName } from './page-route-map';
 import {
   PUBLIC_ONLY,
   AUTH,
@@ -10,18 +10,36 @@ import {
 export type RoutePageData = {
   index?: true,
   path?: string,
-  pageName: PageName,
   auth?: AuthType
 };
-export type RouteData = Omit<Partial<RoutePageData & RouteLayoutData>, 'pageName'> & {
-  pageName: PageName,
+
+export type ConcreteRoutePageData = RoutePageData & {
+  pageName: ConcretePageName,
 };
+
+export type DynamicRoutePageData = RoutePageData & {
+  pageName: DynamicPageName,
+};
+
+export type RouteData = RouteLayoutData | ConcreteRoutePageData | DynamicRoutePageData;
 
 export type RouteLayoutData = {
   path: string,
   pageName: PageName,
   childRoutes: Array<RouteData>
 };
+
+const dynamicSymbols = ['*', ':'];
+
+export const isConcretePath = (path?: RoutePageData['path']): boolean => {
+  if (path) {
+    return dynamicSymbols.every((dynamicSymbol) => !path.includes(dynamicSymbol));
+  }
+
+  return false;
+};
+
+export const isIndexPage = (index: RoutePageData['index']): boolean => Boolean(index);
 
 const routeStructure: Array<RouteData> = [
   {

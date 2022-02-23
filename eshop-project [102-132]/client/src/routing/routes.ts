@@ -1,59 +1,55 @@
-import routeStructure from './route-structure';
-import { RouteData } from './route-structure';
-import { PageName } from './page-route-map';
+import routeStructure, {
+  RouteData,
+  RoutePageData,
+  RouteLayoutData,
+  ConcreteRoutePageData,
+  isConcretePath,
+  isIndexPage
+} from './route-structure';
+import { ConcretePageName, PageName } from './page-route-map';
 
-type Paths = {
+type PartialConcretePagePathMap = {
+  [key in ConcretePageName]?: string
+};
+
+type PartialPagePathMap = {
   [key in PageName]?: string
 };
 
-type PagePathsNameObj = {
-  [PathName in keyof Paths]-?: PathName extends `${infer Name}Page` ? PathName : never;
-};
+const mapRoutePathsRecursive = (
+  paths: PartialConcretePagePathMap | PartialPagePathMap,
+  routeData: RouteData
+): PartialConcretePagePathMap => {
 
-type PagePathsNames = PagePathsNameObj[keyof Paths];
-
-type PagePaths = Required<Pick<Paths, PagePathsNames>>;
-
-const dynamicSymbols = ['*', ':'];
-
-const pathValid = (path?: string, index?: true) => {
-  if (path) {
-    const noDynamicSymbols = dynamicSymbols.every((dynamicSymbol) => !path.includes(dynamicSymbol));
-
-    return noDynamicSymbols;
-  }
-
-  return index;
-};
-
-const mapRoutePathsRecursive = (paths: Paths, {
-  path,
-  index,
-  pageName,
-  childRoutes,
-}: RouteData): Paths => {
-  if (childRoutes) {
-    const childPaths = childRoutes.reduce(mapRoutePathsRecursive, {});
+  if ((routeData as RouteLayoutData).childRoutes) {
+    // Papildomi visi keliai pagal LayoutRouteData path savybę
+    const { childRoutes, path } = routeData as RouteLayoutData;
+    const childPaths = childRoutes.reduce<PartialPagePathMap>(mapRoutePathsRecursive, {});
     const childPathObjectArray = Object.entries(childPaths) as [PageName, string][];
+
     childPathObjectArray.forEach(([childPageName, childPathValue]) => {
-      if (path) {
-        const finalParentPath = path[path.length - 1] !== '/' ? `${path}/` : path;
-        const finalChildPath = childPathValue ?? '/';
-        const finalPath = finalParentPath + finalChildPath;
-        childPaths[childPageName] = finalPath.replace('//', '/');
-      }
+      const finalParentPath = path[path.length - 1] !== '/' ? `${path}/` : path;
+      const finalChildPath = childPathValue ?? '/';
+      const finalPath = finalParentPath + finalChildPath;
+
+      childPaths[childPageName] = finalPath.replace('//', '/');
     });
 
     return { ...paths, ...childPaths };
   }
+  // Į galutinį objektą įdedamas pilnai suformuotas ConcretePageName tipo elementas
+
+  const { path, index } = routeData as RoutePageData;
+
   const newPaths = { ...paths };
-  if (pathValid(path, index)) {
+  if (isConcretePath(path) || isIndexPage(index)) {
+    const { pageName } = routeData as ConcreteRoutePageData;
     newPaths[pageName] = path;
   }
 
   return newPaths;
 };
 
-const routes = routeStructure.reduce(mapRoutePathsRecursive, {}) as PagePaths;
+const routes = routeStructure.reduce<PartialConcretePagePathMap>(mapRoutePathsRecursive, {}) as Required<PartialConcretePagePathMap>;
 
 export default routes;

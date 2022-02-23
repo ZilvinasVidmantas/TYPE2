@@ -22,14 +22,11 @@ import DashboardLayout from '@layouts/dashboard-layout';
 import NavbarLayout from '@layouts/navbar-layout';
 import ViewportLayout from '@layouts/viewport-layout';
 
-export type PageName = 'ViewportLayout'
-  | 'NavbarLayout'
-  | 'DashboardLayout'
-  | 'HomePage'
+export type LayoutPageName = 'ViewportLayout' | 'NavbarLayout' | 'DashboardLayout';
+export type DynamicPageName = 'ErrorPage' | 'ProductPage';
+export type ConcretePageName = 'HomePage'
   | 'CartPage'
   | 'CatalogPage'
-  | 'ProductPage'
-  | 'ErrorPage'
   | 'LoginPage'
   | 'RegisterPage'
   | 'ProfilePage'
@@ -38,6 +35,8 @@ export type PageName = 'ViewportLayout'
   | 'StatisticsPage'
   | 'ProductPanelPage'
   | 'UserPanelPage';
+
+export type PageName = LayoutPageName | ConcretePageName | DynamicPageName;
 
 export type PageRouteMap = {
   [key in PageName]: React.FC
