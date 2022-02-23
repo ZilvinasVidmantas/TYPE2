@@ -4,6 +4,7 @@ import {
   Container,
   Box,
   styled,
+  AppBarProps,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { authSelector } from '../../../store/auth';
@@ -11,11 +12,15 @@ import LinkButton from './navbar-link-button';
 import AuthMenu from './navbar-auth-menu';
 import routes from '../../../routing/routes';
 
+export type NavbarProps = AppBarProps & {
+  drawerIcon: React.ReactElement
+};
+
 const StyledContainer = styled(Container)(({ theme }) => ({
   height: theme.mixins.navbar.height,
 }));
 
-const Navbar = ({ drawerIcon, ...props }) => {
+const Navbar: React.FC<NavbarProps> = ({ drawerIcon, ...props }) => {
   const auth = useSelector(authSelector);
 
   return (
