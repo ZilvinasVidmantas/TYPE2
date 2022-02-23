@@ -3,7 +3,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material';
 import store from './store';
-import theme from './styles/theme';
+import theme from './theme';
 import PageRouter from './routing/page-router';
 
 const App = () => (

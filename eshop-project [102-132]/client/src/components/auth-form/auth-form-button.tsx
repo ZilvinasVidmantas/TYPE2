@@ -3,7 +3,7 @@ import {
   Button, ButtonProps,
 } from '@mui/material';
 
-type FormButtonProps = Omit<ButtonProps, 'type' | 'fullWidth' | 'variant' | 'color'>;
+export type FormButtonProps = Omit<ButtonProps, 'type' | 'fullWidth' | 'variant' | 'color'>;
 
 const FormButton: React.FC<FormButtonProps> = ({ children, sx, ...rest }) => (
   <Button

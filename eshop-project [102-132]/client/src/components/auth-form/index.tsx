@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
 import Button from './auth-form-button';
 
-type AuthFormProps = {
+export type AuthFormProps = {
   title: string,
   linkTo: string,
   linkTitle: string,
