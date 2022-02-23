@@ -21,7 +21,7 @@ import DashboardLayout from '@layouts/dashboard-layout';
 import NavbarLayout from '@layouts/navbar-layout';
 import ViewportLayout from '@layouts/viewport-layout';
 
-export default {
+const pageRouteMap = {
   ViewportLayout,
   NavbarLayout,
   DashboardLayout,
@@ -39,3 +39,5 @@ export default {
   ProductPanelPage,
   UserPanelPage,
 };
+
+export default pageRouteMap;

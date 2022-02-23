@@ -7,6 +7,7 @@ import {
   Avatar,
   Box,
   Typography,
+  IconButtonProps,
 } from '@mui/material';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import PersonIcon from '@mui/icons-material/Person';
@@ -17,10 +18,11 @@ import AuthMenuLink from './navbar-auth-menu-link';
 import routes from '../../../routing/routes';
 
 const NavbarAuthMenu = () => {
-  const anchorRef = useRef();
+  const anchorRef = useRef(null);
   const user = useSelector(userSelector);
   const [menuOpen, setMenuOpen] = useState(false);
-  const handleOpenMenu = () => setMenuOpen(true);
+
+  const handleOpenMenu: IconButtonProps['onClick'] = () => setMenuOpen(true);
   const handleCloseMenu = () => setMenuOpen(false);
   const handleLogout = () => {
     handleCloseMenu();

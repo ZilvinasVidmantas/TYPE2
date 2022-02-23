@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { loggedInSelector } from '../store/auth';
 import routeStructure from './route-structure';
 import protectPageEnum from './auth-protectors/protect-page-enum';
-import pageRouteEnum from './page-route-enum';
+import pageRouteMap from './page-route-map';
 
 const mapRoutesRecursive = ({
   path,
@@ -13,7 +13,7 @@ const mapRoutesRecursive = ({
   childRoutes,
   auth,
 }) => {
-  const Page = pageRouteEnum[pageName];
+  const Page = pageRouteMap[pageName];
   if (childRoutes) {
     // Route is LayoutComponent
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, styled } from '@mui/material';
+import { Button, ButtonProps, styled } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 const StyledNavLink = styled(NavLink)(({ theme }) => ({
@@ -10,7 +10,13 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
   },
 }));
 
-const NavbarLinkButton = ({ title, link, onClick }) => {
+export type NavbarLinkButtonProps = {
+  title: string,
+  link: string,
+  onClick?: ButtonProps['onClick']
+};
+
+const NavbarLinkButton: React.FC<NavbarLinkButtonProps> = ({ title, link, onClick }) => {
   if (link) {
     return (
       <StyledNavLink to={link}>

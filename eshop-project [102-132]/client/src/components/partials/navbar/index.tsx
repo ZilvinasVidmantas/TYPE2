@@ -13,7 +13,7 @@ import AuthMenu from './navbar-auth-menu';
 import routes from '../../../routing/routes';
 
 export type NavbarProps = AppBarProps & {
-  drawerIcon: React.ReactElement
+  drawerIcon?: React.ReactElement
 };
 
 const StyledContainer = styled(Container)(({ theme }) => ({
