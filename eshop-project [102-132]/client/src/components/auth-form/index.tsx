@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEventHandler } from 'react';
 import {
   Container,
   Box,
@@ -10,14 +10,23 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
 import Button from './auth-form-button';
 
-const AuthForm = ({
+type AuthFormProps = {
+  title: string,
+  linkTo: string,
+  linkTitle: string,
+  loading: boolean,
+  isValid: boolean,
+  onSubmit: FormEventHandler<HTMLFormElement>,
+};
+
+const AuthForm: React.FC<AuthFormProps> = ({
   children,
   title,
   linkTo,
   linkTitle,
   loading,
-  onSubmit,
   isValid,
+  onSubmit,
 }) => (
   <Container
     maxWidth="xs"
@@ -42,9 +51,9 @@ const AuthForm = ({
       {children}
       <Button disabled={!isValid}>
         {
-        loading
-          ? <CircularProgress color="inherit" />
-          : title
+          loading
+            ? <CircularProgress color="inherit" />
+            : title
         }
       </Button>
       <Link to={linkTo}>
