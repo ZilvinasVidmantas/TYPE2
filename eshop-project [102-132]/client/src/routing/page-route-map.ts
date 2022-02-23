@@ -1,3 +1,4 @@
+import React from 'react';
 // no-auth
 import HomePage from '@pages/home-page';
 import CartPage from '@pages/cart-page';
@@ -21,7 +22,28 @@ import DashboardLayout from '@layouts/dashboard-layout';
 import NavbarLayout from '@layouts/navbar-layout';
 import ViewportLayout from '@layouts/viewport-layout';
 
-const pageRouteMap = {
+export type PageName = 'ViewportLayout'
+  | 'NavbarLayout'
+  | 'DashboardLayout'
+  | 'HomePage'
+  | 'CartPage'
+  | 'CatalogPage'
+  | 'ProductPage'
+  | 'ErrorPage'
+  | 'LoginPage'
+  | 'RegisterPage'
+  | 'ProfilePage'
+  | 'UserInfoPage'
+  | 'OrdersPage'
+  | 'StatisticsPage'
+  | 'ProductPanelPage'
+  | 'UserPanelPage';
+
+export type PageRouteMap = {
+  [key in PageName]: React.FC
+};
+
+const pageRouteMap: PageRouteMap = {
   ViewportLayout,
   NavbarLayout,
   DashboardLayout,

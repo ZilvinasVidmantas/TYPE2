@@ -1,11 +1,29 @@
+import { PageName } from './page-route-map';
 import {
   PUBLIC_ONLY,
   AUTH,
   USER,
   ADMIN,
+  AuthType,
 } from './auth-types';
 
-const routeStructure = [
+export type RoutePageData = {
+  index?: true,
+  path?: string,
+  pageName: PageName,
+  auth?: AuthType
+};
+export type RouteData = Omit<Partial<RoutePageData & RouteLayoutData>, 'pageName'> & {
+  pageName: PageName,
+};
+
+export type RouteLayoutData = {
+  path: string,
+  pageName: PageName,
+  childRoutes: Array<RouteData>
+};
+
+const routeStructure: Array<RouteData> = [
   {
     path: '/',
     pageName: 'NavbarLayout',

@@ -3,9 +3,7 @@ export const AUTH = 'auth';
 export const USER = 'user';
 export const ADMIN = 'admin';
 
-export default {
-  PUBLIC_ONLY,
-  AUTH,
-  USER,
-  ADMIN,
-};
+export type AuthType = typeof PUBLIC_ONLY
+  | typeof AUTH
+  | typeof USER
+  | typeof ADMIN;
