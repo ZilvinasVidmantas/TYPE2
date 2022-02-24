@@ -6,12 +6,17 @@ import {
 } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useFormik } from 'formik';
+import { FormikHelpers, useFormik } from 'formik';
 import * as yup from 'yup';
 import routes from '@routing/routes';
 import { login } from '@store/auth';
 import AuthForm from '@components/auth-form';
-import AuthService from '@services/auth-service';
+import AuthService from '../../services/auth-service';
+import Crudentials from '../../types/crudentials';
+
+type InitialValues = Crudentials;
+
+type FormikOnSubmit = (values: InitialValues, formikHelpers: FormikHelpers<InitialValues>) => void | Promise<void>;
 
 const validationSchema = yup.object({
   email: yup.string()
@@ -21,7 +26,7 @@ const validationSchema = yup.object({
     .required('Is required'),
 });
 
-const initialValues = {
+const initialValues: InitialValues = {
   email: '',
   password: '',
 };
@@ -29,25 +34,26 @@ const initialValues = {
 const LoginPage = () => {
   const [urlSearchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = async ({ email, password }) => {
+  const onSubmit: FormikOnSubmit = async ({ email, password }) => {
     setError(null);
-    try {
-      const user = await AuthService.login({
-        email,
-        password,
-      });
+    const fetchedUser = await AuthService.login({
+      email,
+      password,
+    });
+    if (typeof fetchedUser === 'string') {
+      setError(fetchedUser);
 
-      const redirectTo = urlSearchParams.get('redirectTo');
-      const loginSuccessAction = login({
-        user,
-        redirectTo,
-      });
-      dispatch(loginSuccessAction);
-    } catch (err) {
-      setError(err.message);
+      return;
     }
+
+    const redirectTo = urlSearchParams.get('redirectTo');
+    const loginSuccessAction = login({
+      user: fetchedUser,
+      redirectTo,
+    });
+    dispatch(loginSuccessAction);
   };
 
   const {
