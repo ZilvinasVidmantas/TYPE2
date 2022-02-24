@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const UserInfoPage = () => (
+const UserInfoPage: React.FC = () => (
   <Typography>UserInfoPage</Typography>
 );
 
