@@ -1,44 +1,63 @@
-/* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { CaseReducer, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import User from '../types/user';
+import { State } from './index';
 
-const initialState = {
+type AuthState = {
+  loggedIn: boolean | null,
+  user: User | null,
+  redirectTo: string | null
+};
+
+const initialState: AuthState = {
   loggedIn: null,
   user: null,
   redirectTo: null,
+};
+
+type LoginReducer = CaseReducer<AuthState, PayloadAction<{ user: User, redirectTo: string }>>;
+const loginReducer: LoginReducer = (state, { payload }) => {
+  state.loggedIn = true;
+  state.user = payload.user;
+  state.redirectTo = payload.redirectTo;
+};
+
+type AuthFailedReducer = CaseReducer<AuthState>;
+const authFailedReducer: AuthFailedReducer = (state) => {
+  state.loggedIn = false;
+};
+
+type LogoutReducer = CaseReducer<AuthState>;
+const logoutReducer: LogoutReducer = (state) => {
+  state.loggedIn = false;
+  state.user = null;
+  state.redirectTo = null;
+};
+
+type UpdateUserReducer = CaseReducer<AuthState, PayloadAction<{ user: User }>>;
+const updateUserReducer: UpdateUserReducer = (state, { payload }) => {
+  state.user = payload.user;
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    authFailed(state) {
-      state.loggedIn = false;
-    },
-    login(state, { payload }) {
-      state.loggedIn = true;
-      state.user = payload.user;
-      state.redirectTo = payload.redirectTo;
-    },
-    logout(state) {
-      state.loggedIn = false;
-      state.user = null;
-      state.redirectTo = null;
-    },
-    updateUser(state, { payload }) {
-      state.user = payload.user;
-    },
+    authFailedReducer,
+    loginReducer,
+    logoutReducer,
+    updateUserReducer,
   },
 });
 
 export const {
-  login,
-  logout,
-  authFailed,
-  updateUser,
+  loginReducer: login,
+  logoutReducer: logout,
+  authFailedReducer: authFailed,
+  updateUserReducer: updateUser,
 } = authSlice.actions;
 
-export const authSelector = (state) => state.auth;
-export const loggedInSelector = (state) => state.auth.loggedIn;
-export const userSelector = (state) => state.auth.user;
+export const authSelector = (state: State) => state.auth;
+export const loggedInSelector = (state: State) => state.auth.loggedIn;
+export const userSelector = (state: State) => state.auth.user;
 
 export default authSlice.reducer;
