@@ -1,9 +1,14 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import AuthService from './auth-service';
 import store from '../store';
 import { updateUser } from '../store/auth';
+import UserPatch from '../types/user-patch';
+import User from '../types/user';
+import Image from '../types/image';
 
 const ProfileService = new (class ProfileService {
+  private requester: AxiosInstance;
+
   static validateToken() {
     const token = AuthService.getToken();
     if (!token) {
@@ -13,35 +18,36 @@ const ProfileService = new (class ProfileService {
     return token;
   }
 
-  constructor() {
+  public constructor() {
     this.requester = axios.create({
       baseURL: 'http://localhost:5000/api',
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  async updateUserData(body) {
+  public async updateUserData(body: UserPatch): Promise<void> {
     const token = ProfileService.validateToken();
-    const { data } = await this.requester.patch('/users/', body, {
+    const { data } = await this.requester.patch<User>('/users/', body, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    store.dispatch(updateUser({ user: data.user }));
+    store.dispatch(updateUser({ user: data }));
   }
 
-  async getUserImages() {
+  public async getUserImages(): Promise<Image[]> {
     const token = ProfileService.validateToken();
 
-    const { data } = await this.requester.get('/images/', {
+    const { data } = await this.requester.get<Image[]>('/images/', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    return data.images;
+
+    return data;
   }
 
-  async uploadImages(files) {
+  public async uploadImages(files: FileList): Promise<Image[]> {
     const token = ProfileService.validateToken();
 
     const formData = new FormData();
@@ -49,17 +55,17 @@ const ProfileService = new (class ProfileService {
       formData.append('files', files[i]);
     }
 
-    const { data } = await this.requester.post('/images/', formData, {
+    const { data } = await this.requester.post<Image[]>('/images/', formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
       },
     });
 
-    return data.images;
+    return data;
   }
 
-  async deleteImage(id) {
+  public async deleteImage(id: string): Promise<true> {
     const token = ProfileService.validateToken();
 
     await this.requester.delete(`images/${id}`, {
@@ -68,19 +74,22 @@ const ProfileService = new (class ProfileService {
         'Content-Type': 'multipart/form-data',
       },
     });
+
+    return true;
   }
 
-  async setMainImage(id) {
+  public async setMainImage(id: string): Promise<boolean> {
     const token = ProfileService.validateToken();
 
-    const { data } = await this.requester.patch(`users/mainImg/${id}`, null, {
+    const { data } = await this.requester.patch<User>(`users/mainImg/${id}`, null, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
       },
     });
 
-    store.dispatch(updateUser({ user: data.user }));
+    store.dispatch(updateUser({ user: data }));
+
     return true;
   }
 })();

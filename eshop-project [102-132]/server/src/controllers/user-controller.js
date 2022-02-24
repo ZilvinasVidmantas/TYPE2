@@ -44,10 +44,7 @@ const updateUserMainImage = async (req, res) => {
       },
     ).populate('mainImg');
 
-    res.status(200).send({
-      message: 'Foto Successfully deleted',
-      user: new UserViewModel(userDoc),
-    });
+    res.status(200).send(new UserViewModel(userDoc));
   } catch ({ message }) {
     res.status(404).send({
       message,

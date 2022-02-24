@@ -9,10 +9,7 @@ const getImages = async (req, res) => {
 
   const images = imageDocs.map(x => new ImageViewModel(x));
 
-  res.status(200).json({
-    message: 'All user images fetched',
-    images
-  });
+  res.status(200).json(images)
 };
 
 const uploadImages = async (req, res) => {
@@ -25,9 +22,7 @@ const uploadImages = async (req, res) => {
   const imgDocs = await ImageModel.insertMany(imgData);
   const images = imgDocs.map(x => new ImageViewModel(x));
 
-  res.status(200).send({
-    images,
-  });
+  res.status(200).send(images);
 }
 
 const deleteImage = async (req, res) => {
