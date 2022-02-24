@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Paper,
   Modal as MuiModal,
+  ModalProps as MuiModalProps,
   styled,
 } from '@mui/material';
 
@@ -13,7 +14,9 @@ const ModalCard = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const Modal = ({ children, ...props }) => (
+export type ModalProps = MuiModalProps;
+
+const Modal: React.FC<ModalProps> = ({ children, ...props }) => (
   <MuiModal {...props}>
     <ModalCard elevation={6}>
       {children}
