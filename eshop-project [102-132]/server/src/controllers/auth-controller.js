@@ -63,7 +63,10 @@ const auth = async (req, res) => {
     const userDoc = await UserModel.findOne({ email })
       .populate('mainImg');;
     const user = new UserViewModel(userDoc);
-    res.status(200).json(user);
+    res.status(200).json({
+      user,
+      token
+    });
   } catch (error) {
     res.status(403).json({ message: 'Token not valid' });
   }

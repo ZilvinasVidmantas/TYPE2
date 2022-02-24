@@ -14,11 +14,13 @@ const initialState: AuthState = {
   redirectTo: null,
 };
 
-type LoginReducer = CaseReducer<AuthState, PayloadAction<{ user: User, redirectTo: string }>>;
+type LoginReducer = CaseReducer<AuthState, PayloadAction<{ user: User, redirectTo?: string }>>;
 const loginReducer: LoginReducer = (state, { payload }) => {
   state.loggedIn = true;
   state.user = payload.user;
-  state.redirectTo = payload.redirectTo;
+  if (payload.redirectTo) {
+    state.redirectTo = payload.redirectTo;
+  }
 };
 
 type AuthFailedReducer = CaseReducer<AuthState>;
