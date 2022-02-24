@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Box, Container } from '@mui/material';
-import FlippingCard from '@components/flipping-card';
+import FlippingCard from '../components/flipping-card';
 
 const FrontComponent = () => <Box>asdasdasd</Box>;
 const BackComponent = () => <Box>Galas</Box>;

@@ -1,7 +1,7 @@
 import { Box, styled, CardProps } from '@mui/material';
 
 export type CardContainerProps = CardProps & {
-  verticalFlip: boolean,
+  verticalFlip?: boolean,
 };
 
 const CardContainer = styled(Box)<CardContainerProps>(({ theme, verticalFlip }) => ({

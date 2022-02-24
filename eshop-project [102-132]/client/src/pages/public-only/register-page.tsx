@@ -6,16 +6,30 @@ import {
   Grid,
   InputAdornment,
   CircularProgress,
+  TextFieldProps,
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
-import { useFormik } from 'formik';
+import { useFormik, FormikHelpers } from 'formik';
 import { login } from '../../store/auth';
 import AuthForm from '../../components/auth-form';
 import AuthService from '../../services/auth-service';
 import routes from '../../routing/routes';
+
+type InitialValues = {
+  name: string,
+  surname: string,
+  email: string
+  password: string,
+  passwordConfirmation: string,
+  subscribed: boolean,
+  emailChecked: boolean,
+  emailAvailable: boolean,
+};
+
+type FormikOnSubmit = (values: InitialValues, formikHelpers: FormikHelpers<InitialValues>) => void | Promise<void>;
 
 const validationSchema = yup.object({
   name: yup.string()
@@ -48,7 +62,7 @@ const validationSchema = yup.object({
   emailAvailable: yup.boolean().oneOf([true]),
 });
 
-const initialValues = {
+const initialValues: InitialValues = {
   name: '',
   surname: '',
   email: '',
@@ -63,7 +77,7 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
   const [emailCheckLoading, setEmailCheckLoading] = useState(false);
 
-  const onSubmit = async ({
+  const onSubmit: FormikOnSubmit = async ({
     email, name, surname, password, passwordConfirmation,
   }) => {
     const user = await AuthService.register({
@@ -95,7 +109,7 @@ const RegisterPage = () => {
     onSubmit,
   });
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange: TextFieldProps['onChange'] = (e) => {
     if (values.emailChecked) {
       setValues({
         ...values,
@@ -108,7 +122,7 @@ const RegisterPage = () => {
     }
   };
 
-  const handleEmailBlur = (e) => {
+  const handleEmailBlur: TextFieldProps['onBlur'] = (e) => {
     handleBlur(e);
     if (!errors.email) {
       (async () => {
@@ -236,7 +250,7 @@ const RegisterPage = () => {
                 disabled={isSubmitting}
                 color="primary"
               />
-                )}
+            )}
             label="Noriu gauti su rinkodara susijusius pranešimus"
           />
         </Grid>
