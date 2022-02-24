@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../store/hooks';
 import { Navigate } from 'react-router-dom';
 import { authSelector } from '../../store/auth';
 import routes from '../routes';

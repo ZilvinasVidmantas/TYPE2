@@ -6,7 +6,7 @@ import {
   styled,
   AppBarProps,
 } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../../store/hooks';
 import { authSelector } from '../../../store/auth';
 import LinkButton from './navbar-link-button';
 import AuthMenu from './navbar-auth-menu';

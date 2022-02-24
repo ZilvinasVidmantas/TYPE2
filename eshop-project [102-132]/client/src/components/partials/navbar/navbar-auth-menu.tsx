@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import PersonIcon from '@mui/icons-material/Person';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../../store/hooks';
 import { userSelector } from '../../../store/auth';
 import AuthService from '../../../services/auth-service';
 import AuthMenuLink from './navbar-auth-menu-link';

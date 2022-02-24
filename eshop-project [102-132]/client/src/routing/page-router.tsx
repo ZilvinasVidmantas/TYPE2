@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../store/hooks';
 import { RouteData, RouteLayoutData, RoutePageData } from './route-structure';
 import { loggedInSelector } from '../store/auth';
 import routeStructure from './route-structure';

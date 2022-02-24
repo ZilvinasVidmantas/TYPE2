@@ -5,7 +5,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../../store/hooks';
 import Gallery from './profile-page-gallery';
 import UserInfo from './profile-page-user-info';
 import MainImage from './profile-page-main-image';
