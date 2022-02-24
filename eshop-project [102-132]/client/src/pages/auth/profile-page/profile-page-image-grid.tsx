@@ -1,6 +1,9 @@
 import React from 'react';
 import { Box, Fab } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
+import Image from '../../../types/image';
+import { HandleSelectImage } from './profile-page-main-image';
+import { HandleImageDelete } from '.';
 
 const imageContainerStyle = (theme) => ({
   position: 'relative',
@@ -24,7 +27,14 @@ const imageStyle = {
   objectPosition: 'center',
 };
 
-const ProfilePageImageGrid = ({
+export type ProfilePageImageGridProps = {
+  imgData: Image[],
+  columns?: number,
+  handleSelectImage?: HandleSelectImage,
+  handleImageDelete?: HandleImageDelete,
+};
+
+const ProfilePageImageGrid: React.FC<ProfilePageImageGridProps> = ({
   imgData,
   columns,
   handleSelectImage,
@@ -51,24 +61,24 @@ const ProfilePageImageGrid = ({
             alt={src}
             style={imageStyle}
           />
-          { handleImageDelete && (
-          <Fab
-            size="small"
-            sx={{
-              position: 'absolute',
-              top: 8,
-              right: 8,
-              height: 22,
-              minHeight: 22,
-              width: 22,
-              borderRadius: 0,
-              bgcolor: 'error.main',
-              color: 'common.white',
-            }}
-            onClick={() => handleImageDelete(id)}
-          >
-            <ClearIcon fontSize="small" />
-          </Fab>
+          {handleImageDelete && (
+            <Fab
+              size="small"
+              sx={{
+                position: 'absolute',
+                top: 8,
+                right: 8,
+                height: 22,
+                minHeight: 22,
+                width: 22,
+                borderRadius: 0,
+                bgcolor: 'error.main',
+                color: 'common.white',
+              }}
+              onClick={() => handleImageDelete(id)}
+            >
+              <ClearIcon fontSize="small" />
+            </Fab>
           )}
         </Box>
       ))

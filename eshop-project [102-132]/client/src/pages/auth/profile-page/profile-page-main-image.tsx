@@ -4,8 +4,10 @@ import {
   Button,
   Box,
 } from '@mui/material';
-import Modal from '@components/modal';
+import Modal from '../../../components/modal';
 import ImageGrid from './profile-page-image-grid';
+import Image from '../../../types/image';
+import { SetMainImage } from '.';
 
 const StyledMainImage = styled('img')({
   borderRadius: '50%',
@@ -14,11 +16,28 @@ const StyledMainImage = styled('img')({
   objectFit: 'cover',
 });
 
-const MainImage = ({ mainImg, imgData, setMainImage }) => {
+export type HandleSelectImage = (id: string) => void;
+
+export type ProfilePageMainImageProps = {
+  mainImg: Image,
+  imgData: Image[],
+  setMainImage: SetMainImage;
+};
+
+const ProfilePageMainImage: React.FC<ProfilePageMainImageProps> = ({
+  mainImg,
+  imgData,
+  setMainImage
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleSelectImage: HandleSelectImage = (id) => {
+    setMainImage(id);
+    handleClose();
+  };
 
   return (
     <Box sx={{
@@ -38,10 +57,7 @@ const MainImage = ({ mainImg, imgData, setMainImage }) => {
           <ImageGrid
             imgData={imgData}
             columns={4}
-            handleSelectImage={(id) => {
-              setMainImage(id);
-              handleClose();
-            }}
+            handleSelectImage={handleSelectImage}
           />
         </Box>
       </Modal>
@@ -49,4 +65,4 @@ const MainImage = ({ mainImg, imgData, setMainImage }) => {
   );
 };
 
-export default MainImage;
+export default ProfilePageMainImage;

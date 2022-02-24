@@ -11,21 +11,25 @@ import UserInfo from './profile-page-user-info';
 import MainImage from './profile-page-main-image';
 import { userSelector } from '../../../store/auth';
 import ProfileService from '../../../services/profile-service';
+import Image from '../../../types/image';
+
+export type SetMainImage = (id: string) => Promise<void>;
+export type HandleImageDelete = (id: string) => Promise<void>;
 
 const ProfilePage: React.FC = () => {
   const user = useSelector(userSelector);
-  const [imgData, setImgData] = useState([]);
+  const [imgData, setImgData] = useState<Image[]>([]);
 
   const updateImgData = (newImgData) => {
     setImgData([...imgData, ...newImgData]);
   };
 
-  const handleImageDelete = async (id) => {
+  const handleImageDelete: HandleImageDelete = async (id) => {
     await ProfileService.deleteImage(id);
     setImgData(imgData.filter((x) => x.id !== id));
   };
 
-  const setMainImage = async (id) => {
+  const setMainImage: SetMainImage = async (id) => {
     await ProfileService.setMainImage(id);
   };
 
@@ -41,7 +45,7 @@ const ProfilePage: React.FC = () => {
       <Typography variant="h4" sx={{ mb: 3 }}>Jūsų profilis</Typography>
       <Grid container rowSpacing={4}>
         <Grid item xs={12} md={5}>
-          <MainImage mainImg={user.mainImg} imgData={imgData} setMainImage={setMainImage} />
+          <MainImage mainImg={user && user.mainImg} imgData={imgData} setMainImage={setMainImage} />
         </Grid>
         <Grid item xs={12} md={7}>
           <UserInfo user={user} />

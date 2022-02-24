@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { useFormik } from 'formik';
+import { useFormik, FormikHelpers } from 'formik';
 import {
   Box,
   Typography,
@@ -13,6 +13,9 @@ import * as yup from 'yup';
 import ErrorIcon from '@mui/icons-material/Error';
 import AuthService from '../../../services/auth-service';
 import ProfileService from '../../../services/profile-service';
+import User from '../../../types/user';
+import UserPatch from '../../../types/user-patch';
+import { TextFieldProps } from '@mui/material';
 
 const validationSchema = yup.object({
   name: yup.string()
@@ -36,27 +39,30 @@ const validationSchema = yup.object({
   emailAvailable: yup.boolean().oneOf([true]),
 });
 
-const ProfilePageUserInfo = ({ user }) => {
+type ProfilePageUserInfoProps = {
+  user: User | null,
+};
+
+type InitialValues = UserPatch & {
+  emailChecked: boolean,
+  emailAvailable: boolean,
+};
+
+type FormikOnSubmit = (values: InitialValues, formikHelpers: FormikHelpers<InitialValues>) => void | Promise<void>;
+
+const ProfilePageUserInfo: React.FC<ProfilePageUserInfoProps> = ({ user }) => {
   const [emailCheckLoading, setEmailCheckLoading] = useState(false);
 
   const initialValues = useMemo(() => ({
-    name: user.name,
-    surname: user.surname,
-    email: user.email,
+    name: user ? user.name : '',
+    surname: user ? user.surname : '',
+    email: user ? user.email : '',
     emailChecked: true,
     emailAvailable: true,
   }), [user]);
 
-  const onSubmit = async (values) => {
-    const body = Object.entries(values)
-      .reduce((oldResult, [name, value]) => {
-        const newResult = { ...oldResult };
-        if (value !== initialValues[name]) {
-          newResult[name] = value;
-        }
-        return newResult;
-      }, {});
-    await ProfileService.updateUserData(body);
+  const onSubmit: FormikOnSubmit = async ({ name, surname, email }) => {
+    await ProfileService.updateUserData({ name, surname, email });
   };
 
   const {
@@ -69,7 +75,7 @@ const ProfilePageUserInfo = ({ user }) => {
     enableReinitialize: true,
   });
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange: TextFieldProps['onChange'] = (e) => {
     if (values.emailChecked) {
       setValues({
         ...values,
@@ -82,7 +88,7 @@ const ProfilePageUserInfo = ({ user }) => {
     }
   };
 
-  const handleEmailBlur = (e) => {
+  const handleEmailBlur: TextFieldProps['onBlur'] = (e) => {
     if (e.target.value === initialValues.email) {
       setValues({
         ...values,
@@ -90,6 +96,7 @@ const ProfilePageUserInfo = ({ user }) => {
         emailChecked: true,
         emailAvailable: true,
       }, true);
+
       return;
     }
     handleBlur(e);
