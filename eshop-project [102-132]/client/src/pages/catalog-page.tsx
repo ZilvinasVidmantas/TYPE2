@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const CatalogPage = () => (
+const CatalogPage: React.FC = () => (
   <Typography>CatalogPage</Typography>
 );
 

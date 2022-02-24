@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const CartPage = () => (
+const CartPage: React.FC = () => (
   <Typography>CartPage</Typography>
 );
 

@@ -4,7 +4,7 @@ import {
   Typography,
 } from '@mui/material';
 
-const ErrorPage = () => (
+const ErrorPage: React.FC = () => (
   <Box sx={{
     display: 'flex',
     height: '100%',

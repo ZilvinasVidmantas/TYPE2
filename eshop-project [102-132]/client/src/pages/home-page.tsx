@@ -5,7 +5,7 @@ import FlippingCard from '@components/flipping-card';
 const FrontComponent = () => <Box>asdasdasd</Box>;
 const BackComponent = () => <Box>Galas</Box>;
 
-const HomePage = () => (
+const HomePage: React.FC = () => (
   <Container sx={{ pt: 10 }}>
     <Typography>HomePage</Typography>
 
