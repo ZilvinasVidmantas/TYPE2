@@ -1,3 +1,5 @@
+const relativePaths = require('./relative-paths');
+
 module.exports = {
   env: {
     browser: true,
@@ -39,5 +41,13 @@ module.exports = {
     'eol-last': [2, 'unix'],
     'newline-before-return': [2],
     '@typescript-eslint/semi': [2, 'always'],
-  }
+  },
+  settings: {
+    'import/resolver': {
+      'eslint-import-resolver-custom-alias': {
+        alias: relativePaths,
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
 };

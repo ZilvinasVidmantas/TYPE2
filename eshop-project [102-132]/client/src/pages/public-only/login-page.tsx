@@ -8,10 +8,10 @@ import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import routes from '../../routing/routes';
-import { login } from '../../store/auth';
-import AuthForm from '../../components/auth-form';
-import AuthService from '../../services/auth-service';
+import routes from '@routing/routes';
+import { login } from '@store/auth';
+import AuthForm from '@components/auth-form';
+import AuthService from '@services/auth-service';
 
 const validationSchema = yup.object({
   email: yup.string()
