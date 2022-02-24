@@ -12,7 +12,7 @@ import MainImage from './profile-page-main-image';
 import { userSelector } from '../../../store/auth';
 import ProfileService from '../../../services/profile-service';
 
-const ProfilePage = () => {
+const ProfilePage: React.FC = () => {
   const user = useSelector(userSelector);
   const [imgData, setImgData] = useState([]);
 

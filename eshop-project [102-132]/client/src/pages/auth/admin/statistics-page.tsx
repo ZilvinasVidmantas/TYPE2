@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const StatisticsPage = () => (
+const StatisticsPage: React.FC = () => (
   <Typography>StatisticsPage</Typography>
 );
 
