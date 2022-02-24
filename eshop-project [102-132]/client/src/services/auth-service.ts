@@ -11,9 +11,10 @@ type LoginResponse = {
   user: User,
   token: string
 };
+
 const AuthService = new (class AuthService {
   private requester: AxiosInstance;
-  private token: string;
+  private token?: string;
 
   constructor() {
     const token = SessionService.get('auth_token');

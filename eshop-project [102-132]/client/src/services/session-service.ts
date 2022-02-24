@@ -1,10 +1,18 @@
-const set = (name, value) => {
+
+const set = (name: string, value: NonNullable<any>): void => {
   window.localStorage.setItem(name, JSON.stringify(value));
 };
 
-const get = (name) => JSON.parse(window.localStorage.getItem(name));
+const get = (name: string): ReturnType<typeof JSON.parse> => {
+  const data = window.localStorage.getItem(name);
+  if (typeof data === 'string') {
+    return JSON.parse(data);
+  }
 
-const clear = (name) => window.localStorage.removeItem(name);
+  return null;
+};
+
+const clear = (name: string): void => window.localStorage.removeItem(name);
 
 const SessionService = {
   set,
