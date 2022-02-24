@@ -4,7 +4,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { authSelector } from '../../store/auth';
 import routes from '../routes';
 
-const AuthProtector = ({ children }) => {
+const AuthProtector: React.FC = ({ children }) => {
   const { pathname } = useLocation();
   const auth = useSelector(authSelector);
 
@@ -12,7 +12,7 @@ const AuthProtector = ({ children }) => {
     return <Navigate to={`${routes.LoginPage}?redirectTo=${pathname}`} />;
   }
 
-  return children;
+  return <>{children}</>;
 };
 
 export default AuthProtector;

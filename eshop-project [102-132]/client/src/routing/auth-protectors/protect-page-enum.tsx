@@ -1,4 +1,5 @@
 import React from 'react';
+import { AuthType } from '../auth-types';
 import {
   PUBLIC_ONLY,
   AUTH,
@@ -11,11 +12,15 @@ import AuthProtector from './auth-protector';
 import UserProtector from './user-protector';
 import AdminProtector from './admin-protector';
 
-const protectPageEnum = {
+type ProtectPageEnum = {
+  [Key in AuthType]: (Page: React.FC) => React.ReactNode
+};
+
+const protectPageEnum: ProtectPageEnum = {
+  [ADMIN]: (Page) => <AdminProtector><Page /></AdminProtector>,
   [PUBLIC_ONLY]: (Page) => <PublicOnlyProtector><Page /></PublicOnlyProtector>,
   [AUTH]: (Page) => <AuthProtector><Page /></AuthProtector>,
   [USER]: (Page) => <UserProtector><Page /></UserProtector>,
-  [ADMIN]: (Page) => <AdminProtector><Page /></AdminProtector>,
 };
 
 export default protectPageEnum;

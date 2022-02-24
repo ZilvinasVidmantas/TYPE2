@@ -4,7 +4,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { authSelector } from '../../store/auth';
 import routes from '../routes';
 
-const UserProtector = ({ children }) => {
+const UserProtector: React.FC = ({ children }) => {
   const { pathname } = useLocation();
   const auth = useSelector(authSelector);
 
@@ -16,7 +16,7 @@ const UserProtector = ({ children }) => {
     return <Navigate to={routes.ProfilePage} />;
   }
 
-  return children;
+  return <>{children}</>;
 };
 
 export default UserProtector;
