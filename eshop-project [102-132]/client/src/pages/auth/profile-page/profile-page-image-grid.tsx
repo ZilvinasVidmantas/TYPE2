@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Fab, SxProps, Theme, styled } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
-import Image from '../../../types/image';
+import { Image } from '../../../types';
 import { HandleSelectImage } from './profile-page-main-image';
 import { HandleImageDelete } from '.';
 

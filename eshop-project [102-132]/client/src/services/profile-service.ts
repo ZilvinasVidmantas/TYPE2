@@ -2,9 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import AuthService from './auth-service';
 import store from '../store';
 import { updateUser } from '../store/auth';
-import UserPatch from '../types/user-patch';
-import User from '../types/user';
-import Image from '../types/image';
+import { UserPatch, User, Image } from '../types';
 
 const ProfileService = new (class ProfileService {
   private requester: AxiosInstance;

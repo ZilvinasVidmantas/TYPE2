@@ -12,7 +12,7 @@ import routes from '../../routing/routes';
 import { login } from '../../store/auth';
 import AuthForm from '../../components/auth-form';
 import AuthService from '../../services/auth-service';
-import Crudentials from '../../types/crudentials';
+import { Crudentials } from '../../types';
 
 type InitialValues = Crudentials;
 

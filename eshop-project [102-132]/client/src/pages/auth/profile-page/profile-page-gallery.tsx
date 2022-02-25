@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import ImageGrid from './profile-page-image-grid';
 import ProfileService from '../../../services/profile-service';
-import Image from '../../../types/image';
+import { Image } from '../../../types';
 import { UpdateImgData } from './index';
 import { HandleImageDelete } from '.';
 

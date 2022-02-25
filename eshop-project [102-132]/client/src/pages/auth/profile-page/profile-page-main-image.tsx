@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import Modal from '../../../components/modal';
 import ImageGrid from './profile-page-image-grid';
-import Image from '../../../types/image';
+import { Image } from '../../../types';
 import { SetMainImage } from '.';
 
 const StyledMainImage = styled('img')({

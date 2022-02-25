@@ -13,8 +13,7 @@ import * as yup from 'yup';
 import ErrorIcon from '@mui/icons-material/Error';
 import AuthService from '../../../services/auth-service';
 import ProfileService from '../../../services/profile-service';
-import User from '../../../types/user';
-import UserPatch from '../../../types/user-patch';
+import { User, UserPatch } from '../../../types';
 import { TextFieldProps } from '@mui/material';
 
 const validationSchema = yup.object({

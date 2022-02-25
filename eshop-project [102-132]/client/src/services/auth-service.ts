@@ -2,11 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import SessionService from './session-service';
 import reduxStore from '../store/index';
 import { login, logout, authFailed } from '../store/auth';
-import Crudentials from '../types/crudentials';
-import User from '../types/user';
-import UserRegistration from '../types/user-registration';
-
-// Singleton pattern - only one object of a class
+import { Crudentials, User, UserRegistration } from '../types';
 
 type AuthResponse = {
   user: User,

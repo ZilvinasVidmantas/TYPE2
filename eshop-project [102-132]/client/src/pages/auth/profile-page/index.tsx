@@ -11,7 +11,7 @@ import UserInfo from './profile-page-user-info';
 import MainImage from './profile-page-main-image';
 import { userSelector } from '../../../store/auth';
 import ProfileService from '../../../services/profile-service';
-import Image from '../../../types/image';
+import { Image } from '../../../types';
 
 export type SetMainImage = (id: string) => Promise<void>;
 export type HandleImageDelete = (id: string) => Promise<void>;
