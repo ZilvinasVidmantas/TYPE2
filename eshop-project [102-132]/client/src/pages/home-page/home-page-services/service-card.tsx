@@ -14,7 +14,7 @@ const Image = styled('img')({
   width: '100%'
 });
 
-const ServiceCards = () => {
+const ServiceCards: React.FC = () => {
   return (
     <Paper>
       <Image

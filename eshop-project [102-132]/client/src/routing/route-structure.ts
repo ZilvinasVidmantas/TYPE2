@@ -5,7 +5,7 @@ import {
   USER,
   ADMIN,
   AuthType,
-} from './auth-types';
+} from './auth-protectors/auth-types';
 
 export type RoutePageData = {
   index?: true,

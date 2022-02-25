@@ -8,7 +8,7 @@ const ViewportContainer = styled(Box)(({ theme }) => ({
   display: 'grid',
 }));
 
-const VieportLayout = () => (
+const VieportLayout: React.FC = () => (
   <ViewportContainer>
     <Outlet />
   </ViewportContainer>

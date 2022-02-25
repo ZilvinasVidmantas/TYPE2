@@ -1,11 +1,11 @@
 import React from 'react';
-import { AuthType } from '../auth-types';
+import { AuthType } from './auth-types';
 import {
   PUBLIC_ONLY,
   AUTH,
   USER,
   ADMIN,
-} from '../auth-types';
+} from './auth-types';
 
 import PublicOnlyProtector from './public-only-protector';
 import AuthProtector from './auth-protector';

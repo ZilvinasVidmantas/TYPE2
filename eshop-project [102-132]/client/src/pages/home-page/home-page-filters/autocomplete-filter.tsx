@@ -15,7 +15,7 @@ const options = [
   { id: '4', title: 'Šiauliai' },
 ];
 
-const AutocompleteFilter = () => {
+const AutocompleteFilter: React.FC = () => {
   return (
     <FilterWrapper>
       <Autocomplete

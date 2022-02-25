@@ -30,7 +30,7 @@ const StyledSlider = styled(Slider)(({ theme }) => ({
   }
 }));
 
-const RangeFilter = () => {
+const RangeFilter: React.FC = () => {
   return (
     <FilterWrapper>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>

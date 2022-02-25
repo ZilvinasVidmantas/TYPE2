@@ -17,7 +17,7 @@ import AuthService from '../../../services/auth-service';
 import AuthMenuLink from './navbar-auth-menu-link';
 import routes from '../../../routing/routes';
 
-const NavbarAuthMenu = () => {
+const NavbarAuthMenu: React.FC = () => {
   const anchorRef = useRef(null);
   const user = useSelector(userSelector);
   const [menuOpen, setMenuOpen] = useState(false);

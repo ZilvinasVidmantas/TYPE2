@@ -31,7 +31,7 @@ const initialValues: InitialValues = {
   password: '',
 };
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
   const [urlSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [error, setError] = useState<string | null>(null);
