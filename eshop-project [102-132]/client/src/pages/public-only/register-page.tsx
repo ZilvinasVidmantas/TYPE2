@@ -10,10 +10,10 @@ import {
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
-import { useDispatch } from '../../store/hooks';
-import { login } from '../../store/auth';
 import * as yup from 'yup';
 import { useFormik, FormikHelpers } from 'formik';
+import { useDispatch } from '../../store/hooks';
+import { login } from '../../store/auth';
 import AuthForm from '../../components/auth-form';
 import AuthService from '../../services/auth-service';
 import routes from '../../routing/routes';

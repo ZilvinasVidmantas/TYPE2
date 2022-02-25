@@ -1,16 +1,14 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { useSelector } from '../store/hooks';
-import { RouteData, RouteLayoutData, RoutePageData } from './route-structure';
+import routeStructure, { RouteData, RouteLayoutData, RoutePageData } from './route-structure';
 import { loggedInSelector } from '../store/auth';
-import routeStructure from './route-structure';
 import protectPageEnum from './auth-protectors/protect-page-enum';
 import pageRouteMap from './page-route-map';
 
 type RouteElement = ReturnType<typeof Route>;
 
 const mapRoutesRecursive = (routeData: RouteData): RouteElement => {
-
   const Page = pageRouteMap[routeData.pageName];
   if ((routeData as RouteLayoutData).childRoutes) {
     const { pageName, path, childRoutes } = routeData as RouteLayoutData;

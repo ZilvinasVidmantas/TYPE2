@@ -7,8 +7,7 @@ import {
 import ImageGrid from './profile-page-image-grid';
 import ProfileService from '../../../services/profile-service';
 import { Image } from '../../../types';
-import { UpdateImgData } from './index';
-import { HandleImageDelete } from '.';
+import { UpdateImgData, HandleImageDelete } from './index';
 
 export type ProfilePageGalleryProps = {
   imgData: Image[],
@@ -19,7 +18,7 @@ export type ProfilePageGalleryProps = {
 const ProfilePageGallery: React.FC<ProfilePageGalleryProps> = ({
   imgData,
   updateImgData,
-  handleImageDelete
+  handleImageDelete,
 }) => {
   const fileUploadRef = useRef<HTMLInputElement>(null);
 

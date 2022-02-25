@@ -7,6 +7,7 @@ import {
   Button,
   InputAdornment,
   CircularProgress,
+  TextFieldProps,
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import * as yup from 'yup';
@@ -14,7 +15,6 @@ import ErrorIcon from '@mui/icons-material/Error';
 import AuthService from '../../../services/auth-service';
 import ProfileService from '../../../services/profile-service';
 import { User, UserPatch } from '../../../types';
-import { TextFieldProps } from '@mui/material';
 
 const validationSchema = yup.object({
   name: yup.string()

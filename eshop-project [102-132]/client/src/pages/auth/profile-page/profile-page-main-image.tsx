@@ -27,7 +27,7 @@ export type ProfilePageMainImageProps = {
 const ProfilePageMainImage: React.FC<ProfilePageMainImageProps> = ({
   mainImg,
   imgData,
-  setMainImage
+  setMainImage,
 }) => {
   const [open, setOpen] = useState(false);
 

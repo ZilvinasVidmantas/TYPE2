@@ -6,9 +6,12 @@ module.exports = {
     es2021: true,
     node: true
   },
+
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
+    'airbnb',
+    'airbnb-typescript',
     'plugin:@typescript-eslint/recommended'
   ],
   parser: '@typescript-eslint/parser',
@@ -17,31 +20,25 @@ module.exports = {
       jsx: true
     },
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    project: './tsconfig.json'
   },
+
   plugins: [
     'react',
     '@typescript-eslint'
   ],
+
   rules: {
     quotes: [2, 'single'],
-    semi: [2, 'always'],
     'quote-props': [2, 'as-needed'],
     'linebreak-style': [2, 'unix'],
-    'no-multiple-empty-lines': [2, {
-      max: 1,
-      maxEOF: 0,
+    'react/jsx-props-no-spreading': [0],
+    'react/function-component-definition': [2, {
+      'namedComponents': 'arrow-function',
+      'unnamedComponents': 'arrow-function',
     }],
-    'no-trailing-spaces': [2, {
-      skipBlankLines: true,
-      ignoreComments: true,
-    }],
-    'no-throw-literal': [2],
-    'prefer-promise-reject-errors': [2],
-    'eol-last': [2, 'unix'],
-    'newline-before-return': [2],
-    '@typescript-eslint/semi': [2, 'always'],
   },
+
   settings: {
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {

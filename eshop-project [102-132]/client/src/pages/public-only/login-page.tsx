@@ -5,9 +5,9 @@ import {
   Alert,
 } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
-import { useDispatch } from '../../store/hooks';
 import { FormikHelpers, useFormik } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from '../../store/hooks';
 import routes from '../../routing/routes';
 import { login } from '../../store/auth';
 import AuthForm from '../../components/auth-form';

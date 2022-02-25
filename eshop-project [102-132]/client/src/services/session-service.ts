@@ -1,4 +1,3 @@
-
 const set = (name: string, value: NonNullable<any>): void => {
   window.localStorage.setItem(name, JSON.stringify(value));
 };

@@ -1,7 +1,7 @@
 import {
   TypedUseSelectorHook,
   useDispatch as useReactReduxDispatch,
-  useSelector as UseReactReduxSelector
+  useSelector as UseReactReduxSelector,
 } from 'react-redux';
 import type { State, Dispatch } from './index';
 

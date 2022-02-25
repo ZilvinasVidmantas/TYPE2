@@ -4,7 +4,7 @@ import routeStructure, {
   RouteLayoutData,
   ConcreteRoutePageData,
   isConcretePath,
-  isIndexPage
+  isIndexPage,
 } from './route-structure';
 import { ConcretePageName, PageName } from './page-route-map';
 
@@ -18,9 +18,8 @@ type PartialPagePathMap = {
 
 const mapRoutePathsRecursive = (
   paths: PartialConcretePagePathMap | PartialPagePathMap,
-  routeData: RouteData
+  routeData: RouteData,
 ): PartialConcretePagePathMap => {
-
   if ((routeData as RouteLayoutData).childRoutes) {
     // Papildomi visi keliai pagal LayoutRouteData path savybę
     const { childRoutes, path } = routeData as RouteLayoutData;

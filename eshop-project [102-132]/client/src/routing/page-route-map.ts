@@ -25,16 +25,16 @@ import ViewportLayout from '../components/layouts/viewport-layout';
 export type LayoutPageName = 'ViewportLayout' | 'NavbarLayout' | 'DashboardLayout';
 export type DynamicPageName = 'ErrorPage' | 'ProductPage';
 export type ConcretePageName = 'HomePage'
-  | 'CartPage'
-  | 'CatalogPage'
-  | 'LoginPage'
-  | 'RegisterPage'
-  | 'ProfilePage'
-  | 'UserInfoPage'
-  | 'OrdersPage'
-  | 'StatisticsPage'
-  | 'ProductPanelPage'
-  | 'UserPanelPage';
+| 'CartPage'
+| 'CatalogPage'
+| 'LoginPage'
+| 'RegisterPage'
+| 'ProfilePage'
+| 'UserInfoPage'
+| 'OrdersPage'
+| 'StatisticsPage'
+| 'ProductPanelPage'
+| 'UserPanelPage';
 
 export type PageName = LayoutPageName | ConcretePageName | DynamicPageName;
 

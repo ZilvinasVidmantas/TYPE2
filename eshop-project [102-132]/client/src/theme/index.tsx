@@ -2,15 +2,15 @@ import { createTheme } from '@mui/material';
 
 const theme = createTheme({
   shape: {
-    borderRadius: 0
+    borderRadius: 0,
   },
   mixins: {
     navbar: {
       height: 56,
     },
     drawer: {
-      width: 240
-    }
+      width: 240,
+    },
   },
   transitions: {
     duration: {
@@ -31,11 +31,11 @@ const theme = createTheme({
       contrastText: '#fff',
     },
     background: {
-      default: '#fafafa'
-    }
+      default: '#fafafa',
+    },
   },
   typography: {
-    fontFamily: '\'Mulish\', sans-serif'
+    fontFamily: '\'Mulish\', sans-serif',
   },
 });
 

@@ -15,6 +15,7 @@ type CheckEmailResponse = {
 
 const AuthService = new (class AuthService {
   private requester: AxiosInstance;
+
   private token?: string;
 
   public constructor() {

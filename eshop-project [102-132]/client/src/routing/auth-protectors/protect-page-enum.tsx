@@ -1,6 +1,6 @@
 import React from 'react';
-import { AuthType } from './auth-types';
 import {
+  AuthType,
   PUBLIC_ONLY,
   AUTH,
   USER,

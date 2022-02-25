@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Box, IconButton, useMediaQuery, Theme } from '@mui/material';
+import {
+  Box, IconButton, useMediaQuery, Theme,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Outlet } from 'react-router-dom';
 import DashboardLayoutAppBar from './dashboard-layout-app-bar';
@@ -43,7 +45,7 @@ const DashboardLayout: React.FC = () => {
             borderRadius: theme.shape.borderRadius,
             ':hover': {
               bgcolor: 'primary.dark',
-            }
+            },
           })}
         >
           <MenuIcon sx={{ color: 'common.white' }} />

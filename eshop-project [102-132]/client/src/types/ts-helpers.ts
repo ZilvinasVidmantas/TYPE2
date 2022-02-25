@@ -1,4 +1,3 @@
-
 export type PropTypeNames<Base, PropTypes> = {
   [Key in keyof Base]: Base[Key] extends PropTypes ? Key : never
 };
