@@ -14,7 +14,8 @@ const serviceSchema = new Mongoose.Schema({
   cities: [{
     type: Mongoose.Types.ObjectId,
     ref: 'City',
-  }]
+  }],
+  description: 'string,'
 }, {
   timestamps: true,
 });

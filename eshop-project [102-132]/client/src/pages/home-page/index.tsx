@@ -17,9 +17,7 @@ const HomePage: React.FC = () => (
         <Paper sx={{ mb: 3, p: 1 }}>
           <HomePageHeader />
         </Paper>
-        <Paper sx={{ p: 2 }}>
-          <HomePageServices />
-        </Paper>
+        <HomePageServices />
       </Grid>
     </Grid>
 
