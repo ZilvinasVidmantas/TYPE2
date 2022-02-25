@@ -10,7 +10,7 @@ import AutocompleteFilter from './autocomplete-filter';
 const HomePageFilters: React.FC = () => {
   return (
     <Box>
-      <Typography>Filtrai</Typography>
+      <Typography variant="h4">Filtrai</Typography>
       <Divider sx={{ my: 1 }} />
       <RangeFilter />
       <Divider sx={{ my: 1 }} />

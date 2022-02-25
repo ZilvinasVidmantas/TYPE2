@@ -1,11 +1,11 @@
 import React from 'react';
 import {
   Slider,
-  Typography,
   Box,
   Input,
   styled,
 } from '@mui/material';
+import FilterWrapper from './filter-wrapper';
 
 const RangeFilterInput = styled(Input)({
   width: 50,
@@ -16,8 +16,7 @@ const RangeFilterInput = styled(Input)({
 
 const RangeFilter = () => {
   return (
-    <Box>
-      <Typography variant="h6">Filtrio pavadinimas</Typography>
+    <FilterWrapper>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
         <RangeFilterInput value={10} />
         <RangeFilterInput value={100} />
@@ -30,7 +29,8 @@ const RangeFilter = () => {
           onChange={() => console.log('Keiciamas Slider\'is')}
         />
       </Box>
-    </Box>
+    </FilterWrapper>
+
   );
 };
 
