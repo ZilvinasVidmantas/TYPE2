@@ -57,28 +57,34 @@ Nefunkciniai reikalavimai:
 ---------------------------------------------------------------------------------------------
 
 Vertinimas:
-  1. Pasiekiama repozitorija su readme.md failu, kurioje aprašyta kaip pasileisti projektą. [1]
-  2. Veikiantys kliento pusės maršrutai [1]
-  3. Panaudota localStorage [1]
-  4. Panaudota globalios puslapio būsenos technologijos( react-context || redux.js ) [1]
-  5. Autentifikacija ir Autorizacija [1-2]
+  *  Pasiekiama repozitorija su readme.md failu, kurioje aprašyta kaip pasileisti projektą. [1]
+  *  Veikiantys kliento pusės maršrutai [1]
+  *  Panaudota localStorage [1]
+  *  Panaudota globalios puslapio būsenos technologijos( react-context || redux.js ) [1]
+  *  Prisitaikantis dizainas [2]
+    * Nors vienas puslapis yra responsive [1]
+    * Visi puslapiai yra responsive [1]
+  *  Autentifikacija ir Autorizacija [1-2]
     * viena rolė [1]
     * kelios rolės [1]
-  6. Teisingais ryšiais sudaryta ir pakankamo struktūrinio turinio duomenų bazė [1]
-  7. Duomenų filtracija (ir|arba) paieška [1-2]
+  *  Teisingais ryšiais sudaryta ir pakankamo struktūrinio turinio duomenų bazė [1]
+  *  Duomenų filtracija (ir|arba) paieška [1-2]
     * paieška [1]
     * filtracija [1]
-  8. Panaudota komponentų biblioteka su pritaikytais temos nustatymais [1]
-  9. Puslapiavimas (ir|arba) infinite* scroll [1-2]
+  *  Panaudota komponentų biblioteka su pritaikytais temos nustatymais [1]
+  *  Puslapiavimas (ir|arba) infinite* scroll [1-2]
     * infinite scroll [1]
     * puslapiavimas [1]
-  10. FULLSTACK CRUD veiksmai [1-3] 
+  *   FULLSTACK CRUD veiksmai [1-3] 
     * Vienos struktūros daliniai CRUD veiksmai [1]
     * Vienos struktūros pilni CRUD veiksmai [1]
     * Struktūros susijusios su kita struktūra CRUD veiksmai [1]
-  11. Formos validacija [1]
+  *   Formos validacija [1]
 
   TypeScript nebūvimas React aplikacijoje: -2
+    * Visiškas nebuvimas -1
+    * Nesuderinti tipai -1
+    
   min: 5
-  max: 21
+  max: 23
   max-vertinimas: 10

@@ -15,7 +15,11 @@ const serviceSchema = new Mongoose.Schema({
     type: Mongoose.Types.ObjectId,
     ref: 'City',
   }],
-  description: 'string,'
+  description: 'string',
+  creator: {
+    type: Mongoose.Types.ObjectId,
+    ref: 'User',
+  }
 }, {
   timestamps: true,
 });
