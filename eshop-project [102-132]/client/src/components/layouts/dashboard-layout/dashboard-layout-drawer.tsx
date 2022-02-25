@@ -6,13 +6,11 @@ import DashboardLayoutDrawerHeader from './dashboard-layout-drawer-header';
 
 export type DashboardLayoutDrawerProps = {
   open: boolean,
-  drawerWidth: number,
   handleDrawerClose: () => void,
 };
 
 const DashboardLayoutDrawer: React.FC<DashboardLayoutDrawerProps> = ({
   open,
-  drawerWidth,
   handleDrawerClose,
 }) => {
   const theme = useTheme();
@@ -20,10 +18,10 @@ const DashboardLayoutDrawer: React.FC<DashboardLayoutDrawerProps> = ({
   return (
     <Drawer
       sx={{
-        width: drawerWidth,
+        width: theme.mixins.drawer.width,
         flexShrink: 0,
         '& .MuiDrawer-paper': {
-          width: drawerWidth,
+          width: theme.mixins.drawer.width,
           boxSizing: 'border-box',
         },
       }}

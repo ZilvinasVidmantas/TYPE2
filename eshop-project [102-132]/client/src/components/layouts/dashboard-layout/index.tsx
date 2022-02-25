@@ -7,8 +7,6 @@ import DashboardLayoutMain from './dashboard-layout-main';
 import DashboardLayoutDrawerHeader from './dashboard-layout-drawer-header';
 import DashboardLayoutDrawer from './dashboard-layout-drawer';
 
-const drawerWidth = 240;
-
 const DashboardLayout: React.FC = () => {
   const [open, setOpen] = useState(false);
 
@@ -30,14 +28,12 @@ const DashboardLayout: React.FC = () => {
           </IconButton>
         )}
         open={open}
-        drawerWidth={drawerWidth}
       />
       <DashboardLayoutDrawer
         open={open}
-        drawerWidth={drawerWidth}
         handleDrawerClose={handleDrawerClose}
       />
-      <DashboardLayoutMain open={open} drawerWidth={drawerWidth}>
+      <DashboardLayoutMain open={open}>
         <DashboardLayoutDrawerHeader />
         <Outlet />
       </DashboardLayoutMain>

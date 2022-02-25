@@ -3,19 +3,18 @@ import Navbar, { NavbarProps } from '../../partials/navbar';
 
 export type DashboardLayoutAppBarProps = NavbarProps & {
   open: boolean,
-  drawerWidth: number
 };
 
 const DashboardLayoutAppBar = styled(Navbar, {
   shouldForwardProp: (prop) => prop !== 'open',
-})<DashboardLayoutAppBarProps>(({ theme, open, drawerWidth }) => ({
+})<DashboardLayoutAppBarProps>(({ theme, open }) => ({
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
+    width: `calc(100% - ${theme.mixins.drawer.width}px)`,
+    marginLeft: `${theme.mixins.drawer.width}px`,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
