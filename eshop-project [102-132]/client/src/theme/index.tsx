@@ -8,6 +8,9 @@ const theme = createTheme({
     navbar: {
       height: 56,
     },
+    drawer: {
+      width: 240
+    }
   },
   transitions: {
     duration: {
@@ -33,7 +36,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: '\'Mulish\', sans-serif'
-  }
+  },
 });
 
 export default theme;
