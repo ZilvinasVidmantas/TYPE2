@@ -29,7 +29,7 @@ const NavbarAuthMenu = () => {
     AuthService.logout();
   };
 
-  const initials = useMemo(() => `${user.name[0]}${user.surname[0]}`, [user]);
+  const initials = useMemo(() => user ? `${user.name[0]}${user.surname[0]}` : '', [user]);
 
   return (
     <Box>

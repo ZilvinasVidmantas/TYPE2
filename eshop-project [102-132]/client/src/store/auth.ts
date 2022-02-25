@@ -5,13 +5,12 @@ import { State } from './index';
 type AuthState = {
   loggedIn: boolean | null,
   user: User | null,
-  redirectTo: string | null
+  redirectTo?: string
 };
 
 const initialState: AuthState = {
   loggedIn: null,
   user: null,
-  redirectTo: null,
 };
 
 type LoginReducer = CaseReducer<AuthState, PayloadAction<{ user: User, redirectTo?: string }>>;
@@ -32,7 +31,7 @@ type LogoutReducer = CaseReducer<AuthState>;
 const logoutReducer: LogoutReducer = (state) => {
   state.loggedIn = false;
   state.user = null;
-  state.redirectTo = null;
+  state.redirectTo = undefined;
 };
 
 type UpdateUserReducer = CaseReducer<AuthState, PayloadAction<{ user: User }>>;

@@ -80,14 +80,19 @@ const RegisterPage = () => {
   const onSubmit: FormikOnSubmit = async ({
     email, name, surname, password, passwordConfirmation,
   }) => {
-    const user = await AuthService.register({
+    const fetchedUser = await AuthService.register({
       email,
       name,
       surname,
       password,
       repeatPassword: passwordConfirmation,
     });
-    dispatch(login({ user }));
+
+    if (typeof fetchedUser === 'string') {
+      console.error(fetchedUser);
+    } else {
+      dispatch(login({ user: fetchedUser }));
+    }
   };
 
   const {

@@ -48,7 +48,7 @@ const LoginPage = () => {
       return;
     }
 
-    const redirectTo = urlSearchParams.get('redirectTo');
+    const redirectTo = urlSearchParams.get('redirectTo') ?? undefined;
     const loginSuccessAction = login({
       user: fetchedUser,
       redirectTo,
