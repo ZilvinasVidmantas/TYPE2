@@ -12,14 +12,19 @@ const DashboardLayoutAppBar = styled(Navbar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  ...(open && {
-    width: `calc(100% - ${theme.mixins.drawer.width}px)`,
-    marginLeft: `${theme.mixins.drawer.width}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
+  width: `calc(100% - ${theme.mixins.drawer.width}px)`,
+
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
+    ...(open && {
+      width: `calc(100% - ${theme.mixins.drawer.width}px)`,
+      marginLeft: `${theme.mixins.drawer.width}px`,
+      transition: theme.transitions.create(['margin', 'width'], {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
     }),
-  }),
+  },
 }));
 
 export default DashboardLayoutAppBar;

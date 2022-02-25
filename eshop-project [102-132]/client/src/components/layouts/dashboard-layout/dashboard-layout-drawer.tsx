@@ -7,11 +7,13 @@ import DashboardLayoutDrawerHeader from './dashboard-layout-drawer-header';
 export type DashboardLayoutDrawerProps = {
   open: boolean,
   handleDrawerClose: () => void,
+  isSmallScreen: boolean,
 };
 
 const DashboardLayoutDrawer: React.FC<DashboardLayoutDrawerProps> = ({
   open,
   handleDrawerClose,
+  isSmallScreen,
 }) => {
   const theme = useTheme();
 
@@ -25,14 +27,16 @@ const DashboardLayoutDrawer: React.FC<DashboardLayoutDrawerProps> = ({
           boxSizing: 'border-box',
         },
       }}
-      variant="persistent"
+      variant={isSmallScreen ? 'persistent' : 'permanent'}
       anchor="left"
       open={open}
     >
       <DashboardLayoutDrawerHeader>
-        <IconButton onClick={handleDrawerClose}>
-          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-        </IconButton>
+        {isSmallScreen && (
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        )}
       </DashboardLayoutDrawerHeader>
     </Drawer>
   );

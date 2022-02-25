@@ -12,15 +12,13 @@ import LinkButton from './navbar-link-button';
 import AuthMenu from './navbar-auth-menu';
 import routes from '../../../routing/routes';
 
-export type NavbarProps = AppBarProps & {
-  drawerIcon?: React.ReactElement
-};
+export type NavbarProps = AppBarProps;
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   height: theme.mixins.navbar.height,
 }));
 
-const Navbar: React.FC<NavbarProps> = ({ drawerIcon, ...props }) => {
+const Navbar: React.FC<NavbarProps> = ({ ...props }) => {
   const auth = useSelector(authSelector);
 
   return (
@@ -34,7 +32,6 @@ const Navbar: React.FC<NavbarProps> = ({ drawerIcon, ...props }) => {
         }}
         >
           <Box sx={{ display: 'flex' }}>
-            {drawerIcon}
             <LinkButton link={routes.HomePage} title="Home" />
           </Box>
           {
