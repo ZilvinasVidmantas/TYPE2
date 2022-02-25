@@ -23,6 +23,7 @@ const AutocompleteFilter = () => {
         renderInput={(params) => <TextField {...params} label="Miestas" />}
         size="small"
         sx={{ mt: 1 }}
+        getOptionLabel={(options) => options.title}
       />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, px: 1, pt: 1 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
