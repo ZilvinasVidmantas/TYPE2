@@ -14,6 +14,22 @@ const RangeFilterInput = styled(Input)({
   },
 });
 
+const StyledSlider = styled(Slider)(({ theme }) => ({
+  '& .MuiSlider-thumb': {
+    background: theme.palette.secondary.main,
+    borderRadius: theme.shape.borderRadius,
+    ':hover': {
+      boxShadow: '0px 0px 0px 4px rgb(69 69 69 / 16%)',
+    }
+  },
+  '& .Mui-active': {
+    background: theme.palette.secondary.dark,
+  },
+  '& .Mui-focusVisible': {
+    boxShadow: '0px 0px 0px 6px rgb(69 69 69 / 16%)',
+  }
+}));
+
 const RangeFilter = () => {
   return (
     <FilterWrapper>
@@ -22,7 +38,7 @@ const RangeFilter = () => {
         <RangeFilterInput value={100} />
       </Box>
       <Box sx={{ px: 2, pt: 2 }}>
-        <Slider
+        <StyledSlider
           min={10}
           max={100}
           value={[10, 100]}

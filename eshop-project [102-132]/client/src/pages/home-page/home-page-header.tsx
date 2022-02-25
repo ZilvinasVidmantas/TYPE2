@@ -20,7 +20,7 @@ const HomePageHeader: React.FC = () => {
     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <Typography variant="h5">Surastas daiktas(125)</Typography>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <Pagination count={5} variant="outlined" shape="rounded" />
+        <Pagination count={5} variant="outlined" shape="rounded" color="secondary" />
         <Divider flexItem orientation="vertical" sx={{ my: 0.75 }} />
         <Typography variant="h6">Sort: </Typography>
         <TextField

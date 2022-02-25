@@ -28,11 +28,11 @@ const AutocompleteFilter = () => {
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, px: 1, pt: 1 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography>Vilnius</Typography>
-          <Button variant="contained" size="small" sx={{ p: 0 }}>⨉</Button>
+          <Button variant="contained" size="small" sx={{ p: 0 }} color="secondary">⨉</Button>
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography>Kaunas</Typography>
-          <Button variant="contained" size="small" sx={{ p: 0 }}>⨉</Button>
+          <Button variant="contained" size="small" color="secondary" sx={{ p: 0 }}>⨉</Button>
         </Box>
       </Box>
     </FilterWrapper>

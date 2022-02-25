@@ -32,7 +32,7 @@ const ServiceCards = () => {
           mb: 1
         }}>
           <Typography variant="h5">Tinkavimas</Typography>
-          <Typography variant="h5">20 €</Typography>
+          <Typography variant="h5" color="secondary" fontWeight="bold">20 €</Typography>
         </Box>
         <Box sx={{ display: 'flex' }}>
           <Typography sx={{ width: 120 }} >Miestas: </Typography>
@@ -45,7 +45,7 @@ const ServiceCards = () => {
         <Typography variant="body2" sx={{ my: 2, fontSize: 16 }}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam deserunt recusandae unde aliquam ducimus voluptates quis, nulla fugiat nesciunt inventore.</Typography>
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
           <Button variant="contained">Daugiau</Button>
-          <Button variant="contained">
+          <Button variant="contained" color="secondary">
             <ShoppingCartIcon />
           </Button>
         </Box>
