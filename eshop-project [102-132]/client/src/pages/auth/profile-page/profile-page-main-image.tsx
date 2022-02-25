@@ -19,7 +19,7 @@ const StyledMainImage = styled('img')({
 export type HandleSelectImage = (id: string) => void;
 
 export type ProfilePageMainImageProps = {
-  mainImg: Image,
+  mainImg?: Image,
   imgData: Image[],
   setMainImage: SetMainImage;
 };

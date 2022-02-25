@@ -15,12 +15,13 @@ import Image from '../../../types/image';
 
 export type SetMainImage = (id: string) => Promise<void>;
 export type HandleImageDelete = (id: string) => Promise<void>;
+export type UpdateImgData = (data: Image[]) => void;
 
 const ProfilePage: React.FC = () => {
   const user = useSelector(userSelector);
   const [imgData, setImgData] = useState<Image[]>([]);
 
-  const updateImgData = (newImgData) => {
+  const updateImgData: UpdateImgData = (newImgData) => {
     setImgData([...imgData, ...newImgData]);
   };
 
@@ -45,7 +46,7 @@ const ProfilePage: React.FC = () => {
       <Typography variant="h4" sx={{ mb: 3 }}>Jūsų profilis</Typography>
       <Grid container rowSpacing={4}>
         <Grid item xs={12} md={5}>
-          <MainImage mainImg={user && user.mainImg} imgData={imgData} setMainImage={setMainImage} />
+          <MainImage mainImg={user ? user.mainImg : undefined} imgData={imgData} setMainImage={setMainImage} />
         </Grid>
         <Grid item xs={12} md={7}>
           <UserInfo user={user} />

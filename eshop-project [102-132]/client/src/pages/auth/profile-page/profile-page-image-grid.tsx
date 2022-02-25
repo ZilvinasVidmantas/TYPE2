@@ -1,11 +1,11 @@
 import React from 'react';
-import { Box, Fab } from '@mui/material';
+import { Box, Fab, SxProps, Theme, styled } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import Image from '../../../types/image';
 import { HandleSelectImage } from './profile-page-main-image';
 import { HandleImageDelete } from '.';
 
-const imageContainerStyle = (theme) => ({
+const imageContainerStyle: SxProps<Theme> = (theme) => ({
   position: 'relative',
   width: '100%',
   pt: '100%',
@@ -17,7 +17,7 @@ const imageContainerStyle = (theme) => ({
   },
 });
 
-const imageStyle = {
+const HtmlImage = styled('img')({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -25,7 +25,7 @@ const imageStyle = {
   width: '100%',
   objectFit: 'cover',
   objectPosition: 'center',
-};
+});
 
 export type ProfilePageImageGridProps = {
   imgData: Image[],
@@ -56,11 +56,7 @@ const ProfilePageImageGrid: React.FC<ProfilePageImageGridProps> = ({
           className={handleSelectImage ? 'selectable' : undefined}
           onClick={handleSelectImage ? () => handleSelectImage(id) : undefined}
         >
-          <img
-            src={src}
-            alt={src}
-            style={imageStyle}
-          />
+          <HtmlImage src={src} alt={src} />
           {handleImageDelete && (
             <Fab
               size="small"

@@ -6,18 +6,35 @@ import {
 } from '@mui/material';
 import ImageGrid from './profile-page-image-grid';
 import ProfileService from '../../../services/profile-service';
+import Image from '../../../types/image';
+import { UpdateImgData } from './index';
+import { HandleImageDelete } from '.';
 
-const ProfilePageGallery = ({ imgData, updateImgData, handleImageDelete }) => {
-  const fileUploadRef = useRef(null);
+export type ProfilePageGalleryProps = {
+  imgData: Image[],
+  updateImgData: UpdateImgData,
+  handleImageDelete: HandleImageDelete
+};
+
+const ProfilePageGallery: React.FC<ProfilePageGalleryProps> = ({
+  imgData,
+  updateImgData,
+  handleImageDelete
+}) => {
+  const fileUploadRef = useRef<HTMLInputElement>(null);
 
   const handleUploadFiles = () => {
-    fileUploadRef.current.click();
+    if (fileUploadRef && fileUploadRef.current) {
+      fileUploadRef.current.click();
+    }
   };
 
   const handleImagesLoaded = async () => {
     const input = fileUploadRef.current;
-    const data = await ProfileService.uploadImages(input.files);
-    updateImgData(data);
+    if (input && input.files) {
+      const data = await ProfileService.uploadImages(input.files);
+      updateImgData(data);
+    }
   };
 
   return (

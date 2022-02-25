@@ -1,9 +1,11 @@
+import Image from './image';
+
 type User = {
   id: string,
   email: string,
   role: string,
   name: string,
-  mainImg?: string,
+  mainImg?: Image,
   surname: string,
   createdAt: string,
   updatedAt: string,

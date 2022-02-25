@@ -39,7 +39,7 @@ const validationSchema = yup.object({
   emailAvailable: yup.boolean().oneOf([true]),
 });
 
-type ProfilePageUserInfoProps = {
+export type ProfilePageUserInfoProps = {
   user: User | null,
 };
 
