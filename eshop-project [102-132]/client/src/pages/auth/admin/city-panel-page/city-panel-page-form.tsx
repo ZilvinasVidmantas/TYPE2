@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CityService from './services/city-service';
 import { City } from 'types';
 import {
@@ -8,12 +8,18 @@ import {
 } from '@mui/material';
 
 export type CityPanelPageFormProps = {
-  onSubmit: (city: City) => void
+  title: string,
+  editMode: boolean,
+  onSubmit: (city: City) => void,
+  setTitle: (newValue: string) => void,
 }
 
-const CityPanelPageForm: React.FC<CityPanelPageFormProps> = ({ onSubmit }) => {
-  const [title, setTitle] = useState<string>('');
-
+const CityPanelPageForm: React.FC<CityPanelPageFormProps> = ({
+  title,
+  editMode,
+  onSubmit,
+  setTitle
+}) => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
@@ -34,8 +40,15 @@ const CityPanelPageForm: React.FC<CityPanelPageFormProps> = ({ onSubmit }) => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         sx={{ flexGrow: 1 }}
+        color={editMode ? 'warning' : 'secondary'}
+        label={editMode ? 'Atnaujinti' : 'Sukurti'}
       />
-      <Button variant="contained" color="primary" type="submit">Sukurti</Button>
+      <Button
+        variant="contained"
+        color={editMode ? 'warning' : 'secondary'}
+        type="submit">
+        {editMode ? 'Atnaujinti' : 'Sukurti'}
+      </Button>
     </Paper>
   );
 }

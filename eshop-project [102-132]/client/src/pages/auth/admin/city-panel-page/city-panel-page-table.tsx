@@ -10,15 +10,23 @@ import {
   tableCellClasses,
   Button,
   styled,
+  alpha,
 } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CachedIcon from '@mui/icons-material/Cached';
+import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
 import { City } from 'types';
 import CityService from './services/city-service';
 
+type EditedCity = City & {
+  edited: boolean,
+}
+
+
 export type CityPanelPageTableProps = {
-  data: City[],
+  data: EditedCity[],
   onDelete: (id: string) => void,
+  onEdit: (id: string) => void,
 };
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -33,6 +41,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 export const CityPanelPageTable: React.FC<CityPanelPageTableProps> = ({
   data,
+  onEdit,
   onDelete,
 }) => {
   const handleCityDelete = async (id: string) => {
@@ -62,7 +71,10 @@ export const CityPanelPageTable: React.FC<CityPanelPageTableProps> = ({
           {data.map((city) => (
             <TableRow
               key={city.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              sx={(theme) => ({
+                bgcolor: city.edited ? alpha(theme.palette.warning.main, 0.3) : undefined,
+                '&:last-child td, &:last-child th': { border: 0 },
+              })}
             >
               <StyledTableCell component="th" scope="row">
                 {city.id}
@@ -71,8 +83,12 @@ export const CityPanelPageTable: React.FC<CityPanelPageTableProps> = ({
               <StyledTableCell align="right">{city.createdAt}</StyledTableCell>
               <StyledTableCell align="right">{city.updatedAt}</StyledTableCell>
               <StyledTableCell sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end' }}>
-                <Button variant="contained" color="secondary">
-                  <CachedIcon />
+                <Button
+                  variant="contained"
+                  color={city.edited ? 'warning' : 'secondary'}
+                  onClick={() => onEdit(city.id)}
+                >
+                  {city.edited ? <DoNotDisturbAltIcon /> : <CachedIcon />}
                 </Button>
                 <Button variant="contained" color="error" onClick={() => handleCityDelete(city.id)}>
                   <DeleteForeverIcon />
