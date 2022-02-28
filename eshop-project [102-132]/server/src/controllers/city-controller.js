@@ -1,9 +1,15 @@
+const CityModel = require('../models/city-model');
+const CityViewModel = require('../view-models/city-view-model');
+
 const getCities = async (req, res) => {
   res.status(200);
 };
 
 const createCity = async (req, res) => {
-  res.status(200);
+  const { title } = req.body;
+  const cityDoc = await CityModel.create({ title });
+
+  res.status(200).json(new CityViewModel(cityDoc));
 };
 
 const updateCity = async (req, res) => {
