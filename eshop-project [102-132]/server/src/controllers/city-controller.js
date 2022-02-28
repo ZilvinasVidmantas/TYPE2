@@ -1,3 +1,4 @@
+const Mongoose = require('mongoose');
 const CityModel = require('../models/city-model');
 const CityViewModel = require('../view-models/city-view-model');
 
@@ -18,7 +19,23 @@ const createCity = async (req, res) => {
 };
 
 const updateCity = async (req, res) => {
-  res.status(200);
+  const { id } = req.params;
+  const data = req.body;
+  try {
+    const cityDoc = await CityModel.findByIdAndUpdate(id, data, {
+      new: true,
+      runValidators: true,
+    });
+
+    res.status(200).json(new CityViewModel(cityDoc));
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      message: error instanceof Mongoose.Error.ValidationError
+        ? `City with title '${data.title}' already exists`
+        : error.message
+    })
+  }
 };
 
 const deleteCity = async (req, res) => {

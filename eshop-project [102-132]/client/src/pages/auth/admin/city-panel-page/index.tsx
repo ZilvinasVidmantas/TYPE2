@@ -14,8 +14,35 @@ const CityPanelPage = () => {
   const [titleField, setTitleField] = useState<string>('');
   const [editedCityId, setEditedCityId] = useState<null | string>(null);
 
-  const addCity: CityPanelPageFormProps['onSubmit'] = (city) => {
-    setCities([...cities, city]);
+  const handleSubmit: CityPanelPageFormProps['onSubmit'] = (event) => {
+    event.preventDefault();
+    if (editedCityId !== null) updateCity();
+    else createCity();
+  }
+
+  const createCity = async () => {
+    const createdCity = await CityService.createCity({ title: titleField });
+    if (typeof createdCity === 'string') {
+      console.error(createdCity);
+      return;
+    }
+
+    setCities([createdCity, ...cities]);
+    setTitleField('');
+  }
+
+  const updateCity = async () => {
+    if (editedCityId !== null) {
+      const updatedCity = await CityService.updateCity(editedCityId, { title: titleField });
+      if (typeof updatedCity === 'string') {
+        console.error(updatedCity);
+        return;
+      }
+
+      setCities(cities.map(x => x.id === editedCityId ? updatedCity : x));
+      setTitleField('');
+      setEditedCityId(null);
+    }
   }
 
   const deleteCity: CityPanelPageTableProps['onDelete'] = (id) => {
@@ -38,7 +65,6 @@ const CityPanelPage = () => {
   useEffect(() => {
     (async () => {
       const fetchedCities = await CityService.getCities();
-
       if (typeof fetchedCities === 'string') {
         console.error(fetchedCities);
         return;
@@ -53,7 +79,7 @@ const CityPanelPage = () => {
       <Typography component="h1" variant="h2">Miestų panelė</Typography>
       <Box sx={{ width: 600, mt: 4, mb: 2 }}>
         <CityPanelPageForm
-          onSubmit={addCity}
+          onSubmit={handleSubmit}
           title={titleField}
           setTitle={setTitleField}
           editMode={Boolean(editedCityId)}

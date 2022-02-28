@@ -45,6 +45,30 @@ const CityService = new (class CityService {
     }
   };
 
+  public updateCity = async (id: string, formData: CityData): Promise<City | string> => {
+    const token = CityService.validateToken();
+    if (!token) return 'You are not authorized';
+
+    try {
+      const { data } = await this.requester.patch<City>(`/${id}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return data;
+    } catch (error) {
+      if ((error as AxiosError).isAxiosError) {
+        const axiosError = error as AxiosError<ErrorResponse>;
+        if (axiosError.response) {
+          return axiosError.response.data.message;
+        }
+      }
+      if (error instanceof Error) return error.message;
+      return error as any as string;
+    }
+  };
+
   public getCities = async (): Promise<City[] | string> => {
     const token = CityService.validateToken();
     if (!token) return 'You are not authorized';
