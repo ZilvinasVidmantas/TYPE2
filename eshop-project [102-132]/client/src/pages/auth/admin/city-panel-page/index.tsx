@@ -5,14 +5,16 @@ import {
   Typography,
 } from '@mui/material';
 import { City } from 'types';
-import CityPanelPageForm from './city-panel-page-form';
+import CityPanelPageForm, { CityPanelPageFormProps } from './city-panel-page-form';
 import CityPanelPageTable from './city-panel-page-table';
 import CityService from './services/city-service';
 
 const CityPanelPage = () => {
   const [cities, setCities] = useState<City[]>([]);
 
-  console.log(cities);
+  const addCity: CityPanelPageFormProps['onSubmit'] = (city) => {
+    setCities([...cities, city]);
+  }
 
   useEffect(() => {
     (async () => {
@@ -32,7 +34,7 @@ const CityPanelPage = () => {
     <Container maxWidth="xl">
       <Typography component="h1" variant="h2">Miestų panelė</Typography>
       <Box sx={{ width: 600, mt: 4, mb: 2 }}>
-        <CityPanelPageForm />
+        <CityPanelPageForm onSubmit={addCity} />
       </Box>
       <CityPanelPageTable data={cities} />
     </Container>

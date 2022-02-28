@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import CityService from './services/city-service';
+import { City } from 'types';
 import {
   TextField,
   Paper,
   Button,
 } from '@mui/material';
 
-const CityPanelPageForm = () => {
+export type CityPanelPageFormProps = {
+  onSubmit: (city: City) => void
+}
+
+const CityPanelPageForm: React.FC<CityPanelPageFormProps> = ({ onSubmit }) => {
   const [title, setTitle] = useState<string>('');
+
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
@@ -19,6 +25,7 @@ const CityPanelPageForm = () => {
     }
 
     setTitle('');
+    onSubmit(createdCity);
   }
 
   return (
