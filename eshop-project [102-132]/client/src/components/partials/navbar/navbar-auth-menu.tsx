@@ -54,13 +54,13 @@ const NavbarAuthMenu: React.FC = () => {
         <MenuItem onClick={handleCloseMenu}>
           <AuthMenuLink to={routes.ProfilePage}>
             <PersonIcon sx={{ mr: 2 }} />
-            <Typography textAlign="center">Profile</Typography>
+            <Typography textAlign="center">Valdymo panelė</Typography>
           </AuthMenuLink>
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
         <MenuItem onClick={handleLogout}>
           <PowerSettingsNewIcon sx={{ mr: 2 }} />
-          <Typography textAlign="center">Logout</Typography>
+          <Typography textAlign="center">Atsijungti</Typography>
         </MenuItem>
       </Menu>
     </Box>
