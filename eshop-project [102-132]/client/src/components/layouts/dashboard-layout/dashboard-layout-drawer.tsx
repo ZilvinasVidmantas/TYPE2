@@ -32,7 +32,7 @@ const navigationItems = {
     { title: 'Paslaugų panelė', path: routes.ServicePanelPage, Icon: ConstructionIcon },
     { title: 'Vartotojų panelė', path: routes.UserPanelPage, Icon: GroupIcon },
     { title: 'Kategorijų panelė', path: routes.CategoryPanelPage, Icon: CategoryIcon },
-    { title: 'Vietovių panelė', path: routes.CityPanelPage, Icon: LocationCityIcon },
+    { title: 'Miestų panelė', path: routes.CityPanelPage, Icon: LocationCityIcon },
   ],
 };
 

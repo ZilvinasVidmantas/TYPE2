@@ -1,6 +1,6 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosError, AxiosInstance } from 'axios';
 import AuthService from 'services/auth-service';
-import { City, CityData } from 'types';
+import { City, CityData, ErrorResponse } from 'types';
 
 const CityService = new (class CityService {
   private requester: AxiosInstance;
@@ -23,7 +23,7 @@ const CityService = new (class CityService {
 
   public createCity = async (formData: CityData): Promise<City | string> => {
     const token = CityService.validateToken();
-    if (!token) return 'You ar not authorized';
+    if (!token) return 'You are not authorized';
 
     try {
       const { data } = await this.requester.post<City>('/', formData, {
@@ -34,6 +34,12 @@ const CityService = new (class CityService {
 
       return data;
     } catch (error) {
+      if ((error as AxiosError).isAxiosError) {
+        const axiosError = error as AxiosError<ErrorResponse>;
+        if (axiosError.response) {
+          return axiosError.response.data.message;
+        }
+      }
       if (error instanceof Error) return error.message;
       return error as any as string;
     }
@@ -41,7 +47,7 @@ const CityService = new (class CityService {
 
   public getCities = async (): Promise<City[] | string> => {
     const token = CityService.validateToken();
-    if (!token) return 'You ar not authorized';
+    if (!token) return 'You are not authorized';
     try {
       const { data } = await this.requester.get<City[]>('/', {
         headers: {
@@ -51,6 +57,35 @@ const CityService = new (class CityService {
 
       return data;
     } catch (error) {
+      if ((error as AxiosError).isAxiosError) {
+        const axiosError = error as AxiosError<ErrorResponse>;
+        if (axiosError.response) {
+          return axiosError.response.data.message;
+        }
+      }
+      if (error instanceof Error) return error.message;
+      return error as any as string;
+    }
+  }
+
+  public deleteCity = async (id: string): Promise<City | string> => {
+    const token = CityService.validateToken();
+    if (!token) return 'You are not authorized';
+    try {
+      const { data } = await this.requester.delete<City>(`/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return data;
+    } catch (error) {
+      if ((error as AxiosError).isAxiosError) {
+        const axiosError = error as AxiosError<ErrorResponse>;
+        if (axiosError.response) {
+          return axiosError.response.data.message;
+        }
+      }
       if (error instanceof Error) return error.message;
       return error as any as string;
     }

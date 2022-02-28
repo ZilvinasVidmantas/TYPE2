@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import { City } from 'types';
 import CityPanelPageForm, { CityPanelPageFormProps } from './city-panel-page-form';
-import CityPanelPageTable from './city-panel-page-table';
+import CityPanelPageTable, { CityPanelPageTableProps } from './city-panel-page-table';
 import CityService from './services/city-service';
 
 const CityPanelPage = () => {
@@ -16,10 +16,13 @@ const CityPanelPage = () => {
     setCities([...cities, city]);
   }
 
+  const deleteCity: CityPanelPageTableProps['onDelete'] = (id) => {
+    setCities(cities.filter(x => x.id !== id));
+  }
+
   useEffect(() => {
     (async () => {
       const fetchedCities = await CityService.getCities();
-      console.log(fetchedCities);
 
       if (typeof fetchedCities === 'string') {
         console.error(fetchedCities);
@@ -36,7 +39,10 @@ const CityPanelPage = () => {
       <Box sx={{ width: 600, mt: 4, mb: 2 }}>
         <CityPanelPageForm onSubmit={addCity} />
       </Box>
-      <CityPanelPageTable data={cities} />
+      <CityPanelPageTable
+        data={cities}
+        onDelete={deleteCity}
+      />
     </Container>
   );
 }

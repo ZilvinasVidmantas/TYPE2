@@ -9,9 +9,12 @@ const getCities = async (req, res) => {
 
 const createCity = async (req, res) => {
   const { title } = req.body;
-  const cityDoc = await CityModel.create({ title });
-
-  res.status(200).json(new CityViewModel(cityDoc));
+  try {
+    const cityDoc = await CityModel.create({ title });
+    res.status(200).json(new CityViewModel(cityDoc));
+  } catch (error) {
+    res.status(400).json({ message: `City with title ${title} already exists` });
+  }
 };
 
 const updateCity = async (req, res) => {
@@ -19,7 +22,10 @@ const updateCity = async (req, res) => {
 };
 
 const deleteCity = async (req, res) => {
-  res.status(200);
+  const { id } = req.params;
+  const cityDoc = await CityModel.findByIdAndDelete(id);
+
+  res.status(200).json(new CityViewModel(cityDoc));
 };
 
 module.exports = {
