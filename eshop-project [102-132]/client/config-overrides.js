@@ -1,6 +1,6 @@
 const { override, addWebpackAlias } = require('customize-cra');
 const path = require('path');
-const relativePaths = require('./relative-paths');
+const relativePaths = require('./absolute-paths');
 
 const aliases = Object.entries(relativePaths)
   .reduce((aliasesObj, [alias, aliasPath]) => ({
