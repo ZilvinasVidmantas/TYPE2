@@ -13,7 +13,7 @@ const AdminProtector: React.FC = ({ children }) => {
     return <Navigate to={`${routes.LoginPage}?redirectTo=${pathname}`} />;
   }
 
-  if (auth.user?.role !== 'admin') {
+  if (auth.user?.role !== 'ADMIN') {
     return <Navigate to={routes.ProfilePage} />;
   }
 

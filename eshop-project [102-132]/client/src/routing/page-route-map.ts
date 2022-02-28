@@ -11,11 +11,11 @@ import RegisterPage from 'pages/public-only/register-page';
 // auth
 import ProfilePage from 'pages/auth/profile-page';
 // user
-import UserInfoPage from 'pages/auth/user/user-info-page';
 import OrdersPage from 'pages/auth/user/orders-page';
 // admin
-import StatisticsPage from 'pages/auth/admin/statistics-page';
-import ProductPanelPage from 'pages/auth/admin/product-panel-page';
+import ServicePanelPage from 'pages/auth/admin/service-panel-page';
+import CategoryPanelPage from 'pages/auth/admin/category-panel-page';
+import CityPanelPage from 'pages/auth/admin/city-panel-page';
 import UserPanelPage from 'pages/auth/admin/user-panel-page';
 
 import DashboardLayout from 'components/layouts/dashboard-layout';
@@ -24,17 +24,7 @@ import ViewportLayout from 'components/layouts/viewport-layout';
 
 export type LayoutPageName = 'ViewportLayout' | 'NavbarLayout' | 'DashboardLayout';
 export type DynamicPageName = 'ErrorPage' | 'ProductPage';
-export type ConcretePageName = 'HomePage'
-  | 'CartPage'
-  | 'CatalogPage'
-  | 'LoginPage'
-  | 'RegisterPage'
-  | 'ProfilePage'
-  | 'UserInfoPage'
-  | 'OrdersPage'
-  | 'StatisticsPage'
-  | 'ProductPanelPage'
-  | 'UserPanelPage';
+export type ConcretePageName = 'HomePage' | 'CartPage' | 'CatalogPage' | 'LoginPage' | 'RegisterPage' | 'ProfilePage' | 'OrdersPage' | 'ServicePanelPage' | 'UserPanelPage' | 'CityPanelPage' | 'CategoryPanelPage';
 
 export type PageName = LayoutPageName | ConcretePageName | DynamicPageName;
 
@@ -54,11 +44,11 @@ const pageRouteMap: PageRouteMap = {
   LoginPage,
   RegisterPage,
   ProfilePage,
-  UserInfoPage,
   OrdersPage,
-  StatisticsPage,
-  ProductPanelPage,
+  ServicePanelPage,
   UserPanelPage,
+  CategoryPanelPage,
+  CityPanelPage,
 };
 
 export default pageRouteMap;

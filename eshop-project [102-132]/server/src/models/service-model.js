@@ -4,6 +4,7 @@ const serviceSchema = new Mongoose.Schema({
   title: 'string',
   price: 'number',
   images: [{
+    id: Mongoose.Types.ObjectId,
     src: 'string',
   }],
   category: {
