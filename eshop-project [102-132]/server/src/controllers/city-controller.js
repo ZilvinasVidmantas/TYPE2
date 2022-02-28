@@ -2,7 +2,9 @@ const CityModel = require('../models/city-model');
 const CityViewModel = require('../view-models/city-view-model');
 
 const getCities = async (req, res) => {
-  res.status(200);
+  const cityDocs = await CityModel.find();
+
+  res.status(200).json(cityDocs.map(x => new CityViewModel(x)));
 };
 
 const createCity = async (req, res) => {

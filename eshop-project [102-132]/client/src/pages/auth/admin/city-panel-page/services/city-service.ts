@@ -38,6 +38,23 @@ const CityService = new (class CityService {
       return error as any as string;
     }
   };
+
+  public getCities = async (): Promise<City[] | string> => {
+    const token = CityService.validateToken();
+    if (!token) return 'You ar not authorized';
+    try {
+      const { data } = await this.requester.get<City[]>('/', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return data;
+    } catch (error) {
+      if (error instanceof Error) return error.message;
+      return error as any as string;
+    }
+  }
 })();
 
 export default CityService;
