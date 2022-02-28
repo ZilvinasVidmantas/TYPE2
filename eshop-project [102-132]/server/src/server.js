@@ -5,6 +5,8 @@ require('dotenv').config();
 const cors = require('cors');
 const authRouter = require('./routes/auth-router');
 const userRouter = require('./routes/user-router');
+const categoryRouter = require('./routes/category-router');
+const cityRouter = require('./routes/city-router');
 const imageRouter = require('./routes/image-router');
 
 const server = express();
@@ -30,6 +32,8 @@ server.use(express.static(PUBLIC_PATH));
 server.use('/api/auth', authRouter);
 server.use('/api/users', userRouter);
 server.use('/api/images', imageRouter);
+server.use('/api/categories', categoryRouter);
+server.use('/api/cities', cityRouter);
 
 server.listen(SERVER_PORT, () => {
   console.log(`puslapis veikia ant ${SERVER_DOMAIN}:${SERVER_PORT}/`);
