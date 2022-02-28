@@ -49,7 +49,6 @@ const DashboardLayoutDrawer: React.FC<DashboardLayoutDrawerProps> = ({
 }) => {
   const theme = useTheme();
   const { user } = useSelector(authSelector);
-  console.log(user);
 
   return (
     <Drawer
