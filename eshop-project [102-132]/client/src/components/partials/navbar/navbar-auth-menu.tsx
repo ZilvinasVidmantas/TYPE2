@@ -11,11 +11,11 @@ import {
 } from '@mui/material';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import PersonIcon from '@mui/icons-material/Person';
-import { useSelector } from '../../../store/hooks';
-import { userSelector } from '../../../store/auth';
-import AuthService from '../../../services/auth-service';
+import { useSelector } from 'store/hooks';
+import { userSelector } from 'store/auth';
+import routes from 'routing/routes';
+import AuthService from 'services/auth-service';
 import AuthMenuLink from './navbar-auth-menu-link';
-import routes from '../../../routing/routes';
 
 const NavbarAuthMenu: React.FC = () => {
   const anchorRef = useRef(null);

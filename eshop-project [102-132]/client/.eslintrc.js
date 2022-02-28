@@ -29,6 +29,7 @@ module.exports = {
   ],
 
   rules: {
+    'import/no-cycle': [0],
     quotes: [2, 'single'],
     'quote-props': [2, 'as-needed'],
     'linebreak-style': [2, 'unix'],

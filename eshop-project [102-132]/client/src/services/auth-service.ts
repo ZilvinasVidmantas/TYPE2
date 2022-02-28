@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from 'axios';
+import reduxStore from 'store/index';
+import { login, logout, authFailed } from 'store/auth';
+import { Crudentials, User, UserRegistration } from 'types';
 import SessionService from './session-service';
-import reduxStore from '../store/index';
-import { login, logout, authFailed } from '../store/auth';
-import { Crudentials, User, UserRegistration } from '../types';
 
 type AuthResponse = {
   user: User,

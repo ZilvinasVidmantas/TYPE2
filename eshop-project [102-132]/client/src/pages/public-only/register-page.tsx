@@ -12,11 +12,11 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import * as yup from 'yup';
 import { useFormik, FormikHelpers } from 'formik';
-import { useDispatch } from '../../store/hooks';
-import { login } from '../../store/auth';
-import AuthForm from '../../components/auth-form';
-import AuthService from '../../services/auth-service';
-import routes from '../../routing/routes';
+import { useDispatch } from 'store/hooks';
+import { login } from 'store/auth';
+import AuthForm from 'components/auth-form';
+import AuthService from 'services/auth-service';
+import routes from 'routing/routes';
 
 type InitialValues = {
   name: string,
@@ -29,7 +29,8 @@ type InitialValues = {
   emailAvailable: boolean,
 };
 
-type FormikOnSubmit = (values: InitialValues, formikHelpers: FormikHelpers<InitialValues>) => void | Promise<void>;
+type FormikOnSubmit =
+  (values: InitialValues, formikHelpers: FormikHelpers<InitialValues>) => void | Promise<void>;
 
 const validationSchema = yup.object({
   name: yup.string()

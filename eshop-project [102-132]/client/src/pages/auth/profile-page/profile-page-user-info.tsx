@@ -12,9 +12,9 @@ import {
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import * as yup from 'yup';
 import ErrorIcon from '@mui/icons-material/Error';
-import AuthService from '../../../services/auth-service';
-import ProfileService from '../../../services/profile-service';
-import { User, UserPatch } from '../../../types';
+import AuthService from 'services/auth-service';
+import ProfileService from 'services/profile-service';
+import { User, UserPatch } from 'types';
 
 const validationSchema = yup.object({
   name: yup.string()
@@ -47,7 +47,8 @@ type InitialValues = UserPatch & {
   emailAvailable: boolean,
 };
 
-type FormikOnSubmit = (values: InitialValues, formikHelpers: FormikHelpers<InitialValues>) => void | Promise<void>;
+type FormikOnSubmit =
+  (values: InitialValues, formikHelpers: FormikHelpers<InitialValues>) => void | Promise<void>;
 
 const ProfilePageUserInfo: React.FC<ProfilePageUserInfoProps> = ({ user }) => {
   const [emailCheckLoading, setEmailCheckLoading] = useState(false);

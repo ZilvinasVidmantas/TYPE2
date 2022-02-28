@@ -4,9 +4,9 @@ import {
   Typography,
   Button,
 } from '@mui/material';
+import ProfileService from 'services/profile-service';
+import { Image } from 'types';
 import ImageGrid from './profile-page-image-grid';
-import ProfileService from '../../../services/profile-service';
-import { Image } from '../../../types';
 import { UpdateImgData, HandleImageDelete } from './index';
 
 export type ProfilePageGalleryProps = {

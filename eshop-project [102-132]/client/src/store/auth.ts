@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { CaseReducer, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '../types';
 import { State } from './index';

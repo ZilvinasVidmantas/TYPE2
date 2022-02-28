@@ -5,13 +5,13 @@ import {
   Typography,
 } from '@mui/material';
 
-import { useSelector } from '../../../store/hooks';
+import { useSelector } from 'store/hooks';
+import { userSelector } from 'store/auth';
+import ProfileService from 'services/profile-service';
+import { Image } from 'types';
 import Gallery from './profile-page-gallery';
 import UserInfo from './profile-page-user-info';
 import MainImage from './profile-page-main-image';
-import { userSelector } from '../../../store/auth';
-import ProfileService from '../../../services/profile-service';
-import { Image } from '../../../types';
 
 export type SetMainImage = (id: string) => Promise<void>;
 export type HandleImageDelete = (id: string) => Promise<void>;
@@ -46,7 +46,11 @@ const ProfilePage: React.FC = () => {
       <Typography variant="h4" sx={{ mb: 3 }}>Jūsų profilis</Typography>
       <Grid container rowSpacing={4}>
         <Grid item xs={12} md={5}>
-          <MainImage mainImg={user ? user.mainImg : undefined} imgData={imgData} setMainImage={setMainImage} />
+          <MainImage
+            mainImg={user ? user.mainImg : undefined}
+            imgData={imgData}
+            setMainImage={setMainImage}
+          />
         </Grid>
         <Grid item xs={12} md={7}>
           <UserInfo user={user} />

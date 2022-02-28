@@ -7,16 +7,17 @@ import {
 import { useSearchParams } from 'react-router-dom';
 import { FormikHelpers, useFormik } from 'formik';
 import * as yup from 'yup';
-import { useDispatch } from '../../store/hooks';
-import routes from '../../routing/routes';
-import { login } from '../../store/auth';
-import AuthForm from '../../components/auth-form';
-import AuthService from '../../services/auth-service';
-import { Crudentials } from '../../types';
+import routes from 'routing/routes';
+import { login } from 'store/auth';
+import AuthForm from 'components/auth-form';
+import AuthService from 'services/auth-service';
+import { Crudentials } from 'types';
+import { useDispatch } from 'store/hooks';
 
 type InitialValues = Crudentials;
 
-type FormikOnSubmit = (values: InitialValues, formikHelpers: FormikHelpers<InitialValues>) => void | Promise<void>;
+type FormikOnSubmit =
+  (values: InitialValues, formikHelpers: FormikHelpers<InitialValues>) => void | Promise<void>;
 
 const validationSchema = yup.object({
   email: yup.string()

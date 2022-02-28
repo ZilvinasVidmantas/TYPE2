@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { useSelector } from '../store/hooks';
+import { loggedInSelector } from 'store/auth';
+import { useSelector } from 'store/hooks';
 import routeStructure, { RouteData, RouteLayoutData, RoutePageData } from './route-structure';
-import { loggedInSelector } from '../store/auth';
 import protectPageEnum from './auth-protectors/protect-page-enum';
 import pageRouteMap from './page-route-map';
 
