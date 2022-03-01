@@ -8,7 +8,7 @@ const UserService = new (class UserService {
   static validateToken() {
     const token = AuthService.getToken();
     if (!token) {
-      throw new Error('Can not get user images without authentication');
+      throw new Error('No auth token found');
     }
 
     return token;
