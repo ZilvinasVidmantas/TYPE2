@@ -82,9 +82,11 @@ const LoginPage: React.FC = () => {
       isValid={isValid && dirty}
       onSubmit={handleSubmit}
     >
-      <Alert severity="error" sx={{ my: 2, visibility: error ? 'visible' : 'hidden' }}>
-        {error}
-      </Alert>
+      {error && (
+        <Alert severity="error" sx={{ my: 2 }}>
+          {error}
+        </Alert>
+      )}
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <TextField
@@ -98,7 +100,6 @@ const LoginPage: React.FC = () => {
             onBlur={handleBlur}
             disabled={isSubmitting}
             fullWidth
-            autoComplete="email"
             autoFocus
           />
         </Grid>
@@ -115,7 +116,6 @@ const LoginPage: React.FC = () => {
             onBlur={handleBlur}
             disabled={isSubmitting}
             fullWidth
-            autoComplete="current-password"
           />
         </Grid>
       </Grid>

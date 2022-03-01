@@ -88,7 +88,7 @@ const resetPassword = async (req, res) => {
   const { userId } = req.params;
   const userDoc = await UserModel.findById(userId);
 
-  const token = await generateToken({
+  const resetToken = await generateToken({
     email: userDoc.email,
     role: userDoc.role
   })
@@ -96,8 +96,44 @@ const resetPassword = async (req, res) => {
   await sendEmail({
     to: userDoc.email,
     subject: 'Password reset',
-    text: `http://localhost:3000/change-password?authToken=${token}`
+    text: `http://localhost:3000/change-password?resetToken=${resetToken}`
   })
+
+  res.status(200).send();
+};
+
+const changePassword = async (req, res) => {
+  const { resetToken, password, passwordConfirmation } = req.body;
+
+  if (password !== passwordConfirmation) {
+    res.status(400).json({ message: 'Passwords do not match' });
+  }
+
+  if (!resetToken) {
+    res.status(400).json({ message: 'Reset token expected' });
+  }
+
+  const { email } = decryptToken(resetToken);
+  if (!email) {
+    res.status(400).json({ message: 'Bad token data' });
+  }
+
+  try {
+    const hashedPassword = await hashPasswordAsync(password);
+    const userDoc = await UserModel.findOneAndUpdate(
+      { email },
+      { password: hashedPassword }
+    );
+
+    res.status(200).json({
+      user: new UserViewModel(userDoc),
+      token: generateToken({ email, role: userDoc.role })
+    });
+
+  } catch (error) {
+    res.status(400).json({ message: 'Unsuccessfull password change' });
+  }
+
 
   res.status(200).send();
 };
@@ -107,5 +143,6 @@ module.exports = {
   login,
   auth,
   checkEmail,
-  resetPassword
+  resetPassword,
+  changePassword,
 };

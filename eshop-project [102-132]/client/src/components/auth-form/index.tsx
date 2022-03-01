@@ -31,7 +31,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
   <Container
     maxWidth="xs"
     component="main"
-    sx={{ pt: '7vh' }}
+    sx={(theme) => ({ pt: `calc( 2 * ${theme.mixins.navbar.height}px)` })}
   >
     <Box component="form" onSubmit={onSubmit}>
       <Box sx={{

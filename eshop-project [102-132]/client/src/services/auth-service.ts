@@ -13,6 +13,12 @@ type CheckEmailResponse = {
   available: boolean,
 };
 
+type PasswordResetData = {
+  password: string,
+  passwordConfirmation: string,
+  resetToken: string,
+}
+
 const AuthService = new (class AuthService {
   private requester: AxiosInstance;
 
@@ -95,7 +101,7 @@ const AuthService = new (class AuthService {
 
   public async checkEmail(email: string): Promise<boolean | string> {
     try {
-      const { data } = await this.requester.get<CheckEmailResponse>(`/check-email?email=${email}`);
+      const { data } = await this.requester.get<CheckEmailResponse>(`/checkEmail?email=${email}`);
 
       return data.available;
     } catch (error) {
@@ -126,6 +132,19 @@ const AuthService = new (class AuthService {
       }
       if (error instanceof Error) return error.message;
       return error as any as string;
+    }
+  };
+
+  public changePassword = async (formData: PasswordResetData): Promise<void> => {
+    try {
+      const { data } = await this.requester.post<AuthResponse>(`/changePassword`, formData);
+
+      reduxStore.dispatch(login({ user: data.user }));
+      SessionService.set('auth_token', data.token);
+      this.setAuth(data.token);
+
+    } catch (error) {
+      console.error(error);
     }
   };
 })();

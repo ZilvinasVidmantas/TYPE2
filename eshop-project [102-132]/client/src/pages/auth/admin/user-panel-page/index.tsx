@@ -44,7 +44,7 @@ const UserPanelPage = () => {
 
   return (
     <Container maxWidth="xl">
-      <Typography component="h1" variant="h2">Vartotojų panelė</Typography>
+      <Typography component="h1" variant="h2" sx={{ mb: 3 }}>Vartotojų panelė</Typography>
       {
         error && (
           <Alert
