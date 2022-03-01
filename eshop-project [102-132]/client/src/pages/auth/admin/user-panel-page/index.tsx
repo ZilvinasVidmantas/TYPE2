@@ -12,21 +12,16 @@ import UserService from './services/user-service';
 const UserPanelPage = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [editedUserId, setEditedUserId] = useState<null | string>(null);
-
 
   const deleteUser = async (id: string) => {
     const deletedUser = await UserService.deleteUser(id);
-
     if (typeof deletedUser === 'string') {
       setError(deletedUser);
       return;
     } else if (error) {
       setError(null)
     }
-
     setUsers(users.filter(x => x.id !== id));
-    setEditedUserId(null);
   }
 
   useEffect(() => {

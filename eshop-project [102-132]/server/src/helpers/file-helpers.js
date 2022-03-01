@@ -10,6 +10,12 @@ const deleteFile = (filePath) => {
   }
 }
 
+const fileExists = (filePath) => {
+  const fullPath = path.join(process.cwd(), filePath);
+  return fs.existsSync(fullPath);
+}
+
 module.exports = {
   deleteFile,
+  fileExists,
 }
