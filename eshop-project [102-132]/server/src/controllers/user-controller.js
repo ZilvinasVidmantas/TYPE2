@@ -4,6 +4,7 @@ const ServiceModel = require('../models/service-model');
 const UserViewModel = require('../view-models/user-view-model');
 const { fileExists, deleteFile } = require('../helpers/file-helpers');
 const { sendEmail } = require('../helpers/email-helpers');
+const { has }
 
 const getUsers = async (req, res) => {
   const userDocs = await UserModel.find({
@@ -20,7 +21,7 @@ const resetPassword = async (req, res) => {
   await sendEmail({
     to: userDoc.email,
     subject: 'Password reset',
-    text: 'http://localhost:3000/change-password'
+    text: `http://localhost:3000/change-password?authUrl=${}`
   })
 
   res.status(200).send();

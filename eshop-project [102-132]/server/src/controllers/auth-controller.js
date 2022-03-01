@@ -1,8 +1,7 @@
 const UserModel = require('../models/user-model');
 const UserViewModel = require('../view-models/user-view-model');
 const { hashPasswordAsync, comparePasswordsAsync } = require('../helpers/hash');
-const generateToken = require('../helpers/generate-token');
-const jwt = require('jsonwebtoken');
+const { decryptToken, generateToken } = require('../helpers/token-helpers');
 
 const register = async (req, res) => {
   const { email, password, repeatPassword, name, surname } = req.body;
@@ -59,7 +58,7 @@ const login = async (req, res) => {
 const auth = async (req, res) => {
   const { token } = req.body;
   try {
-    const { email } = jwt.verify(token, process.env.TOKEN_SECRET);
+    const { email } = decryptToken(token);
     const userDoc = await UserModel.findOne({ email })
       .populate('mainImg');;
     const user = new UserViewModel(userDoc);
