@@ -8,6 +8,7 @@ import {
 import { User } from 'types';
 import UserPanelPageTable from './user-panel-page-table';
 import UserService from './services/user-service';
+import AuthService from 'services/auth-service';
 
 const UserPanelPage = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -25,7 +26,7 @@ const UserPanelPage = () => {
   }
 
   const resetPassword = async (id: string) => {
-    await UserService.resetPassword(id);
+    await AuthService.resetPassword(id);
     console.log('Password reset');
   }
 

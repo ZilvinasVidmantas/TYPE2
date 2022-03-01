@@ -3,8 +3,6 @@ const UserModel = require('../models/user-model');
 const ServiceModel = require('../models/service-model');
 const UserViewModel = require('../view-models/user-view-model');
 const { fileExists, deleteFile } = require('../helpers/file-helpers');
-const { sendEmail } = require('../helpers/email-helpers');
-const { has }
 
 const getUsers = async (req, res) => {
   const userDocs = await UserModel.find({
@@ -14,18 +12,6 @@ const getUsers = async (req, res) => {
   res.status(200).json(users);
 };
 
-const resetPassword = async (req, res) => {
-  const { userId } = req.params;
-  const userDoc = await UserModel.findById(userId);
-
-  await sendEmail({
-    to: userDoc.email,
-    subject: 'Password reset',
-    text: `http://localhost:3000/change-password?authUrl=${}`
-  })
-
-  res.status(200).send();
-};
 
 const updateUser = async (req, res) => {
   const { email, name, surname } = req.body;
@@ -114,5 +100,4 @@ module.exports = {
   updateUser,
   updateUserMainImage,
   deleteUser,
-  resetPassword,
 };

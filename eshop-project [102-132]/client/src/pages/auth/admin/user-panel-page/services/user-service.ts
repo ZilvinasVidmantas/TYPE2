@@ -21,30 +21,6 @@ const UserService = new (class UserService {
     });
   }
 
-  public resetPassword = async (id: string): Promise<void | string> => {
-    const token = UserService.validateToken();
-    if (!token) return 'You are not authorized';
-
-    try {
-      await this.requester.post(`/resetPassword/${id}`, {}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      return;
-    } catch (error) {
-      if ((error as AxiosError).isAxiosError) {
-        const axiosError = error as AxiosError<ErrorResponse>;
-        if (axiosError.response) {
-          return axiosError.response.data.message;
-        }
-      }
-      if (error instanceof Error) return error.message;
-      return error as any as string;
-    }
-  };
-
   public getUsers = async (): Promise<User[] | string> => {
     const token = UserService.validateToken();
     if (!token) return 'You are not authorized';

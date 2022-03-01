@@ -6,7 +6,6 @@ const {
   updateUser,
   updateUserMainImage,
   deleteUser,
-  resetPassword,
 } = require('../controllers/user-controller');
 
 const router = express.Router();
@@ -15,8 +14,6 @@ const router = express.Router();
 router.use(authMiddleware);
 
 router.get('/', adminMiddleware, getUsers);
-
-router.post('/resetPassword/:userId', adminMiddleware, resetPassword);
 
 router.patch('/', updateUser);
 

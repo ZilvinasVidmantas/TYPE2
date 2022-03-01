@@ -2,6 +2,7 @@ const UserModel = require('../models/user-model');
 const UserViewModel = require('../view-models/user-view-model');
 const { hashPasswordAsync, comparePasswordsAsync } = require('../helpers/hash');
 const { decryptToken, generateToken } = require('../helpers/token-helpers');
+const { sendEmail } = require('../helpers/email-helpers');
 
 const register = async (req, res) => {
   const { email, password, repeatPassword, name, surname } = req.body;
@@ -83,9 +84,23 @@ const checkEmail = async (req, res) => {
   res.status(200).json({ available: !userDoc });
 }
 
+const resetPassword = async (req, res) => {
+  const { userId } = req.params;
+  const userDoc = await UserModel.findById(userId);
+
+  await sendEmail({
+    to: userDoc.email,
+    subject: 'Password reset',
+    text: `http://localhost:3000/change-password?authUrl=${'ssssss'}`
+  })
+
+  res.status(200).send();
+};
+
 module.exports = {
   register,
   login,
   auth,
   checkEmail,
+  resetPassword
 };

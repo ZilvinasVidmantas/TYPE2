@@ -1,7 +1,7 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosError, AxiosInstance } from 'axios';
 import reduxStore from 'store/index';
 import { login, logout, authFailed } from 'store/auth';
-import { Crudentials, User, UserRegistration } from 'types';
+import { Crudentials, ErrorResponse, User, UserRegistration } from 'types';
 import SessionService from './session-service';
 
 type AuthResponse = {
@@ -104,6 +104,30 @@ const AuthService = new (class AuthService {
       return error as any as string;
     }
   }
+
+  public resetPassword = async (id: string): Promise<void | string> => {
+    const token = this.getToken();
+    if (!token) return 'You are not authorized';
+
+    try {
+      await this.requester.post(`/resetPassword/${id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return;
+    } catch (error) {
+      if ((error as AxiosError).isAxiosError) {
+        const axiosError = error as AxiosError<ErrorResponse>;
+        if (axiosError.response) {
+          return axiosError.response.data.message;
+        }
+      }
+      if (error instanceof Error) return error.message;
+      return error as any as string;
+    }
+  };
 })();
 
 export default AuthService;
