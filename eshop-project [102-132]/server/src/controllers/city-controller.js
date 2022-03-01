@@ -14,7 +14,7 @@ const createCity = async (req, res) => {
     const cityDoc = await CityModel.create({ title });
     res.status(200).json(new CityViewModel(cityDoc));
   } catch (error) {
-    res.status(400).json({ message: `City with title ${title} already exists` });
+    res.status(400).json({ message: `City with title '${title}' already exists` });
   }
 };
 

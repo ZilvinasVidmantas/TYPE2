@@ -44,16 +44,6 @@ export const CityPanelPageTable: React.FC<CityPanelPageTableProps> = ({
   onEdit,
   onDelete,
 }) => {
-  const handleCityDelete = async (id: string) => {
-    const deletedCity = await CityService.deleteCity(id);
-
-    if (typeof deletedCity === 'string') {
-      console.error(deletedCity);
-      return;
-    }
-
-    onDelete(id);
-  }
 
   return (
     <TableContainer component={Paper}>
@@ -90,7 +80,7 @@ export const CityPanelPageTable: React.FC<CityPanelPageTableProps> = ({
                 >
                   {city.edited ? <DoNotDisturbAltIcon /> : <CachedIcon />}
                 </Button>
-                <Button variant="contained" color="error" onClick={() => handleCityDelete(city.id)}>
+                <Button variant="contained" color="error" onClick={() => onDelete(city.id)}>
                   <DeleteForeverIcon />
                 </Button>
               </StyledTableCell>
