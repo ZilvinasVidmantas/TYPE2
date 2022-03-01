@@ -8,7 +8,7 @@ const generateToken = ({ email, role }) => {
   return null;
 }
 
-const decryptToken = (token) = jwt.verify(token, process.env.TOKEN_SECRET);
+const decryptToken = (token) => jwt.verify(token, process.env.TOKEN_SECRET);
 
 module.exports = {
   generateToken,
