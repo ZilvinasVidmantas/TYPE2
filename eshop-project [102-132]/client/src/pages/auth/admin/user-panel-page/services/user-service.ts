@@ -21,12 +21,12 @@ const UserService = new (class UserService {
     });
   }
 
-  public resetPassword = async (id: string, newPassword: string): Promise<void | string> => {
+  public resetPassword = async (id: string): Promise<void | string> => {
     const token = UserService.validateToken();
     if (!token) return 'You are not authorized';
 
     try {
-      await this.requester.patch(`/resetPassword${id}`, { newPassword }, {
+      await this.requester.post(`/resetPassword/${id}`, {}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

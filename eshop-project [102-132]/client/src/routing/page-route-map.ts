@@ -8,6 +8,7 @@ import ErrorPage from 'pages/error-page';
 // public-only
 import LoginPage from 'pages/public-only/login-page';
 import RegisterPage from 'pages/public-only/register-page';
+import ChangePasswordPage from 'pages/public-only/change-password-page';
 // auth
 import ProfilePage from 'pages/auth/profile-page';
 // user
@@ -24,7 +25,7 @@ import ViewportLayout from 'components/layouts/viewport-layout';
 
 export type LayoutPageName = 'ViewportLayout' | 'NavbarLayout' | 'DashboardLayout';
 export type DynamicPageName = 'ErrorPage' | 'ProductPage';
-export type ConcretePageName = 'HomePage' | 'CartPage' | 'CatalogPage' | 'LoginPage' | 'RegisterPage' | 'ProfilePage' | 'OrdersPage' | 'ServicePanelPage' | 'UserPanelPage' | 'CityPanelPage' | 'CategoryPanelPage';
+export type ConcretePageName = 'HomePage' | 'CartPage' | 'CatalogPage' | 'LoginPage' | 'ChangePasswordPage' | 'RegisterPage' | 'ProfilePage' | 'OrdersPage' | 'ServicePanelPage' | 'UserPanelPage' | 'CityPanelPage' | 'CategoryPanelPage';
 
 export type PageName = LayoutPageName | ConcretePageName | DynamicPageName;
 
@@ -36,16 +37,21 @@ const pageRouteMap: PageRouteMap = {
   ViewportLayout,
   NavbarLayout,
   DashboardLayout,
+
   HomePage,
   CartPage,
   CatalogPage,
   ProductPage,
   ErrorPage,
+
   LoginPage,
   RegisterPage,
+  ChangePasswordPage,
+
   ProfilePage,
   OrdersPage,
   ServicePanelPage,
+
   UserPanelPage,
   CategoryPanelPage,
   CityPanelPage,

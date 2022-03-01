@@ -10,16 +10,14 @@ import {
   tableCellClasses,
   Button,
   styled,
-  alpha,
 } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import CachedIcon from '@mui/icons-material/Cached';
-import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
 import { User } from 'types';
 
 export type UserPanelPageTableProps = {
   data: User[],
   onDelete: (id: string) => void,
+  onResetPassword: (id: string) => void,
 };
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -35,6 +33,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 export const UserPanelPageTable: React.FC<UserPanelPageTableProps> = ({
   data,
   onDelete,
+  onResetPassword,
 }) => {
 
   return (
@@ -66,7 +65,13 @@ export const UserPanelPageTable: React.FC<UserPanelPageTableProps> = ({
               <StyledTableCell align="right">{user.createdAt}</StyledTableCell>
               <StyledTableCell align="right">{user.updatedAt}</StyledTableCell>
               <StyledTableCell sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end' }}>
-                <Button variant="contained" color="secondary" >Reset password</Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => onResetPassword(user.id)}
+                >
+                  Reset password
+                </Button>
                 <Button variant="contained" color="error" onClick={() => onDelete(user.id)}>
                   <DeleteForeverIcon />
                 </Button>

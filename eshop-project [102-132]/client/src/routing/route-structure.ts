@@ -56,6 +56,7 @@ const routeStructure: Array<RouteData> = [
         childRoutes: [
           { path: 'login', pageName: 'LoginPage', auth: PUBLIC_ONLY },
           { path: 'register', pageName: 'RegisterPage', auth: PUBLIC_ONLY },
+          { path: 'change-password', pageName: 'ChangePasswordPage', auth: PUBLIC_ONLY },
         ],
       },
       { path: '*', pageName: 'ErrorPage' },

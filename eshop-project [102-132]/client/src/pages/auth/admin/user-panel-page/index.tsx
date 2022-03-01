@@ -24,6 +24,11 @@ const UserPanelPage = () => {
     setUsers(users.filter(x => x.id !== id));
   }
 
+  const resetPassword = async (id: string) => {
+    await UserService.resetPassword(id);
+    console.log('Password reset');
+  }
+
   useEffect(() => {
     (async () => {
       const fetchedUsers = await UserService.getUsers();
@@ -53,6 +58,7 @@ const UserPanelPage = () => {
       <UserPanelPageTable
         data={users}
         onDelete={deleteUser}
+        onResetPassword={resetPassword}
       />
     </Container>
   );
