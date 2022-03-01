@@ -88,10 +88,15 @@ const resetPassword = async (req, res) => {
   const { userId } = req.params;
   const userDoc = await UserModel.findById(userId);
 
+  const token = await generateToken({
+    email: userDoc.email,
+    role: userDoc.role
+  })
+
   await sendEmail({
     to: userDoc.email,
     subject: 'Password reset',
-    text: `http://localhost:3000/change-password?authUrl=${'ssssss'}`
+    text: `http://localhost:3000/change-password?authToken=${token}`
   })
 
   res.status(200).send();
