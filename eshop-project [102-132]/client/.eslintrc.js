@@ -1,4 +1,4 @@
-const relativePaths = require('./relative-paths');
+const absolutePaths = require('./absolute-paths');
 
 module.exports = {
   env: {
@@ -43,7 +43,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {
-        alias: relativePaths,
+        alias: absolutePaths,
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },

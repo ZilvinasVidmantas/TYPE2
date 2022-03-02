@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Category } from 'types';
-import { State } from './index';
 import CategoryService from 'services/categories-service';
 import {
   FulfilledActionFromAsyncThunk,
-  RejectedActionFromAsyncThunk
+  RejectedActionFromAsyncThunk,
 } from '@reduxjs/toolkit/dist/matchers';
+import { State } from './index';
 
 type CategoriesState = {
   collection: Category[],
@@ -23,7 +23,7 @@ export const fetchCategories = createAsyncThunk(
   async () => {
     const categories = await CategoryService.getCategories();
     return { categories };
-  }
+  },
 );
 
 type FetchCategoriesAsyncThunk = typeof fetchCategories;
@@ -34,13 +34,13 @@ const categoriesSlice = createSlice({
   reducers: {
     deleteErrorReducer: (state: CategoriesState) => {
       state.error = undefined;
-    }
+    },
   },
   extraReducers: {
     // fetchCategories asinchroninio action'o fulfilled(sėkmės) atvejis
     'categories/fetchCategories/fulfilled': (
       state: CategoriesState,
-      action: FulfilledActionFromAsyncThunk<FetchCategoriesAsyncThunk>
+      action: FulfilledActionFromAsyncThunk<FetchCategoriesAsyncThunk>,
     ) => {
       state.collection = action.payload.categories;
     },
@@ -48,11 +48,11 @@ const categoriesSlice = createSlice({
     // fetchCategories asinchroninio action'o reject(atmetimo) atvejis
     'categories/fetchCategories/rejected': (
       state: CategoriesState,
-      action: RejectedActionFromAsyncThunk<FetchCategoriesAsyncThunk>
+      action: RejectedActionFromAsyncThunk<FetchCategoriesAsyncThunk>,
     ) => {
       state.error = action.error.message;
-    }
-  }
+    },
+  },
 });
 
 export const {

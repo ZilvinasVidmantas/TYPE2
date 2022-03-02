@@ -45,7 +45,10 @@ const CategoryService = new (class CategoryService {
     }
   };
 
-  public updateCategory = async (id: string, formData: CategoryData): Promise<Category | string> => {
+  public updateCategory = async (
+    id: string,
+    formData: CategoryData,
+  ): Promise<Category | string> => {
     const token = CategoryService.validateToken();
     if (!token) return 'You are not authorized';
 
@@ -90,7 +93,7 @@ const CategoryService = new (class CategoryService {
       if (error instanceof Error) return error.message;
       return error as any as string;
     }
-  }
+  };
 
   public deleteCategory = async (id: string): Promise<Category | string> => {
     const token = CategoryService.validateToken();
@@ -113,7 +116,7 @@ const CategoryService = new (class CategoryService {
       if (error instanceof Error) return error.message;
       return error as any as string;
     }
-  }
+  };
 })();
 
 export default CategoryService;

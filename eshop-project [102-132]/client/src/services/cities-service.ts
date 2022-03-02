@@ -1,12 +1,11 @@
 import axios, { AxiosInstance } from 'axios';
-import { Category } from 'types';
+import { City } from 'types';
 import AuthService from './auth-service';
 
-const CategoryService = new (class CategoryService {
+const CitiesService = new (class CitiesService {
   private requester: AxiosInstance;
 
   static validateToken() {
-
     const token = AuthService.getToken();
     if (!token) {
       throw new Error('Authorization token not found');
@@ -17,14 +16,14 @@ const CategoryService = new (class CategoryService {
 
   public constructor() {
     this.requester = axios.create({
-      baseURL: 'http://localhost:5000/api/categories',
+      baseURL: 'http://localhost:5000/api/cities',
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  public async getCategories(): Promise<Category[]> {
-    const token = CategoryService.validateToken();
-    const { data } = await this.requester.get<Category[]>('/', {
+  public async getCities(): Promise<City[]> {
+    const token = CitiesService.validateToken();
+    const { data } = await this.requester.get<City[]>('/', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -34,4 +33,4 @@ const CategoryService = new (class CategoryService {
   }
 })();
 
-export default CategoryService;
+export default CitiesService;

@@ -10,14 +10,14 @@ const {
 
 const router = express.Router();
 
-router.use(authMiddleware, adminMiddleware);
+router.use(authMiddleware);
 
 router.get('/', getCities);
 
-router.post('/', createCity);
+router.post('/', adminMiddleware, createCity);
 
-router.patch('/:id', updateCity);
+router.patch('/:id', adminMiddleware, updateCity);
 
-router.delete('/:id', deleteCity);
+router.delete('/:id', adminMiddleware, deleteCity);
 
 module.exports = router;
