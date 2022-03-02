@@ -27,7 +27,6 @@ const AuthService = new (class AuthService {
 
   public constructor() {
     const token = SessionService.get('auth_token');
-
     this.requester = axios.create({
       baseURL: 'http://localhost:5000/api/auth',
       headers: { 'Content-Type': 'application/json' },
@@ -59,8 +58,8 @@ const AuthService = new (class AuthService {
     try {
       const response = await this.requester.post<AuthResponse>('/login', { email, password });
       const { user, token } = response.data;
-      SessionService.set('auth_token', token);
       this.setAuth(token);
+      SessionService.set('auth_token', token);
 
       return user;
     } catch (error) {
@@ -74,8 +73,8 @@ const AuthService = new (class AuthService {
     try {
       const response = await this.requester.post<AuthResponse>('/register', formData);
       const { user, token } = response.data;
-      SessionService.set('auth_token', token);
       this.setAuth(token);
+      SessionService.set('auth_token', token);
 
       return user;
     } catch (error) {
@@ -88,8 +87,8 @@ const AuthService = new (class AuthService {
   public async authenticate(token: string): Promise<string | true> {
     try {
       const { data } = await this.requester.post<AuthResponse>('/', { token });
-      reduxStore.dispatch(login({ user: data.user }));
       this.setAuth(token);
+      reduxStore.dispatch(login({ user: data.user }));
 
       return true;
     } catch (error) {
