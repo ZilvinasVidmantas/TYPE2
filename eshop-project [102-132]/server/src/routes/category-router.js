@@ -10,14 +10,14 @@ const {
 
 const router = express.Router();
 
-router.use(authMiddleware, adminMiddleware);
+router.use(authMiddleware);
 
 router.get('/', getCategories);
 
-router.post('/', createCategory);
+router.post('/', adminMiddleware, createCategory);
 
-router.patch('/:id', updateCategory);
+router.patch('/:id', adminMiddleware, updateCategory);
 
-router.delete('/:id', deleteCategory);
+router.delete('/:id', adminMiddleware, deleteCategory);
 
 module.exports = router;

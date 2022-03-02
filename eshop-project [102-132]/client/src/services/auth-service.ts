@@ -4,6 +4,7 @@ import { login, logout, authFailed } from 'store/auth';
 import { Crudentials, ErrorResponse, User, UserRegistration } from 'types';
 import SessionService from './session-service';
 
+
 type AuthResponse = {
   user: User,
   token: string

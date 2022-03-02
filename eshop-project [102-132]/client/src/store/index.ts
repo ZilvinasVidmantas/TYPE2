@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import auth from './auth';
+import categories from './categories';
 
-const reducer = combineReducers({ auth });
+const reducer = combineReducers({
+  auth,
+  categories
+});
 
 const store = configureStore({ reducer });
 
