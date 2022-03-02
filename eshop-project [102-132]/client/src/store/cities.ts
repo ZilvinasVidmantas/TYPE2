@@ -20,7 +20,9 @@ const initialState: CategoriesState = {
 // Kuriamas asinchroninis action'as
 export const fetchCities = createAsyncThunk(
   'cities/fetchCities',
-  async () => {
+  async (_, { getState }) => {
+    const { cities: { collection } } = getState() as State; // GlobalState
+    if (collection.length !== 0) throw new Error();
     const cities = await CityService.getCities();
     return { cities };
   },
@@ -50,7 +52,9 @@ const citiesSlice = createSlice({
       state: CategoriesState,
       action: RejectedActionFromAsyncThunk<FetchCategoriesAsyncThunk>,
     ) => {
-      state.error = action.error.message;
+      if (action.error.message) {
+        state.error = action.error.message;
+      }
     },
   },
 });

@@ -10,13 +10,13 @@ export type CityPanelPageFormProps = {
   editMode: boolean,
   onSubmit: React.FormEventHandler<HTMLFormElement>,
   setTitle: (newValue: string) => void,
-}
+};
 
 const CityPanelPageForm: React.FC<CityPanelPageFormProps> = ({
   title,
   editMode,
   onSubmit,
-  setTitle
+  setTitle,
 }) => (
   <Paper component="form" sx={{ display: 'flex' }} onSubmit={onSubmit}>
     <TextField
@@ -29,7 +29,8 @@ const CityPanelPageForm: React.FC<CityPanelPageFormProps> = ({
     <Button
       variant="contained"
       color={editMode ? 'warning' : 'secondary'}
-      type="submit">
+      type="submit"
+    >
       {editMode ? 'Atnaujinti' : 'Sukurti'}
     </Button>
   </Paper>

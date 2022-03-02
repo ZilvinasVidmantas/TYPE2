@@ -90,7 +90,7 @@ const CityService = new (class CityService {
       if (error instanceof Error) return error.message;
       return error as any as string;
     }
-  }
+  };
 
   public deleteCity = async (id: string): Promise<City | string> => {
     const token = CityService.validateToken();
@@ -113,7 +113,7 @@ const CityService = new (class CityService {
       if (error instanceof Error) return error.message;
       return error as any as string;
     }
-  }
+  };
 })();
 
 export default CityService;

@@ -17,6 +17,7 @@ import {
   deleteError as deleteCitiesError,
 } from 'store/cities';
 import { useDispatch, useSelector } from 'store/hooks';
+import UserServicePanelPageForm from './user-service-panel-page-form';
 
 const UserServicePanelPage = () => {
   const categories = useSelector(categoriesSelector);
@@ -44,12 +45,10 @@ const UserServicePanelPage = () => {
         </Alert>
       )}
 
-      <pre>
-        {JSON.stringify(categories, null, 2)}
-      </pre>
-      <pre>
-        {JSON.stringify(cities, null, 2)}
-      </pre>
+      <UserServicePanelPageForm
+        categoryOptions={categories}
+        cityOptions={cities}
+      />
     </div>
   );
 };

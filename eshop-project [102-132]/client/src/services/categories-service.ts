@@ -6,7 +6,6 @@ const CategoryService = new (class CategoryService {
   private requester: AxiosInstance;
 
   static validateToken() {
-
     const token = AuthService.getToken();
     if (!token) {
       throw new Error('Authorization token not found');

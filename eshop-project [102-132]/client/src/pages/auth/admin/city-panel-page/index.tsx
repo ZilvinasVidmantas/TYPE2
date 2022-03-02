@@ -20,32 +20,32 @@ const CityPanelPage = () => {
     event.preventDefault();
     if (editedCityId !== null) updateCity();
     else createCity();
-  }
+  };
 
   const createCity = async () => {
     const createdCity = await CityService.createCity({ title: titleField });
     if (typeof createdCity === 'string') {
       setError(createdCity);
       return;
-    } else if (error) {
+    } if (error) {
       setError(null);
     }
 
     setCities([createdCity, ...cities]);
     setTitleField('');
-  }
+  };
 
   const editCity: CityPanelPageTableProps['onEdit'] = (id: string) => {
     const isNewEditedCity = id !== editedCityId;
     setEditedCityId(isNewEditedCity ? id : null);
     if (isNewEditedCity) {
-      const editedCity = cities.find(x => x.id === id) as City;
+      const editedCity = cities.find((x) => x.id === id) as City;
       setTitleField(editedCity.title);
     } else {
       setTitleField('');
     }
     if (error) setError(null);
-  }
+  };
 
   const updateCity = async () => {
     if (editedCityId !== null) {
@@ -53,15 +53,15 @@ const CityPanelPage = () => {
       if (typeof updatedCity === 'string') {
         setError(updatedCity);
         return;
-      } else if (error) {
+      } if (error) {
         setError(null);
       }
 
-      setCities(cities.map(x => x.id === editedCityId ? updatedCity : x));
+      setCities(cities.map((x) => (x.id === editedCityId ? updatedCity : x)));
       setTitleField('');
       setEditedCityId(null);
     }
-  }
+  };
 
   const deleteCity = async (id: string) => {
     const deletedCity = await CityService.deleteCity(id);
@@ -69,14 +69,14 @@ const CityPanelPage = () => {
     if (typeof deletedCity === 'string') {
       setError(deletedCity);
       return;
-    } else if (error) {
-      setError(null)
+    } if (error) {
+      setError(null);
     }
 
-    setCities(cities.filter(x => x.id !== id));
+    setCities(cities.filter((x) => x.id !== id));
     setEditedCityId(null);
     setTitleField('');
-  }
+  };
 
   useEffect(() => {
     (async () => {
@@ -113,12 +113,12 @@ const CityPanelPage = () => {
         )
       }
       <CityPanelPageTable
-        data={cities.map(x => ({ ...x, edited: editedCityId === x.id }))}
+        data={cities.map((x) => ({ ...x, edited: editedCityId === x.id }))}
         onDelete={deleteCity}
         onEdit={editCity}
       />
     </Container>
   );
-}
+};
 
 export default CityPanelPage;
