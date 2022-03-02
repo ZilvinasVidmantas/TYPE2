@@ -67,7 +67,8 @@ const routeStructure: Array<RouteData> = [
     pageName: 'DashboardLayout',
     childRoutes: [
       { index: true, pageName: 'ProfilePage', auth: AUTH },
-      { path: 'orders', pageName: 'OrdersPage', auth: USER },
+      { path: 'user/orders', pageName: 'OrdersPage', auth: USER },
+      { path: 'user/services', pageName: 'UserServicePanelPage', auth: USER },
       { path: 'admin/services', pageName: 'ServicePanelPage', auth: ADMIN },
       { path: 'admin/users', pageName: 'UserPanelPage', auth: ADMIN },
       { path: 'admin/categories', pageName: 'CategoryPanelPage', auth: ADMIN },

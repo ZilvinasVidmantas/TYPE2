@@ -26,6 +26,7 @@ const register = async (req, res) => {
       password: hashedPassword,
     });
   } catch (error) {
+    console.log(error);
     res.status(400).json({
       message: error.message
     });

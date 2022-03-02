@@ -24,7 +24,6 @@ type InitialValues = {
   email: string
   password: string,
   passwordConfirmation: string,
-  subscribed: boolean,
   emailChecked: boolean,
   emailAvailable: boolean,
 };
@@ -69,7 +68,6 @@ const initialValues: InitialValues = {
   email: '',
   password: '',
   passwordConfirmation: '',
-  subscribed: true,
   emailChecked: false,
   emailAvailable: false,
 };
@@ -166,7 +164,7 @@ const RegisterPage: React.FC = () => {
       isValid={isValid && dirty}
       loading={isSubmitting}
     >
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ mb: 2 }}>
         <Grid item xs={12} sm={6}>
           <TextField
             name="name"
@@ -244,20 +242,6 @@ const RegisterPage: React.FC = () => {
             fullWidth
             variant="outlined"
             type="password"
-          />
-        </Grid>
-        <Grid item sx={{ mb: 2 }} xs={12}>
-          <FormControlLabel
-            control={(
-              <Checkbox
-                name="subscribed"
-                onChange={handleChange}
-                checked={values.subscribed}
-                disabled={isSubmitting}
-                color="primary"
-              />
-            )}
-            label="Noriu gauti su rinkodara susijusius pranešimus"
           />
         </Grid>
       </Grid>

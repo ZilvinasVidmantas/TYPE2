@@ -26,6 +26,7 @@ const navigationItems = {
     { title: 'Profilis', path: routes.ProfilePage, Icon: PersonIcon },
   ],
   user: [
+    { title: 'Mano paslaugos', path: routes.UserServicePanelPage, Icon: ConstructionIcon },
     { title: 'Užsakymai', path: routes.OrdersPage, Icon: HistoryIcon },
   ],
   admin: [

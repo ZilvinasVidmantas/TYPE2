@@ -30,7 +30,6 @@ const userSchema = new Mongoose.Schema({
   mainImg: {
     type: Mongoose.Schema.Types.ObjectId,
     ref: 'Image',
-    unique: true,
   },
   name: {
     type: 'string',
