@@ -45,10 +45,12 @@ const UserServicePanelPage = () => {
         </Alert>
       )}
 
-      <UserServicePanelPageForm
-        categoryOptions={categories}
-        cityOptions={cities}
-      />
+      {categories.length > 0 && cities.length > 0 && (
+        <UserServicePanelPageForm
+          initialCategories={categories}
+          initialCities={cities}
+        />
+      )}
     </div>
   );
 };
