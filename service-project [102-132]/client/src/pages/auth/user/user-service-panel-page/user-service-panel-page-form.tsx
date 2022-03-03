@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useFormik, FormikHelpers } from 'formik';
 import {
   Paper,
@@ -9,9 +9,11 @@ import {
   Autocomplete,
   Checkbox,
   Button,
+  IconButton,
 } from '@mui/material';
 import { Category, City, ServiceData } from 'types';
 import Img from 'components/img';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 type InitialValues = {
   title: string,
@@ -60,14 +62,23 @@ const UserServicePanelPageForm: React.FC<UserServicePanelPageFormProps> = ({
   initialCities,
 }) => {
   const [categoryOptions, setCategoryOptions] = useState<Category[]>([defaultCategoryOption]);
+  const fileUploadRef = useRef<HTMLInputElement>(null);
 
-  const onSubmit: FormikSubmit = ({ cities, description, ...values }) => {
-    // const formattedData: ServiceData = {
-    //   ...values,
-    //   cities: cities.map((x) => x.id),
-    // };
-    // if (description) formattedData.description = description;
-    // console.log(formattedData);
+  const onSubmit: FormikSubmit = ({
+    cities, description, images, ...values
+  }) => {
+    const input = fileUploadRef.current;
+    let files: File[] = [];
+    if (input) {
+      files = Array.from(input.files as FileList);
+    }
+    const formattedData: ServiceData = {
+      ...values,
+      cities: cities.map((x) => x.id),
+      images: files,
+    };
+    if (description) formattedData.description = description;
+    console.log(formattedData);
   };
 
   const {
@@ -91,13 +102,18 @@ const UserServicePanelPageForm: React.FC<UserServicePanelPageFormProps> = ({
       const fileArr = Array.from(files);
       (async () => {
         const imgUrls = await Promise.all(fileArr.map(convertFileToUrl));
-        setFieldValue('images', imgUrls, true);
+        setFieldValue('images', [...values.images, ...imgUrls], true);
       })();
     }
   };
 
+  const deleteImage = (image: string) => {
+    console.log(image);
+    setFieldValue('images', values.images.filter((x) => x !== image), true);
+  };
+
   useEffect(() => {
-    setCategoryOptions([defaultCategoryOption, ...initialCities]);
+    setCategoryOptions([defaultCategoryOption, ...initialCategories]);
   }, [initialCategories]);
 
   return (
@@ -167,6 +183,7 @@ const UserServicePanelPageForm: React.FC<UserServicePanelPageFormProps> = ({
             inputProps={{
               multiple: true,
               onChange: handleImagesChange,
+              ref: fileUploadRef,
             }}
           />
           <Box sx={{
@@ -174,13 +191,29 @@ const UserServicePanelPageForm: React.FC<UserServicePanelPageFormProps> = ({
           }}
           >
             {values.images.map((src, i) => (
-              <Img
-                key={src}
-                src={src}
-                alt={String(i)}
-                height={150}
-                width={150}
-              />
+              <Box key={src} sx={{ position: 'relative', width: 200, height: 200 }}>
+                <IconButton
+                  sx={{
+                    position: 'absolute', top: 0, right: 0, zIndex: 2,
+                  }}
+                  color="error"
+                  onClick={() => deleteImage(src)}
+                >
+                  <DeleteIcon sx={{ fontSize: 35 }} />
+                </IconButton>
+                <Img
+                  src={src}
+                  alt={String(i)}
+                  sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    height: '100%',
+                    width: '100%',
+                  }}
+                  onLoad={(...params) => console.log(params)}
+                />
+              </Box>
             ))}
           </Box>
         </Box>
