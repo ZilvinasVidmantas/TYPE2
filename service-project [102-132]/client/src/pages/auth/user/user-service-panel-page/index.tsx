@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {
   Alert,
   Typography,
+  Box,
 } from '@mui/material';
 import {
   categoriesSelector,
@@ -16,17 +17,21 @@ import {
   deleteError as deleteCitiesError,
 } from 'store/cities';
 import {
+  userServicesSelector,
   createService,
+  fetchUserServices,
 } from 'store/user-services';
 import { useDispatch, useSelector } from 'store/hooks';
 import { ServiceData } from 'types';
 import UserServicePanelPageForm from './user-service-panel-page-form';
+import UserServicePanelPageTable from './user-service-panel-page-table';
 
 const UserServicePanelPage = () => {
   const categories = useSelector(categoriesSelector);
   const cities = useSelector(citiesSelector);
   const categoriesError = useSelector(categoriesErrorSelector);
   const citiesError = useSelector(citiesErrorSelector);
+  const services = useSelector(userServicesSelector);
   const dispatch = useDispatch();
 
   const deleteError = () => {
@@ -41,7 +46,22 @@ const UserServicePanelPage = () => {
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchCities());
+    dispatch(fetchUserServices());
   }, []);
+
+  const updateService = () => {
+    console.error('Not implemented updateService');
+  };
+
+  const deleteService = (id: string) => {
+    console.log('deleteService:', id);
+    console.error('Not implemented deleteService');
+  };
+
+  const editService = (id: string) => {
+    console.log('editService:', id);
+    console.error('Not implemented editService');
+  };
 
   return (
     <div>
@@ -53,11 +73,20 @@ const UserServicePanelPage = () => {
       )}
 
       {categories.length > 0 && cities.length > 0 && (
-        <UserServicePanelPageForm
-          initialCategories={categories}
-          initialCities={cities}
-          onSubmit={handleCreateService}
-        />
+        <Box sx={{ display: 'flex', gap: 3 }}>
+          <Box sx={{ flexBasis: 600 }}>
+            <UserServicePanelPageForm
+              initialCategories={categories}
+              initialCities={cities}
+              onSubmit={handleCreateService}
+            />
+          </Box>
+          <UserServicePanelPageTable
+            data={services.map((x) => ({ ...x, edited: false }))}
+            onDelete={deleteService}
+            onEdit={editService}
+          />
+        </Box>
       )}
     </div>
   );

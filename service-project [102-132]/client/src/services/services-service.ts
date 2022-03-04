@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import { ServiceData, Service } from 'types';
 import AuthService from './auth-service';
+import { fetchUserServices } from '../store/user-services';
 
 const ServicesService = new (class ServicesService {
   private requester: AxiosInstance;
@@ -21,6 +22,18 @@ const ServicesService = new (class ServicesService {
     });
   }
 
+  public async fetchUserServices(): Promise<Service[]> {
+    const token = ServicesService.validateToken();
+
+    const { data } = await this.requester.get<Service[]>('/userServices', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return data;
+  }
+
   public async createUserService(serviceData: ServiceData): Promise<Service> {
     const token = ServicesService.validateToken();
 
@@ -36,7 +49,7 @@ const ServicesService = new (class ServicesService {
       }
     });
 
-    const { data } = await this.requester.post<Service>('/userService', body, {
+    const { data } = await this.requester.post<Service>('/userServices', body, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

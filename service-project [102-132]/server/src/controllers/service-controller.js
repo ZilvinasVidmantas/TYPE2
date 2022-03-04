@@ -29,6 +29,23 @@ const createUserService = async (req, res) => {
   }
 };
 
+const getUserServices = async (req, res) => {
+  try {
+    const userDoc = await UserModel.findOne({ email: req.user.email });
+    const serviceDocs = await ServiceModel.find({ creator: userDoc.id });
+
+    const services = await Promise.all(
+      serviceDocs.map(x => new ServiceViewModel(x).populate())
+    );
+
+    res.status(200).json(services);
+  } catch ({ message }) {
+    console.log(message)
+    res.status(400).json({ message });
+  }
+}
+
 module.exports = {
   createUserService,
+  getUserServices,
 };

@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit/dist/matchers';
 import { Service, ServiceData } from 'types';
 import ServicesService from '../services/services-service';
+import { State } from './index';
 
 type UserServicesState = {
   error?: string,
@@ -16,13 +17,21 @@ const initialState: UserServicesState = {
   services: [],
 };
 
-// Kuriamas asinchroninis action'as
 export const createService = createAsyncThunk(
   'userServices/createService',
   async (serviceData: ServiceData) => {
     const service = await ServicesService.createUserService(serviceData);
 
     return { service };
+  },
+);
+
+export const fetchUserServices = createAsyncThunk(
+  'userServices/fetchUserServices',
+  async () => {
+    const services = await ServicesService.fetchUserServices();
+
+    return { services };
   },
 );
 
@@ -42,7 +51,6 @@ const userServicesSlice = createSlice({
       const { service } = action.payload;
       state.services.push(service);
     },
-
     'userServices/createService/rejected': (
       state: UserServicesState,
       action: RejectedActionFromAsyncThunk<typeof createService>,
@@ -51,9 +59,19 @@ const userServicesSlice = createSlice({
         state.error = action.error.message;
       }
     },
+
+    'userServices/fetchUserServices/fulfilled': (
+      state: UserServicesState,
+      action: FulfilledActionFromAsyncThunk<typeof fetchUserServices>,
+    ) => {
+      const { services } = action.payload;
+      state.services = services;
+    },
   },
 });
 
 export const { deleteErrorReducer: deleteError } = userServicesSlice.actions;
+
+export const userServicesSelector = (state: State) => state.userServices.services;
 
 export default userServicesSlice.reducer;
