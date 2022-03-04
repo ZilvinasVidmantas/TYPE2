@@ -8,6 +8,7 @@ const userRouter = require('./routes/user-router');
 const categoryRouter = require('./routes/category-router');
 const cityRouter = require('./routes/city-router');
 const imageRouter = require('./routes/image-router');
+const serviceRouter = require('./routes/service-router');
 
 const server = express();
 const {
@@ -34,6 +35,7 @@ server.use('/api/users', userRouter);
 server.use('/api/images', imageRouter);
 server.use('/api/categories', categoryRouter);
 server.use('/api/cities', cityRouter);
+server.use('/api/services', serviceRouter);
 
 server.listen(SERVER_PORT, () => {
   console.log(`puslapis veikia ant ${SERVER_DOMAIN}:${SERVER_PORT}/`);

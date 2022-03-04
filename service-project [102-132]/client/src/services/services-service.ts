@@ -24,7 +24,19 @@ const ServicesService = new (class ServicesService {
   public async createUserService(serviceData: ServiceData): Promise<Service> {
     const token = ServicesService.validateToken();
 
-    const { data } = await this.requester.post<Service>('/userService', serviceData, {
+    const body = new FormData();
+
+    Object.entries(serviceData).forEach(([name, data]) => {
+      if (data instanceof Array) {
+        data.forEach((x) => {
+          body.append(name, x);
+        });
+      } else {
+        body.append(name, String(data));
+      }
+    });
+
+    const { data } = await this.requester.post<Service>('/userService', body, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
