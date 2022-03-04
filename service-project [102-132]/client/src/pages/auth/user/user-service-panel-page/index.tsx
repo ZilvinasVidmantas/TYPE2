@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import {
   Alert,
-  Box,
   Typography,
 } from '@mui/material';
 import {
@@ -16,7 +15,11 @@ import {
   fetchCities,
   deleteError as deleteCitiesError,
 } from 'store/cities';
+import {
+  createService,
+} from 'store/user-services';
 import { useDispatch, useSelector } from 'store/hooks';
+import { ServiceData } from 'types';
 import UserServicePanelPageForm from './user-service-panel-page-form';
 
 const UserServicePanelPage = () => {
@@ -29,6 +32,10 @@ const UserServicePanelPage = () => {
   const deleteError = () => {
     if (categoriesError) dispatch(deleteCategoriesError());
     if (citiesError) dispatch(deleteCitiesError());
+  };
+
+  const handleCreateService = (formData: ServiceData) => {
+    dispatch(createService(formData));
   };
 
   useEffect(() => {
@@ -49,6 +56,7 @@ const UserServicePanelPage = () => {
         <UserServicePanelPageForm
           initialCategories={categories}
           initialCities={cities}
+          onSubmit={handleCreateService}
         />
       )}
     </div>

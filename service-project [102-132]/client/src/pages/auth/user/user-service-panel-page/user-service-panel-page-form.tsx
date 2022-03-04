@@ -46,15 +46,17 @@ const initialValues: InitialValues = {
 export type UserServicePanelPageFormProps = {
   initialCategories: Category[],
   initialCities: City[],
+  onSubmit: (data: ServiceData) => void,
 };
 
 const UserServicePanelPageForm: React.FC<UserServicePanelPageFormProps> = ({
   initialCategories,
   initialCities,
+  onSubmit,
 }) => {
   const [categoryOptions, setCategoryOptions] = useState<Category[]>([defaultCategoryOption]);
 
-  const onSubmit: FormikSubmit = ({
+  const onFormikSubmit: FormikSubmit = ({
     cities, description, images, ...values
   }) => {
     const formattedData: ServiceData = {
@@ -65,6 +67,7 @@ const UserServicePanelPageForm: React.FC<UserServicePanelPageFormProps> = ({
         .filter((x) => x) as File[],
     };
     if (description) formattedData.description = description;
+    onSubmit(formattedData);
   };
 
   const {
@@ -74,7 +77,7 @@ const UserServicePanelPageForm: React.FC<UserServicePanelPageFormProps> = ({
     handleSubmit,
   } = useFormik<InitialValues>({
     initialValues,
-    onSubmit,
+    onSubmit: onFormikSubmit,
   });
 
   const handleCitiesChange = (_: unknown, newCities: City[]) => {

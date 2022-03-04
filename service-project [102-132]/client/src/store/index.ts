@@ -3,11 +3,13 @@ import { combineReducers } from 'redux';
 import auth from './auth';
 import categories from './categories';
 import cities from './cities';
+import userServices from './user-services';
 
 const reducer = combineReducers({
   auth,
   categories,
   cities,
+  userServices,
 });
 
 const store = configureStore({ reducer });
