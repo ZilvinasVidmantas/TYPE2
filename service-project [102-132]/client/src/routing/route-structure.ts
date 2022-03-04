@@ -48,7 +48,6 @@ const routeStructure: Array<RouteData> = [
     childRoutes: [
       { index: true, pageName: 'HomePage' },
       { path: 'cart', pageName: 'CartPage' },
-      { path: 'catalog', pageName: 'CatalogPage' },
       { path: 'product/:id', pageName: 'ProductPage' },
       {
         path: '/',

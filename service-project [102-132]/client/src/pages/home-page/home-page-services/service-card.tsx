@@ -7,6 +7,7 @@ import {
   styled,
 } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Service } from 'types';
 
 const Image = styled('img')({
   objectPosition: 'center',
@@ -14,11 +15,18 @@ const Image = styled('img')({
   width: '100%',
 });
 
-const ServiceCards: React.FC = () => (
+export type ServiceCardProps = Service;
+
+const ServiceCard: React.FC<Service> = ({
+  title,
+  price,
+  images,
+  category,
+  cities,
+  description,
+}) => (
   <Paper>
-    <Image
-      src="https://www.viskas.lt/uploads/image/0/7/71424/original/apdaila_tinkuojant_v.JPG"
-    />
+    <Image src={images[0] ?? '/no-image.jpg'} />
     <Box sx={{
       px: 2,
       pt: 0,
@@ -32,18 +40,18 @@ const ServiceCards: React.FC = () => (
         mb: 1,
       }}
       >
-        <Typography variant="h5">Tinkavimas</Typography>
-        <Typography variant="h5" color="secondary" fontWeight="bold">20 €</Typography>
+        <Typography variant="h5">{title}</Typography>
+        <Typography variant="h5" color="secondary" fontWeight="bold">{`${price} $`}</Typography>
       </Box>
       <Box sx={{ display: 'flex' }}>
-        <Typography sx={{ width: 120 }}>Miestas: </Typography>
-        <Typography sx={{ fontWeight: 'bold' }}>Vilnius</Typography>
+        <Typography sx={{ width: 120 }}>Miestai: </Typography>
+        <Typography sx={{ fontWeight: 'bold' }}>{cities.map((x) => x.title).join(', ')}</Typography>
       </Box>
       <Box sx={{ display: 'flex' }}>
         <Typography sx={{ width: 120 }}>Darbo pobūdis: </Typography>
-        <Typography sx={{ fontWeight: 'bold' }}>Apdaila</Typography>
+        <Typography sx={{ fontWeight: 'bold' }}>{category.title}</Typography>
       </Box>
-      <Typography variant="body2" sx={{ my: 2, fontSize: 16 }}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam deserunt recusandae unde aliquam ducimus voluptates quis, nulla fugiat nesciunt inventore.</Typography>
+      <Typography variant="body2" sx={{ my: 2, fontSize: 16 }}>{description}</Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
         <Button variant="contained">Daugiau</Button>
         <Button variant="contained" color="secondary">
@@ -55,4 +63,4 @@ const ServiceCards: React.FC = () => (
   </Paper>
 );
 
-export default ServiceCards;
+export default ServiceCard;

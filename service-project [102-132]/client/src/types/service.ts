@@ -4,7 +4,7 @@ type Service = {
   id: string,
   title: string,
   price: number,
-  images: { id: string, src: string }[],
+  images: string[],
   category: Category,
   cities: City[],
   description: string,
